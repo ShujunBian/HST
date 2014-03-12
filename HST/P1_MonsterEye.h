@@ -19,7 +19,7 @@
     ccTime totalBlinkTime;
 }
 
-@property (nonatomic,retain) CCSprite *eyeWhite;
+@property (nonatomic, assign) CCSprite *eyeWhite;
 
 - (void)blink;
 

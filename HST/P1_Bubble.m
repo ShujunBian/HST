@@ -80,8 +80,10 @@ static ccColor3B bubbleColors[] = {
         if(self.position.y > 800)
         {
             [self removeFromParentAndCleanup:YES];
+            [self release];
         }
-        [self unschedule:@selector(updatePosition:)];
+        else
+            [self unschedule:@selector(updatePosition:)];
     }
 }
 
@@ -135,33 +137,42 @@ static ccColor3B bubbleColors[] = {
         }
     }
     
-    [[SimpleAudioEngine sharedEngine] playEffect:[NSString stringWithFormat:@"b%d.wav",soundID]];
-    
+    [[SimpleAudioEngine sharedEngine] playEffect:[NSString stringWithFormat:@"P1_b%d.wav",soundID]];
+    [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:)
+                                           withObject:[NSString stringWithFormat:@"P1_b%d.wav",soundID] afterDelay:1.0];
     
     CCScaleBy *scale = [CCScaleBy actionWithDuration:0.1 scale:0.5];
-    CCCallFunc *call = [CCCallFunc actionWithTarget:self selector:@selector(removeBubbleAndBomb:)];
+    CCCallBlock * removeBubble = [CCCallBlock actionWithBlock:^{
+        [self removeBubbleAndBomb];
+    }];
     
-    CCSequence *seq = [CCSequence actions:scale,call, nil];
+    CCSequence *seq = [CCSequence actions:scale,removeBubble, nil];
     [self runAction:seq];
 }
 
 - (void) completedAnimationSequenceNamed:(NSString *)name
 {
-    //NSLog(@"The animation name is %@",name);
     if ([name isEqualToString:@"blow2"]) {
         _isReadyForboom = YES;
     }
 }
 
-- (void)removeBubbleAndBomb:(id)sender
+- (void)removeBubbleAndBomb
 {
     self.visible = NO;
+    
     P1_BubbleBomb *n = (P1_BubbleBomb *)[CCBReader nodeGraphFromFile:@"P1_BubbleBoom.ccbi"];
     n.position = self.position;
     n.scale = self.scale * 1.2;
     n.tintColor = self.body.color;
-    
+    n.delegate = self;
     [self.parent addChild:n];
+}
+
+#pragma mark - P1_BubbleBoomDelegate
+- (void)removeBubbleFromParent
+{
     [self removeFromParentAndCleanup:YES];
+    [self release];
 }
 @end

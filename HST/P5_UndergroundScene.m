@@ -399,7 +399,7 @@ static float holesRadius[] = {
     for (int i = 0; i < passageNumber; ++ i) {
         P5_UndergroundPassage * passage = [_undergroundPassagesArray objectAtIndex:0];
         [_undergroundPassagesArray removeObjectAtIndex:0];
-        [passage removeFromParent];
+        [passage removeFromParentAndCleanup:YES];
         //        [passage release];
     }
     

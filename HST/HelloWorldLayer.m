@@ -48,7 +48,6 @@
             CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
 			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p1Scene]];
 		}];
-		
 		// Leaderboard Menu Item using blocks
 		CCMenuItem *P2_Item = [CCMenuItemFont itemWithString:@"P2_Item" block:^(id sender) {
             CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P2_GameScene.ccbi"];

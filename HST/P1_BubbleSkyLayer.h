@@ -15,10 +15,10 @@
     CCSprite *background;
 }
 
-@property (nonatomic,retain) CCSprite *upperCloud;
-@property (nonatomic,retain) CCSprite *lowerCloud;
+@property (nonatomic, assign) CCSprite *upperCloud;
+@property (nonatomic, assign) CCSprite *lowerCloud;
 
-@property (nonatomic,retain) CCSprite *upperCloud2;
-@property (nonatomic,retain) CCSprite *lowerCloud2;
+@property (nonatomic, assign) CCSprite *upperCloud2;
+@property (nonatomic, assign) CCSprite *lowerCloud2;
 
 @end

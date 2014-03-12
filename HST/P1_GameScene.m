@@ -11,13 +11,15 @@
 #import "P1_Bubble.h"
 #import "CCBAnimationManager.h"
 #import "SimpleAudioEngine.h"
+#import "HelloWorldLayer.h"
+#import "MainMapHelper.h"
 
 @interface P1_GameScene()
 {
     int currentBubblePositionIndex;
     int currentPositionArrayIndex;
     BOOL shouldBlowBubble;
-    
+    BOOL couldRestart;                  //是否可以重新开始
     int bubbleCountInCurrentBlow;
     
     NSMutableArray *currentOnScreenBubbles;
@@ -58,13 +60,15 @@ static NSMutableArray *bubbleScales = nil;
 
 - (void) didLoadFromCCB
 {
-    [CDAudioManager configure:kAMM_PlayAndRecord];
-    [[CDAudioManager sharedManager] playBackgroundMusic:@"bg.mp3" loop:YES];
+    [MainMapHelper addMenuToCurrentPrototype:self];
     
-    //[[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"bg.mp3"];
+    [CDAudioManager configure:kAMM_PlayAndRecord];
+    [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
+    
     
     [self.monsterInitPositionReferenceSprite setVisible:NO];
     shouldBlowBubble = NO;
+    couldRestart = NO;
     _monster.delegate = self;
     if(!bubblePositions)
     {
@@ -73,7 +77,6 @@ static NSMutableArray *bubbleScales = nil;
     
     [P1_BlowDetecter instance].delegate = self;
     
-    //self.isTouchEnabled = YES;
     currentOnScreenBubbles = [@[] mutableCopy];
     self.toolColorLayer.visible = NO;
     [self schedule:@selector(updateBlow:)];
@@ -94,7 +97,7 @@ static NSMutableArray *bubbleScales = nil;
         {
             [_monster bigMouth];
             shouldBlowBubble = NO;
-            
+            couldRestart = YES;
             [self performSelector:@selector(hideToolColorLayer) withObject:nil afterDelay:0.1];
             
             return;
@@ -119,20 +122,13 @@ static NSMutableArray *bubbleScales = nil;
     }
 }
 
-
-- (void)dealloc
-{
-    [super dealloc];
-    [P1_BlowDetecter purge];
-}
-
-
 - (void)blowOutABubbleToPosition:(CGPoint)position andScale:(float)scale
 {
     P1_Bubble *bubble = (P1_Bubble *)[CCBReader nodeGraphFromFile:@"P1_Bubble.ccbi"];
     bubble.position = self.monsterInitPositionReferenceSprite.position;
     bubble.targetPosition = position;
     [bubble randomASize:scale];
+    
     static int colorIndex = 0;
     colorIndex++;
     if(colorIndex == [bubble countOfColor])
@@ -146,9 +142,7 @@ static NSMutableArray *bubbleScales = nil;
     self.toolColorLayer.color = color;
     
     CCBAnimationManager* animationManager = bubble.userObject;
-    NSLog(@"animationManage is %@",animationManager);
     [animationManager runAnimationsForSequenceNamed:@"blow2"];
-    
     
     [self addChild:bubble];
     
@@ -196,7 +190,10 @@ static NSMutableArray *bubbleScales = nil;
 -(void)monsterMouthStartBlow:(P1_Monster*)monster
 {
     shouldBlowBubble = YES;
-    [[SimpleAudioEngine sharedEngine] playEffect:@"bubble_out.mp3"];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"P1_bubble_out.mp3"];
+    [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:)
+                                           withObject:@"P1_bubble_out.mp3" afterDelay:1.0];
+    
     for (P1_Bubble *bubble in currentOnScreenBubbles)
     {
         [bubble goAway];
@@ -212,5 +209,52 @@ static NSMutableArray *bubbleScales = nil;
 {
     
 }
+
+#pragma mark - Menu
+- (void)restartGameScene
+{
+    if ([currentOnScreenBubbles count] != 0 && couldRestart) {
+        couldRestart = NO;
+        for (P1_Bubble *bubble in currentOnScreenBubbles)
+        {
+            [bubble goAway];
+        }
+        [currentOnScreenBubbles removeAllObjects];
+        currentBubblePositionIndex++;
+        if(currentBubblePositionIndex > 3)
+            currentBubblePositionIndex = 0;
+        bubbleCountInCurrentBlow = 0;
+    }
+}
+
+- (void)returnToMainMap
+{
+    [self releaseCurrentOnScreenBubbles];
+
+    [[CCDirector sharedDirector] replaceScene:
+     [CCTransitionFade transitionWithDuration:1.0
+                                        scene:[HelloWorldLayer scene]]];
+}
+
+#pragma mark - 退出时释放内存
+- (void)dealloc
+{
+    [super dealloc];
+
+    [[CCTextureCache sharedTextureCache]removeAllTextures];
+    [P1_BlowDetecter purge];
+}
+
+- (void)releaseCurrentOnScreenBubbles
+{
+    NSInteger bubbleCount = [currentOnScreenBubbles count];
+    for (int i = 0; i < bubbleCount;  ++ i) {
+        P1_Bubble * bubble = [currentOnScreenBubbles objectAtIndex:0];
+        [currentOnScreenBubbles removeObject:bubble];
+        [bubble removeFromParentAndCleanup:YES];
+        [bubble release];
+    }
+}
+
 
 @end

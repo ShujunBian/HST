@@ -11,7 +11,7 @@
 
 @interface P2_LittleFlyBoom : CCNode<CCBAnimationManagerDelegate>
 
-@property (nonatomic, strong) CCParticleSystemQuad * boom;
+@property (nonatomic, assign) CCParticleSystemQuad * boom;
 @property (nonatomic) ccColor3B tintColor;
 @property (nonatomic) BOOL isScheduledForRemove;
 

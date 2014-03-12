@@ -21,7 +21,7 @@
 
 @interface P1_BlowDetecter : NSObject
 
-@property (nonatomic,assign) id<P1_BlowDetecterDelegate> delegate;
+@property (nonatomic, assign) id<P1_BlowDetecterDelegate> delegate;
 
 + (P1_BlowDetecter*)instance;
 + (void)purge;

@@ -8,8 +8,9 @@
 
 #import "CCNode.h"
 #import "CCBAnimationManager.h"
+#import "P1_BubbleBomb.h"
 
-@interface P1_Bubble : CCNode <CCBAnimationManagerDelegate>
+@interface P1_Bubble : CCNode <CCBAnimationManagerDelegate,P1_BubbleBoomDelegate>
 {
     double movingTime;
     CGPoint originalPosition;
@@ -18,11 +19,9 @@
     float tobeSize;
 }
 
-@property (nonatomic,retain) CCSprite *body;
-@property (nonatomic,retain) CCSprite *blowAnimator;
-
+@property (nonatomic, assign) CCSprite *body;
+@property (nonatomic, assign) CCSprite *blowAnimator;
 @property (nonatomic) CGPoint targetPosition;
-
 @property (nonatomic) bool isReadyForboom;
 
 

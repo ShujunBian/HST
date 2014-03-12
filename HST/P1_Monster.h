@@ -32,11 +32,11 @@
 
 @property (nonatomic,assign) id<P1_MonsterDelegate> delegate;
 
-@property (nonatomic,retain) CCSprite *teeth;
-@property (nonatomic,retain) CCSprite *mouthMask;
-@property (nonatomic,retain) CCSprite *body;
-@property (nonatomic,retain) CCSprite *lefthand;
-@property (nonatomic,retain) P1_MonsterEye *eye;
+@property (nonatomic, assign) CCSprite *teeth;
+@property (nonatomic, assign) CCSprite *mouthMask;
+@property (nonatomic, assign) CCSprite *body;
+@property (nonatomic, assign) CCSprite *lefthand;
+@property (nonatomic, assign) P1_MonsterEye *eye;
 
 - (void)smallMouth;
 - (void)bigMouth;

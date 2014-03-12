@@ -14,9 +14,9 @@
 
 @interface P1_GameScene : CCLayer<P1_BlowDetecterDelegate,P1_MonsterDelegate>
 
-@property (nonatomic,retain) P1_Monster *monster;
-@property (nonatomic,retain) CCSprite *monsterInitPositionReferenceSprite;
+@property (nonatomic, assign) P1_Monster *monster;
+@property (nonatomic, assign) CCSprite *monsterInitPositionReferenceSprite;
 
-@property (nonatomic,retain) CCSprite *toolColorLayer;
+@property (nonatomic, assign) CCSprite *toolColorLayer;
 
 @end

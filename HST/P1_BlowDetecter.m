@@ -27,13 +27,14 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
 {
     if(!blowDetecterInstance)
     {
-        blowDetecterInstance = [[P1_BlowDetecter alloc] init];
+        blowDetecterInstance = [[[P1_BlowDetecter alloc] init]autorelease];
     }
     return blowDetecterInstance;
 }
 
 + (void)purge
 {
+    [[P1_BlowDetecter instance] removeDelegateAndTimer];
     blowDetecterInstance = nil;
 }
 
@@ -78,24 +79,24 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
 	double peakPowerForChannel = pow(10, (0.05 * [recorder peakPowerForChannel:0]));
 	lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * lowPassResults;
 	
-    NSLog(@"%f",lowPassResults);
-    
 	if (lowPassResults > 0.8)
     {
-        NSLog(@"Mic is blowing");
         if(!_isBlowing)
         {
             _isBlowing = YES;
-            [self.delegate blowDetecterDidStartBlow];
+            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(blowDetecterDidStartBlow)]) {
+                [self.delegate blowDetecterDidStartBlow];
+            }
         }
     }
     else
     {
-        //NSLog(@"Mic is not blowing");
         if(_isBlowing)
         {
             _isBlowing = NO;
-            [self.delegate blowDetecterDidEndBlow];
+            if (self.delegate != nil && [self.delegate respondsToSelector:@selector(blowDetecterDidEndBlow)]) {
+                [self.delegate blowDetecterDidEndBlow];
+            }
         }
     }
 }
@@ -105,4 +106,11 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
     return _isBlowing;
 }
 
+#pragma mark - 退出时解决的delegate和Timer
+- (void)removeDelegateAndTimer
+{
+    self.delegate = nil;
+    [levelTimer invalidate];
+    levelTimer = nil;
+}
 @end

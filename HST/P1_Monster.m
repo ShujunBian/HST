@@ -114,7 +114,6 @@
         
         [mouthSmall runAction:move];
         CCBAnimationManager* animationManager = self.userObject;
-        NSLog(@"animationManager: %@", animationManager);
         [animationManager runAnimationsForSequenceNamed:@"blow"];
         [self.delegate monsterMouthStartBlow:self];
         return;
@@ -134,7 +133,6 @@
     if(totalBlinkTime > totalTime)
     {
         CCBAnimationManager* animationManager = self.userObject;
-        NSLog(@"animationManager: %@", animationManager);
         [animationManager runAnimationsForSequenceNamed:@"idle"];
         [self.delegate monsterMouthEndBlow:self];
         [self unschedule:@selector(updateBigMouth:)];
@@ -173,16 +171,17 @@
 
 - (void)updateLeftHand:(ccTime)delta
 {
-    static double time = 0;
-    time += delta;
-    if(time > 0.01)
-    {
-        time = 0;
-        [leftHandReal removeFromParentAndCleanup:YES];
-        leftHandReal = [self maskedLeftHand];
-        leftHandReal.position = self.body.position;
-        [self addChild:leftHandReal];
-    }
+#warning 解决性能问题
+//    static double time = 0;
+//    time += delta;
+//    if(time > 0.01)
+//    {
+//        time = 0;
+//        [leftHandReal removeFromParentAndCleanup:YES];
+//        leftHandReal = [self maskedLeftHand];
+//        leftHandReal.position = self.body.position;
+//        [self addChild:leftHandReal];
+//    }
 }
 
 

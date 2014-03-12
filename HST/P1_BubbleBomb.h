@@ -9,9 +9,19 @@
 #import "CCNode.h"
 #import "CCBAnimationManager.h"
 
+@protocol P1_BubbleBoomDelegate <NSObject>
+
+@optional
+
+- (void)removeBubbleFromParent;
+
+@end
+
 @interface P1_BubbleBomb : CCNode<CCBAnimationManagerDelegate>
 
-@property (nonatomic,retain) CCParticleSystemQuad *ps;
+@property (nonatomic, assign) CCParticleSystemQuad *ps;
 @property (nonatomic) ccColor3B tintColor;
+@property (nonatomic, assign) id<P1_BubbleBoomDelegate> delegate;
+
 
 @end

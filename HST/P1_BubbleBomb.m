@@ -27,7 +27,10 @@
 - (void) completedAnimationSequenceNamed:(NSString *)name
 {
     // Remove the explosion object after the animation has finished
+    [self.delegate removeBubbleFromParent];
+    
     [self removeFromParentAndCleanup:YES];
+    [self release];
 }
 
 @end
