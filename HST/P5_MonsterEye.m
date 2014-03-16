@@ -13,4 +13,9 @@
 @synthesize eyeBlack;
 @synthesize eyeWhite;
 
+- (void)dealloc
+{
+    [super dealloc];
+}
+
 @end

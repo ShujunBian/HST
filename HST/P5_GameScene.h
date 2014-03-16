@@ -20,9 +20,9 @@
 @interface P5_GameScene : CCLayer<CCBAnimationManagerDelegate,P5_UndergroundSceneDelegate>
 
 @property (nonatomic, assign) P5_Monster * monsterUpground;
-@property (nonatomic, strong) P5_Monster * monsterUnderground;
+@property (nonatomic, assign) P5_Monster * monsterUnderground;
 @property (nonatomic, assign) P5_GrassLayer * grassLayer;
-@property (nonatomic, strong) P5_UndergroundScene * undergrounScene;
+@property (nonatomic, assign) P5_UndergroundScene * undergrounScene;
 
 @property (nonatomic, assign) P5_SkyLayer * skyLayer;
 @property (nonatomic, assign) CCSprite * mountain1;

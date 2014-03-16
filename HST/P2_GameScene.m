@@ -49,7 +49,7 @@
 
 - (void) didLoadFromCCB
 {
-    [MainMapHelper addMenuToCurrentPrototype:self];
+    [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
     
     [CDAudioManager configure:kAMM_PlayAndRecord];
     [[CDAudioManager sharedManager] playBackgroundMusic:@"P2_rhythm.mp3" loop:NO];

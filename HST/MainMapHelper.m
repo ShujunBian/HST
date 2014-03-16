@@ -10,23 +10,23 @@
 
 @implementation MainMapHelper
 
-+ (void)addMenuToCurrentPrototype:(id)prototype
++ (void)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point
 {
     CCMenuItem * restartItem = [CCMenuItemImage itemWithNormalImage:@"restartButton.png"
                                                       selectedImage:nil
                                                              target:prototype
                                                            selector:@selector(restartGameScene)];
     CCMenu * restartMenu = [CCMenu menuWithItems:restartItem, nil];
-    [restartMenu setPosition:CGPointMake(158.0, 727.0)];
-    [prototype addChild:restartMenu];
+    [restartMenu setPosition:CGPointMake(point.x + 92.0, point.y)];
+    [prototype addChild:restartMenu z:15];
     
     CCMenuItem * mainMapItem = [CCMenuItemImage itemWithNormalImage:@"mainMapButton.png"
                                                       selectedImage:nil
                                                              target:prototype
                                                            selector:@selector(returnToMainMap)];
     CCMenu * mainMapMenu = [CCMenu menuWithItems:mainMapItem, nil];
-    [mainMapMenu setPosition:CGPointMake(66.0, 727.0)];
-    [prototype addChild:mainMapMenu];
+    [mainMapMenu setPosition:point];
+    [prototype addChild:mainMapMenu z:15];
 }
 
 @end

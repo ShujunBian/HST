@@ -10,6 +10,9 @@
 #import "P5_GrassLayer.h"
 #import "P5_Monster.h"
 #import "P5_SkyLayer.h"
+#import "MainMapHelper.h"
+#import "HelloWorldLayer.h"
+#import "NSNotificationCenter+Addition.h"
 
 #define kHoleCoverTag 1
 
@@ -26,6 +29,8 @@
 
 - (void) didLoadFromCCB
 {
+    [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 7.0)];
+
     CGSize winSize = [[CCDirector sharedDirector]winSize];
     CCLayerColor * background = [CCLayerColor layerWithColor:ccc4(183,255,226,255)];
     [self addChild:background z:-10];
@@ -59,7 +64,7 @@
     
     [self setScale:2.0];
     [self setPosition:CGPointMake(-winSize.width / 2 + 60.0, winSize.height /2)];
-    
+
     [self performSelector:@selector(moveToUnderground) withObject:self afterDelay:0.3];
 }
 
@@ -101,6 +106,35 @@
     [[CCTextureCache sharedTextureCache]removeTextureForKey:@"P5_hole_cover.png"];
     [[CCTextureCache sharedTextureCache]removeTextureForKey:@"P5_clouds.png"];
     [[CCTextureCache sharedTextureCache]removeTextureForKey:@"P5_mountain2.png"];
+}
+
+#pragma mark - 菜单键调用函数
+- (void)restartGameScene
+{
+    [undergrounScene restartUndergroundWorld];
+}
+
+- (void)returnToMainMap
+{
+    [self unscheduleAllSelectors];
+    for (CCNode * child in [self children]) {
+        [child stopAllActions];
+        [child unscheduleAllSelectors];
+    }
+    
+    [undergrounScene releaseBellAndDrawArray];
+    [NSNotificationCenter unregister:undergrounScene];
+
+    [[CCDirector sharedDirector] replaceScene:
+     [CCTransitionFade transitionWithDuration:1.0
+                                        scene:[HelloWorldLayer scene]]];
+}
+
+#pragma mark - 退出时释放内存
+- (void)dealloc
+{
+    [super dealloc];
+    [[CCTextureCache sharedTextureCache]removeAllTextures];
 }
 
 @end

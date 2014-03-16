@@ -293,4 +293,9 @@ static float bellRotateAngleQuick[] = {
     bellColor.b = color.b - 20 < 0 ? 0 : color.b - 20;
     bellHead.color = bellColor;
 }
+
+- (void)dealloc
+{
+    [super dealloc];
+}
 @end

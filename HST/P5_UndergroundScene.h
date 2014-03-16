@@ -30,7 +30,7 @@ typedef enum {
     UIBetweenHoles,
 } UIMode;
 
-@property (nonatomic, strong) P5_Monster * monsterUnderground;
+@property (nonatomic, assign) P5_Monster * monsterUnderground;
 @property (nonatomic, strong) NSMutableArray * drawOrderArray;
 @property (nonatomic, strong) NSMutableArray * undergroundHolesArray;
 @property (nonatomic, strong) CCArray * undergroundPassagesArray;
@@ -38,6 +38,11 @@ typedef enum {
 @property (nonatomic, assign) id<P5_UndergroundSceneDelegate> delegate;
 
 - (void)createUndergroundWorld;
+
+- (void)restartUndergroundWorld;
+
 - (CGPoint)monsterCurrentPosition;
+
+- (void)releaseBellAndDrawArray;
 
 @end

@@ -13,8 +13,6 @@
 #import "P5_UndergroundPassage.h"
 #import "NSNotificationCenter+Addition.h"
 #import "P5_SoilCloud.h"
-#import "MainMapHelper.h"
-#import "HelloWorldLayer.h"
 
 //划分为六个区域，一号区域坐标 115 ~ 335 515 ~ 630
 //2     465 ~ 735 515 ~ 630
@@ -100,7 +98,6 @@ static float holesRadius[] = {
 
 - (void) didLoadFromCCB
 {
-    [MainMapHelper addMenuToCurrentPrototype:self];
 }
 
 - (void)createUndergroundWorld
@@ -121,29 +118,16 @@ static float holesRadius[] = {
     background = (CCLayer *)[CCBReader nodeGraphFromFile:@"P5_UndergroundBackground.ccbi"];
     [self addChild:background z:-10];
     
-    CGSize winSize = [[CCDirector sharedDirector]winSize];
-    CCMenuItem *itemStop = [CCMenuItemFont itemWithString:@"STOP" block:^(id sender) {
-    }];
-    CCMenuItem *itemRestart = [CCMenuItemFont itemWithString:@"Restart" block:^(id sender) {
-        [self restartUndergroundWorld];
-    }];
-    
-    CCMenu *menu = [CCMenu menuWithItems:itemStop, itemRestart, nil];
-    [menu alignItemsVerticallyWithPadding:10];
-    [menu setPosition:ccp(winSize.width / 9 * 8, 80)];
-    // Add the menu to the layer
-    [self addChild:menu];
-    
     smallCircleUI = [CCSpriteBatchNode batchNodeWithFile:@"P5_SmallCircleUI.png" capacity:60];
     smallCircleUIBetweenHoles = [CCSpriteBatchNode batchNodeWithFile:@"P5_SmallCircleUI.png" capacity:100];
     [self addChild:smallCircleUI z:-1];
     [self addChild:smallCircleUIBetweenHoles z:-1];
-    
+
     [NSNotificationCenter registerShouldShowNextPassageNotificationWithSelector:@selector(showUndergroundPassage) target:self];
     [NSNotificationCenter registerShouldRollToNextHoleNotificationWithSelector:@selector(rollToHole) target:self];
     [NSNotificationCenter registShouldRotateNextBellNotificationWithSelector:@selector(startRotateAllPassedBell) target:self];
     
-    [self preloadEffect];
+    [self preloadTexture];
     
     [self scheduleUpdate];
     [self setTouchEnabled:NO];
@@ -151,7 +135,7 @@ static float holesRadius[] = {
 }
 
 #pragma mark - 预加载贴图降低消耗
-- (void) preloadEffect
+- (void) preloadTexture
 {
     UIImage * image = [[UIImage imageNamed:@"P5_BigCircleUI.png"]autorelease];
     [[CCTextureCache sharedTextureCache]addCGImage:image.CGImage forKey:kBigCircleUINameInTexture];
@@ -160,57 +144,6 @@ static float holesRadius[] = {
     
     [[CCTextureCache sharedTextureCache]addImage:@"P5_Soil.png"];
 }
-
-//- (void)createRandomCenterPoint
-//{
-//    currentHoleCounters = 3 + (NSInteger)roundf((kRandomNumber * 3));
-//    BOOL isNewHoleCreatedSuccess;
-//    isNewHoleCreatedSuccess = YES;
-//    while ([self.undergroundHolesArray count] < currentHoleCounters) {
-//        float temXpoint = kMinXpoint + kRandomNumber * (kMaxXpoint - kMinXpoint);
-//        float temYpoint = kMinYpoint + kRandomNumber * (kMaxYpoint - kMinYpoint);
-//        while (temXpoint < 425.0 && temYpoint < 350.0) {
-//            temYpoint = kMinYpoint + kRandomNumber * (kMaxYpoint - kMinYpoint);
-//        }
-//        while (temXpoint > 700.0 && temYpoint > 400.0) {
-//            temYpoint = kMinYpoint + kRandomNumber * (kMaxYpoint - kMinYpoint);
-//        }
-//        if ([_undergroundHolesArray count] != 0) {
-//            for (P5_UndergroundHole * temHole in _undergroundHolesArray) {
-//                if ([self calculateDistancewith:(temHole.centerPoint.x - temXpoint) and:(temHole.centerPoint.y - temYpoint)] < kMinDistance) {
-//                    isNewHoleCreatedSuccess = NO;
-//                    break;
-//                }
-//            }
-//        }
-//        if (isNewHoleCreatedSuccess) {
-//            CGPoint newCenterPoint = CGPointMake(temXpoint, temYpoint);
-//            P5_UndergroundHole * newHole = [[P5_UndergroundHole alloc]init];
-//            newHole.centerPoint = newCenterPoint;
-//            [_undergroundHolesArray addObject:newHole];
-//        }
-//        isNewHoleCreatedSuccess = YES;
-//    }
-//}
-//
-//- (void)createRandomScaleRateandRotateDegree
-//{
-//    for (P5_UndergroundHole * temHole in _undergroundHolesArray) {
-//        temHole.scaleRate = 0.9 + kRandomNumber * 0.4;
-//        temHole.roatateDegree = 360.0 * kRandomNumber;
-//    }
-//}
-//
-//- (void)addUndergroundHoleByArray
-//{
-//    for (P5_UndergroundHole * temHole in _undergroundHolesArray) {
-//        CCSprite * undergroundHole = [CCSprite spriteWithFile:@"P5_undergroundHoleBell.png"];
-//        undergroundHole.position = temHole.centerPoint;
-//        undergroundHole.rotation = temHole.roatateDegree;
-//        undergroundHole.scale = temHole.scaleRate;
-//        [self addChild:undergroundHole z:3];
-//    }
-//}
 
 #pragma mark - update函数
 - (void)update:(ccTime)delta
@@ -222,7 +155,6 @@ static float holesRadius[] = {
             P5_SoilCloud * soilCloud = (P5_SoilCloud *)node;
             if (soilCloud.isReadyToMove) {
 #warning xcode提示有问题 待解决
-                [soilCloud.soilCloudBatchNode release];
                 [soilCloud removeFromParentAndCleanup:YES];
             }
         }
@@ -234,15 +166,6 @@ static float holesRadius[] = {
             [P5_CalculateHelper isPoint:_monsterUnderground.position inAnotherPoint:bellPositions[[[_drawOrderArray objectAtIndex:rolledHoles - 1]integerValue]]
                                    with:holesRadius[[[_drawOrderArray objectAtIndex:rolledHoles - 1]integerValue]]]) {
                 if(soil != nil && [self.children containsObject:soil] && !isMonsterFirstStart) {
-//                    soil.duration = 0.0;
-//                    CGPoint lastPosition = [P5_CalculateHelper thirdPointInLineStartPoint:bellPositions[[[_drawOrderArray objectAtIndex:rolledHoles - 1]integerValue]]
-//                                                                                 EndPoint:bellPositions[[[_drawOrderArray objectAtIndex:rolledHoles]integerValue]] withDistance:50.0 BeginPoint:soil.position];
-//                    CCMoveTo * moveto = [CCMoveTo actionWithDuration:0.25 position:lastPosition];
-//                    CCCallBlock * block = [CCCallBlock actionWithBlock:^{
-//                        [soil removeFromParentAndCleanup:YES];
-//                    }];
-//                    CCSequence * seq = [CCSequence actions:moveto,block, nil];
-//                    [soil runAction:seq];
                     isMonsterFirstStart = YES;
                     soil.duration = 0.0;
                 }
@@ -268,7 +191,6 @@ static float holesRadius[] = {
                 monsterMoveDistance = 0.0;
             }
             else
-//                monsterMoveDistance = monsterMoveDistance + 250.0 / 60.0;
                 soil.position = _monsterUnderground.position;
         }
     }
@@ -387,7 +309,8 @@ static float holesRadius[] = {
 {
     [_monsterUnderground stopAllActions];
     [_monsterUnderground removeFromParentAndCleanup:YES];
-    _monsterUnderground = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_MonsterUnderground.ccbi"];
+    
+    self.monsterUnderground = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_MonsterUnderground.ccbi"];
     [self addChild:_monsterUnderground z:10];
     _monsterUnderground.delegate = self;
     [self.monsterUnderground setPosition:CGPointMake(900.0, 460.0)];
@@ -621,12 +544,6 @@ static float holesRadius[] = {
     [soilCloud createRandomSoilCloud];
 }
 
-#warning 退出prototype调用
-- (void)destoryUndergroundWorld
-{
-    [NSNotificationCenter unregister:self];
-}
-
 #pragma mark - property
 - (NSMutableArray *)undergroundHolesArray
 {
@@ -652,16 +569,32 @@ static float holesRadius[] = {
     return _drawOrderArray;
 }
 
-#pragma mark - 菜单键调用函数
-- (void)restartGameScene
+#pragma mark - 退出时释放内存
+- (void)dealloc
 {
+    [super dealloc];
 }
 
-- (void)returnToMainMap
+- (void)releaseBellAndDrawArray
 {
-    [[CCDirector sharedDirector] replaceScene:
-     [CCTransitionFade transitionWithDuration:1.0
-                                        scene:[HelloWorldLayer scene]]];
+    if (rotatedBellTimer != nil && [rotatedBellTimer isValid]) {
+        [rotatedBellTimer invalidate];
+        rotatedBellTimer = nil;
+    }
+    
+    NSInteger passageNumber = [_undergroundPassagesArray count];
+    for (int i = 0; i < passageNumber; ++ i) {
+        P5_UndergroundPassage * passage = [_undergroundPassagesArray objectAtIndex:0];
+        [_undergroundPassagesArray removeObjectAtIndex:0];
+        [passage removeFromParentAndCleanup:YES];
+    }
+    [_undergroundPassagesArray release];
+    
+    [_undergroundHolesArray removeAllObjects];
+    [_undergroundHolesArray release];
+    
+    [_drawOrderArray removeAllObjects];
+    [_drawOrderArray release];
 }
 
 @end

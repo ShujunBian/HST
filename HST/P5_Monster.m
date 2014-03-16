@@ -55,11 +55,6 @@ static CGPoint monsterFinalPosition = {161,54.48};
         [(P5_UndergroundScene *)(self.parent) setTouchEnabled:YES];
         
         [self.delegate monsterArriveTheStartHole];
-//        P5_SoilCloud * soilCloud = [[[P5_SoilCloud alloc]init]autorelease];
-//        [self.parent addChild:soilCloud z:6];
-//        soilCloud.position = CGPointMake(900.0, 410.0);
-//        [soilCloud createRandomSoilCloud];
-        
     }];
     CCSequence * seq = [CCSequence actions:moveDown1,removeCover, nil];
     [self runAction:seq];
@@ -306,6 +301,11 @@ static CGPoint monsterFinalPosition = {161,54.48};
     if ([name isEqualToString:@"Jump"]) {
 
     }
+}
+
+- (void)dealloc
+{
+    [super dealloc];
 }
 
 @end

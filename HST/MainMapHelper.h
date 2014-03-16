@@ -10,6 +10,6 @@
 
 @interface MainMapHelper : NSObject
 
-+ (void)addMenuToCurrentPrototype:(id)prototype;
++ (void)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point;
 
 @end

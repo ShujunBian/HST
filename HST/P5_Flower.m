@@ -10,4 +10,9 @@
 
 @implementation P5_Flower
 
+- (void)dealloc
+{
+    [super dealloc];
+}
+
 @end

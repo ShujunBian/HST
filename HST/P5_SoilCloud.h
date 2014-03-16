@@ -11,7 +11,7 @@
 
 @interface P5_SoilCloud : CCNode
 
-@property (nonatomic, strong) CCSpriteBatchNode * soilCloudBatchNode;
+@property (nonatomic, assign) CCSpriteBatchNode * soilCloudBatchNode;
 @property (nonatomic) BOOL isReadyToMove;
 
 - (void) createRandomSoilCloud;

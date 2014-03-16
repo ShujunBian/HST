@@ -105,4 +105,8 @@
     [theTimer invalidate];
 }
 
+- (void)dealloc
+{
+    [super dealloc];
+}
 @end

@@ -11,7 +11,7 @@
 @class P5_Bell;
 @interface P5_UndergroundHole : NSObject
 
-@property (nonatomic, strong) P5_Bell * bell;
+@property (nonatomic, assign) P5_Bell * bell;
 @property (nonatomic) CGPoint centerPoint;
 @property (nonatomic) float scaleRate;
 @property (nonatomic) float roatateDegree;

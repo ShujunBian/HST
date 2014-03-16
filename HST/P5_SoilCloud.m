@@ -50,4 +50,9 @@
 {
     self.isReadyToMove = YES;
 }
+
+- (void)dealloc
+{
+    [super dealloc];
+}
 @end
