@@ -23,7 +23,9 @@
     CCBAnimationManager * eyesAnimationManager;
 }
 
-@property (nonatomic, strong) P2_MonsterEye * littleMonsterEye;
+@property (nonatomic, assign) P2_MonsterEye * littleMonsterEye;
 @property (nonatomic) BOOL isFinishJump;
+
+- (void)releaseAnimationDelegate;
 
 @end

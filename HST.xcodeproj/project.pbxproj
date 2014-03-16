@@ -269,15 +269,6 @@
 		5169CFBC18CDEA3E00426E6C /* P1_MonsterEye.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE5718CDEA3D00426E6C /* P1_MonsterEye.ccbi */; };
 		5169CFBD18CDEA3E00426E6C /* P1_TT.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE5818CDEA3D00426E6C /* P1_TT.ccbi */; };
 		5169CFBE18CDEA3E00426E6C /* town.ccbresourcelog in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE5918CDEA3D00426E6C /* town.ccbresourcelog */; };
-		5169CFBF18CDEA3E00426E6C /* 1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE5C18CDEA3D00426E6C /* 1.mp3 */; };
-		5169CFC018CDEA3E00426E6C /* 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE5D18CDEA3D00426E6C /* 2.mp3 */; };
-		5169CFC118CDEA3E00426E6C /* 3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE5E18CDEA3D00426E6C /* 3.mp3 */; };
-		5169CFC218CDEA3E00426E6C /* 4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE5F18CDEA3D00426E6C /* 4.mp3 */; };
-		5169CFC318CDEA3E00426E6C /* 5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE6018CDEA3D00426E6C /* 5.mp3 */; };
-		5169CFC418CDEA3E00426E6C /* 6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE6118CDEA3D00426E6C /* 6.mp3 */; };
-		5169CFC518CDEA3E00426E6C /* 7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE6218CDEA3D00426E6C /* 7.mp3 */; };
-		5169CFC618CDEA3E00426E6C /* all.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE6318CDEA3D00426E6C /* all.mp3 */; };
-		5169CFC718CDEA3E00426E6C /* rhythm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE6418CDEA3D00426E6C /* rhythm.mp3 */; };
 		5169CFC818CDEA3E00426E6C /* 1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE6718CDEA3D00426E6C /* 1-hd.png */; };
 		5169CFC918CDEA3E00426E6C /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE6818CDEA3D00426E6C /* 1.png */; };
 		5169CFCA18CDEA3E00426E6C /* 2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5169CE6918CDEA3D00426E6C /* 2-hd.png */; };
@@ -525,6 +516,15 @@
 		5199791118CFF9A6006A1FD8 /* restartButton-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5199790D18CFF9A6006A1FD8 /* restartButton-hd.png */; };
 		5199791218CFF9A6006A1FD8 /* restartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5199790E18CFF9A6006A1FD8 /* restartButton.png */; };
 		5199791518D000DF006A1FD8 /* MainMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5199791418D000DF006A1FD8 /* MainMapHelper.m */; };
+		5199791F18D02CEB006A1FD8 /* P2_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791618D02CEB006A1FD8 /* P2_1.mp3 */; };
+		5199792018D02CEB006A1FD8 /* P2_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791718D02CEB006A1FD8 /* P2_2.mp3 */; };
+		5199792118D02CEB006A1FD8 /* P2_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791818D02CEB006A1FD8 /* P2_3.mp3 */; };
+		5199792218D02CEB006A1FD8 /* P2_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791918D02CEB006A1FD8 /* P2_4.mp3 */; };
+		5199792318D02CEB006A1FD8 /* P2_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791A18D02CEB006A1FD8 /* P2_5.mp3 */; };
+		5199792418D02CEB006A1FD8 /* P2_6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791B18D02CEB006A1FD8 /* P2_6.mp3 */; };
+		5199792518D02CEB006A1FD8 /* P2_7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791C18D02CEB006A1FD8 /* P2_7.mp3 */; };
+		5199792618D02CEB006A1FD8 /* P2_all.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791D18D02CEB006A1FD8 /* P2_all.mp3 */; };
+		5199792718D02CEB006A1FD8 /* P2_rhythm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791E18D02CEB006A1FD8 /* P2_rhythm.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -971,15 +971,6 @@
 		5169CE5718CDEA3D00426E6C /* P1_MonsterEye.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P1_MonsterEye.ccbi; sourceTree = "<group>"; };
 		5169CE5818CDEA3D00426E6C /* P1_TT.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P1_TT.ccbi; sourceTree = "<group>"; };
 		5169CE5918CDEA3D00426E6C /* town.ccbresourcelog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = town.ccbresourcelog; sourceTree = "<group>"; };
-		5169CE5C18CDEA3D00426E6C /* 1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.mp3; sourceTree = "<group>"; };
-		5169CE5D18CDEA3D00426E6C /* 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 2.mp3; sourceTree = "<group>"; };
-		5169CE5E18CDEA3D00426E6C /* 3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 3.mp3; sourceTree = "<group>"; };
-		5169CE5F18CDEA3D00426E6C /* 4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 4.mp3; sourceTree = "<group>"; };
-		5169CE6018CDEA3D00426E6C /* 5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 5.mp3; sourceTree = "<group>"; };
-		5169CE6118CDEA3D00426E6C /* 6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 6.mp3; sourceTree = "<group>"; };
-		5169CE6218CDEA3D00426E6C /* 7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 7.mp3; sourceTree = "<group>"; };
-		5169CE6318CDEA3D00426E6C /* all.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = all.mp3; sourceTree = "<group>"; };
-		5169CE6418CDEA3D00426E6C /* rhythm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rhythm.mp3; sourceTree = "<group>"; };
 		5169CE6718CDEA3D00426E6C /* 1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1-hd.png"; sourceTree = "<group>"; };
 		5169CE6818CDEA3D00426E6C /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		5169CE6918CDEA3D00426E6C /* 2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-hd.png"; sourceTree = "<group>"; };
@@ -1234,6 +1225,15 @@
 		5199790E18CFF9A6006A1FD8 /* restartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = restartButton.png; sourceTree = "<group>"; };
 		5199791318D000DF006A1FD8 /* MainMapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMapHelper.h; sourceTree = "<group>"; };
 		5199791418D000DF006A1FD8 /* MainMapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMapHelper.m; sourceTree = "<group>"; };
+		5199791618D02CEB006A1FD8 /* P2_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_1.mp3; sourceTree = "<group>"; };
+		5199791718D02CEB006A1FD8 /* P2_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_2.mp3; sourceTree = "<group>"; };
+		5199791818D02CEB006A1FD8 /* P2_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_3.mp3; sourceTree = "<group>"; };
+		5199791918D02CEB006A1FD8 /* P2_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_4.mp3; sourceTree = "<group>"; };
+		5199791A18D02CEB006A1FD8 /* P2_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_5.mp3; sourceTree = "<group>"; };
+		5199791B18D02CEB006A1FD8 /* P2_6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_6.mp3; sourceTree = "<group>"; };
+		5199791C18D02CEB006A1FD8 /* P2_7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_7.mp3; sourceTree = "<group>"; };
+		5199791D18D02CEB006A1FD8 /* P2_all.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_all.mp3; sourceTree = "<group>"; };
+		5199791E18D02CEB006A1FD8 /* P2_rhythm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_rhythm.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1997,15 +1997,15 @@
 		5169CE5B18CDEA3D00426E6C /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				5169CE5C18CDEA3D00426E6C /* 1.mp3 */,
-				5169CE5D18CDEA3D00426E6C /* 2.mp3 */,
-				5169CE5E18CDEA3D00426E6C /* 3.mp3 */,
-				5169CE5F18CDEA3D00426E6C /* 4.mp3 */,
-				5169CE6018CDEA3D00426E6C /* 5.mp3 */,
-				5169CE6118CDEA3D00426E6C /* 6.mp3 */,
-				5169CE6218CDEA3D00426E6C /* 7.mp3 */,
-				5169CE6318CDEA3D00426E6C /* all.mp3 */,
-				5169CE6418CDEA3D00426E6C /* rhythm.mp3 */,
+				5199791618D02CEB006A1FD8 /* P2_1.mp3 */,
+				5199791718D02CEB006A1FD8 /* P2_2.mp3 */,
+				5199791818D02CEB006A1FD8 /* P2_3.mp3 */,
+				5199791918D02CEB006A1FD8 /* P2_4.mp3 */,
+				5199791A18D02CEB006A1FD8 /* P2_5.mp3 */,
+				5199791B18D02CEB006A1FD8 /* P2_6.mp3 */,
+				5199791C18D02CEB006A1FD8 /* P2_7.mp3 */,
+				5199791D18D02CEB006A1FD8 /* P2_all.mp3 */,
+				5199791E18D02CEB006A1FD8 /* P2_rhythm.mp3 */,
 			);
 			path = Music;
 			sourceTree = "<group>";
@@ -2460,6 +2460,7 @@
 				5169D04418CDEA3E00426E6C /* P5_BigCircleUI.png in Resources */,
 				5169D06C18CDEA3E00426E6C /* P5_monsterBody.png in Resources */,
 				5199791118CFF9A6006A1FD8 /* restartButton-hd.png in Resources */,
+				5199792318D02CEB006A1FD8 /* P2_5.mp3 in Resources */,
 				5169D0AF18CDEA3E00426E6C /* P5_MonsterUnderground.ccbi in Resources */,
 				5169D08818CDEA3E00426E6C /* P5_MonsterUnderRightLeg.png in Resources */,
 				5169CFD318CDEA3E00426E6C /* 6.png in Resources */,
@@ -2467,7 +2468,6 @@
 				5169D08F18CDEA3E00426E6C /* P5_Soil-hd.png in Resources */,
 				5169D09418CDEA3E00426E6C /* P5_underground.png in Resources */,
 				5169CFA418CDEA3E00426E6C /* monster_teeth.png in Resources */,
-				5169CFC518CDEA3E00426E6C /* 7.mp3 in Resources */,
 				5199791218CFF9A6006A1FD8 /* restartButton.png in Resources */,
 				5169D03018CDEA3E00426E6C /* P2_Mountain2.ccbi in Resources */,
 				5169CF8018CDEA3E00426E6C /* bubble_03.png in Resources */,
@@ -2489,7 +2489,6 @@
 				5169CBF518CDE5ED00426E6C /* Icon.png in Resources */,
 				5169CD5318CDE5EE00426E6C /* ChangeLog in Resources */,
 				51556DE118CF21B8005C8D46 /* P1_b3.wav in Resources */,
-				5169CFC318CDEA3E00426E6C /* 5.mp3 in Resources */,
 				5169CFC918CDEA3E00426E6C /* 1.png in Resources */,
 				5169CFE118CDEA3E00426E6C /* p2_flower_body.png in Resources */,
 				5169CFB218CDEA3E00426E6C /* P1_BubbleBoom.ccbi in Resources */,
@@ -2501,14 +2500,12 @@
 				5169CFBB18CDEA3E00426E6C /* P1_Monster.ccbi in Resources */,
 				5169D04318CDEA3E00426E6C /* P5_BigCircleUI-hd.png in Resources */,
 				5169D03E18CDEA3E00426E6C /* P5_BellHeadJianBian.png in Resources */,
-				5169CFC618CDEA3E00426E6C /* all.mp3 in Resources */,
 				5169D0A318CDEA3E00426E6C /* P5_Bell3.ccbi in Resources */,
 				5169D04718CDEA3E00426E6C /* P5_blueFlowerBody-hd.png in Resources */,
 				5169CFAC18CDEA3E00426E6C /* monstershadow.png in Resources */,
 				5169D06E18CDEA3E00426E6C /* P5_monsterEye.png in Resources */,
 				5169CFA918CDEA3E00426E6C /* monstereyewhite-hd.png in Resources */,
 				5169D07518CDEA3E00426E6C /* P5_monsterLittleShadow-hd.png in Resources */,
-				5169CFBF18CDEA3E00426E6C /* 1.mp3 in Resources */,
 				5169CFE418CDEA3E00426E6C /* p2_flower_head-hd.png in Resources */,
 				5169D00618CDEA3E00426E6C /* p2_mountain1-hd.png in Resources */,
 				5169D02D18CDEA3E00426E6C /* P2_MonsterEye.ccbi in Resources */,
@@ -2535,6 +2532,7 @@
 				51556DE218CF21B8005C8D46 /* P1_b4.wav in Resources */,
 				5169CBF118CDE5ED00426E6C /* Icon-Small.png in Resources */,
 				5169D0A618CDEA3E00426E6C /* P5_BlueFlowerHead.ccbi in Resources */,
+				5199792718D02CEB006A1FD8 /* P2_rhythm.mp3 in Resources */,
 				5169D03A18CDEA3E00426E6C /* P5_BellEyesOpen.png in Resources */,
 				5169D0B218CDEA3E00426E6C /* P5_UndergroundHoles.ccbi in Resources */,
 				51556DE618CF21B8005C8D46 /* P1_b8.wav in Resources */,
@@ -2553,7 +2551,7 @@
 				5169D00918CDEA3E00426E6C /* p2_mountain2.png in Resources */,
 				51556DEC18CF21B8005C8D46 /* P1_bubble_out.mp3 in Resources */,
 				51556DE918CF21B8005C8D46 /* P1_b11.wav in Resources */,
-				5169CFC218CDEA3E00426E6C /* 4.mp3 in Resources */,
+				5199792218D02CEB006A1FD8 /* P2_4.mp3 in Resources */,
 				5169D08618CDEA3E00426E6C /* P5_monsterUnderMouth.png in Resources */,
 				5169D06918CDEA3E00426E6C /* P5_monsterBigShadow-hd.png in Resources */,
 				5169D04F18CDEA3E00426E6C /* p5_flower_body-hd.png in Resources */,
@@ -2578,7 +2576,6 @@
 				5169CF8818CDEA3E00426E6C /* bubble_07.png in Resources */,
 				5169D06218CDEA3E00426E6C /* P5_homeChair.png in Resources */,
 				5169CFF418CDEA3E00426E6C /* p2_littlefly_eye_blink-hd.png in Resources */,
-				5169CFC118CDEA3E00426E6C /* 3.mp3 in Resources */,
 				5169CFE518CDEA3E00426E6C /* p2_flower_head.png in Resources */,
 				5169CFFA18CDEA3E00426E6C /* p2_monster_body-hd.png in Resources */,
 				5169CFEC18CDEA3E00426E6C /* p2_fly_grass3-hd.png in Resources */,
@@ -2586,10 +2583,11 @@
 				5169D09218CDEA3E00426E6C /* P5_SoilCloud.png in Resources */,
 				5169D00718CDEA3E00426E6C /* p2_mountain1.png in Resources */,
 				5169CFB718CDEA3E00426E6C /* P1_BubbleSky.ccbi in Resources */,
-				5169CFC718CDEA3E00426E6C /* rhythm.mp3 in Resources */,
 				5169CFC818CDEA3E00426E6C /* 1-hd.png in Resources */,
 				5169CFE718CDEA3E00426E6C /* p2_flower_head_eye_open.png in Resources */,
 				5169CFFB18CDEA3E00426E6C /* p2_monster_body.png in Resources */,
+				5199792018D02CEB006A1FD8 /* P2_2.mp3 in Resources */,
+				5199791F18D02CEB006A1FD8 /* P2_1.mp3 in Resources */,
 				5169CFA618CDEA3E00426E6C /* monsterbody.png in Resources */,
 				5169CFE018CDEA3E00426E6C /* p2_flower_body-hd.png in Resources */,
 				5169CF8318CDEA3E00426E6C /* bubble_05-hd.png in Resources */,
@@ -2663,25 +2661,26 @@
 				5169CFB118CDEA3E00426E6C /* P1_Bubble.ccbi in Resources */,
 				5169D06718CDEA3E00426E6C /* p5_houses-hd.png in Resources */,
 				5169CF8A18CDEA3E00426E6C /* bubble_glow.png in Resources */,
+				5199792618D02CEB006A1FD8 /* P2_all.mp3 in Resources */,
 				5169D08418CDEA3E00426E6C /* P5_monsterUnderLittleShadow.png in Resources */,
 				5169CFEB18CDEA3E00426E6C /* p2_fly_grass2.png in Resources */,
 				5169CFED18CDEA3E00426E6C /* p2_fly_grass3.png in Resources */,
+				5199792418D02CEB006A1FD8 /* P2_6.mp3 in Resources */,
 				51556DEA18CF21B8005C8D46 /* P1_b12.wav in Resources */,
 				5169D02318CDEA3E00426E6C /* P2_FirstLittlemonsterEye.ccbi in Resources */,
 				5169D03618CDEA3E00426E6C /* P5_bellBody.png in Resources */,
 				5169CFE318CDEA3E00426E6C /* p2_flower_eyes_blink.png in Resources */,
 				5169D01B18CDEA3E00426E6C /* p2_secondmonster_body.png in Resources */,
-				5169CFC018CDEA3E00426E6C /* 2.mp3 in Resources */,
 				5169D04018CDEA3E00426E6C /* P5_BellLight.png in Resources */,
 				5169D09918CDEA3E00426E6C /* P5_UndergroundPassage1-hd.png in Resources */,
 				5169CFE218CDEA3E00426E6C /* p2_flower_eyes_blink-hd.png in Resources */,
-				5169CFC418CDEA3E00426E6C /* 6.mp3 in Resources */,
 				5169D09518CDEA3E00426E6C /* P5_undergroundHole-hd.png in Resources */,
 				5169D02718CDEA3E00426E6C /* P2_GameScene.ccbi in Resources */,
 				5169D0A818CDEA3E00426E6C /* P5_FlowerHead.ccbi in Resources */,
 				5169D09818CDEA3E00426E6C /* P5_undergroundHoleBell.png in Resources */,
 				5169CBE518CDE5ED00426E6C /* Default.png in Resources */,
 				5169D05318CDEA3E00426E6C /* p5_flower_head-hd.png in Resources */,
+				5199792518D02CEB006A1FD8 /* P2_7.mp3 in Resources */,
 				5169CF8B18CDEA3E00426E6C /* cloud-hd.png in Resources */,
 				5169CFD118CDEA3E00426E6C /* 5.png in Resources */,
 				5169CF7918CDEA3E00426E6C /* bubble_00-hd.png in Resources */,
@@ -2710,6 +2709,7 @@
 				5169D03918CDEA3E00426E6C /* P5_BellEyesOpen-hd.png in Resources */,
 				5169CFCC18CDEA3E00426E6C /* 3-hd.png in Resources */,
 				5169CFA018CDEA3E00426E6C /* monster_mouth_mask.png in Resources */,
+				5199792118D02CEB006A1FD8 /* P2_3.mp3 in Resources */,
 				51556DE418CF21B8005C8D46 /* P1_b6.wav in Resources */,
 				5169D01E18CDEA3E00426E6C /* p2_secondmonster_eyewhite-hd.png in Resources */,
 				5169D03718CDEA3E00426E6C /* P5_BellEyesClose-hd.png in Resources */,

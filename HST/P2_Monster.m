@@ -15,7 +15,6 @@
 #import "P2_CalculateHelper.h"
 
 #define EVERYDELTATIME 0.016667
-#define ARC4RANDOM_MAX 0x100000000
 #define RATIOTORUNNEWEYEMOVING 0.7
 #define RATIOTOCLOSEEYES 0.85
 
@@ -96,6 +95,7 @@
             currentJumpTime = 0.0;
             jumpTime = 0.0;
             isReadyToDown = NO;
+            
             P2_FlyGrass * flyGrass = (P2_FlyGrass *)[CCBReader nodeGraphFromFile:@"P2_FlyGrasses.ccbi"];
             flyGrass.position = CGPointMake(self.position.x , self.position.y + 10);
             [self.parent addChild:flyGrass z:0];
@@ -192,7 +192,6 @@
 
 - (void) handleCollision
 {
-    NSLog(@"The current Jump Time is %f",jumpTime);
     if (isReadyToDown == NO)
     {
         isToBuffer = YES;
@@ -294,13 +293,11 @@
                                            nil];
         [self runAction:monseterLittleJump];
         
-        float isRunNewMoving = (float)arc4random() / ARC4RANDOM_MAX;
-        float isRunClosingEyes = (float)arc4random() / ARC4RANDOM_MAX;
-        if (isRunNewMoving > RATIOTORUNNEWEYEMOVING && theIdleTimes > 12) {
+        if (CCRANDOM_0_1() > RATIOTORUNNEWEYEMOVING && theIdleTimes > 12) {
             [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
             theIdleTimes = 0;
         }
-        else if (isRunClosingEyes > RATIOTOCLOSEEYES )
+        else if (CCRANDOM_0_1() > RATIOTOCLOSEEYES )
         {
             [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeClose"];
             [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeOpen"];
@@ -336,5 +333,13 @@
     //    }
 }
 
-
+#pragma mark - 退出场景是释放
+- (void)releaseAnimationDelegate
+{
+    eyesAnimationManager.delegate = nil;
+    eyesAnimationManager = nil;
+    
+    selfAnimationManager.delegate = nil;
+    selfAnimationManager = nil;
+}
 @end

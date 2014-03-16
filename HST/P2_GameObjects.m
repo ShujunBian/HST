@@ -7,7 +7,6 @@
 //
 
 #import "P2_GameObjects.h"
-#define ARC4RANDOM_MAX 0x100000000
 
 @implementation P2_GameObjects
 
@@ -17,7 +16,6 @@
     {
         [self scheduleUpdate];
         objectMovingSpeed = 1024.0 / 8.0 * EVERYDELTATIME;
-//        self.isFlyingOut = NO;
 	}
 	return self;
 }
@@ -41,13 +39,13 @@
 
 - (void)setObjectFirstPosition
 {
-    objectPostionX = (float)arc4random() / ARC4RANDOM_MAX * 1024.0;
+    objectPostionX = CCRANDOM_0_1() * 1024.0;
     self.position = CGPointMake(objectPostionX, self.contentSize.height / 2);
 }
 
 - (void)actionWhenOutOfScreen
 {
-    objectPostionX = 1024.0 + (float)arc4random() / ARC4RANDOM_MAX * 1024.0;
+    objectPostionX = 1024.0 + CCRANDOM_0_1() * 1024.0;
     self.position = CGPointMake(objectPostionX, self.contentSize.height / 2);
 }
 

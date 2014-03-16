@@ -11,8 +11,6 @@
 #import "CCBReader.h"
 #import "SimpleAudioEngine.h"
 
-#define ARC4RANDOM_MAX 0x100000000
-
 @implementation P2_LittleFlyObjects
 @synthesize body;
 @synthesize wing;
@@ -32,18 +30,10 @@ static ccColor3B littleFlyColors[] = {
     {213,176,255}
 };
 
-
-- (id)init
-{
-	if( (self=[super init]))
-    {
-        objectMovingSpeed = 1024.0f / 140.0f;
-	}
-	return self;
-}
-
 - (void)didLoadFromCCB
 {
+    objectMovingSpeed = 1024.0f / 140.0f;
+
     CCRotateBy * wingRotate = [CCRotateBy actionWithDuration:2.0 angle:360.0];
     CCRepeatForever * rotateForevr = [CCRepeatForever actionWithAction:wingRotate];
     [wing runAction:rotateForevr];
@@ -83,9 +73,8 @@ static ccColor3B littleFlyColors[] = {
 
 - (void)handleCollision
 {
-    NSString * boomMusicFilename = [NSString stringWithFormat:@"%d.mp3",musicType];
+    NSString * boomMusicFilename = [NSString stringWithFormat:@"P2_%d.mp3",musicType];
     [[SimpleAudioEngine sharedEngine] playEffect:boomMusicFilename];
-    [self performSelector:@selector(unloadMusicEffect) withObject:self afterDelay:1.0];
     
     P2_LittleFlyBoom * littleFlyBoom = (P2_LittleFlyBoom *)[CCBReader nodeGraphFromFile:@"P2_LittleFlyOut.ccbi"];
     littleFlyBoom.position = self.position;
@@ -97,20 +86,15 @@ static ccColor3B littleFlyColors[] = {
     
 }
 
-- (void)unloadMusicEffect
-{
-    NSString * boomMusicFilename = [NSString stringWithFormat:@"%d.mp3",musicType];
-    [[SimpleAudioEngine sharedEngine] unloadEffect:boomMusicFilename];
-}
-
 - (void)update:(ccTime)delta
 {
-    if (self.position.x < - 100) {
+    if (self.position.x < - 50 || self.position.y > 800) {
         [self actionWhenOutOfScreen];
     }
     self.position = CGPointMake(self.position.x - objectMovingSpeed, self.position.y);
 }
 
+#pragma mark - 飞离屏幕时调用
 - (void)flyOut
 {
     ccBezierConfig bezier;
@@ -118,9 +102,9 @@ static ccColor3B littleFlyColors[] = {
     bezier.controlPoint_2 = ccp(-350, 450);
     bezier.endPosition = ccp(-600, 600);
     
-    float x_pointRange = (float)arc4random() / ARC4RANDOM_MAX * 600;
+    float x_pointRange = CCRANDOM_0_1() * 600;
     float x_point = x_pointRange * (-1);
-    if ((float)arc4random() / ARC4RANDOM_MAX > 0.55) {
+    if (CCRANDOM_0_1() > 0.55) {
         x_point = x_point * -1;
     }
     CCSequence * littleFlyReadyToFlyOutSeq = [CCSequence actions:
@@ -136,22 +120,18 @@ static ccColor3B littleFlyColors[] = {
 
 - (void)setObjectFirstPosition
 {
-    //    objectPostionX = 1024.0 + (float)arc4random() / ARC4RANDOM_MAX * 1024.0;
     objectPostionX = 1024.0 + 100.0;
-    //    objectPostionY = 450.0;
-    objectPostionY = (float)arc4random() / ARC4RANDOM_MAX * 120.0;
+    objectPostionY = CCRANDOM_0_1() * 120.0;
     self.position = CGPointMake(objectPostionX, self.contentSize.height / 2 + 400.0 + objectPostionY);
-    
-    //    while ([self.delegate isSamePositionWithOtherFlyObjects:self]) {
-    //        self.position = CGPointMake(self.position.x + 200.0, self.position.y);
-    //    }
 }
 
+#pragma mark - 正常移动离开屏幕时
 - (void)actionWhenOutOfScreen
 {
-    [self.delegate removeFromOnScreenArray:self];
+    if ([self.delegate respondsToSelector:@selector(removeFromOnScreenArray:)]) {
+        [self.delegate removeFromOnScreenArray:self];
+    }
     [self removeFromParentAndCleanup:YES];
 }
-
 
 @end

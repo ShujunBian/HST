@@ -15,7 +15,7 @@
     CCSprite *background;
 }
 
-@property (nonatomic, strong) CCSprite *upperCloud;
-@property (nonatomic, strong) CCSprite *upperCloud2;
+@property (nonatomic, assign) CCSprite *upperCloud;
+@property (nonatomic, assign) CCSprite *upperCloud2;
 
 @end

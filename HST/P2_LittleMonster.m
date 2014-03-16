@@ -104,15 +104,6 @@
 - (void) completedAnimationSequenceNamed:(NSString *)name
 {
     if ([name isEqualToString:@"Idle"]) {
-        //        ++ theIdleTimes;
-        //        float isRunNewMoving = (float)arc4random() / ARC4RANDOM_MAX;
-        //        if (isRunNewMoving > 1.0) {
-        //            isRunNewMoving = isRunNewMoving - 1.0;
-        //        }
-        //        if (isRunNewMoving > 0.8 || theIdleTimes == 4) {
-        //            [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
-        //            theIdleTimes = 0;
-        //        }
         [selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
     }
     else if ([name isEqualToString:@"ReadyToJump"])
@@ -138,9 +129,16 @@
             theIdleTimes = 0;
         }
     }
-    
-    
 }
 
+#pragma mark - 退出场景是释放
 
+- (void)releaseAnimationDelegate
+{
+    eyesAnimationManager.delegate = nil;
+    eyesAnimationManager = nil;
+    
+    selfAnimationManager.delegate = nil;
+    selfAnimationManager = nil;
+}
 @end

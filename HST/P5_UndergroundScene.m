@@ -13,6 +13,8 @@
 #import "P5_UndergroundPassage.h"
 #import "NSNotificationCenter+Addition.h"
 #import "P5_SoilCloud.h"
+#import "MainMapHelper.h"
+#import "HelloWorldLayer.h"
 
 //划分为六个区域，一号区域坐标 115 ~ 335 515 ~ 630
 //2     465 ~ 735 515 ~ 630
@@ -98,7 +100,7 @@ static float holesRadius[] = {
 
 - (void) didLoadFromCCB
 {
-    
+    [MainMapHelper addMenuToCurrentPrototype:self];
 }
 
 - (void)createUndergroundWorld
@@ -648,6 +650,18 @@ static float holesRadius[] = {
         _drawOrderArray = [[NSMutableArray alloc]initWithCapacity:8];
     }
     return _drawOrderArray;
+}
+
+#pragma mark - 菜单键调用函数
+- (void)restartGameScene
+{
+}
+
+- (void)returnToMainMap
+{
+    [[CCDirector sharedDirector] replaceScene:
+     [CCTransitionFade transitionWithDuration:1.0
+                                        scene:[HelloWorldLayer scene]]];
 }
 
 @end

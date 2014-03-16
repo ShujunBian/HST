@@ -17,7 +17,6 @@
 
 @interface P2_GameScene : CCLayer<P2_LittleFlyObjectsDelegate>
 {
-    NSMutableArray * flyObjectsOnScreen;
     BOOL isFrameCounterShowed;
     BOOL isMusicToShow;
     NSInteger deltaCounter;
@@ -26,10 +25,11 @@
 }
 
 @property (nonatomic) NSInteger frameCounter;
-@property (nonatomic, strong) P2_GrassLayer * grassLayer;
-@property (nonatomic, strong) P2_Monster * monster;
-@property (nonatomic, strong) P2_LittleMonster * firstLittleMonster;
-@property (nonatomic, strong) P2_LittleMonster * secondLittleMonster;
+@property (nonatomic, strong) NSMutableArray * flyObjectsOnScreen;
+@property (nonatomic, assign) P2_GrassLayer * grassLayer;
+@property (nonatomic, assign) P2_Monster * monster;
+@property (nonatomic, assign) P2_LittleMonster * firstLittleMonster;
+@property (nonatomic, assign) P2_LittleMonster * secondLittleMonster;
 
 
 @end

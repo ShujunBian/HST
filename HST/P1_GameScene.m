@@ -210,7 +210,7 @@ static NSMutableArray *bubbleScales = nil;
     
 }
 
-#pragma mark - Menu
+#pragma mark - 菜单键调用函数
 - (void)restartGameScene
 {
     if ([currentOnScreenBubbles count] != 0 && couldRestart) {
@@ -229,7 +229,14 @@ static NSMutableArray *bubbleScales = nil;
 
 - (void)returnToMainMap
 {
+    [self unscheduleAllSelectors];
+    for (CCNode * child in [self children]) {
+        [child stopAllActions];
+        [child unscheduleAllSelectors];
+    }
+    
     [self releaseCurrentOnScreenBubbles];
+    [[CDAudioManager sharedManager] stopBackgroundMusic];
 
     [[CCDirector sharedDirector] replaceScene:
      [CCTransitionFade transitionWithDuration:1.0

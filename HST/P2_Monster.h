@@ -26,13 +26,14 @@
     CCBAnimationManager* selfAnimationManager;
 }
 
-@property (nonatomic, strong) P2_MonsterEye * monsterEye;
-@property (nonatomic, strong) CCSprite * monsterHead;
-@property (nonatomic, strong) CCSprite * monsterBody;
+@property (nonatomic, assign) P2_MonsterEye * monsterEye;
+@property (nonatomic, assign) CCSprite * monsterHead;
+@property (nonatomic, assign) CCSprite * monsterBody;
 @property (nonatomic) BOOL isFinishJump;
 @property (nonatomic) float currentJumpTime;
 
 -(void)monsterCloseEyesWhenReadyToJump;
 -(void)handleCollision;
+- (void)releaseAnimationDelegate;
 
 @end

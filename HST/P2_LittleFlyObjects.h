@@ -14,7 +14,6 @@
 
 @protocol P2_LittleFlyObjectsDelegate <NSObject>
 
-- (BOOL)isSamePositionWithOtherFlyObjects:(P2_LittleFlyObjects *)littleFlyObject;
 - (void)removeFromOnScreenArray:(P2_LittleFlyObjects *)littleFlyObject;
 
 @end
@@ -23,8 +22,8 @@
 
 @property (nonatomic, assign) id<P2_LittleFlyObjectsDelegate> delegate;
 
-@property (nonatomic, strong) CCSprite * body;
-@property (nonatomic, strong) CCSprite * wing;
+@property (nonatomic, assign) CCSprite * body;
+@property (nonatomic, assign) CCSprite * wing;
 @property (nonatomic) int musicType;
 
 - (ccColor3B)colorAtIndex:(NSUInteger)index;
