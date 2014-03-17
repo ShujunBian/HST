@@ -8,10 +8,23 @@
 
 #import "NSNotificationCenter+Addition.h"
 
+#define kShouldReleaseRestBubble   @"ShouldReleaseRestBubble"
 #define kShouldShowNextPassage     @"ShowNextPassage"
 #define kShouldRollToNextHole      @"ShouldRollToNextHole"
 #define kShouldRotateNextBell      @"ShouldRotateNextBell"
 @implementation NSNotificationCenter (Addition)
+
++ (void)postShouldReleseRestBubbleNotification
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:kShouldReleaseRestBubble object:nil userInfo:nil];
+}
++ (void)registerShouldReleseRestBubbleNotificationWithSelector:(SEL)aSelector target:(id)aTarget
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:aTarget selector:aSelector
+                   name:kShouldReleaseRestBubble
+                 object:nil];
+}
 
 + (void)postShouldShowNextPassageNotification
 {

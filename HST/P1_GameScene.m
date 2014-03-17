@@ -13,6 +13,7 @@
 #import "SimpleAudioEngine.h"
 #import "HelloWorldLayer.h"
 #import "MainMapHelper.h"
+#import "NSNotificationCenter+Addition.h"
 
 @interface P1_GameScene()
 {
@@ -23,6 +24,7 @@
     int bubbleCountInCurrentBlow;
     
     NSMutableArray *currentOnScreenBubbles;
+    NSMutableArray *bubblesReadyToRelease;
 }
 
 @end
@@ -65,6 +67,7 @@ static NSMutableArray *bubbleScales = nil;
     [CDAudioManager configure:kAMM_PlayAndRecord];
     [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
     
+    [NSNotificationCenter registerShouldReleseRestBubbleNotificationWithSelector:@selector(releaseBubbleReadyToRelease) target:self];
     
     [self.monsterInitPositionReferenceSprite setVisible:NO];
     shouldBlowBubble = NO;
@@ -78,6 +81,8 @@ static NSMutableArray *bubbleScales = nil;
     [P1_BlowDetecter instance].delegate = self;
     
     currentOnScreenBubbles = [@[] mutableCopy];
+    bubblesReadyToRelease = [@[] mutableCopy];
+    
     self.toolColorLayer.visible = NO;
     [self schedule:@selector(updateBlow:)];
 }
@@ -149,6 +154,19 @@ static NSMutableArray *bubbleScales = nil;
     [currentOnScreenBubbles addObject:bubble];
 }
 
+#pragma mark - 移除在待移除数组中的bubble
+- (void)releaseBubbleReadyToRelease
+{
+    NSInteger bubbleLeaveCount = [bubblesReadyToRelease count];
+    for (int i = 0; i < bubbleLeaveCount;  ++ i) {
+        P1_Bubble * bubble = [bubblesReadyToRelease objectAtIndex:0];
+        if (bubble.isReadyRelease) {
+            [bubblesReadyToRelease removeObject:bubble];
+            [bubble removeFromParentAndCleanup:YES];
+            [bubble release];
+        }
+    }
+}
 
 #pragma mark - Touch
 
@@ -196,6 +214,7 @@ static NSMutableArray *bubbleScales = nil;
     
     for (P1_Bubble *bubble in currentOnScreenBubbles)
     {
+        [bubblesReadyToRelease addObject:bubble];
         [bubble goAway];
     }
     [currentOnScreenBubbles removeAllObjects];
@@ -235,9 +254,11 @@ static NSMutableArray *bubbleScales = nil;
         [child unscheduleAllSelectors];
     }
     
+    [NSNotificationCenter unregister:self];
+    
     [self releaseCurrentOnScreenBubbles];
     [[CDAudioManager sharedManager] stopBackgroundMusic];
-
+    
     [[CCDirector sharedDirector] replaceScene:
      [CCTransitionFade transitionWithDuration:1.0
                                         scene:[HelloWorldLayer scene]]];
@@ -247,7 +268,7 @@ static NSMutableArray *bubbleScales = nil;
 - (void)dealloc
 {
     [super dealloc];
-
+    
     [[CCTextureCache sharedTextureCache]removeAllTextures];
     [P1_BlowDetecter purge];
 }
@@ -261,6 +282,16 @@ static NSMutableArray *bubbleScales = nil;
         [bubble removeFromParentAndCleanup:YES];
         [bubble release];
     }
+    [currentOnScreenBubbles release];
+    
+    NSInteger bubbleLeaveCount = [bubblesReadyToRelease count];
+    for (int i = 0; i < bubbleLeaveCount;  ++ i) {
+        P1_Bubble * bubble = [bubblesReadyToRelease objectAtIndex:0];
+        [bubblesReadyToRelease removeObject:bubble];
+        [bubble removeFromParentAndCleanup:YES];
+        [bubble release];
+    }
+    [bubblesReadyToRelease release];
 }
 
 

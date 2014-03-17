@@ -11,6 +11,7 @@
 #import "CCBReader.h"
 #import "P1_BubbleBomb.h"
 #import "SimpleAudioEngine.h"
+#import "NSNotificationCenter+Addition.h"
 
 @implementation P1_Bubble
 
@@ -79,8 +80,8 @@ static ccColor3B bubbleColors[] = {
         movingTime = 0;
         if(self.position.y > 800)
         {
-            [self removeFromParentAndCleanup:YES];
-            [self release];
+            _isReadyRelease = YES;
+            [NSNotificationCenter postShouldReleseRestBubbleNotification];
         }
         else
             [self unschedule:@selector(updatePosition:)];
@@ -102,6 +103,7 @@ static ccColor3B bubbleColors[] = {
     CCBAnimationManager * animationManager = self.userObject;
     animationManager.delegate = self;
     _isReadyForboom = NO;
+    _isReadyRelease = NO;
     _body.rotation = arc4random() % 100;
     if(arc4random() % 2 == 0)
     {

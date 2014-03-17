@@ -193,6 +193,11 @@
     }
 }
 
+-(void) ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+}
+
 #pragma mark - property
 - (NSMutableArray *)flyObjectsOnScreen
 {

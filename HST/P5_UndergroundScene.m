@@ -483,6 +483,16 @@ static float holesRadius[] = {
     }
 }
 
+-(void) ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if ([[self children]containsObject:bigCircleUI]) {
+        [bigCircleUI removeFromParentAndCleanup:YES];
+    }
+    [smallCircleUI removeAllChildrenWithCleanup:YES];
+    [smallCircleUIBetweenHoles removeAllChildrenWithCleanup:YES];
+    [self restartUndergroundWorld];
+}
+
 #pragma mark - 转换touch坐标
 -(CGPoint) locationFromTouch:(UITouch*)touch
 {

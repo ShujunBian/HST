@@ -10,6 +10,11 @@
 
 @interface NSNotificationCenter (Addition)
 
+//P1_Notification
++ (void)postShouldReleseRestBubbleNotification;
++ (void)registerShouldReleseRestBubbleNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
+
+//P5_Notification
 + (void)postShouldShowNextPassageNotification;
 + (void)registerShouldShowNextPassageNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
 

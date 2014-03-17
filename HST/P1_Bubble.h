@@ -23,7 +23,7 @@
 @property (nonatomic, assign) CCSprite *blowAnimator;
 @property (nonatomic) CGPoint targetPosition;
 @property (nonatomic) bool isReadyForboom;
-
+@property (nonatomic) BOOL isReadyRelease;
 
 - (int)countOfColor;
 - (ccColor3B)colorAtIndex:(NSUInteger)index;
