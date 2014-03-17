@@ -54,6 +54,7 @@
     NSInteger rolledHoles;              //小怪物正向第几个洞挖去，第0个洞代表开始，第1个洞代表第一个挖向的洞
     NSInteger rotatedBell;              //重新震动铃铛计算
     NSTimer * rotatedBellTimer;         //重新震动铃铛的计时器
+    NSInteger smokeCounter;             //计算烟尘出现的频率
     CCLayer * background;               //背景图层
     
     CCSprite * bigCircleUI;             //手指处大的圆形UI
@@ -106,6 +107,7 @@ static float holesRadius[] = {
     rolledHoles = 0;
     showedPassages = 0;
     rotatedBell = 0;
+    smokeCounter = 0;
     monsterMoveDistance = 0.0;
     
     isStartDrawing = NO;
@@ -154,7 +156,6 @@ static float holesRadius[] = {
         if ([node isKindOfClass:[P5_SoilCloud class]]) {
             P5_SoilCloud * soilCloud = (P5_SoilCloud *)node;
             if (soilCloud.isReadyToMove) {
-#warning xcode提示有问题 待解决
                 [soilCloud removeFromParentAndCleanup:YES];
             }
         }
@@ -187,11 +188,24 @@ static float holesRadius[] = {
                                                                   isForSoil:YES];
 
                 [self addChild:soil z:1];
+                
                 isMonsterFirstStart = NO;
                 monsterMoveDistance = 0.0;
             }
-            else
-                soil.position = _monsterUnderground.position;
+            else {
+                CGPoint soilPoint = CGPointMake(_monsterUnderground.position.x,
+                                                _monsterUnderground.position.y - 5.0);
+                soil.position = soilPoint;
+                
+                ++ smokeCounter;
+                if (smokeCounter == 10) {
+                    P5_SoilCloud * soilCloud = [[[P5_SoilCloud alloc]init]autorelease];
+                    [self addChild:soilCloud z:11];
+                    soilCloud.position = soilPoint;
+                    [soilCloud createRandomSoilCloudByName:@"P5_Smoke.png" andType:kSmokeType];
+                    smokeCounter = 0;
+                }
+            }
         }
     }
     
@@ -347,6 +361,7 @@ static float holesRadius[] = {
     showedPassages = 0;
     rolledHoles = 0;
     rotatedBell = 0;
+    smokeCounter = 0;
     monsterMoveDistance = 0.0;
 }
 
@@ -541,7 +556,7 @@ static float holesRadius[] = {
     P5_SoilCloud * soilCloud = [[[P5_SoilCloud alloc]init]autorelease];
     [self addChild:soilCloud z:6];
     soilCloud.position = CGPointMake(900.0, 410.0);
-    [soilCloud createRandomSoilCloud];
+    [soilCloud createRandomSoilCloudByName:@"P5_SoilCloud.png" andType:kSoilCloudType];
     
     [self.delegate releaseTheCacheInTexture];
 }
@@ -551,7 +566,7 @@ static float holesRadius[] = {
     P5_SoilCloud * soilCloud = [[[P5_SoilCloud alloc]init]autorelease];
     [self addChild:soilCloud z:6];
     soilCloud.position = CGPointMake(161, 3.0);
-    [soilCloud createRandomSoilCloud];
+    [soilCloud createRandomSoilCloudByName:@"P5_SoilCloud.png" andType:kSoilCloudType];
 }
 
 #pragma mark - property

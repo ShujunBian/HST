@@ -525,6 +525,8 @@
 		5199792518D02CEB006A1FD8 /* P2_7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791C18D02CEB006A1FD8 /* P2_7.mp3 */; };
 		5199792618D02CEB006A1FD8 /* P2_all.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791D18D02CEB006A1FD8 /* P2_all.mp3 */; };
 		5199792718D02CEB006A1FD8 /* P2_rhythm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791E18D02CEB006A1FD8 /* P2_rhythm.mp3 */; };
+		51E778AF18D72134009B54BC /* P5_Smoke-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E778AD18D72134009B54BC /* P5_Smoke-hd.png */; };
+		51E778B018D72134009B54BC /* P5_Smoke.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E778AE18D72134009B54BC /* P5_Smoke.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1234,6 +1236,8 @@
 		5199791C18D02CEB006A1FD8 /* P2_7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_7.mp3; sourceTree = "<group>"; };
 		5199791D18D02CEB006A1FD8 /* P2_all.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_all.mp3; sourceTree = "<group>"; };
 		5199791E18D02CEB006A1FD8 /* P2_rhythm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_rhythm.mp3; sourceTree = "<group>"; };
+		51E778AD18D72134009B54BC /* P5_Smoke-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P5_Smoke-hd.png"; sourceTree = "<group>"; };
+		51E778AE18D72134009B54BC /* P5_Smoke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P5_Smoke.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2208,8 +2212,8 @@
 		5169CEDD18CDEA3E00426E6C /* P5_Resource */ = {
 			isa = PBXGroup;
 			children = (
-				5169CEDE18CDEA3E00426E6C /* Music */,
 				5169CEDF18CDEA3E00426E6C /* Pictures */,
+				5169CEDE18CDEA3E00426E6C /* Music */,
 				5169CF4918CDEA3E00426E6C /* PSQ */,
 				5169CF4D18CDEA3E00426E6C /* Scene */,
 			);
@@ -2227,6 +2231,8 @@
 		5169CEDF18CDEA3E00426E6C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				51E778AD18D72134009B54BC /* P5_Smoke-hd.png */,
+				51E778AE18D72134009B54BC /* P5_Smoke.png */,
 				5169CEE018CDEA3E00426E6C /* P5_bellBody-hd.png */,
 				5169CEE118CDEA3E00426E6C /* P5_bellBody.png */,
 				5169CEE218CDEA3E00426E6C /* P5_BellEyesClose-hd.png */,
@@ -2483,6 +2489,7 @@
 				5169D07B18CDEA3E00426E6C /* P5_monsterUnderBody-hd.png in Resources */,
 				5169CF8E18CDEA3E00426E6C /* flower_eyes_blink.png in Resources */,
 				5169CFB818CDEA3E00426E6C /* P1_Flower.ccbi in Resources */,
+				51E778B018D72134009B54BC /* P5_Smoke.png in Resources */,
 				5169D03818CDEA3E00426E6C /* P5_BellEyesClose.png in Resources */,
 				5169CFCE18CDEA3E00426E6C /* 4-hd.png in Resources */,
 				5169D02B18CDEA3E00426E6C /* P2_Monster.ccbi in Resources */,
@@ -2628,6 +2635,7 @@
 				5169CFF018CDEA3E00426E6C /* p2_littlefly-hd.png in Resources */,
 				5169CFAB18CDEA3E00426E6C /* monstershadow-hd.png in Resources */,
 				5169D05A18CDEA3E00426E6C /* p5_hole.png in Resources */,
+				51E778AF18D72134009B54BC /* P5_Smoke-hd.png in Resources */,
 				5169D04B18CDEA3E00426E6C /* P5_cave_cover-hd.png in Resources */,
 				5169D09018CDEA3E00426E6C /* P5_Soil.png in Resources */,
 				5169D07E18CDEA3E00426E6C /* P5_monsterUnderEyeBlack.png in Resources */,

@@ -9,11 +9,14 @@
 #import "CCNode.h"
 #import "cocos2d.h"
 
+#define kSmokeType 0
+#define kSoilCloudType 1
+
 @interface P5_SoilCloud : CCNode
 
 @property (nonatomic, assign) CCSpriteBatchNode * soilCloudBatchNode;
 @property (nonatomic) BOOL isReadyToMove;
 
-- (void) createRandomSoilCloud;
+- (void) createRandomSoilCloudByName:(NSString *)string andType:(NSInteger)type;
 
 @end

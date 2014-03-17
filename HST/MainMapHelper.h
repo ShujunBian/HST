@@ -8,8 +8,27 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol MainMapDelegate <NSObject>
+
+@required
+
+- (void)restartGameScene;
+
+- (void)returnToMainMap;
+
+@end
+
 @interface MainMapHelper : NSObject
 
-+ (void)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point;
++ (MainMapHelper *)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point;
+
+- (void)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point;
+
+@property (nonatomic, assign) CCMenuItem * restartItem;
+@property (nonatomic, assign) CCMenu * restartMenu;
+@property (nonatomic, assign) CCMenuItem * mainMapItem;
+@property (nonatomic, assign) CCMenu * mainMapMenu;
+
+@property (nonatomic, assign) id<MainMapDelegate> delegate;
 
 @end

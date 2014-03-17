@@ -12,7 +12,6 @@
 #import "CCBAnimationManager.h"
 #import "SimpleAudioEngine.h"
 #import "HelloWorldLayer.h"
-#import "MainMapHelper.h"
 #import "NSNotificationCenter+Addition.h"
 
 @interface P1_GameScene()
@@ -25,6 +24,7 @@
     
     NSMutableArray *currentOnScreenBubbles;
     NSMutableArray *bubblesReadyToRelease;
+    MainMapHelper * mainMapHelper;
 }
 
 @end
@@ -62,7 +62,7 @@ static NSMutableArray *bubbleScales = nil;
 
 - (void) didLoadFromCCB
 {
-    [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
+    mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
     
     [CDAudioManager configure:kAMM_PlayAndRecord];
     [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
@@ -229,13 +229,14 @@ static NSMutableArray *bubbleScales = nil;
     
 }
 
-#pragma mark - 菜单键调用函数
+#pragma mark - 菜单键调用函数 mainMapDelegate
 - (void)restartGameScene
 {
     if ([currentOnScreenBubbles count] != 0 && couldRestart) {
         couldRestart = NO;
         for (P1_Bubble *bubble in currentOnScreenBubbles)
         {
+            [bubblesReadyToRelease addObject:bubble];
             [bubble goAway];
         }
         [currentOnScreenBubbles removeAllObjects];
@@ -255,8 +256,9 @@ static NSMutableArray *bubbleScales = nil;
     }
     
     [NSNotificationCenter unregister:self];
-    
+    [mainMapHelper release];
     [self releaseCurrentOnScreenBubbles];
+    
     [[CDAudioManager sharedManager] stopBackgroundMusic];
     
     [[CCDirector sharedDirector] replaceScene:

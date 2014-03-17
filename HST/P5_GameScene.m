@@ -17,7 +17,9 @@
 #define kHoleCoverTag 1
 
 @implementation P5_GameScene
-
+{
+    MainMapHelper * mainMapHelper;
+}
 @synthesize monsterUpground;
 @synthesize monsterUnderground;
 @synthesize grassLayer;
@@ -29,7 +31,7 @@
 
 - (void) didLoadFromCCB
 {
-    [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 7.0)];
+    mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 7.0)];
 
     CGSize winSize = [[CCDirector sharedDirector]winSize];
     CCLayerColor * background = [CCLayerColor layerWithColor:ccc4(183,255,226,255)];
@@ -116,6 +118,7 @@
 
 - (void)returnToMainMap
 {
+    [mainMapHelper release];
     [self unscheduleAllSelectors];
     for (CCNode * child in [self children]) {
         [child stopAllActions];

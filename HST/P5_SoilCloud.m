@@ -9,7 +9,9 @@
 #import "P5_SoilCloud.h"
 
 @implementation P5_SoilCloud
-
+{
+    NSInteger imageType;
+}
 
 - (id)init
 {
@@ -20,22 +22,36 @@
     return self;
 }
 
-- (void) createRandomSoilCloud
+- (void) createRandomSoilCloudByName:(NSString *)string andType:(NSInteger)type
 {
-    self.soilCloudBatchNode = [CCSpriteBatchNode batchNodeWithFile:@"P5_SoilCloud.png" capacity:5];
+    imageType = type;
+    self.soilCloudBatchNode = [CCSpriteBatchNode batchNodeWithFile:string capacity:5];
     [self addChild:_soilCloudBatchNode];
-    NSInteger cloudCounter = 3 + (NSInteger)(2 * CCRANDOM_0_1());
+    
+    NSInteger cloudCounter;
+    if (type == kSmokeType) {
+        cloudCounter = 1 + (NSInteger)(2 * CCRANDOM_0_1());
+    }
+    else {
+        cloudCounter = 3 + (NSInteger)(2 * CCRANDOM_0_1());
+    }
     for (int i = 0; i < cloudCounter; ++ i) {
-        [self performSelector:@selector(createSingleSoilCloud) withObject:self afterDelay:CCRANDOM_0_1() * i / 2 * 0.5];
+        [self performSelector:@selector(createSingleSoilCloudByName:) withObject:string afterDelay:CCRANDOM_0_1() * i / 2 * 0.5];
     }
     
     [self performSelector:@selector(removeBySetFlag) withObject:self afterDelay:3.0];
 }
 
-- (void) createSingleSoilCloud
+- (void) createSingleSoilCloudByName:(NSString *)string
 {
-    CCSprite * soilCloud = [CCSprite spriteWithFile:@"P5_SoilCloud.png"];
-    [soilCloud setPosition:CGPointMake(CCRANDOM_MINUS1_1() * 40, 30 * CCRANDOM_0_1())];
+
+    CCSprite * soilCloud = [CCSprite spriteWithFile:string];
+    if (imageType == kSmokeType) {
+        [soilCloud setPosition:CGPointMake(CCRANDOM_MINUS1_1() * 20, 10 * CCRANDOM_0_1())];
+    }
+    else {
+        [soilCloud setPosition:CGPointMake(CCRANDOM_MINUS1_1() * 40, 10 * CCRANDOM_0_1())];
+    }
     soilCloud.scale = 0.1;
     [_soilCloudBatchNode addChild:soilCloud];
     
