@@ -1,0 +1,733 @@
+//
+//  P4WaterLayer.m
+//  hst_p4
+//
+//  Created by wxy325 on 1/20/14.
+//  Copyright (c) 2014 cdi. All rights reserved.
+//
+
+#import "P4WaterLayer.h"
+#import "cocos2d.h"
+#import "P4WaterLayer.h"
+#import "P4WaterRecord.h"
+#import "P4Extension.h"
+#import "CCSprite+getRect.h"
+
+#define WATER_Z_ORDER_START 10
+#define BUBBLE_Z_ORDER 100
+
+#define ROTATE_MAX 15.f
+#define ROTATE_SPEED_BASE 0.02f
+#define ROTATE_REDUCE_RATE 0.5
+#define ADD_WATER_SPEED 1.3f
+
+#define BAN_JIN 204
+//#define YUAN_XIN ccp(181,96)
+#define YUAN_XIN_XIANGDUI ccp(181,96)
+
+#define BUBBLE_SPEED 20.f
+
+@interface P4WaterLayer ()
+@property (assign, nonatomic) CGPoint prePosition;
+@property (assign, nonatomic) CGPoint preAnchor;
+@property (assign, nonatomic) CGPoint preMaskLeftBottom;
+//@property (strong, nonatomic) CCSprite* masked;
+@property (assign, nonatomic) float offset;
+
+@property (strong, nonatomic) NSMutableArray* waterRecordArray;
+//@property (strong, nonatomic) NSMutableArray* waterSpriteArray;
+@property (strong, nonatomic) CCSprite* waterWaveSprite;
+@property (strong, nonatomic) CCSprite* waterBgSprite;
+
+
+//Add Water
+@property (assign, nonatomic) BOOL fAddWater;
+@property (assign, nonatomic) ccColor3B addWaterColor;
+
+@property (assign, nonatomic) float waterFlowTextureWidth;
+
+- (void)addWaterWithColor:(ccColor3B)waterColor;
+
+//Merge Water
+@property (assign, nonatomic) BOOL isMergingWater;
+
+
+//Rotate
+@property (assign, nonatomic) float rotate;
+@property (assign, nonatomic) float rotateTo;
+//@property (assign, nonatomic) BOOL fToRotate;
+
+
+@property (assign, nonatomic) BOOL fReleaseWater;
+
+- (void)mergeWaterRecord;
+
+- (void)checkWaterRotateMinAndMax;
+- (void)updateRotate;
+
+- (float)getWaterHeight;
+
+@property (strong, nonatomic) NSMutableArray* onScreenBubbles;
+@property (strong, nonatomic) NSMutableArray* offScreenBubbles;
+
+@end
+
+@implementation P4WaterLayer
+
+- (void) didLoadFromCCB
+{
+    [self.bottleMask removeFromParent];
+    [self.bottleMask retain];
+    self.water1 = [CCSprite spriteWithFile:@"water1.png"];
+    self.water1.position = self.bottleMask.position;
+    self.prePosition = self.bottleMask.position;
+    self.preAnchor = self.bottleMask.anchorPoint;
+//    self.bottleMask.anchorPoint = ccp(0,0);
+    CGRect maskRect = [self.bottleMask getRect];
+    self.preMaskLeftBottom = maskRect.origin;
+    
+    self.offset = 0;
+//    self.masked = nil;
+    
+    self.waterWaveSprite = nil;
+    self.waterBgSprite = nil;
+    
+    self.waterRecordArray = [@[] mutableCopy];
+    
+    self.fAddWater = NO;
+    self.fReleaseWater = NO;
+    self.isMergingWater = NO;
+    
+    self.waterFlowTextureWidth = self.water1.texture.contentSize.width;
+    
+    self.rotate = 0;
+ 
+    
+    [self.sprayLeft stopSystem];
+    [self.sprayRight stopSystem];
+    
+    self.leftSprayPrePosition = self.sprayLeft.position;
+    self.rightSprayPrePosition = self.sprayRight.position;
+    
+    
+    [self reorderChild:self.sprayLeft z:1];
+    [self reorderChild:self.sprayRight z:1];
+    
+    [self schedule:@selector(bubbleUpdate:) interval:0.5f];
+    
+    self.onScreenBubbles = [@[] mutableCopy];
+    self.offScreenBubbles = [@[] mutableCopy];
+}
+- (void)onEnter
+{
+    [super onEnter];
+    [self schedule:@selector(waterFlowUpdate:) interval:1.f/60];
+}
+- (void)waterFlowUpdate:(ccTime)delta
+{
+    //Add Water
+    if (self.fAddWater)
+    {
+        [self addWaterWithColor:self.addWaterColor];
+    }
+    [self releaseWater];
+    
+    
+    //Merge Water
+    [self mergeWaterRecord];
+    
+    self.isMergingWater = NO;
+    for (P4WaterRecord* record in self.waterRecordArray)
+    {
+        if (record.isChangeColor)
+        {
+            self.isMergingWater = YES;
+            break;
+        }
+    }
+    
+    //Update Rotate
+    [self updateRotate];
+    
+    
+    //Update Sprite
+    [self.waterWaveSprite removeFromParentAndCleanup:YES];
+    self.waterWaveSprite = nil;
+    [self.waterBgSprite removeFromParentAndCleanup:YES];
+    self.waterBgSprite = nil;
+    
+    
+    [self updateWaterRecord];
+    self.waterWaveSprite = [self waterWaveSpriteWithTextureSprite:self.water1 maskSprite:self.bottleMask rotate:self.rotate];
+    self.waterWaveSprite.position = self.prePosition;
+    self.waterWaveSprite.anchorPoint = self.preAnchor;
+    
+    self.waterBgSprite = [self waterBackgroundSpriteWithTextureSprite:self.water1 maskSprite:self.bottleMask rotate:self.rotate];
+    self.waterBgSprite.position = self.prePosition;
+    self.waterBgSprite.anchorPoint = self.preAnchor;
+    
+    int waterZOrder = WATER_Z_ORDER_START;
+    
+    [self addChild:self.waterBgSprite z:waterZOrder++];
+    [self addChild:self.waterWaveSprite z:(waterZOrder++)];
+}
+- (void)updateWaterRecord
+{
+    //更新信息
+    for (P4WaterRecord* record in self.waterRecordArray)
+    {
+        [record updateRecord];
+        if (self.fAddWater)
+        {
+            [record waterUp];
+        }
+        
+        if (record.offset > self.waterFlowTextureWidth)
+        {
+            record.offset -= self.waterFlowTextureWidth;
+        }
+        if (record.offset <= 0)
+        {
+            record.offset += self.waterFlowTextureWidth;
+        }
+    }
+}
+
+
+- (CCSprite *)waterWaveSpriteWithTextureSprite:(CCSprite *)textureSprite maskSprite:(CCSprite *)maskSprite rotate:(float)radius
+{
+    float height = 0;
+    CCRenderTexture * rt = [CCRenderTexture renderTextureWithWidth:maskSprite.texture.contentSize.width height:maskSprite.texture.contentSize.height];
+    
+    maskSprite.anchorPoint = ccp(0,0);
+    textureSprite.anchorPoint = ccp(0,0);
+    maskSprite.position = ccp(0,0);
+    textureSprite.position = ccp(0,0);
+    
+    [rt beginWithClear:255 g:255 b:255 a:255];
+    
+    [maskSprite setBlendFunc:(ccBlendFunc){GL_ONE, GL_ZERO}];
+    [maskSprite visit];
+    
+    
+    
+    for (P4WaterRecord* record in self.waterRecordArray)
+    {
+        height += record.height;
+    }
+    
+    float preRadius = radius;   //pre为角度
+    radius = radius / 180 * M_PI;  //转换为弧度
+    
+    for (int i = 0; i < self.waterRecordArray.count; i++)
+    {
+        P4WaterRecord* record = self.waterRecordArray[self.waterRecordArray.count - 1 - i];
+        
+
+        float offset = record.offset;
+//        height = record.height;
+        ccColor3B color = record.color;
+        
+        textureSprite.scaleY = record.waveScale;
+        textureSprite.color = color;
+        
+
+        [textureSprite setBlendFunc:(ccBlendFunc){GL_DST_ALPHA, GL_ZERO}];
+        
+        //    float maskWidth = maskSprite.texture.contentSize.width;
+        
+        //    float maskHeight = maskSprite.texture.contentSize.height;   // /2
+        //    float maskAnchorX = maskSprite.anchorPoint.x;
+        //    float maskAnchorY = maskSprite.anchorPoint.y;
+        
+        //    float maskLeft = maskSprite.position.x - maskWidth * maskAnchorX;
+        //    float maskRight = maskLeft + maskWidth;
+        //    float maskBottom = maskSprite.position.y - maskHeight * maskAnchorY;
+        //    float maskTop = maskBottom + maskHeight;
+        
+        float textureHeight = textureSprite.texture.contentSize.height * textureSprite.scaleY;
+        float textureWidth = textureSprite.texture.contentSize.width;
+        //    float textureAnchorY = textureSprite.anchorPoint.y;
+        //    float textureBottom = textureSprite.position.y - textureHeight * textureAnchorY;
+        //    float textureTop = textureBottom + textureHeight;
+        
+        //半斤204
+        //圆心坐标(181,96)
+        
+        float lheight = height - textureHeight ;
+        
+
+        float xianXinJu = 96 - lheight;
+        float xian = sqrt( 204 * 204 - xianXinJu * xianXinJu);
+        CGPoint pos = ccp(181 - xianXinJu * sin(radius) - (xian + offset) * cos(radius),
+                          96 - xianXinJu * cos(radius) + (xian + offset) * sin(radius));
+
+        
+        
+        CGPoint clearLeftBottom = ccp(pos.x + textureHeight * sin(radius), pos.y + textureHeight * cos(radius));
+        CGPoint clearRightBottom = ccp(clearLeftBottom.x + textureWidth * 2 * cos(radius), clearLeftBottom.y - textureWidth * 2 * sin(radius));
+        float clearHeight = 408;
+        CGPoint clearLeftTop = ccp(clearLeftBottom.x + clearHeight * sin(radius), clearLeftBottom.y + clearHeight * cos(radius));
+        CGPoint clearRightTop = ccp(clearRightBottom.x + clearHeight * sin(radius), clearRightBottom.y + clearHeight * cos(radius));
+        CGPoint clearPoints[4] = {clearLeftBottom, clearLeftTop, clearRightTop, clearRightBottom};
+        
+        
+        float fillHeight = BAN_JIN - xianXinJu;
+        CGPoint fillLeftTop = pos;
+        CGPoint fillRightTop = ccp(fillLeftTop.x + textureWidth * 2 * cos(radius), fillLeftTop.y - textureWidth * 2 * sin(radius));
+        
+        
+        CGPoint fillLeftBottom = ccp(fillLeftTop.x - fillHeight * sin(radius), fillLeftTop.y - fillHeight * cos(radius));
+        
+        CGPoint fillRightBottom = ccp(fillLeftBottom.x + textureWidth * 2 * cos(radius), fillLeftBottom.y - textureWidth * 2 * sin(radius));
+        
+        CGPoint fillPoints[4] = {fillLeftBottom, fillLeftTop, fillRightTop, fillRightBottom};
+        
+        
+        
+        textureSprite.position = pos;
+        textureSprite.rotation = preRadius;
+        [textureSprite visit];
+        textureSprite.position = ccp(textureSprite.position.x + textureWidth * cos(radius), textureSprite.position.y - textureWidth * sin(radius));
+        [textureSprite visit];
+        
+        if (i == 0)
+        {
+            ccDrawSolidPoly(clearPoints, 4, ccc4f(0, 0, 0, 0));
+        }
+
+        ccDrawSolidPoly(fillPoints, 4, ccc4FFromccc3B(color));
+        
+        height -= record.height;
+    }
+    
+    
+    
+    [rt end];
+    
+    CCSprite *retval = [CCSprite spriteWithTexture:rt.sprite.texture];
+    retval.flipY = YES;
+    
+    
+    if (!self.waterRecordArray.count)
+    {
+        retval.visible = NO;
+    }
+    
+    
+    return retval;
+    
+}
+- (CCSprite *)waterBackgroundSpriteWithTextureSprite:(CCSprite*)textureSprite maskSprite:(CCSprite *)maskSprite rotate:(float)radius
+{
+    float height = 0;
+    CCRenderTexture * rt = [CCRenderTexture renderTextureWithWidth:maskSprite.texture.contentSize.width height:maskSprite.texture.contentSize.height];
+    
+    maskSprite.anchorPoint = ccp(0,0);
+    maskSprite.position = ccp(0,0);
+    textureSprite.anchorPoint = ccp(0,0);
+    textureSprite.position = ccp(0,0);
+    
+    float textureHeight = textureSprite.texture.contentSize.height * textureSprite.scaleY;
+    float textureWidth = textureSprite.texture.contentSize.width;
+    
+    
+    [rt beginWithClear:255 g:255 b:255 a:255];
+    
+    [maskSprite setBlendFunc:(ccBlendFunc){GL_ONE, GL_ZERO}];
+    [maskSprite visit];
+    [textureSprite setBlendFunc:(ccBlendFunc){GL_DST_ALPHA, GL_ZERO}];
+
+    
+    for (P4WaterRecord* record in self.waterRecordArray)
+    {
+        height += record.height;
+    }
+    
+    float preRadius = radius;   //pre为角度
+    radius = radius / 180 * M_PI;  //转换为弧度
+    
+    for (int i = 0; i < self.waterRecordArray.count; i++)
+    {
+        P4WaterRecord* record = self.waterRecordArray[self.waterRecordArray.count - 1 - i];
+        float offset = record.offset;
+        //        height = record.height;
+        ccColor3B color = record.color;
+        
+        //半斤204
+        //圆心坐标(181,96)
+        height -= record.height;
+        
+        
+        float lheight = height /*- textureHeight*/ ;
+        
+
+        float xianXinJu = 96 - lheight;
+        float xian = sqrt( 204 * 204 - xianXinJu * xianXinJu);
+        CGPoint pos = ccp(181 - xianXinJu * sin(radius) - (xian + offset) * cos(radius),
+                          96 - xianXinJu * cos(radius) + (xian + offset) * sin(radius));
+        
+        
+        float fillHeight = BAN_JIN - xianXinJu;
+        CGPoint fillLeftTop = pos;
+        CGPoint fillRightTop = ccp(fillLeftTop.x + textureWidth * 2 * cos(radius), fillLeftTop.y - textureWidth * 2 * sin(radius));
+        
+        
+        CGPoint fillLeftBottom = ccp(fillLeftTop.x - fillHeight * sin(radius), fillLeftTop.y - fillHeight * cos(radius));
+        
+        CGPoint fillRightBottom = ccp(fillLeftBottom.x + textureWidth * 2 * cos(radius), fillLeftBottom.y - textureWidth * 2 * sin(radius));
+        
+        
+
+        CGPoint fillPoints[4] = {fillLeftBottom, fillLeftTop, fillRightTop, fillRightBottom};
+        
+        
+
+        
+        if (i == 0)
+        {
+            CGPoint clearLeftBottom = ccp(pos.x + textureHeight * sin(radius), pos.y + textureHeight * cos(radius));
+            CGPoint clearRightBottom = ccp(clearLeftBottom.x + textureWidth * 2 * cos(radius), clearLeftBottom.y - textureWidth * 2 * sin(radius));
+            float clearHeight = 408;
+            CGPoint clearLeftTop = ccp(clearLeftBottom.x + clearHeight * sin(radius), clearLeftBottom.y + clearHeight * cos(radius));
+            CGPoint clearRightTop = ccp(clearRightBottom.x + clearHeight * sin(radius), clearRightBottom.y + clearHeight * cos(radius));
+            
+            CGPoint clearPoints[4] = {fillLeftTop, clearLeftTop, clearRightTop, fillRightTop};
+            textureSprite.position = pos;
+            textureSprite.rotation = preRadius;
+            [textureSprite visit];
+            textureSprite.position = ccp(textureSprite.position.x + textureWidth * cos(radius), textureSprite.position.y - textureWidth * sin(radius));
+            [textureSprite visit];
+            ccDrawSolidPoly(clearPoints, 4, ccc4f(0, 0, 0, 0));
+        }
+        
+        
+        ccDrawSolidPoly(fillPoints, 4, ccc4FFromccc3B(color));
+
+    }
+    
+    [rt end];
+    
+    CCSprite *retval = [CCSprite spriteWithTexture:rt.sprite.texture];
+    retval.flipY = YES;
+    
+    if (!self.waterRecordArray.count)
+    {
+        retval.visible = NO;
+    }
+    return retval;
+}
+
+
+#pragma mark - Add And Release Water
+- (void)beginAddWater:(ccColor3B)waterColor
+{
+    self.fAddWater = YES;
+    self.addWaterColor = waterColor;
+    
+    ccColor4F color = ccc4f(waterColor.r / 255.f, waterColor.g / 255.f, waterColor.b / 255.f, 1.f);
+    self.sprayLeft.startColor = color;
+    self.sprayLeft.endColor = color;
+    self.sprayRight.startColor = color;
+    self.sprayRight.endColor = color;
+    [self.sprayLeft resetSystem];
+    [self.sprayRight resetSystem];
+}
+- (void)endAddWater
+{
+    self.fAddWater = NO;
+    [self.sprayLeft stopSystem];
+    [self.sprayRight stopSystem];
+}
+- (void)addWaterWithColor:(ccColor3B)waterColor
+{
+    P4WaterRecord* waterRecord = nil;
+    P4WaterRecord* r = [self.waterRecordArray lastObject];
+
+    if (r.color.r == waterColor.r && r.color.g == waterColor.g && r.color.b == waterColor.b)
+    {
+        waterRecord = r;
+    }
+
+    
+    if (!waterRecord)
+    {
+        waterRecord = [[P4WaterRecord alloc] init];
+        waterRecord.color = waterColor;
+        if (self.waterRecordArray.count)
+        {
+            waterRecord.height = 5.f;
+        }
+        [self.waterRecordArray addObject:waterRecord];
+    }
+    waterRecord.height += ADD_WATER_SPEED;
+    
+    [self waterHeightChange:[self getWaterHeight]];
+    
+}
+- (void)beginReleaseWater
+{
+    if (self.waterRecordArray.count)
+    {
+        self.fReleaseWater = YES;
+        P4WaterRecord* record = self.waterRecordArray[0];
+        [self.delegate startWaterOut:record.color];
+    }
+    
+    //移除屏幕上的泡泡
+    while (self.onScreenBubbles.count)
+    {
+        CCSprite* sprite = self.onScreenBubbles[0];
+        [sprite removeFromParent];
+        [self.offScreenBubbles addObject:sprite];
+        [self.onScreenBubbles removeObject:sprite];
+    }
+    
+}
+- (void)releaseWater
+{
+    if (self.fReleaseWater)
+    {
+        if (self.waterRecordArray.count)
+        {
+            P4WaterRecord* record = self.waterRecordArray[0];
+            record.height -= 2;
+            if (record.height < 0)
+            {
+                [self.waterRecordArray removeObjectAtIndex:0];
+                
+                if (self.waterRecordArray.count)
+                {
+                    P4WaterRecord* record = self.waterRecordArray[0];
+                    [self.delegate waterOutColorChange:record.color];
+                }
+            }
+        }
+        else
+        {
+            self.fReleaseWater = NO;
+            [self.delegate endWaterOut];
+        }
+    }
+}
+
+#pragma mark - Merge Record
+- (void)mergeWaterRecord
+{
+    for (int i = 0; i < self.waterRecordArray.count; i++)
+    {
+        if (i == self.waterRecordArray.count - 1)
+        {
+            break;
+        }
+        P4WaterRecord* record1 = self.waterRecordArray[i];
+        P4WaterRecord* record2 = self.waterRecordArray[i + 1];
+        if ([record2 mergeRecord:record1])
+        {
+            [self.waterRecordArray removeObject:record1];
+            --i;
+        }
+    }
+}
+
+- (void)mergeWater
+{
+    if (!self.isMergingWater)
+    {
+        self.isMergingWater = YES;
+        
+        float aveR, aveG, aveB, totalR = 0, totalG = 0, totalB = 0, totalHeight = 0.f;
+        for (P4WaterRecord* record in self.waterRecordArray)
+        {
+            totalR += record.color.r * record.height;
+            totalG += record.color.g * record.height;
+            totalB += record.color.b * record.height;
+            totalHeight += record.height;
+        }
+        aveR = totalR / totalHeight;
+        aveG = totalG / totalHeight;
+        aveB = totalB / totalHeight;
+
+        float maxRGB = maxThree(aveR, aveG, aveB);
+        float minRGB = minThree(aveR, aveG, aveB);
+        float baoHeDu = (maxRGB - minRGB) / maxRGB;
+
+        CCLOG(@"%f",baoHeDu);
+        
+        ccColor3B aveColor = ccc3(aveR, aveG, aveB);
+        for (P4WaterRecord* record in self.waterRecordArray)
+        {
+            record.colorTo = aveColor;
+            record.isChangeColor = YES;
+        }
+    }
+}
+
+#pragma mark - Rotate
+
+- (void)updateRotate
+{
+    if (ABS(self.rotateTo) < 0.001 && ABS(self.rotateTo - self.rotate) < 0.001)
+    {
+        return;
+    }
+    
+    float absRotate = ABS(self.rotate);
+    float absRotateTo = ABS(self.rotateTo);
+    
+    float rotateSpeed = 0.5 + (absRotateTo - absRotate) * ROTATE_SPEED_BASE ;
+    if (self.rotateTo < self.rotate)
+    {
+        self.rotate -= rotateSpeed;
+        if (self.rotate < self.rotateTo)
+        {
+            self.rotate = self.rotateTo;
+        }
+    }
+    else
+    {
+        self.rotate += rotateSpeed;
+        if (self.rotate > self.rotateTo)
+        {
+            self.rotate = self.rotateTo;
+        }
+    }
+    if (ABS(self.rotateTo - self.rotate) < 0.3 )
+    {
+        self.rotate = self.rotateTo;
+        self.rotateTo = - ROTATE_REDUCE_RATE * self.rotateTo;
+    }
+    [self checkWaterRotateMinAndMax];
+}
+
+- (void)checkWaterRotateMinAndMax
+{
+    self.rotate = [self checkWaterRotateMinAndMaxHelper:self.rotate];
+    self.rotateTo = [self checkWaterRotateMinAndMaxHelper:self.rotateTo];
+    if (ABS(self.rotateTo) < 4)
+    {
+        self.rotateTo = 0;
+    }
+    
+}
+- (float)checkWaterRotateMinAndMaxHelper:(float)currentDegree
+{
+    BOOL fMinu = NO;
+    if (currentDegree < 0)
+    {
+        fMinu = YES;
+        currentDegree = -currentDegree;
+    }
+    currentDegree = currentDegree > ROTATE_MAX? ROTATE_MAX : currentDegree;
+    if (fMinu)
+    {
+        currentDegree = -currentDegree;
+    }
+    return currentDegree;
+}
+
+#pragma mark - Water Move
+- (void)waterMoveWithDeltaX:(float)deltaX deltaY:(float)deltaY
+{
+    float rate = sqrt(deltaX * deltaX + deltaY * deltaY);
+    if (deltaX > 0)
+    {
+        self.rotateTo += rate;
+    }
+    else
+    {
+        self.rotateTo -= rate;
+    }
+    [self checkWaterRotateMinAndMax];
+    
+    
+    for (P4WaterRecord* record in self.waterRecordArray)
+    {
+        [record waterMoveWithDeltaX:deltaX deltaY:deltaY];
+    }
+}
+
+- (void)waterHeightChange:(float)height
+{
+    float radio = -0.2f;
+    float deltaX = height * radio;
+    height = height - 15.f;
+    self.sprayLeft.position = ccp(self.leftSprayPrePosition.x + deltaX, self.leftSprayPrePosition.y + height);
+    self.sprayRight.position = ccp(self.rightSprayPrePosition.x + deltaX, self.rightSprayPrePosition.y + height);
+}
+
+- (float)getWaterHeight
+{
+    float height = 0;
+    for (P4WaterRecord* r in self.waterRecordArray)
+    {
+        height += r.height;
+    }
+    return height;
+}
+
+#pragma mark - Bubble
+//半斤204
+//圆心坐标(181,96)
+- (void)bubbleUpdate:(float)dt
+{
+//    CGPoint yuanXin = ccp(YUAN_XIN_XIANGDUI.x + self.preMaskLeftBottom.x, YUAN_XIN_XIANGDUI.y + self.preMaskLeftBottom.y);
+//    CCSprite* sprite = [[CCSprite alloc] initWithFile:@"P4water_particle.png"];
+//    sprite.position = yuanXin;
+//    [self addChild:sprite z:BUBBLE_Z_ORDER];
+    [self makeNewBubble];
+}
+
+- (void)makeNewBubble
+{
+    //Start Point
+    float banjin = BAN_JIN * CCRANDOM_0_1();
+    float hudu = M_PI * 2 * CCRANDOM_0_1();
+    
+//    CGPoint yuanXin = ccp(YUAN_XIN_XIANGDUI.x + self.preMaskLeftBottom.x, YUAN_XIN_XIANGDUI.y + self.preMaskLeftBottom.y);
+    CGPoint yuanXin = ccp(self.prePosition.x, YUAN_XIN_XIANGDUI.y + self.preMaskLeftBottom.y);
+    
+    CGPoint startPoint = ccp(yuanXin.x + banjin * sin(hudu),yuanXin.y + banjin * cos(hudu));
+//    if (!CGRectContainsPoint([self.bottleMask getRect], startPoint))
+//    {
+//        return;
+//    }
+    float waterHeight = [self getWaterHeight] + BAN_JIN - (yuanXin.y - self.preMaskLeftBottom.y);
+    
+    if (startPoint.y - yuanXin.y + BAN_JIN > waterHeight)
+    {
+        return;
+    }
+
+    float boHeight = sqrt(BAN_JIN * BAN_JIN - (yuanXin.x - startPoint.x) * (yuanXin.x - startPoint.x)) + BAN_JIN;
+
+    float endHeight = boHeight < waterHeight ? boHeight : waterHeight;
+    endHeight -= 20;
+//
+    CGPoint endPoint = ccp(startPoint.x, yuanXin.y + endHeight - BAN_JIN);
+    
+    CCSprite* sprite = nil;
+    if (self.offScreenBubbles.count)
+    {
+        sprite = self.offScreenBubbles[0];
+        [self.offScreenBubbles removeObject:sprite];
+    }
+    else
+    {
+        sprite = [[CCSprite alloc] initWithFile:@"P4water_particle.png"];
+    }
+    
+    sprite.scale = CCRANDOM_0_1();
+    sprite.position = startPoint;
+    CCMoveTo* moveTo = [[CCMoveTo alloc] initWithDuration:((endPoint.y - startPoint.y) / (BUBBLE_SPEED + 20 * CCRANDOM_0_1())) position:endPoint];
+    CCCallBlock* call = [[CCCallBlock alloc] initWithBlock:^{
+        [sprite removeFromParent];
+        [self.onScreenBubbles removeObject:sprite];
+        [self.offScreenBubbles addObject:sprite];
+    }];
+    [self addChild:sprite z:BUBBLE_Z_ORDER];
+    [self.onScreenBubbles addObject:sprite];
+    [sprite runAction:[[CCSequence alloc] initOne:moveTo two:call]];
+}
+
+@end

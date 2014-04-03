@@ -47,11 +47,14 @@
 		}];
 
         CCMenuItem *P3_Item = [CCMenuItemFont itemWithString:@"P3_Item" block:^(id sender) {
-			
+			CCScene * p3Scene = [CCBReader sceneWithNodeGraphFromFile:@"P3_Main_Scene.ccbi"];
+            [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p3Scene]];
 		}];
         
         CCMenuItem *P4_Item = [CCMenuItemFont itemWithString:@"P4_Item" block:^(id sender) {
-			
+//            CCScene * p4Scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+			CCScene * p4Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];
+            [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p4Scene]];
 		}];
         
         CCMenuItem *P5_Item = [CCMenuItemFont itemWithString:@"P5_Item" block:^(id sender) {
