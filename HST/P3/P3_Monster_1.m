@@ -38,6 +38,15 @@
 
 @implementation P3_Monster_1
 
+static ccColor3B monsterBodyColors[] = {
+    {255, 126, 247},//1
+    {255, 121, 247},//2
+    {80, 98, 247},//3
+    {255, 113, 246},//4
+    {255, 108, 246},//5
+    
+};
+
 
 -(id)initWithNode:(CCNode *)node
 {
@@ -110,11 +119,15 @@
         
         self.monsterBody = [[NSMutableArray alloc]init];
         
+        //[self.monsterFace setColor:ccc3(255, 145, 248)];
+        
         for(int i = 0 ; i < 5 ; i ++)
         {
             P3_Monster_1_Body *tmpBody = [[P3_Monster_1_Body alloc]initWithPosition:CGPointMake(MONSTER_BODY_POS_X,-99 * (i + 1))];
             
+            
             [self.monsterFace addChild:tmpBody.monsterBody];
+            
             
             [self.monsterBody addObject:tmpBody];
             
@@ -123,7 +136,6 @@
         
         self.monster = self.monsterFace;
         
-        self.originPos = self.monsterFace.position;
         
         times = 1;
         
@@ -132,6 +144,7 @@
         curHeight = MONSTER_FACE_HEIGHT;
         
         [self.monsterFace runAction:[CCSequence actions:[CCDelayTime actionWithDuration:4.0f],[CCCallFunc actionWithTarget:self selector:@selector(performActionForSing)], nil ]];
+        
         
     
         
@@ -173,10 +186,19 @@
         
         if(currentStatus ==  normalStatus)
         {
+            float x =self.monsterFace.scaleX - translation.y /181;
             
-            [self.monsterFace setScaleX:self.monsterFace.scaleX - translation.y /181 ];
+            float y = self.monsterFace.scaleY + translation.y /181;
             
-            [self.monsterFace setScaleY:self.monsterFace.scaleY + translation.y /181];
+            if(x < 0.8)
+            {
+                x = 0.8 ;
+                y = 1.25;
+            }
+            
+            [self.monsterFace setScaleX: x];
+            
+            [self.monsterFace setScaleY:y];
             
             currentStatus = strechStatus;
             
@@ -218,21 +240,24 @@
                     
                 }
                 
+                
                 [self.monsterFace setScaleX:s ];
                 
                 [self.monsterFace setScaleY:s2];
             }
         }
         
-        if(currentStatus == compressStatus && translation.y > 2)
+        if(currentStatus == compressStatus && translation.y > 1)
         {
-            [self.monsterFace setScaleX:self.monsterFace.scaleX - translation.y * 0.001 ];
+            [self.monsterFace setScaleX:self.monsterFace.scaleX - translation.y * 0.002 ];
             
-            [self.monsterFace setScaleY:self.monsterFace.scaleY + 0.001 * translation.y];
+            [self.monsterFace setScaleY:self.monsterFace.scaleY + 0.002 * translation.y];
             
             currentStatus = strechStatus;
 
         }
+        
+    //    NSLog(@"%d",times);
        
         bRet = YES;
 
@@ -247,11 +272,11 @@
     
     monsterSingMouth = [CCSprite spriteWithFile:@"P3_monster_sing.png"];
     
-    [monsterSingMouth setPosition:CGPointMake(70, 10)];
+    [monsterSingMouth setPosition:CGPointMake(70, 22.5)];
     
     [monsterSingMouth setScale:0.9f];
     
-    [monsterSingMouth setAnchorPoint:CGPointMake(0.5, 0)];
+    [monsterSingMouth setAnchorPoint:CGPointMake(0.5, 0.5)];
     
     [self.monsterFace addChild:monsterSingMouth z:6 tag:10];
     
@@ -280,6 +305,8 @@
     
     [monsterSingMouth runAction:[CCSequence actions:moveBy, nil]];
     
+    [[[CCDirector sharedDirector]scheduler ]scheduleSelector:@selector(animationForMonsterMouth) forTarget:self interval:2.0f paused:NO];
+    
     
     
 }
@@ -289,6 +316,8 @@
     int bRet = 0;
     
     do {
+        
+        
         if(currentStatus ==  normalStatus)
         {
             
@@ -302,21 +331,20 @@
         
         if(currentStatus == compressStatus)
         {
-            
-            
-            float r1 = MONSTER_FACE_HEIGHT + MONSTER_BODY_HEIGHT * (times - 2);
-            
-            float r2 = MONSTER_FACE_HEIGHT + MONSTER_BODY_HEIGHT * (times -1);
-            
-            if(self.monsterFace.scaleY <= r1 + 0.05 * (6 - times)/r2 && times > 1 )
+      
+            if(self.monsterFace.scaleY <= 0.8 )
             {
+                times --;
+                
                 [self.monsterFace setAnchorPoint:ccp(0.5,-0.54 * (times-1))];
                 
                 [self.monsterFace setScale:1.0f];
                 
+                curHeight = curHeight - MONSTER_BODY_HEIGHT;
+                
                 currentStatus = strechStatus;
                 
-                times --;
+                bRet = 2;
 
             }
             
@@ -347,12 +375,15 @@
             
             [self.monsterFace setScaleY:self.monsterFace.scaleY + 0.001 * translation.y];
             
+         
+            
             currentStatus = compressStatus;
             
         }
         
         
-        bRet = 1;
+        if(bRet != 2)
+            bRet = 1;
         
         
         
@@ -360,6 +391,38 @@
     
     return bRet;
 }
+
+
+-(void)animationForMonsterMouth
+{
+    int x = arc4random() % 2;
+    
+    float moveX = 0;
+    
+    if(x == 0)
+    {
+        moveX = 1;
+    }
+    else
+    {
+        moveX = -1;
+    }
+    
+    CCMoveBy *moveBy = [CCMoveBy actionWithDuration:0.5f position:ccp(moveX,0)];
+    
+    CCMoveBy *moveBy2 = [CCMoveBy actionWithDuration:0.5f position:ccp(-moveX,0)];
+    
+    CCScaleTo *sB = [CCScaleTo actionWithDuration:0.5f scale:1.05f];
+    
+    CCScaleTo *sB2 = [CCScaleTo actionWithDuration:0.5f scale:0.95f];
+    
+    CCSequence *seq = [CCSequence actions:[CCSpawn actionOne:moveBy two:sB],[CCSpawn actionOne:moveBy2 two:sB2],[CCDelayTime actionWithDuration:1.0f],nil ];
+    
+    
+    [monsterSingMouth runAction:seq];
+ 
+}
+
 
 #define RADIUS 17.5
 #define CENTER 17.5

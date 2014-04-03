@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "P3_Monster_5_Body.h"
+#import "P3_Calculator.h"
 
 
 @interface P3_Monster_5 : NSObject{
@@ -20,9 +21,12 @@
     
     CCSprite *monsterSingMouth;
     
-    int cHeight[6];
+    enum status currentStatus;
     
-    int currentHeight;
+    int times;
+    
+    float curHeight;
+    
     
 }
 
@@ -38,9 +42,7 @@
 
 @property(strong ,nonatomic) CCSprite * monster;
 
-@property CGPoint originPos;
 
-@property float nextHeight;
 
 -(id)initWithNode:(CCNode *)node;
 

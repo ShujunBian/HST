@@ -38,6 +38,4 @@
 @property(nonatomic,strong) P3_RemoveEffects *effects;
 
 
-
-
 @end

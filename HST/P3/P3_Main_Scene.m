@@ -10,6 +10,8 @@
 #import "P3_grass.h"
 #import "CCBAnimationManager.h"
 #import "P3_Calculator.h"
+#import "MainMapHelper.h"
+#import "HelloWorldLayer.h"
 
 @implementation P3_Main_Scene
 
@@ -23,6 +25,8 @@
 
 - (void)didLoadFromCCB
 {
+    [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
+
     grass = (P3_grass *)[CCBReader nodeGraphFromFile:@"P3_grass.ccbi"];
     [self addChild:grass z:10];
     
@@ -45,6 +49,8 @@
     monster_4 = [[P3_Monster_4 alloc]initWithNode:self];
     
     monster_5 = [[P3_Monster_5 alloc]initWithNode:self];
+    
+    
     
     
     [self setTouchEnabled:YES];
@@ -160,7 +166,7 @@
     
     CGPoint translation = ccpSub(touchLocation,oldTouchRecord);
     
-     NSLog(@"%f,%f",translation.x,translation.y);
+     //NSLog(@"%f,%f",translation.x,translation.y);
     
     if(touchId == 1 )
     {
@@ -174,7 +180,7 @@
             if(translation.y > 0)
                 [monster_1 createAMonsterBodyWithTranslation:translation];
             else
-                if([monster_1 removeMonsterBodyWithTranslation:translation]==1)
+                if([monster_1 removeMonsterBodyWithTranslation:translation] == 2)
                 {
                     _effects = (P3_RemoveEffects *)[CCBReader nodeGraphFromFile:@"P3_Monster_RemoveEffects.ccbi"];
                     
@@ -200,7 +206,18 @@
             if(translation.y > 0)
                 [monster_2 createAMonsterBodyWithTranslation:translation];
             else
-                [monster_2 removeMonsterBodyWithTranslation:translation];
+                if([monster_2 removeMonsterBodyWithTranslation:translation] == 2)
+                {
+                    _effects = (P3_RemoveEffects *)[CCBReader nodeGraphFromFile:@"P3_Monster_RemoveEffects.ccbi"];
+                    
+                    [_effects setStartColor:ccc4FFromccc3B(MONSTER_2_COLOR)];
+                    
+                    [_effects setEndColor:ccc4FFromccc3B(MONSTER_2_COLOR)];
+                    
+                    [_effects setPosition:CGPointMake(320, 50)];
+                    
+                    [self addChild:_effects z:7];
+                }
             
         }
         
@@ -230,7 +247,18 @@
             if(translation.y > 0)
                 [monster_4 createAMonsterBodyWithTranslation:translation];
             else
-                [monster_4 removeMonsterBodyWithTranslation:translation];
+                if([monster_4 removeMonsterBodyWithTranslation:translation] == 2)
+                {
+                    _effects = (P3_RemoveEffects *)[CCBReader nodeGraphFromFile:@"P3_Monster_RemoveEffects.ccbi"];
+                    
+                    [_effects setStartColor:ccc4FFromccc3B(MONSTER_4_COLOR)];
+                    
+                    [_effects setEndColor:ccc4FFromccc3B(MONSTER_4_COLOR)];
+                    
+                    [_effects setPosition:CGPointMake(730, 50)];
+                    
+                    [self addChild:_effects z:7];
+                }
             
         }
     }
@@ -244,15 +272,17 @@
             if(translation.y > 0)
                 [monster_5 createAMonsterBodyWithTranslation:translation];
             else
-                if([monster_5 removeMonsterBodyWithTranslation:translation] == 1)
+                if([monster_5 removeMonsterBodyWithTranslation:translation] == 2)
                 {
                     _effects = (P3_RemoveEffects *)[CCBReader nodeGraphFromFile:@"P3_Monster_RemoveEffects.ccbi"];
                     
-                    [_effects setPosition:CGPointMake(150, 90)];
+                    [_effects setStartColor:ccc4FFromccc3B(MONSTER_5_COLOR)];
                     
-                    [_effects setTintColor:ccc3(255, 145, 248)];
+                    [_effects setEndColor:ccc4FFromccc3B(MONSTER_5_COLOR)];
                     
-                    [self addChild:_effects];
+                    [_effects setPosition:CGPointMake(880, 50)];
+                    
+                    [self addChild:_effects z:7];
                 }
             
         }
@@ -270,44 +300,54 @@
     {
         [monster_1 revertToPrim];
         
-        monster_1.nextHeight = 103;
-        monster_1.originPos = monster_1.monsterFace.position;
+
     }
     if(touchId == 2)
     {
         
         [monster_2 revertToPrim];
-        
-        monster_2.nextHeight = 103;
-        monster_2.originPos = monster_1.monsterFace.position;
+
         
     }
     if(touchId == 3)
     {
         [monster_3 revertToPrim];
         
-        monster_3.nextHeight = 103;
-        monster_3.originPos = monster_1.monsterFace.position;
-    }
+           }
     if(touchId == 4)
     {
         [monster_4 revertToPrim];
         
-        monster_4.nextHeight = 103;
-        monster_4.originPos = monster_1.monsterFace.position;
+        
     }
     if(touchId == 5)
     {
         [monster_5 revertToPrim];
         
-        monster_5.nextHeight = 103;
-        monster_5.originPos = monster_1.monsterFace.position;
+        
     }
     
     
     touchId = 0;
 }
 
+#pragma mark - 菜单键调用函数 mainMapDelegate
+- (void)restartGameScene
+{
+}
+
+- (void)returnToMainMap
+{
+    [self unscheduleAllSelectors];
+    for (CCNode * child in [self children]) {
+        [child stopAllActions];
+        [child unscheduleAllSelectors];
+    }
+    
+    [[CCDirector sharedDirector] replaceScene:
+     [CCTransitionFade transitionWithDuration:1.0
+                                        scene:[HelloWorldLayer scene]]];
+}
 
 
 @end

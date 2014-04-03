@@ -152,39 +152,23 @@
     
     do {
         
-        int times = 1;
+        float x =self.monsterFace.scaleX - translation.y /181;
         
-        if(self.nextHeight > 130)
+        float y = self.monsterFace.scaleY + translation.y /181;
+        
+        if(x < 0.9)
         {
-            times = self.nextHeight / 130 ;
+            x = 0.9 ;
+            y = 1.11;
         }
         
-        [self.monsterFace setScaleX:1 - translation.y * 0.001 / times];
         
-        [self.monsterFace setScaleY:1 + 0.0016 * translation.y / times];
         
-        if(translation.y > self.nextHeight)
-        {
-            
-            
-            CCScaleTo *scaleTo = [CCScaleTo actionWithDuration:0.2f scaleX:1.20f scaleY:0.83f];
-            
-            [self.monsterFace runAction:scaleTo];
-            
-            currentHeight = cHeight[currentHeight + 1];
-            
-            [self.monsterFace setAnchorPoint:(CGPointMake(0.5, -0.64 * currentHeight))];
-            
-            CCScaleTo *scaleTo2 = [CCScaleTo actionWithDuration:0.2f scaleX:1.0f scaleY:1.0f];
-            
-            [self.monsterFace runAction:scaleTo2];
-            
-            NSLog(@"%f",translation.y);
-            
-            self.nextHeight += 130;
-            
-            
-        }
+        
+        [self.monsterFace setScaleX:x];
+        
+        [self.monsterFace setScaleY:y];
+        
         
         
         

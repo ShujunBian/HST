@@ -10,13 +10,9 @@
 #import "cocos2d.h"
 #import "P3_Monster_1_Body.h"
 #import "P3_RemoveEffects.h"
+#import "P3_Calculator.h"
 
-enum status
-{
-    normalStatus = 0,
-    compressStatus,
-    strechStatus,
-};
+
 
 
 @interface P3_Monster_1 : NSObject {
@@ -31,9 +27,6 @@ enum status
     
     CCSprite *monsterSingMouth;
     
-    int cHeight[6];
-    
-    int currentHeight;
     
     enum status currentStatus;
     
@@ -57,10 +50,6 @@ enum status
 @property(strong ,nonatomic) CCSprite * monster;
 
 
-
-@property CGPoint originPos;
-
-@property float nextHeight;
 
 -(id)initWithNode:(CCNode *)node;
 

@@ -35,10 +35,11 @@
 @property (nonatomic) BOOL isArriveHome;
 @property (nonatomic) BOOL isReadyStart;
 @property (nonatomic) BOOL isCreatingPassage;
+@property (nonatomic) BOOL isUpground;
 
 @property (nonatomic, assign) id<P5_MonsterDelegate> delegate;
 
-
+- (void)rollUpground;
 - (void)moveToUnderground;
 - (void)startRoll;
 - (void)rollfromPoint1:(CGPoint)point1 toPoint2:(CGPoint)point2;
