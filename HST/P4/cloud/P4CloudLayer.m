@@ -19,7 +19,7 @@
 {
 //    [self.cloudTop startAnimationWithDuration:CLOUD_TOP_MOVE_DURATION];
     [self.cloud1 startAnimationWithDuration:CLOUD_1_MOVE_DURATION];
-    [self.cloud2 startAnimationWithDuration:CLOUD_2_MOVE_DURATION];
-    [self.cloud3 startAnimationWithDuration:CLOUD_3_MOVE_DURATION];
+//    [self.cloud2 startAnimationWithDuration:CLOUD_2_MOVE_DURATION];
+//    [self.cloud3 startAnimationWithDuration:CLOUD_3_MOVE_DURATION];
 }
 @end
