@@ -76,10 +76,24 @@
 
 - (void) didLoadFromCCB
 {
+    
+    
     [self.bottleMask removeFromParent];
     [self.bottleMask retain];
+    [self.bottleMask.texture setAntiAliasTexParameters];
+    [self.bottleMask setBlendFunc:(ccBlendFunc){GL_ONE, GL_ZERO}];
+    
     self.water1 = [CCSprite spriteWithFile:@"water1.png"];
+    
+    [self.water1.texture setAntiAliasTexParameters];
+    [self.water1 setBlendFunc:(ccBlendFunc){GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA}];
+//    [self.water1 setBlendFunc:(ccBlendFunc){GL_DST_ALPHA, GL_ZERO}];
+//    self.water1.opacity = 120.0;
+    
+//    [self.water1 setBlendFunc:(ccBlendFunc){GL_ONE, GL_ONE_MINUS_SRC_ALPHA}];
+    
     self.water1.position = self.bottleMask.position;
+//    [self addChild:self.water1];
     self.prePosition = self.bottleMask.position;
     self.preAnchor = self.bottleMask.anchorPoint;
 //    self.bottleMask.anchorPoint = ccp(0,0);
@@ -110,8 +124,8 @@
     self.rightSprayPrePosition = self.sprayRight.position;
     
     
-    [self reorderChild:self.sprayLeft z:1];
-    [self reorderChild:self.sprayRight z:1];
+    [self reorderChild:self.sprayLeft z:15];
+    [self reorderChild:self.sprayRight z:15];
     
     [self schedule:@selector(bubbleUpdate:) interval:0.5f];
     
@@ -162,6 +176,8 @@
     self.waterWaveSprite.position = self.prePosition;
     self.waterWaveSprite.anchorPoint = self.preAnchor;
     
+    
+#warning aaaa
     self.waterBgSprite = [self waterBackgroundSpriteWithTextureSprite:self.water1 maskSprite:self.bottleMask rotate:self.rotate];
     self.waterBgSprite.position = self.prePosition;
     self.waterBgSprite.anchorPoint = self.preAnchor;
@@ -204,9 +220,9 @@
     maskSprite.position = ccp(0,0);
     textureSprite.position = ccp(0,0);
     
-    [rt beginWithClear:255 g:255 b:255 a:255];
-    
-    [maskSprite setBlendFunc:(ccBlendFunc){GL_ONE, GL_ZERO}];
+    [rt beginWithClear:1 g:0 b:0 a:1];
+
+
     [maskSprite visit];
     
     
@@ -221,6 +237,9 @@
     
     for (int i = 0; i < self.waterRecordArray.count; i++)
     {
+        
+//        break;
+        
         P4WaterRecord* record = self.waterRecordArray[self.waterRecordArray.count - 1 - i];
         
 
@@ -231,8 +250,8 @@
         textureSprite.scaleY = record.waveScale;
         textureSprite.color = color;
         
+        [rt setClearColor:ccc4FFromccc3B(color)];
 
-        [textureSprite setBlendFunc:(ccBlendFunc){GL_DST_ALPHA, GL_ZERO}];
         
         //    float maskWidth = maskSprite.texture.contentSize.width;
         
@@ -274,6 +293,8 @@
         
         float fillHeight = BAN_JIN - xianXinJu;
         CGPoint fillLeftTop = pos;
+#warning 写至此处
+//        fillLeftTop.y += 20;
         CGPoint fillRightTop = ccp(fillLeftTop.x + textureWidth * 2 * cos(radius), fillLeftTop.y - textureWidth * 2 * sin(radius));
         
         
@@ -289,15 +310,16 @@
         textureSprite.rotation = preRadius;
         [textureSprite visit];
         textureSprite.position = ccp(textureSprite.position.x + textureWidth * cos(radius), textureSprite.position.y - textureWidth * sin(radius));
-        [textureSprite visit];
+        
         
         if (i == 0)
         {
             ccDrawSolidPoly(clearPoints, 4, ccc4f(0, 0, 0, 0));
         }
 
+
+        [textureSprite visit];
         ccDrawSolidPoly(fillPoints, 4, ccc4FFromccc3B(color));
-        
         height -= record.height;
     }
     
@@ -332,11 +354,11 @@
     float textureWidth = textureSprite.texture.contentSize.width;
     
     
-    [rt beginWithClear:255 g:255 b:255 a:255];
+    [rt beginWithClear:1 g:1 b:1 a:1];
     
-    [maskSprite setBlendFunc:(ccBlendFunc){GL_ONE, GL_ZERO}];
+//    [maskSprite setBlendFunc:(ccBlendFunc){GL_ONE, GL_ZERO}];
     [maskSprite visit];
-    [textureSprite setBlendFunc:(ccBlendFunc){GL_DST_ALPHA, GL_ZERO}];
+//    [textureSprite setBlendFunc:(ccBlendFunc){GL_DST_ALPHA, GL_ZERO}];
 
     
     for (P4WaterRecord* record in self.waterRecordArray)
@@ -353,7 +375,6 @@
         float offset = record.offset;
         //        height = record.height;
         ccColor3B color = record.color;
-        
         //半斤204
         //圆心坐标(181,96)
         height -= record.height;
@@ -386,6 +407,7 @@
         
         if (i == 0)
         {
+            
             CGPoint clearLeftBottom = ccp(pos.x + textureHeight * sin(radius), pos.y + textureHeight * cos(radius));
             CGPoint clearRightBottom = ccp(clearLeftBottom.x + textureWidth * 2 * cos(radius), clearLeftBottom.y - textureWidth * 2 * sin(radius));
             float clearHeight = 408;
