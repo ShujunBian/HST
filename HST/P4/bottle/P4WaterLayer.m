@@ -167,8 +167,8 @@
     //Update Sprite
     [self.waterWaveSprite removeFromParentAndCleanup:YES];
     self.waterWaveSprite = nil;
-    [self.waterBgSprite removeFromParentAndCleanup:YES];
-    self.waterBgSprite = nil;
+//    [self.waterBgSprite removeFromParentAndCleanup:YES];
+//    self.waterBgSprite = nil;
     
     
     [self updateWaterRecord];
@@ -177,15 +177,15 @@
     self.waterWaveSprite.anchorPoint = self.preAnchor;
     
     
-#warning aaaa
-    self.waterBgSprite = [self waterBackgroundSpriteWithTextureSprite:self.water1 maskSprite:self.bottleMask rotate:self.rotate];
-    self.waterBgSprite.position = self.prePosition;
-    self.waterBgSprite.anchorPoint = self.preAnchor;
+//    self.waterBgSprite = [self waterBackgroundSpriteWithTextureSprite:self.water1 maskSprite:self.bottleMask rotate:self.rotate];
+//    self.waterBgSprite.position = self.prePosition;
+//    self.waterBgSprite.anchorPoint = self.preAnchor;
     
     int waterZOrder = WATER_Z_ORDER_START;
     
-    [self addChild:self.waterBgSprite z:waterZOrder++];
+//    [self addChild:self.waterBgSprite z:waterZOrder++];
     [self addChild:self.waterWaveSprite z:(waterZOrder++)];
+    
 }
 - (void)updateWaterRecord
 {
@@ -485,6 +485,7 @@
     waterRecord.height += ADD_WATER_SPEED;
     
     [self waterHeightChange:[self getWaterHeight]];
+    [self.delegate waterHeightChange:[self getWaterHeight]];
     
 }
 - (void)beginReleaseWater

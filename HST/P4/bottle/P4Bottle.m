@@ -227,4 +227,9 @@
     [self.leftFoot stopAllActions];
     [self.rightFoot stopAllActions];
 }
+
+- (void)waterHeightChange:(float)height
+{
+    
+}
 @end
