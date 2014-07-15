@@ -81,7 +81,9 @@
     [self.bottleMask removeFromParent];
     [self.bottleMask retain];
     [self.bottleMask.texture setAntiAliasTexParameters];
-    [self.bottleMask setBlendFunc:(ccBlendFunc){GL_ONE, GL_ZERO}];
+//    [self.bottleMask setBlendFunc:(ccBlendFunc){GL_ONE, GL_ZERO}];
+    [self.bottleMask setBlendFunc:(ccBlendFunc){GL_ONE, GL_ONE_MINUS_SRC_ALPHA}];
+//    self.bottleMask.scale = 0.5;
     
     self.water1 = [CCSprite spriteWithFile:@"water1.png"];
     
@@ -220,8 +222,8 @@
     maskSprite.position = ccp(0,0);
     textureSprite.position = ccp(0,0);
     
-    [rt beginWithClear:1 g:0 b:0 a:1];
-
+    [rt beginWithClear:187.f/255.f g:240.f/255.f b:239.f/255.f a:0];
+//187 240 239
 
     [maskSprite visit];
     
@@ -484,6 +486,7 @@
     }
     waterRecord.height += ADD_WATER_SPEED;
     
+    //更新水花粒子位置、倒入粒子生命
     [self waterHeightChange:[self getWaterHeight]];
     [self.delegate waterHeightChange:[self getWaterHeight]];
     
@@ -531,6 +534,10 @@
             self.fReleaseWater = NO;
             [self.delegate endWaterOut];
         }
+        
+        //更新水花粒子位置、倒入粒子生命
+        [self waterHeightChange:[self getWaterHeight]];
+        [self.delegate waterHeightChange:[self getWaterHeight]];
     }
 }
 

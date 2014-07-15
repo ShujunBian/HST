@@ -230,6 +230,14 @@
 
 - (void)waterHeightChange:(float)height
 {
+    float deltaHeight = self.waterIn.position.y - self.waterLayer.sprayLeft.position.y;
+    float speedY = self.waterIn.speed * sin(ABS(self.waterIn.angle / 180.f * M_PI));
+    
+    float aY = ABS(self.waterIn.gravity.y);
+    
+    float time = (-speedY + sqrt(speedY * speedY + 4 * 1 / 2 * aY * deltaHeight)) / aY;
+    time -= 0.05;
+    self.waterIn.life = time;
     
 }
 @end
