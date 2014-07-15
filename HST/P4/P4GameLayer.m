@@ -265,6 +265,37 @@
 }
 
 #pragma mark - Action
+- (void)hideMonstersExcept:(P4Monster*)monster
+{
+    for (P4Monster* m in self.monstersArray)
+    {
+        if (m != monster)
+        {
+            CGPoint toPosition = ccp(m.position.x, m.position.y - 150);
+            CCActionInterval* moveTo = [CCMoveTo actionWithDuration:0.5f position:toPosition];
+            [m runAction:moveTo];
+        }
+    }
+}
+- (void)showMonstersExcept:(P4Monster*)monster totalDuration:(float)duration
+{
+    for (P4Monster* m in self.monstersArray)
+    {
+        if (m != monster)
+        {
+            float moveDuration = 0.5f;
+            
+            float delayDuration = duration > moveDuration? (duration - moveDuration) : 0;
+            moveDuration = duration - delayDuration;
+            
+            
+            CCDelayTime* delay = [CCDelayTime actionWithDuration:delayDuration];
+            CCActionInterval* moveTo = [CCMoveTo actionWithDuration:moveDuration position:m.prePosition];
+            [m runAction:[CCSequence actionOne:delay two:moveTo]];
+        }
+    }
+}
+
 - (void)monsterPressed:(P4Monster*)monster
 {
     if (self.isMonsterAnimated || monster.isEmpty || self.bottle.isFull)
@@ -274,6 +305,7 @@
     __weak P4GameLayer *weakSelf = self;
     self.isMonsterAnimated = YES;
     [monster beginUpdateWater];
+    
     CCFiniteTimeAction* callOpen = [[CCCallBlock alloc] initWithBlock:^{
         [weakSelf.bottle capOpen];
     }];
@@ -288,7 +320,7 @@
     
 //    int iMonsterIndex = [self.monstersArray indexOfObject:monster];
     float moveDuration = 1.5f;
-    
+    float rotateRadiu = 105.f;
     switch (monster.type)
     {
         case 0:
@@ -323,14 +355,14 @@
     
     
     CCActionInterval* bezierTo = [[CCBezierTo alloc] initWithDuration:moveDuration bezier:config];
-    
+    CCFiniteTimeAction* callHideMonsters = [[CCCallBlock alloc] initWithBlock:^{
+        [weakSelf hideMonstersExcept:monster];
+    }];
     float delayDuration = 0.8f;
     
     CCDelayTime* rotateDelay = [CCDelayTime actionWithDuration:delayDuration];
     
-    CCActionInterval* rotate = [[CCRotateTo alloc] initWithDuration:(moveDuration - delayDuration) angle:105];
-    
-    
+    CCActionInterval* rotate = [[CCRotateTo alloc] initWithDuration:(moveDuration - delayDuration) angle:rotateRadiu];
     
     CCActionInterval* spawn = [CCSpawn actionWithArray:@[bezierTo, [CCSequence actionOne:rotateDelay two:rotate]]];
     
@@ -347,17 +379,71 @@
         [self.bottle stopWaterIn];
     }];
     
-    CCFiniteTimeAction* rotateBack = [[CCRotateTo alloc] initWithDuration:1.f angle:0];
+
     CCFiniteTimeAction* callClose = [[CCCallBlock alloc] initWithBlock:^{
         [weakSelf.bottle capClose];
     }];
-    CCFiniteTimeAction* moveBack = [[CCMoveTo alloc] initWithDuration:1.f position:monster.prePosition];
+    
+
+//    CCActionInterval* moveBack = [[CCMoveTo alloc] initWithDuration:1.f position:monster.prePosition];
+    
+    ccBezierConfig configBack;
+    configBack.endPosition = monster.prePosition;
+    
+    float moveBackDuration = 1.5f;
+    float rotateBackDuration = 0.7f;
+    switch (monster.type)
+    {
+        case 0:
+        {
+            configBack.controlPoint_1 = ccp(self.pourWaterPoint.x - 300, self.pourWaterPoint.y + 100);
+            configBack.controlPoint_2 = ccp(monster.prePosition.x - 100, monster.position.y + 300);
+            moveBackDuration = 1.8f;
+            break;
+        }
+        case 1:
+        {
+            configBack.controlPoint_1 = ccp(self.pourWaterPoint.x - 200, self.pourWaterPoint.y + 100);
+            configBack.controlPoint_2 = ccp(monster.prePosition.x - 200, monster.position.y + 200);
+
+            break;
+        }
+        case 2:
+        {
+            configBack.controlPoint_1 = ccp(self.pourWaterPoint.x - 200, self.pourWaterPoint.y + 100);
+            configBack.controlPoint_2 = ccp(monster.prePosition.x - 300, monster.position.y + 200);
+
+            break;
+        }
+        case 3:
+        {
+            break;
+        }
+        case 4:
+        default:
+        {
+            break;
+        }
+    }
+    
+    CCActionInterval* bezierBack = [[CCBezierTo alloc] initWithDuration:moveBackDuration bezier:configBack];
+    
+    CCActionInterval* rotateBack = [[CCRotateTo alloc] initWithDuration:rotateBackDuration angle:0];
+    CCSpawn* spawnBack = [CCSpawn actionWithArray:@[bezierBack, rotateBack]];
+    
+    CCFiniteTimeAction* callShowMonsters = [[CCCallBlock alloc] initWithBlock:^{
+        [weakSelf showMonstersExcept:monster totalDuration:moveBackDuration];
+    }];
+    
+//    CCActionInterval* easeOutBack = [CCEaseSineOut actionWithAction:spawnBack ];
+    CCActionInterval* easeOutBack = [CCEaseOut actionWithAction:spawnBack rate:1.05f];
+    
     CCFiniteTimeAction* finish = [[CCCallBlock alloc] initWithBlock:^{
         weakSelf.isMonsterAnimated = NO;
         [monster endUpdateWater];
     }];
     
-    CCSequence* sequence = [CCSequence actions:callOpen, outTo, beginAddWater, delay2, endAddWater, rotateBack, callClose, moveBack, finish, nil];
+    CCSequence* sequence = [CCSequence actions:callOpen, callHideMonsters, outTo, beginAddWater, delay2, endAddWater, callClose, callShowMonsters, easeOutBack, finish, nil];
     
     [monster runAction:sequence];
 }
