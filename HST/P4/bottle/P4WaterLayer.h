@@ -17,6 +17,9 @@
 - (void)waterOutColorChange:(ccColor3B)color;
 - (void)endWaterOut;
 
+
+- (void)waterHeightChange:(float)height;
+
 @end
 
 @interface P4WaterLayer : CCNode

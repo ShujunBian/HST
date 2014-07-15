@@ -1,4 +1,4 @@
-# Exclude the build directory
+ude the build directory
 build/*
  
 # Exclude temp nibs and swap files
@@ -17,3 +17,4 @@ DS_Store
 *.perspectivev3
 *.pbxuser
 xcuserdata
+

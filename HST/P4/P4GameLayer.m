@@ -270,8 +270,21 @@
     CCFiniteTimeAction* callOpen = [[CCCallBlock alloc] initWithBlock:^{
         [weakSelf.bottle capOpen];
     }];
+    
+    
+    
     CCFiniteTimeAction* moveTo = [[CCMoveTo alloc] initWithDuration:1.f position:self.pourWaterPoint];
 //    CCFiniteTimeAction* delay = [[CCDelayTime alloc] initWithDuration:1.f];
+
+    ccBezierConfig config;
+    config.endPosition = self.pourWaterPoint;
+    config.controlPoint_1 = ccp(monster.position.x - 200, monster.position.y + 200);
+    config.controlPoint_2 = ccp(self.pourWaterPoint.x - 200, self.pourWaterPoint.y);
+
+    
+    CCActionInterval* bezierTo = [[CCBezierTo alloc] initWithDuration:1.5f bezier:config];
+//    CCEaseInOut* inOutTo = [CCEaseInOut actionWithAction:bezierTo rate:1.5f];
+    CCEaseSineInOut* inOutTo = [CCEaseSineInOut actionWithAction:bezierTo];
 
     CCFiniteTimeAction* rotate = [[CCRotateTo alloc] initWithDuration:1.f angle:105];
     
@@ -295,7 +308,7 @@
         [monster endUpdateWater];
     }];
     
-    CCSequence* sequence = [CCSequence actions:callOpen, moveTo, rotate, beginAddWater, delay2, endAddWater, rotateBack, callClose, moveBack, finish, nil];
+    CCSequence* sequence = [CCSequence actions:callOpen, inOutTo, rotate, beginAddWater, delay2, endAddWater, rotateBack, callClose, moveBack, finish, nil];
     
     [monster runAction:sequence];
 }
