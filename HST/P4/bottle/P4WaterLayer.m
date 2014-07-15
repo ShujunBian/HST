@@ -562,8 +562,6 @@
     }
 }
 
-
-
 - (void)mergeWater
 {
     if (!self.isMergingWater)
@@ -581,10 +579,16 @@
         aveR = totalR / totalHeight;
         aveG = totalG / totalHeight;
         aveB = totalB / totalHeight;
-        
-        ccColor3B finalColor = [self adjustColorR:aveR g:aveG b:aveB];
-        
-        
+       
+        ccColor3B finalColor;
+        if (self.waterRecordArray.count <= 1)
+        {
+            finalColor = ccc3(aveR, aveG, aveB);
+        }
+        else
+        {
+            finalColor = [self adjustColorR:aveR g:aveG b:aveB];
+        }
         
         for (P4WaterRecord* record in self.waterRecordArray)
         {

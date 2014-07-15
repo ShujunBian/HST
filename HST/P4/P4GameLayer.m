@@ -123,22 +123,29 @@
 
 //Monster Init
     self.monstersArray = [[CCArray alloc] init];
-    
+    //设置monsters数组
     [self.monstersArray addObject:self.greenMonster];
-    [self.monstersArray addObject:self.brownMonster];
+    [self.monstersArray addObject:self.yellowMonster];
     [self.monstersArray addObject:self.purpleMonster];
     [self.monstersArray addObject:self.blueMonster];
-    [self.monstersArray addObject:self.yellowMonster];
+    [self.monstersArray addObject:self.redMonster];
+    
+    //设置monster type
+    for (int i = 0; i < self.monstersArray.count; i++)
+    {
+        P4Monster* monster = [self.monstersArray objectAtIndex:i];
+        monster.type = (P4MonsterType)i;
+    }
     
     for (P4Monster* monster in self.monstersArray)
     {
         [monster prePositionInit];
     }
     self.greenMonster.waterColor = ccc3(68.f, 255.f, 25.f);
-    self.brownMonster.waterColor = ccc3(255.f, 252.f, 62.f);
+    self.yellowMonster.waterColor = ccc3(255.f, 252.f, 62.f);
     self.purpleMonster.waterColor = ccc3(255.f, 97.f, 242.f);
     self.blueMonster.waterColor = ccc3(50.f, 248.f, 255.f);
-    self.yellowMonster.waterColor = ccc3(254.f, 70.f, 100.f);
+    self.redMonster.waterColor = ccc3(254.f, 70.f, 100.f);
     
     self.isMonsterAnimated = NO;
     self.isTouchBottle = NO;
@@ -273,16 +280,47 @@
     
     
     
-    CCFiniteTimeAction* moveTo = [[CCMoveTo alloc] initWithDuration:1.f position:self.pourWaterPoint];
+//    CCFiniteTimeAction* moveTo = [[CCMoveTo alloc] initWithDuration:1.f position:self.pourWaterPoint];
 //    CCFiniteTimeAction* delay = [[CCDelayTime alloc] initWithDuration:1.f];
 
     ccBezierConfig config;
     config.endPosition = self.pourWaterPoint;
-    config.controlPoint_1 = ccp(monster.position.x - 200, monster.position.y + 200);
-    config.controlPoint_2 = ccp(self.pourWaterPoint.x - 200, self.pourWaterPoint.y + 100);
-
     
+//    int iMonsterIndex = [self.monstersArray indexOfObject:monster];
     float moveDuration = 1.5f;
+    
+    switch (monster.type)
+    {
+        case 0:
+        {
+            config.controlPoint_1 = ccp(monster.position.x - 100, monster.position.y + 300);
+            config.controlPoint_2 = ccp(self.pourWaterPoint.x - 200, self.pourWaterPoint.y + 100);
+            moveDuration = 1.8f;
+            break;
+        }
+        case 1:
+        {
+            config.controlPoint_1 = ccp(monster.position.x - 200, monster.position.y + 200);
+            config.controlPoint_2 = ccp(self.pourWaterPoint.x - 200, self.pourWaterPoint.y + 100);
+            break;
+        }
+        case 2:
+        {
+            config.controlPoint_1 = ccp(monster.position.x - 300, monster.position.y + 200);
+            config.controlPoint_2 = ccp(self.pourWaterPoint.x - 100, self.pourWaterPoint.y + 100);
+            break;
+        }
+        case 3:
+        {
+            break;
+        }
+        case 4:
+        default:
+        {
+            break;
+        }
+    }
+    
     
     CCActionInterval* bezierTo = [[CCBezierTo alloc] initWithDuration:moveDuration bezier:config];
     

@@ -47,7 +47,8 @@
 {
     self.animationManager = self.userObject;
     
-    [self.waterIn stopSystem];
+    [self.waterInLeft stopSystem];
+    [self.waterInRight stopSystem];
     [self.waterOut1 stopSystem];
     [self.waterOut2 stopSystem];
     self.addCount = 0;
@@ -155,23 +156,23 @@
 - (void)startWaterIn:(P4Monster*)monster
 {
     [monster startWaterDecrease];
-    [self.waterIn resetSystem];
+    [self.waterInLeft resetSystem];
 
     
     CGRect bottleRect = [self.bottleMain getRect];
     CGPoint pourWaterPoint = CGPointMake(bottleRect.origin.x + bottleRect.size.width / 2 - 100, bottleRect.origin.y + bottleRect.size.height + 50);
     
-    self.waterIn.position = ccp(pourWaterPoint.x + [monster getRect].size.height / 2 - 4, pourWaterPoint.y);
+    self.waterInLeft.position = ccp(pourWaterPoint.x + [monster getRect].size.height / 2 - 4, pourWaterPoint.y);
     
-    self.waterIn.startColor = ccc4f(monster.waterColor.r / 255.f, monster.waterColor.g / 255.f, monster.waterColor.b / 255.f, 1.f);
-    self.waterIn.endColor = self.waterIn.startColor;
+    self.waterInLeft.startColor = ccc4f(monster.waterColor.r / 255.f, monster.waterColor.g / 255.f, monster.waterColor.b / 255.f, 1.f);
+    self.waterInLeft.endColor = self.waterInLeft.startColor;
     
-    [self performSelector:@selector(beginAddWater:) withObject:monster afterDelay:self.waterIn.life];
+    [self performSelector:@selector(beginAddWater:) withObject:monster afterDelay:self.waterInLeft.life];
 }
 - (void)stopWaterIn
 {
-    [self.waterIn stopSystem];
-    [self performSelector:@selector(endAddWater) withObject:nil afterDelay:self.waterIn.life];
+    [self.waterInLeft stopSystem];
+    [self performSelector:@selector(endAddWater) withObject:nil afterDelay:self.waterInLeft.life];
 }
 
 - (CGRect)getRect
@@ -232,14 +233,14 @@
 {
     //调整waterIn life
     
-    float deltaHeight = self.waterIn.position.y - self.waterLayer.sprayLeft.position.y;
-    float speedY = self.waterIn.speed * sin(ABS(self.waterIn.angle / 180.f * M_PI));
+    float deltaHeight = self.waterInLeft.position.y - self.waterLayer.sprayLeft.position.y;
+    float speedY = self.waterInLeft.speed * sin(ABS(self.waterInLeft.angle / 180.f * M_PI));
     
-    float aY = ABS(self.waterIn.gravity.y);
+    float aY = ABS(self.waterInLeft.gravity.y);
     
     float time = (-speedY + sqrt(speedY * speedY + 4 * 1 / 2 * aY * deltaHeight)) / aY;
     time -= 0.05;
-    self.waterIn.life = time;
+    self.waterInLeft.life = time;
     
 }
 @end

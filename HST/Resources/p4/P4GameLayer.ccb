@@ -167,8 +167,6 @@
 						<string>P4Bottle.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -288,9 +286,9 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>brownMonster</string>
+				<string>yellowMonster</string>
 				<key>memberVarAssignmentName</key>
-				<string>_brownMonster</string>
+				<string>_yellowMonster</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -438,9 +436,9 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>yellowMonster</string>
+				<string>redMonster</string>
 				<key>memberVarAssignmentName</key>
-				<string>_yellowMonster</string>
+				<string>_redMonster</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -452,7 +450,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>914</real>
+							<real>904</real>
 							<real>110</real>
 							<integer>0</integer>
 						</array>

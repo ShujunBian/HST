@@ -785,8 +785,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -800,7 +798,7 @@
 				<key>displayName</key>
 				<string>waterIn</string>
 				<key>memberVarAssignmentName</key>
-				<string>_waterIn</string>
+				<string>_waterInLeft</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
