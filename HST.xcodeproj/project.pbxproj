@@ -7,23 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1801E52218E58F15004E0856 /* P3_Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E50118E58F15004E0856 /* P3_Calculator.m */; };
-		1801E52318E58F15004E0856 /* P3_Flower.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E50318E58F15004E0856 /* P3_Flower.m */; };
-		1801E52418E58F15004E0856 /* P3_Flower_behind.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E50518E58F15004E0856 /* P3_Flower_behind.m */; };
-		1801E52518E58F15004E0856 /* P3_grass.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E50718E58F15004E0856 /* P3_grass.m */; };
-		1801E52618E58F15004E0856 /* P3_Main_Scene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E50918E58F15004E0856 /* P3_Main_Scene.m */; };
-		1801E52718E58F15004E0856 /* P3_Monster_1.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E50B18E58F15004E0856 /* P3_Monster_1.m */; };
-		1801E52818E58F15004E0856 /* P3_Monster_1_Body.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E50D18E58F15004E0856 /* P3_Monster_1_Body.m */; };
-		1801E52918E58F15004E0856 /* P3_Monster_2.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E50F18E58F15004E0856 /* P3_Monster_2.m */; };
-		1801E52A18E58F15004E0856 /* P3_Monster_2_Body.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E51118E58F15004E0856 /* P3_Monster_2_Body.m */; };
-		1801E52B18E58F15004E0856 /* P3_Monster_3.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E51318E58F15004E0856 /* P3_Monster_3.m */; };
-		1801E52C18E58F15004E0856 /* P3_Monster_3_Body.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E51518E58F15004E0856 /* P3_Monster_3_Body.m */; };
-		1801E52D18E58F15004E0856 /* P3_Monster_4.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E51718E58F15004E0856 /* P3_Monster_4.m */; };
-		1801E52E18E58F15004E0856 /* P3_Monster_4_Body.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E51918E58F15004E0856 /* P3_Monster_4_Body.m */; };
-		1801E52F18E58F15004E0856 /* P3_Monster_5.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E51B18E58F15004E0856 /* P3_Monster_5.m */; };
-		1801E53018E58F15004E0856 /* P3_Monster_5_Body.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E51D18E58F15004E0856 /* P3_Monster_5_Body.m */; };
-		1801E53118E58F15004E0856 /* P3_Mushroom.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E51F18E58F15004E0856 /* P3_Mushroom.m */; };
-		1801E53218E58F15004E0856 /* P3_RemoveEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1801E52118E58F15004E0856 /* P3_RemoveEffects.m */; };
 		1801E59C18E58F3D004E0856 /* P3_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1801E53618E58F3C004E0856 /* P3_background-hd.png */; };
 		1801E59D18E58F3D004E0856 /* P3_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 1801E53718E58F3C004E0856 /* P3_background.png */; };
 		1801E59E18E58F3D004E0856 /* P3_bell-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 1801E53818E58F3C004E0856 /* P3_bell-hd.png */; };
@@ -804,40 +787,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1801E50018E58F15004E0856 /* P3_Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Calculator.h; sourceTree = "<group>"; };
-		1801E50118E58F15004E0856 /* P3_Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Calculator.m; sourceTree = "<group>"; };
-		1801E50218E58F15004E0856 /* P3_Flower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Flower.h; sourceTree = "<group>"; };
-		1801E50318E58F15004E0856 /* P3_Flower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Flower.m; sourceTree = "<group>"; };
-		1801E50418E58F15004E0856 /* P3_Flower_behind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Flower_behind.h; sourceTree = "<group>"; };
-		1801E50518E58F15004E0856 /* P3_Flower_behind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Flower_behind.m; sourceTree = "<group>"; };
-		1801E50618E58F15004E0856 /* P3_grass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_grass.h; sourceTree = "<group>"; };
-		1801E50718E58F15004E0856 /* P3_grass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_grass.m; sourceTree = "<group>"; };
-		1801E50818E58F15004E0856 /* P3_Main_Scene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Main_Scene.h; sourceTree = "<group>"; };
-		1801E50918E58F15004E0856 /* P3_Main_Scene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Main_Scene.m; sourceTree = "<group>"; };
-		1801E50A18E58F15004E0856 /* P3_Monster_1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster_1.h; sourceTree = "<group>"; };
-		1801E50B18E58F15004E0856 /* P3_Monster_1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster_1.m; sourceTree = "<group>"; };
-		1801E50C18E58F15004E0856 /* P3_Monster_1_Body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster_1_Body.h; sourceTree = "<group>"; };
-		1801E50D18E58F15004E0856 /* P3_Monster_1_Body.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster_1_Body.m; sourceTree = "<group>"; };
-		1801E50E18E58F15004E0856 /* P3_Monster_2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster_2.h; sourceTree = "<group>"; };
-		1801E50F18E58F15004E0856 /* P3_Monster_2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster_2.m; sourceTree = "<group>"; };
-		1801E51018E58F15004E0856 /* P3_Monster_2_Body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster_2_Body.h; sourceTree = "<group>"; };
-		1801E51118E58F15004E0856 /* P3_Monster_2_Body.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster_2_Body.m; sourceTree = "<group>"; };
-		1801E51218E58F15004E0856 /* P3_Monster_3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster_3.h; sourceTree = "<group>"; };
-		1801E51318E58F15004E0856 /* P3_Monster_3.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster_3.m; sourceTree = "<group>"; };
-		1801E51418E58F15004E0856 /* P3_Monster_3_Body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster_3_Body.h; sourceTree = "<group>"; };
-		1801E51518E58F15004E0856 /* P3_Monster_3_Body.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster_3_Body.m; sourceTree = "<group>"; };
-		1801E51618E58F15004E0856 /* P3_Monster_4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster_4.h; sourceTree = "<group>"; };
-		1801E51718E58F15004E0856 /* P3_Monster_4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster_4.m; sourceTree = "<group>"; };
-		1801E51818E58F15004E0856 /* P3_Monster_4_Body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster_4_Body.h; sourceTree = "<group>"; };
-		1801E51918E58F15004E0856 /* P3_Monster_4_Body.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster_4_Body.m; sourceTree = "<group>"; };
-		1801E51A18E58F15004E0856 /* P3_Monster_5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster_5.h; sourceTree = "<group>"; };
-		1801E51B18E58F15004E0856 /* P3_Monster_5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster_5.m; sourceTree = "<group>"; };
-		1801E51C18E58F15004E0856 /* P3_Monster_5_Body.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster_5_Body.h; sourceTree = "<group>"; };
-		1801E51D18E58F15004E0856 /* P3_Monster_5_Body.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster_5_Body.m; sourceTree = "<group>"; };
-		1801E51E18E58F15004E0856 /* P3_Mushroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Mushroom.h; sourceTree = "<group>"; };
-		1801E51F18E58F15004E0856 /* P3_Mushroom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Mushroom.m; sourceTree = "<group>"; };
-		1801E52018E58F15004E0856 /* P3_RemoveEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_RemoveEffects.h; sourceTree = "<group>"; };
-		1801E52118E58F15004E0856 /* P3_RemoveEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_RemoveEffects.m; sourceTree = "<group>"; };
 		1801E53618E58F3C004E0856 /* P3_background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P3_background-hd.png"; sourceTree = "<group>"; };
 		1801E53718E58F3C004E0856 /* P3_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P3_background.png; sourceTree = "<group>"; };
 		1801E53818E58F3C004E0856 /* P3_bell-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P3_bell-hd.png"; sourceTree = "<group>"; };
@@ -1709,7 +1658,7 @@
 		EF0FFF2819742F3C00C3DBCC /* p4_cloud_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4_cloud_top.png; sourceTree = "<group>"; };
 		EF0FFF2919742F3C00C3DBCC /* hst_p4.ccbproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = hst_p4.ccbproj; sourceTree = "<group>"; };
 		EF0FFF2A19742F3C00C3DBCC /* hst_p4.ccbresourcelog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hst_p4.ccbresourcelog; sourceTree = "<group>"; };
-		EF0FFF2C19742F3C00C3DBCC /* DS_Store */ = {isa = PBXFileReference; lastKnownFileType = file; path = DS_Store; sourceTree = "<group>"; };
+		EF0FFF2C19742F3C00C3DBCC /* DS_Store */ = {isa = PBXFileReference; lastKnownFileType = text; path = DS_Store; sourceTree = "<group>"; };
 		EF0FFF2E19742F3C00C3DBCC /* imageRename.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = imageRename.py; sourceTree = "<group>"; };
 		EF0FFF2F19742F3C00C3DBCC /* P4_monster1_mask-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P4_monster1_mask-hd.png"; sourceTree = "<group>"; };
 		EF0FFF3019742F3C00C3DBCC /* P4_monster1_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P4_monster1_mask.png; sourceTree = "<group>"; };
@@ -1836,47 +1785,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1801E4FF18E58F15004E0856 /* P3 */ = {
-			isa = PBXGroup;
-			children = (
-				1801E50018E58F15004E0856 /* P3_Calculator.h */,
-				1801E50118E58F15004E0856 /* P3_Calculator.m */,
-				1801E50218E58F15004E0856 /* P3_Flower.h */,
-				1801E50318E58F15004E0856 /* P3_Flower.m */,
-				1801E50418E58F15004E0856 /* P3_Flower_behind.h */,
-				1801E50518E58F15004E0856 /* P3_Flower_behind.m */,
-				1801E50618E58F15004E0856 /* P3_grass.h */,
-				1801E50718E58F15004E0856 /* P3_grass.m */,
-				1801E50818E58F15004E0856 /* P3_Main_Scene.h */,
-				1801E50918E58F15004E0856 /* P3_Main_Scene.m */,
-				1801E50A18E58F15004E0856 /* P3_Monster_1.h */,
-				1801E50B18E58F15004E0856 /* P3_Monster_1.m */,
-				1801E50C18E58F15004E0856 /* P3_Monster_1_Body.h */,
-				1801E50D18E58F15004E0856 /* P3_Monster_1_Body.m */,
-				1801E50E18E58F15004E0856 /* P3_Monster_2.h */,
-				1801E50F18E58F15004E0856 /* P3_Monster_2.m */,
-				1801E51018E58F15004E0856 /* P3_Monster_2_Body.h */,
-				1801E51118E58F15004E0856 /* P3_Monster_2_Body.m */,
-				1801E51218E58F15004E0856 /* P3_Monster_3.h */,
-				1801E51318E58F15004E0856 /* P3_Monster_3.m */,
-				1801E51418E58F15004E0856 /* P3_Monster_3_Body.h */,
-				1801E51518E58F15004E0856 /* P3_Monster_3_Body.m */,
-				1801E51618E58F15004E0856 /* P3_Monster_4.h */,
-				1801E51718E58F15004E0856 /* P3_Monster_4.m */,
-				1801E51818E58F15004E0856 /* P3_Monster_4_Body.h */,
-				1801E51918E58F15004E0856 /* P3_Monster_4_Body.m */,
-				1801E51A18E58F15004E0856 /* P3_Monster_5.h */,
-				1801E51B18E58F15004E0856 /* P3_Monster_5.m */,
-				1801E51C18E58F15004E0856 /* P3_Monster_5_Body.h */,
-				1801E51D18E58F15004E0856 /* P3_Monster_5_Body.m */,
-				1801E51E18E58F15004E0856 /* P3_Mushroom.h */,
-				1801E51F18E58F15004E0856 /* P3_Mushroom.m */,
-				1801E52018E58F15004E0856 /* P3_RemoveEffects.h */,
-				1801E52118E58F15004E0856 /* P3_RemoveEffects.m */,
-			);
-			path = P3;
-			sourceTree = "<group>";
-		};
 		1801E53318E58F3C004E0856 /* P3_Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -2136,7 +2044,6 @@
 			isa = PBXGroup;
 			children = (
 				1801E72F18E594FC004E0856 /* P4 */,
-				1801E4FF18E58F15004E0856 /* P3 */,
 				5169D0B418CDEC1300426E6C /* CCBReader */,
 				5169CDED18CDE6DE00426E6C /* Category */,
 				5169CD8618CDE64100426E6C /* Mainmap */,
@@ -4047,7 +3954,6 @@
 				5169CD0F18CDE5EE00426E6C /* ccUtils.c in Sources */,
 				5169CC6018CDE5ED00426E6C /* CCLayer.m in Sources */,
 				5169CCC218CDE5EE00426E6C /* CCTileMapAtlas.m in Sources */,
-				1801E52D18E58F15004E0856 /* P3_Monster_4.m in Sources */,
 				5169CCC518CDE5EE00426E6C /* CCTMXLayer.m in Sources */,
 				5199791518D000DF006A1FD8 /* MainMapHelper.m in Sources */,
 				5169CD5D18CDE5EE00426E6C /* mat4.c in Sources */,
@@ -4056,14 +3962,12 @@
 				5169CDEA18CDE6D900426E6C /* P5_UndergroundHole.m in Sources */,
 				5169CC4E18CDE5ED00426E6C /* ccGLStateCache.m in Sources */,
 				5169D0C118CDEC1300426E6C /* CCBAnimationManager.m in Sources */,
-				1801E52518E58F15004E0856 /* P3_grass.m in Sources */,
 				5169CD2018CDE5EE00426E6C /* TransformUtils.m in Sources */,
 				5169CC6D18CDE5ED00426E6C /* CCNode+Debug.m in Sources */,
 				5169CC4818CDE5ED00426E6C /* ccFPSImages.m in Sources */,
 				5169CDE018CDE6D900426E6C /* NSNotificationCenter+Addition.m in Sources */,
 				5169CCCE18CDE5EE00426E6C /* CCTMXXMLParser.m in Sources */,
 				5169D0C518CDEC1300426E6C /* CCBSequenceProperty.m in Sources */,
-				1801E52918E58F15004E0856 /* P3_Monster_2.m in Sources */,
 				5169CD6518CDE5EE00426E6C /* ray2.c in Sources */,
 				5169CD9B18CDE67C00426E6C /* P1_MonsterEye.m in Sources */,
 				5169CD0018CDE5EE00426E6C /* base64.c in Sources */,
@@ -4089,7 +3993,6 @@
 				5169CD9918CDE67C00426E6C /* P1_GameScene.m in Sources */,
 				5169CCB918CDE5EE00426E6C /* CCTextureAtlas.m in Sources */,
 				5169CD6718CDE5EE00426E6C /* utility.c in Sources */,
-				1801E52318E58F15004E0856 /* P3_Flower.m in Sources */,
 				5169CDE118CDE6D900426E6C /* P5_Bell.m in Sources */,
 				5169CDE418CDE6D900426E6C /* P5_GameScene.m in Sources */,
 				5169CD1318CDE5EE00426E6C /* CCVertex.m in Sources */,
@@ -4097,20 +4000,17 @@
 				5169CD1918CDE5EE00426E6C /* NSThread+performBlock.m in Sources */,
 				5169CD9518CDE67C00426E6C /* P1_BlowDetecter.m in Sources */,
 				5169CC2018CDE5ED00426E6C /* CCActionTiledGrid.m in Sources */,
-				1801E52818E58F15004E0856 /* P3_Monster_1_Body.m in Sources */,
 				5169CC6718CDE5ED00426E6C /* CCMenuItem.m in Sources */,
 				5169CC0218CDE5ED00426E6C /* CCActionCamera.m in Sources */,
 				5169CDC418CDE6B200426E6C /* P2_Mushroom.m in Sources */,
 				5169CD3418CDE5EE00426E6C /* CDXPropertyModifierAction.m in Sources */,
 				5169CD0418CDE5EE00426E6C /* CCArray.m in Sources */,
-				1801E53218E58F15004E0856 /* P3_RemoveEffects.m in Sources */,
 				5169CD6118CDE5EE00426E6C /* plane.c in Sources */,
 				5169CD0D18CDE5EE00426E6C /* CCProfiling.m in Sources */,
 				5169CCA418CDE5ED00426E6C /* CCShaderCache.m in Sources */,
 				1801E74C18E594FC004E0856 /* P4Cloud.m in Sources */,
 				5169CCAA18CDE5ED00426E6C /* CCSprite.m in Sources */,
 				1801E74E18E594FC004E0856 /* CCSprite+getRect.m in Sources */,
-				1801E53018E58F15004E0856 /* P3_Monster_5_Body.m in Sources */,
 				5169CC5118CDE5ED00426E6C /* CCGrabber.m in Sources */,
 				5169CD5B18CDE5EE00426E6C /* mat3.c in Sources */,
 				5169CD7518CDE5EE00426E6C /* AppDelegate.m in Sources */,
@@ -4120,7 +4020,6 @@
 				5169CC7318CDE5ED00426E6C /* CCParallaxNode.m in Sources */,
 				5169CD7B18CDE5EE00426E6C /* IntroLayer.m in Sources */,
 				5169CC0B18CDE5ED00426E6C /* CCActionGrid.m in Sources */,
-				1801E52718E58F15004E0856 /* P3_Monster_1.m in Sources */,
 				5169CC5418CDE5ED00426E6C /* CCGrid.m in Sources */,
 				5169CDBD18CDE6B200426E6C /* P2_GrassLayer.m in Sources */,
 				5169CDB818CDE6B200426E6C /* P2_CalculateHelper.m in Sources */,
@@ -4128,20 +4027,14 @@
 				5169CD6318CDE5EE00426E6C /* quaternion.c in Sources */,
 				5169CCB018CDE5ED00426E6C /* CCSpriteFrame.m in Sources */,
 				1801E74918E594FC004E0856 /* P4Bottle.m in Sources */,
-				1801E52C18E58F15004E0856 /* P3_Monster_3_Body.m in Sources */,
-				1801E52618E58F15004E0856 /* P3_Main_Scene.m in Sources */,
 				5169CDBC18CDE6B200426E6C /* P2_GameScene.m in Sources */,
 				5169CC1D18CDE5ED00426E6C /* CCActionProgressTimer.m in Sources */,
-				1801E52218E58F15004E0856 /* P3_Calculator.m in Sources */,
 				5169CBFF18CDE5ED00426E6C /* CCAction.m in Sources */,
 				1801E74B18E594FC004E0856 /* P4WaterRecord.m in Sources */,
-				1801E52E18E58F15004E0856 /* P3_Monster_4_Body.m in Sources */,
 				5169CD3718CDE5EE00426E6C /* CocosDenshion.m in Sources */,
-				1801E53118E58F15004E0856 /* P3_Mushroom.m in Sources */,
 				5169CCBC18CDE5EE00426E6C /* CCTextureCache.m in Sources */,
 				5169CD5F18CDE5EE00426E6C /* neon_matrix_impl.c in Sources */,
 				5169CC8F18CDE5ED00426E6C /* CCScene.m in Sources */,
-				1801E52A18E58F15004E0856 /* P3_Monster_2_Body.m in Sources */,
 				5169CC0E18CDE5ED00426E6C /* CCActionGrid3D.m in Sources */,
 				1801E74A18E594FC004E0856 /* P4WaterLayer.m in Sources */,
 				5169CD5718CDE5EE00426E6C /* mat4stack.c in Sources */,
@@ -4181,11 +4074,9 @@
 				5169CC1418CDE5ED00426E6C /* CCActionInterval.m in Sources */,
 				5169CC8218CDE5ED00426E6C /* CCPhysicsDebugNode.m in Sources */,
 				5169CD9718CDE67C00426E6C /* P1_BubbleBomb.m in Sources */,
-				1801E52418E58F15004E0856 /* P3_Flower_behind.m in Sources */,
 				5169CC0818CDE5ED00426E6C /* CCActionEase.m in Sources */,
 				5169CDB918CDE6B200426E6C /* P2_Flower.m in Sources */,
 				5169CDC018CDE6B200426E6C /* P2_LittleMonster.m in Sources */,
-				1801E52B18E58F15004E0856 /* P3_Monster_3.m in Sources */,
 				5169CC4518CDE5ED00426E6C /* CCFontDefinition.m in Sources */,
 				5169CC8518CDE5ED00426E6C /* CCPhysicsSprite.mm in Sources */,
 				5169CD6918CDE5EE00426E6C /* vec2.c in Sources */,
@@ -4200,7 +4091,6 @@
 				5169CCDB18CDE5EE00426E6C /* cocos2d.m in Sources */,
 				5169CC8818CDE5ED00426E6C /* CCProgressTimer.m in Sources */,
 				1801E74D18E594FC004E0856 /* P4CloudLayer.m in Sources */,
-				1801E52F18E58F15004E0856 /* P3_Monster_5.m in Sources */,
 				5169CC5D18CDE5ED00426E6C /* CCLabelTTF.m in Sources */,
 				5169CD0A18CDE5EE00426E6C /* CCFileUtils.m in Sources */,
 				5169CCF718CDE5EE00426E6C /* CCEventDispatcher.m in Sources */,
