@@ -1,5 +1,5 @@
 //
-//  P3_Mushroom.h
+//  P3_Monster1.h
 //  HST
 //
 //  Created by Emerson on 14-7-10.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 
-@interface P3_Mushroom : CCNode {
+@interface P3_Monster1 : CCNode {
     
 }
 

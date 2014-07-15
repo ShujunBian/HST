@@ -1,14 +1,14 @@
 //
-//  P3_Mushroom.m
+//  purpMonster.m
 //  HST
 //
 //  Created by Emerson on 14-7-10.
 //  Copyright 2014年 Emerson. All rights reserved.
 //
 
-#import "P3_Mushroom.h"
+#import "purpMonster.h"
 
 
-@implementation P3_Mushroom
+@implementation purpMonster
 
 @end
