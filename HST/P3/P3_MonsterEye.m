@@ -10,4 +10,14 @@
 
 @implementation P3_MonsterEye
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        self.monsterEyeSprites = [NSMutableArray arrayWithCapacity:4];
+        self.monsterEyePositions = [NSMutableArray arrayWithCapacity:4];
+        self.monsterEyeBlackSprites = [NSMutableArray arrayWithCapacity:4];
+    }
+    return self;
+}
+
 @end

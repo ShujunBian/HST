@@ -8,6 +8,6 @@
 
 #import "P3_Monster.h"
 
-@interface ceruleanMonster : P3_Monster
+@interface P3_CeruleanMonster : P3_Monster
 
 @end

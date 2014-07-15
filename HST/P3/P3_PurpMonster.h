@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "P3_Monster.h"
+#import "CCBReader.h"
+#import "CCBAnimationManager.h"
 
-@interface purpMonster : P3_Monster {
-    
-}
+@interface P3_PurpMonster : P3_Monster
 
 @end

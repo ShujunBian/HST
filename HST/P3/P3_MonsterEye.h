@@ -10,4 +10,9 @@
 
 @interface P3_MonsterEye : NSObject
 
+@property (nonatomic) NSInteger monsterEyeCounter;
+@property (nonatomic, strong) NSMutableArray * monsterEyeSprites;
+@property (nonatomic, strong) NSMutableArray *   n ;
+@property (nonatomic, strong) NSMutableArray * monsterEyePositions;
+
 @end

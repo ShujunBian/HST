@@ -376,7 +376,7 @@ static float holesRadius[] = {
         for(UITouch* touch in touches)
         {
             CGPoint startHolePosition = bellPositions[0];
-            CGPoint touchPosition = [self locationFromTouch:touch];\
+            CGPoint touchPosition = [self locationFromTouch:touch];
             if (touchPosition.x < startHolePosition.x + kstartHoleWidth && touchPosition.x > startHolePosition.x - kstartHoleWidth) {
                 if (touchPosition.y < startHolePosition.y + kstartHoleHeight && touchPosition.y > startHolePosition.y - kstartHoleHeight) {
                     isStartDrawing = YES;
