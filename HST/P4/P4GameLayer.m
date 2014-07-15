@@ -16,6 +16,8 @@
 
 #import "CCSprite+getRect.h"
 
+#import "MainMapHelper.h"
+#import "HelloWorldLayer.h"
 
 //#define BOTTLE_MOVE_DELAY 0.2f
 #define BOTTLE_SCALE_X_MAX 1.2f
@@ -96,6 +98,7 @@
 	
 	// don't forget to call "super dealloc"
 	[super dealloc];
+
 }
 
 - (void)onEnter
@@ -116,6 +119,8 @@
 
 - (void) didLoadFromCCB
 {
+    [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
+
 //Monster Init
     self.monstersArray = [[CCArray alloc] init];
     
@@ -463,4 +468,23 @@
     offset.deltaY = offsetY - self.bottleOffsetY;
     return offset;
 }
+
+#pragma mark - 菜单键调用函数 mainMapDelegate
+- (void)restartGameScene
+{
+}
+
+- (void)returnToMainMap
+{
+    [self unscheduleAllSelectors];
+    for (CCNode * child in [self children]) {
+        [child stopAllActions];
+        [child unscheduleAllSelectors];
+    }
+    
+    [[CCDirector sharedDirector] replaceScene:
+     [CCTransitionFade transitionWithDuration:1.0
+                                        scene:[HelloWorldLayer scene]]];
+}
+
 @end

@@ -1,19 +1,14 @@
 //
 //  P3_Mushroom.m
-//  sing
+//  HST
 //
-//  Created by Pursue_finky on 13-12-10.
-//  Copyright 2013年 mhc. All rights reserved.
+//  Created by Emerson on 14-7-10.
+//  Copyright 2014年 Emerson. All rights reserved.
 //
 
 #import "P3_Mushroom.h"
 
 
 @implementation P3_Mushroom
-
-- (void)didLoadFromCCB
-{
-    
-}
 
 @end

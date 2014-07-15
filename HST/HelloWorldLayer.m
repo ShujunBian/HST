@@ -41,13 +41,13 @@
 		}];
 		// Leaderboard Menu Item using blocks
 		CCMenuItem *P2_Item = [CCMenuItemFont itemWithString:@"P2_Item" block:^(id sender) {
-            CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P2_GameScene.ccbi"];
+            CCScene* p2Scene = [CCBReader sceneWithNodeGraphFromFile:@"P2_GameScene.ccbi"];
             [self preloadMusicAndEffect];
-			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p1Scene]];
+			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p2Scene]];
 		}];
 
         CCMenuItem *P3_Item = [CCMenuItemFont itemWithString:@"P3_Item" block:^(id sender) {
-			CCScene * p3Scene = [CCBReader sceneWithNodeGraphFromFile:@"P3_Main_Scene.ccbi"];
+			CCScene * p3Scene = [CCBReader sceneWithNodeGraphFromFile:@"P3_GameScene.ccbi"];
             [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p3Scene]];
 		}];
         
@@ -58,8 +58,8 @@
 		}];
         
         CCMenuItem *P5_Item = [CCMenuItemFont itemWithString:@"P5_Item" block:^(id sender) {
-            CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P5_GameScene.ccbi"];
-			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p1Scene]];
+            CCScene* p5Scene = [CCBReader sceneWithNodeGraphFromFile:@"P5_GameScene.ccbi"];
+			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p5Scene]];
 		}];
         
 		CCMenu *menu = [CCMenu menuWithItems:P1_Item, P2_Item,P3_Item,P4_Item,P5_Item, nil];

@@ -62,8 +62,22 @@ static CGPoint monsterFinalPosition = {161,54.48};
     [self performSelector:@selector(moveToUndergroundBackAction) withObject:self afterDelay:0.5 + 1 / 6.0];
 }
 
+#pragma mark - 在地面上的滚动
+- (void)rollUpground
+{
+    [self moveToUndergroundDownAction];
+    [self performSelector:@selector(jumpBeforeStart) withObject:self afterDelay:1.0 / 6.0];
+    [self performSelector:@selector(moveFrontUpground) withObject:self afterDelay:1.0];
+    
+}
 
-
+- (void)moveFrontUpground
+{
+    CCMoveBy * moveFront = [CCMoveBy actionWithDuration:1.0 position:CGPointMake(188.0, -40.5)];
+    CCScaleBy * scaleBy = [CCScaleBy actionWithDuration:1.0 scale:0.5];
+    CCSpawn * spawn = [CCSpawn actions:moveFront,scaleBy, nil];
+    [self runAction:spawn];
+}
 #pragma mark - 跳至地下的缓冲动作
 - (void)moveToUndergroundDownAction
 {
@@ -71,7 +85,7 @@ static CGPoint monsterFinalPosition = {161,54.48};
     [rightLeg runAction:[self createNewLegAction]];
     
     [body runAction:[self createNewBodyAction]];
-
+    
     [mouth runAction:[self createNewOtherAction]];
     [bigShadow runAction:[self createNewOtherAction]];
     [littleShadow runAction:[self createNewOtherAction]];
@@ -154,9 +168,16 @@ static CGPoint monsterFinalPosition = {161,54.48};
 
 - (CCSpawn *)createCoverLegAction
 {
-    CCMoveBy * legMoveUp = [CCMoveBy actionWithDuration:1 / 6.0 position:CGPointMake(0.0, 20.0)];
-    CCRotateBy * legRotate = [CCRotateBy actionWithDuration:1 / 6.0 angle:-90.0];
-    return [CCSpawn actions:legMoveUp,legRotate, nil];
+    if (_isUpground) {
+        CCMoveBy * legMoveUp = [CCMoveBy actionWithDuration:1 / 6.0 position:CGPointMake(5.0, 20.0)];
+        CCRotateBy * legRotate = [CCRotateBy actionWithDuration:1 / 6.0 angle:90.0];
+        return [CCSpawn actions:legMoveUp,legRotate, nil];
+    }
+    else {
+        CCMoveBy * legMoveUp = [CCMoveBy actionWithDuration:1 / 6.0 position:CGPointMake(0.0, 20.0)];
+        CCRotateBy * legRotate = [CCRotateBy actionWithDuration:1 / 6.0 angle:-90.0];
+        return [CCSpawn actions:legMoveUp,legRotate, nil];
+    }
 }
 
 #pragma mark - 出脚
@@ -178,7 +199,7 @@ static CGPoint monsterFinalPosition = {161,54.48};
 {
     [self moveToUndergroundDownAction];
     [self performSelector:@selector(jumpBeforeStart) withObject:self afterDelay:1.0 / 6.0];
-
+    
     if ([[((P5_UndergroundScene *)self.parent).drawOrderArray objectAtIndex:1]integerValue] != 6) {
         [self performSelector:@selector(startMoveFrontBeforeRoll) withObject:self afterDelay:1.0];
     }
@@ -249,7 +270,7 @@ static CGPoint monsterFinalPosition = {161,54.48};
     }];
     CCSequence * seq = [CCSequence actions:moveToHome,block, nil];
     [self runAction:seq];
-
+    
     [self performSelector:@selector(postStartRotateBellNotification) withObject:nil afterDelay:2.0];
 }
 
@@ -270,28 +291,38 @@ static CGPoint monsterFinalPosition = {161,54.48};
 
 - (void)update:(ccTime)delta
 {
-    if (!_isArriveHome && _isReadyStart) {
-        if (rotateDegree < 24.0) {
-            rotateDegree += 0.5;
+    if (_isUpground) {
+        if (!_isArriveHome && _isReadyStart) {
+            if (rotateDegree < 12.0) {
+                rotateDegree += 0.5;
+            }
+            self.rotation +=  rotateDegree;
         }
-        self.rotation -=  rotateDegree;
     }
-    if (_isArriveHome && !_isReadyStart) {
-        if (fabsf(restDegree - 0.0) > 0.5) {
-            if (rotateDegree <= 24.0 && rotateDegree > 4.0) {
-                rotateDegree -= 0.3;
+    else {
+        if (!_isArriveHome && _isReadyStart) {
+            if (rotateDegree < 24.0) {
+                rotateDegree += 0.5;
             }
-            restDegree += rotateDegree;
-            if (restDegree > 0.0) {
-                restDegree -= rotateDegree;
-                self.rotation -= (-restDegree);
-                restDegree = 0.0;
-                isRotatedDown = YES;
-                [self showTheLeg];
-                [self moveDownHome];
+            self.rotation -=  rotateDegree;
+        }
+        if (_isArriveHome && !_isReadyStart) {
+            if (fabsf(restDegree - 0.0) > 0.5) {
+                if (rotateDegree <= 24.0 && rotateDegree > 4.0) {
+                    rotateDegree -= 0.3;
+                }
+                restDegree += rotateDegree;
+                if (restDegree > 0.0) {
+                    restDegree -= rotateDegree;
+                    self.rotation -= (-restDegree);
+                    restDegree = 0.0;
+                    isRotatedDown = YES;
+                    [self showTheLeg];
+                    [self moveDownHome];
+                }
+                else
+                    self.rotation -= rotateDegree;
             }
-            else
-                self.rotation -= rotateDegree;
         }
     }
 }
@@ -299,7 +330,7 @@ static CGPoint monsterFinalPosition = {161,54.48};
 - (void)completedAnimationSequenceNamed:(NSString *)name
 {
     if ([name isEqualToString:@"Jump"]) {
-
+        
     }
 }
 

@@ -326,6 +326,7 @@ static float holesRadius[] = {
     
     self.monsterUnderground = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_MonsterUnderground.ccbi"];
     [self addChild:_monsterUnderground z:10];
+    _monsterUnderground.isUpground = NO;
     _monsterUnderground.delegate = self;
     [self.monsterUnderground setPosition:CGPointMake(900.0, 460.0)];
     
@@ -375,7 +376,7 @@ static float holesRadius[] = {
         for(UITouch* touch in touches)
         {
             CGPoint startHolePosition = bellPositions[0];
-            CGPoint touchPosition = [self locationFromTouch:touch];\
+            CGPoint touchPosition = [self locationFromTouch:touch];
             if (touchPosition.x < startHolePosition.x + kstartHoleWidth && touchPosition.x > startHolePosition.x - kstartHoleWidth) {
                 if (touchPosition.y < startHolePosition.y + kstartHoleHeight && touchPosition.y > startHolePosition.y - kstartHoleHeight) {
                     isStartDrawing = YES;
