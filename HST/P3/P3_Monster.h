@@ -102,4 +102,8 @@ static CGPoint monsterCeruleanEyePos[] = {
 - (void)createMonsterBodyInPosition:(CGPoint)position
                ByMonsterBodyCounter:(int)monsterBodyCounter
                      andMonsterType:(MonsterType)monsterType;
+
+- (void)monsterBodyJumpAnimation:(CCSprite *)body
+                     BodyCounter:(int)monsterBodyCounter
+                     monsterType:(MonsterType)monsterType;
 @end

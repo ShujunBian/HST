@@ -115,7 +115,8 @@
         for (P3_Monster * monster in _monsterArray) {
             if ([self isInWidthByPoint:touchPosition
                        areaCenterPoint:monster.position
-                              andWidth:monster.contentSize.width])
+                              andWidth:monster.contentSize.width]
+                && !monster.isJumping)
             {
                 if (monster.isStartMoving) {
                     if (touchPosition.y > monster.oldTouchPosition.y) {
@@ -132,7 +133,7 @@
                     (touchPosition.y < monster.oldTouchPosition.y &&
                      !monster.isMovingUp)) {
                         if (monster.isChoosen && monster.monsterType != GreenMonster) {
-                            NSLog(@"The monbster oldposition is %f",monster.oldTouchPosition.y);
+
                             CGPoint newPosition = CGPointMake(monster.position.x,
                                                               monster.position.y + (touchPosition.y - monster.oldTouchPosition.y));
                             [monster setPosition:newPosition];
@@ -144,7 +145,7 @@
                                 
                             }
                             
-                            monster.oldTouchPosition = newPosition;
+                            monster.oldTouchPosition = touchPosition;
 
 //                            int bodyCounter = [monster.monsterBodyArray count];
 //                            if (bodyCounter != 0) {
@@ -182,6 +183,14 @@
         for (P3_Monster * monster in _monsterArray) {
             if (monster.isChoosen) {
                 [monster jumpBackToPointByMonsterType:monster.monsterType];
+                
+                for (int i = 0 ; i < [monster.monsterBodyArray count]; ++ i) {
+                    CCSprite * body = (CCSprite *)[monster.monsterBodyArray objectAtIndex:i];
+                    [monster monsterBodyJumpAnimation:body
+                                       BodyCounter:(monster.monsterBodyCounter - i - 1)
+                                       monsterType:monster.monsterType];
+                }
+                
                 monster.isChoosen = NO;
                 monster.isStartMoving = YES;
                 monster.oldTouchPosition = monsterFirstPositions[monster.monsterType];

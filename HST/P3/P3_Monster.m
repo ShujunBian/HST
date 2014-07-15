@@ -59,10 +59,11 @@
 
 - (void)jumpBackToPointByMonsterType:(MonsterType)monsterType
 {
+    self.isJumping = YES;
     int latestPointNumber = [self theLatestPointByCenterPoint:self.position
                                             monsterBodyHeight:monsterBodyHeight[monsterType]];
 
-    [self jumpAnimationWithMonsterBodyCounter:latestPointNumber monsterType:monsterType];
+    [self jumpAnimationWithMonsterBodyCounter:self.monsterBodyCounter monsterType:monsterType];
     
 }
 
@@ -79,15 +80,16 @@
     CCScaleTo * scaleAfterJump1 = [CCScaleTo actionWithDuration:0.1 scaleX:1.05 scaleY:0.95];
     CCScaleTo * scaleAfterJump2 = [CCScaleTo actionWithDuration:0.1 scaleX:0.95 scaleY:1.05];
     CCScaleTo * scaleAfterJump3 = [CCScaleTo actionWithDuration:0.1 scaleX:1.0 scaleY:1.0];
-//    CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
-//        self.isJumping = NO;
-//    }];
-//    
+    CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
+        self.isJumping = NO;
+        NSLog(@"The monster position is %f",self.position.y);
+    }];
+    
     CCSequence * seq = [CCSequence actions:moveBackToPoint,
                         scaleAfterJump1,
                         scaleAfterJump2,
                         scaleAfterJump3,
-//                        callBack,
+                        callBack,
                         nil];
     
     [self runAction:seq];
@@ -175,7 +177,7 @@
     if (self.isChoosen) {
         
         if ([self.monsterBodyArray count] == 0) {
-            NSLog(@"THe posi is %f",self.position.y);
+
             if (self.position.y >= (self.monsterBodyCounter + 0.5) * monsterBodyHeight[self.monsterType] + 46.0
                 && self.isMovingUp) {
                 
@@ -191,6 +193,7 @@
                 [self jumpAnimationWithMonsterBodyCounter:self.monsterBodyCounter monsterType:self.monsterType];
                 
                 self.oldTouchPosition = CGPointMake(self.position.x,self.monsterBodyCounter * monsterBodyHeight[self.monsterType] + 46.0);
+
                 
             }
             else if (self.position.y < (self.monsterBodyCounter - 0.5) * monsterBodyHeight[self.monsterType] + 46.0 &&
@@ -208,12 +211,12 @@
                 ++ self.monsterBodyCounter;
                 [self jumpAnimationWithMonsterBodyCounter:self.monsterBodyCounter monsterType:self.monsterType];
                 
-                for (int i = 0 ; i < [self.monsterBodyArray count]; ++ i) {
-                    CCSprite * body = (CCSprite *)[self.monsterBodyArray objectAtIndex:i];
-                    [self monsterBodyJumpAnimation:body
-                                       BodyCounter:(self.monsterBodyCounter - i - 1)
-                                       monsterType:self.monsterType];
-                }
+//                for (int i = 0 ; i < [self.monsterBodyArray count]; ++ i) {
+//                    CCSprite * body = (CCSprite *)[self.monsterBodyArray objectAtIndex:i];
+//                    [self monsterBodyJumpAnimation:body
+//                                       BodyCounter:(self.monsterBodyCounter - i - 1)
+//                                       monsterType:self.monsterType];
+//                }
                 
                 [self createMonsterBodyInPosition:CGPointMake(self.position.x,46.0)
                              ByMonsterBodyCounter:self.monsterBodyCounter
