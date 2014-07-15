@@ -273,7 +273,8 @@
         {
             CGPoint toPosition = ccp(m.position.x, m.position.y - 150);
             CCActionInterval* moveTo = [CCMoveTo actionWithDuration:0.5f position:toPosition];
-            [m runAction:moveTo];
+            CCActionInterval* easeTo = [CCEaseSineOut actionWithAction:moveTo];
+            [m runAction:easeTo];
         }
     }
 }
@@ -291,7 +292,8 @@
             
             CCDelayTime* delay = [CCDelayTime actionWithDuration:delayDuration];
             CCActionInterval* moveTo = [CCMoveTo actionWithDuration:moveDuration position:m.prePosition];
-            [m runAction:[CCSequence actionOne:delay two:moveTo]];
+            CCActionInterval* easeTo = [CCEaseSineOut actionWithAction:moveTo];
+            [m runAction:[CCSequence actionOne:delay two:easeTo]];
         }
     }
 }
