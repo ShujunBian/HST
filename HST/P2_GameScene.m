@@ -181,8 +181,8 @@
 
 -(void) ccTouchesBegan:(NSSet*)touches withEvent:(id)event
 {
-    for(UITouch* touch in touches)
-    {
+//    for(UITouch* touch in touches)
+//    {
         if (monster.isFinishJump) {
             monster.isFinishJump = NO;
             CCBAnimationManager* animationManager = monster.userObject;
@@ -193,7 +193,7 @@
             [self performSelector:@selector(secondLittleMonsterJump) withObject:nil afterDelay:0.4];
         }
         
-    }
+//    }
 }
 
 -(void) ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event

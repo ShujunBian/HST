@@ -49,12 +49,14 @@
     monsterUpground = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_Monster.ccbi"];
     [self addChild:monsterUpground z:0];
     monsterUpground.position = CGPointMake(700.0 , 53.0);
+    monsterUpground.isUpground = YES;
     
     monsterUnderground = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_MonsterUnderground.ccbi"];
     [undergrounScene addChild:monsterUnderground z:5];
     monsterUnderground.position = CGPointMake(900.0, 650.0);
     [monsterUnderground setVisible:NO];
     monsterUnderground.delegate = undergrounScene;
+    monsterUnderground.isUpground = NO;
     undergrounScene.monsterUnderground = monsterUnderground;
     
     CCSprite * caveCover = [CCSprite spriteWithFile:@"P5_cave_cover.png"];
@@ -67,14 +69,15 @@
     [self setScale:2.0];
     [self setPosition:CGPointMake(-winSize.width / 2 + 60.0, winSize.height /2)];
 
-    [self performSelector:@selector(moveToUnderground) withObject:self afterDelay:0.3];
+    [self performSelector:@selector(moveToUnderground) withObject:self afterDelay:1.3];
 }
 
 - (void)moveToUnderground
 {
-    CCBAnimationManager* animationManager = monsterUpground.userObject;
-    animationManager.delegate = self;
-    [animationManager runAnimationsForSequenceNamed:@"Jump"];
+    [monsterUpground rollUpground];
+//    CCBAnimationManager* animationManager = monsterUpground.userObject;
+//    animationManager.delegate = self;
+//    [animationManager runAnimationsForSequenceNamed:@"Jump"];
     [self performSelector:@selector(changeCameraCenter) withObject:self afterDelay:0.3];
 }
 
@@ -86,16 +89,24 @@
     CCEaseInOut * scaleEaseInout = [CCEaseInOut actionWithAction:scaleBack rate:3.0];
     CCSpawn * spawn = [CCSpawn actions:moveEaseInout,scaleEaseInout, nil];
     [self runAction:spawn];
+    
+    [self performSelector:@selector(monsterMoveToUnderground) withObject:self afterDelay:1.8];
 
 }
 
-- (void)completedAnimationSequenceNamed:(NSString *)name
+- (void)monsterMoveToUnderground
 {
-    if ([name isEqualToString:@"Jump"]) {
-        [monsterUnderground setVisible:YES];
-        [monsterUnderground moveToUnderground];
-    }
+    [monsterUnderground setVisible:YES];
+    [monsterUnderground moveToUnderground];
 }
+
+//- (void)completedAnimationSequenceNamed:(NSString *)name
+//{
+//    if ([name isEqualToString:@"Jump"]) {
+//        [monsterUnderground setVisible:YES];
+//        [monsterUnderground moveToUnderground];
+//    }
+//}
 
 #pragma mark - 清除纹理中的缓存图片 undergroundSceneDelegate
 - (void)releaseTheCacheInTexture

@@ -33,5 +33,6 @@ typedef enum {
 - (ccColor3B)colorAtIndex:(NSUInteger)index;
 - (void)setBodyColor:(ccColor3B)color;
 - (void)restartBellToMode:(NSNumber *)bellNumber;
+- (void)bellNormalAction;
 
 @end

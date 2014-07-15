@@ -17,7 +17,7 @@
 @class P5_GrassLayer;
 @class P5_SkyLayer;
 
-@interface P5_GameScene : CCLayer<CCBAnimationManagerDelegate,P5_UndergroundSceneDelegate>
+@interface P5_GameScene : CCLayer<P5_UndergroundSceneDelegate>
 
 @property (nonatomic, assign) P5_Monster * monsterUpground;
 @property (nonatomic, assign) P5_Monster * monsterUnderground;
