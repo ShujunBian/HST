@@ -161,6 +161,8 @@
             break;
         }
     }
+    UIColor* color = 0;
+
     
     //Update Rotate
     [self updateRotate];
@@ -560,6 +562,8 @@
     }
 }
 
+
+
 - (void)mergeWater
 {
     if (!self.isMergingWater)
@@ -580,11 +584,129 @@
 
         float maxRGB = maxThree(aveR, aveG, aveB);
         float minRGB = minThree(aveR, aveG, aveB);
-        float baoHeDu = (maxRGB - minRGB) / maxRGB;
-
-        CCLOG(@"%f",baoHeDu);
         
-        ccColor3B aveColor = ccc3(aveR, aveG, aveB);
+        
+        
+        float h, s, v;
+        
+        //h
+        if (ABS(maxRGB - minRGB) <= 0.01)
+        {
+            h = 0;
+        }
+        else if (ABS(maxRGB - aveR) <= 0.01)
+        {
+            if (aveG >= aveB)
+            {
+                h = 60 * (aveG - aveB) / (maxRGB - minRGB);
+            }
+            else
+            {
+                h = 60 * (aveG - aveB) / (maxRGB - minRGB) + 360;
+            }
+        }
+        else if (ABS(maxRGB - aveG) <= 0.01)
+        {
+            h = 60 * (aveB - aveR) / (maxRGB - minRGB) + 120;
+        }
+        else
+        {
+            h = 60 * (aveR - aveG) / (maxRGB - minRGB) + 240;
+        }
+        
+        //s
+        if (ABS(maxRGB) <= 0.01 )
+        {
+            s = 0;
+        }
+        else
+        {
+            s = (maxRGB - minRGB) / maxRGB;
+        }
+        
+        v = maxRGB;
+        
+        
+        if (h < 150)
+        {
+            h += 80;
+        }
+        
+        
+        float finalR, finalG, finalB;
+        
+        
+        int hi = ((int)h / 60) % 6;
+        float f = h / 60 - hi;
+        float p = v * (1 - s);
+        float q = v * (1 - f * s);
+        float t = v * (1 - (1 - f) * s);
+        
+        
+        
+        switch (hi)
+        {
+            case 0:
+            {
+                //vtp
+                finalR = v;
+                finalG = t;
+                finalB = p;
+                break;
+            }
+            case 1:
+            {
+                //qvp
+                finalR = q;
+                finalG = v;
+                finalB = p;
+                break;
+            }
+            case 2:
+            {
+                //pvt
+                finalR = p;
+                finalG = v;
+                finalB = t;
+                break;
+            }
+            case 3:
+            {
+                //pqv
+                finalR = p;
+                finalG = q;
+                finalB = v;
+                break;
+            }
+            case 4:
+            {
+                //tpv
+                finalR = t;
+                finalG = p;
+                finalB = v;
+                break;
+            }
+            case 5:
+            default:
+            {
+                //vpq
+                finalR = v;
+                finalG = p;
+                finalB = q;
+                break;
+            }
+
+        }
+        
+        
+        CCLOG(@"r:%f,g:%f,b:%f",aveR,aveG,aveB);
+        CCLOG(@"adjust:r:%f,g:%f,b:%f",finalR,finalG,finalB);
+        
+        
+        
+        ccColor3B aveColor = ccc3(finalR, finalG, finalB);
+        
+        
         for (P4WaterRecord* record in self.waterRecordArray)
         {
             record.colorTo = aveColor;
@@ -592,6 +714,8 @@
         }
     }
 }
+
+
 
 #pragma mark - Rotate
 

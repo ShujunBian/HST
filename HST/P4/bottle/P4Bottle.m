@@ -230,6 +230,8 @@
 
 - (void)waterHeightChange:(float)height
 {
+    //调整waterIn life
+    
     float deltaHeight = self.waterIn.position.y - self.waterLayer.sprayLeft.position.y;
     float speedY = self.waterIn.speed * sin(ABS(self.waterIn.angle / 180.f * M_PI));
     
