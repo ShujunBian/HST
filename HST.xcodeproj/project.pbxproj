@@ -538,6 +538,10 @@
 		51F16360196E858800A5BE6A /* P3_GreenMonster.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 51F1635B196E858800A5BE6A /* P3_GreenMonster.ccbi */; };
 		51F16361196E858800A5BE6A /* P3_PurpMonster.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 51F1635C196E858800A5BE6A /* P3_PurpMonster.ccbi */; };
 		51F16362196E858800A5BE6A /* P3_RedMonster.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 51F1635D196E858800A5BE6A /* P3_RedMonster.ccbi */; };
+		EF1DF58C1976C3F5008DA46A /* MonsterEyeTestLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1DF58B1976C3F5008DA46A /* MonsterEyeTestLayer.m */; };
+		EF1DF58F1976C947008DA46A /* MonsterEye.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1DF58E1976C947008DA46A /* MonsterEye.m */; };
+		EF1DF5921976D97A008DA46A /* MonsterEyeUpdateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1DF5911976D97A008DA46A /* MonsterEyeUpdateObject.m */; };
+		EF1DF5951976DA70008DA46A /* WXYSampleMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = EF1DF5941976DA70008DA46A /* WXYSampleMonster.m */; };
 		EF6C2C531974E3A1009F637B /* p4_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF6C2BB81974E3A1009F637B /* p4_background-hd.png */; };
 		EF6C2C541974E3A1009F637B /* p4_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EF6C2BB91974E3A1009F637B /* p4_background.png */; };
 		EF6C2C551974E3A1009F637B /* p4_ground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF6C2BBA1974E3A1009F637B /* p4_ground-hd.png */; };
@@ -1557,6 +1561,14 @@
 		51F1635B196E858800A5BE6A /* P3_GreenMonster.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P3_GreenMonster.ccbi; sourceTree = "<group>"; };
 		51F1635C196E858800A5BE6A /* P3_PurpMonster.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P3_PurpMonster.ccbi; sourceTree = "<group>"; };
 		51F1635D196E858800A5BE6A /* P3_RedMonster.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P3_RedMonster.ccbi; sourceTree = "<group>"; };
+		EF1DF58A1976C3F5008DA46A /* MonsterEyeTestLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterEyeTestLayer.h; sourceTree = "<group>"; };
+		EF1DF58B1976C3F5008DA46A /* MonsterEyeTestLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterEyeTestLayer.m; sourceTree = "<group>"; };
+		EF1DF58D1976C947008DA46A /* MonsterEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterEye.h; sourceTree = "<group>"; };
+		EF1DF58E1976C947008DA46A /* MonsterEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterEye.m; sourceTree = "<group>"; };
+		EF1DF5901976D97A008DA46A /* MonsterEyeUpdateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MonsterEyeUpdateObject.h; sourceTree = "<group>"; };
+		EF1DF5911976D97A008DA46A /* MonsterEyeUpdateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MonsterEyeUpdateObject.m; sourceTree = "<group>"; };
+		EF1DF5931976DA70008DA46A /* WXYSampleMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYSampleMonster.h; sourceTree = "<group>"; };
+		EF1DF5941976DA70008DA46A /* WXYSampleMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYSampleMonster.m; sourceTree = "<group>"; };
 		EF6C2BB81974E3A1009F637B /* p4_background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_background-hd.png"; sourceTree = "<group>"; };
 		EF6C2BB91974E3A1009F637B /* p4_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4_background.png; sourceTree = "<group>"; };
 		EF6C2BBA1974E3A1009F637B /* p4_ground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_ground-hd.png"; sourceTree = "<group>"; };
@@ -2127,6 +2139,7 @@
 		5169CBE218CDE5ED00426E6C /* HST */ = {
 			isa = PBXGroup;
 			children = (
+				EF1DF5891976C3C9008DA46A /* monsterEye */,
 				5169CD8618CDE64100426E6C /* Mainmap */,
 				5169D0B418CDEC1300426E6C /* CCBReader */,
 				5169CDED18CDE6DE00426E6C /* Category */,
@@ -2998,6 +3011,21 @@
 				51780D5E196F8A25008D2688 /* P3_MonsterEye.m */,
 			);
 			name = Monster;
+			sourceTree = "<group>";
+		};
+		EF1DF5891976C3C9008DA46A /* monsterEye */ = {
+			isa = PBXGroup;
+			children = (
+				EF1DF58A1976C3F5008DA46A /* MonsterEyeTestLayer.h */,
+				EF1DF58B1976C3F5008DA46A /* MonsterEyeTestLayer.m */,
+				EF1DF58D1976C947008DA46A /* MonsterEye.h */,
+				EF1DF58E1976C947008DA46A /* MonsterEye.m */,
+				EF1DF5901976D97A008DA46A /* MonsterEyeUpdateObject.h */,
+				EF1DF5911976D97A008DA46A /* MonsterEyeUpdateObject.m */,
+				EF1DF5931976DA70008DA46A /* WXYSampleMonster.h */,
+				EF1DF5941976DA70008DA46A /* WXYSampleMonster.m */,
+			);
+			path = monsterEye;
 			sourceTree = "<group>";
 		};
 		EF6C2BB61974E3A1009F637B /* p4 */ = {
@@ -4077,6 +4105,7 @@
 				5199791518D000DF006A1FD8 /* MainMapHelper.m in Sources */,
 				5169CD5D18CDE5EE00426E6C /* mat4.c in Sources */,
 				5169CC3918CDE5ED00426E6C /* ccDeprecated.m in Sources */,
+				EF1DF58C1976C3F5008DA46A /* MonsterEyeTestLayer.m in Sources */,
 				5169CCF418CDE5EE00426E6C /* CCDirectorMac.m in Sources */,
 				5169CDEA18CDE6D900426E6C /* P5_UndergroundHole.m in Sources */,
 				5169CC4E18CDE5ED00426E6C /* ccGLStateCache.m in Sources */,
@@ -4106,6 +4135,7 @@
 				5169CC0518CDE5ED00426E6C /* CCActionCatmullRom.m in Sources */,
 				5169CC7C18CDE5ED00426E6C /* CCParticleSystem.m in Sources */,
 				5169CCD118CDE5EE00426E6C /* CCTransition.m in Sources */,
+				EF1DF5921976D97A008DA46A /* MonsterEyeUpdateObject.m in Sources */,
 				5169CC7918CDE5ED00426E6C /* CCParticleExamples.m in Sources */,
 				5169CDE518CDE6D900426E6C /* P5_GrassLayer.m in Sources */,
 				5169CC7618CDE5ED00426E6C /* CCParticleBatchNode.m in Sources */,
@@ -4221,10 +4251,12 @@
 				5169CC5D18CDE5ED00426E6C /* CCLabelTTF.m in Sources */,
 				5169CD0A18CDE5EE00426E6C /* CCFileUtils.m in Sources */,
 				5169CCF718CDE5EE00426E6C /* CCEventDispatcher.m in Sources */,
+				EF1DF5951976DA70008DA46A /* WXYSampleMonster.m in Sources */,
 				5169CCAD18CDE5ED00426E6C /* CCSpriteBatchNode.m in Sources */,
 				5169CC3618CDE5ED00426E6C /* CCConfiguration.m in Sources */,
 				51F16358196E7F5100A5BE6A /* P3_CeruleanMonster.m in Sources */,
 				1801E74F18E594FC004E0856 /* P4Extension.m in Sources */,
+				EF1DF58F1976C947008DA46A /* MonsterEye.m in Sources */,
 				5169CC9218CDE5ED00426E6C /* CCScheduler.m in Sources */,
 				5169CCE218CDE5EE00426E6C /* CCDirectorIOS.m in Sources */,
 				5169CC6418CDE5ED00426E6C /* CCMenu.m in Sources */,
