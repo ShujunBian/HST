@@ -272,8 +272,9 @@
         if (m != monster)
         {
             CGPoint toPosition = ccp(m.position.x, m.position.y - 150);
-            CCActionInterval* moveTo = [CCMoveTo actionWithDuration:0.5f position:toPosition];
-            CCActionInterval* easeTo = [CCEaseSineOut actionWithAction:moveTo];
+            CCActionInterval* moveTo = [CCMoveTo actionWithDuration:1.f position:toPosition];
+            CCActionInterval* easeTo = [CCEaseExponentialOut actionWithAction:moveTo];
+
             [m runAction:easeTo];
         }
     }
@@ -284,7 +285,7 @@
     {
         if (m != monster)
         {
-            float moveDuration = 0.5f;
+            float moveDuration = 1.f;
             
             float delayDuration = duration > moveDuration? (duration - moveDuration) : 0;
             moveDuration = duration - delayDuration;
@@ -292,7 +293,8 @@
             
             CCDelayTime* delay = [CCDelayTime actionWithDuration:delayDuration];
             CCActionInterval* moveTo = [CCMoveTo actionWithDuration:moveDuration position:m.prePosition];
-            CCActionInterval* easeTo = [CCEaseSineOut actionWithAction:moveTo];
+
+            CCActionInterval* easeTo = [CCEaseExponentialOut actionWithAction:moveTo];
             [m runAction:[CCSequence actionOne:delay two:easeTo]];
         }
     }
@@ -327,15 +329,14 @@
     {
         case 0:
         {
-            config.controlPoint_1 = ccp(monster.position.x - 100, monster.position.y + 300);
-            config.controlPoint_2 = ccp(self.pourWaterPoint.x - 200, self.pourWaterPoint.y + 100);
-            moveDuration = 1.8f;
+            config.controlPoint_1 = ccp(monster.position.x - 200, monster.position.y + 300);
+            config.controlPoint_2 = ccp(self.pourWaterPoint.x - 200, self.pourWaterPoint.y + 200);
             break;
         }
         case 1:
         {
-            config.controlPoint_1 = ccp(monster.position.x - 200, monster.position.y + 200);
-            config.controlPoint_2 = ccp(self.pourWaterPoint.x - 200, self.pourWaterPoint.y + 100);
+            config.controlPoint_1 = ccp(monster.position.x - 250, monster.position.y + 100);
+            config.controlPoint_2 = ccp(self.pourWaterPoint.x - 250, self.pourWaterPoint.y + 150);
             break;
         }
         case 2:
@@ -393,7 +394,7 @@
     configBack.endPosition = monster.prePosition;
     
     float moveBackDuration = 1.5f;
-    float rotateBackDuration = 0.7f;
+    float rotateBackDuration = 1.f;
     switch (monster.type)
     {
         case 0:
@@ -437,8 +438,8 @@
         [weakSelf showMonstersExcept:monster totalDuration:moveBackDuration];
     }];
     
-//    CCActionInterval* easeOutBack = [CCEaseSineOut actionWithAction:spawnBack ];
-    CCActionInterval* easeOutBack = [CCEaseOut actionWithAction:spawnBack rate:1.05f];
+    CCActionInterval* easeOutBack = [CCEaseSineOut actionWithAction:spawnBack ];
+//    CCActionInterval* easeOutBack = [CCEaseOut actionWithAction:spawnBack rate:1.05f];
     
     CCFiniteTimeAction* finish = [[CCCallBlock alloc] initWithBlock:^{
         weakSelf.isMonsterAnimated = NO;
