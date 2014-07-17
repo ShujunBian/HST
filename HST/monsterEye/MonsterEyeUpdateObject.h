@@ -12,7 +12,6 @@
 //MonsterEyeUpdateObject
 //定时处理MonsterEye的随机眨眼，移动等等
 
-#warning 未完成
 @interface MonsterEyeUpdateObject : NSObject
 
 - (id)init;

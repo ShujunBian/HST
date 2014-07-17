@@ -14,5 +14,8 @@
 @interface MonsterEye : CCNode
 
 - (id)initWithEyeWhiteName:(NSString *)eyeWhiteName eyeballName:(NSString *)eyeballName eyelidColor:(ccColor3B)eyelidColor;
+- (void)blink;
+- (void)eyeMoveAngle:(float)angle;
+- (void)eyeMoveRandom;
 
 @end
