@@ -12,6 +12,7 @@
 #import "HelloWorldLayer.h"
 
 #import "P3_Monster.h"
+#import "P3_MonsterBody.h"
 #import "P3_BlueMonster.h"
 #import "P3_PurpMonster.h"
 #import "P3_GreenMonster.h"
@@ -30,7 +31,9 @@
 @end
 
 @implementation P3_GameScene
-
+{
+    CCSprite * aa;
+}
 @synthesize monsterLayer;
 - (id)init
 {
@@ -110,13 +113,13 @@
 {
     for (UITouch * touch in touches)
     {
-        CGPoint touchPosition = [self locationFromTouch:touch];
         
+        CGPoint touchPosition = [self locationFromTouch:touch];
         for (P3_Monster * monster in _monsterArray) {
             if ([self isInWidthByPoint:touchPosition
                        areaCenterPoint:monster.position
                               andWidth:monster.contentSize.width]
-                && !monster.isJumping)
+                && monster.isChoosen)
             {
                 if (monster.isStartMoving) {
                     if (touchPosition.y > monster.oldTouchPosition.y) {
@@ -134,40 +137,55 @@
                      !monster.isMovingUp)) {
                         if (monster.isChoosen && monster.monsterType != GreenMonster) {
 
-                            CGPoint newPosition = CGPointMake(monster.position.x,
-                                                              monster.position.y + (touchPosition.y - monster.oldTouchPosition.y));
-                            [monster setPosition:newPosition];
-
-                            for (int i = 0; i < [monster.monsterBodyArray count]; ++ i) {
-                                CCSprite * body = (CCSprite *)[monster.monsterBodyArray objectAtIndex:i];
-                                    CGPoint newMonsterBodyPosition = CGPointMake(body.position.x,body.position.y + (touchPosition.y - monster.oldTouchPosition.y));
+                            float moveDistance = touchPosition.y - monster.oldTouchPosition.y;
+                            BOOL isSpeedFast;
+                            
+                            if (monster.isMovingUp) {
+                                if (moveDistance > 15.0) {
+                                    moveDistance = 15.0;
+                                    isSpeedFast = YES;
+                                }
+                                else {
+                                    isSpeedFast = NO;
+                                }
+                                CGPoint newPosition = CGPointMake(monster.position.x,
+                                                                  monster.position.y + moveDistance);
+                                [monster setPosition:newPosition];
+                                
+                                for (int i = 0; i < [monster.monsterBodyArray count]; ++ i) {
+                                    P3_MonsterBody * body = (P3_MonsterBody *)[monster.monsterBodyArray objectAtIndex:i];
+                                    CGPoint newMonsterBodyPosition = CGPointMake(body.position.x,body.position.y + moveDistance * powf(0.8, i + 1));
                                     [body setPosition:newMonsterBodyPosition];
+                                }
+                                
+                                if (!isSpeedFast) {
+                                    monster.oldTouchPosition = touchPosition;
+                                }
+                                else {
+                                    monster.oldTouchPosition = newPosition;
+                                }
+                            }
+                            else {
+                                if (moveDistance < -15.0) {
+                                    moveDistance = -15.0;
+                                    isSpeedFast = YES;
+                                }
+                                else {
+                                    isSpeedFast = NO;
+                                }
+                                CGPoint newPosition = CGPointMake(monster.position.x,
+                                                                  monster.position.y + moveDistance);
+                                [monster setPosition:newPosition];
+                                
+                                if (!isSpeedFast) {
+                                    monster.oldTouchPosition = touchPosition;
+                                }
+                                else {
+                                    monster.oldTouchPosition = newPosition;
+                                }
                                 
                             }
                             
-                            monster.oldTouchPosition = touchPosition;
-
-//                            int bodyCounter = [monster.monsterBodyArray count];
-//                            if (bodyCounter != 0) {
-//                                float gap = 1.0 / 3.0 * monsterBodyHeight[monster.monsterType] / bodyCounter;
-//                                
-//                                for (int i = 0; i < [monster.monsterBodyArray count]; ++ i) {
-//                                    CCSprite * body = (CCSprite *)[monster.monsterBodyArray objectAtIndex:i];
-//                                    float maxYPoint = (bodyCounter - i - 1) * (monsterBodyHeight[monster.monsterType] + gap) + 1.0 / 3.0 * monsterBodyHeight[monster.monsterType] + 46.0;
-//
-//                                    if (body.position.y < maxYPoint) {
-//                                        NSLog(@"!!!");
-//                                        CGPoint newMonsterBodyPosition = CGPointMake(body.position.x,body.position.y + (touchPosition.y - monster.oldTouchPosition.y));
-//                                        [body setPosition:newMonsterBodyPosition];
-//                                    }
-//                                    else {
-//                                        NSLog(@"The maxPoint is %f",maxYPoint);
-//                                        CGPoint newMonsterBodyPosition = CGPointMake(body.position.x,maxYPoint);
-//                                        [body setPosition:newMonsterBodyPosition];
-//                                    }
-//                                    
-//                                }
-//                            }
                         }
                     }
             }
@@ -177,23 +195,44 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+
     for (UITouch * touch in touches)
     {
         //CGPoint touchPosition = [self locationFromTouch:touch];
         for (P3_Monster * monster in _monsterArray) {
             if (monster.isChoosen) {
-                [monster jumpBackToPointByMonsterType:monster.monsterType];
+                [self setTouchEnabled:NO];
+                CCScaleTo * scaleAfterJump1 = [CCScaleTo actionWithDuration:0.05 scaleX:1.05 scaleY:0.95];
+                CCScaleTo * scaleAfterJump2 = [CCScaleTo actionWithDuration:0.05 scaleX:0.95 scaleY:1.05];
+                CCScaleTo * scaleAfterJump3 = [CCScaleTo actionWithDuration:0.05 scaleX:1.0 scaleY:1.0];
                 
-                for (int i = 0 ; i < [monster.monsterBodyArray count]; ++ i) {
-                    CCSprite * body = (CCSprite *)[monster.monsterBodyArray objectAtIndex:i];
-                    [monster monsterBodyJumpAnimation:body
-                                       BodyCounter:(monster.monsterBodyCounter - i - 1)
-                                       monsterType:monster.monsterType];
-                }
+                CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
+                    [self setTouchEnabled:YES];
+                }];
+                
+                CCSequence * seq = [CCSequence actions:
+                                    scaleAfterJump1,
+                                    scaleAfterJump2,
+                                    scaleAfterJump3,
+                                    callBack,
+                                    nil];
+                
+                [monster runAction:seq];
+
+                
+//                [monster jumpBackToPointByMonsterType:monster.monsterType];
+//                NSLog(@"The backs afre positon");
+//                NSLog(@"yhe mobnster position is %f",monster.position.y);
+                
+//                for (int i = 0 ; i < [monster.monsterBodyArray count]; ++ i) {
+//                    CCSprite * body = (CCSprite *)[monster.monsterBodyArray objectAtIndex:i];
+//                    [monster monsterBodyJumpAnimation:body
+//                                       BodyCounter:(monster.monsterBodyCounter - i - 1)
+//                                       monsterType:monster.monsterType];
+//                }
                 
                 monster.isChoosen = NO;
-                monster.isStartMoving = YES;
-                monster.oldTouchPosition = monsterFirstPositions[monster.monsterType];
+//                monster.oldTouchPosition = monsterFirstPositions[monster.monsterType];
             }
         }
     }

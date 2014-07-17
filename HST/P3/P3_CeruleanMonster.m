@@ -32,9 +32,4 @@
     [super initMonsterEyes];
 }
 
-- (void)jumpBackToPointByMonsterType:(MonsterType)monsterType
-{
-    [super jumpBackToPointByMonsterType:monsterType];
-}
-
 @end
