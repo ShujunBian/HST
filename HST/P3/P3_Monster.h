@@ -20,6 +20,12 @@ typedef enum {
     CeruleanMonster
 } MonsterType;
 
+typedef enum {
+    MovingStay = 0,
+    MovingUp,
+    MovingDown
+} MonsterMovingType;
+
 static int monsterEyeCounters[] = {
     2,
     3,
@@ -97,12 +103,12 @@ static CGPoint monsterCeruleanEyePos[] = {
 
 @property (nonatomic) MonsterType monsterType;
 @property (nonatomic) BOOL isChoosen;                   //用于记录是否正在拖动
-@property (nonatomic) BOOL isMovingUp;                  //记录小怪物是向上移动还是向下移动 一次只能一个方向
+@property (nonatomic) MonsterMovingType movingType;
+//@property (nonatomic) BOOL isMovingUp;                  //记录小怪物是向上移动还是向下移动 一次只能一个方向
 @property (nonatomic) BOOL isStartMoving;               //记录是否第一次移动 以确定方向
 @property (nonatomic) CGPoint oldTouchPosition;         //用来记录上一次touch之后的位置和新的touch位置计算差之后移动小怪物
 @property (nonatomic) int monsterBodyCounter;           //记录现有monsterbody的个数
-@property (nonatomic) int currentMonsterBodyCounter;
-//@property (nonatomic) BOOL isJumping;                   //正在弹跳动画中
+
 @property (nonatomic) BOOL isNeedAutoMoving;
 @property (nonatomic) BOOL isNeedAutoScale;
 
