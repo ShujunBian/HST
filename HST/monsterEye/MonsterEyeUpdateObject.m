@@ -42,7 +42,10 @@
 {
     [self.eyesArray removeObject:eye];
 }
-
+- (void)removeAllMonsterEyes
+{
+    [self.eyesArray removeAllObjects];
+}
 
 - (void)beginUpdate
 {

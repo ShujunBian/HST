@@ -18,6 +18,7 @@
 
 - (void)addMonsterEye:(MonsterEye*)eye;
 - (void)removeMonsterEye:(MonsterEye*)eye;
+- (void)removeAllMonsterEyes;
 
 - (void)beginUpdate;
 - (void)endUpdate;

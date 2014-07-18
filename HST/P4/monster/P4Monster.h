@@ -8,6 +8,8 @@
 
 #import "CCNode.h"
 
+@class MonsterEye;
+
 typedef NS_ENUM(NSUInteger, P4MonsterType)
 {
     P4MonsterTypeGreen = 0,
@@ -24,8 +26,8 @@ typedef NS_ENUM(NSUInteger, P4MonsterType)
 
 @property (assign, nonatomic) float waterPercentage;
 
-@property (strong, nonatomic) CCSprite* eye1;
-@property (strong, nonatomic) CCSprite* eye2;
+@property (strong, nonatomic) MonsterEye* eye1;
+@property (strong, nonatomic) MonsterEye* eye2;
 @property (strong, nonatomic) CCSprite* body;
 
 @property (strong, nonatomic) CCSprite* mask;
@@ -44,4 +46,6 @@ typedef NS_ENUM(NSUInteger, P4MonsterType)
 
 - (void)startWaterDecrease;
 - (void)startWaterFull;
+
+- (void)configureMonsterEye;
 @end

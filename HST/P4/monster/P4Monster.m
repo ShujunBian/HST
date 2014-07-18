@@ -9,6 +9,9 @@
 #import "P4Monster.h"
 #import "CCSprite+getRect.h"
 #import "cocos2d.h"
+#import "MonsterEyeUpdateObject.h"
+#import "MonsterEye.h"
+
 
 #define WATER_DECREASE_SPEED 0.01f
 
@@ -23,6 +26,9 @@
 @property (assign, nonatomic) float waterPercentageTo;
 
 @property (assign, nonatomic) BOOL isPercentageChange;
+
+@property (strong, nonatomic) MonsterEyeUpdateObject* eyeUpdateObj;
+
 @end
 
 @implementation P4Monster
@@ -51,6 +57,8 @@
     self.waterPercentage = 1.f;
     self.waterPercentageTo = self.waterPercentage;
     self.isPercentageChange = NO;
+    
+    [self configureMonsterEye];
 //    self.rotation = 100.f;
 }
 - (void)onEnter
@@ -204,6 +212,80 @@
         [self unschedule:@selector(waterFullUpdate:)];
         self.isPercentageChange = NO;
     }
+}
+
+- (void)configureMonsterEye
+{
+    
+    if (self.eyeUpdateObj)
+    {
+        [self.eyeUpdateObj endUpdate];
+        [self.eyeUpdateObj removeAllMonsterEyes];
+    }
+    else
+    {
+        self.eyeUpdateObj = [[MonsterEyeUpdateObject alloc] init];
+    }
+
+    switch (self.type)
+    {
+        case P4MonsterTypeBlue:
+        {
+            self.eye1 = [[MonsterEye alloc] initWithEyeWhiteName:@"P4_blue_eyewhite_1.png" eyeballName:@"P4_blue_eyeball_1.png" eyelidColor:self.waterColor];
+            self.eye2 = [[MonsterEye alloc] initWithEyeWhiteName:@"P4_blue_eyewhite_2.png" eyeballName:@"P4_blue_eyeball_2.png" eyelidColor:self.waterColor];
+            
+            self.eye1.position = ccp(-28.f,-38.f);
+            self.eye2.position = ccp(27.f,-22.f);
+            break;
+        }
+        case P4MonsterTypeGreen:
+        {
+            self.eye1 = [[MonsterEye alloc] initWithEyeWhiteName:@"P4_green_eyewhite_1.png" eyeballName:@"P4_green_eyeball_1.png" eyelidColor:self.waterColor];
+            self.eye2 = [[MonsterEye alloc] initWithEyeWhiteName:@"P4_green_eyewhite_2.png" eyeballName:@"P4_green_eyeball_2.png" eyelidColor:self.waterColor];
+            
+            self.eye1.position = ccp(-1.f,0.f);
+            self.eye2.position = ccp(1.f,-48.f);
+            break;
+        }
+        case P4MonsterTypePurple:
+        {
+            self.eye1 = [[MonsterEye alloc] initWithEyeWhiteName:@"P4_purple_eyewhite_1.png" eyeballName:@"P4_purple_eyeball_1.png" eyelidColor:self.waterColor];
+            
+            self.eye1.position = ccp(5.f,-11.f);
+            break;
+        }
+        case P4MonsterTypeRed:
+        {
+            
+            self.eye1 = [[MonsterEye alloc] initWithEyeWhiteName:@"P4_red_eyewhite_1.png" eyeballName:@"P4_red_eyeball_1.png" eyelidColor:self.waterColor];
+            self.eye2 = [[MonsterEye alloc] initWithEyeWhiteName:@"P4_red_eyewhite_2.png" eyeballName:@"P4_red_eyeball_2.png" eyelidColor:self.waterColor];
+            self.eye1.position = ccp(-34.f,-4.f);
+            self.eye2.position = ccp(27.f,-12.f);
+            break;
+        }
+        case P4MonsterTypeYellow:
+        default:
+        {
+            self.eye1 = [[MonsterEye alloc] initWithEyeWhiteName:@"P4_yellow_eyewhite_1.png" eyeballName:@"P4_yellow_eyeball_1.png" eyelidColor:self.waterColor];
+            self.eye2 = [[MonsterEye alloc] initWithEyeWhiteName:@"P4_yellow_eyewhite_2.png" eyeballName:@"P4_yellow_eyeball_2.png" eyelidColor:self.waterColor];
+            self.eye1.position = ccp(-35.f,-19.f);
+            self.eye2.position = ccp(35.f,-19.f);
+            break;
+        }
+    }
+    
+//    self.body.visible = NO;
+    if (self.eye1)
+    {
+        [self addChild:self.eye1 z:self.maskIndex + 1];
+        [self.eyeUpdateObj addMonsterEye:self.eye1];
+    }
+    if (self.eye2)
+    {
+        [self addChild:self.eye2 z:self.maskIndex + 2];
+        [self.eyeUpdateObj addMonsterEye:self.eye2];
+    }
+    [self.eyeUpdateObj beginUpdate];
     
 }
 @end

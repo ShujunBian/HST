@@ -147,6 +147,8 @@
     self.blueMonster.waterColor = ccc3(50.f, 248.f, 255.f);
     self.redMonster.waterColor = ccc3(254.f, 70.f, 100.f);
     
+    
+    
     self.isMonsterAnimated = NO;
     self.isTouchBottle = NO;
     self.bottleTouchPoint = CGPointZero;
@@ -169,6 +171,7 @@
     
 //    [self schedule:@selector(scaleUpdate)];
 //    [self schedule:@selector(scaleUpdateHelper) interval:0.018f];
+    
 }
 
 #pragma mark - Gesture
