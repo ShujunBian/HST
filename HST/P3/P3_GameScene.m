@@ -12,6 +12,7 @@
 #import "HelloWorldLayer.h"
 
 #import "P3_Monster.h"
+#import "P3_MonsterBody.h"
 #import "P3_BlueMonster.h"
 #import "P3_PurpMonster.h"
 #import "P3_GreenMonster.h"
@@ -30,7 +31,9 @@
 @end
 
 @implementation P3_GameScene
-
+{
+    CCSprite * aa;
+}
 @synthesize monsterLayer;
 - (id)init
 {
@@ -64,7 +67,7 @@
     [blueMonster createMonsterWithType:BlueMonster];
     [blueMonster initMonsterEyes];
     [_monsterArray addObject:blueMonster];
-
+    
     P3_GreenMonster * greenMonster = (P3_GreenMonster *)[CCBReader nodeGraphFromFile:@"P3_GreenMonster.ccbi"];
     [monsterLayer addChild:greenMonster z:-2];
     [greenMonster setPosition:monsterFirstPositions[2]];
@@ -100,6 +103,25 @@
                              andWidth:monster.contentSize.width
                             andHeight:monster.contentSize.height]) {
                 monster.isChoosen = YES;
+                
+                if (monster.position.y == 46.0) {
+                    if (monster.monsterType != GreenMonster) {
+                        [monster setPosition:CGPointMake(monster.position.x, monster.position.y + 20.0)];
+                        CCScaleTo * scaleTo = [CCScaleTo actionWithDuration:0.05 scale:1.1];
+                        CCScaleTo * scaleBack = [CCScaleTo actionWithDuration:0.05 scale:1.0];
+                        CCSequence * seq = [CCSequence actions:scaleTo, scaleBack, nil];
+                        [monster runAction:seq];
+                    }
+                    else {
+
+                        CCScaleTo * scaleTo = [CCScaleTo actionWithDuration:0.1 scale:1.02];
+                        CCScaleTo * scaleBack = [CCScaleTo actionWithDuration:0.1 scale:1.0];
+                        CCSequence * seq = [CCSequence actions:scaleTo, scaleBack, nil];
+                        [monster runAction:seq];
+                    }
+
+                }
+                
                 monster.oldTouchPosition = touchPosition;
             }
         }
@@ -110,63 +132,94 @@
 {
     for (UITouch * touch in touches)
     {
-        CGPoint touchPosition = [self locationFromTouch:touch];
         
+        CGPoint touchPosition = [self locationFromTouch:touch];
         for (P3_Monster * monster in _monsterArray) {
             if ([self isInWidthByPoint:touchPosition
                        areaCenterPoint:monster.position
-                              andWidth:monster.contentSize.width])
+                              andWidth:monster.contentSize.width]
+                && monster.isChoosen)
             {
                 if (monster.isStartMoving) {
                     if (touchPosition.y > monster.oldTouchPosition.y) {
-                        monster.isMovingUp = YES;
+                        monster.movingType = MovingUp;
                     }
                     else if (touchPosition.y < monster.oldTouchPosition.y) {
-                        monster.isMovingUp = NO;
+                        monster.movingType = MovingDown;
                     }
                     monster.isStartMoving = NO;
                 }
                 
                 if ((touchPosition.y > monster.oldTouchPosition.y &&
-                     monster.isMovingUp) ||
+                     monster.movingType == MovingUp) ||
                     (touchPosition.y < monster.oldTouchPosition.y &&
-                     !monster.isMovingUp)) {
-                        if (monster.isChoosen && monster.monsterType != GreenMonster) {
-                            NSLog(@"The monbster oldposition is %f",monster.oldTouchPosition.y);
-                            CGPoint newPosition = CGPointMake(monster.position.x,
-                                                              monster.position.y + (touchPosition.y - monster.oldTouchPosition.y));
-                            [monster setPosition:newPosition];
-
-                            for (int i = 0; i < [monster.monsterBodyArray count]; ++ i) {
-                                CCSprite * body = (CCSprite *)[monster.monsterBodyArray objectAtIndex:i];
-                                    CGPoint newMonsterBodyPosition = CGPointMake(body.position.x,body.position.y + (touchPosition.y - monster.oldTouchPosition.y));
+                     monster.movingType == MovingDown)) {
+                        if (monster.isChoosen) {
+                            
+                            float moveDistance = touchPosition.y - monster.oldTouchPosition.y;
+                            BOOL isSpeedFast;
+                            
+                            if (monster.movingType == MovingUp) {
+                                if (moveDistance > 15.0) {
+                                    moveDistance = 15.0;
+                                    isSpeedFast = YES;
+                                }
+                                else {
+                                    isSpeedFast = NO;
+                                }
+                                
+                                //对monster高度拖动的限制 不能高于4.4倍身体高度 + 46.0基础高度
+                                if (monster.position.y + moveDistance > 4.4 * monsterBodyHeight[monster.monsterType] + 46.0) {
+                                    moveDistance = 4.4 * monsterBodyHeight[monster.monsterType] + 46.0 - monster.position.y;
+                                }
+                                
+                                CGPoint newPosition = CGPointMake(monster.position.x,
+                                                                  monster.position.y + moveDistance);
+                                //绿色怪物不能拖动
+                                if (monster.monsterType != GreenMonster) {
+                                    [monster setPosition:newPosition];
+                                }
+                                
+                                for (int i = 0; i < [monster.monsterBodyArray count]; ++ i) {
+                                    P3_MonsterBody * body = (P3_MonsterBody *)[monster.monsterBodyArray objectAtIndex:i];
+                                    CGPoint newMonsterBodyPosition = CGPointMake(body.position.x,body.position.y + moveDistance * powf(0.8, i + 1));
                                     [body setPosition:newMonsterBodyPosition];
+                                }
+                                
+                                //                                if (!isSpeedFast) {
+                                monster.oldTouchPosition = touchPosition;
+                                //                                }
+                                //                                else {
+                                //                                    monster.oldTouchPosition = newPosition;
+                                //                                }
+                            }
+                            else if (monster.movingType == MovingDown){
+                                if (moveDistance < -15.0) {
+                                    moveDistance = -15.0;
+                                    isSpeedFast = YES;
+                                }
+                                else {
+                                    isSpeedFast = NO;
+                                }
+                                
+                                //对monster高度拖动的限制 不能低于46.0基础高度
+                                if (monster.position.y + moveDistance < 46.0) {
+                                    moveDistance = 46.0 - monster.position.y;
+                                }
+                                
+                                CGPoint newPosition = CGPointMake(monster.position.x,
+                                                                  monster.position.y + moveDistance);
+                                [monster setPosition:newPosition];
+                                
+                                //                                if (!isSpeedFast) {
+                                monster.oldTouchPosition = touchPosition;
+                                //                                }
+                                //                                else {
+                                //                                    monster.oldTouchPosition = newPosition;
+                                //                                }
                                 
                             }
                             
-                            monster.oldTouchPosition = newPosition;
-
-//                            int bodyCounter = [monster.monsterBodyArray count];
-//                            if (bodyCounter != 0) {
-//                                float gap = 1.0 / 3.0 * monsterBodyHeight[monster.monsterType] / bodyCounter;
-//                                
-//                                for (int i = 0; i < [monster.monsterBodyArray count]; ++ i) {
-//                                    CCSprite * body = (CCSprite *)[monster.monsterBodyArray objectAtIndex:i];
-//                                    float maxYPoint = (bodyCounter - i - 1) * (monsterBodyHeight[monster.monsterType] + gap) + 1.0 / 3.0 * monsterBodyHeight[monster.monsterType] + 46.0;
-//
-//                                    if (body.position.y < maxYPoint) {
-//                                        NSLog(@"!!!");
-//                                        CGPoint newMonsterBodyPosition = CGPointMake(body.position.x,body.position.y + (touchPosition.y - monster.oldTouchPosition.y));
-//                                        [body setPosition:newMonsterBodyPosition];
-//                                    }
-//                                    else {
-//                                        NSLog(@"The maxPoint is %f",maxYPoint);
-//                                        CGPoint newMonsterBodyPosition = CGPointMake(body.position.x,maxYPoint);
-//                                        [body setPosition:newMonsterBodyPosition];
-//                                    }
-//                                    
-//                                }
-//                            }
                         }
                     }
             }
@@ -176,15 +229,54 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
     for (UITouch * touch in touches)
     {
         //CGPoint touchPosition = [self locationFromTouch:touch];
         for (P3_Monster * monster in _monsterArray) {
             if (monster.isChoosen) {
-                [monster jumpBackToPointByMonsterType:monster.monsterType];
+                [self setTouchEnabled:NO];
+                
+                if (monster.monsterType != GreenMonster) {
+                    CCScaleTo * scaleAfterJump1 = [CCScaleTo actionWithDuration:0.05 scaleX:1.05 scaleY:0.95];
+                    CCScaleTo * scaleAfterJump2 = [CCScaleTo actionWithDuration:0.05 scaleX:0.95 scaleY:1.05];
+                    CCScaleTo * scaleAfterJump3 = [CCScaleTo actionWithDuration:0.05 scaleX:1.0 scaleY:1.0];
+                    
+                    CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
+                        [self setTouchEnabled:YES];
+                    }];
+                    
+                    CCSequence * seq = [CCSequence actions:
+                                        scaleAfterJump1,
+                                        scaleAfterJump2,
+                                        scaleAfterJump3,
+                                        callBack,
+                                        nil];
+                    
+                    [monster runAction:seq];
+                }
+                else {
+                        CCScaleTo * scaleAfterJump1 = [CCScaleTo actionWithDuration:0.1 scaleX:1.02 scaleY:0.98];
+                        CCScaleTo * scaleAfterJump2 = [CCScaleTo actionWithDuration:0.1 scaleX:0.98 scaleY:1.02];
+                        CCScaleTo * scaleAfterJump3 = [CCScaleTo actionWithDuration:0.1 scaleX:1.0 scaleY:1.0];
+                        
+                        CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
+                            [self setTouchEnabled:YES];
+                        }];
+                        
+                        CCSequence * seq = [CCSequence actions:
+                                            scaleAfterJump1,
+                                            scaleAfterJump2,
+                                            scaleAfterJump3,
+                                            callBack,
+                                            nil];
+                        
+                        [monster runAction:seq];
+                }
+
+                
+                
                 monster.isChoosen = NO;
-                monster.isStartMoving = YES;
-                monster.oldTouchPosition = monsterFirstPositions[monster.monsterType];
             }
         }
     }

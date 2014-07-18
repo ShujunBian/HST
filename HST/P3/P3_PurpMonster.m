@@ -31,19 +31,4 @@
 {
     [super initMonsterEyes];
 }
-
-- (void)jumpBackToPointByMonsterType:(MonsterType)monsterType
-{
-    [super jumpBackToPointByMonsterType:monsterType];
-}
-
-//- (void)createMonsterBodyInPosition:(CGPoint)position
-//               ByMonsterBodyCounter:(int)monsterBodyCounter
-//                     andMonsterType:(MonsterType)monsterType
-//{
-//    [super createMonsterBodyInPosition:position
-//                  ByMonsterBodyCounter:monsterBodyCounter
-//                        andMonsterType:monsterType];
-//}
-
 @end

@@ -500,6 +500,7 @@
 		5199792418D02CEB006A1FD8 /* P2_6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791B18D02CEB006A1FD8 /* P2_6.mp3 */; };
 		5199792518D02CEB006A1FD8 /* P2_7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791C18D02CEB006A1FD8 /* P2_7.mp3 */; };
 		5199792618D02CEB006A1FD8 /* P2_all.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5199791D18D02CEB006A1FD8 /* P2_all.mp3 */; };
+		51A93F5819778C1700920318 /* P3_MonsterBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A93F5719778C1700920318 /* P3_MonsterBody.m */; };
 		51CFF209196E436800602568 /* P3_Mushroom.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CFF208196E436800602568 /* P3_Mushroom.m */; };
 		51CFF21C196E47F500602568 /* P3_BellSprite.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 51CFF20A196E47F500602568 /* P3_BellSprite.ccbi */; };
 		51CFF21D196E47F500602568 /* P3_Cloud.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 51CFF20B196E47F500602568 /* P3_Cloud.ccbi */; };
@@ -1533,6 +1534,8 @@
 		5199791B18D02CEB006A1FD8 /* P2_6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_6.mp3; sourceTree = "<group>"; };
 		5199791C18D02CEB006A1FD8 /* P2_7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_7.mp3; sourceTree = "<group>"; };
 		5199791D18D02CEB006A1FD8 /* P2_all.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_all.mp3; sourceTree = "<group>"; };
+		51A93F5619778C1700920318 /* P3_MonsterBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_MonsterBody.h; sourceTree = "<group>"; };
+		51A93F5719778C1700920318 /* P3_MonsterBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_MonsterBody.m; sourceTree = "<group>"; };
 		51CFF207196E436800602568 /* P3_Mushroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Mushroom.h; sourceTree = "<group>"; };
 		51CFF208196E436800602568 /* P3_Mushroom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Mushroom.m; sourceTree = "<group>"; };
 		51CFF20A196E47F500602568 /* P3_BellSprite.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P3_BellSprite.ccbi; sourceTree = "<group>"; };
@@ -3045,6 +3048,8 @@
 				51F16357196E7F5100A5BE6A /* P3_CeruleanMonster.m */,
 				51780D5D196F8A25008D2688 /* P3_MonsterEye.h */,
 				51780D5E196F8A25008D2688 /* P3_MonsterEye.m */,
+				51A93F5619778C1700920318 /* P3_MonsterBody.h */,
+				51A93F5719778C1700920318 /* P3_MonsterBody.m */,
 			);
 			name = Monster;
 			sourceTree = "<group>";
@@ -4328,6 +4333,7 @@
 				5169CCDB18CDE5EE00426E6C /* cocos2d.m in Sources */,
 				5169CC8818CDE5ED00426E6C /* CCProgressTimer.m in Sources */,
 				1801E74D18E594FC004E0856 /* P4CloudLayer.m in Sources */,
+				51A93F5819778C1700920318 /* P3_MonsterBody.m in Sources */,
 				5169CC5D18CDE5ED00426E6C /* CCLabelTTF.m in Sources */,
 				5169CD0A18CDE5EE00426E6C /* CCFileUtils.m in Sources */,
 				5169CCF718CDE5EE00426E6C /* CCEventDispatcher.m in Sources */,

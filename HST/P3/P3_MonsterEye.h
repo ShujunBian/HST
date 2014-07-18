@@ -12,7 +12,7 @@
 
 @property (nonatomic) NSInteger monsterEyeCounter;
 @property (nonatomic, strong) NSMutableArray * monsterEyeSprites;
-@property (nonatomic, strong) NSMutableArray *   monsterEyeBlackSprites;
+@property (nonatomic, strong) NSMutableArray * monsterEyeBlackSprites;
 @property (nonatomic, strong) NSMutableArray * monsterEyePositions;
 
 @end
