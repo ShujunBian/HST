@@ -8,11 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "P3_Monster.h"
 
 @interface P3_MonsterBody : CCNode {
     
 }
 
 @property (nonatomic, assign) CCSprite *body;
+
+@property (nonatomic, strong) CCSprite *leftEye;
+@property (nonatomic, strong) CCSprite *rightEye;
+@property (nonatomic, strong) CCSprite *mouth;
+
+@property (nonatomic) MonsterType monsterType;
+
+- (void)initMonsterBodyEyesAndMouth;
 
 @end

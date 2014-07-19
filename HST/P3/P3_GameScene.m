@@ -182,7 +182,7 @@
                                 
                                 for (int i = 0; i < [monster.monsterBodyArray count]; ++ i) {
                                     P3_MonsterBody * body = (P3_MonsterBody *)[monster.monsterBodyArray objectAtIndex:i];
-                                    CGPoint newMonsterBodyPosition = CGPointMake(body.position.x,body.position.y + moveDistance * powf(0.8, i + 1));
+                                    CGPoint newMonsterBodyPosition = CGPointMake(body.position.x,body.position.y + moveDistance * (0.9 - i * 0.1));
                                     [body setPosition:newMonsterBodyPosition];
                                 }
                                 
