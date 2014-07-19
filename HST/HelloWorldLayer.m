@@ -12,6 +12,7 @@
 #import "SimpleAudioEngine.h"
 #import "AppDelegate.h"
 #import "CCBReader.h"
+#import "MonsterEyeTestLayer.h"
 
 #pragma mark - HelloWorldLayer
 
@@ -62,7 +63,20 @@
 			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p5Scene]];
 		}];
         
-		CCMenu *menu = [CCMenu menuWithItems:P1_Item, P2_Item,P3_Item,P4_Item,P5_Item, nil];
+
+        /*
+        CCMenuItem *monsterEyeTestScene = [CCMenuItemFont itemWithString:@"Monster Eye Test" block:^(id sender) {
+            CCScene* scene = [MonsterEyeTestLayer scene];
+			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];
+		}];
+        */
+        
+        CCMenuItem *mainMapScene = [CCMenuItemFont itemWithString:@"MainMap" block:^(id sender) {
+            CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];
+		}];
+        
+		CCMenu *menu = [CCMenu menuWithItems:P1_Item, P2_Item,P3_Item,P4_Item,P5_Item,/* monsterEyeTestScene,*/ mainMapScene, nil];
 		
 		[menu alignItemsHorizontallyWithPadding:20];
 		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];

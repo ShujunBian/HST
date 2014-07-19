@@ -19,7 +19,7 @@
 #define FLOW_SPEED_MAX 8.f
 #define FLOW_SPEED_MIN 1.f
 #define FLOW_SPEED_REDUCE_RADIO 0.995f;
-#define FLOW_SPEED_ADD_RADIO 1.05f
+#define FLOW_SPEED_ADD_RADIO 1.05f;
 
 @interface P4WaterRecord ()
 - (void)checkFlowSpeedMinAndMax;

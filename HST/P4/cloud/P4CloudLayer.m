@@ -9,7 +9,7 @@
 #import "P4CloudLayer.h"
 
 #define CLOUD_TOP_MOVE_DURATION 20.f
-#define CLOUD_1_MOVE_DURATION 40.f
+#define CLOUD_1_MOVE_DURATION 80.f
 #define CLOUD_2_MOVE_DURATION 40.f
 #define CLOUD_3_MOVE_DURATION 40.f
 

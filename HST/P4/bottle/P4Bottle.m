@@ -31,6 +31,7 @@
 @property (strong, nonatomic) CCRepeatForever* rightEarRepeat;
 
 @property (assign, nonatomic) int addCount;
+//@property (assign, nonatomic) float waterInOriginLife;
 
 @end
 
@@ -47,13 +48,19 @@
 {
     self.animationManager = self.userObject;
     
-    [self.waterIn stopSystem];
+    
+    [self.waterInLeft stopSystem];
+    [self.waterInRight stopSystem];
     [self.waterOut1 stopSystem];
     [self.waterOut2 stopSystem];
     self.addCount = 0;
     self.waterLayer.delegate = self;
     
+    self.waterInRight.scaleX = -1;
     self.waterOut1.scaleX = -1;
+    
+//    self.waterInOriginLife = self.waterInLeft.life;
+    
 }
 
 #pragma mark - Gesture
@@ -144,7 +151,26 @@
 - (void)beginAddWater:(P4Monster*)monster
 {
     ++self.addCount;
-    [self.waterLayer beginAddWater:monster.waterColor];
+    
+    BOOL fIsRight = YES;
+    switch (monster.type) {
+        case P4MonsterTypeGreen:
+        case P4MonsterTypeYellow:
+        case P4MonsterTypePurple:
+        {
+            fIsRight = NO;
+            break;
+        }
+        case P4MonsterTypeBlue:
+        case P4MonsterTypeRed:
+        default:
+        {
+            fIsRight = YES;
+            break;
+        }
+    }
+    
+    [self.waterLayer beginAddWater:monster.waterColor isRight:fIsRight];
 }
 - (void)endAddWater
 {
@@ -155,23 +181,61 @@
 - (void)startWaterIn:(P4Monster*)monster
 {
     [monster startWaterDecrease];
-    [self.waterIn resetSystem];
-
     
+    
+    BOOL fIsRight = NO;
+    switch (monster.type)
+    {
+        case P4MonsterTypeGreen:
+        case P4MonsterTypeYellow:
+        case P4MonsterTypePurple:
+        {
+            fIsRight = NO;
+            break;
+        }
+        case P4MonsterTypeBlue:
+        case P4MonsterTypeRed:
+        default:
+        {
+            fIsRight = YES;
+            break;
+        }
+    }
+    
+    if (fIsRight)
+    {
+        [self.waterInRight resetSystem];
+    }
+    else
+    {
+        [self.waterInLeft resetSystem];
+    }
+    
+    float deltaX = fIsRight? 100 : -100;
     CGRect bottleRect = [self.bottleMain getRect];
-    CGPoint pourWaterPoint = CGPointMake(bottleRect.origin.x + bottleRect.size.width / 2 - 100, bottleRect.origin.y + bottleRect.size.height + 50);
+    CGPoint pourWaterPoint = CGPointMake(bottleRect.origin.x + bottleRect.size.width / 2 + deltaX, bottleRect.origin.y + bottleRect.size.height + 50);
     
-    self.waterIn.position = ccp(pourWaterPoint.x + [monster getRect].size.height / 2 - 4, pourWaterPoint.y);
+    if (fIsRight)
+    {
+        self.waterInRight.position = ccp(pourWaterPoint.x - [monster getRect].size.height / 2 + 4, pourWaterPoint.y);
+        self.waterInRight.startColor = ccc4f(monster.waterColor.r / 255.f, monster.waterColor.g / 255.f, monster.waterColor.b / 255.f, 1.f);
+        self.waterInRight.endColor = self.waterInRight.startColor;
+    }
+    else
+    {
+        self.waterInLeft.position = ccp(pourWaterPoint.x + [monster getRect].size.height / 2 - 4, pourWaterPoint.y);
+        
+        self.waterInLeft.startColor = ccc4f(monster.waterColor.r / 255.f, monster.waterColor.g / 255.f, monster.waterColor.b / 255.f, 1.f);
+        self.waterInLeft.endColor = self.waterInLeft.startColor;
+    }
     
-    self.waterIn.startColor = ccc4f(monster.waterColor.r / 255.f, monster.waterColor.g / 255.f, monster.waterColor.b / 255.f, 1.f);
-    self.waterIn.endColor = self.waterIn.startColor;
-    
-    [self performSelector:@selector(beginAddWater:) withObject:monster afterDelay:self.waterIn.life];
+    [self performSelector:@selector(beginAddWater:) withObject:monster afterDelay:self.waterInLeft.life];
 }
 - (void)stopWaterIn
 {
-    [self.waterIn stopSystem];
-    [self performSelector:@selector(endAddWater) withObject:nil afterDelay:self.waterIn.life];
+    [self.waterInLeft stopSystem];
+    [self.waterInRight stopSystem];
+    [self performSelector:@selector(endAddWater) withObject:nil afterDelay:self.waterInLeft.life];
 }
 
 - (CGRect)getRect
@@ -230,14 +294,17 @@
 
 - (void)waterHeightChange:(float)height
 {
-    float deltaHeight = self.waterIn.position.y - self.waterLayer.sprayLeft.position.y;
-    float speedY = self.waterIn.speed * sin(ABS(self.waterIn.angle / 180.f * M_PI));
+    //调整waterIn life
     
-    float aY = ABS(self.waterIn.gravity.y);
+    float deltaHeight = self.waterInLeft.position.y - self.waterLayer.sprayLeft.position.y;
+    float speedY = self.waterInLeft.speed * sin(ABS(self.waterInLeft.angle / 180.f * M_PI));
+    
+    float aY = ABS(self.waterInLeft.gravity.y);
     
     float time = (-speedY + sqrt(speedY * speedY + 4 * 1 / 2 * aY * deltaHeight)) / aY;
     time -= 0.05;
-    self.waterIn.life = time;
+    self.waterInLeft.life = time;
+    self.waterInRight.life = time;
     
 }
 @end

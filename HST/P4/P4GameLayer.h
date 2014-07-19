@@ -24,10 +24,10 @@
 @property (strong, nonatomic) P4CloudLayer* cloudLayer;
 
 @property (strong, nonatomic) P4Monster* greenMonster;
-@property (strong, nonatomic) P4Monster* brownMonster;
+@property (strong, nonatomic) P4Monster* yellowMonster;
 @property (strong, nonatomic) P4Monster* purpleMonster;
 @property (strong, nonatomic) P4Monster* blueMonster;
-@property (strong, nonatomic) P4Monster* yellowMonster;
+@property (strong, nonatomic) P4Monster* redMonster;
 @property (strong, nonatomic) P4Bottle* bottle;
 
 - (void)monstersRenew;

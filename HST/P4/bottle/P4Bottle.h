@@ -32,7 +32,9 @@
 
 @property (strong, nonatomic) P4WaterLayer* waterLayer;
 
-@property (strong, nonatomic) CCParticleSystemQuad* waterIn;
+@property (strong, nonatomic) CCParticleSystemQuad* waterInLeft;
+@property (strong, nonatomic) CCParticleSystemQuad* waterInRight;
+
 @property (strong, nonatomic) CCParticleSystemQuad* waterOut1;
 @property (strong, nonatomic) CCParticleSystemQuad* waterOut2;
 

@@ -32,12 +32,15 @@
 @property (strong, nonatomic) CCParticleSystemQuad* sprayLeft;
 @property (strong, nonatomic) CCParticleSystemQuad* sprayRight;
 
-@property (assign, nonatomic) CGPoint leftSprayPrePosition;
-@property (assign, nonatomic) CGPoint rightSprayPrePosition;
+@property (assign, nonatomic) CGPoint leftSprayPrePositionR;
+@property (assign, nonatomic) CGPoint rightSprayPrePositionR;
+
+@property (assign, nonatomic) CGPoint leftSprayPrePositionL;
+@property (assign, nonatomic) CGPoint rightSprayPrePositionL;
 
 @property (unsafe_unretained, nonatomic) NSObject<P4WaterLayerDelegate>* delegate;
 
-- (void)beginAddWater:(ccColor3B)waterColor;
+- (void)beginAddWater:(ccColor3B)waterColor isRight:(BOOL)fIsRight;
 - (void)endAddWater;
 - (void)beginReleaseWater;
 

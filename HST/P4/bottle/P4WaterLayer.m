@@ -19,7 +19,7 @@
 #define ROTATE_MAX 15.f
 #define ROTATE_SPEED_BASE 0.02f
 #define ROTATE_REDUCE_RATE 0.5
-#define ADD_WATER_SPEED 1.3f
+#define ADD_WATER_SPEED (1.3f / 2.f)
 
 #define BAN_JIN 204
 //#define YUAN_XIN ccp(181,96)
@@ -43,6 +43,7 @@
 //Add Water
 @property (assign, nonatomic) BOOL fAddWater;
 @property (assign, nonatomic) ccColor3B addWaterColor;
+@property (assign, nonatomic) BOOL addWaterIsRight;
 
 @property (assign, nonatomic) float waterFlowTextureWidth;
 
@@ -122,8 +123,10 @@
     [self.sprayLeft stopSystem];
     [self.sprayRight stopSystem];
     
-    self.leftSprayPrePosition = self.sprayLeft.position;
-    self.rightSprayPrePosition = self.sprayRight.position;
+    self.leftSprayPrePositionR = self.sprayLeft.position;
+    self.rightSprayPrePositionR = self.sprayRight.position;
+    self.leftSprayPrePositionL = ccp(self.bottleMask.position.x * 2 - self.sprayLeft.position.x, self.sprayLeft.position.y);
+    self.rightSprayPrePositionL = ccp(self.bottleMask.position.x * 2 - self.sprayRight.position.x, self.sprayRight.position.y);
     
     
     [self reorderChild:self.sprayLeft z:15];
@@ -161,6 +164,7 @@
             break;
         }
     }
+
     
     //Update Rotate
     [self updateRotate];
@@ -295,7 +299,6 @@
         
         float fillHeight = BAN_JIN - xianXinJu;
         CGPoint fillLeftTop = pos;
-#warning 写至此处
 //        fillLeftTop.y += 20;
         CGPoint fillRightTop = ccp(fillLeftTop.x + textureWidth * 2 * cos(radius), fillLeftTop.y - textureWidth * 2 * sin(radius));
         
@@ -444,10 +447,12 @@
 
 
 #pragma mark - Add And Release Water
-- (void)beginAddWater:(ccColor3B)waterColor
+- (void)beginAddWater:(ccColor3B)waterColor isRight:(BOOL)fIsRight
 {
+
     self.fAddWater = YES;
     self.addWaterColor = waterColor;
+    self.addWaterIsRight = fIsRight;
     
     ccColor4F color = ccc4f(waterColor.r / 255.f, waterColor.g / 255.f, waterColor.b / 255.f, 1.f);
     self.sprayLeft.startColor = color;
@@ -577,21 +582,148 @@
         aveR = totalR / totalHeight;
         aveG = totalG / totalHeight;
         aveB = totalB / totalHeight;
-
-        float maxRGB = maxThree(aveR, aveG, aveB);
-        float minRGB = minThree(aveR, aveG, aveB);
-        float baoHeDu = (maxRGB - minRGB) / maxRGB;
-
-        CCLOG(@"%f",baoHeDu);
+       
+        ccColor3B finalColor;
+        if (self.waterRecordArray.count <= 1)
+        {
+            finalColor = ccc3(aveR, aveG, aveB);
+        }
+        else
+        {
+            finalColor = [self adjustColorR:aveR g:aveG b:aveB];
+        }
         
-        ccColor3B aveColor = ccc3(aveR, aveG, aveB);
         for (P4WaterRecord* record in self.waterRecordArray)
         {
-            record.colorTo = aveColor;
+            record.colorTo = finalColor;
             record.isChangeColor = YES;
         }
     }
 }
+
+- (ccColor3B)adjustColorR:(float)aveR g:(float)aveG b:(float)aveB
+{
+    
+    //RGB转HSV
+    float maxRGB = maxThree(aveR, aveG, aveB);
+    float minRGB = minThree(aveR, aveG, aveB);
+    
+    float h, s, v;
+    
+    //h
+    if (ABS(maxRGB - minRGB) <= 0.01)
+    {
+        h = 0;
+    }
+    else if (ABS(maxRGB - aveR) <= 0.01)
+    {
+        if (aveG >= aveB)
+        {
+            h = 60 * (aveG - aveB) / (maxRGB - minRGB);
+        }
+        else
+        {
+            h = 60 * (aveG - aveB) / (maxRGB - minRGB) + 360;
+        }
+    }
+    else if (ABS(maxRGB - aveG) <= 0.01)
+    {
+        h = 60 * (aveB - aveR) / (maxRGB - minRGB) + 120;
+    }
+    else
+    {
+        h = 60 * (aveR - aveG) / (maxRGB - minRGB) + 240;
+    }
+    
+    //s
+    if (ABS(maxRGB) <= 0.01 )
+    {
+        s = 0;
+    }
+    else
+    {
+        s = (maxRGB - minRGB) / maxRGB;
+    }
+    
+    v = maxRGB;
+    
+    
+    //颜色调整
+    if (h < 200)
+    {
+        //            h += 100;
+        h *= 1.6;
+    }
+    
+    
+    //HSV转RGB
+    float finalR, finalG, finalB;
+    
+    int hi = ((int)h / 60) % 6;
+    float f = h / 60 - hi;
+    float p = v * (1 - s);
+    float q = v * (1 - f * s);
+    float t = v * (1 - (1 - f) * s);
+    
+    switch (hi)
+    {
+        case 0:
+        {
+            //vtp
+            finalR = v;
+            finalG = t;
+            finalB = p;
+            break;
+        }
+        case 1:
+        {
+            //qvp
+            finalR = q;
+            finalG = v;
+            finalB = p;
+            break;
+        }
+        case 2:
+        {
+            //pvt
+            finalR = p;
+            finalG = v;
+            finalB = t;
+            break;
+        }
+        case 3:
+        {
+            //pqv
+            finalR = p;
+            finalG = q;
+            finalB = v;
+            break;
+        }
+        case 4:
+        {
+            //tpv
+            finalR = t;
+            finalG = p;
+            finalB = v;
+            break;
+        }
+        case 5:
+        default:
+        {
+            //vpq
+            finalR = v;
+            finalG = p;
+            finalB = q;
+            break;
+        }
+            
+    }
+    
+//    CCLOG(@"r:%f,g:%f,b:%f",aveR,aveG,aveB);
+//    CCLOG(@"adjust:r:%f,g:%f,b:%f",finalR,finalG,finalB);
+    return ccc3(finalR, finalG, finalB);
+}
+
 
 #pragma mark - Rotate
 
@@ -682,8 +814,14 @@
     float radio = -0.2f;
     float deltaX = height * radio;
     height = height - 15.f;
-    self.sprayLeft.position = ccp(self.leftSprayPrePosition.x + deltaX, self.leftSprayPrePosition.y + height);
-    self.sprayRight.position = ccp(self.rightSprayPrePosition.x + deltaX, self.rightSprayPrePosition.y + height);
+    
+    CGPoint leftSprayPrePos = self.addWaterIsRight? self.leftSprayPrePositionL : self.leftSprayPrePositionR;
+    CGPoint rightSprayPrePos = self.addWaterIsRight? self.rightSprayPrePositionL : self.rightSprayPrePositionR;
+    
+    deltaX = self.addWaterIsRight? -deltaX: deltaX;
+    
+    self.sprayLeft.position = ccp(leftSprayPrePos.x + deltaX, leftSprayPrePos.y + height);
+    self.sprayRight.position = ccp(rightSprayPrePos.x + deltaX, rightSprayPrePos.y + height);
 }
 
 - (float)getWaterHeight
