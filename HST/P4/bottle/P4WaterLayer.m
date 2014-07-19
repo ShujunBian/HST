@@ -161,7 +161,6 @@
             break;
         }
     }
-    UIColor* color = 0;
 
     
     //Update Rotate
@@ -297,7 +296,6 @@
         
         float fillHeight = BAN_JIN - xianXinJu;
         CGPoint fillLeftTop = pos;
-#warning 写至此处
 //        fillLeftTop.y += 20;
         CGPoint fillRightTop = ccp(fillLeftTop.x + textureWidth * 2 * cos(radius), fillLeftTop.y - textureWidth * 2 * sin(radius));
         

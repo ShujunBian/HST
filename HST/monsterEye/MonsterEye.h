@@ -10,7 +10,6 @@
 
 //怪物眼睛
 //锚点0.5,0.5
-#warning 未完成，目前生成静止的怪物眼睛
 @interface MonsterEye : CCNode
 
 - (id)initWithEyeWhiteName:(NSString *)eyeWhiteName eyeballName:(NSString *)eyeballName eyelidColor:(ccColor3B)eyelidColor;
