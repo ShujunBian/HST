@@ -56,6 +56,14 @@
 @property (assign, nonatomic) float bottleOffsetX;
 @property (assign, nonatomic) float bottleOffsetY;
 
+
+//////////Shake
+@property (strong, nonatomic) P4Monster* shakeMonster;
+@property (strong, nonatomic) CCParticleSystemQuad* shakeSpray;
+@property (assign, nonatomic) CGPoint sprayOriginPosition;
+@property (assign, nonatomic) float shakeX;
+@property (assign, nonatomic) float shakeY;
+
 @end
 
 @implementation P4GameLayer
@@ -379,7 +387,19 @@
         [self.bottle startWaterIn:monster];
     }];
     
+    
+    //开始振动
+    CCCallBlock* beginShake = [CCCallBlock actionWithBlock:^{
+        [weakSelf monsterBeginShake:monster];
+    }];
+    
     CCFiniteTimeAction* delay2 = [[CCDelayTime alloc] initWithDuration:1.f];
+    
+    //停止振动
+    CCCallBlock* endShake = [CCCallBlock actionWithBlock:^{
+        [weakSelf monsterEndShake:monster];
+    }];
+    
     
     CCFiniteTimeAction* endAddWater = [[CCCallBlock alloc] initWithBlock:^{
         [self.bottle stopWaterIn];
@@ -449,10 +469,32 @@
         [monster endUpdateWater];
     }];
     
-    CCSequence* sequence = [CCSequence actions:callOpen, callHideMonsters, outTo, beginAddWater, delay2, endAddWater, callClose, callShowMonsters, easeOutBack, finish, nil];
+    CCSequence* sequence = [CCSequence actions:callOpen, callHideMonsters, outTo, beginAddWater, beginShake, delay2, endShake, endAddWater, callClose, callShowMonsters, easeOutBack, finish, nil];
     
     [monster runAction:sequence];
 }
+
+
+- (void)monsterBeginShake:(P4Monster*)monster
+{
+    [self schedule:@selector(monsterShakeUpdate:) interval:0.2f];
+
+}
+
+- (void)monsterEndShake:(P4Monster*)monster
+{
+    [self unschedule:@selector(monsterShakeUpdate:)];
+}
+
+- (void)monsterShakeUpdate:(ccTime)deltaTime
+{
+
+}
+- (void)updateShakeMonsterAndSprayPosition
+{
+    
+}
+
 #pragma mark - Bottle Move
 - (void)bottleMoveDelta:(P4BottleOffset*)offset
 {
@@ -613,6 +655,7 @@
 #pragma mark - 菜单键调用函数 mainMapDelegate
 - (void)restartGameScene
 {
+    
 }
 
 - (void)returnToMainMap
@@ -627,5 +670,6 @@
      [CCTransitionFade transitionWithDuration:1.0
                                         scene:[HelloWorldLayer scene]]];
 }
+
 
 @end
