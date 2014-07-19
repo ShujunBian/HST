@@ -26,7 +26,10 @@
 #define BOTTLE_SCALE_X_ADD_RATE 1.03f
 #define BOTTLE_SCALE_X_DECREASE_RATE 0.995f
 
-
+#define BOTTLE_SHAKE_X 5.f
+#define BOTTLE_SHAKE_Y 5.f
+#define BOTTLE_SHAKE_MAX_X 10.f
+#define BOTTLE_SHAKE_MAX_Y 10.f
 
 @interface P4GameLayer ()
 - (void)monsterPressed:(P4Monster*)monster;
@@ -474,25 +477,58 @@
     [monster runAction:sequence];
 }
 
-
 - (void)monsterBeginShake:(P4Monster*)monster
 {
-    [self schedule:@selector(monsterShakeUpdate:) interval:0.2f];
-
+    self.shakeMonster = monster;
+    switch (monster.type)
+    {
+        case P4MonsterTypeGreen:
+        case P4MonsterTypeYellow:
+        case P4MonsterTypePurple:
+        {
+            self.shakeSpray = self.bottle.waterInLeft;
+            break;
+        }
+        case P4MonsterTypeBlue:
+        case P4MonsterTypeRed:
+        default:
+        {
+            self.shakeSpray = self.bottle.waterInRight;
+            break;
+        }
+    }
+    self.sprayOriginPosition = self.shakeSpray.position;
+    [self schedule:@selector(monsterShakeUpdate:) interval:1.f/60.f];
 }
 
 - (void)monsterEndShake:(P4Monster*)monster
 {
     [self unschedule:@selector(monsterShakeUpdate:)];
+    self.shakeX = 0;
+    self.shakeY = 0;
+    self.shakeSpray = nil;
+    self.shakeMonster = nil;
+    [self updateShakeMonsterAndSprayPosition];
 }
 
 - (void)monsterShakeUpdate:(ccTime)deltaTime
 {
-
+    float shakeX = BOTTLE_SHAKE_X * (CCRANDOM_0_1() - 0.5);
+    float shakeY = BOTTLE_SHAKE_Y * (CCRANDOM_0_1() - 0.5);
+    
+    self.shakeX += shakeX;
+    self.shakeY += shakeY;
+    self.shakeX = self.shakeX > BOTTLE_SHAKE_MAX_X? BOTTLE_SHAKE_MAX_X: self.shakeX;
+    self.shakeX = self.shakeX < -BOTTLE_SHAKE_MAX_X ? -BOTTLE_SHAKE_MAX_X : self.shakeX;
+    self.shakeY = self.shakeY > BOTTLE_SHAKE_MAX_Y? BOTTLE_SHAKE_MAX_Y: self.shakeY;
+    self.shakeY = self.shakeY < -BOTTLE_SHAKE_MAX_Y? -BOTTLE_SHAKE_MAX_Y: self.shakeY;
+    [self updateShakeMonsterAndSprayPosition];
 }
+
 - (void)updateShakeMonsterAndSprayPosition
 {
-    
+    self.shakeMonster.position = ccp(self.pourWaterPoint.x + self.shakeX,self.pourWaterPoint.y + self.shakeY);
+    self.shakeSpray.position = ccp(self.sprayOriginPosition.x + self.shakeX,self.sprayOriginPosition.y + self.shakeY);
 }
 
 #pragma mark - Bottle Move
@@ -529,6 +565,7 @@
 //    [self updateBottlePositionWithAnimation:YES];
     [self.bottle bottleMoveBack:delay];
 }
+
 - (void)updateBottlePositionWithAnimation:(BOOL)fAnimate
 {
     CGPoint pos = ccp(self.bottlePositoinOrigin.x + self.bottleOffsetX, self.bottlePositoinOrigin.y + self.bottleOffsetY);
