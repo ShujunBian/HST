@@ -87,8 +87,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -236,7 +234,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>WorldP2Layer</string>
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>memberVarAssignmentName</key>

@@ -594,7 +594,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>WorldP1Layer</string>
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>memberVarAssignmentName</key>

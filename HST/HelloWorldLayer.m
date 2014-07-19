@@ -71,7 +71,12 @@
 		}];
         */
         
-		CCMenu *menu = [CCMenu menuWithItems:P1_Item, P2_Item,P3_Item,P4_Item,P5_Item,/* monsterEyeTestScene,*/ nil];
+        CCMenuItem *mainMapScene = [CCMenuItemFont itemWithString:@"MainMap" block:^(id sender) {
+            CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];
+		}];
+        
+		CCMenu *menu = [CCMenu menuWithItems:P1_Item, P2_Item,P3_Item,P4_Item,P5_Item,/* monsterEyeTestScene,*/ mainMapScene, nil];
 		
 		[menu alignItemsHorizontallyWithPadding:20];
 		[menu setPosition:ccp( size.width/2, size.height/2 - 50)];

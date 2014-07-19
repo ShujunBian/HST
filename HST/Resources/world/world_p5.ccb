@@ -306,7 +306,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>WorldP5Layer</string>
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>memberVarAssignmentName</key>
@@ -400,6 +400,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

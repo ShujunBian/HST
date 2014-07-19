@@ -726,9 +726,9 @@
 				<key>displayName</key>
 				<string>P1</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_p1Layer</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -764,9 +764,9 @@
 				<key>displayName</key>
 				<string>P5</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_p5Layer</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -870,9 +870,9 @@
 				<key>displayName</key>
 				<string>P3</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_p3Layer</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -908,9 +908,9 @@
 				<key>displayName</key>
 				<string>P4</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_p4Layer</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -944,11 +944,11 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCBFile</string>
+				<string>P2</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_p2Layer</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -976,7 +976,7 @@
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string></string>
+		<string>WorldLayer</string>
 		<key>displayName</key>
 		<string>CCLayer</string>
 		<key>memberVarAssignmentName</key>
