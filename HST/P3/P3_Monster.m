@@ -118,7 +118,8 @@
         [self.monsterBodyArray addObject:newBody];
         
         newBody.body.color = monsterFaceColor[self.monsterType][[self.monsterBodyArray count]];
-        
+        newBody.monsterType = self.monsterType;
+        [newBody initMonsterBodyEyesAndMouth];
         
         CCScaleTo * scaleBack = [CCScaleTo actionWithDuration:0.05 scale:1.05];
         CCScaleTo * scaleBack2 = [CCScaleTo actionWithDuration:0.05 scale:0.95];

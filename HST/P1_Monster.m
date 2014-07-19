@@ -29,8 +29,6 @@
     mouthSmall.visible = NO;
     [self maskedSprite];
     [self addChild:maskedMouth];
-    
-    self.lefthand.position = ccpAdd(self.lefthand.position, ccp(self.body.contentSize.width / 2,0)) ;
 
     
     [self schedule:@selector(updateLeftHand:)];
