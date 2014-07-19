@@ -26,10 +26,11 @@
 #define BOTTLE_SCALE_X_ADD_RATE 1.03f
 #define BOTTLE_SCALE_X_DECREASE_RATE 0.995f
 
-#define BOTTLE_SHAKE_X 5.f
-#define BOTTLE_SHAKE_Y 5.f
+#define BOTTLE_SHAKE_X 3.f
+#define BOTTLE_SHAKE_Y 3.f
 #define BOTTLE_SHAKE_MAX_X 10.f
 #define BOTTLE_SHAKE_MAX_Y 10.f
+#define BOTTLE_SHAKE_UPDATE_RATE 1.f / 30.f
 
 @interface P4GameLayer ()
 - (void)monsterPressed:(P4Monster*)monster;
@@ -45,6 +46,8 @@
 @property (assign, nonatomic) BOOL isMonsterAnimated;
 
 @property (assign, nonatomic) CGPoint pourWaterPoint;
+@property (assign, nonatomic) CGPoint pourWaterPointLeft;
+@property (assign, nonatomic) CGPoint pourWaterPointRight;
 
 @property (assign, nonatomic) BOOL isTouchBottle;
 @property (assign, nonatomic) CGPoint bottleTouchPointNow;
@@ -165,7 +168,9 @@
     self.bottleTouchPoint = CGPointZero;
     
     CGRect bottleRect = [self.bottle.bottleMain getRect];
-    self.pourWaterPoint = CGPointMake(bottleRect.origin.x + bottleRect.size.width / 2 - 100, bottleRect.origin.y + bottleRect.size.height + 70);
+    
+    self.pourWaterPointLeft = CGPointMake(bottleRect.origin.x + bottleRect.size.width / 2 - 100, bottleRect.origin.y + bottleRect.size.height + 70);
+    self.pourWaterPointRight = CGPointMake(bottleRect.origin.x + bottleRect.size.width / 2 + 95, bottleRect.origin.y + bottleRect.size.height + 70);
 
     
     self.bottleOffsetX = 0;
@@ -327,18 +332,32 @@
     CCFiniteTimeAction* callOpen = [[CCCallBlock alloc] initWithBlock:^{
         [weakSelf.bottle capOpen];
     }];
-    
-    
-    
-//    CCFiniteTimeAction* moveTo = [[CCMoveTo alloc] initWithDuration:1.f position:self.pourWaterPoint];
-//    CCFiniteTimeAction* delay = [[CCDelayTime alloc] initWithDuration:1.f];
+    float rotateRadiu = 105.f;
+    switch (monster.type)
+    {
+        case P4MonsterTypeGreen:
+        case P4MonsterTypeYellow:
+        case P4MonsterTypePurple:
+        {
+            self.pourWaterPoint = self.pourWaterPointLeft;
+            break;
+        }
+        case P4MonsterTypeBlue:
+        case P4MonsterTypeRed:
+        default:
+        {
+            self.pourWaterPoint = self.pourWaterPointRight;
+            rotateRadiu = -105.f;
+            break;
+        }
+    }
 
     ccBezierConfig config;
     config.endPosition = self.pourWaterPoint;
     
 //    int iMonsterIndex = [self.monstersArray indexOfObject:monster];
     float moveDuration = 1.5f;
-    float rotateRadiu = 105.f;
+
     switch (monster.type)
     {
         case 0:
@@ -361,11 +380,15 @@
         }
         case 3:
         {
+            config.controlPoint_1 = ccp(monster.position.x + 250, monster.position.y + 100);
+            config.controlPoint_2 = ccp(self.pourWaterPoint.x + 250, self.pourWaterPoint.y + 150);
             break;
         }
         case 4:
         default:
         {
+            config.controlPoint_1 = ccp(monster.position.x + 200, monster.position.y + 300);
+            config.controlPoint_2 = ccp(self.pourWaterPoint.x + 200, self.pourWaterPoint.y + 200);
             break;
         }
     }
@@ -396,7 +419,7 @@
         [weakSelf monsterBeginShake:monster];
     }];
     
-    CCFiniteTimeAction* delay2 = [[CCDelayTime alloc] initWithDuration:1.f];
+    CCFiniteTimeAction* delay2 = [[CCDelayTime alloc] initWithDuration:2.f];
     
     //停止振动
     CCCallBlock* endShake = [CCCallBlock actionWithBlock:^{
@@ -446,11 +469,16 @@
         }
         case 3:
         {
+            configBack.controlPoint_1 = ccp(self.pourWaterPoint.x + 200, self.pourWaterPoint.y + 100);
+            configBack.controlPoint_2 = ccp(monster.prePosition.x + 200, monster.position.y + 200);
             break;
         }
         case 4:
         default:
         {
+            configBack.controlPoint_1 = ccp(self.pourWaterPoint.x + 300, self.pourWaterPoint.y + 100);
+            configBack.controlPoint_2 = ccp(monster.prePosition.x + 100, monster.position.y + 300);
+            moveBackDuration = 1.8f;
             break;
         }
     }
@@ -497,12 +525,34 @@
             break;
         }
     }
+    
+    int repeatTime = 1;
+    int moveLength = 15;
+    CCMoveBy* monsterMoveBy1 = [CCMoveBy actionWithDuration:0.5f / repeatTime position:ccp(0,-moveLength)];
+    CCMoveBy* monsterMoveBy2 = [CCMoveBy actionWithDuration:1.f / repeatTime position:ccp(0,moveLength * 2)];
+    CCMoveBy* monsterMoveBy3 = [CCMoveBy actionWithDuration:0.5f / repeatTime position:ccp(0,-moveLength)];
+    CCSequence* monsterMoveSequence =
+    [CCSequence actions:
+     [CCEaseSineOut actionWithAction:monsterMoveBy1],
+     [CCEaseSineInOut actionWithAction:monsterMoveBy2],
+     [CCEaseSineIn actionWithAction:monsterMoveBy3],nil];
+    CCRepeat* monsterMoveRepeat = [CCRepeat actionWithAction:monsterMoveSequence times:repeatTime];
+    CCRepeat* sprayMoveRepeat = [monsterMoveRepeat copy];
+    [self.shakeMonster runAction:monsterMoveRepeat];
+    [self.shakeSpray runAction:sprayMoveRepeat];
+    
+    return;
+    
+    
     self.sprayOriginPosition = self.shakeSpray.position;
-    [self schedule:@selector(monsterShakeUpdate:) interval:1.f/60.f];
+    [self schedule:@selector(monsterShakeUpdate:) interval:BOTTLE_SHAKE_UPDATE_RATE];
 }
 
 - (void)monsterEndShake:(P4Monster*)monster
 {
+    return;
+    
+    
     [self unschedule:@selector(monsterShakeUpdate:)];
     self.shakeX = 0;
     self.shakeY = 0;

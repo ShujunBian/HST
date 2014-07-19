@@ -19,7 +19,7 @@
 #define ROTATE_MAX 15.f
 #define ROTATE_SPEED_BASE 0.02f
 #define ROTATE_REDUCE_RATE 0.5
-#define ADD_WATER_SPEED 1.3f
+#define ADD_WATER_SPEED (1.3f / 2.f)
 
 #define BAN_JIN 204
 //#define YUAN_XIN ccp(181,96)
@@ -43,6 +43,7 @@
 //Add Water
 @property (assign, nonatomic) BOOL fAddWater;
 @property (assign, nonatomic) ccColor3B addWaterColor;
+@property (assign, nonatomic) BOOL addWaterIsRight;
 
 @property (assign, nonatomic) float waterFlowTextureWidth;
 
@@ -122,8 +123,10 @@
     [self.sprayLeft stopSystem];
     [self.sprayRight stopSystem];
     
-    self.leftSprayPrePosition = self.sprayLeft.position;
-    self.rightSprayPrePosition = self.sprayRight.position;
+    self.leftSprayPrePositionR = self.sprayLeft.position;
+    self.rightSprayPrePositionR = self.sprayRight.position;
+    self.leftSprayPrePositionL = ccp(self.bottleMask.position.x * 2 - self.sprayLeft.position.x, self.sprayLeft.position.y);
+    self.rightSprayPrePositionL = ccp(self.bottleMask.position.x * 2 - self.sprayRight.position.x, self.sprayRight.position.y);
     
     
     [self reorderChild:self.sprayLeft z:15];
@@ -444,10 +447,12 @@
 
 
 #pragma mark - Add And Release Water
-- (void)beginAddWater:(ccColor3B)waterColor
+- (void)beginAddWater:(ccColor3B)waterColor isRight:(BOOL)fIsRight
 {
+
     self.fAddWater = YES;
     self.addWaterColor = waterColor;
+    self.addWaterIsRight = fIsRight;
     
     ccColor4F color = ccc4f(waterColor.r / 255.f, waterColor.g / 255.f, waterColor.b / 255.f, 1.f);
     self.sprayLeft.startColor = color;
@@ -809,8 +814,14 @@
     float radio = -0.2f;
     float deltaX = height * radio;
     height = height - 15.f;
-    self.sprayLeft.position = ccp(self.leftSprayPrePosition.x + deltaX, self.leftSprayPrePosition.y + height);
-    self.sprayRight.position = ccp(self.rightSprayPrePosition.x + deltaX, self.rightSprayPrePosition.y + height);
+    
+    CGPoint leftSprayPrePos = self.addWaterIsRight? self.leftSprayPrePositionL : self.leftSprayPrePositionR;
+    CGPoint rightSprayPrePos = self.addWaterIsRight? self.rightSprayPrePositionL : self.rightSprayPrePositionR;
+    
+    deltaX = self.addWaterIsRight? -deltaX: deltaX;
+    
+    self.sprayLeft.position = ccp(leftSprayPrePos.x + deltaX, leftSprayPrePos.y + height);
+    self.sprayRight.position = ccp(rightSprayPrePos.x + deltaX, rightSprayPrePos.y + height);
 }
 
 - (float)getWaterHeight

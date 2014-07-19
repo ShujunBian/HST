@@ -111,14 +111,15 @@
     float spriteWidth = maskSprite.texture.contentSize.width;
     float spriteHeight = maskSprite.texture.contentSize.height;
 
+    float rotation = abs(self.rotation);
     float radius = 0;
-    if (self.rotation < 90)
+    if (rotation < 90)
     {
-        radius = self.rotation * M_PI / 180.f;
+        radius = rotation * M_PI / 180.f;
     }
     else
     {
-        radius = (self.rotation - 90) * M_PI / 180.f;
+        radius = (rotation - 90) * M_PI / 180.f;
     }
 
     float width = spriteWidth * cos(radius) + spriteHeight * sin(radius);
