@@ -40,6 +40,7 @@
 
 @property (unsafe_unretained, nonatomic) P4GameLayer* gameLayer;
 @property (readonly, nonatomic) BOOL isFull;
+@property (readonly, nonatomic) BOOL isAboutToFull;
 
 - (void)capOpen;
 - (void)capClose;
@@ -48,9 +49,11 @@
 - (void)stopWaterIn;
 - (CGRect)getRect;
 
+- (void)updateRenewButton;
 
 - (void)bottleMoveWithDeltaX:(float)deltaX deltaY:(float)deltaY;
 - (void)bottleMoveBack:(float)delay;
 
 
+@property (readonly, nonatomic) int addCount;
 @end

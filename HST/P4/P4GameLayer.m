@@ -75,6 +75,22 @@
 
 @synthesize backgroundSprite = _backgroundSprite;
 
+- (void)setIsMonsterAnimated:(BOOL)isMonsterAnimated
+{
+    _isMonsterAnimated = isMonsterAnimated;
+}
+- (BOOL)someMonsterAnimated
+{
+    for (P4Monster* m in self.monstersArray)
+    {
+        if (m.isAnimated)
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 #pragma mark - Static Method
 +(CCScene *) scene
 {
@@ -206,7 +222,7 @@
             {
                 [self monsterPressed:monster];
             }
-            else if (CGRectContainsPoint([self.bottle getRect], locationInNodeSpace) && !self.isMonsterAnimated)
+            else if (CGRectContainsPoint([self.bottle getRect], locationInNodeSpace) && !self.someMonsterAnimated)
             {
                 
                 self.isTouchBottle = YES;
@@ -269,9 +285,11 @@
 }
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+
     if (self.isTouchBottle)
     {
         [self bottleMoveBack];
+
 //        [self performSelector:@selector(bottleMoveBack) withObject:nil afterDelay:BOTTLE_MOVE_DELAY];
         [self.bottle runAction:[[CCScaleTo alloc] initWithDuration:0.2f scale:1.f]];
         
@@ -292,8 +310,11 @@
             CGPoint toPosition = ccp(m.position.x, m.position.y - 150);
             CCActionInterval* moveTo = [CCMoveTo actionWithDuration:1.f position:toPosition];
             CCActionInterval* easeTo = [CCEaseExponentialOut actionWithAction:moveTo];
-
-            [m runAction:easeTo];
+            CCCallBlock* callBlock = [CCCallBlock actionWithBlock:^{
+                m.isHideBelow = YES;
+            }];
+            
+            [m runAction:[CCSequence actionWithArray:@[callBlock, easeTo]]];
         }
     }
 }
@@ -301,7 +322,7 @@
 {
     for (P4Monster* m in self.monstersArray)
     {
-        if (m != monster)
+        if (m != monster && !m.isAnimated)
         {
             float moveDuration = 1.f;
             
@@ -313,10 +334,12 @@
             CCActionInterval* moveTo = [CCMoveTo actionWithDuration:moveDuration position:m.prePosition];
 
             CCActionInterval* easeTo = [CCEaseExponentialOut actionWithAction:moveTo];
+            
             CCCallBlock* callBlock = [CCCallBlock actionWithBlock:^{
-                self.isMonsterAnimated = NO;
+                m.isHideBelow = NO;
             }];
-            [m runAction:easeTo];
+            
+            [m runAction:[CCSequence actionWithArray:@[easeTo, callBlock]]];
 //            [m runAction:[CCSequence actionWithArray:@[
 //                                                       delay,
 //                                                       easeTo, callBlock]]];
@@ -336,7 +359,7 @@
 
 - (void)monsterPressed:(P4Monster*)monster
 {
-    if (self.isMonsterAnimated || monster.isEmpty || monster.isAnimated || self.bottle.isFull)
+    if (self.isMonsterAnimated || monster.isEmpty || monster.isAnimated || self.bottle.isFull || self.isTouchBottle)
     {
         return;
     }
@@ -344,6 +367,7 @@
     self.isMonsterAnimated = YES;
     monster.isAnimated = YES;
     [monster beginUpdateWater];
+    [self.bottle updateRenewButton];
     
     CCFiniteTimeAction* callOpen = [[CCCallBlock alloc] initWithBlock:^{
         [weakSelf.bottle capOpen];
@@ -434,7 +458,11 @@
         [weakSelf monsterBeginShake:monster];
     }];
     
-    CCFiniteTimeAction* delay2 = [[CCDelayTime alloc] initWithDuration:1.f];
+    CCFiniteTimeAction* delay2 = [[CCDelayTime alloc] initWithDuration:0.7f];
+    
+    
+    
+    CCFiniteTimeAction* delay2_ = [[CCDelayTime alloc] initWithDuration:0.3f];
     
     //停止振动
     CCCallBlock* endShake = [CCCallBlock actionWithBlock:^{
@@ -455,7 +483,14 @@
 //    CCActionInterval* moveBack = [[CCMoveTo alloc] initWithDuration:1.f position:monster.prePosition];
     
     ccBezierConfig configBack;
-    configBack.endPosition = monster.prePosition;
+    if (!self.bottle.isAboutToFull)
+    {
+        configBack.endPosition = monster.prePosition;
+    }
+    else
+    {
+        configBack.endPosition = ccp(monster.prePosition.x, monster.prePosition.y - 150.f);
+    }
     
     float moveBackDuration = 1.2f;
     float rotateBackDuration = .5f;
@@ -504,7 +539,24 @@
     CCSpawn* spawnBack = [CCSpawn actionWithArray:@[bezierBack, rotateBack]];
     
     CCFiniteTimeAction* callShowMonsters = [[CCCallBlock alloc] initWithBlock:^{
-        [weakSelf showMonstersExcept:monster totalDuration:1.2f];
+        
+        if (!self.bottle.isFull)
+        {
+            [weakSelf showMonstersExcept:monster totalDuration:1.2f];
+        }
+        else
+        {
+            CCCallBlock* callBlock = [CCCallBlock actionWithBlock:^{
+                self.isMonsterAnimated = NO;
+            }];
+            
+            [self runAction:[CCSequence
+                             actionWithArray:
+                             @[[CCDelayTime actionWithDuration:.4f],
+                               callBlock
+                               ]]];
+        }
+
     }];
     
     CCActionInterval* easeOutBack = [CCEaseSineOut actionWithAction:spawnBack ];
@@ -514,9 +566,10 @@
 //        weakSelf.isMonsterAnimated = NO;
         [monster endUpdateWater];
         monster.isAnimated = NO;
+        [self.bottle updateRenewButton];
     }];
     
-    CCSequence* sequence = [CCSequence actions:callOpen, callHideMonsters, outTo, beginAddWater, beginShake, delay2, endShake, endAddWater, callClose, callShowMonsters, easeOutBack, finish, nil];
+    CCSequence* sequence = [CCSequence actions:callOpen, callHideMonsters, outTo, beginAddWater, beginShake, delay2, callShowMonsters, delay2_, endShake, endAddWater, callClose,  easeOutBack, finish, nil];
     
     [monster runAction:sequence];
 }
@@ -608,8 +661,6 @@
 }
 - (void)bottleMoveBack
 {
-
-
     float newX = 2 * self.bottleTouchPointNow.x - self.bottleTouchPoint.x;
     float newY = 2 * self.bottleTouchPointNow.y - self.bottleTouchPoint.y;
     P4BottleOffset* newOffset = [self getOffsetByTouchPoint:ccp(newX,newY)];
@@ -622,6 +673,7 @@
 
     CCEaseSineInOut* backInOut = [[CCEaseSineInOut alloc] initWithAction:moveBack];
 //                                                                    rate:2.5f];
+    [self.bottle stopAllActions];
     [self.bottle runAction:[[CCSequence alloc] initOne:newOut two:backInOut]];
     self.bottleOffsetX = 0;
     self.bottleOffsetY = 0;
@@ -649,10 +701,28 @@
 #pragma mark - Monsters Renew
 - (void)monstersRenew
 {
+    float time = self.bottle.addCount * 0.65f;
+//        CCCallBlock* callBlock1 = [CCCallBlock actionWithBlock:^{
+//            [self hideMonstersExcept:nil];
+//        }];
+    
+//        CCDelayTime* delay = [CCDelayTime actionWithDuration:time - 1.f];
+//        CCCallBlock* callBlock2 = [CCCallBlock actionWithBlock:^{
+//            [self showMonstersExcept:nil totalDuration:1.f];
+//        }];
+//        [self runAction:[CCSequence actions:
+//                         callBlock1,
+//                         delay, callBlock2, nil]];
+    [self showMonstersExcept:nil totalDuration:1.f];
+
     for (P4Monster* monster in self.monstersArray)
     {
         [monster startWaterFull];
     }
+}
+- (void)monstersRenewEnd
+{
+
 }
 
 #pragma mark - Scale Update
