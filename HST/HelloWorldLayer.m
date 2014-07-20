@@ -37,28 +37,37 @@
 		CGSize size = [[CCDirector sharedDirector] winSize];
 		
 		CCMenuItem *P1_Item = [CCMenuItemFont itemWithString:@"P1_Item" block:^(id sender) {
+            ((CCMenuItem *)sender).isEnabled = NO;
+
             CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
 			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p1Scene]];
 		}];
 		// Leaderboard Menu Item using blocks
 		CCMenuItem *P2_Item = [CCMenuItemFont itemWithString:@"P2_Item" block:^(id sender) {
+            ((CCMenuItem *)sender).isEnabled = NO;
+
             CCScene* p2Scene = [CCBReader sceneWithNodeGraphFromFile:@"P2_GameScene.ccbi"];
             [self preloadMusicAndEffect];
 			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p2Scene]];
 		}];
 
         CCMenuItem *P3_Item = [CCMenuItemFont itemWithString:@"P3_Item" block:^(id sender) {
+            ((CCMenuItem *)sender).isEnabled = NO;
+
 			CCScene * p3Scene = [CCBReader sceneWithNodeGraphFromFile:@"P3_GameScene.ccbi"];
             [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p3Scene]];
 		}];
         
         CCMenuItem *P4_Item = [CCMenuItemFont itemWithString:@"P4_Item" block:^(id sender) {
-//            CCScene * p4Scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+            ((CCMenuItem *)sender).isEnabled = NO;
+            
 			CCScene * p4Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];
             [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p4Scene]];
 		}];
         
         CCMenuItem *P5_Item = [CCMenuItemFont itemWithString:@"P5_Item" block:^(id sender) {
+            ((CCMenuItem *)sender).isEnabled = NO;
+
             CCScene* p5Scene = [CCBReader sceneWithNodeGraphFromFile:@"P5_GameScene.ccbi"];
 			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:p5Scene]];
 		}];
@@ -72,6 +81,8 @@
         */
         
         CCMenuItem *mainMapScene = [CCMenuItemFont itemWithString:@"MainMap" block:^(id sender) {
+            ((CCMenuItem *)sender).isEnabled = NO;
+
             CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
 			[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];
 		}];

@@ -22,23 +22,17 @@
 @interface P3_GameScene ()
 
 @property (nonatomic, assign) MainMapHelper * mainMapHelper;
-
 @property (nonatomic, strong) NSMutableArray * monsterArray;
-//@property (nonatomic) CGPoint oldTouchPosition; //用来记录上一次touch之后的位置和新的touch位置计算差之后移动小怪物
-//@property (nonatomic) BOOL isMovingUp;//记录小怪物是向上移动还是向下移动 一次只能一个方向
-//@property (nonatomic) BOOL isFirstMoving;//记录是否第一次移动 以确定方向
 
 @end
 
 @implementation P3_GameScene
-{
-    CCSprite * aa;
-}
+
 @synthesize monsterLayer;
+
 - (id)init
 {
     if (self = [super init]) {
-        
     }
     return self;
 }
@@ -49,6 +43,9 @@
     
     self.monsterArray = [NSMutableArray arrayWithCapacity:5];
     [self initMonsters];
+    [self setTouchEnabled:NO];
+    [self performSelector:@selector(resetTouchEnable) withObject:self
+               afterDelay:1.2];
 }
 
 #pragma mark - 初始化Monsters
@@ -88,6 +85,17 @@
     [ceruleanMonster createMonsterWithType:CeruleanMonster];
     [ceruleanMonster initMonsterEyes];
     [_monsterArray addObject:ceruleanMonster];
+    
+    for (int i = 0; i < [_monsterArray count]; ++ i) {
+        P3_Monster * monster = (P3_Monster *)[_monsterArray objectAtIndex:i];
+        [monster beginningAnimationInDelayTime:0.4 + 0.2 * i];
+    }
+}
+
+#pragma mark - 恢复触摸
+- (void)resetTouchEnable
+{
+    [self setTouchEnabled:YES];
 }
 
 #pragma mark - 触摸事件

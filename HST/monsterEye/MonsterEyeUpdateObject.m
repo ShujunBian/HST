@@ -9,8 +9,9 @@
 #import "MonsterEyeUpdateObject.h"
 #import "MonsterEye.h"
 
-#define UPDATE_DURATION_MIN 2.f
-#define UPDATE_DURATION_RANGE 1.f
+#define UPDATE_DURATION_FIRST_MAX 4.f
+#define UPDATE_DURATION_MIN 4.f
+#define UPDATE_DURATION_RANGE 3.f
 
 @interface MonsterEyeUpdateObject ()
 
@@ -19,6 +20,8 @@
 @property (assign, nonatomic) BOOL isUpdate;
 
 @property (strong, nonatomic) NSLock* lock;
+@property (assign, nonatomic) BOOL fIsFirstTime;
+
 @end
 
 @implementation MonsterEyeUpdateObject
@@ -91,7 +94,18 @@
         }
     }
     
-    [self performSelector:@selector(eyeUpdate) withObject:nil afterDelay:UPDATE_DURATION_MIN + UPDATE_DURATION_RANGE * CCRANDOM_0_1()];
+    float delayTime = 0.f;
+    if (self.fIsFirstTime)
+    {
+        self.fIsFirstTime = NO;
+        delayTime = CCRANDOM_0_1() * UPDATE_DURATION_FIRST_MAX;
+    }
+    else
+    {
+        delayTime = UPDATE_DURATION_MIN + UPDATE_DURATION_RANGE * CCRANDOM_0_1();
+    }
+    
+    [self performSelector:@selector(eyeUpdate) withObject:nil afterDelay:delayTime];
     
 }
 

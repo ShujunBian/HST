@@ -212,7 +212,7 @@ static NSMutableArray *bubbleScales = nil;
     [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:)
                                            withObject:@"P1_bubble_out.mp3" afterDelay:1.0];
     
-    for (P1_Bubble *bubble in currentOnScreenBubbles)
+    for (P1_Bubble * bubble in currentOnScreenBubbles)
     {
         [bubblesReadyToRelease addObject:bubble];
         [bubble goAway];

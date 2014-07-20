@@ -81,7 +81,7 @@
         [self addChild:self.eyeWhite];
         [self addChild:self.eyeBall];
         
-        self.topEyelid.anchorPoint = ccp(0.5, 1);
+        self.topEyelid.anchorPoint = ccp(0.5, 0.95);
         self.bottomEyelid.anchorPoint = ccp(0.5, 0);
         self.topEyelid.position = ccp(0, self.eyeWhiteSize.height / 2);
         self.bottomEyelid.position = ccp(0, -self.eyeWhiteSize.height / 2);
@@ -110,7 +110,7 @@
     [CCScaleTo actionWithDuration:1.f/9.f * BLINK_DURATION scaleX:0.8f scaleY:0.45f],
     [CCScaleTo actionWithDuration:2.f/9.f * BLINK_DURATION scaleX:0.88f scaleY:0.60f],
     [CCScaleTo actionWithDuration:2.f/9.f * BLINK_DURATION scaleX:1.f scaleY:0.85f],
-    [CCScaleTo actionWithDuration:2.f/9.f * BLINK_DURATION scaleX:1.f scaleY:1.f],
+    [CCScaleTo actionWithDuration:2.f/9.f * BLINK_DURATION scaleX:1.f scaleY:1.05f],
     [CCScaleTo actionWithDuration:2.f/9.f * BLINK_DURATION scaleX:1.f scaleY:0.85f],
     [CCScaleTo actionWithDuration:2.f/9.f * BLINK_DURATION scaleX:0.88f scaleY:0.60f],
     [CCScaleTo actionWithDuration:2.f/9.f * BLINK_DURATION scaleX:0.8f scaleY:0.45f],

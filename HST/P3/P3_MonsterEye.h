@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+@class MonsterEye;
+@class MonsterEyeUpdateObject;
+
 @interface P3_MonsterEye : NSObject
 
 @property (nonatomic) NSInteger monsterEyeCounter;
 @property (nonatomic, strong) NSMutableArray * monsterEyeSprites;
-@property (nonatomic, strong) NSMutableArray * monsterEyeBlackSprites;
+@property (strong, nonatomic) MonsterEyeUpdateObject* updateObj;
 @property (nonatomic, strong) NSMutableArray * monsterEyePositions;
 
 @end

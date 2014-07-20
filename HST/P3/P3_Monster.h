@@ -44,11 +44,11 @@ static float monsterFaceHeight[] = {
 
 //小怪物初始位置
 static CGPoint monsterFirstPositions[] = {
-    {157.0,46.0},          //最左边小怪物初始位置
-    {324.0,46.0},          //从左边开始计算第二个
-    {530.0,46.0},          //第三个
-    {733.0,46.0},          //第四个
-    {858.0,46.0}           //第五个
+    {157.0,46.0 - 190.0},          //最左边小怪物初始位置
+    {324.0,46.0 - 173.0},          //从左边开始计算第二个
+    {530.0,46.0 - 226.0},          //第三个
+    {733.0,46.0 - 189.0},          //第四个
+    {858.0,46.0 - 156.0}           //第五个
     //小怪物第一个和第五个Z轴最浅
     //第二个和第四个次之     第三个最Z轴最深
 };
@@ -104,13 +104,12 @@ static CGPoint monsterCeruleanEyePos[] = {
 @property (nonatomic) MonsterType monsterType;
 @property (nonatomic) BOOL isChoosen;                   //用于记录是否正在拖动
 @property (nonatomic) MonsterMovingType movingType;
-//@property (nonatomic) BOOL isMovingUp;                  //记录小怪物是向上移动还是向下移动 一次只能一个方向
 @property (nonatomic) BOOL isStartMoving;               //记录是否第一次移动 以确定方向
 @property (nonatomic) CGPoint oldTouchPosition;         //用来记录上一次touch之后的位置和新的touch位置计算差之后移动小怪物
 @property (nonatomic) int monsterBodyCounter;           //记录现有monsterbody的个数
+@property (nonatomic) int isBeginAnimationFinished;     
 
 @property (nonatomic) BOOL isNeedAutoMoving;
-@property (nonatomic) BOOL isNeedAutoScale;
 
 @property (nonatomic, assign) CCSprite * monsterBody;
 @property (nonatomic, assign) CCSprite * monsterMouth;
@@ -122,5 +121,5 @@ static CGPoint monsterCeruleanEyePos[] = {
 - (void)initMonsterEyes;
 - (void)createMonsterBodyInPosition:(CGPoint)position
                      andMonsterType:(MonsterType)monsterType;
-
+- (void)beginningAnimationInDelayTime:(float)delayTime;
 @end

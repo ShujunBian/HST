@@ -168,7 +168,7 @@
     }
     else
     {
-        num = current-1;
+        num = (int)current-1;
     }
     
     [self alignBits];

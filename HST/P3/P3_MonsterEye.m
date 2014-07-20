@@ -7,6 +7,12 @@
 //
 
 #import "P3_MonsterEye.h"
+#import "MonsterEye.h"
+#import "MonsterEyeUpdateObject.h"
+
+@interface P3_MonsterEye()
+
+@end
 
 @implementation P3_MonsterEye
 
@@ -15,7 +21,7 @@
     if (self = [super init]) {
         self.monsterEyeSprites = [NSMutableArray arrayWithCapacity:4];
         self.monsterEyePositions = [NSMutableArray arrayWithCapacity:4];
-        self.monsterEyeBlackSprites = [NSMutableArray arrayWithCapacity:4];
+        
     }
     return self;
 }

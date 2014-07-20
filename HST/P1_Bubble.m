@@ -143,8 +143,10 @@ static ccColor3B bubbleColors[] = {
     [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:)
                                            withObject:[NSString stringWithFormat:@"P1_b%d.wav",soundID] afterDelay:1.0];
     
+    
     CCScaleBy *scale = [CCScaleBy actionWithDuration:0.1 scale:0.5];
     CCCallBlock * removeBubble = [CCCallBlock actionWithBlock:^{
+#warning 查询是否cocosbuilder引起问题
         [self removeBubbleAndBomb];
     }];
     
