@@ -83,10 +83,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monster/P4_blue_monster.png</string>
+							<string>p4/monster/P4_blue_monster.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -223,8 +225,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

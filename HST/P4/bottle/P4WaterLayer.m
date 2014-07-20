@@ -19,7 +19,7 @@
 #define ROTATE_MAX 15.f
 #define ROTATE_SPEED_BASE 0.02f
 #define ROTATE_REDUCE_RATE 0.5
-#define ADD_WATER_SPEED (1.3f / 2.f)
+#define ADD_WATER_SPEED 1.3f 
 
 #define BAN_JIN 204
 //#define YUAN_XIN ccp(181,96)

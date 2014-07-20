@@ -133,6 +133,11 @@
 }
 - (void)renewButtonPressed
 {
+    if (self.gameLayer.isMonsterAnimated)
+    {
+        return;
+    }
+
     self.addCount = 0;
     [self.animationManager runAnimationsForSequenceNamed:@"renewButtonRotate"];
     [self.gameLayer monstersRenew];
@@ -295,14 +300,15 @@
 - (void)waterHeightChange:(float)height
 {
     //调整waterIn life
+    CCParticleSystemQuad* waterIn = self.gameLayer.shakeSpray;
     
-    float deltaHeight = self.waterInLeft.position.y - self.waterLayer.sprayLeft.position.y;
-    float speedY = self.waterInLeft.speed * sin(ABS(self.waterInLeft.angle / 180.f * M_PI));
+    float deltaHeight = waterIn.position.y - self.waterLayer.sprayLeft.position.y;
+    float speedY = waterIn.speed * sin(ABS(waterIn.angle / 180.f * M_PI));
     
-    float aY = ABS(self.waterInLeft.gravity.y);
+    float aY = ABS(waterIn.gravity.y);
     
     float time = (-speedY + sqrt(speedY * speedY + 4 * 1 / 2 * aY * deltaHeight)) / aY;
-    time -= 0.05;
+    time -= 0.1;
     self.waterInLeft.life = time;
     self.waterInRight.life = time;
     
