@@ -206,7 +206,7 @@ static float bellRotateAngleQuick[] = {
 
 - (void)restartBellToMode:(NSNumber *)bellNumber
 {
-    BellMode bellMode = [bellNumber integerValue];
+    BellMode bellMode = (BellMode)[bellNumber integerValue];
     [self allpartStopAction];
     
     float bellBodyDuration = bellMode == BellNormalMode ?

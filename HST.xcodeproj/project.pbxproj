@@ -750,6 +750,12 @@
 		51F16352196E7F3C00A5BE6A /* P3_GreenMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F16351196E7F3C00A5BE6A /* P3_GreenMonster.m */; };
 		51F16355196E7F4600A5BE6A /* P3_RedMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F16354196E7F4600A5BE6A /* P3_RedMonster.m */; };
 		51F16358196E7F5100A5BE6A /* P3_CeruleanMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F16357196E7F5100A5BE6A /* P3_CeruleanMonster.m */; };
+		51F48AC5197CD86B00371C45 /* P3_GrassPSQ.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AC4197CD86B00371C45 /* P3_GrassPSQ.plist */; };
+		51F48AC8197CD87900371C45 /* P3_GrassPSQ-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AC6197CD87900371C45 /* P3_GrassPSQ-hd.png */; };
+		51F48AC9197CD87900371C45 /* P3_GrassPSQ.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AC7197CD87900371C45 /* P3_GrassPSQ.png */; };
+		51F48ACB197CE44D00371C45 /* P3_BubblePSQ.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ACA197CE44D00371C45 /* P3_BubblePSQ.plist */; };
+		51F48ACE197CE45600371C45 /* P3_Bubble-normal-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ACC197CE45600371C45 /* P3_Bubble-normal-hd.png */; };
+		51F48ACF197CE45600371C45 /* P3_Bubble-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ACD197CE45600371C45 /* P3_Bubble-normal.png */; };
 		EF403F82197A1D1700C6C8E1 /* p4_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */; };
 		EF403F83197A1D1700C6C8E1 /* p4_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED5197A1D1700C6C8E1 /* p4_background.png */; };
 		EF403F84197A1D1700C6C8E1 /* p4_ground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED6197A1D1700C6C8E1 /* p4_ground-hd.png */; };
@@ -1954,6 +1960,12 @@
 		51F16354196E7F4600A5BE6A /* P3_RedMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_RedMonster.m; sourceTree = "<group>"; };
 		51F16356196E7F5100A5BE6A /* P3_CeruleanMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_CeruleanMonster.h; sourceTree = "<group>"; };
 		51F16357196E7F5100A5BE6A /* P3_CeruleanMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_CeruleanMonster.m; sourceTree = "<group>"; };
+		51F48AC4197CD86B00371C45 /* P3_GrassPSQ.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = P3_GrassPSQ.plist; sourceTree = "<group>"; };
+		51F48AC6197CD87900371C45 /* P3_GrassPSQ-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P3_GrassPSQ-hd.png"; sourceTree = "<group>"; };
+		51F48AC7197CD87900371C45 /* P3_GrassPSQ.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P3_GrassPSQ.png; sourceTree = "<group>"; };
+		51F48ACA197CE44D00371C45 /* P3_BubblePSQ.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = P3_BubblePSQ.plist; sourceTree = "<group>"; };
+		51F48ACC197CE45600371C45 /* P3_Bubble-normal-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P3_Bubble-normal-hd.png"; sourceTree = "<group>"; };
+		51F48ACD197CE45600371C45 /* P3_Bubble-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P3_Bubble-normal.png"; sourceTree = "<group>"; };
 		EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_background-hd.png"; sourceTree = "<group>"; };
 		EF403ED5197A1D1700C6C8E1 /* p4_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4_background.png; sourceTree = "<group>"; };
 		EF403ED6197A1D1700C6C8E1 /* p4_ground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_ground-hd.png"; sourceTree = "<group>"; };
@@ -2254,6 +2266,7 @@
 		1801E53318E58F3C004E0856 /* P3_Resource */ = {
 			isa = PBXGroup;
 			children = (
+				51F48AC3197CD86B00371C45 /* PSQ */,
 				51A93F61197A121300920318 /* AniOfSing.ccbproj */,
 				51A93F62197A121300920318 /* AniOfSing.ccbresourcelog */,
 				51A93F6E197A121300920318 /* images */,
@@ -3128,6 +3141,10 @@
 		51A93F6E197A121300920318 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				51F48ACC197CE45600371C45 /* P3_Bubble-normal-hd.png */,
+				51F48ACD197CE45600371C45 /* P3_Bubble-normal.png */,
+				51F48AC6197CD87900371C45 /* P3_GrassPSQ-hd.png */,
+				51F48AC7197CD87900371C45 /* P3_GrassPSQ.png */,
 				51A93F71197A121300920318 /* P3_bell-hd.png */,
 				51A93F72197A121300920318 /* P3_bell.png */,
 				51A93F73197A121300920318 /* P3_bubble-hd.png */,
@@ -3653,6 +3670,15 @@
 			name = Monster;
 			sourceTree = "<group>";
 		};
+		51F48AC3197CD86B00371C45 /* PSQ */ = {
+			isa = PBXGroup;
+			children = (
+				51F48ACA197CE44D00371C45 /* P3_BubblePSQ.plist */,
+				51F48AC4197CD86B00371C45 /* P3_GrassPSQ.plist */,
+			);
+			path = PSQ;
+			sourceTree = "<group>";
+		};
 		EF403ED2197A1D1700C6C8E1 /* p4 */ = {
 			isa = PBXGroup;
 			children = (
@@ -4164,6 +4190,7 @@
 				51A94368197A142E00920318 /* bubble_00.png in Resources */,
 				51A9439C197A142E00920318 /* monster_mouth_mask.png in Resources */,
 				51A94198197A128700920318 /* P5_monsterLittleShadow.png in Resources */,
+				51F48ACF197CE45600371C45 /* P3_Bubble-normal.png in Resources */,
 				EF4040C0197A592100C6C8E1 /* world_p2_grass.png in Resources */,
 				EF403FE6197A1D1700C6C8E1 /* P4_brown_monster_light.png in Resources */,
 				51556DE718CF21B8005C8D46 /* P1_b9.wav in Resources */,
@@ -4177,6 +4204,7 @@
 				51A942E1197A130A00920318 /* P2_FirstLittlemonsterEye.ccb in Resources */,
 				51A94066197A121300920318 /* P3_Monster_Mouth-hd.png in Resources */,
 				51A9429A197A130A00920318 /* p2_firstmonster_eyeblack.png in Resources */,
+				51F48ACE197CE45600371C45 /* P3_Bubble-normal-hd.png in Resources */,
 				51A9405F197A121300920318 /* P3_monster5_mouth.png in Resources */,
 				EF404016197A1D1700C6C8E1 /* P4SprayParticleLeft.ccb in Resources */,
 				51A9436F197A142E00920318 /* bubble_04-hd.png in Resources */,
@@ -4231,6 +4259,7 @@
 				51A94085197A121300920318 /* P3_CeruleanMonsterBody.ccbi in Resources */,
 				51A942D7197A130A00920318 /* p2_secondmonster_body-hd.png in Resources */,
 				51A94029197A121300920318 /* P3_grass.png in Resources */,
+				51F48AC5197CD86B00371C45 /* P3_GrassPSQ.plist in Resources */,
 				51A9429C197A130A00920318 /* p2_firstmonster_eyewhite.png in Resources */,
 				51A943A7197A142E00920318 /* monstershadow-hd.png in Resources */,
 				EF4040DF197A592100C6C8E1 /* world_p5.ccb in Resources */,
@@ -4422,6 +4451,7 @@
 				EF403FBE197A1D1700C6C8E1 /* P4_green_eyewhite_2-hd.png in Resources */,
 				51A94300197A130A00920318 /* P2_SecondLittlemonster.ccbi in Resources */,
 				5169CBED18CDE5ED00426E6C /* Icon-72.png in Resources */,
+				51F48AC9197CD87900371C45 /* P3_GrassPSQ.png in Resources */,
 				51A94192197A128700920318 /* P5_monsterEyeBlack.png in Resources */,
 				51A942A2197A130A00920318 /* p2_flower_head.png in Resources */,
 				EF403F95197A1D1700C6C8E1 /* P4_bottle_right_cap.png in Resources */,
@@ -4580,6 +4610,7 @@
 				51A941A9197A128700920318 /* P5_MonsterUnderRightLeg-hd.png in Resources */,
 				EF403FCD197A1D1700C6C8E1 /* P4_yellow_eyeball_1.png in Resources */,
 				51A94041197A121300920318 /* P3_monster2_face.png in Resources */,
+				51F48AC8197CD87900371C45 /* P3_GrassPSQ-hd.png in Resources */,
 				51A94065197A121300920318 /* P3_Monster_Eye.png in Resources */,
 				51A94181197A128700920318 /* P5_homeBed-hd.png in Resources */,
 				51A942DE197A130A00920318 /* p2_upper_cloud.png in Resources */,
@@ -4744,6 +4775,7 @@
 				5169CBF318CDE5ED00426E6C /* Icon-Small@2x.png in Resources */,
 				51A943BF197A142E00920318 /* P1_Monster.ccb in Resources */,
 				51A942B2197A130A00920318 /* p2_littlefly_eye_blink.png in Resources */,
+				51F48ACB197CE44D00371C45 /* P3_BubblePSQ.plist in Resources */,
 				51A94304197A130A00920318 /* P2_Sky.ccbi in Resources */,
 				51A942F5197A130A00920318 /* P2_MonsterEye.ccb in Resources */,
 				51A94396197A142E00920318 /* monster_eyelid_mask.png in Resources */,

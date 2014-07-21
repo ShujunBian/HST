@@ -131,9 +131,31 @@
         CCSequence * seq = [CCSequence actions:scaleBack,scaleBack2,scaleBack3, nil];
         [newBody runAction:seq];
     }
+
+    [self addGrassParticle];
 }
 
-#pragma mark 开场动画
+#pragma mark - 添加粒子效果
+- (void)addGrassParticle
+{
+    CCParticleSystem * grassOut = [CCParticleSystemQuad particleWithFile:@"P3_GrassPSQ.plist"];
+    grassOut.position = CGPointMake(monsterFirstPositions[self.monsterType].x,46.0);
+    grassOut.autoRemoveOnFinish = YES;
+    [self.parent addChild:grassOut];
+}
+
+- (void)addBubbleBoomParticleInPosition:(CGPoint)position
+                               andColor:(ccColor3B)color
+{
+    CCParticleSystem * boom = [CCParticleSystemQuad particleWithFile:@"P3_BubblePSQ.plist"];
+    boom.position = position;
+    boom.startColor = ccc4FFromccc3B(color);
+    boom.endColor = ccc4FFromccc3B(color);
+    boom.autoRemoveOnFinish = YES;
+    [self.parent addChild:boom];
+}
+
+#pragma mark - 开场动画
 - (void)beginningAnimationInDelayTime:(float)delayTime
 {
     CCMoveTo *moveTo =  [CCMoveTo actionWithDuration:delayTime position:CGPointMake(self.position.x, 46.0)];
@@ -146,8 +168,12 @@
     CCSequence *seq = [CCSequence actions:easeIn,action1,action2,callBack, nil];
     
     [self runAction:seq];
+    
+    [self performSelector:@selector(addGrassParticle) withObject:self afterDelay:delayTime - 0.4];
+    
 }
 
+#pragma mark - update函数
 - (void)update:(ccTime)delta
 {
     if (self.isBeginAnimationFinished) {
@@ -357,9 +383,12 @@
                 
                 [self changePositionInDistance:distance andSprite:self];
                 
+#pragma mark 压缩到一定程度 删除monster body
                 if ([self.monsterBodyArray count] >= self.monsterBodyCounter &&
                     [self.monsterBodyArray count] > 0) {
                     P3_MonsterBody * body = (P3_MonsterBody *)[self.monsterBodyArray objectAtIndex:self.monsterBodyCounter - 1];
+                    NSLog(@"%hhu %hhu %hhu body color",body.body.color.r,body.body.color.g,body.body.color.b);
+                    [self addBubbleBoomParticleInPosition:body.position andColor:body.body.color];
                     [body removeFromParentAndCleanup:YES];
                     [self.monsterBodyArray removeObjectAtIndex:self.monsterBodyCounter - 1];
                 }
@@ -393,6 +422,7 @@
     }
 }
 
+#pragma mark - update过程Helper函数
 - (void)changeYScaleInScaleDistance:(float)distance
                           andSprite:(CCNode *)sprite
 {
