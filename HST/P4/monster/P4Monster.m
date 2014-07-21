@@ -59,6 +59,8 @@
     self.isPercentageChange = NO;
     
     [self configureMonsterEye];
+    self.isAnimated = NO;
+    self.isHideBelow = NO;
 //    self.rotation = 100.f;
 }
 - (void)onEnter

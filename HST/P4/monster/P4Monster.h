@@ -38,6 +38,11 @@ typedef NS_ENUM(NSUInteger, P4MonsterType)
 @property (assign, nonatomic) BOOL isEmpty;
 @property (assign, nonatomic) P4MonsterType type;
 
+@property (assign, nonatomic) BOOL isAnimated;
+
+
+@property (assign, nonatomic) BOOL isHideBelow;
+
 - (void)prePositionInit;
 - (CGRect)getRect;
 

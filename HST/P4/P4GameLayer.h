@@ -30,7 +30,12 @@
 @property (strong, nonatomic) P4Monster* redMonster;
 @property (strong, nonatomic) P4Bottle* bottle;
 
-- (void)monstersRenew;
+@property (assign, nonatomic) BOOL isMonsterAnimated;
+@property (readonly, nonatomic) BOOL someMonsterAnimated;
 
+@property (strong, nonatomic) CCParticleSystemQuad* shakeSpray;
+
+- (void)monstersRenew;
+- (void)monstersRenewEnd;
 
 @end

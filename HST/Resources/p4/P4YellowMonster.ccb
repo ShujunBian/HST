@@ -83,7 +83,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monster/P4_yellow_monster.png</string>
+							<string>p4/monster/P4_yellow_monster.png</string>
 						</array>
 					</dict>
 				</array>

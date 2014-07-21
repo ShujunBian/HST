@@ -9,6 +9,8 @@
 #import "CCLayer.h"
 #import "WorldSublayer.h"
 
+@class P4Monster;
+
 @interface WorldP4Layer : CCLayer<WorldSubLayer>
 
 @end

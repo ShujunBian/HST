@@ -30,7 +30,7 @@
 @property (strong, nonatomic) CCRepeatForever* leftEarRepeat;
 @property (strong, nonatomic) CCRepeatForever* rightEarRepeat;
 
-@property (assign, nonatomic) int addCount;
+
 //@property (assign, nonatomic) float waterInOriginLife;
 
 @end
@@ -38,9 +38,14 @@
 @implementation P4Bottle
 
 @dynamic isFull;
+@dynamic isAboutToFull;
 - (BOOL)isFull
 {
     return self.addCount >= 6;
+}
+- (BOOL)isAboutToFull
+{
+    return self.addCount >= 5;
 }
 
 #pragma mark - Life Cycle
@@ -53,7 +58,7 @@
     [self.waterInRight stopSystem];
     [self.waterOut1 stopSystem];
     [self.waterOut2 stopSystem];
-    self.addCount = 0;
+    _addCount = 0;
     self.waterLayer.delegate = self;
     
     self.waterInRight.scaleX = -1;
@@ -131,26 +136,67 @@
 {
     [self.animationManager runAnimationsForSequenceNamed:@"rightEarAnimation"];
 }
+- (void)updateRenewButton
+{
+    if (self.gameLayer.someMonsterAnimated)
+    {
+        if (self.renewButton.opacity == 255)
+        {
+//            [self stopAllActions];
+            [self.renewButton runAction:[CCFadeTo actionWithDuration:0.3f opacity:128]];
+        }
+
+//        [self.renewButton runAction:[CCMoveBy actionWithDuration:0.5f position:ccp(100,100)]];
+//        self.renewButton.opacity = 128;
+    }
+    else
+    {
+        if (self.renewButton.opacity == 128) {
+            [self.renewButton runAction:[CCFadeTo actionWithDuration:0.3f opacity:255]];
+        }
+
+//        self.renewButton.opacity = 255;
+    }
+}
 - (void)renewButtonPressed
 {
-    self.addCount = 0;
+    if (self.gameLayer.someMonsterAnimated)
+    {
+        return;
+    }
+
+
     [self.animationManager runAnimationsForSequenceNamed:@"renewButtonRotate"];
     [self.gameLayer monstersRenew];
     [self.waterLayer beginReleaseWater];
+    _addCount = 0;
 }
 - (void)capOpen
 {
-    [self.animationManager runAnimationsForSequenceNamed:@"capOpenAnimation"];
+    [self.leftCap stopAllActions];
+    [self.rightCap stopAllActions];
+    self.leftCap.position = ccp(508.f,597.f);
+    self.rightCap.position = ccp(507.f,597.f);
+    [self.leftCap runAction:[CCMoveTo actionWithDuration:1.f position:ccp(425.f, 597.f)]];
+    [self.rightCap runAction:[CCMoveTo actionWithDuration:1.f position:ccp(590.f, 597.f)]];
+    
+//    [self.animationManager runAnimationsForSequenceNamed:@"capOpenAnimation"];
 }
 - (void)capClose
 {
-    [self.animationManager runAnimationsForSequenceNamed:@"capCloseAnimation"];
+//    [self.animationManager runAnimationsForSequenceNamed:@"capCloseAnimation"];
+    [self.leftCap stopAllActions];
+    [self.rightCap stopAllActions];
+    self.leftCap.position = ccp(425.f, 597.f);
+    self.rightCap.position = ccp(590.f, 597.f);
+    [self.leftCap runAction:[CCMoveTo actionWithDuration:1.f position:ccp(508.f,597.f)]];
+    [self.rightCap runAction:[CCMoveTo actionWithDuration:1.f position:ccp(507.f,597.f)]];
 }
 
 #pragma mark - Add Water
 - (void)beginAddWater:(P4Monster*)monster
 {
-    ++self.addCount;
+    ++_addCount;
     
     BOOL fIsRight = YES;
     switch (monster.type) {
@@ -295,14 +341,15 @@
 - (void)waterHeightChange:(float)height
 {
     //调整waterIn life
+    CCParticleSystemQuad* waterIn = self.gameLayer.shakeSpray;
     
-    float deltaHeight = self.waterInLeft.position.y - self.waterLayer.sprayLeft.position.y;
-    float speedY = self.waterInLeft.speed * sin(ABS(self.waterInLeft.angle / 180.f * M_PI));
+    float deltaHeight = waterIn.position.y - self.waterLayer.sprayLeft.position.y;
+    float speedY = waterIn.speed * sin(ABS(waterIn.angle / 180.f * M_PI));
     
-    float aY = ABS(self.waterInLeft.gravity.y);
+    float aY = ABS(waterIn.gravity.y);
     
     float time = (-speedY + sqrt(speedY * speedY + 4 * 1 / 2 * aY * deltaHeight)) / aY;
-    time -= 0.05;
+    time -= 0.1;
     self.waterInLeft.life = time;
     self.waterInRight.life = time;
     

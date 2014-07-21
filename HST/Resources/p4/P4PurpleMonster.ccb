@@ -83,10 +83,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monster/P4_purple_monster.png</string>
+							<string>p4/monster/P4_purple_monster.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
