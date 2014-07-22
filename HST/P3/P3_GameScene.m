@@ -21,7 +21,7 @@
 
 @interface P3_GameScene ()
 
-@property (nonatomic, assign) MainMapHelper * mainMapHelper;
+@property (nonatomic, strong) MainMapHelper * mainMapHelper;
 @property (nonatomic, strong) NSMutableArray * monsterArray;
 
 @end
@@ -39,7 +39,7 @@
 
 - (void)didLoadFromCCB
 {
-    _mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
+    self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
     
     self.monsterArray = [NSMutableArray arrayWithCapacity:5];
     [self initMonsters];

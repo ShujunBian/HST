@@ -22,10 +22,11 @@
 
 #define EVERYDELTATIME 0.016667
 
+@interface P2_GameScene ()
+@property (strong, nonatomic) MainMapHelper* mainMapHelper;
+@end
+
 @implementation P2_GameScene
-{
-    MainMapHelper * mainMapHelper;
-}
 @synthesize grassLayer;
 @synthesize monster;
 @synthesize firstLittleMonster;
@@ -52,7 +53,7 @@
 
 - (void) didLoadFromCCB
 {
-    mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
+    self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
     
     [CDAudioManager configure:kAMM_PlayAndRecord];
     [[CDAudioManager sharedManager] playBackgroundMusic:@"P2_rhythm.mp3" loop:NO];
@@ -232,7 +233,8 @@
         [child unscheduleAllSelectors];
     }
     
-    [mainMapHelper release];
+//    [mainMapHelper release];
+    self.mainMapHelper = nil;
     [self releaseCurrentFlyObjectOnScreenBubbles];
     [self releaseMusicAndEffect];
     

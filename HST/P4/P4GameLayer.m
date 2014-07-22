@@ -69,6 +69,7 @@
 @property (assign, nonatomic) float shakeX;
 @property (assign, nonatomic) float shakeY;
 
+@property (strong, nonatomic) MainMapHelper* helper;
 @end
 
 @implementation P4GameLayer
@@ -164,7 +165,7 @@
 
 - (void) didLoadFromCCB
 {
-    [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
+    self.helper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
 
 //Monster Init
     self.monstersArray = [[CCArray alloc] init];
@@ -307,7 +308,7 @@
         [self bottleMoveBack];
 
 //        [self performSelector:@selector(bottleMoveBack) withObject:nil afterDelay:BOTTLE_MOVE_DELAY];
-        [self.bottle runAction:[[CCScaleTo alloc] initWithDuration:0.2f scale:1.f]];
+        [[self.bottle runAction:[[CCScaleTo alloc] initWithDuration:0.2f scale:1.f]] autorelease];
         
         self.bottleTouchOriginPoint = CGPointZero;
         self.bottleTouchPreviousPoint = CGPointZero;
@@ -681,11 +682,12 @@
     float newY = 2 * self.bottleTouchPointNow.y - self.bottleTouchPoint.y;
     P4BottleOffset* newOffset = [self getOffsetByTouchPoint:ccp(newX,newY)];
     float newDelay = sqrt( newOffset.deltaX * newOffset.deltaX + newOffset.deltaY * newOffset.deltaY) / 300.f;
-    CCMoveBy* newBy = [[CCMoveBy alloc] initWithDuration:newDelay position:ccp(newOffset.deltaX,newOffset.deltaY)];
-    CCEaseOut* newOut = [[CCEaseOut alloc] initWithAction:newBy rate:1.f];
+    
+    CCMoveBy* newBy = [[[CCMoveBy alloc] initWithDuration:newDelay position:ccp(newOffset.deltaX,newOffset.deltaY)] autorelease];
+    CCEaseOut* newOut = [[[CCEaseOut alloc] initWithAction:newBy rate:1.f] autorelease];
     
     float delay = sqrt(self.bottleOffsetX * self.bottleOffsetX + self.bottleOffsetY * self.bottleOffsetY) / 200.f;
-    CCMoveTo* moveBack = [[CCMoveTo alloc] initWithDuration:delay position:ccp(0,0)];
+    CCMoveTo* moveBack = [[[CCMoveTo alloc] initWithDuration:delay position:ccp(0,0)] autorelease];
 
     CCEaseSineInOut* backInOut = [[[CCEaseSineInOut alloc] initWithAction:moveBack] autorelease];
 //                                                                    rate:2.5f];
@@ -833,7 +835,7 @@
     offsetX = 5 * offsetX;
     offsetY = 2 * offsetY;
     
-    P4BottleOffset* offset = [[P4BottleOffset alloc] init];
+    P4BottleOffset* offset = [[[P4BottleOffset alloc] init] autorelease];
     //        offset.deltaX = locationInNodeSpace.x - self.bottleTouchPoint.x;
     //        offset.deltaY = locationInNodeSpace.y - self.bottleTouchPoint.y;
     //        [self bottleMoveDelta:offset];

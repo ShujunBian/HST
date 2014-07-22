@@ -488,7 +488,7 @@
     
     if (!waterRecord)
     {
-        waterRecord = [[P4WaterRecord alloc] init];
+        waterRecord = [[[P4WaterRecord alloc] init] autorelease];
         waterRecord.color = waterColor;
         if (self.waterRecordArray.count)
         {
