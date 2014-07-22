@@ -51,5 +51,5 @@
 
 - (void)waterHeightChange:(float)height;
 
-
+- (void)worldSceneConfigure;
 @end
