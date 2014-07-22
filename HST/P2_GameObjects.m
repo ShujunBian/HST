@@ -14,6 +14,7 @@
 {
 	if( (self=[super init]))
     {
+        self.isInMainMap = NO;
         [self scheduleUpdate];
         objectMovingSpeed = 1024.0 / 8.0 * EVERYDELTATIME;
 	}
@@ -28,13 +29,12 @@
 
 - (void)update:(ccTime)delta
 {
-    //NSLog(@"self position is %f",self.position.x );
-//    if (!self.isFlyingOut) {
+    if (!self.isInMainMap) {
         if (self.position.x < - 100) {
             [self actionWhenOutOfScreen];
         }
         self.position = CGPointMake(self.position.x - objectMovingSpeed, self.position.y);
-//    }
+    }
 }
 
 - (void)setObjectFirstPosition

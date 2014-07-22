@@ -7,6 +7,10 @@
 //
 
 #import "WorldP2Layer.h"
+#import "P2_Monster.h"
+#import "P2_LittleMonster.h"
+#import "P2_Mushroom.h"
+#import "P2_GameObjects.h"
 
 @implementation WorldP2Layer
 
@@ -24,6 +28,10 @@ static ccColor3B littleFlyColors[] = {
 
 @synthesize blueLittleFly;
 @synthesize greenLittleFly;
+@synthesize monster;
+@synthesize purpLittleMonster;
+@synthesize organeLittleMonster;
+@synthesize rightTwoMushroom;
 
 - (id)init
 {
@@ -37,8 +45,34 @@ static ccColor3B littleFlyColors[] = {
 {
     [blueLittleFly.body setColor:littleFlyColors[2]];
     [blueLittleFly.wing setColor:littleFlyColors[2]];
+    blueLittleFly.isInMainMap = YES;
     
     [greenLittleFly.body setColor:littleFlyColors[3]];
     [greenLittleFly.wing setColor:littleFlyColors[3]];
+    greenLittleFly.isInMainMap = YES;
+    
+    rightTwoMushroom.isInMainMap = YES;
+    monster.isInMainMap = YES;
+    
+    CCBAnimationManager* animationManager = monster.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"LittleJump"];
+    
+    [self letFirstLittleMonsterJump];
+    [self letSecondLittleMonsterJump];
 }
+
+- (void)letFirstLittleMonsterJump
+{
+    CCBAnimationManager* firanimationManager = purpLittleMonster.userObject;
+    firanimationManager.delegate = purpLittleMonster;
+    [firanimationManager runAnimationsForSequenceNamed:@"LittleJump"];
+}
+
+- (void)letSecondLittleMonsterJump
+{
+    CCBAnimationManager* secanimationManager = organeLittleMonster.userObject;
+    secanimationManager.delegate = organeLittleMonster;
+    [secanimationManager runAnimationsForSequenceNamed:@"LittleJump"];
+}
+
 @end

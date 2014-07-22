@@ -10,9 +10,16 @@
 #import "WorldSublayer.h"
 #import "P2_LittleFlyObjects.h"
 
+@class P2_LittleMonster;
+@class P2_Monster;
+@class P2_Mushroom;
 @interface WorldP2Layer : CCLayer<WorldSubLayer>
 
 @property (nonatomic, assign) P2_LittleFlyObjects * blueLittleFly;
 @property (nonatomic, assign) P2_LittleFlyObjects * greenLittleFly;
+@property (nonatomic, assign) P2_Monster * monster;
+@property (nonatomic, assign) P2_LittleMonster * purpLittleMonster;
+@property (nonatomic, assign) P2_LittleMonster * organeLittleMonster;
+@property (nonatomic, assign) P2_Mushroom * rightTwoMushroom;
 
 @end

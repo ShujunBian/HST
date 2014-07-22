@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -308,7 +308,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_monster_eyewhite.png</string>
+							<string>pictures/p2_monster_eyewhite.png</string>
 						</array>
 					</dict>
 				</array>
@@ -940,7 +940,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_secondmonster_eyeblack.png</string>
+							<string>pictures/p2_monster_eyeblack.png</string>
 						</array>
 					</dict>
 				</array>
@@ -2073,8 +2073,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>29.200000762939453</real>
-							<real>16.600000381469727</real>
+							<real>31</real>
+							<real>-15</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2101,8 +2101,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.0</real>
+							<real>0.0</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -2123,7 +2123,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_monster_eye_closed.png</string>
+							<string>pictures/p2_monster_eye_closed.png</string>
 						</array>
 					</dict>
 				</array>
@@ -3254,8 +3254,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>25</real>
-							<real>62.599998474121094</real>
+							<real>31</real>
+							<real>-15</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3282,8 +3282,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.0</real>
+							<real>0.0</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -3312,7 +3312,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_monster_eye_closed.png</string>
+							<string>pictures/p2_monster_eye_closed.png</string>
 						</array>
 					</dict>
 				</array>
@@ -3397,7 +3397,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4.6333332061767578</real>
+			<real>8</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

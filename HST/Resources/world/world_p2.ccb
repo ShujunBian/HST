@@ -98,9 +98,9 @@
 				<key>displayName</key>
 				<string>P2_Monster</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>monster</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -148,9 +148,9 @@
 				<key>displayName</key>
 				<string>P2_OrangeMonster</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>organeLittleMonster</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -187,6 +187,8 @@
 						<string>P2_Resource/scene/P2_FirstLittlemonster.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -198,9 +200,9 @@
 				<key>displayName</key>
 				<string>P2_PurpMonster</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>purpLittleMonster</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -248,9 +250,9 @@
 				<key>displayName</key>
 				<string>P2_Mushroom</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>rightTwoMushroom</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -539,8 +541,6 @@
 						<string>P2_Resource/scene/P2_LittleFly.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

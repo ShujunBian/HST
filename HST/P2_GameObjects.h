@@ -18,6 +18,7 @@
     float objectMovingSpeed;
 }
 
+@property (nonatomic) BOOL isInMainMap;
 @property (nonatomic) BOOL isFlyingOut;
 
 - (id)init;

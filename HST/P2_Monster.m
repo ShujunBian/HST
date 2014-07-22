@@ -36,6 +36,7 @@
         isReadyToJump = NO;
         isReadyToDown = NO;
         isFinishJump = YES;
+        self.isInMainMap = NO;
         [self scheduleUpdate];
 	}
 	return self;
@@ -276,13 +277,16 @@
     }
     else if ([name isEqualToString:@"LittleJump"])
     {
+        float rate = 1.0;
+        if (self.isInMainMap) {
+            rate = 0.45;
+        }
         theIdleTimes ++ ;
-        CCScaleTo * monsterScale = [CCScaleTo actionWithDuration:0.20 scaleX:1.1 scaleY:0.9];
-        //        CCScaleTo * monsterScaleTest = [CCScaleTo actionWithDuration:0.20 scaleX:1.1 scaleY:0.1];
-        CCEaseOut * easeOutLittleJumpUp = [CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:0.3 position:ccp(0.0, 20.0)] rate:1.5];
-        CCScaleTo * monsterScaleBack = [CCScaleTo actionWithDuration:0.25 scaleX:1.0 scaleY:1.0];
+        CCScaleTo * monsterScale = [CCScaleTo actionWithDuration:0.20 scaleX:1.1 * rate scaleY:0.9 * rate];
+        CCEaseOut * easeOutLittleJumpUp = [CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:0.3 position:ccp(0.0, 20.0 * rate)] rate:1.5];
+        CCScaleTo * monsterScaleBack = [CCScaleTo actionWithDuration:0.25 scaleX:1.0 * rate scaleY:1.0 * rate];
         CCSpawn * littleJump = [CCSpawn actions:easeOutLittleJumpUp,monsterScaleBack, nil];
-        CCMoveBy * moveBy = [CCMoveBy actionWithDuration:0.2 position:ccp(0.0, -20.0)];
+        CCMoveBy * moveBy = [CCMoveBy actionWithDuration:0.2 position:ccp(0.0, -20.0 * rate)];
         CCCallFunc * callFunc = [CCCallFunc actionWithTarget:self selector:@selector(monsterOverLittleJump:)];
         
         CCSequence * monseterLittleJump = [CCSequence actions:monsterScale,

@@ -37,13 +37,16 @@ static ccColor3B littleFlyColors[] = {
     CCRotateBy * wingRotate = [CCRotateBy actionWithDuration:2.0 angle:360.0];
     CCRepeatForever * rotateForevr = [CCRepeatForever actionWithAction:wingRotate];
     [wing runAction:rotateForevr];
-    
-    
+
+    float moveDistance = 30.0;
+    if (self.isInMainMap) {
+        moveDistance = 10.0;
+    }
     CCSequence * littleFlySeq = [CCSequence actions:
-                                 [CCMoveBy actionWithDuration:0.5 position:ccp(0, 30.0)],
-                                 [CCMoveBy actionWithDuration:0.5 position:ccp(0, -30.0)],
-                                 [CCMoveBy actionWithDuration:0.5 position:ccp(0, -30.0)],
-                                 [CCMoveBy actionWithDuration:0.5 position:ccp(0, 30.0)],
+                                 [CCMoveBy actionWithDuration:0.5 position:ccp(0, moveDistance)],
+                                 [CCMoveBy actionWithDuration:0.5 position:ccp(0, - moveDistance)],
+                                 [CCMoveBy actionWithDuration:0.5 position:ccp(0, - moveDistance)],
+                                 [CCMoveBy actionWithDuration:0.5 position:ccp(0, moveDistance)],
                                  nil];
     
     CCRepeatForever * littleFlyMoveForever = [CCRepeatForever actionWithAction:littleFlySeq];
@@ -86,12 +89,16 @@ static ccColor3B littleFlyColors[] = {
     
 }
 
+#pragma mark - update函数
 - (void)update:(ccTime)delta
 {
-    if (self.position.x < - 50 || self.position.y > 800) {
-        [self actionWhenOutOfScreen];
+#pragma mark 是否在主屏幕判断
+    if (!self.isInMainMap) {
+        if (self.position.x < - 50 || self.position.y > 800) {
+            [self actionWhenOutOfScreen];
+        }
+        self.position = CGPointMake(self.position.x - objectMovingSpeed, self.position.y);
     }
-    self.position = CGPointMake(self.position.x - objectMovingSpeed, self.position.y);
 }
 
 #pragma mark - 飞离屏幕时调用
