@@ -12,6 +12,8 @@
 #import "CCBAnimationManager.h"
 #import "P3_MonsterEye.h"
 
+#define kMonsterBaselineYPosition   46.0
+
 typedef enum {
     PurpMonster = 0,
     BlueMonster,

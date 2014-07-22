@@ -1885,8 +1885,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -1958,7 +1956,7 @@
 			<key>autoPlay</key>
 			<true/>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>0</integer>
 			<key>length</key>
 			<real>8</real>
 			<key>name</key>
@@ -1966,7 +1964,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>8</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

@@ -31,6 +31,7 @@
 @property (nonatomic, assign) CCSprite * monsterBody;
 @property (nonatomic) BOOL isFinishJump;
 @property (nonatomic) float currentJumpTime;
+@property (nonatomic) BOOL isInMainMap;
 
 -(void)monsterCloseEyesWhenReadyToJump;
 -(void)handleCollision;

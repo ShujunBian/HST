@@ -12,10 +12,6 @@
 #import "MonsterEye.h"
 #import "MonsterEyeUpdateObject.h"
 
-//@interface P3_Monster()
-//@property (strong, nonatomic) MonsterEyeUpdateObject* updateObj;
-//@end
-
 @implementation P3_Monster
 
 @synthesize monsterMouth;
@@ -73,9 +69,9 @@
                  monsterBodyHeight:(float)monsterBodyHeight
 {
     int latestPointNumber = 0;
-    float currentLength = fabsf(centerPoint.y - 46.0);
+    float currentLength = fabsf(centerPoint.y - kMonsterBaselineYPosition);
     for (int i = 1; i < 7 ; ++ i) {
-        float newLength = fabsf(i * monsterBodyHeight - centerPoint.y + 46.0);
+        float newLength = fabsf(i * monsterBodyHeight - centerPoint.y + kMonsterBaselineYPosition);
         if (newLength < currentLength) {
             currentLength = newLength;
             latestPointNumber = i;
@@ -139,7 +135,7 @@
 - (void)addGrassParticle
 {
     CCParticleSystem * grassOut = [CCParticleSystemQuad particleWithFile:@"P3_GrassPSQ.plist"];
-    grassOut.position = CGPointMake(monsterFirstPositions[self.monsterType].x,46.0);
+    grassOut.position = CGPointMake(monsterFirstPositions[self.monsterType].x,kMonsterBaselineYPosition);
     grassOut.autoRemoveOnFinish = YES;
     [self.parent addChild:grassOut];
 }
@@ -158,7 +154,7 @@
 #pragma mark - 开场动画
 - (void)beginningAnimationInDelayTime:(float)delayTime
 {
-    CCMoveTo *moveTo =  [CCMoveTo actionWithDuration:delayTime position:CGPointMake(self.position.x, 46.0)];
+    CCMoveTo *moveTo =  [CCMoveTo actionWithDuration:delayTime position:CGPointMake(self.position.x, kMonsterBaselineYPosition)];
     CCEaseExponentialIn *easeIn = [CCEaseExponentialIn actionWithAction:moveTo];
     CCScaleTo *action1 = [CCScaleTo actionWithDuration:0.1f scaleX:1 - 0.1 scaleY:1+0.1];
     CCScaleTo *action2 = [CCScaleTo actionWithDuration:0.1f scale:1];
@@ -180,9 +176,9 @@
         if (!self.isChoosen) {
             
             //放手是小怪物脸不在应该在的位置 则需要回弹
-            if (self.position.y - [self.monsterBodyArray count] * monsterBodyHeight[self.monsterType] != 46.0) {
+            if (self.position.y - [self.monsterBodyArray count] * monsterBodyHeight[self.monsterType] != kMonsterBaselineYPosition) {
                 
-                float distance = [self.monsterBodyArray count] * monsterBodyHeight[self.monsterType] + 46.0 - self.position.y;
+                float distance = [self.monsterBodyArray count] * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition - self.position.y;
                 
                 [self changePositionInDistance:distance andSprite:self];
                 
@@ -202,10 +198,10 @@
                     [self changeXScaleInScaleDistance:rateXDistance andSprite:body];
                     
                     if (body.position.y != monsterBodyHeight[self.monsterType] *
-                        ([self.monsterBodyArray count] - i) + 46.0 ) {
+                        ([self.monsterBodyArray count] - i) + kMonsterBaselineYPosition ) {
                         
                         float distance = monsterBodyHeight[self.monsterType] *
-                        ([self.monsterBodyArray count] - i) + 46.0 - body.position.y;
+                        ([self.monsterBodyArray count] - i) + kMonsterBaselineYPosition - body.position.y;
                         
                         if (fabsf(distance) >= 6.0) {
                             [body setPosition:CGPointMake(body.position.x,
@@ -230,10 +226,10 @@
                 }
                 else {
                     if (body.position.y != monsterBodyHeight[self.monsterType] *
-                        ([self.monsterBodyArray count] - i - 1) + 46.0 ) {
+                        ([self.monsterBodyArray count] - i - 1) + kMonsterBaselineYPosition ) {
                         
                         float distance = monsterBodyHeight[self.monsterType] *
-                        ([self.monsterBodyArray count] - i - 1) + 46.0 - body.position.y;
+                        ([self.monsterBodyArray count] - i - 1) + kMonsterBaselineYPosition - body.position.y;
                         
                         if (fabsf(distance) >= 6.0) {
                             [body setPosition:CGPointMake(body.position.x,
@@ -274,11 +270,11 @@
         }
         
         if (self.isChoosen ) {
-            if (self.position.y == 46.0 &&
+            if (self.position.y == kMonsterBaselineYPosition &&
                 self.movingType == MovingUp) {
                 if (self.monsterType == GreenMonster) {
-                    if (self.oldTouchPosition.y > monsterFaceHeight[self.monsterType] + 46.0) {
-                        float rateDistance = (self.oldTouchPosition.y - monsterFaceHeight[self.monsterType] - 46.0) / monsterFaceHeight[self.monsterType];
+                    if (self.oldTouchPosition.y > monsterFaceHeight[self.monsterType] + kMonsterBaselineYPosition) {
+                        float rateDistance = (self.oldTouchPosition.y - monsterFaceHeight[self.monsterType] - kMonsterBaselineYPosition) / monsterFaceHeight[self.monsterType];
                         
                         if (rateDistance > 1.0) {
                             rateDistance = 1.0;
@@ -291,33 +287,33 @@
                     }
                 }
             }
-            else if (self.position.y >= (self.monsterBodyCounter + 0.5) * monsterBodyHeight[self.monsterType] + 46.0 &&
-                     self.position.y < (self.monsterBodyCounter + 1) * monsterBodyHeight[self.monsterType] + 46.0 &&
+            else if (self.position.y >= (self.monsterBodyCounter + 0.5) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition &&
+                     self.position.y < (self.monsterBodyCounter + 1) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition &&
                      self.movingType == MovingUp) {
                 
                 if (self.isNeedAutoMoving) {
                     
-                    [self createMonsterBodyInPosition:CGPointMake(self.position.x,46.0)
+                    [self createMonsterBodyInPosition:CGPointMake(self.position.x,kMonsterBaselineYPosition)
                                        andMonsterType:self.monsterType];
                     
                     self.isNeedAutoMoving = NO;
                 }
                 
-                float distance = (self.monsterBodyCounter + 1) * monsterBodyHeight[self.monsterType] + 46.0 - self.position.y;
+                float distance = (self.monsterBodyCounter + 1) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition - self.position.y;
                 
                 [self changePositionInDistance:distance andSprite:self];
                 
 #pragma mark 拖动到临界值时移动MonsterBody
                 for (int i = 0; i < [self.monsterBodyArray count]; ++ i) {
                     P3_MonsterBody * body = (P3_MonsterBody *)[self.monsterBodyArray objectAtIndex:i];
-                    float distance = (self.monsterBodyCounter - i) * monsterBodyHeight[self.monsterType] + 46.0 - body.position.y;
+                    float distance = (self.monsterBodyCounter - i) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition - body.position.y;
                     
                     [self changePositionInDistance:distance andSprite:body];
                 }
             }
 #pragma mark 已过新一个MonsterBody底线
-            else if ((fabsf(self.position.y - (self.monsterBodyCounter + 1) * monsterBodyHeight[self.monsterType] - 46.0) < 1.0 ||
-                      self.position.y > (self.monsterBodyCounter + 1) * monsterBodyHeight[self.monsterType] + 46.0) &&
+            else if ((fabsf(self.position.y - (self.monsterBodyCounter + 1) * monsterBodyHeight[self.monsterType] - kMonsterBaselineYPosition) < 1.0 ||
+                      self.position.y > (self.monsterBodyCounter + 1) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition) &&
                      self.movingType == MovingUp)
             {
                 if (self.monsterBodyCounter < 4) {
@@ -326,10 +322,10 @@
                 self.isNeedAutoMoving = YES;
             }
 #pragma mark 向下拖动到基础线46.0
-            else if (self.position.y == 46.0) {
+            else if (self.position.y == kMonsterBaselineYPosition) {
                 if (self.movingType == MovingDown) {
-                    if (self.oldTouchPosition.y <= monsterFaceHeight[self.monsterType] + 46.0) {
-                        float distanceRate = 1.0 -  fabsf(self.oldTouchPosition.y) / (monsterFaceHeight[self.monsterType] + 46.0);
+                    if (self.oldTouchPosition.y <= monsterFaceHeight[self.monsterType] + kMonsterBaselineYPosition) {
+                        float distanceRate = 1.0 -  fabsf(self.oldTouchPosition.y) / (monsterFaceHeight[self.monsterType] + kMonsterBaselineYPosition);
                         
                         float scaleYRate = 1 - distanceRate * 0.1;
                         float scaleXRate = 1 + distanceRate * 0.05;
@@ -343,13 +339,13 @@
             }
 #pragma mark 向下压缩
             else if (self.position.y < (self.monsterBodyCounter) *
-                     monsterBodyHeight[self.monsterType] + 46.0 &&
+                     monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition &&
                      self.position.y > (self.monsterBodyCounter - 0.5) *
-                     monsterBodyHeight[self.monsterType] + 46.0 &&
+                     monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition &&
                      self.movingType == MovingDown) {
                 
                 float movingDistance = ([self.monsterBodyArray count]) *
-                monsterBodyHeight[self.monsterType] + 46.0 - self.position.y;
+                monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition - self.position.y;
                 
                 float sum = (1 - powf(0.95, [self.monsterBodyArray count])) / (1 - 0.95);
                 float groundMonsterDistance = movingDistance / sum;
@@ -370,16 +366,16 @@
                     [body setScaleY:1 - (1 - scaleRate) * rate];
                     float bodyDistance = (1 - powf(0.95,[self.monsterBodyArray count] - i))/(1- 0.95) * groundMonsterDistance;
                     
-                    float originalYPosition = ([self.monsterBodyArray count] - i) * monsterBodyHeight[self.monsterType] + 46.0 + 3.0;
+                    float originalYPosition = ([self.monsterBodyArray count] - i) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition + 3.0;
                     
                     [body setPosition:CGPointMake(body.position.x, originalYPosition - bodyDistance)];
                 }
             }
-            else if (self.position.y <= (self.monsterBodyCounter - 0.5) * monsterBodyHeight[self.monsterType] + 46.0 &&
-                     self.position.y > (self.monsterBodyCounter - 1.0) * monsterBodyHeight[self.monsterType] + 46.0 &&
+            else if (self.position.y <= (self.monsterBodyCounter - 0.5) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition &&
+                     self.position.y > (self.monsterBodyCounter - 1.0) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition &&
                      self.movingType == MovingDown){
                 
-                float distance = (self.monsterBodyCounter - 1) * monsterBodyHeight[self.monsterType] + 46.0 - self.position.y;
+                float distance = (self.monsterBodyCounter - 1) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition - self.position.y;
                 
                 [self changePositionInDistance:distance andSprite:self];
                 
@@ -387,15 +383,14 @@
                 if ([self.monsterBodyArray count] >= self.monsterBodyCounter &&
                     [self.monsterBodyArray count] > 0) {
                     P3_MonsterBody * body = (P3_MonsterBody *)[self.monsterBodyArray objectAtIndex:self.monsterBodyCounter - 1];
-                    NSLog(@"%hhu %hhu %hhu body color",body.body.color.r,body.body.color.g,body.body.color.b);
-                    [self addBubbleBoomParticleInPosition:body.position andColor:body.body.color];
+                    [self addBubbleBoomParticleInPosition:CGPointMake(body.position.x, kMonsterBaselineYPosition + 1 / 2.0 * body.contentSize.height) andColor:body.body.color];
                     [body removeFromParentAndCleanup:YES];
                     [self.monsterBodyArray removeObjectAtIndex:self.monsterBodyCounter - 1];
                 }
                 
                 for (int i = 0; i < [self.monsterBodyArray count]; ++ i) {
                     P3_MonsterBody * body = (P3_MonsterBody *)[self.monsterBodyArray objectAtIndex:i];
-                    float distance = ([self.monsterBodyArray count] - i) * monsterBodyHeight[self.monsterType] + 46.0 - body.position.y;
+                    float distance = ([self.monsterBodyArray count] - i) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition - body.position.y;
                     
                     [self changePositionInDistance:distance andSprite:body];
                     
@@ -412,7 +407,7 @@
                     [self changeXScaleInScaleDistance:rateXDistance andSprite:body];
                 }
             }
-            else if (self.position.y <= (self.monsterBodyCounter - 1.0) * monsterBodyHeight[self.monsterType] + 46.0 &&
+            else if (self.position.y <= (self.monsterBodyCounter - 1.0) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition &&
                      self.movingType == MovingDown) {
                 if (self.monsterBodyCounter > 0) {
                     -- self.monsterBodyCounter;

@@ -112,7 +112,7 @@
                             andHeight:monster.contentSize.height]) {
                 monster.isChoosen = YES;
                 
-                if (monster.position.y == 46.0) {
+                if (monster.position.y == kMonsterBaselineYPosition) {
                     if (monster.monsterType != GreenMonster) {
                         [monster setPosition:CGPointMake(monster.position.x, monster.position.y + 20.0)];
                         CCScaleTo * scaleTo = [CCScaleTo actionWithDuration:0.05 scale:1.1];
@@ -177,8 +177,8 @@
                                 }
                                 
                                 //对monster高度拖动的限制 不能高于4.4倍身体高度 + 46.0基础高度
-                                if (monster.position.y + moveDistance > 4.4 * monsterBodyHeight[monster.monsterType] + 46.0) {
-                                    moveDistance = 4.4 * monsterBodyHeight[monster.monsterType] + 46.0 - monster.position.y;
+                                if (monster.position.y + moveDistance > 4.4 * monsterBodyHeight[monster.monsterType] + kMonsterBaselineYPosition) {
+                                    moveDistance = 4.4 * monsterBodyHeight[monster.monsterType] + kMonsterBaselineYPosition - monster.position.y;
                                 }
                                 
                                 CGPoint newPosition = CGPointMake(monster.position.x,
@@ -211,8 +211,8 @@
                                 }
                                 
                                 //对monster高度拖动的限制 不能低于46.0基础高度
-                                if (monster.position.y + moveDistance < 46.0) {
-                                    moveDistance = 46.0 - monster.position.y;
+                                if (monster.position.y + moveDistance < kMonsterBaselineYPosition) {
+                                    moveDistance = kMonsterBaselineYPosition - monster.position.y;
                                 }
                                 
                                 CGPoint newPosition = CGPointMake(monster.position.x,
@@ -240,7 +240,7 @@
     
     for (UITouch * touch in touches)
     {
-        //CGPoint touchPosition = [self locationFromTouch:touch];
+        CGPoint touchPosition = [self locationFromTouch:touch];
         for (P3_Monster * monster in _monsterArray) {
             if (monster.isChoosen) {
                 [self setTouchEnabled:NO];
