@@ -11,4 +11,6 @@
 
 @interface WorldP3Layer : CCLayer<WorldSubLayer>
 
+@property (nonatomic, assign) CCLayer * monsterLayer;
+
 @end

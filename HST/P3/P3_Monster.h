@@ -12,7 +12,8 @@
 #import "CCBAnimationManager.h"
 #import "P3_MonsterEye.h"
 
-#define kMonsterBaselineYPosition   46.0
+#define kMonsterBaselineYPosition        46.0
+#define kMonsterMainMapBaselineYPosition 191.0
 
 typedef enum {
     PurpMonster = 0,
@@ -53,6 +54,15 @@ static CGPoint monsterFirstPositions[] = {
     {858.0,46.0 - 156.0}           //第五个
     //小怪物第一个和第五个Z轴最浅
     //第二个和第四个次之     第三个最Z轴最深
+};
+
+//小怪物大地图初始位置
+static CGPoint monsterMainMapPositions[] = {
+    {408.0,191.0},          //最左边小怪物初始位置
+    {467.0,191.0},          //从左边开始计算第二个
+    {542.0,191.0},          //第三个
+    {613.0,191.0},          //第四个
+    {658.0,191.0}           //第五个
 };
 
 static ccColor3B monsterFaceColor[5][5] = {
@@ -119,9 +129,16 @@ static CGPoint monsterCeruleanEyePos[] = {
 @property (nonatomic, strong) P3_MonsterEye * monsterEye;
 @property (nonatomic, strong) NSMutableArray * monsterBodyArray;
 
+//大地图中所用参数
+@property (nonatomic) BOOL isInMainMap;
+@property (nonatomic) BOOL isUp;
+
 - (void)createMonsterWithType:(MonsterType)monsterType;
 - (void)initMonsterEyes;
 - (void)createMonsterBodyInPosition:(CGPoint)position
                      andMonsterType:(MonsterType)monsterType;
 - (void)beginningAnimationInDelayTime:(float)delayTime;
+
+- (void)jumpUpAnimationInMainMap;
+- (void)jumpDownAnimationInMainMap;
 @end

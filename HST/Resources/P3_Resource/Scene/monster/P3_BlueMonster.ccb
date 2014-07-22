@@ -87,10 +87,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_monster2_face.png</string>
+							<string>P3_Resource/images/P3_monster2_face.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -159,7 +161,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_monster2_mouth.png</string>
+							<string>P3_Resource/images/P3_monster2_mouth.png</string>
 						</array>
 					</dict>
 				</array>

@@ -27,6 +27,10 @@
         self.isBeginAnimationFinished = NO;
         self.monsterBodyCounter = 0;
         self.monsterBodyArray = [NSMutableArray arrayWithCapacity:7];
+        
+        self.isInMainMap = NO;
+        self.isUp = YES;
+        
         [self scheduleUpdate];
     }
     return self;
@@ -134,9 +138,20 @@
 #pragma mark - 添加粒子效果
 - (void)addGrassParticle
 {
+    CGPoint position;
+    float rate;
+    if (self.isInMainMap) {
+        position = CGPointMake(monsterMainMapPositions[self.monsterType].x,kMonsterMainMapBaselineYPosition);
+        rate = 0.35;
+    }
+    else {
+        position = CGPointMake(monsterFirstPositions[self.monsterType].x,kMonsterBaselineYPosition);
+        rate = 1.0;
+    }
     CCParticleSystem * grassOut = [CCParticleSystemQuad particleWithFile:@"P3_GrassPSQ.plist"];
-    grassOut.position = CGPointMake(monsterFirstPositions[self.monsterType].x,kMonsterBaselineYPosition);
+    grassOut.position = position;
     grassOut.autoRemoveOnFinish = YES;
+    [grassOut setScale:rate];
     [self.parent addChild:grassOut];
 }
 
@@ -166,7 +181,31 @@
     [self runAction:seq];
     
     [self performSelector:@selector(addGrassParticle) withObject:self afterDelay:delayTime - 0.4];
+}
+
+#pragma mark - 大地图中的跳出动画和下降动画
+- (void)jumpUpAnimationInMainMap
+{
+    CCMoveTo * moveTo =  [CCMoveTo actionWithDuration:0.5 position:CGPointMake(self.position.x, kMonsterMainMapBaselineYPosition)];
+    CCEaseExponentialIn *easeIn = [CCEaseExponentialIn actionWithAction:moveTo];
+    CCScaleTo *action1 = [CCScaleTo actionWithDuration:0.1f scaleX:(1 - 0.1) * 0.35 scaleY:(1 + 0.1) * 0.35];
+    CCScaleTo *action2 = [CCScaleTo actionWithDuration:0.1f scale:0.35];
+    CCSequence *seq = [CCSequence actions:easeIn,action1,action2, nil];
+    self.isUp = YES;
     
+    [self runAction:seq];
+    [self performSelector:@selector(addGrassParticle) withObject:self afterDelay:0.3];
+}
+
+- (void)jumpDownAnimationInMainMap
+{
+    CCMoveTo * moveTo =  [CCMoveTo actionWithDuration:0.5 position:CGPointMake(self.position.x, kMonsterMainMapBaselineYPosition - monsterFaceHeight[self.monsterType] * 0.35)];
+    CCEaseExponentialIn *easeIn = [CCEaseExponentialIn actionWithAction:moveTo];
+    CCSequence *seq = [CCSequence actions:easeIn, nil];
+    self.isUp = NO;
+    
+    [self runAction:seq];
+    [self addGrassParticle];
 }
 
 #pragma mark - update函数

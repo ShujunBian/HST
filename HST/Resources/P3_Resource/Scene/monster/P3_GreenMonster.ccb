@@ -87,7 +87,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_monster3_face.png</string>
+							<string>P3_Resource/images/P3_monster3_face.png</string>
 						</array>
 					</dict>
 				</array>
@@ -159,10 +159,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_monster3_mouth.png</string>
+							<string>P3_Resource/images/P3_monster3_mouth.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -220,8 +222,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
