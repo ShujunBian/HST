@@ -21,16 +21,26 @@
 
 - (void)startAnimationWithDuration:(float)duration
 {
-    CCMoveBy* leftMoveBy = [[CCMoveBy alloc] initWithDuration:duration position:ccp(self.leftInitPosition.x - self.rightInitPosition.x, 0)];
+    CCMoveBy* leftMoveBy = [[[CCMoveBy alloc] initWithDuration:duration position:ccp(self.leftInitPosition.x - self.rightInitPosition.x, 0)] autorelease];
     
-    CCMoveTo* leftMoveTo = [[CCMoveTo alloc] initWithDuration:0 position:self.leftInitPosition];
-    CCAction* leftRepeat = [[CCRepeatForever alloc] initWithAction:[[CCSequence alloc] initOne:leftMoveBy two:leftMoveTo]];
+    CCMoveTo* leftMoveTo = [[[CCMoveTo alloc] initWithDuration:0 position:self.leftInitPosition] autorelease];
+    CCAction* leftRepeat = [[[CCRepeatForever alloc] initWithAction:[CCSequence actionOne:leftMoveBy two:leftMoveTo]] autorelease];
     [self.leftCloudSprite runAction:leftRepeat];
     
-    CCMoveBy* rightMoveBy = [[CCMoveBy alloc] initWithDuration:duration position:ccp(self.leftInitPosition.x - self.rightInitPosition.x, 0)];
-    CCMoveTo* rightMoveTo = [[CCMoveTo alloc] initWithDuration:0 position:self.rightInitPosition];
-    CCAction* rightRepeat = [[CCRepeatForever alloc] initWithAction:[[CCSequence alloc] initOne:rightMoveBy two:rightMoveTo]];
+    CCMoveBy* rightMoveBy = [[[CCMoveBy alloc] initWithDuration:duration position:ccp(self.leftInitPosition.x - self.rightInitPosition.x, 0)] autorelease];
+    CCMoveTo* rightMoveTo = [[[CCMoveTo alloc] initWithDuration:0 position:self.rightInitPosition] autorelease];
+    CCAction* rightRepeat = [[[CCRepeatForever alloc] initWithAction:[CCSequence actionOne:rightMoveBy two:rightMoveTo]] autorelease];
     [self.rightCloudSprite runAction:rightRepeat];
+}
+
+- (void)onExit
+{
+    [self.leftCloudSprite stopAllActions];
+    [self.rightCloudSprite stopAllActions];
+//    self.leftCloudSprite = nil;
+//    self.rightCloudSprite = nil;
+    
+    [super onExit];
 }
 
 - (void) didLoadFromCCB

@@ -158,7 +158,7 @@
 //    self.redMonster = nil;
 //    self.bottle = nil;
     self.shakeMonster = nil;
-
+    self.helper = nil;
     
     [super onExit];
 }
@@ -168,7 +168,7 @@
     self.helper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
 
 //Monster Init
-    self.monstersArray = [[CCArray alloc] init];
+    self.monstersArray = [[[CCArray alloc] init] autorelease];
     //设置monsters数组
     [self.monstersArray addObject:self.greenMonster];
     [self.monstersArray addObject:self.yellowMonster];

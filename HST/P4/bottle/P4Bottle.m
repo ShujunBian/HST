@@ -69,6 +69,8 @@
 }
 - (void)onExit
 {
+    [self.leftFoot stopAllActions];
+    [self.rightFoot stopAllActions];
     [self removeAllChildrenWithCleanup:YES];
     [super onExit];
 }
@@ -312,7 +314,7 @@
 {
     CCScaleTo* lScale1 = [[[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:0.9 scaleY:1.2] autorelease];
     CCScaleTo* lScale2 = [[[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:1 scaleY:1.] autorelease];
-    CCRepeatForever* lForever = [[[CCRepeatForever alloc] initWithAction:[[CCSequence alloc] initOne:lScale1 two:lScale2]] autorelease];
+    CCRepeatForever* lForever = [[[CCRepeatForever alloc] initWithAction:[CCSequence actionOne:lScale1 two:lScale2]] autorelease];
 
     CCScaleTo* rScale1 = [[[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:0.9 scaleY:1.2] autorelease];
     CCScaleTo* rScale2 = [[[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:1 scaleY:1.] autorelease];

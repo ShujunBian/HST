@@ -74,13 +74,27 @@
 @end
 
 @implementation P4WaterLayer
+@synthesize waterRecordArray = _waterRecordArray;
 - (NSMutableArray*)waterRecordArray
 {
+    
     if (!_waterRecordArray)
     {
         _waterRecordArray = [@[] mutableCopy];
     }
     return _waterRecordArray;
+}
+- (void)setWaterRecordArray:(NSMutableArray *)waterRecordArray
+{
+    if (_waterRecordArray)
+    {
+        [_waterRecordArray release];
+    }
+    _waterRecordArray = waterRecordArray;
+    if (_waterRecordArray)
+    {
+        [_waterRecordArray retain];
+    }
 }
 
 - (void) didLoadFromCCB
@@ -142,8 +156,8 @@
     
     [self schedule:@selector(bubbleUpdate:) interval:0.5f];
     
-    self.onScreenBubbles = [@[] mutableCopy];
-    self.offScreenBubbles = [@[] mutableCopy];
+    self.onScreenBubbles = [[@[] mutableCopy] autorelease];
+    self.offScreenBubbles = [[@[] mutableCopy] autorelease];
 }
 - (void)onEnter
 {
@@ -895,11 +909,13 @@
     if (self.offScreenBubbles.count)
     {
         sprite = self.offScreenBubbles[0];
+        [sprite retain];
+        [sprite autorelease];
         [self.offScreenBubbles removeObject:sprite];
     }
     else
     {
-        sprite = [[CCSprite alloc] initWithFile:@"P4water_particle.png"];
+        sprite = [[[CCSprite alloc] initWithFile:@"P4water_particle.png"] autorelease];
     }
     
     sprite.scale = CCRANDOM_0_1();
@@ -908,8 +924,9 @@
     CCMoveTo* moveTo = [[[CCMoveTo alloc] initWithDuration:((endPoint.y - startPoint.y) / (BUBBLE_SPEED + 20 * CCRANDOM_0_1())) position:endPoint] autorelease];
     CCCallBlock* call = [[[CCCallBlock alloc] initWithBlock:^{
         [sprite removeFromParent];
-        [weakSelf.onScreenBubbles removeObject:sprite];
         [weakSelf.offScreenBubbles addObject:sprite];
+        [weakSelf.onScreenBubbles removeObject:sprite];
+
     }] autorelease];
     [self addChild:sprite z:BUBBLE_Z_ORDER];
     [self.onScreenBubbles addObject:sprite];
@@ -931,6 +948,9 @@
     self.offScreenBubbles = nil;
     [self removeAllChildrenWithCleanup:YES];
 
+    [self.waterRecordArray removeAllObjects];
+    self.waterRecordArray = nil;
+    
     [super onExit];
 }
 
