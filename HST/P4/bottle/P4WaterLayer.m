@@ -74,6 +74,14 @@
 @end
 
 @implementation P4WaterLayer
+- (NSMutableArray*)waterRecordArray
+{
+    if (!_waterRecordArray)
+    {
+        _waterRecordArray = [@[] mutableCopy];
+    }
+    return _waterRecordArray;
+}
 
 - (void) didLoadFromCCB
 {
@@ -109,7 +117,7 @@
     self.waterWaveSprite = nil;
     self.waterBgSprite = nil;
     
-    self.waterRecordArray = [@[] mutableCopy];
+//    self.waterRecordArray = [@[] mutableCopy];
     
     self.fAddWater = NO;
     self.fReleaseWater = NO;
@@ -494,7 +502,17 @@
     //更新水花粒子位置、倒入粒子生命
     [self waterHeightChange:[self getWaterHeight]];
     [self.delegate waterHeightChange:[self getWaterHeight]];
-    
+}
+- (void)worldSceneConfigure
+{
+    P4WaterRecord* waterRecord = [[P4WaterRecord alloc] init];
+    waterRecord.color = ccc3(50.f, 248.f, 255.f);
+    waterRecord.height = 60.f;
+    waterRecord.waveScaleLowest = 0.5f;
+    waterRecord.waveScale = 0.5f;
+    waterRecord.flowSpeed = 2.f;
+    waterRecord.flowSpeedMin = 2.f;
+    [self.waterRecordArray addObject:waterRecord];
 }
 - (void)beginReleaseWater
 {

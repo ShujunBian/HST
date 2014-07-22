@@ -354,4 +354,9 @@
     self.waterInRight.life = time;
     
 }
+
+- (void)worldSceneConfigure
+{
+    [self.waterLayer worldSceneConfigure];
+}
 @end

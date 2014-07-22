@@ -30,9 +30,9 @@
 				<key>displayName</key>
 				<string>P4Bottle</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_bottle</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -290,11 +290,11 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>P4Monster</string>
+				<string>blueMonster</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_blueMonster</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -340,11 +340,11 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>P4Monster</string>
+				<string>yellowMonster</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_yellowMonster</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -390,11 +390,11 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>P4Monster</string>
+				<string>greenMonster</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_greenMonster</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -440,11 +440,11 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>P4Monster</string>
+				<string>purpleMonster</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_purpleMonster</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -490,11 +490,11 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>P4Monster</string>
+				<string>redMonster</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_redMonster</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>

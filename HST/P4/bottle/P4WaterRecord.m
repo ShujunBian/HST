@@ -37,13 +37,15 @@
         self.height = 0;
         self.offset = 0;
         self.flowSpeed = 4.f;
+        self.flowSpeedMin = FLOW_SPEED_MIN;
 //        self.rotate = 0;
 //        self.fToRotate = NO;
 //        self.rotateFrom = 0;
 //        self.rotateTo = 0;
 //        self.rotateRadio = 1;
+        self.waveScaleLowest = WAVE_SCALE_LOWEST;
         self.waveScale = WAVE_SCALE_LOWEST;
-        
+
         self.isChangeColor = NO;
         self.colorChangeSpeed = 1.f;
     }
@@ -121,7 +123,7 @@
         self.flowSpeed = -self.flowSpeed;
     }
     
-    self.flowSpeed = self.flowSpeed < FLOW_SPEED_MIN ? FLOW_SPEED_MIN : self.flowSpeed;
+    self.flowSpeed = self.flowSpeed < self.flowSpeedMin ? self.flowSpeedMin : self.flowSpeed;
     self.flowSpeed = self.flowSpeed > FLOW_SPEED_MAX ? FLOW_SPEED_MAX : self.flowSpeed;
     
     if (fFlowSpeedMinu)
@@ -134,7 +136,7 @@
 {
     
     float h = WAVE_SCALE_HIGHEST * (1 + 0.1 * CCRANDOM_0_1());
-    self.waveScale = self.waveScale < WAVE_SCALE_LOWEST ? WAVE_SCALE_LOWEST : self.waveScale;
+    self.waveScale = self.waveScale < self.waveScaleLowest ? self.waveScaleLowest : self.waveScale;
     self.waveScale = self.waveScale > h ? h : self.waveScale;
 }
 

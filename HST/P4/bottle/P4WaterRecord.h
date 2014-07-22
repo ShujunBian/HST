@@ -27,9 +27,11 @@ typedef NS_ENUM(NSInteger, P4WaterFlowType)
 @property (assign, nonatomic) float offset;
 @property (assign, nonatomic) P4WaterFlowType flowType;
 @property (assign, nonatomic) float flowSpeed;
+@property (assign, nonatomic) float flowSpeedMin;
 
 @property (assign, nonatomic) float waveScale;
 
+@property (assign, nonatomic) float waveScaleLowest;
 
 
 - (id)init;

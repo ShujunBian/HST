@@ -55,5 +55,8 @@
 - (void)bottleMoveBack:(float)delay;
 
 
+- (void)worldSceneConfigure;
+
+
 @property (readonly, nonatomic) int addCount;
 @end
