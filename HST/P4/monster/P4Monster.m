@@ -68,6 +68,11 @@
     [super onEnter];
     [self updateWaterSprite];
 }
+- (void)onExit
+{
+    [self removeAllChildrenWithCleanup:YES];
+    [super onExit];
+}
 - (void)prePositionInit
 {
     self.prePosition = self.position;

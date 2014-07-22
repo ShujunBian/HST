@@ -526,7 +526,7 @@
     while (self.onScreenBubbles.count)
     {
         CCSprite* sprite = self.onScreenBubbles[0];
-        [sprite removeFromParent];
+        [sprite removeFromParentAndCleanup:YES];
         [self.offScreenBubbles addObject:sprite];
         [self.onScreenBubbles removeObject:sprite];
     }
@@ -904,15 +904,34 @@
     
     sprite.scale = CCRANDOM_0_1();
     sprite.position = startPoint;
-    CCMoveTo* moveTo = [[CCMoveTo alloc] initWithDuration:((endPoint.y - startPoint.y) / (BUBBLE_SPEED + 20 * CCRANDOM_0_1())) position:endPoint];
-    CCCallBlock* call = [[CCCallBlock alloc] initWithBlock:^{
+    __weak P4WaterLayer* weakSelf = self;
+    CCMoveTo* moveTo = [[[CCMoveTo alloc] initWithDuration:((endPoint.y - startPoint.y) / (BUBBLE_SPEED + 20 * CCRANDOM_0_1())) position:endPoint] autorelease];
+    CCCallBlock* call = [[[CCCallBlock alloc] initWithBlock:^{
         [sprite removeFromParent];
-        [self.onScreenBubbles removeObject:sprite];
-        [self.offScreenBubbles addObject:sprite];
-    }];
+        [weakSelf.onScreenBubbles removeObject:sprite];
+        [weakSelf.offScreenBubbles addObject:sprite];
+    }] autorelease];
     [self addChild:sprite z:BUBBLE_Z_ORDER];
     [self.onScreenBubbles addObject:sprite];
-    [sprite runAction:[[CCSequence alloc] initOne:moveTo two:call]];
+    [sprite runAction:[[[CCSequence alloc] initOne:moveTo two:call] autorelease]];
+}
+
+
+#pragma mark - Life Cycle
+- (void)onExit
+{
+    self.bottleMask = nil;
+    self.water1 = nil;
+    self.water2 = nil;
+    self.waterWaveSprite = nil;
+    self.waterBgSprite = nil;
+//    self.sprayLeft = nil;
+//    self.sprayRight = nil;
+    [self.offScreenBubbles removeAllObjects];
+    self.offScreenBubbles = nil;
+    [self removeAllChildrenWithCleanup:YES];
+
+    [super onExit];
 }
 
 @end

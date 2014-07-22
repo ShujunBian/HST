@@ -67,6 +67,11 @@
 //    self.waterInOriginLife = self.waterInLeft.life;
     
 }
+- (void)onExit
+{
+    [self removeAllChildrenWithCleanup:YES];
+    [super onExit];
+}
 
 #pragma mark - Gesture
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
