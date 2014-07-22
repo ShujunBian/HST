@@ -35,12 +35,13 @@
 
 - (void)onExit
 {
-    [self.leftCloudSprite stopAllActions];
-    [self.rightCloudSprite stopAllActions];
+    [super onExit];
+//    [self.leftCloudSprite stopAllActions];
+//    [self.rightCloudSprite stopAllActions];
 //    self.leftCloudSprite = nil;
 //    self.rightCloudSprite = nil;
     
-    [super onExit];
+
 }
 
 - (void) didLoadFromCCB

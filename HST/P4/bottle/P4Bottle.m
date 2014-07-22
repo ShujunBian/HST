@@ -69,10 +69,10 @@
 }
 - (void)onExit
 {
+    [super onExit];
     [self.leftFoot stopAllActions];
     [self.rightFoot stopAllActions];
-    [self removeAllChildrenWithCleanup:YES];
-    [super onExit];
+
 }
 
 #pragma mark - Gesture

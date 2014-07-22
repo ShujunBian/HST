@@ -937,21 +937,25 @@
 #pragma mark - Life Cycle
 - (void)onExit
 {
+    [super onExit];
     self.bottleMask = nil;
     self.water1 = nil;
     self.water2 = nil;
+//    [self.waterWaveSprite removeFromParentAndCleanup:YES];
     self.waterWaveSprite = nil;
+//    [self.waterBgSprite removeFromParentAndCleanup:YES];
     self.waterBgSprite = nil;
 //    self.sprayLeft = nil;
 //    self.sprayRight = nil;
     [self.offScreenBubbles removeAllObjects];
     self.offScreenBubbles = nil;
+    [self.onScreenBubbles removeAllObjects];
+    self.onScreenBubbles = nil;
     [self removeAllChildrenWithCleanup:YES];
 
     [self.waterRecordArray removeAllObjects];
     self.waterRecordArray = nil;
     
-    [super onExit];
 }
 
 @end

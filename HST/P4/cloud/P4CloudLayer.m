@@ -23,5 +23,12 @@
 //    [self.cloud3 startAnimationWithDuration:CLOUD_3_MOVE_DURATION];
 }
 
-
+- (void)onExit
+{
+    [super onExit];
+//    self.cloud1 = nil;
+//    self.cloud2 = nil;
+//    self.cloud3 = nil;
+//    self.cloudTop = nil;
+}
 @end

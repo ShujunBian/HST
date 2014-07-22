@@ -146,9 +146,11 @@
 }
 - (void)onExit
 {
-    [self removeAllChildrenWithCleanup:YES];
-    
-    [self.monstersArray removeAllObjects];
+//    [self removeAllChildrenWithCleanup:YES];
+//    self.shakeMonster = nil;
+    [super onExit];
+    self.helper = nil;
+//    [self.monstersArray removeAllObjects];
     self.monstersArray = nil;
 //    self.cloudLayer = nil;
 //    self.greenMonster = nil;
@@ -157,10 +159,9 @@
 //    self.blueMonster = nil;
 //    self.redMonster = nil;
 //    self.bottle = nil;
-    self.shakeMonster = nil;
-    self.helper = nil;
+
     
-    [super onExit];
+
 }
 
 - (void) didLoadFromCCB

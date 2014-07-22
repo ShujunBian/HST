@@ -70,8 +70,11 @@
 }
 - (void)onExit
 {
-    [self removeAllChildrenWithCleanup:YES];
     [super onExit];
+//    [self.waterSprite removeFromParentAndCleanup:YES];
+//    self.waterSprite = nil;
+//    [self removeAllChildrenWithCleanup:YES];
+
 }
 - (void)prePositionInit
 {
