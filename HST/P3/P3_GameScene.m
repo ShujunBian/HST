@@ -240,7 +240,7 @@
     
     for (UITouch * touch in touches)
     {
-        //CGPoint touchPosition = [self locationFromTouch:touch];
+        CGPoint touchPosition = [self locationFromTouch:touch];
         for (P3_Monster * monster in _monsterArray) {
             if (monster.isChoosen) {
                 [self setTouchEnabled:NO];

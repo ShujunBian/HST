@@ -31,7 +31,7 @@ static ccColor3B bubbleColors[] = {
 - (id)init
 {
     if (self = [super init]) {
-
+        
     }
     return self;
 }
@@ -39,8 +39,29 @@ static ccColor3B bubbleColors[] = {
 - (void) didLoadFromCCB
 {
     [blueBubble.body setColor:bubbleColors[2]];
+    [blueBubble.userObject runAnimationsForSequenceNamed:@"idleInMainMap"];
+    
     [purpBubble.body setColor:bubbleColors[1]];
+    [self performSelector:@selector(purpAnimation) withObject:self afterDelay:4.0];
     [yellowBubble.body setColor:bubbleColors[0]];
+    [self performSelector:@selector(yellowAnimation) withObject:self afterDelay:2.0];
+    
     [greenBubble.body setColor:bubbleColors[3]];
+    [self performSelector:@selector(greenAnimation) withObject:self afterDelay:1.0];
+}
+
+- (void)purpAnimation
+{
+    [purpBubble.userObject runAnimationsForSequenceNamed:@"idleInMainMap"];
+}
+
+- (void)yellowAnimation
+{
+    [yellowBubble.userObject runAnimationsForSequenceNamed:@"idleInMainMap"];
+}
+
+- (void)greenAnimation
+{
+    [greenBubble.userObject runAnimationsForSequenceNamed:@"idleInMainMap"];
 }
 @end

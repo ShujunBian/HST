@@ -28,6 +28,12 @@ static ccColor3B bubbleColors[] = {
     {213,176,255}
 };
 
+- (id)init
+{
+    if (self = [super init]) {
+    }
+    return self;
+}
 
 - (ccColor3B)colorAtIndex:(NSUInteger)index
 {
