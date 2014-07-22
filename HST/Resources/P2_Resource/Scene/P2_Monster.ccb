@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>4</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -917,7 +917,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>scene/P2_MonsterHead.ccb</string>
+						<string>P2_Resource/scene/P2_MonsterHead.ccb</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -1483,7 +1483,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>scene/P2_MonsterBody.ccb</string>
+						<string>P2_Resource/scene/P2_MonsterBody.ccb</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2392,7 +2392,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>scene/P2_MonsterEye.ccb</string>
+						<string>P2_Resource/scene/P2_MonsterEye.ccb</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2556,7 +2556,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.26666668057441711</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

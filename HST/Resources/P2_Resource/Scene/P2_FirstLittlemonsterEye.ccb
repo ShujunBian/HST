@@ -75,7 +75,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_firstmonster_eyewhite.png</string>
+							<string>P2_Resource/pictures/p2_firstmonster_eyewhite.png</string>
 						</array>
 					</dict>
 				</array>
@@ -478,10 +478,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_firstmonster_eyeblack.png</string>
+							<string>P2_Resource/pictures/p2_firstmonster_eyeblack.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

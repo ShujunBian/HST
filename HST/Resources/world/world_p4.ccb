@@ -263,6 +263,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>displayFrame</string>
 						<key>type</key>
 						<string>SpriteFrame</string>
@@ -323,8 +331,6 @@
 						<string>p4/P4BlueMonster.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

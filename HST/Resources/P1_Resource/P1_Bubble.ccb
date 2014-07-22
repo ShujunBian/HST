@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -382,7 +382,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>0.0</real>
+							<real>-4.4083271026611328</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -409,8 +409,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.97212982177734375</real>
+							<real>1.0092900991439819</real>
 							<true/>
 							<integer>0</integer>
 						</array>
@@ -451,7 +451,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>bubble-normal.png</string>
+							<string>P1_Resource/bubble-normal.png</string>
 						</array>
 					</dict>
 				</array>
@@ -801,7 +801,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<string>bubble_00.png</string>
+							<string>P1_Resource/bubble_00.png</string>
 							<string>Use regular file</string>
 						</array>
 						<key>name</key>
@@ -811,7 +811,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>bubble_00.png</string>
+							<string>P1_Resource/bubble_00.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1065,7 +1065,7 @@
 						<key>value</key>
 						<array>
 							<real>-3</real>
-							<real>-55</real>
+							<real>-66.77252197265625</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1124,7 +1124,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>bubble-mouth.png</string>
+							<string>P1_Resource/bubble-mouth.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1154,7 +1154,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>bubble-eye.png</string>
+										<string>P1_Resource/bubble-eye.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1172,7 +1172,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>bubble-eye-blink.png</string>
+										<string>P1_Resource/bubble-eye-blink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1190,7 +1190,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>bubble-eye.png</string>
+										<string>P1_Resource/bubble-eye.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1208,7 +1208,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>bubble-eye-blink.png</string>
+										<string>P1_Resource/bubble-eye-blink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1226,7 +1226,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>bubble-eye.png</string>
+										<string>P1_Resource/bubble-eye.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1244,7 +1244,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>bubble-eye-blink.png</string>
+										<string>P1_Resource/bubble-eye-blink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1262,7 +1262,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>bubble-eye.png</string>
+										<string>P1_Resource/bubble-eye.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1516,7 +1516,7 @@
 						<key>value</key>
 						<array>
 							<real>-4</real>
-							<real>-32</real>
+							<real>-41.249835968017578</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1570,7 +1570,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<string>bubble-eye.png</string>
+							<string>P1_Resource/bubble-eye.png</string>
 							<string>Use regular file</string>
 						</array>
 						<key>name</key>
@@ -1580,7 +1580,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>bubble-eye-blink.png</string>
+							<string>P1_Resource/bubble-eye.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1766,7 +1766,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>bubble_glow.png</string>
+							<string>P1_Resource/bubble_glow.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1863,7 +1863,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>6.0333333015441895</real>
+			<real>1.8666666746139526</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

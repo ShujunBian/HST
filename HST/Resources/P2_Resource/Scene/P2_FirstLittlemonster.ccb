@@ -651,7 +651,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_firstmonster_body.png</string>
+							<string>P2_Resource/pictures/p2_firstmonster_body.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1575,9 +1575,11 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>scene/P2_FirstLittlemonsterEye.ccb</string>
+						<string>P2_Resource/scene/P2_FirstLittlemonsterEye.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

@@ -75,7 +75,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monstereyewhite.png</string>
+							<string>P1_Resource/monstereyewhite.png</string>
 						</array>
 					</dict>
 				</array>
@@ -260,10 +260,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monstereyeblack.png</string>
+							<string>P1_Resource/monstereyeblack.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

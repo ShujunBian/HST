@@ -250,7 +250,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monster_hand.png</string>
+							<string>P1_Resource/monster_hand.png</string>
 						</array>
 					</dict>
 				</array>
@@ -312,7 +312,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monstershadow.png</string>
+							<string>P1_Resource/monstershadow.png</string>
 						</array>
 					</dict>
 				</array>
@@ -384,7 +384,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monsterbody.png</string>
+							<string>P1_Resource/monsterbody.png</string>
 						</array>
 					</dict>
 				</array>
@@ -435,9 +435,11 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>P1_MonsterEye.ccb</string>
+						<string>P1_Resource/P1_MonsterEye.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -506,7 +508,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monster_mouth_mask.png</string>
+							<string>P1_Resource/monster_mouth_mask.png</string>
 						</array>
 					</dict>
 				</array>
@@ -578,7 +580,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monster_teeth.png</string>
+							<string>P1_Resource/monster_teeth.png</string>
 						</array>
 					</dict>
 				</array>
@@ -650,7 +652,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monster_small_mouth_mask.png</string>
+							<string>P1_Resource/monster_small_mouth_mask.png</string>
 						</array>
 					</dict>
 				</array>
@@ -727,12 +729,10 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>monster_lefthand.png</string>
+							<string>P1_Resource/monster_lefthand.png</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

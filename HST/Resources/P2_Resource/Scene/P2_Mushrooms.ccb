@@ -170,7 +170,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>2.5333328247070312</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -188,7 +188,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_mushroom1Body.png</string>
+							<string>P2_Resource/pictures/p2_mushroom1Body.png</string>
 						</array>
 					</dict>
 				</array>
@@ -411,7 +411,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-2.9166669845581055</real>
+							<real>-4.5</real>
 							<real>38</real>
 							<integer>0</integer>
 						</array>
@@ -448,7 +448,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-0.46666717529296875</real>
+						<real>-3</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -466,7 +466,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_mushroom1Head.png</string>
+							<string>P2_Resource/pictures/p2_mushroom1Head.png</string>
 						</array>
 					</dict>
 				</array>
@@ -494,7 +494,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom1EyesBlink.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -512,7 +512,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom1Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -530,7 +530,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom1EyesBlink.png</string>
+										<string>P2_Resource/pictures/p2_mushroom1EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -548,7 +548,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom1Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -566,7 +566,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom1EyesBlink.png</string>
+										<string>P2_Resource/pictures/p2_mushroom1EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -584,7 +584,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom1Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -602,7 +602,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom1EyesBlink.png</string>
+										<string>P2_Resource/pictures/p2_mushroom1EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -620,7 +620,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom1Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -638,7 +638,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom1EyesBlink.png</string>
+										<string>P2_Resource/pictures/p2_mushroom1EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -656,7 +656,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom1Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -879,7 +879,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-2.4166669845581055</real>
+							<real>-4</real>
 							<real>34</real>
 							<integer>0</integer>
 						</array>
@@ -916,7 +916,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-0.46666717529296875</real>
+						<real>-3</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -939,7 +939,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_mushroom1Eyes.png</string>
+							<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1094,7 +1094,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>1.5833330154418945</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1112,7 +1112,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_mushroom2Body.png</string>
+							<string>P2_Resource/pictures/p2_mushroom2Body.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1335,7 +1335,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>27.316665649414062</real>
+							<real>27</real>
 							<real>18</real>
 							<integer>0</integer>
 						</array>
@@ -1372,7 +1372,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>1.5833330154418945</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1390,7 +1390,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_mushroom2Head.png</string>
+							<string>P2_Resource/pictures/p2_mushroom2Head.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1418,7 +1418,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1436,7 +1436,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2EyesBlink.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1454,7 +1454,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1472,7 +1472,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2EyesBlink.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1490,7 +1490,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1508,7 +1508,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2EyesBlink.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1526,7 +1526,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1544,7 +1544,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2EyesBlink.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1562,7 +1562,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1580,7 +1580,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2EyesBlink.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1598,7 +1598,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_mushroom2Eyes.png</string>
+										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1821,7 +1821,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>27.316665649414062</real>
+							<real>27</real>
 							<real>15</real>
 							<integer>0</integer>
 						</array>
@@ -1858,7 +1858,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>1.5833330154418945</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1881,10 +1881,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_mushroom2Eyes.png</string>
+							<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -1930,8 +1932,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -1966,7 +1966,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4.6333332061767578</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

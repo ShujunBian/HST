@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>2</integer>
+	<integer>0</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -233,7 +233,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>10</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -277,7 +277,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_littlefly.png</string>
+							<string>P2_Resource/pictures/p2_littlefly.png</string>
 						</array>
 					</dict>
 				</array>
@@ -536,8 +536,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-6</real>
-							<real>105</real>
+							<real>-7</real>
+							<real>98</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -573,7 +573,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>0.0</real>
+						<real>360</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -591,7 +591,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_littlefly_wing.png</string>
+							<string>P2_Resource/pictures/p2_littlefly_wing.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -633,7 +633,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_littlefly_eye.png</string>
+										<string>P2_Resource/pictures/p2_littlefly_eye.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -651,7 +651,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_littlefly_eye_blink.png</string>
+										<string>P2_Resource/pictures/p2_littlefly_eye_blink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -669,7 +669,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_littlefly_eye.png</string>
+										<string>P2_Resource/pictures/p2_littlefly_eye.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -687,7 +687,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_littlefly_eye_blink.png</string>
+										<string>P2_Resource/pictures/p2_littlefly_eye_blink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -705,7 +705,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>pictures/p2_littlefly_eye.png</string>
+										<string>P2_Resource/pictures/p2_littlefly_eye.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -923,7 +923,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>40</real>
+							<real>30</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -962,7 +962,7 @@
 					<dict>
 						<key>baseValue</key>
 						<array>
-							<string>pictures/p2_littlefly_eye.png</string>
+							<string>P2_Resource/pictures/p2_littlefly_eye.png</string>
 							<string>Use regular file</string>
 						</array>
 						<key>name</key>
@@ -972,10 +972,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_littlefly_eye.png</string>
+							<string>P2_Resource/pictures/p2_littlefly_eye.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1192,7 +1194,7 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>29</real>
+							<real>19</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1236,7 +1238,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_littlefly_mouth.png</string>
+							<string>P2_Resource/pictures/p2_littlefly_mouth.png</string>
 						</array>
 					</dict>
 				</array>

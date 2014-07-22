@@ -14,8 +14,6 @@
 	<integer>4</integer>
 	<key>guides</key>
 	<array/>
-	<key>jsControlled</key>
-	<false/>
 	<key>nodeGraph</key>
 	<dict>
 		<key>baseClass</key>
@@ -77,7 +75,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_secondmonster_eyewhite.png</string>
+							<string>P2_Resource/pictures/p2_secondmonster_eyewhite.png</string>
 						</array>
 					</dict>
 				</array>
@@ -476,7 +474,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>pictures/p2_secondmonster_eyeblack.png</string>
+							<string>P2_Resource/pictures/p2_secondmonster_eyeblack.png</string>
 						</array>
 					</dict>
 				</array>
@@ -552,13 +550,6 @@
 		<dict>
 			<key>autoPlay</key>
 			<true/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
@@ -575,13 +566,6 @@
 			<real>64</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
 		</dict>
 	</array>
 	<key>stageBorder</key>

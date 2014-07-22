@@ -8,7 +8,11 @@
 
 #import "CCLayer.h"
 #import "WorldSublayer.h"
+#import "P2_LittleFlyObjects.h"
 
 @interface WorldP2Layer : CCLayer<WorldSubLayer>
+
+@property (nonatomic, assign) P2_LittleFlyObjects * blueLittleFly;
+@property (nonatomic, assign) P2_LittleFlyObjects * greenLittleFly;
 
 @end

@@ -31,7 +31,7 @@
     [self addChild:maskedMouth];
 
     
-    [self schedule:@selector(updateLeftHand:)];
+//    [self schedule:@selector(updateLeftHand:)];
 }
 
 
@@ -59,7 +59,6 @@
         }
     }
 }
-
 
 - (CCSprite *)maskedSprite
 {
@@ -93,7 +92,6 @@
     CCSprite *retval = [CCSprite spriteWithTexture:rt.sprite.texture];
     return retval;
 }
-
 
 -(void) updateSmallMouth:(ccTime)delta
 {
