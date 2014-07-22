@@ -184,7 +184,6 @@
 //    [self.waterBgSprite removeFromParentAndCleanup:YES];
 //    self.waterBgSprite = nil;
     
-    
     [self updateWaterRecord];
     self.waterWaveSprite = [self waterWaveSpriteWithTextureSprite:self.water1 maskSprite:self.bottleMask rotate:self.rotate];
     self.waterWaveSprite.position = self.prePosition;

@@ -756,6 +756,7 @@
 		51F48ACB197CE44D00371C45 /* P3_BubblePSQ.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ACA197CE44D00371C45 /* P3_BubblePSQ.plist */; };
 		51F48ACE197CE45600371C45 /* P3_Bubble-normal-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ACC197CE45600371C45 /* P3_Bubble-normal-hd.png */; };
 		51F48ACF197CE45600371C45 /* P3_Bubble-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ACD197CE45600371C45 /* P3_Bubble-normal.png */; };
+		EF31302B197E0B5800B61C2A /* CircleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = EF31302A197E0B5800B61C2A /* CircleTransition.m */; };
 		EF403F82197A1D1700C6C8E1 /* p4_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */; };
 		EF403F83197A1D1700C6C8E1 /* p4_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED5197A1D1700C6C8E1 /* p4_background.png */; };
 		EF403F84197A1D1700C6C8E1 /* p4_ground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED6197A1D1700C6C8E1 /* p4_ground-hd.png */; };
@@ -1966,6 +1967,8 @@
 		51F48ACA197CE44D00371C45 /* P3_BubblePSQ.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = P3_BubblePSQ.plist; sourceTree = "<group>"; };
 		51F48ACC197CE45600371C45 /* P3_Bubble-normal-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P3_Bubble-normal-hd.png"; sourceTree = "<group>"; };
 		51F48ACD197CE45600371C45 /* P3_Bubble-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P3_Bubble-normal.png"; sourceTree = "<group>"; };
+		EF313029197E0B5800B61C2A /* CircleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTransition.h; sourceTree = "<group>"; };
+		EF31302A197E0B5800B61C2A /* CircleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTransition.m; sourceTree = "<group>"; };
 		EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_background-hd.png"; sourceTree = "<group>"; };
 		EF403ED5197A1D1700C6C8E1 /* p4_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4_background.png; sourceTree = "<group>"; };
 		EF403ED6197A1D1700C6C8E1 /* p4_ground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_ground-hd.png"; sourceTree = "<group>"; };
@@ -2388,6 +2391,7 @@
 		5169CBE218CDE5ED00426E6C /* HST */ = {
 			isa = PBXGroup;
 			children = (
+				EF313028197E08E100B61C2A /* transition */,
 				EF404035197A56C100C6C8E1 /* world */,
 				EF404028197A1D8500C6C8E1 /* monsterEye */,
 				5169CD8618CDE64100426E6C /* Mainmap */,
@@ -3677,6 +3681,15 @@
 				51F48AC4197CD86B00371C45 /* P3_GrassPSQ.plist */,
 			);
 			path = PSQ;
+			sourceTree = "<group>";
+		};
+		EF313028197E08E100B61C2A /* transition */ = {
+			isa = PBXGroup;
+			children = (
+				EF313029197E0B5800B61C2A /* CircleTransition.h */,
+				EF31302A197E0B5800B61C2A /* CircleTransition.m */,
+			);
+			path = transition;
 			sourceTree = "<group>";
 		};
 		EF403ED2197A1D1700C6C8E1 /* p4 */ = {
@@ -5052,6 +5065,7 @@
 				5169CC0E18CDE5ED00426E6C /* CCActionGrid3D.m in Sources */,
 				1801E74A18E594FC004E0856 /* P4WaterLayer.m in Sources */,
 				5169CD5718CDE5EE00426E6C /* mat4stack.c in Sources */,
+				EF31302B197E0B5800B61C2A /* CircleTransition.m in Sources */,
 				1801E75118E594FC004E0856 /* P4BottleOffset.m in Sources */,
 				5169CCB318CDE5ED00426E6C /* CCSpriteFrameCache.m in Sources */,
 				5169CC3C18CDE5ED00426E6C /* CCDirector.m in Sources */,
