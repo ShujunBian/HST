@@ -42,6 +42,8 @@ static CGPoint monsterFinalPosition = {161,54.48};
         isMoveDown = NO;
         isRotatedDown = NO;
         rotateDegree = 0.0;
+        
+        self.isInMainMap = NO;
         [self scheduleUpdate];
     }
     return self;

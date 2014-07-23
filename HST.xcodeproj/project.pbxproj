@@ -756,6 +756,14 @@
 		51F48ACB197CE44D00371C45 /* P3_BubblePSQ.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ACA197CE44D00371C45 /* P3_BubblePSQ.plist */; };
 		51F48ACE197CE45600371C45 /* P3_Bubble-normal-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ACC197CE45600371C45 /* P3_Bubble-normal-hd.png */; };
 		51F48ACF197CE45600371C45 /* P3_Bubble-normal.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ACD197CE45600371C45 /* P3_Bubble-normal.png */; };
+		51F48AD8197E959200371C45 /* P5_GreenFlower.ccb in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AD4197E959200371C45 /* P5_GreenFlower.ccb */; };
+		51F48AD9197E959200371C45 /* P5_GreenFlower.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AD5197E959200371C45 /* P5_GreenFlower.ccbi */; };
+		51F48ADA197E959200371C45 /* P5_GreenFlowerHead.ccb in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AD6197E959200371C45 /* P5_GreenFlowerHead.ccb */; };
+		51F48ADB197E959200371C45 /* P5_GreenFlowerHead.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AD7197E959200371C45 /* P5_GreenFlowerHead.ccbi */; };
+		51F48ADE197E959A00371C45 /* MainMap_GreenFlowerHead-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ADC197E959A00371C45 /* MainMap_GreenFlowerHead-hd.png */; };
+		51F48ADF197E959A00371C45 /* MainMap_GreenFlowerHead.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ADD197E959A00371C45 /* MainMap_GreenFlowerHead.png */; };
+		51F48AE2197E968E00371C45 /* world_p5_mushroom_shadow-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AE0197E968E00371C45 /* world_p5_mushroom_shadow-hd.png */; };
+		51F48AE3197E968E00371C45 /* world_p5_mushroom_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AE1197E968E00371C45 /* world_p5_mushroom_shadow.png */; };
 		EF31302B197E0B5800B61C2A /* CircleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = EF31302A197E0B5800B61C2A /* CircleTransition.m */; };
 		EF403F82197A1D1700C6C8E1 /* p4_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */; };
 		EF403F83197A1D1700C6C8E1 /* p4_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED5197A1D1700C6C8E1 /* p4_background.png */; };
@@ -1967,6 +1975,14 @@
 		51F48ACA197CE44D00371C45 /* P3_BubblePSQ.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = P3_BubblePSQ.plist; sourceTree = "<group>"; };
 		51F48ACC197CE45600371C45 /* P3_Bubble-normal-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P3_Bubble-normal-hd.png"; sourceTree = "<group>"; };
 		51F48ACD197CE45600371C45 /* P3_Bubble-normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P3_Bubble-normal.png"; sourceTree = "<group>"; };
+		51F48AD4197E959200371C45 /* P5_GreenFlower.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = P5_GreenFlower.ccb; sourceTree = "<group>"; };
+		51F48AD5197E959200371C45 /* P5_GreenFlower.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P5_GreenFlower.ccbi; sourceTree = "<group>"; };
+		51F48AD6197E959200371C45 /* P5_GreenFlowerHead.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = P5_GreenFlowerHead.ccb; sourceTree = "<group>"; };
+		51F48AD7197E959200371C45 /* P5_GreenFlowerHead.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P5_GreenFlowerHead.ccbi; sourceTree = "<group>"; };
+		51F48ADC197E959A00371C45 /* MainMap_GreenFlowerHead-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainMap_GreenFlowerHead-hd.png"; sourceTree = "<group>"; };
+		51F48ADD197E959A00371C45 /* MainMap_GreenFlowerHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMap_GreenFlowerHead.png; sourceTree = "<group>"; };
+		51F48AE0197E968E00371C45 /* world_p5_mushroom_shadow-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p5_mushroom_shadow-hd.png"; sourceTree = "<group>"; };
+		51F48AE1197E968E00371C45 /* world_p5_mushroom_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p5_mushroom_shadow.png; sourceTree = "<group>"; };
 		EF313029197E0B5800B61C2A /* CircleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTransition.h; sourceTree = "<group>"; };
 		EF31302A197E0B5800B61C2A /* CircleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTransition.m; sourceTree = "<group>"; };
 		EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_background-hd.png"; sourceTree = "<group>"; };
@@ -3338,6 +3354,8 @@
 		51A940B6197A128700920318 /* picture */ = {
 			isa = PBXGroup;
 			children = (
+				51F48ADC197E959A00371C45 /* MainMap_GreenFlowerHead-hd.png */,
+				51F48ADD197E959A00371C45 /* MainMap_GreenFlowerHead.png */,
 				51A940B7197A128700920318 /* P5_bellBody-hd.png */,
 				51A940B8197A128700920318 /* P5_bellBody.png */,
 				51A940B9197A128700920318 /* P5_BellEyesClose-hd.png */,
@@ -3459,6 +3477,10 @@
 		51A94124197A128700920318 /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				51F48AD4197E959200371C45 /* P5_GreenFlower.ccb */,
+				51F48AD5197E959200371C45 /* P5_GreenFlower.ccbi */,
+				51F48AD6197E959200371C45 /* P5_GreenFlowerHead.ccb */,
+				51F48AD7197E959200371C45 /* P5_GreenFlowerHead.ccbi */,
 				51A94125197A128700920318 /* P5_Bell1.ccb */,
 				51A94126197A128700920318 /* P5_Bell1.ccbi */,
 				51A94127197A128700920318 /* P5_Bell2.ccb */,
@@ -4091,6 +4113,8 @@
 		EF404085197A592100C6C8E1 /* p5 */ = {
 			isa = PBXGroup;
 			children = (
+				51F48AE0197E968E00371C45 /* world_p5_mushroom_shadow-hd.png */,
+				51F48AE1197E968E00371C45 /* world_p5_mushroom_shadow.png */,
 				EF404086197A592100C6C8E1 /* world_p5_grass-hd.png */,
 				EF404087197A592100C6C8E1 /* world_p5_grass.png */,
 				EF404088197A592100C6C8E1 /* world_p5_holl-hd.png */,
@@ -4206,6 +4230,7 @@
 				51F48ACF197CE45600371C45 /* P3_Bubble-normal.png in Resources */,
 				EF4040C0197A592100C6C8E1 /* world_p2_grass.png in Resources */,
 				EF403FE6197A1D1700C6C8E1 /* P4_brown_monster_light.png in Resources */,
+				51F48ADE197E959A00371C45 /* MainMap_GreenFlowerHead-hd.png in Resources */,
 				51556DE718CF21B8005C8D46 /* P1_b9.wav in Resources */,
 				EF4040C4197A592100C6C8E1 /* world_p3_back_house.png in Resources */,
 				EF403FD7197A1D1700C6C8E1 /* P4_monster2_mask-hd.png in Resources */,
@@ -4261,6 +4286,7 @@
 				51A941E4197A128700920318 /* P5_UndergroundBackground.ccbi in Resources */,
 				EF4040D0197A592100C6C8E1 /* world_p5_grass.png in Resources */,
 				51A942EF197A130A00920318 /* P2_LittleFlyOut.ccb in Resources */,
+				51F48ADF197E959A00371C45 /* MainMap_GreenFlowerHead.png in Resources */,
 				51A9428B197A130A00920318 /* 4-hd.png in Resources */,
 				51A942C4197A130A00920318 /* p2_mountain1.png in Resources */,
 				51A941BA197A128700920318 /* P5_undergroundHoleBell.png in Resources */,
@@ -4326,6 +4352,7 @@
 				EF403F8F197A1D1700C6C8E1 /* P4_bottle_main.png in Resources */,
 				51A94294197A130A00920318 /* 8.png in Resources */,
 				EF4040B6197A592100C6C8E1 /* world_p1_grass1.png in Resources */,
+				51F48ADA197E959200371C45 /* P5_GreenFlowerHead.ccb in Resources */,
 				51A94391197A142E00920318 /* monster_eye_lowerlid-hd.png in Resources */,
 				51A94161197A128700920318 /* P5_BellLight-hd.png in Resources */,
 				51A9436A197A142E00920318 /* bubble_01.png in Resources */,
@@ -4451,6 +4478,7 @@
 				51A943BC197A142E00920318 /* P1_FlowerHead.ccbi in Resources */,
 				EF403FE9197A1D1700C6C8E1 /* P4_green_monster_light-hd.png in Resources */,
 				5199792018D02CEB006A1FD8 /* P2_2.mp3 in Resources */,
+				51F48ADB197E959200371C45 /* P5_GreenFlowerHead.ccbi in Resources */,
 				51A942B3197A130A00920318 /* p2_littlefly_mouth-hd.png in Resources */,
 				5199791F18D02CEB006A1FD8 /* P2_1.mp3 in Resources */,
 				51A94050197A121300920318 /* P3_Monster4_Eye_point-hd.png in Resources */,
@@ -4752,6 +4780,7 @@
 				51A941B0197A128700920318 /* P5_SmallCircleUI.png in Resources */,
 				EF403FF2197A1D1700C6C8E1 /* P4_yellow_monster_light.png in Resources */,
 				EF403F89197A1D1700C6C8E1 /* P4_bottle_left_cap.png in Resources */,
+				51F48AD8197E959200371C45 /* P5_GreenFlower.ccb in Resources */,
 				51A941B1197A128700920318 /* P5_Soil-hd.png in Resources */,
 				EF40409D197A592100C6C8E1 /* world_background_floor-hd.png in Resources */,
 				51A943B1197A142E00920318 /* P1_BubblePosition2.ccb in Resources */,
@@ -4792,6 +4821,7 @@
 				51A94304197A130A00920318 /* P2_Sky.ccbi in Resources */,
 				51A942F5197A130A00920318 /* P2_MonsterEye.ccb in Resources */,
 				51A94396197A142E00920318 /* monster_eyelid_mask.png in Resources */,
+				51F48AE2197E968E00371C45 /* world_p5_mushroom_shadow-hd.png in Resources */,
 				51A94053197A121300920318 /* P3_monster4_face.png in Resources */,
 				51A9438E197A142E00920318 /* flowerbody.png in Resources */,
 				51A94384197A142E00920318 /* cloud.png in Resources */,
@@ -4821,6 +4851,7 @@
 				EF4040DA197A592100C6C8E1 /* world_p2.ccbi in Resources */,
 				51A941CD197A128700920318 /* P5_BlueFlowerHead.ccb in Resources */,
 				51A943A2197A142E00920318 /* monsterbody.png in Resources */,
+				51F48AD9197E959200371C45 /* P5_GreenFlower.ccbi in Resources */,
 				EF403FE2197A1D1700C6C8E1 /* P4_blue_monster_light.png in Resources */,
 				51A9407A197A121300920318 /* P3_Flower_behind.ccb in Resources */,
 				51556DE018CF21B8005C8D46 /* P1_b2.wav in Resources */,
@@ -4890,6 +4921,7 @@
 				EF404015197A1D1700C6C8E1 /* P4PurpleMonster.ccbi in Resources */,
 				51A941D2197A128700920318 /* P5_FlowerHead.ccbi in Resources */,
 				51A94303197A130A00920318 /* P2_Sky.ccb in Resources */,
+				51F48AE3197E968E00371C45 /* world_p5_mushroom_shadow.png in Resources */,
 				EF403FD6197A1D1700C6C8E1 /* P4_monster1_mask.png in Resources */,
 				EF404005197A1D1700C6C8E1 /* P4GreenMonster.ccb in Resources */,
 				51A9403F197A121300920318 /* P3_Monster2_Eye_point.png in Resources */,

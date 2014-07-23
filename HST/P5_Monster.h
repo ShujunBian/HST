@@ -37,6 +37,8 @@
 @property (nonatomic) BOOL isCreatingPassage;
 @property (nonatomic) BOOL isUpground;
 
+@property (nonatomic) BOOL isInMainMap;
+
 @property (nonatomic, assign) id<P5_MonsterDelegate> delegate;
 
 - (void)rollUpground;
@@ -44,5 +46,6 @@
 - (void)startRoll;
 - (void)rollfromPoint1:(CGPoint)point1 toPoint2:(CGPoint)point2;
 - (void)arriveHome;
+
 
 @end

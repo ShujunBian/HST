@@ -194,10 +194,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_mushroom.png</string>
+							<string>P3_Resource/images/P3_mushroom.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -279,7 +281,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.5</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

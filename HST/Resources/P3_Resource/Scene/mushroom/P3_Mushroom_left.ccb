@@ -238,8 +238,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1.7333333492279053</real>
-							<real>-0.86666667461395264</real>
+							<real>-0.19999980926513672</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -264,7 +264,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-6.9333333969116211</real>
+						<real>0.79999923706054688</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -272,7 +272,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>Scene/mushroom/P3_Mushroom_body_left.ccb</string>
+						<string>P3_Resource/Scene/mushroom/P3_Mushroom_body_left.ccb</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -301,7 +301,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>images/P3_flower_eyes_blink.png</string>
+										<string>P3_Resource/images/P3_flower_eyes_blink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -319,7 +319,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>images/P3_flower_head_eye_open.png</string>
+										<string>P3_Resource/images/P3_flower_head_eye_open.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -337,7 +337,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>images/P3_flower_eyes_blink.png</string>
+										<string>P3_Resource/images/P3_flower_eyes_blink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -355,7 +355,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>images/P3_flower_head_eye_open.png</string>
+										<string>P3_Resource/images/P3_flower_head_eye_open.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -373,7 +373,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>images/P3_flower_eyes_blink.png</string>
+										<string>P3_Resource/images/P3_flower_eyes_blink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -391,7 +391,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>images/P3_flower_head_eye_open.png</string>
+										<string>P3_Resource/images/P3_flower_head_eye_open.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -409,7 +409,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>images/P3_flower_eyes_blink.png</string>
+										<string>P3_Resource/images/P3_flower_eyes_blink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -427,7 +427,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>images/P3_flower_head_eye_open.png</string>
+										<string>P3_Resource/images/P3_flower_head_eye_open.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -445,7 +445,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>images/P3_flower_eyes_blink.png</string>
+										<string>P3_Resource/images/P3_flower_eyes_blink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -463,7 +463,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>images/P3_flower_head_eye_open.png</string>
+										<string>P3_Resource/images/P3_flower_head_eye_open.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -686,8 +686,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>5.6666665077209473</real>
-							<real>45</real>
+							<real>8.3999996185302734</real>
+							<real>44.900001525878906</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -723,7 +723,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-10.666666984558105</real>
+						<real>-10.999999046325684</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -746,7 +746,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_flower_head_eye_open.png</string>
+							<string>P3_Resource/images/P3_flower_head_eye_open.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -761,6 +761,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -808,8 +810,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -844,11 +844,11 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2.2666666507720947</real>
+			<real>7.8000001907348633</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
-			<real>32</real>
+			<real>64</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
 		</dict>

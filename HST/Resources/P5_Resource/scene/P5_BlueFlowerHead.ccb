@@ -194,10 +194,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>picture/P5_blueFlowerHead.png</string>
+							<string>P5_Resource/picture/P5_blueFlowerHead.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

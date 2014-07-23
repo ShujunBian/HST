@@ -8,6 +8,10 @@
 
 #import "CCLayer.h"
 #import "WorldSublayer.h"
+
+@class P5_Monster;
 @interface WorldP5Layer : CCLayer<WorldSubLayer>
+
+@property (nonatomic, assign) P5_Monster * monster;
 
 @end

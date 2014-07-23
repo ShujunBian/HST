@@ -469,8 +469,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>102</real>
-							<real>-39.400001525878906</real>
+							<real>-9</real>
+							<real>-31</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -511,7 +511,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>90</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -529,7 +529,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>picture/P5_monsterLeg.png</string>
+							<string>P5_Resource/picture/P5_monsterLeg.png</string>
 						</array>
 					</dict>
 				</array>
@@ -985,8 +985,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>128</real>
-							<real>-42.400001525878906</real>
+							<real>10</real>
+							<real>-31</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1027,7 +1027,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>90</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1045,12 +1045,10 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>picture/P5_monsterLeg.png</string>
+							<string>P5_Resource/picture/P5_monsterLeg.png</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1446,8 +1444,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>99</real>
-							<real>-14.400001525878906</real>
+							<real>-1</real>
+							<real>3</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1488,7 +1486,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>720</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1506,7 +1504,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>picture/P5_monsterBody.png</string>
+							<string>P5_Resource/picture/P5_monsterBody.png</string>
 						</array>
 					</dict>
 				</array>
@@ -1865,8 +1863,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>99</real>
-							<real>-25.400001525878906</real>
+							<real>-1</real>
+							<real>-8</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1915,7 +1913,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>picture/P5_monsterMouth.png</string>
+							<string>P5_Resource/picture/P5_monsterMouth.png</string>
 						</array>
 					</dict>
 				</array>
@@ -2274,8 +2272,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>98</real>
-							<real>-17.400001525878906</real>
+							<real>-2</real>
+							<real>-1</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2324,7 +2322,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>picture/P5_monsterBigShadow.png</string>
+							<string>P5_Resource/picture/P5_monsterBigShadow.png</string>
 						</array>
 					</dict>
 				</array>
@@ -2683,8 +2681,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>99</real>
-							<real>-1.4000015258789062</real>
+							<real>-1</real>
+							<real>15</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2712,7 +2710,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>scene/P5_MonsterEye.ccb</string>
+						<string>P5_Resource/scene/P5_MonsterEye.ccb</string>
 					</dict>
 				</array>
 				<key>seqExpanded</key>
@@ -2895,7 +2893,7 @@
 									<key>value</key>
 									<array>
 										<real>-1</real>
-										<real>28</real>
+										<real>29</real>
 									</array>
 								</dict>
 								<dict>
@@ -2915,7 +2913,7 @@
 									<key>value</key>
 									<array>
 										<real>-1</real>
-										<real>21.600000381469727</real>
+										<real>22.600000381469727</real>
 									</array>
 								</dict>
 								<dict>
@@ -2933,7 +2931,7 @@
 									<key>value</key>
 									<array>
 										<real>-1</real>
-										<real>61.599998474121094</real>
+										<real>62.599998474121094</real>
 									</array>
 								</dict>
 								<dict>
@@ -2951,7 +2949,7 @@
 									<key>value</key>
 									<array>
 										<real>-1</real>
-										<real>11.599998474121094</real>
+										<real>12.599998474121094</real>
 									</array>
 								</dict>
 								<dict>
@@ -2969,7 +2967,7 @@
 									<key>value</key>
 									<array>
 										<real>99</real>
-										<real>11.599998474121094</real>
+										<real>12.599998474121094</real>
 									</array>
 								</dict>
 							</array>
@@ -3070,8 +3068,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>99</real>
-							<real>11.599998474121094</real>
+							<real>-1</real>
+							<real>29</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -3120,7 +3118,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>picture/P5_monsterLittleShadow.png</string>
+							<string>P5_Resource/picture/P5_monsterLittleShadow.png</string>
 						</array>
 					</dict>
 				</array>
@@ -3205,7 +3203,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>1.1666666269302368</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -3225,7 +3223,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

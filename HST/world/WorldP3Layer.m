@@ -79,7 +79,6 @@
 
 - (void)monsterJumpDownAnimation
 {
-    NSLog(@"MonsterJumpDownAnimation");
     for (P3_Monster * monster in _monsterArray) {
         if (CCRANDOM_0_1() > 0.5) {
             if (monster.isUp) {
