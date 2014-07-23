@@ -67,6 +67,13 @@
 //    self.waterInOriginLife = self.waterInLeft.life;
     
 }
+- (void)onExit
+{
+    [super onExit];
+    [self.leftFoot stopAllActions];
+    [self.rightFoot stopAllActions];
+
+}
 
 #pragma mark - Gesture
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -103,18 +110,18 @@
 {
     if (!self.leftEarRepeat)
     {
-        CCScaleTo* leftBig = [[CCScaleTo alloc] initWithDuration:1/3.f scaleX:1.2f scaleY:0.85f];
-        CCScaleTo* leftSmall = [[CCScaleTo alloc] initWithDuration:1/3.f scaleX:1.f scaleY:1.f];
-        CCSequence* leftSequence = [[CCSequence alloc] initOne:leftBig two:leftSmall];
-        self.leftEarRepeat = [[CCRepeatForever alloc] initWithAction:leftSequence];
+        CCScaleTo* leftBig = [[[CCScaleTo alloc] initWithDuration:1/3.f scaleX:1.2f scaleY:0.85f] autorelease];
+        CCScaleTo* leftSmall = [[[CCScaleTo alloc] initWithDuration:1/3.f scaleX:1.f scaleY:1.f] autorelease];
+        CCSequence* leftSequence = [[[CCSequence alloc] initOne:leftBig two:leftSmall] autorelease];
+        self.leftEarRepeat = [[[CCRepeatForever alloc] initWithAction:leftSequence] autorelease];
         [self.leftEar runAction:self.leftEarRepeat];
     }
     if (!self.rightEarRepeat)
     {
-        CCScaleTo* rightBig = [[CCScaleTo alloc] initWithDuration:1/3.f scaleX:1.2f scaleY:0.85f];
-        CCScaleTo* rightSmall = [[CCScaleTo alloc] initWithDuration:1/3.f scaleX:1.f scaleY:1.f];
-        CCSequence* rightSequence = [[CCSequence alloc] initOne:rightBig two:rightSmall];
-        self.rightEarRepeat = [[CCRepeatForever alloc] initWithAction:rightSequence];
+        CCScaleTo* rightBig = [[[CCScaleTo alloc] initWithDuration:1/3.f scaleX:1.2f scaleY:0.85f] autorelease];
+        CCScaleTo* rightSmall = [[[CCScaleTo alloc] initWithDuration:1/3.f scaleX:1.f scaleY:1.f] autorelease];
+        CCSequence* rightSequence = [[[CCSequence alloc] initOne:rightBig two:rightSmall] autorelease];
+        self.rightEarRepeat = [[[CCRepeatForever alloc] initWithAction:rightSequence] autorelease];
         [self.rightEar runAction:self.rightEarRepeat];
 
     }
@@ -305,13 +312,13 @@
 #pragma mark - P4WaterLayer Delegate
 - (void)startWaterOut:(ccColor3B)color
 {
-    CCScaleTo* lScale1 = [[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:0.9 scaleY:1.2];
-    CCScaleTo* lScale2 = [[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:1 scaleY:1.];
-    CCRepeatForever* lForever = [[CCRepeatForever alloc] initWithAction:[[CCSequence alloc] initOne:lScale1 two:lScale2]];
+    CCScaleTo* lScale1 = [[[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:0.9 scaleY:1.2] autorelease];
+    CCScaleTo* lScale2 = [[[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:1 scaleY:1.] autorelease];
+    CCRepeatForever* lForever = [[[CCRepeatForever alloc] initWithAction:[CCSequence actionOne:lScale1 two:lScale2]] autorelease];
 
-    CCScaleTo* rScale1 = [[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:0.9 scaleY:1.2];
-    CCScaleTo* rScale2 = [[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:1 scaleY:1.];
-    CCRepeatForever* rForever = [[CCRepeatForever alloc] initWithAction:[[CCSequence alloc] initOne:rScale1 two:rScale2]];
+    CCScaleTo* rScale1 = [[[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:0.9 scaleY:1.2] autorelease];
+    CCScaleTo* rScale2 = [[[CCScaleTo alloc] initWithDuration:FOOT_SCALE_DURATION scaleX:1 scaleY:1.] autorelease];
+    CCRepeatForever* rForever = [[[CCRepeatForever alloc] initWithAction:[CCSequence actionOne:rScale1 two:rScale2]] autorelease];
     
     [self.leftFoot runAction:lForever];
     [self.rightFoot runAction:rForever];

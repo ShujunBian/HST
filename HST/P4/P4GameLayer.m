@@ -69,6 +69,7 @@
 @property (assign, nonatomic) float shakeX;
 @property (assign, nonatomic) float shakeY;
 
+@property (strong, nonatomic) MainMapHelper* helper;
 @end
 
 @implementation P4GameLayer
@@ -142,16 +143,33 @@
 //    [te end];
 //    CCSprite* s = [CCSprite spriteWithTexture:te.sprite.texture];
 //    [self addChild:s];
+}
+- (void)onExit
+{
+//    [self removeAllChildrenWithCleanup:YES];
+//    self.shakeMonster = nil;
+    [super onExit];
+    self.helper = nil;
+//    [self.monstersArray removeAllObjects];
+    self.monstersArray = nil;
+//    self.cloudLayer = nil;
+//    self.greenMonster = nil;
+//    self.yellowMonster = nil;
+//    self.purpleMonster = nil;
+//    self.blueMonster = nil;
+//    self.redMonster = nil;
+//    self.bottle = nil;
 
     
+
 }
 
 - (void) didLoadFromCCB
 {
-    [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
+    self.helper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
 
 //Monster Init
-    self.monstersArray = [[CCArray alloc] init];
+    self.monstersArray = [[[CCArray alloc] init] autorelease];
     //设置monsters数组
     [self.monstersArray addObject:self.greenMonster];
     [self.monstersArray addObject:self.yellowMonster];
@@ -291,7 +309,7 @@
         [self bottleMoveBack];
 
 //        [self performSelector:@selector(bottleMoveBack) withObject:nil afterDelay:BOTTLE_MOVE_DELAY];
-        [self.bottle runAction:[[CCScaleTo alloc] initWithDuration:0.2f scale:1.f]];
+        [[self.bottle runAction:[[CCScaleTo alloc] initWithDuration:0.2f scale:1.f]] autorelease];
         
         self.bottleTouchOriginPoint = CGPointZero;
         self.bottleTouchPreviousPoint = CGPointZero;
@@ -369,9 +387,9 @@
     [monster beginUpdateWater];
     [self.bottle updateRenewButton];
     
-    CCFiniteTimeAction* callOpen = [[CCCallBlock alloc] initWithBlock:^{
+    CCFiniteTimeAction* callOpen = [[[CCCallBlock alloc] initWithBlock:^{
         [weakSelf.bottle capOpen];
-    }];
+    }] autorelease];
     float rotateRadiu = 105.f;
     switch (monster.type)
     {
@@ -433,24 +451,24 @@
         }
     }
     
-    CCActionInterval* bezierTo = [[CCBezierTo alloc] initWithDuration:moveDuration bezier:config];
-    CCFiniteTimeAction* callHideMonsters = [[CCCallBlock alloc] initWithBlock:^{
+    CCActionInterval* bezierTo = [[[CCBezierTo alloc] initWithDuration:moveDuration bezier:config] autorelease];
+    CCFiniteTimeAction* callHideMonsters = [[[CCCallBlock alloc] initWithBlock:^{
         [weakSelf hideMonstersExcept:monster];
-    }];
+    }] autorelease];
     float delayDuration = 0.5f;
     
     CCDelayTime* rotateDelay = [CCDelayTime actionWithDuration:delayDuration];
     
-    CCActionInterval* rotate = [[CCRotateTo alloc] initWithDuration:(moveDuration - delayDuration) angle:rotateRadiu];
+    CCActionInterval* rotate = [[[CCRotateTo alloc] initWithDuration:(moveDuration - delayDuration) angle:rotateRadiu] autorelease];
     
     CCActionInterval* spawn = [CCSpawn actionWithArray:@[bezierTo, [CCSequence actionOne:rotateDelay two:rotate]]];
     
     CCActionInterval* outTo = [CCEaseSineOut actionWithAction:spawn];
     
     
-    CCFiniteTimeAction* beginAddWater = [[CCCallBlock alloc] initWithBlock:^{
+    CCFiniteTimeAction* beginAddWater = [[[CCCallBlock alloc] initWithBlock:^{
         [self.bottle startWaterIn:monster];
-    }];
+    }] autorelease];
     
     
     //开始振动
@@ -458,11 +476,11 @@
         [weakSelf monsterBeginShake:monster];
     }];
     
-    CCFiniteTimeAction* delay2 = [[CCDelayTime alloc] initWithDuration:0.7f];
+    CCFiniteTimeAction* delay2 = [[[CCDelayTime alloc] initWithDuration:0.7f] autorelease];
     
     
     
-    CCFiniteTimeAction* delay2_ = [[CCDelayTime alloc] initWithDuration:0.3f];
+    CCFiniteTimeAction* delay2_ = [[[CCDelayTime alloc] initWithDuration:0.3f] autorelease];
     
     //停止振动
     CCCallBlock* endShake = [CCCallBlock actionWithBlock:^{
@@ -470,14 +488,14 @@
     }];
     
     
-    CCFiniteTimeAction* endAddWater = [[CCCallBlock alloc] initWithBlock:^{
+    CCFiniteTimeAction* endAddWater = [[[CCCallBlock alloc] initWithBlock:^{
         [self.bottle stopWaterIn];
-    }];
+    }] autorelease];
     
 
-    CCFiniteTimeAction* callClose = [[CCCallBlock alloc] initWithBlock:^{
+    CCFiniteTimeAction* callClose = [[[CCCallBlock alloc] initWithBlock:^{
         [weakSelf.bottle capClose];
-    }];
+    }] autorelease];
     
 
 //    CCActionInterval* moveBack = [[CCMoveTo alloc] initWithDuration:1.f position:monster.prePosition];
@@ -533,12 +551,12 @@
         }
     }
     
-    CCActionInterval* bezierBack = [[CCBezierTo alloc] initWithDuration:moveBackDuration bezier:configBack];
+    CCActionInterval* bezierBack = [[[CCBezierTo alloc] initWithDuration:moveBackDuration bezier:configBack] autorelease];
     
-    CCActionInterval* rotateBack = [[CCRotateTo alloc] initWithDuration:rotateBackDuration angle:0];
+    CCActionInterval* rotateBack = [[[CCRotateTo alloc] initWithDuration:rotateBackDuration angle:0] autorelease];
     CCSpawn* spawnBack = [CCSpawn actionWithArray:@[bezierBack, rotateBack]];
     
-    CCFiniteTimeAction* callShowMonsters = [[CCCallBlock alloc] initWithBlock:^{
+    CCFiniteTimeAction* callShowMonsters = [[[CCCallBlock alloc] initWithBlock:^{
         
         if (!self.bottle.isFull)
         {
@@ -557,17 +575,17 @@
                                ]]];
         }
 
-    }];
+    }] autorelease];
     
     CCActionInterval* easeOutBack = [CCEaseSineOut actionWithAction:spawnBack ];
 //    CCActionInterval* easeOutBack = [CCEaseOut actionWithAction:spawnBack rate:1.05f];
     
-    CCFiniteTimeAction* finish = [[CCCallBlock alloc] initWithBlock:^{
+    CCFiniteTimeAction* finish = [[[CCCallBlock alloc] initWithBlock:^{
 //        weakSelf.isMonsterAnimated = NO;
         [monster endUpdateWater];
         monster.isAnimated = NO;
         [self.bottle updateRenewButton];
-    }];
+    }] autorelease];
     
     CCSequence* sequence = [CCSequence actions:callOpen, callHideMonsters, outTo, beginAddWater, beginShake, delay2, callShowMonsters, delay2_, endShake, endAddWater, callClose,  easeOutBack, finish, nil];
     
@@ -607,7 +625,7 @@
 //     [CCEaseSineIn actionWithAction:monsterMoveBy3],
      nil];
     CCRepeat* monsterMoveRepeat = [CCRepeat actionWithAction:monsterMoveSequence times:repeatTime];
-    CCRepeat* sprayMoveRepeat = [monsterMoveRepeat copy];
+    CCRepeat* sprayMoveRepeat = [[monsterMoveRepeat copy] autorelease];
     [self.shakeMonster runAction:monsterMoveRepeat];
     [self.shakeSpray runAction:sprayMoveRepeat];
     
@@ -665,16 +683,17 @@
     float newY = 2 * self.bottleTouchPointNow.y - self.bottleTouchPoint.y;
     P4BottleOffset* newOffset = [self getOffsetByTouchPoint:ccp(newX,newY)];
     float newDelay = sqrt( newOffset.deltaX * newOffset.deltaX + newOffset.deltaY * newOffset.deltaY) / 300.f;
-    CCMoveBy* newBy = [[CCMoveBy alloc] initWithDuration:newDelay position:ccp(newOffset.deltaX,newOffset.deltaY)];
-    CCEaseOut* newOut = [[CCEaseOut alloc] initWithAction:newBy rate:1.f];
+    
+    CCMoveBy* newBy = [[[CCMoveBy alloc] initWithDuration:newDelay position:ccp(newOffset.deltaX,newOffset.deltaY)] autorelease];
+    CCEaseOut* newOut = [[[CCEaseOut alloc] initWithAction:newBy rate:1.f] autorelease];
     
     float delay = sqrt(self.bottleOffsetX * self.bottleOffsetX + self.bottleOffsetY * self.bottleOffsetY) / 200.f;
-    CCMoveTo* moveBack = [[CCMoveTo alloc] initWithDuration:delay position:ccp(0,0)];
+    CCMoveTo* moveBack = [[[CCMoveTo alloc] initWithDuration:delay position:ccp(0,0)] autorelease];
 
-    CCEaseSineInOut* backInOut = [[CCEaseSineInOut alloc] initWithAction:moveBack];
+    CCEaseSineInOut* backInOut = [[[CCEaseSineInOut alloc] initWithAction:moveBack] autorelease];
 //                                                                    rate:2.5f];
     [self.bottle stopAllActions];
-    [self.bottle runAction:[[CCSequence alloc] initOne:newOut two:backInOut]];
+    [self.bottle runAction:[[[CCSequence alloc] initOne:newOut two:backInOut] autorelease]];
     self.bottleOffsetX = 0;
     self.bottleOffsetY = 0;
     
@@ -817,7 +836,7 @@
     offsetX = 5 * offsetX;
     offsetY = 2 * offsetY;
     
-    P4BottleOffset* offset = [[P4BottleOffset alloc] init];
+    P4BottleOffset* offset = [[[P4BottleOffset alloc] init] autorelease];
     //        offset.deltaX = locationInNodeSpace.x - self.bottleTouchPoint.x;
     //        offset.deltaY = locationInNodeSpace.y - self.bottleTouchPoint.y;
     //        [self bottleMoveDelta:offset];

@@ -24,9 +24,9 @@
     
     NSMutableArray *currentOnScreenBubbles;
     NSMutableArray *bubblesReadyToRelease;
-    MainMapHelper * mainMapHelper;
+//    MainMapHelper * mainMapHelper;
 }
-
+@property (strong, nonatomic) MainMapHelper* mainMapHelper;
 @end
 
 
@@ -62,7 +62,7 @@ static NSMutableArray *bubbleScales = nil;
 
 - (void) didLoadFromCCB
 {
-    mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
+    self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
     
     [CDAudioManager configure:kAMM_PlayAndRecord];
     [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
@@ -256,7 +256,8 @@ static NSMutableArray *bubbleScales = nil;
     }
     
     [NSNotificationCenter unregister:self];
-    [mainMapHelper release];
+//    [mainMapHelper release];
+    self.mainMapHelper = nil;
     [self releaseCurrentOnScreenBubbles];
     
     [[CDAudioManager sharedManager] stopBackgroundMusic];

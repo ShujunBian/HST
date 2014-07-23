@@ -12,7 +12,7 @@
 
 + (MainMapHelper *)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point
 {
-    MainMapHelper * mainMapHelper = [[MainMapHelper alloc]init];
+    MainMapHelper * mainMapHelper = [[[MainMapHelper alloc] init] autorelease];
     mainMapHelper.delegate = prototype;
     [mainMapHelper addMenuToCurrentPrototype:prototype atMainMapButtonPoint:point];
     return mainMapHelper;
