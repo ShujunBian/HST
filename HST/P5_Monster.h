@@ -47,5 +47,5 @@
 - (void)rollfromPoint1:(CGPoint)point1 toPoint2:(CGPoint)point2;
 - (void)arriveHome;
 
-
+- (void)jumpInMainMap;
 @end

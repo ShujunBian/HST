@@ -29,7 +29,7 @@
 - (id)init
 {
     if (self = [super init]) {
-        [self schedule:@selector(monsterJumpDownAnimation) interval:3.0];
+        [self schedule:@selector(monsterJumpDownAnimation) interval:1.75];
     }
     return self;
 }

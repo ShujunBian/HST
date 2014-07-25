@@ -43,12 +43,10 @@ static ccColor3B littleFlyColors[] = {
 
 - (void) didLoadFromCCB
 {
-    [blueLittleFly.body setColor:littleFlyColors[2]];
-    [blueLittleFly.wing setColor:littleFlyColors[2]];
+    [self setBodyColor:littleFlyColors[2] withSprite:blueLittleFly];
     blueLittleFly.isInMainMap = YES;
     
-    [greenLittleFly.body setColor:littleFlyColors[3]];
-    [greenLittleFly.wing setColor:littleFlyColors[3]];
+    [self setBodyColor:littleFlyColors[3] withSprite:greenLittleFly];
     greenLittleFly.isInMainMap = YES;
     
     rightTwoMushroom.isInMainMap = YES;
@@ -59,6 +57,17 @@ static ccColor3B littleFlyColors[] = {
     
     [self letFirstLittleMonsterJump];
     [self letSecondLittleMonsterJump];
+}
+
+- (void)setBodyColor:(ccColor3B)color
+          withSprite:(P2_LittleFlyObjects *)sprite
+{
+    sprite.body.color = color;
+    ccColor3B wingColor;
+    wingColor.r = color.r + 30 > 255 ? 255 : color.r + 30;
+    wingColor.g = color.g + 30 > 255 ? 255 : color.g + 30;
+    wingColor.b = color.b + 30 > 255 ? 255 : color.b + 30;
+    sprite.wing.color = wingColor;
 }
 
 - (void)letFirstLittleMonsterJump

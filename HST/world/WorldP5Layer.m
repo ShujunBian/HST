@@ -16,24 +16,32 @@
 - (id)init
 {
     if (self = [super init]) {
-        
+        [self schedule:@selector(monsterJump) interval:3.0];
     }
     return self;
 }
 
 - (void)didLoadFromCCB
 {
-    
+    monster.isUpground = YES;
+    monster.isInMainMap = YES;
 }
 
-- (void)jumpBeforeStart
+- (void)monsterJump
 {
-    [self moveToUndergroundBackAction];
-    [self coverTheLeg];
-    CCMoveBy * moveUp = [CCMoveBy actionWithDuration:2.0 / 6.0 position:CGPointMake(0.0, 25)];
-    CCMoveBy * moveDown = [CCMoveBy actionWithDuration:3.0 / 6.0 position:CGPointMake(0.0, -63.0)];
-    CCSequence * seq = [CCSequence actions:moveUp,moveDown, nil];
-    [self runAction:seq];
+    if (CCRANDOM_0_1() > 0.5) {
+        [monster jumpInMainMap];
+//        [self performSelector:@selector(addGrassParticle) withObject:nil afterDelay:5.0 / 6.0 + 0.5];
+    }
+}
+
+- (void)addGrassParticle
+{
+    CCParticleSystem * grassOut = [CCParticleSystemQuad particleWithFile:@"P3_GrassPSQ.plist"];
+    grassOut.position = CGPointMake(819.0, 448.0);
+    grassOut.autoRemoveOnFinish = YES;
+    [grassOut setScale:0.35];
+    [self addChild:grassOut z:-1];
 }
 
 @end

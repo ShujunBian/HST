@@ -64,6 +64,37 @@ static CGPoint monsterFinalPosition = {161,54.48};
     [self performSelector:@selector(moveToUndergroundBackAction) withObject:self afterDelay:0.5 + 1 / 6.0];
 }
 
+#pragma mark - 大地图上动作
+- (void)jumpInMainMap
+{
+    [self moveToUndergroundDownAction];
+    [self performSelector:@selector(jumpUpAnimationInMainMap) withObject:self afterDelay:1.0 / 6.0];
+    [self performSelector:@selector(jumpDownAnimationInMainMap) withObject:self afterDelay:2.0 / 6.0 + 0.5];
+}
+
+- (void)jumpUpAnimationInMainMap
+{
+    [self moveToUndergroundBackAction];
+    [self coverTheLeg];
+    
+    CCMoveBy * moveUp = [CCMoveBy actionWithDuration:1.0 / 6.0 position:CGPointMake(0.0, 12.5)];
+    CCRotateBy * rotate = [CCRotateBy actionWithDuration:0.7 angle:360.0];
+    CCEaseOut * easeOutRotate = [CCEaseOut actionWithAction:rotate rate:1.5];
+    CCSpawn * jumpAction = [CCSpawn actions:moveUp, easeOutRotate, nil];
+    [self runAction:jumpAction];
+}
+
+- (void)jumpDownAnimationInMainMap
+{
+    [self showTheLeg];
+    
+    CCMoveBy * moveDown = [CCMoveBy actionWithDuration:3.0 / 6.0 position:CGPointMake(0.0, -37.5)];
+    [self runAction:moveDown];
+
+    [self performSelector:@selector(moveToUndergroundDownAction) withObject:self afterDelay:3.0 / 6.0];
+    [self performSelector:@selector(moveToUndergroundBackAction) withObject:self afterDelay:4.0 / 6.0];
+}
+
 #pragma mark - 在地面上的滚动
 - (void)rollUpground
 {
@@ -191,9 +222,17 @@ static CGPoint monsterFinalPosition = {161,54.48};
 
 - (CCSpawn *)createShowLegAction
 {
-    CCMoveBy * legMoveDown = [CCMoveBy actionWithDuration:1 / 6.0 position:CGPointMake(0.0, -20.0)];
-    CCRotateBy * legRotate = [CCRotateBy actionWithDuration:1 / 6.0 angle:90.0];
-    return [CCSpawn actions:legMoveDown,legRotate, nil];
+    if (self.isUpground) {
+        CCMoveBy * legMoveDown = [CCMoveBy actionWithDuration:1 / 6.0 position:CGPointMake(-5.0, -20.0)];
+        CCRotateBy * legRotate = [CCRotateBy actionWithDuration:1 / 6.0 angle:-90.0];
+        return [CCSpawn actions:legMoveDown,legRotate, nil];
+    }
+    else {
+        CCMoveBy * legMoveDown = [CCMoveBy actionWithDuration:1 / 6.0 position:CGPointMake(0.0, -20.0)];
+        CCRotateBy * legRotate = [CCRotateBy actionWithDuration:1 / 6.0 angle:90.0];
+        return [CCSpawn actions:legMoveDown,legRotate, nil];
+    }
+
 }
 
 #pragma mark - 出发前的动作
@@ -293,37 +332,39 @@ static CGPoint monsterFinalPosition = {161,54.48};
 
 - (void)update:(ccTime)delta
 {
-    if (_isUpground) {
-        if (!_isArriveHome && _isReadyStart) {
-            if (rotateDegree < 12.0) {
-                rotateDegree += 0.5;
-            }
-            self.rotation +=  rotateDegree;
-        }
-    }
-    else {
-        if (!_isArriveHome && _isReadyStart) {
-            if (rotateDegree < 24.0) {
-                rotateDegree += 0.5;
-            }
-            self.rotation -=  rotateDegree;
-        }
-        if (_isArriveHome && !_isReadyStart) {
-            if (fabsf(restDegree - 0.0) > 0.5) {
-                if (rotateDegree <= 24.0 && rotateDegree > 4.0) {
-                    rotateDegree -= 0.3;
+    if (!self.isInMainMap) {
+        if (_isUpground) {
+            if (!_isArriveHome && _isReadyStart) {
+                if (rotateDegree < 12.0) {
+                    rotateDegree += 0.5;
                 }
-                restDegree += rotateDegree;
-                if (restDegree > 0.0) {
-                    restDegree -= rotateDegree;
-                    self.rotation -= (-restDegree);
-                    restDegree = 0.0;
-                    isRotatedDown = YES;
-                    [self showTheLeg];
-                    [self moveDownHome];
+                self.rotation +=  rotateDegree;
+            }
+        }
+        else {
+            if (!_isArriveHome && _isReadyStart) {
+                if (rotateDegree < 24.0) {
+                    rotateDegree += 0.5;
                 }
-                else
-                    self.rotation -= rotateDegree;
+                self.rotation -=  rotateDegree;
+            }
+            if (_isArriveHome && !_isReadyStart) {
+                if (fabsf(restDegree - 0.0) > 0.5) {
+                    if (rotateDegree <= 24.0 && rotateDegree > 4.0) {
+                        rotateDegree -= 0.3;
+                    }
+                    restDegree += rotateDegree;
+                    if (restDegree > 0.0) {
+                        restDegree -= rotateDegree;
+                        self.rotation -= (-restDegree);
+                        restDegree = 0.0;
+                        isRotatedDown = YES;
+                        [self showTheLeg];
+                        [self moveDownHome];
+                    }
+                    else
+                        self.rotation -= rotateDegree;
+                }
             }
         }
     }

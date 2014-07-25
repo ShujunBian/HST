@@ -162,10 +162,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_windChime.png</string>
+							<string>P3_Resource/images/P3_windChime.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

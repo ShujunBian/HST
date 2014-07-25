@@ -278,17 +278,19 @@
     else if ([name isEqualToString:@"LittleJump"])
     {
         float rate = 1.0;
+        float jumpRate = 1.0;
         float changeScaleRate = 0.1;
         if (self.isInMainMap) {
             rate = 0.45;
-            changeScaleRate = 0.02;
+            jumpRate = 0.3;
+            changeScaleRate = 0.01;
         }
         theIdleTimes ++ ;
         CCScaleTo * monsterScale = [CCScaleTo actionWithDuration:0.20 scaleX:1.0 * rate + changeScaleRate scaleY:1.0 * rate - changeScaleRate];
-        CCEaseOut * easeOutLittleJumpUp = [CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:0.3 position:ccp(0.0, 20.0 * rate)] rate:1.5];
+        CCEaseOut * easeOutLittleJumpUp = [CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:0.3 position:ccp(0.0, 20.0 * jumpRate)] rate:1.5];
         CCScaleTo * monsterScaleBack = [CCScaleTo actionWithDuration:0.25 scaleX:1.0 * rate scaleY:1.0 * rate];
         CCSpawn * littleJump = [CCSpawn actions:easeOutLittleJumpUp,monsterScaleBack, nil];
-        CCMoveBy * moveBy = [CCMoveBy actionWithDuration:0.2 position:ccp(0.0, -20.0 * rate)];
+        CCMoveBy * moveBy = [CCMoveBy actionWithDuration:0.2 position:ccp(0.0, - 20.0 * jumpRate)];
         CCCallFunc * callFunc = [CCCallFunc actionWithTarget:self selector:@selector(monsterOverLittleJump:)];
         
         CCSequence * monseterLittleJump = [CCSequence actions:monsterScale,

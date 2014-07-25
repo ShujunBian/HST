@@ -206,6 +206,10 @@
 		5169D0C418CDEC1300426E6C /* CCBsequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169D0BC18CDEC1300426E6C /* CCBsequence.m */; };
 		5169D0C518CDEC1300426E6C /* CCBSequenceProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169D0BE18CDEC1300426E6C /* CCBSequenceProperty.m */; };
 		5169D0C618CDEC1300426E6C /* CCNode+CCBRelativePositioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169D0C018CDEC1300426E6C /* CCNode+CCBRelativePositioning.m */; };
+		516F243C1981DB77004E6443 /* world_p4_shadow-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 516F243A1981DB77004E6443 /* world_p4_shadow-hd.png */; };
+		516F243D1981DB77004E6443 /* world_p4_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 516F243B1981DB77004E6443 /* world_p4_shadow.png */; };
+		516F24401981DE9E004E6443 /* world_p5_mask-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 516F243E1981DE9E004E6443 /* world_p5_mask-hd.png */; };
+		516F24411981DE9E004E6443 /* world_p5_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 516F243F1981DE9E004E6443 /* world_p5_mask.png */; };
 		51780D5F196F8A25008D2688 /* P3_MonsterEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 51780D5E196F8A25008D2688 /* P3_MonsterEye.m */; };
 		5190B43318ED0574009078E4 /* P3_GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5190B41618ED0574009078E4 /* P3_GameScene.m */; };
 		5199790F18CFF9A6006A1FD8 /* mainMapButton-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5199790B18CFF9A6006A1FD8 /* mainMapButton-hd.png */; };
@@ -1413,6 +1417,10 @@
 		5169D0BE18CDEC1300426E6C /* CCBSequenceProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCBSequenceProperty.m; sourceTree = "<group>"; };
 		5169D0BF18CDEC1300426E6C /* CCNode+CCBRelativePositioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCNode+CCBRelativePositioning.h"; sourceTree = "<group>"; };
 		5169D0C018CDEC1300426E6C /* CCNode+CCBRelativePositioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCNode+CCBRelativePositioning.m"; sourceTree = "<group>"; };
+		516F243A1981DB77004E6443 /* world_p4_shadow-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p4_shadow-hd.png"; sourceTree = "<group>"; };
+		516F243B1981DB77004E6443 /* world_p4_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p4_shadow.png; sourceTree = "<group>"; };
+		516F243E1981DE9E004E6443 /* world_p5_mask-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p5_mask-hd.png"; sourceTree = "<group>"; };
+		516F243F1981DE9E004E6443 /* world_p5_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p5_mask.png; sourceTree = "<group>"; };
 		51780D5D196F8A25008D2688 /* P3_MonsterEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_MonsterEye.h; sourceTree = "<group>"; };
 		51780D5E196F8A25008D2688 /* P3_MonsterEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_MonsterEye.m; sourceTree = "<group>"; };
 		5190B41518ED0574009078E4 /* P3_GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_GameScene.h; sourceTree = "<group>"; };
@@ -4102,6 +4110,8 @@
 		EF404080197A592100C6C8E1 /* p4 */ = {
 			isa = PBXGroup;
 			children = (
+				516F243A1981DB77004E6443 /* world_p4_shadow-hd.png */,
+				516F243B1981DB77004E6443 /* world_p4_shadow.png */,
 				EF404081197A592100C6C8E1 /* world_p4_car-hd.png */,
 				EF404082197A592100C6C8E1 /* world_p4_car.png */,
 				EF404083197A592100C6C8E1 /* world_p4_stone-hd.png */,
@@ -4113,6 +4123,8 @@
 		EF404085197A592100C6C8E1 /* p5 */ = {
 			isa = PBXGroup;
 			children = (
+				516F243E1981DE9E004E6443 /* world_p5_mask-hd.png */,
+				516F243F1981DE9E004E6443 /* world_p5_mask.png */,
 				51F48AE0197E968E00371C45 /* world_p5_mushroom_shadow-hd.png */,
 				51F48AE1197E968E00371C45 /* world_p5_mushroom_shadow.png */,
 				EF404086197A592100C6C8E1 /* world_p5_grass-hd.png */,
@@ -4363,6 +4375,7 @@
 				51A94380197A142E00920318 /* bubble-normal.png in Resources */,
 				51A94086197A121300920318 /* P3_GreenMonster.ccb in Resources */,
 				51A941E2197A128700920318 /* P5_SkyLayer.ccbi in Resources */,
+				516F24411981DE9E004E6443 /* world_p5_mask.png in Resources */,
 				EF4040BD197A592100C6C8E1 /* world_p1_tree1-hd.png in Resources */,
 				51556DE218CF21B8005C8D46 /* P1_b4.wav in Resources */,
 				EF403FE3197A1D1700C6C8E1 /* P4_brown_monster-hd.png in Resources */,
@@ -4377,6 +4390,7 @@
 				51A941DF197A128700920318 /* P5_MonsterUnderground.ccb in Resources */,
 				51A94055197A121300920318 /* P3_monster4_mouth.png in Resources */,
 				51A94162197A128700920318 /* P5_BellLight.png in Resources */,
+				516F243C1981DB77004E6443 /* world_p4_shadow-hd.png in Resources */,
 				EF4040AF197A592100C6C8E1 /* world_full-hd.png in Resources */,
 				51A94058197A121300920318 /* P3_Monster5_Eye_background-hd.png in Resources */,
 				51A94293197A130A00920318 /* 8-hd.png in Resources */,
@@ -4685,6 +4699,7 @@
 				51A941A0197A128700920318 /* P5_monsterUnderEyeBlack.png in Resources */,
 				EF4040BB197A592100C6C8E1 /* world_p1_mountain3-hd.png in Resources */,
 				51A94197197A128700920318 /* P5_monsterLittleShadow-hd.png in Resources */,
+				516F24401981DE9E004E6443 /* world_p5_mask-hd.png in Resources */,
 				51A943C8197A142E00920318 /* upper_cloud.png in Resources */,
 				EF4040C9197A592100C6C8E1 /* world_p3_tree-hd.png in Resources */,
 				51A943AB197A142E00920318 /* P1_Bubble.ccb in Resources */,
@@ -4965,6 +4980,7 @@
 				51A9403E197A121300920318 /* P3_Monster2_Eye_point-hd.png in Resources */,
 				51A9428C197A130A00920318 /* 4.png in Resources */,
 				51A94195197A128700920318 /* P5_monsterLeg-hd.png in Resources */,
+				516F243D1981DB77004E6443 /* world_p4_shadow.png in Resources */,
 				EF4040D1197A592100C6C8E1 /* world_p5_holl-hd.png in Resources */,
 				51A942A4197A130A00920318 /* p2_flower_head_eye_open.png in Resources */,
 				EF403FED197A1D1700C6C8E1 /* P4_purple_monster_light-hd.png in Resources */,
