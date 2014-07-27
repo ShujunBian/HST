@@ -45,6 +45,11 @@
 
 - (void) didLoadFromCCB
 {
+    //cocos builder retain
+    [self.body retain];
+    [self.mask retain];
+    
+    
     for (CCNode* c in self.children)
     {
         [self reorderChild:c z:c.tag];
@@ -52,7 +57,6 @@
 
     self.maskPosition = self.mask.position;
     self.maskIndex = self.mask.zOrder;
-    [self.mask retain];
     [self.mask removeFromParent];
     self.waterPercentage = 1.f;
     self.waterPercentageTo = self.waterPercentage;
@@ -72,10 +76,14 @@
 {
     [super onExit];
 //    [self.waterSprite removeFromParentAndCleanup:YES];
-//    self.waterSprite = nil;
 //    [self removeAllChildrenWithCleanup:YES];
-
+    self.body = nil;
+    self.mask = nil;
+    self.eye1 = nil;
+    self.eye2 = nil;
+    self.waterSprite = nil;
 }
+
 - (void)prePositionInit
 {
     self.prePosition = self.position;

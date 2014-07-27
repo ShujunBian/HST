@@ -51,7 +51,25 @@
 #pragma mark - Life Cycle
 - (void) didLoadFromCCB
 {
+    //cocosbuilder retain
+    [self.leftEar retain];
+    [self.rightEar retain];
+    [self.leftFoot retain];
+    [self.rightFoot retain];
+    [self.bottleMain retain];
+    [self.waterLayer retain];
+    [self.leftCap retain];
+    [self.rightCap retain];
+    [self.waterInLeft retain];
+    [self.waterInRight retain];
+    [self.waterOut1 retain];
+    [self.waterOut2 retain];
+    [self.renewButton retain];
+    
+    
     self.animationManager = self.userObject;
+//    [self.userObject release];
+//    self.userObject = nil;
     
     
     [self.waterInLeft stopSystem];
@@ -70,8 +88,23 @@
 - (void)onExit
 {
     [super onExit];
-    [self.leftFoot stopAllActions];
-    [self.rightFoot stopAllActions];
+    self.bottleMain = nil;
+    self.leftCap = nil;
+    self.rightCap = nil;
+    self.leftEar = nil;
+    self.rightEar = nil;
+    self.leftFoot = nil;
+    self.rightFoot = nil;
+    self.renewButton = nil;
+    self.waterLayer = nil;
+    self.waterInLeft = nil;
+    self.waterInRight = nil;
+    self.waterOut1 = nil;
+    self.waterOut2 = nil;
+    self.animationManager = nil;
+    
+//    [self.leftFoot stopAllActions];
+//    [self.rightFoot stopAllActions];
 
 }
 
