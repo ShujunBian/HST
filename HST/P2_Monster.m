@@ -359,18 +359,5 @@
     self.selfAnimationManager.delegate = nil;
     self.selfAnimationManager = nil;
 }
-- (id)retain
-{
-    return [super retain];
-}
-
-- (oneway void)release
-{
-    [super release];
-}
-- (id)autorelease
-{
-    return [super autorelease];
-}
 
 @end
