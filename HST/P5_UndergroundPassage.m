@@ -33,6 +33,12 @@
     }
     return self;
 }
+- (void)onExit
+{
+    [super onExit];
+    [passageFileNameArray release];
+    passageFileNameArray = nil;
+}
 
 - (void)calculateForPassage
 {

@@ -24,6 +24,7 @@
 
 @interface P2_GameScene ()
 @property (strong, nonatomic) MainMapHelper* mainMapHelper;
+
 @end
 
 @implementation P2_GameScene
@@ -51,6 +52,19 @@
     return  self;
 }
 
+- (void)onExit
+{
+    [super onExit];
+    
+    [frameToShowCurrentFrame release];
+    frameToShowCurrentFrame = nil;
+    [musicTypeInFrame release];
+    musicTypeInFrame = nil;
+    
+    self.mainMapHelper = nil;
+}
+
+
 - (void) didLoadFromCCB
 {
     self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
@@ -66,6 +80,8 @@
     
     monster = (P2_Monster *)[CCBReader nodeGraphFromFile:@"P2_Monster.ccbi"];
     [self addChild:monster z:0];
+//    monster = nil;
+    
     monster.position = CGPointMake(512, -5);
     CCBAnimationManager* animationManager = monster.userObject;
     [animationManager runAnimationsForSequenceNamed:@"LittleJump"];
@@ -246,6 +262,8 @@
 #pragma mark - 退出时释放内存
 - (void)dealloc
 {
+    [monster removeFromParentAndCleanup:YES];
+    monster = nil;
     [super dealloc];
     [[CCTextureCache sharedTextureCache]removeAllTextures];
 }

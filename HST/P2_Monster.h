@@ -22,8 +22,8 @@
     float bufferTime;
     float downSpeed;
     int theIdleTimes;
-    CCBAnimationManager* eyesAnimationManager;
-    CCBAnimationManager* selfAnimationManager;
+//    CCBAnimationManager* eyesAnimationManager;
+//    CCBAnimationManager* selfAnimationManager;
 }
 
 @property (nonatomic, assign) P2_MonsterEye * monsterEye;
@@ -32,6 +32,8 @@
 @property (nonatomic) BOOL isFinishJump;
 @property (nonatomic) float currentJumpTime;
 @property (nonatomic) BOOL isInMainMap;
+@property (strong, nonatomic) CCBAnimationManager* eyesAnimationManager;
+@property (strong, nonatomic) CCBAnimationManager* selfAnimationManager;
 
 -(void)monsterCloseEyesWhenReadyToJump;
 -(void)handleCollision;

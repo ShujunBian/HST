@@ -45,14 +45,23 @@
 
 - (void)didLoadFromCCB
 {
-    eyesAnimationManager = monsterEye.userObject;
-    eyesAnimationManager.delegate = self;
     
-    selfAnimationManager = self.userObject;
-    selfAnimationManager.delegate = self;
+//    self.userObject = nil;
+    
+    self.eyesAnimationManager = monsterEye.userObject;
+    self.eyesAnimationManager.delegate = self;
+    
+    self.selfAnimationManager = self.userObject;
+    self.selfAnimationManager.delegate = self;
     
 }
 
+- (void)onExit
+{
+    [super onExit];
+    self.eyesAnimationManager = nil;
+    self.selfAnimationManager = nil;
+}
 
 -(void)update:(ccTime)delta
 {
@@ -76,7 +85,7 @@
     }
     
     if (isReadyToDown == YES) {
-        [selfAnimationManager runAnimationsForSequenceNamed:@"Down"];
+        [self.selfAnimationManager runAnimationsForSequenceNamed:@"Down"];
         jumpTime += EVERYDELTATIME;
         if (fabsf((jumpTime - EVERYDELTATIME)) < 0.01) {
             downSpeed = [self getMonsterDownSpeed:self.position.y];
@@ -105,7 +114,7 @@
             NSString * flyGrassFilename = [NSString stringWithFormat:@"GrassDown%d",flyGrassType];
             [flyGrassAnimationManager runAnimationsForSequenceNamed:flyGrassFilename];
             
-            [selfAnimationManager runAnimationsForSequenceNamed:@"OverDown"];
+            [self.selfAnimationManager runAnimationsForSequenceNamed:@"OverDown"];
         }
     }
     
@@ -188,7 +197,7 @@
 
 -(void)monsterCloseEyesWhenReadyToJump
 {
-    [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeJumpClose"];
+    [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeJumpClose"];
 }
 
 - (void) handleCollision
@@ -266,14 +275,14 @@
     if ([name isEqualToString:@"ReadyToJump"])
     {
         isReadyToJump = YES;
-        [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeJumpOpen"];
+        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeJumpOpen"];
         [self jump];
         //[selfAnimationManager runAnimationsForSequenceNamed:@"Jump"];
     }
     else if ([name isEqualToString:@"OverDown"])
     {
         isFinishJump = YES;
-        [selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
+        [self.selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
     }
     else if ([name isEqualToString:@"LittleJump"])
     {
@@ -302,13 +311,13 @@
         [self runAction:monseterLittleJump];
         
         if (CCRANDOM_0_1() > RATIOTORUNNEWEYEMOVING && theIdleTimes > 12) {
-            [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
+            [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
             theIdleTimes = 0;
         }
         else if (CCRANDOM_0_1() > RATIOTOCLOSEEYES )
         {
-            [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeClose"];
-            [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeOpen"];
+            [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeClose"];
+            [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeOpen"];
         }
         
         
@@ -316,7 +325,7 @@
     else if ([name isEqualToString:@"OverLittleJump"])
     {
         isFinishJump = YES;
-        [selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
+        [self.selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
     }
     
     
@@ -325,12 +334,12 @@
 #pragma mark - MonseterOverLittleJump
 - (void)monsterReadyToLittleJump:(id)sender
 {
-    [selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
+    [self.selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
 }
 
 - (void)monsterOverLittleJump:(id)sender
 {
-    [selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
+    [self.selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
 }
 
 - (void)runningEyeMoving
@@ -344,10 +353,24 @@
 #pragma mark - 退出场景是释放
 - (void)releaseAnimationDelegate
 {
-    eyesAnimationManager.delegate = nil;
-    eyesAnimationManager = nil;
+    self.eyesAnimationManager.delegate = nil;
+    self.eyesAnimationManager = nil;
     
-    selfAnimationManager.delegate = nil;
-    selfAnimationManager = nil;
+    self.selfAnimationManager.delegate = nil;
+    self.selfAnimationManager = nil;
 }
+- (id)retain
+{
+    return [super retain];
+}
+
+- (oneway void)release
+{
+    [super release];
+}
+- (id)autorelease
+{
+    return [super autorelease];
+}
+
 @end

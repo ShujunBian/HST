@@ -47,6 +47,14 @@
     [self performSelector:@selector(resetTouchEnable) withObject:self
                afterDelay:1.2];
 }
+- (void)onExit
+{
+    [self.monsterArray removeAllObjects];
+    self.monsterArray = nil;
+    self.mainMapHelper = nil;
+    
+    [super onExit];
+}
 
 #pragma mark - 初始化Monsters
 - (void)initMonsters
@@ -332,7 +340,7 @@
 
 - (void)returnToMainMap
 {
-    [_mainMapHelper release];
+//    [_mainMapHelper release];
     [self unscheduleAllSelectors];
     for (CCNode * child in [self children]) {
         [child stopAllActions];
