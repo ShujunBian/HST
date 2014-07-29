@@ -93,7 +93,11 @@
     [ceruleanMonster createMonsterWithType:CeruleanMonster];
     [ceruleanMonster initMonsterEyes];
     [_monsterArray addObject:ceruleanMonster];
-    
+}
+
+- (void)onEnterTransitionDidFinish
+{
+    [super onEnterTransitionDidFinish];
     for (int i = 0; i < [_monsterArray count]; ++ i) {
         P3_Monster * monster = (P3_Monster *)[_monsterArray objectAtIndex:i];
         [monster beginningAnimationInDelayTime:0.4 + 0.2 * i];
