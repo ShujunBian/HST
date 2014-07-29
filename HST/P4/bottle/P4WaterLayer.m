@@ -99,10 +99,14 @@
 
 - (void) didLoadFromCCB
 {
+    //cocosbuilder retain
+    [self.bottleMask retain];
+    [self.sprayLeft retain];
+    [self.sprayRight retain];
     
     
     [self.bottleMask removeFromParent];
-    [self.bottleMask retain];
+
     [self.bottleMask.texture setAntiAliasTexParameters];
 //    [self.bottleMask setBlendFunc:(ccBlendFunc){GL_ONE, GL_ZERO}];
     [self.bottleMask setBlendFunc:(ccBlendFunc){GL_ONE, GL_ONE_MINUS_SRC_ALPHA}];
@@ -941,9 +945,10 @@
     self.bottleMask = nil;
     self.water1 = nil;
     self.water2 = nil;
-//    [self.waterWaveSprite removeFromParentAndCleanup:YES];
+    self.sprayLeft = nil;
+    self.sprayRight = nil;
+    
     self.waterWaveSprite = nil;
-//    [self.waterBgSprite removeFromParentAndCleanup:YES];
     self.waterBgSprite = nil;
 //    self.sprayLeft = nil;
 //    self.sprayRight = nil;

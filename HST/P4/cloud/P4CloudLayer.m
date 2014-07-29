@@ -14,6 +14,12 @@
 #define CLOUD_3_MOVE_DURATION 40.f
 
 @implementation P4CloudLayer
+- (void) didLoadFromCCB
+{
+    [self.cloud1 retain];
+    [self.cloud2 retain];
+    [self.cloud3 retain];
+}
 
 - (void)startAnimation
 {
@@ -26,9 +32,9 @@
 - (void)onExit
 {
     [super onExit];
-//    self.cloud1 = nil;
-//    self.cloud2 = nil;
-//    self.cloud3 = nil;
+    self.cloud1 = nil;
+    self.cloud2 = nil;
+    self.cloud3 = nil;
 //    self.cloudTop = nil;
 }
 @end

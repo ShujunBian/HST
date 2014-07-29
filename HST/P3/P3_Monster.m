@@ -36,12 +36,20 @@
     return self;
 }
 
+- (void)dealloc
+{
+    self.monsterEye = nil;
+    self.monsterBodyArray = nil;
+    
+    [super dealloc];
+
+}
 - (void)createMonsterWithType:(MonsterType)monsterType
 {
     self.monsterType = monsterType;
-    self.monsterEye = [[P3_MonsterEye alloc]init];
+    self.monsterEye = [[[P3_MonsterEye alloc]init] autorelease];
     [self.monsterEye setMonsterEyeCounter:monsterEyeCounters[monsterType]];
-    self.monsterEye.updateObj = [[MonsterEyeUpdateObject alloc] init];
+    self.monsterEye.updateObj = [[[MonsterEyeUpdateObject alloc] init] autorelease];
     
     NSString * fileNameEyeWhite = [NSString stringWithFormat:@"P3_Monster%d_Eye_background.png",(monsterType + 1)];
     NSString * fileNameEyeBlack = [NSString stringWithFormat:@"P3_Monster%d_Eye_point.png",(monsterType + 1)];

@@ -38,14 +38,14 @@
     [super onExit];
 //    [self.leftCloudSprite stopAllActions];
 //    [self.rightCloudSprite stopAllActions];
-//    self.leftCloudSprite = nil;
-//    self.rightCloudSprite = nil;
-    
-
+    self.leftCloudSprite = nil;
+    self.rightCloudSprite = nil;
 }
 
 - (void) didLoadFromCCB
 {
+    [self.leftCloudSprite retain];
+    [self.rightCloudSprite retain];
     self.leftInitPosition = self.leftCloudSprite.position;
     self.rightInitPosition = self.rightCloudSprite.position;
 }

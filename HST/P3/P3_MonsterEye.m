@@ -25,5 +25,12 @@
     }
     return self;
 }
+- (void)dealloc
+{
+    self.monsterEyeSprites = nil;
+    self.monsterEyePositions = nil;
+    self.updateObj = nil;
+    [super dealloc];
+}
 
 @end

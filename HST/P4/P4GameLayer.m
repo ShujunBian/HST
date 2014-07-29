@@ -149,23 +149,38 @@
 //    [self removeAllChildrenWithCleanup:YES];
 //    self.shakeMonster = nil;
     [super onExit];
+    
     self.helper = nil;
-//    [self.monstersArray removeAllObjects];
+    [self.monstersArray removeAllObjects];
     self.monstersArray = nil;
-//    self.cloudLayer = nil;
-//    self.greenMonster = nil;
-//    self.yellowMonster = nil;
-//    self.purpleMonster = nil;
-//    self.blueMonster = nil;
-//    self.redMonster = nil;
-//    self.bottle = nil;
-
+    self.cloudLayer = nil;
+    self.greenMonster = nil;
+    self.yellowMonster = nil;
+    self.purpleMonster = nil;
+    self.blueMonster = nil;
+    self.redMonster = nil;
+    self.bottle = nil;
+    self.backgroundSprite = nil;
+    self.shakeSpray = nil;
+    self.shakeMonster = nil;
     
 
 }
 
 - (void) didLoadFromCCB
 {
+    //cocosbuilder retain
+    [self.backgroundSprite retain];
+    [self.cloudLayer retain];
+    [self.bottle retain];
+    [self.greenMonster retain];
+    [self.yellowMonster retain];
+    [self.purpleMonster retain];
+    [self.blueMonster retain];
+    [self.redMonster retain];
+    
+    
+    
     self.helper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
 
 //Monster Init

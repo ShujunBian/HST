@@ -31,12 +31,18 @@
     self = [super init];
     if (self)
     {
-        self.eyesArray = [@[] mutableCopy];
-        self.lock = [[NSLock alloc] init];
+        self.eyesArray = [[@[] mutableCopy] autorelease];
+        self.lock = [[[NSLock alloc] init] autorelease];
     }
     return self;
 }
-
+- (void)dealloc
+{
+    self.lock = nil;
+    [self.eyesArray removeAllObjects];
+    self.eyesArray = nil;
+    [super dealloc];
+}
 - (void)addMonsterEye:(MonsterEye*)eye
 {
     [self.eyesArray addObject:eye];

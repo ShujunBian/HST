@@ -57,6 +57,8 @@
 						<string>P4Cloud2.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

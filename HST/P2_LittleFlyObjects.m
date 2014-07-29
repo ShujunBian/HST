@@ -138,6 +138,8 @@ static ccColor3B littleFlyColors[] = {
     if ([self.delegate respondsToSelector:@selector(removeFromOnScreenArray:)]) {
         [self.delegate removeFromOnScreenArray:self];
     }
+    CCBAnimationManager* manager = self.userObject;
+    manager.delegate = nil;
     [self removeFromParentAndCleanup:YES];
 }
 
