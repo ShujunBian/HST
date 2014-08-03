@@ -48,8 +48,19 @@ static ccColor3B bubbleColors[] = {
     
     [greenBubble.body setColor:bubbleColors[3]];
     [self performSelector:@selector(greenAnimation) withObject:self afterDelay:1.0];
+    
+    [self.dialogIcon retain];
+    [self shakeDialogIcon];
 }
-
+- (void)onExit
+{
+    [super onExit];
+    self.dialogIcon = nil;
+    self.blueBubble = nil;
+    self.yellowBubble = nil;
+    self.purpBubble = nil;
+    self.greenBubble = nil;
+}
 - (void)purpAnimation
 {
     [purpBubble.userObject runAnimationsForSequenceNamed:@"idleInMainMap"];
@@ -64,4 +75,24 @@ static ccColor3B bubbleColors[] = {
 {
     [greenBubble.userObject runAnimationsForSequenceNamed:@"idleInMainMap"];
 }
+
+
+- (void)shakeDialogIcon
+{
+    float moveLength = 2.f;
+    float moveDuration = 0.5f;
+    CCMoveBy* moveBy1 = [CCMoveBy actionWithDuration:moveDuration position:ccp(0, -moveLength)];
+    CCMoveBy* moveBy2 = [CCMoveBy actionWithDuration:moveDuration * 2 position:ccp(0, moveLength * 2)];
+    CCMoveBy* moveBy3 = [CCMoveBy actionWithDuration:moveDuration position:ccp(0, -moveLength)];
+    CCSequence* moveSequence =
+    [CCSequence actions:
+     [CCDelayTime actionWithDuration:CCRANDOM_0_1() * 0.5],
+     [CCEaseSineOut actionWithAction:moveBy1],
+     [CCEaseSineInOut actionWithAction:moveBy2],
+     [CCEaseSineIn actionWithAction:moveBy3],
+     nil];
+    CCRepeatForever* moveRepeat = [CCRepeatForever actionWithAction:moveSequence];
+    [self.dialogIcon runAction:moveRepeat];
+}
 @end
+

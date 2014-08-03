@@ -57,7 +57,27 @@ static ccColor3B littleFlyColors[] = {
     
     [self letFirstLittleMonsterJump];
     [self letSecondLittleMonsterJump];
+    
+    [self.dialogIcon retain];
+    [self shakeDialogIcon];
 }
+
+- (void)onExit
+{
+    [super onExit];
+    CCBAnimationManager* firanimationManager = purpLittleMonster.userObject;
+    firanimationManager.delegate = nil;
+    CCBAnimationManager* secanimationManager = organeLittleMonster.userObject;
+    secanimationManager.delegate = nil;
+}
+
+- (void)dealloc
+{
+    self.dialogIcon = nil;
+    
+    [super dealloc];
+}
+
 
 - (void)setBodyColor:(ccColor3B)color
           withSprite:(P2_LittleFlyObjects *)sprite
@@ -69,6 +89,7 @@ static ccColor3B littleFlyColors[] = {
     wingColor.b = color.b + 30 > 255 ? 255 : color.b + 30;
     sprite.wing.color = wingColor;
 }
+
 
 - (void)letFirstLittleMonsterJump
 {
@@ -84,4 +105,22 @@ static ccColor3B littleFlyColors[] = {
     [secanimationManager runAnimationsForSequenceNamed:@"LittleJump"];
 }
 
+
+- (void)shakeDialogIcon
+{
+    float moveLength = 2.f;
+    float moveDuration = 0.5f;
+    CCMoveBy* moveBy1 = [CCMoveBy actionWithDuration:moveDuration position:ccp(0, -moveLength)];
+    CCMoveBy* moveBy2 = [CCMoveBy actionWithDuration:moveDuration * 2 position:ccp(0, moveLength * 2)];
+    CCMoveBy* moveBy3 = [CCMoveBy actionWithDuration:moveDuration position:ccp(0, -moveLength)];
+    CCSequence* moveSequence =
+    [CCSequence actions:
+     [CCDelayTime actionWithDuration:CCRANDOM_0_1() * 0.5],
+     [CCEaseSineOut actionWithAction:moveBy1],
+     [CCEaseSineInOut actionWithAction:moveBy2],
+     [CCEaseSineIn actionWithAction:moveBy3],
+     nil];
+    CCRepeatForever* moveRepeat = [CCRepeatForever actionWithAction:moveSequence];
+    [self.dialogIcon runAction:moveRepeat];
+}
 @end

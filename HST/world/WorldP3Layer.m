@@ -38,6 +38,14 @@
 {
     self.monsterArray = [NSMutableArray arrayWithCapacity:5];
     [self initMonsters];
+    [self.dialogIcon retain];
+    [self shakeDialogIcon];
+}
+- (void)dealloc
+{
+    self.dialogIcon = nil;
+    self.monsterArray = nil;
+    [super dealloc];
 }
 
 #pragma mark - 初始化Monsters
@@ -90,6 +98,26 @@
         }
 
     }
+}
+
+
+
+- (void)shakeDialogIcon
+{
+    float moveLength = 2.f;
+    float moveDuration = 0.5f;
+    CCMoveBy* moveBy1 = [CCMoveBy actionWithDuration:moveDuration position:ccp(0, -moveLength)];
+    CCMoveBy* moveBy2 = [CCMoveBy actionWithDuration:moveDuration * 2 position:ccp(0, moveLength * 2)];
+    CCMoveBy* moveBy3 = [CCMoveBy actionWithDuration:moveDuration position:ccp(0, -moveLength)];
+    CCSequence* moveSequence =
+    [CCSequence actions:
+     [CCDelayTime actionWithDuration:CCRANDOM_0_1() * 0.5],
+     [CCEaseSineOut actionWithAction:moveBy1],
+     [CCEaseSineInOut actionWithAction:moveBy2],
+     [CCEaseSineIn actionWithAction:moveBy3],
+     nil];
+    CCRepeatForever* moveRepeat = [CCRepeatForever actionWithAction:moveSequence];
+    [self.dialogIcon runAction:moveRepeat];
 }
 
 @end

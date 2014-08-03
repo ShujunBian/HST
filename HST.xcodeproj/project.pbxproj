@@ -1018,6 +1018,18 @@
 		EF4040DF197A592100C6C8E1 /* world_p5.ccb in Resources */ = {isa = PBXBuildFile; fileRef = EF404096197A592100C6C8E1 /* world_p5.ccb */; };
 		EF4040E0197A592100C6C8E1 /* world_p5.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = EF404097197A592100C6C8E1 /* world_p5.ccbi */; };
 		EF4040E1197A592100C6C8E1 /* world.ccbproj in Resources */ = {isa = PBXBuildFile; fileRef = EF404098197A592100C6C8E1 /* world.ccbproj */; };
+		EF708AF819879B9D00068D61 /* world_p1_dialog-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AEE19879B9D00068D61 /* world_p1_dialog-hd.png */; };
+		EF708AF919879B9D00068D61 /* world_p1_dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AEF19879B9D00068D61 /* world_p1_dialog.png */; };
+		EF708AFA19879B9D00068D61 /* world_p2_dialog-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AF019879B9D00068D61 /* world_p2_dialog-hd.png */; };
+		EF708AFB19879B9D00068D61 /* world_p2_dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AF119879B9D00068D61 /* world_p2_dialog.png */; };
+		EF708AFC19879B9D00068D61 /* world_p3_dialog-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AF219879B9D00068D61 /* world_p3_dialog-hd.png */; };
+		EF708AFD19879B9D00068D61 /* world_p3_dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AF319879B9D00068D61 /* world_p3_dialog.png */; };
+		EF708AFE19879B9D00068D61 /* world_p4_dialog-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AF419879B9D00068D61 /* world_p4_dialog-hd.png */; };
+		EF708AFF19879B9D00068D61 /* world_p4_dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AF519879B9D00068D61 /* world_p4_dialog.png */; };
+		EF708B0019879B9D00068D61 /* world_p5_dialog-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AF619879B9D00068D61 /* world_p5_dialog-hd.png */; };
+		EF708B0119879B9D00068D61 /* world_p5_dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AF719879B9D00068D61 /* world_p5_dialog.png */; };
+		EF708B0419879C5400068D61 /* MainMapP3_mask-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708B0219879C5400068D61 /* MainMapP3_mask-hd.png */; };
+		EF708B0519879C5400068D61 /* MainMapP3_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708B0319879C5400068D61 /* MainMapP3_mask.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2253,6 +2265,18 @@
 		EF404096197A592100C6C8E1 /* world_p5.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = world_p5.ccb; sourceTree = "<group>"; };
 		EF404097197A592100C6C8E1 /* world_p5.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = world_p5.ccbi; sourceTree = "<group>"; };
 		EF404098197A592100C6C8E1 /* world.ccbproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = world.ccbproj; path = Resources/world.ccbproj; sourceTree = "<group>"; };
+		EF708AEE19879B9D00068D61 /* world_p1_dialog-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p1_dialog-hd.png"; sourceTree = "<group>"; };
+		EF708AEF19879B9D00068D61 /* world_p1_dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p1_dialog.png; sourceTree = "<group>"; };
+		EF708AF019879B9D00068D61 /* world_p2_dialog-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p2_dialog-hd.png"; sourceTree = "<group>"; };
+		EF708AF119879B9D00068D61 /* world_p2_dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p2_dialog.png; sourceTree = "<group>"; };
+		EF708AF219879B9D00068D61 /* world_p3_dialog-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p3_dialog-hd.png"; sourceTree = "<group>"; };
+		EF708AF319879B9D00068D61 /* world_p3_dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p3_dialog.png; sourceTree = "<group>"; };
+		EF708AF419879B9D00068D61 /* world_p4_dialog-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p4_dialog-hd.png"; sourceTree = "<group>"; };
+		EF708AF519879B9D00068D61 /* world_p4_dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p4_dialog.png; sourceTree = "<group>"; };
+		EF708AF619879B9D00068D61 /* world_p5_dialog-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p5_dialog-hd.png"; sourceTree = "<group>"; };
+		EF708AF719879B9D00068D61 /* world_p5_dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p5_dialog.png; sourceTree = "<group>"; };
+		EF708B0219879C5400068D61 /* MainMapP3_mask-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainMapP3_mask-hd.png"; sourceTree = "<group>"; };
+		EF708B0319879C5400068D61 /* MainMapP3_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMapP3_mask.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -4006,6 +4030,7 @@
 		EF404049197A592100C6C8E1 /* world */ = {
 			isa = PBXGroup;
 			children = (
+				EF708AED19879B9D00068D61 /* dialog */,
 				EF40404A197A592100C6C8E1 /* background */,
 				EF404063197A592100C6C8E1 /* p1 */,
 				EF404072197A592100C6C8E1 /* p2 */,
@@ -4032,6 +4057,8 @@
 		EF40404A197A592100C6C8E1 /* background */ = {
 			isa = PBXGroup;
 			children = (
+				EF708B0219879C5400068D61 /* MainMapP3_mask-hd.png */,
+				EF708B0319879C5400068D61 /* MainMapP3_mask.png */,
 				EF40404B197A592100C6C8E1 /* world_background-hd.png */,
 				EF40404C197A592100C6C8E1 /* world_background.png */,
 				EF40404D197A592100C6C8E1 /* world_background_cloud-hd.png */,
@@ -4135,6 +4162,23 @@
 				EF40408B197A592100C6C8E1 /* world_p5_stone.png */,
 			);
 			path = p5;
+			sourceTree = "<group>";
+		};
+		EF708AED19879B9D00068D61 /* dialog */ = {
+			isa = PBXGroup;
+			children = (
+				EF708AEE19879B9D00068D61 /* world_p1_dialog-hd.png */,
+				EF708AEF19879B9D00068D61 /* world_p1_dialog.png */,
+				EF708AF019879B9D00068D61 /* world_p2_dialog-hd.png */,
+				EF708AF119879B9D00068D61 /* world_p2_dialog.png */,
+				EF708AF219879B9D00068D61 /* world_p3_dialog-hd.png */,
+				EF708AF319879B9D00068D61 /* world_p3_dialog.png */,
+				EF708AF419879B9D00068D61 /* world_p4_dialog-hd.png */,
+				EF708AF519879B9D00068D61 /* world_p4_dialog.png */,
+				EF708AF619879B9D00068D61 /* world_p5_dialog-hd.png */,
+				EF708AF719879B9D00068D61 /* world_p5_dialog.png */,
+			);
+			path = dialog;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -4323,6 +4367,7 @@
 				EF40400A197A1D1700C6C8E1 /* P4b11.wav in Resources */,
 				51A942C1197A130A00920318 /* p2_monster_head_ball-hd.png in Resources */,
 				EF404013197A1D1700C6C8E1 /* P4b9.wav in Resources */,
+				EF708B0419879C5400068D61 /* MainMapP3_mask-hd.png in Resources */,
 				51A94068197A121300920318 /* P3_monster_sing-hd.png in Resources */,
 				51A94180197A128700920318 /* P5_homeBackground.png in Resources */,
 				51A942C0197A130A00920318 /* p2_monster_head.png in Resources */,
@@ -4331,6 +4376,7 @@
 				EF4040CF197A592100C6C8E1 /* world_p5_grass-hd.png in Resources */,
 				EF403FF1197A1D1700C6C8E1 /* P4_yellow_monster_light-hd.png in Resources */,
 				51A9438D197A142E00920318 /* flowerbody-hd.png in Resources */,
+				EF708B0119879B9D00068D61 /* world_p5_dialog.png in Resources */,
 				51A942E8197A130A00920318 /* P2_FlyGrasses.ccbi in Resources */,
 				51A94021197A121300920318 /* P3_flower_body.png in Resources */,
 				EF403FEC197A1D1700C6C8E1 /* P4_purple_monster.png in Resources */,
@@ -4640,12 +4686,14 @@
 				51A941D3197A128700920318 /* P5_GameScene.ccb in Resources */,
 				EF4040D4197A592100C6C8E1 /* world_p5_stone.png in Resources */,
 				51A9401E197A121300920318 /* P3_eye_Skin_up-hd.png in Resources */,
+				EF708AFC19879B9D00068D61 /* world_p3_dialog-hd.png in Resources */,
 				51A943A1197A142E00920318 /* monsterbody-hd.png in Resources */,
 				51A942C2197A130A00920318 /* p2_monster_head_ball.png in Resources */,
 				51A942A7197A130A00920318 /* p2_fly_grass2-hd.png in Resources */,
 				51A94033197A121300920318 /* P3_monster1_face.png in Resources */,
 				EF403FC6197A1D1700C6C8E1 /* P4_red_eyeball_2-hd.png in Resources */,
 				EF4040CE197A592100C6C8E1 /* world_p4_stone.png in Resources */,
+				EF708AFE19879B9D00068D61 /* world_p4_dialog-hd.png in Resources */,
 				51A9418B197A128700920318 /* P5_monsterBigShadow-hd.png in Resources */,
 				EF403FC1197A1D1700C6C8E1 /* P4_purple_eyeball_1.png in Resources */,
 				51A9416B197A128700920318 /* P5_blueFlowerHead-hd.png in Resources */,
@@ -4662,6 +4710,7 @@
 				51A941A5197A128700920318 /* P5_monsterUnderLittleShadow-hd.png in Resources */,
 				EF403F99197A1D1700C6C8E1 /* P4_bottle_right_foot.png in Resources */,
 				EF404012197A1D1700C6C8E1 /* P4b8.wav in Resources */,
+				EF708B0519879C5400068D61 /* MainMapP3_mask.png in Resources */,
 				51A941A9197A128700920318 /* P5_MonsterUnderRightLeg-hd.png in Resources */,
 				EF403FCD197A1D1700C6C8E1 /* P4_yellow_eyeball_1.png in Resources */,
 				51A94041197A121300920318 /* P3_monster2_face.png in Resources */,
@@ -4804,6 +4853,7 @@
 				51A942E0197A130A00920318 /* P2_FirstLittlemonster.ccbi in Resources */,
 				EF40400B197A1D1700C6C8E1 /* P4b12.wav in Resources */,
 				51A94167197A128700920318 /* P5_BigCircleUI_Choosen-hd.png in Resources */,
+				EF708AFA19879B9D00068D61 /* world_p2_dialog-hd.png in Resources */,
 				51A9429E197A130A00920318 /* p2_flower_body.png in Resources */,
 				51A943BA197A142E00920318 /* P1_Flower.ccbi in Resources */,
 				51A94386197A142E00920318 /* Default-Landscape~ipad.png in Resources */,
@@ -4817,6 +4867,7 @@
 				51A9419E197A128700920318 /* P5_monsterUnderBody.png in Resources */,
 				51A94160197A128700920318 /* P5_BellHeadJianBian.png in Resources */,
 				51A943B9197A142E00920318 /* P1_Flower.ccb in Resources */,
+				EF708AFF19879B9D00068D61 /* world_p4_dialog.png in Resources */,
 				51A9406D197A121300920318 /* P3_MonsterBodyEye.png in Resources */,
 				EF4040A3197A592100C6C8E1 /* world_background_tree1-hd.png in Resources */,
 				513B6E941972AA340039BC31 /* P2_rhythm.mp3 in Resources */,
@@ -4909,9 +4960,11 @@
 				51A94191197A128700920318 /* P5_monsterEyeBlack-hd.png in Resources */,
 				5169CBE918CDE5ED00426E6C /* Default-568h@2x.png in Resources */,
 				51A941C9197A128700920318 /* P5_Bell4.ccb in Resources */,
+				EF708AFB19879B9D00068D61 /* world_p2_dialog.png in Resources */,
 				51A9416C197A128700920318 /* P5_blueFlowerHead.png in Resources */,
 				51A943BE197A142E00920318 /* P1_GameScene.ccbi in Resources */,
 				51A942C7197A130A00920318 /* p2_mushroom1Body-hd.png in Resources */,
+				EF708AFD19879B9D00068D61 /* world_p3_dialog.png in Resources */,
 				51A9404A197A121300920318 /* P3_monster3_mouth-hd.png in Resources */,
 				EF403FCB197A1D1700C6C8E1 /* P4_red_eyewhite_2.png in Resources */,
 				51A941E3197A128700920318 /* P5_UndergroundBackground.ccb in Resources */,
@@ -4919,6 +4972,7 @@
 				51A9416D197A128700920318 /* P5_cave_cover-hd.png in Resources */,
 				EF4040B5197A592100C6C8E1 /* world_p1_grass1-hd.png in Resources */,
 				51A942F9197A130A00920318 /* P2_Mountain1.ccb in Resources */,
+				EF708AF919879B9D00068D61 /* world_p1_dialog.png in Resources */,
 				51A942D5197A130A00920318 /* p2_mushroom2Head-hd.png in Resources */,
 				51A941AD197A128700920318 /* P5_mountain2-hd.png in Resources */,
 				EF404007197A1D1700C6C8E1 /* bg.mp3 in Resources */,
@@ -4950,6 +5004,7 @@
 				51A943B7197A142E00920318 /* P1_BubbleSky.ccb in Resources */,
 				EF403F92197A1D1700C6C8E1 /* P4_bottle_renew_button-hd.png in Resources */,
 				51A9419D197A128700920318 /* P5_monsterUnderBody-hd.png in Resources */,
+				EF708AF819879B9D00068D61 /* world_p1_dialog-hd.png in Resources */,
 				51A9401A197A121300920318 /* P3_cloud-hd.png in Resources */,
 				EF4040B0197A592100C6C8E1 /* world_full.png in Resources */,
 				51A942FD197A130A00920318 /* P2_Mushrooms.ccb in Resources */,
@@ -5003,6 +5058,7 @@
 				51A942DC197A130A00920318 /* p2_secondmonster_eyewhite.png in Resources */,
 				5169CBF718CDE5ED00426E6C /* Icon@2x.png in Resources */,
 				51A94062197A121300920318 /* P3_monster_body_sing-hd.png in Resources */,
+				EF708B0019879B9D00068D61 /* world_p5_dialog-hd.png in Resources */,
 				51A94190197A128700920318 /* P5_monsterEye.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

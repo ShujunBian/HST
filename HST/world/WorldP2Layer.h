@@ -22,4 +22,5 @@
 @property (nonatomic, assign) P2_LittleMonster * organeLittleMonster;
 @property (nonatomic, assign) P2_Mushroom * rightTwoMushroom;
 
+@property (nonatomic, strong) CCSprite* dialogIcon;
 @end

@@ -14,4 +14,6 @@
 
 @property (nonatomic, assign) P5_Monster * monster;
 
+@property (nonatomic, strong) CCSprite* dialogIcon;
+
 @end

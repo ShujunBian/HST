@@ -21,6 +21,8 @@
 @property (strong, nonatomic) P4Monster* redMonster;
 @property (strong, nonatomic) P4Bottle* bottle;
 
+@property (strong, nonatomic) CCSprite* dialogIcon;
+
 
 
 @end
