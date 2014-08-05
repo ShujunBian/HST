@@ -87,7 +87,7 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
 	const double ALPHA = 0.05;
     
 	double peakPowerForChannel = pow(10, (0.05 * [recorder peakPowerForChannel:0]));
-    NSLog(@"%f,%f,%f",[recorder peakPowerForChannel:0],[recorder peakPowerForChannel:1],[recorder peakPowerForChannel:2]);
+//    NSLog(@"%f,%f,%f",[recorder peakPowerForChannel:0],[recorder peakPowerForChannel:1],[recorder peakPowerForChannel:2]);
 	lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * lowPassResults;
 	
 	if (lowPassResults > 0.8)
