@@ -125,7 +125,7 @@
         [newBody setAnchorPoint:CGPointMake(0.5, 0.0)];
         [newBody setPosition:position];
         [newBody setScale:0.0];
-        [self.parent addChild:newBody];
+        [self.parent addChild:newBody z:zOrder[self.monsterType]];
         [self.monsterBodyArray addObject:newBody];
         
         newBody.body.color = monsterFaceColor[self.monsterType][[self.monsterBodyArray count]];

@@ -111,6 +111,14 @@ static CGPoint monsterCeruleanEyePos[] = {
     {107.0,46.0}
 };
 
+static int zOrder[]= {
+    0,
+    -1,
+    -2,
+    -1,
+    0
+};
+
 @interface P3_Monster : CCNode
 
 @property (nonatomic) MonsterType monsterType;

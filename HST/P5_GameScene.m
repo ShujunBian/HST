@@ -74,7 +74,13 @@
     [self setScale:2.0];
     [self setPosition:CGPointMake(-winSize.width / 2 + 60.0, winSize.height /2)];
 
-    [self performSelector:@selector(moveToUnderground) withObject:self afterDelay:1.3];
+//    [self performSelector:@selector(moveToUnderground) withObject:self afterDelay:1.3];
+}
+
+- (void)onEnterTransitionDidFinish
+{
+    [super onEnterTransitionDidFinish];
+    [self moveToUnderground];
 }
 
 - (void)moveToUnderground
