@@ -1028,6 +1028,8 @@
 		EF53BC0719906A04007C8258 /* p4_monster_shake.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EF53BBFE19906A04007C8258 /* p4_monster_shake.mp3 */; };
 		EF53BC0819906A04007C8258 /* p4_monster_shake2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EF53BBFF19906A04007C8258 /* p4_monster_shake2.mp3 */; };
 		EF53BC0B19906BD8007C8258 /* world.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EF53BC0A19906BD8007C8258 /* world.mp3 */; };
+		EF53BC0E1990B06C007C8258 /* P4_bottle_light-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF53BC0C1990B06C007C8258 /* P4_bottle_light-hd.png */; };
+		EF53BC0F1990B06C007C8258 /* P4_bottle_light.png in Resources */ = {isa = PBXBuildFile; fileRef = EF53BC0D1990B06C007C8258 /* P4_bottle_light.png */; };
 		EF708AF819879B9D00068D61 /* world_p1_dialog-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AEE19879B9D00068D61 /* world_p1_dialog-hd.png */; };
 		EF708AF919879B9D00068D61 /* world_p1_dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AEF19879B9D00068D61 /* world_p1_dialog.png */; };
 		EF708AFA19879B9D00068D61 /* world_p2_dialog-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AF019879B9D00068D61 /* world_p2_dialog-hd.png */; };
@@ -2285,6 +2287,8 @@
 		EF53BBFE19906A04007C8258 /* p4_monster_shake.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = p4_monster_shake.mp3; sourceTree = "<group>"; };
 		EF53BBFF19906A04007C8258 /* p4_monster_shake2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = p4_monster_shake2.mp3; sourceTree = "<group>"; };
 		EF53BC0A19906BD8007C8258 /* world.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = world.mp3; sourceTree = "<group>"; };
+		EF53BC0C1990B06C007C8258 /* P4_bottle_light-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P4_bottle_light-hd.png"; sourceTree = "<group>"; };
+		EF53BC0D1990B06C007C8258 /* P4_bottle_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P4_bottle_light.png; sourceTree = "<group>"; };
 		EF708AEE19879B9D00068D61 /* world_p1_dialog-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p1_dialog-hd.png"; sourceTree = "<group>"; };
 		EF708AEF19879B9D00068D61 /* world_p1_dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p1_dialog.png; sourceTree = "<group>"; };
 		EF708AF019879B9D00068D61 /* world_p2_dialog-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p2_dialog-hd.png"; sourceTree = "<group>"; };
@@ -3834,6 +3838,8 @@
 		EF403ED8197A1D1700C6C8E1 /* bottle */ = {
 			isa = PBXGroup;
 			children = (
+				EF53BC0C1990B06C007C8258 /* P4_bottle_light-hd.png */,
+				EF53BC0D1990B06C007C8258 /* P4_bottle_light.png */,
 				EF403ED9197A1D1700C6C8E1 /* P4_bottle_glass-hd.png */,
 				EF403EDA197A1D1700C6C8E1 /* P4_bottle_glass.png */,
 				EF403EDB197A1D1700C6C8E1 /* P4_bottle_left_cap-hd.png */,
@@ -4469,6 +4475,7 @@
 				51A94051197A121300920318 /* P3_Monster4_Eye_point.png in Resources */,
 				51A94380197A142E00920318 /* bubble-normal.png in Resources */,
 				51A94086197A121300920318 /* P3_GreenMonster.ccb in Resources */,
+				EF53BC0E1990B06C007C8258 /* P4_bottle_light-hd.png in Resources */,
 				51A941E2197A128700920318 /* P5_SkyLayer.ccbi in Resources */,
 				516F24411981DE9E004E6443 /* world_p5_mask.png in Resources */,
 				EF4040BD197A592100C6C8E1 /* world_p1_tree1-hd.png in Resources */,
@@ -4727,6 +4734,7 @@
 				51A942BB197A130A00920318 /* p2_monster_eyeblack-hd.png in Resources */,
 				EF404025197A1D1700C6C8E1 /* water1.png in Resources */,
 				51A9402F197A121300920318 /* P3_Monster1_Eye_background.png in Resources */,
+				EF53BC0F1990B06C007C8258 /* P4_bottle_light.png in Resources */,
 				EF403FF4197A1D1700C6C8E1 /* P4BlueMonster.ccbi in Resources */,
 				EF4040A5197A592100C6C8E1 /* world_background_tree2-hd.png in Resources */,
 				EF403FDB197A1D1700C6C8E1 /* P4_monster4_mask-hd.png in Resources */,
