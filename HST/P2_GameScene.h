@@ -27,7 +27,7 @@
 @property (nonatomic) NSInteger frameCounter;
 @property (nonatomic, strong) NSMutableArray * flyObjectsOnScreen;
 @property (nonatomic, assign) P2_GrassLayer * grassLayer;
-@property (nonatomic, assign) P2_Monster * monster;
+@property (nonatomic, strong) P2_Monster * monster;
 @property (nonatomic, assign) P2_LittleMonster * firstLittleMonster;
 @property (nonatomic, assign) P2_LittleMonster * secondLittleMonster;
 

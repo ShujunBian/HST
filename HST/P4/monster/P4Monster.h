@@ -43,6 +43,8 @@ typedef NS_ENUM(NSUInteger, P4MonsterType)
 
 @property (assign, nonatomic) BOOL isHideBelow;
 
+@property (strong, nonatomic) NSString* selectedSoundEffectName;
+
 - (void)prePositionInit;
 - (CGRect)getRect;
 
@@ -53,4 +55,6 @@ typedef NS_ENUM(NSUInteger, P4MonsterType)
 - (void)startWaterFull;
 
 - (void)configureMonsterEye;
+
+- (void)playSelectSoundEffect;
 @end

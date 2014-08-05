@@ -11,6 +11,7 @@
 #import "cocos2d.h"
 #import "MonsterEyeUpdateObject.h"
 #import "MonsterEye.h"
+#import "SimpleAudioEngine.h"
 
 
 #define WATER_DECREASE_SPEED 0.01f
@@ -306,5 +307,14 @@
     }
     [self.eyeUpdateObj beginUpdate];
     
+}
+
+
+- (void)playSelectSoundEffect
+{
+    if (self.selectedSoundEffectName && self.selectedSoundEffectName.length)
+    {
+        [[SimpleAudioEngine sharedEngine] playEffect:self.selectedSoundEffectName];
+    }
 }
 @end

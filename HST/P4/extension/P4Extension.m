@@ -13,9 +13,12 @@ BOOL colorCompare(ccColor3B c1, ccColor3B c2)
     return (c1.r == c2.r) && (c1.g == c2.g) && (c1.b == c2.b);
 }
 
-float colorChange(float colorFrom, float colorTo, float speed)
+float colorChange(float colorFrom, float colorTo, float speed, float currentRadius)
 {
     float r;
+    
+    r = colorFrom + (colorTo - colorFrom) * currentRadius;
+    /*
     if (colorFrom < colorTo)
     {
         r = (colorFrom + speed) < colorTo ? (colorFrom + speed) : colorTo;
@@ -24,6 +27,7 @@ float colorChange(float colorFrom, float colorTo, float speed)
     {
         r = (colorFrom - speed) > colorTo ? (colorFrom - speed) : colorTo;
     }
+     */
     return r;
 }
 

@@ -95,7 +95,7 @@
 
 - (void)blink
 {
-    __weak MonsterEye* weakSelf = self;
+    __unsafe_unretained MonsterEye* weakSelf = self;
     self.topEyelid.scale = 0.f;
     self.topEyelid.visible = YES;
     

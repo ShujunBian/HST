@@ -17,6 +17,9 @@ typedef NS_ENUM(NSInteger, P4WaterFlowType)
 
 @interface P4WaterRecord : NSObject
 
+
+@property (assign, nonatomic) float colorRadius;
+@property (assign, nonatomic) ccColor3B colorFrom;
 @property (assign, nonatomic) ccColor3B color;
 @property (assign, nonatomic) ccColor3B colorTo;
 @property (assign, nonatomic) BOOL isChangeColor;

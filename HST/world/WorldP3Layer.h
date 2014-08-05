@@ -13,4 +13,6 @@
 
 @property (nonatomic, assign) CCLayer * monsterLayer;
 
+@property (strong, nonatomic) CCSprite* dialogIcon;
+
 @end

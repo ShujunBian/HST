@@ -58,12 +58,17 @@
 
 - (void)returnToMainMap
 {
+    _mainMapItem.isEnabled = NO;
     CCScaleBy * scale1 = [CCScaleBy actionWithDuration:0.1 scale:1.4];
     CCScaleBy * scale2 = [CCScaleBy actionWithDuration:0.1 scale:0.7];
     CCScaleTo * scale3 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
-    CCSequence * seq = [CCSequence actions:scale1,scale2,scale3, nil];
+    CCCallBlock* callBlock = [CCCallBlock actionWithBlock:^{
+
+    }];
+    CCSequence * seq = [CCSequence actions:scale1,scale2,scale3, callBlock, nil];
     [_mainMapItem runAction:seq];
-    
     [self.delegate returnToMainMap];
+
+
 }
 @end

@@ -10,7 +10,7 @@
 
 @protocol  WorldSubLayer <NSObject>
 
-- (void)active;
-- (void)inactive;
+//- (void)active;
+//- (void)inactive;
 
 @end

@@ -20,8 +20,18 @@
 
 - (void)didLoadFromCCB
 {
+    [self.dialogIcon retain];
+    [self.greenMonster retain];
+    [self.yellowMonster retain];
+    [self.purpleMonster retain];
+    [self.blueMonster retain];
+    [self.redMonster retain];
+    [self.bottle retain];
+    
+    
     //Monster Init
-    self.monstersArray = [[CCArray alloc] init];
+    self.monstersArray = [[[CCArray alloc] init] autorelease];
+    
     //设置monsters数组
     [self.monstersArray addObject:self.greenMonster];
     [self.monstersArray addObject:self.yellowMonster];
@@ -61,7 +71,39 @@
     CCRepeatForever* moveRepeat = [CCRepeatForever actionWithAction:moveSequence];
     [self.bottle runAction:moveRepeat];
     [self.bottle worldSceneConfigure];
+    
+    [self shakeDialogIcon];
 }
 
+- (void)shakeDialogIcon
+{
+    float moveLength = 2.f;
+    float moveDuration = 0.5f;
+    CCMoveBy* moveBy1 = [CCMoveBy actionWithDuration:moveDuration position:ccp(0, -moveLength)];
+    CCMoveBy* moveBy2 = [CCMoveBy actionWithDuration:moveDuration * 2 position:ccp(0, moveLength * 2)];
+    CCMoveBy* moveBy3 = [CCMoveBy actionWithDuration:moveDuration position:ccp(0, -moveLength)];
+    CCSequence* moveSequence =
+    [CCSequence actions:
+     [CCDelayTime actionWithDuration:CCRANDOM_0_1() * 0.5],
+     [CCEaseSineOut actionWithAction:moveBy1],
+     [CCEaseSineInOut actionWithAction:moveBy2],
+     [CCEaseSineIn actionWithAction:moveBy3],
+     nil];
+    CCRepeatForever* moveRepeat = [CCRepeatForever actionWithAction:moveSequence];
+    [self.dialogIcon runAction:moveRepeat];
+}
 
+- (void)dealloc
+{
+    self.dialogIcon = nil;
+    self.greenMonster = nil;
+    self.yellowMonster = nil;
+    self.purpleMonster = nil;
+    self.blueMonster = nil;
+    self.redMonster = nil;
+    [self.monstersArray removeAllObjects];
+    self.monstersArray = nil;
+    self.bottle = nil;
+    [super dealloc];
+}
 @end
