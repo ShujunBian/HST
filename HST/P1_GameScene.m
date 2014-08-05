@@ -226,9 +226,9 @@ static NSMutableArray *bubbleScales = nil;
 -(void)monsterMouthStartBlow:(P1_Monster*)monster
 {
     shouldBlowBubble = YES;
-//    [[SimpleAudioEngine sharedEngine] playEffect:@"P1_bubble_out.mp3"];
-//    [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:)
-//                                           withObject:@"P1_bubble_out.mp3" afterDelay:1.0];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"P1_bubble_out.mp3"];
+    [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:)
+                                           withObject:@"P1_bubble_out.mp3" afterDelay:1.0];
     
     for (P1_Bubble * bubble in self.currentOnScreenBubbles)
     {
