@@ -12,6 +12,9 @@
 #import "CCBReader.h"
 #import "MonsterEyeTestLayer.h"
 
+#import "SimpleAudioEngine.h"
+
+
 #import "CircleTransition.h"
 #import "WorldP1Layer.h"
 #import "WorldP2Layer.h"
@@ -45,7 +48,7 @@
     [self.p3Layer retain];
     [self.p4Layer retain];
     [self.p5Layer retain];
-    
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
 //    [self.p1Layer removeFromParentAndCleanup:YES];
 //    [self.p2Layer removeFromParentAndCleanup:YES];
 //    [self.p3Layer removeFromParentAndCleanup:YES];
@@ -57,7 +60,11 @@
 //    self.p4Layer = nil;
 //    self.p5Layer = nil;
 }
-
+- (void)onExitTransitionDidStart
+{
+    [super onExitTransitionDidStart];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+}
 - (void)onExit
 {
     [super onExit];
@@ -66,6 +73,7 @@
     self.p3Layer = nil;
     self.p4Layer = nil;
     self.p5Layer = nil;
+
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

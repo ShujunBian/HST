@@ -12,10 +12,10 @@
 
 @interface WorldP1Layer : CCLayer<WorldSubLayer>
 
-@property (nonatomic, assign) P1_Bubble * blueBubble;
-@property (nonatomic, assign) P1_Bubble * purpBubble;
-@property (nonatomic, assign) P1_Bubble * yellowBubble;
-@property (nonatomic, assign) P1_Bubble * greenBubble;
+@property (nonatomic, strong) P1_Bubble * blueBubble;
+@property (nonatomic, strong) P1_Bubble * purpBubble;
+@property (nonatomic, strong) P1_Bubble * yellowBubble;
+@property (nonatomic, strong) P1_Bubble * greenBubble;
 @property (nonatomic, strong) CCSprite * dialogIcon;
 
 @end

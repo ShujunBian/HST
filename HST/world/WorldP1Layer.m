@@ -8,6 +8,10 @@
 
 #import "WorldP1Layer.h"
 
+@interface WorldP1Layer ()
+
+@end
+
 @implementation WorldP1Layer
 
 @synthesize blueBubble;
@@ -51,6 +55,13 @@ static ccColor3B bubbleColors[] = {
     
     [self.dialogIcon retain];
     [self shakeDialogIcon];
+    
+    
+    [self.blueBubble retain];
+    [self.purpBubble retain];
+    [self.yellowBubble retain];
+    [self.greenBubble retain];
+    
 }
 - (void)onExit
 {

@@ -18,6 +18,7 @@
 
 #import "MainMapHelper.h"
 #import "HelloWorldLayer.h"
+#import "SimpleAudioEngine.h"
 
 //#define BOTTLE_MOVE_DELAY 0.2f
 #define BOTTLE_SCALE_X_MAX 1.2f
@@ -70,6 +71,14 @@
 @property (assign, nonatomic) float shakeY;
 
 @property (strong, nonatomic) MainMapHelper* helper;
+
+
+
+//Sound Effect Name
+
+@property (strong, nonatomic) NSArray* monsterShakeEffectNames;
+@property (assign, nonatomic) ALuint currentSHakeEffectId;
+
 @end
 
 @implementation P4GameLayer
@@ -136,7 +145,7 @@
     [super onEnter];
 
     [self.cloudLayer startAnimation];
-    
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"p4_background.mp3" loop:YES];
     
 //    CCRenderTexture* te = [[CCRenderTexture alloc] initWithWidth:300 height:300 pixelFormat:kCCTexture2DPixelFormat_Default];
 //    [te beginWithClear:255.f g:0 b:0 a:255.f];
@@ -163,8 +172,12 @@
     self.backgroundSprite = nil;
     self.shakeSpray = nil;
     self.shakeMonster = nil;
-    
+}
 
+- (void)onExitTransitionDidStart
+{
+    [super onExitTransitionDidStart];
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 }
 
 - (void) didLoadFromCCB
@@ -204,12 +217,18 @@
         [monster prePositionInit];
     }
     self.greenMonster.waterColor = ccc3(68.f, 255.f, 25.f);
+    self.greenMonster.selectedSoundEffectName = @"p4_monster1.mp3";
     self.yellowMonster.waterColor = ccc3(255.f, 252.f, 62.f);
+    self.yellowMonster.selectedSoundEffectName = @"p4_monster2.mp3";
     self.purpleMonster.waterColor = ccc3(255.f, 97.f, 242.f);
+    self.purpleMonster.selectedSoundEffectName = @"p4_monster3.mp3";
     self.blueMonster.waterColor = ccc3(50.f, 248.f, 255.f);
+    self.blueMonster.selectedSoundEffectName = @"p4_monster4.mp3";
     self.redMonster.waterColor = ccc3(254.f, 70.f, 100.f);
-    
-    
+    self.redMonster.selectedSoundEffectName = @"p4_monster5.mp3";
+
+    self.monsterShakeEffectNames = @[@"p4_monster_shake.mp3",@"p4_monster_shake2.mp3"];
+    self.currentSHakeEffectId = 0;
     
     self.isMonsterAnimated = NO;
     self.isTouchBottle = NO;
@@ -396,6 +415,10 @@
     {
         return;
     }
+    
+    [monster playSelectSoundEffect];
+    
+    
     __weak P4GameLayer *weakSelf = self;
     self.isMonsterAnimated = YES;
     monster.isAnimated = YES;
@@ -482,6 +505,11 @@
     
     
     CCFiniteTimeAction* beginAddWater = [[[CCCallBlock alloc] initWithBlock:^{
+
+        int effectIndex = (int)(CCRANDOM_0_1() * 2);
+        effectIndex = effectIndex != 2? effectIndex : 1;
+        self.currentSHakeEffectId = [[SimpleAudioEngine sharedEngine] playEffect:self.monsterShakeEffectNames[effectIndex]];
+        
         [self.bottle startWaterIn:monster];
     }] autorelease];
     
@@ -504,6 +532,9 @@
     
     
     CCFiniteTimeAction* endAddWater = [[[CCCallBlock alloc] initWithBlock:^{
+        [[SimpleAudioEngine sharedEngine] stopEffect:self.currentSHakeEffectId];
+        self.currentSHakeEffectId = 0;
+        
         [self.bottle stopWaterIn];
     }] autorelease];
     
@@ -644,11 +675,9 @@
     [self.shakeMonster runAction:monsterMoveRepeat];
     [self.shakeSpray runAction:sprayMoveRepeat];
     
-    return;
-    
-    
-    self.sprayOriginPosition = self.shakeSpray.position;
-    [self schedule:@selector(monsterShakeUpdate:) interval:BOTTLE_SHAKE_UPDATE_RATE];
+//    return;
+//    self.sprayOriginPosition = self.shakeSpray.position;
+//    [self schedule:@selector(monsterShakeUpdate:) interval:BOTTLE_SHAKE_UPDATE_RATE];
 }
 
 - (void)monsterEndShake:(P4Monster*)monster
