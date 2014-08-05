@@ -420,7 +420,7 @@
     [monster playSelectSoundEffect];
     
     
-    __weak P4GameLayer *weakSelf = self;
+    __unsafe_unretained P4GameLayer *weakSelf = self;
     self.isMonsterAnimated = YES;
     monster.isAnimated = YES;
     [monster beginUpdateWater];
@@ -765,7 +765,7 @@
 #pragma mark - Monsters Renew
 - (void)monstersRenew
 {
-    float time = self.bottle.addCount * 0.65f;
+//    float time = self.bottle.addCount * 0.65f;
 //        CCCallBlock* callBlock1 = [CCCallBlock actionWithBlock:^{
 //            [self hideMonstersExcept:nil];
 //        }];

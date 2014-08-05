@@ -185,15 +185,12 @@ static ccColor3B bubbleColors[] = {
     CCBAnimationManager * animationManager = self.userObject;
     animationManager.delegate = nil;
 }
-- (void)dealloc
-{
-//    self.userObject = nil;
-    [super dealloc];
-}
+
+
 #pragma mark - P1_BubbleBoomDelegate
 - (void)removeBubbleFromParent
 {
     [self removeFromParentAndCleanup:YES];
-    [self release];
+//    [self release];
 }
 @end

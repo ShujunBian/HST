@@ -926,7 +926,7 @@
     
     sprite.scale = CCRANDOM_0_1();
     sprite.position = startPoint;
-    __weak P4WaterLayer* weakSelf = self;
+    __unsafe_unretained P4WaterLayer* weakSelf = self;
     CCMoveTo* moveTo = [[[CCMoveTo alloc] initWithDuration:((endPoint.y - startPoint.y) / (BUBBLE_SPEED + 20 * CCRANDOM_0_1())) position:endPoint] autorelease];
     CCCallBlock* call = [[[CCCallBlock alloc] initWithBlock:^{
         [sprite removeFromParent];
