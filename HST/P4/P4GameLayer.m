@@ -172,6 +172,7 @@
     self.backgroundSprite = nil;
     self.shakeSpray = nil;
     self.shakeMonster = nil;
+    self.monsterShakeEffectNames = nil;
 }
 
 - (void)onExitTransitionDidStart

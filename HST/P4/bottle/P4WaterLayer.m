@@ -522,7 +522,7 @@
 }
 - (void)worldSceneConfigure
 {
-    P4WaterRecord* waterRecord = [[P4WaterRecord alloc] init];
+    P4WaterRecord* waterRecord = [[[P4WaterRecord alloc] init] autorelease];
     waterRecord.color = ccc3(50.f, 248.f, 255.f);
     waterRecord.height = 60.f;
     waterRecord.waveScaleLowest = 0.5f;
