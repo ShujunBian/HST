@@ -78,7 +78,7 @@ static NSMutableArray *bubbleScales = nil;
         [self loadBubbleAttributes];
     }
     
-    [P1_BlowDetecter instance].delegate = self;
+
     
     self.currentOnScreenBubbles = [NSMutableArray array];
     self.bubblesReadyToRelease = [NSMutableArray array];
@@ -91,6 +91,7 @@ static NSMutableArray *bubbleScales = nil;
     [super onEnter];
     [CDAudioManager configure:kAMM_PlayAndRecord];
     [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
+    [P1_BlowDetecter instance].delegate = self;
 }
 - (void)onExit
 {

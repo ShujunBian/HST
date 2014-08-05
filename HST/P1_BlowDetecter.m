@@ -27,7 +27,7 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
 {
     if(!blowDetecterInstance)
     {
-        blowDetecterInstance = [[[P1_BlowDetecter alloc] init]autorelease];
+        blowDetecterInstance = [[P1_BlowDetecter alloc] init];
     }
     return blowDetecterInstance;
 }
