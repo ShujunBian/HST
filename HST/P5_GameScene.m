@@ -13,6 +13,8 @@
 #import "MainMapHelper.h"
 #import "HelloWorldLayer.h"
 #import "NSNotificationCenter+Addition.h"
+#import "CCBReader.h"
+#import "CircleTransition.h"
 
 #define kHoleCoverTag 1
 
@@ -151,16 +153,17 @@
     [undergrounScene releaseBellAndDrawArray];
     [NSNotificationCenter unregister:undergrounScene];
 
+    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
     [[CCDirector sharedDirector] replaceScene:
-     [CCTransitionFade transitionWithDuration:1.0
-                                        scene:[HelloWorldLayer scene]]];
+     [CircleTransition transitionWithDuration:1.0
+                                        scene:scene]];
 }
 
 #pragma mark - 退出时释放内存
 - (void)dealloc
 {
     [super dealloc];
-    [[CCTextureCache sharedTextureCache]removeAllTextures];
+//    [[CCTextureCache sharedTextureCache]removeAllTextures];
 }
 
 @end

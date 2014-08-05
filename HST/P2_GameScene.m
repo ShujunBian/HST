@@ -19,6 +19,7 @@
 #import "P2_LittleFlyBoom.h"
 #import "MainMapHelper.h"
 #import "HelloWorldLayer.h"
+#import "CircleTransition.h"
 
 #define EVERYDELTATIME 0.016667
 
@@ -69,31 +70,35 @@
 {
     self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
     
-    [CDAudioManager configure:kAMM_PlayAndRecord];
-    [[CDAudioManager sharedManager] playBackgroundMusic:@"P2_rhythm.mp3" loop:NO];
-    
     CCLayerColor * background = [CCLayerColor layerWithColor:ccc4(183,255,225,255)];
     [self addChild:background z:-10];
     
     grassLayer = (P2_GrassLayer *)[CCBReader nodeGraphFromFile:@"P2_Grass.ccbi"];
     [self addChild:grassLayer z:1];
     
-    monster = (P2_Monster *)[CCBReader nodeGraphFromFile:@"P2_Monster.ccbi"];
+    self.monster = (P2_Monster *)[CCBReader nodeGraphFromFile:@"P2_Monster.ccbi"];
     [self addChild:monster z:0];
 //    monster = nil;
     
     monster.position = CGPointMake(512, -5);
-    CCBAnimationManager* animationManager = monster.userObject;
-    [animationManager runAnimationsForSequenceNamed:@"LittleJump"];
     
     firstLittleMonster = (P2_LittleMonster *)[CCBReader nodeGraphFromFile:@"P2_FirstLittlemonster.ccbi"];
     [self addChild:firstLittleMonster z:0];
     firstLittleMonster.position = CGPointMake(370, 0);
-    [self performSelector:@selector(letFirstLittleMonsterJump) withObject:self afterDelay:0.2];
+
     
     secondLittleMonster = (P2_LittleMonster *)[CCBReader nodeGraphFromFile:@"P2_SecondLittlemonster.ccbi"];
     [self addChild:secondLittleMonster z:0];
     secondLittleMonster.position = CGPointMake(260, 0);
+    
+}
+
+- (void)onEnterTransitionDidFinish
+{
+    [super onEnterTransitionDidFinish];
+    CCBAnimationManager* animationManager = monster.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"LittleJump"];
+    [self performSelector:@selector(letFirstLittleMonsterJump) withObject:self afterDelay:0.2];
     [self performSelector:@selector(letSecondLittleMonsterJump) withObject:self afterDelay:0.4];
     
     isFrameCounterShowed = NO;
@@ -103,6 +108,13 @@
     
     [self schedule:@selector(updateEveryDeltaTime:) interval:0.104325 - 0.016667];
     [self scheduleUpdate];
+}
+
+- (void)onEnter
+{
+    [super onEnter];
+    [CDAudioManager configure:kAMM_PlayAndRecord];
+    [[CDAudioManager sharedManager] playBackgroundMusic:@"P2_rhythm.mp3" loop:NO];
 }
 
 - (void)letFirstLittleMonsterJump
@@ -254,18 +266,19 @@
     [self releaseCurrentFlyObjectOnScreenBubbles];
     [self releaseMusicAndEffect];
     
+    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
     [[CCDirector sharedDirector] replaceScene:
-     [CCTransitionFade transitionWithDuration:1.0
-                                        scene:[HelloWorldLayer scene]]];
+     [CircleTransition transitionWithDuration:1.0
+                                        scene:scene]];
 }
 
 #pragma mark - 退出时释放内存
 - (void)dealloc
 {
-    [monster removeFromParentAndCleanup:YES];
-    monster = nil;
+    [self.monster removeFromParentAndCleanup:YES];
+    self.monster = nil;
     [super dealloc];
-    [[CCTextureCache sharedTextureCache]removeAllTextures];
+//    [[CCTextureCache sharedTextureCache]removeAllTextures];
 }
 
 #pragma mark - 释放数组和动画委托

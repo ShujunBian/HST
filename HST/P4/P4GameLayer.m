@@ -19,6 +19,8 @@
 #import "MainMapHelper.h"
 #import "HelloWorldLayer.h"
 #import "SimpleAudioEngine.h"
+#import "CCBReader.h"
+#import "CircleTransition.h"
 
 //#define BOTTLE_MOVE_DELAY 0.2f
 #define BOTTLE_SCALE_X_MAX 1.2f
@@ -904,9 +906,10 @@
         [child unscheduleAllSelectors];
     }
     
+    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
     [[CCDirector sharedDirector] replaceScene:
-     [CCTransitionFade transitionWithDuration:1.0
-                                        scene:[HelloWorldLayer scene]]];
+     [CircleTransition transitionWithDuration:1.0
+                                        scene:scene]];
 }
 
 

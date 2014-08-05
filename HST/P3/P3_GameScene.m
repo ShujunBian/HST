@@ -18,6 +18,7 @@
 #import "P3_GreenMonster.h"
 #import "P3_RedMonster.h"
 #import "P3_CeruleanMonster.h"
+#import "CircleTransition.h"
 
 @interface P3_GameScene ()
 
@@ -351,9 +352,10 @@
         [child unscheduleAllSelectors];
     }
     
+    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
     [[CCDirector sharedDirector] replaceScene:
-     [CCTransitionFade transitionWithDuration:1.0
-                                        scene:[HelloWorldLayer scene]]];
+     [CircleTransition transitionWithDuration:1.0
+                                        scene:scene]];
 }
 
 @end

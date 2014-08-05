@@ -48,7 +48,7 @@
     [self.p3Layer retain];
     [self.p4Layer retain];
     [self.p5Layer retain];
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
+
 //    [self.p1Layer removeFromParentAndCleanup:YES];
 //    [self.p2Layer removeFromParentAndCleanup:YES];
 //    [self.p3Layer removeFromParentAndCleanup:YES];
@@ -59,6 +59,10 @@
 //    self.p3Layer = nil;
 //    self.p4Layer = nil;
 //    self.p5Layer = nil;
+    if (![SimpleAudioEngine sharedEngine].isBackgroundMusicPlaying)
+    {
+        [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
+    }    
 }
 - (void)onExitTransitionDidStart
 {

@@ -13,6 +13,7 @@
 #import "SimpleAudioEngine.h"
 #import "HelloWorldLayer.h"
 #import "NSNotificationCenter+Addition.h"
+#import "CircleTransition.h"
 
 @interface P1_GameScene()
 {
@@ -64,8 +65,7 @@ static NSMutableArray *bubbleScales = nil;
 {
     self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
     
-    [CDAudioManager configure:kAMM_PlayAndRecord];
-    [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
+
     
     [NSNotificationCenter registerShouldReleseRestBubbleNotificationWithSelector:@selector(releaseBubbleReadyToRelease) target:self];
     
@@ -85,6 +85,12 @@ static NSMutableArray *bubbleScales = nil;
     
     self.toolColorLayer.visible = NO;
     [self schedule:@selector(updateBlow:)];
+}
+- (void)onEnter
+{
+    [super onEnter];
+    [CDAudioManager configure:kAMM_PlayAndRecord];
+    [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
 }
 - (void)onExit
 {
@@ -268,9 +274,10 @@ static NSMutableArray *bubbleScales = nil;
     
     [[CDAudioManager sharedManager] stopBackgroundMusic];
     
+    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
     [[CCDirector sharedDirector] replaceScene:
-     [CCTransitionFade transitionWithDuration:1.0
-                                        scene:[HelloWorldLayer scene]]];
+     [CircleTransition transitionWithDuration:1.0
+                                        scene:scene]];
 }
 
 #pragma mark - 退出时释放内存
@@ -278,7 +285,7 @@ static NSMutableArray *bubbleScales = nil;
 {
     [super dealloc];
     
-    [[CCTextureCache sharedTextureCache]removeAllTextures];
+//    [[CCTextureCache sharedTextureCache]removeAllTextures];
     [P1_BlowDetecter purge];
 }
 
