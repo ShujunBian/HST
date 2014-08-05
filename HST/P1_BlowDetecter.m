@@ -7,6 +7,9 @@
 //
 
 #import "P1_BlowDetecter.h"
+#import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
+#import <CoreAudio/CoreAudioTypes.h>
 
 @interface P1_BlowDetecter ()
 {
@@ -60,7 +63,13 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
         NSError *error;
 		
         recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
-		
+		NSError *setCategoryError = nil;
+        
+        BOOL success = [[AVAudioSession sharedInstance]
+                        setCategory:
+//                        AVAudioSessionCategoryRecord
+                        AVAudioSessionCategoryPlayAndRecord
+                        error: &setCategoryError];
         if (recorder) {
             [recorder prepareToRecord];
             recorder.meteringEnabled = YES;
@@ -76,7 +85,9 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
 	[recorder updateMeters];
     
 	const double ALPHA = 0.05;
+    
 	double peakPowerForChannel = pow(10, (0.05 * [recorder peakPowerForChannel:0]));
+//    NSLog(@"%f,%f,%f",[recorder peakPowerForChannel:0],[recorder peakPowerForChannel:1],[recorder peakPowerForChannel:2]);
 	lowPassResults = ALPHA * peakPowerForChannel + (1.0 - ALPHA) * lowPassResults;
 	
 	if (lowPassResults > 0.8)

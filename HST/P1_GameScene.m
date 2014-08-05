@@ -89,9 +89,14 @@ static NSMutableArray *bubbleScales = nil;
 - (void)onEnter
 {
     [super onEnter];
-    [CDAudioManager configure:kAMM_PlayAndRecord];
-    [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P1_bg.mp3"];
     [P1_BlowDetecter instance].delegate = self;
+
+
+}
+- (void)onEnterTransitionDidFinish
+{
+    [super onEnterTransitionDidFinish];
 }
 - (void)onExit
 {

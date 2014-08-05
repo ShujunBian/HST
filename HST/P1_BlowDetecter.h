@@ -6,9 +6,7 @@
 //  Copyright (c) 2013年 sbhhbs. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <AVFoundation/AVFoundation.h>
-#import <CoreAudio/CoreAudioTypes.h>
+
 
 @class P1_BlowDetecter;
 @protocol P1_BlowDetecterDelegate <NSObject>
