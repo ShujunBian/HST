@@ -10,7 +10,7 @@
 
 BOOL colorCompare(ccColor3B c1, ccColor3B c2);
 
-float colorChange(float colorFrom, float colorTo, float speed);
+float colorChange(float colorFrom, float colorTo, float speed, float currentRadius);
 
 float maxThree(float a, float b, float c);
 float minThree(float a, float b, float c);

@@ -18,8 +18,10 @@
 
 #define FLOW_SPEED_MAX 8.f
 #define FLOW_SPEED_MIN 1.f
-#define FLOW_SPEED_REDUCE_RADIO 0.995f;
-#define FLOW_SPEED_ADD_RADIO 1.05f;
+#define FLOW_SPEED_REDUCE_RADIO 0.995f
+#define FLOW_SPEED_ADD_RADIO 1.05f
+
+#define WATER_COLOR_CHANGE_SPEED 0.015f
 
 @interface P4WaterRecord ()
 - (void)checkFlowSpeedMinAndMax;
@@ -28,6 +30,16 @@
 
 @implementation P4WaterRecord
 
+#pragma mark - Getter And Setter Method
+- (void)setColorTo:(ccColor3B)colorTo
+{
+    _colorTo = colorTo;
+    self.colorFrom = self.color;
+    self.colorRadius = 0.f;
+}
+
+
+#pragma mark - Init
 - (id)init
 {
     self = [super init];
@@ -47,7 +59,7 @@
         self.waveScale = WAVE_SCALE_LOWEST;
 
         self.isChangeColor = NO;
-        self.colorChangeSpeed = 1.f;
+        self.colorChangeSpeed = WATER_COLOR_CHANGE_SPEED;
     }
     return self;
 }
@@ -75,9 +87,14 @@
         else
         {
             float r,g,b;
-            r = colorChange(self.color.r, self.colorTo.r, self.colorChangeSpeed);
-            g = colorChange(self.color.g, self.colorTo.g, self.colorChangeSpeed);
-            b = colorChange(self.color.b, self.colorTo.b, self.colorChangeSpeed);
+            r = colorChange(self.colorFrom.r, self.colorTo.r, self.colorChangeSpeed, self.colorRadius);
+            g = colorChange(self.colorFrom.g, self.colorTo.g, self.colorChangeSpeed, self.colorRadius);
+            b = colorChange(self.colorFrom.b, self.colorTo.b, self.colorChangeSpeed, self.colorRadius);
+            self.colorRadius += self.colorChangeSpeed;
+            if (self.colorRadius >= 1.f)
+            {
+                self.colorRadius = 1.f;
+            }
 //            if (r == self.colorTo.r || g == self.colorTo.g || b == self.colorTo.b)
 //            {
 //                CCLOG(@"r,g,b:%f,%f,%f  toRGB:%d,%d,%d",r,g,b,self.colorTo.r,self.colorTo.g, self.colorTo.r);

@@ -309,28 +309,27 @@
 
         float xianXinJu = 96 - lheight;
         float xian = sqrt( 204 * 204 - xianXinJu * xianXinJu);
-        CGPoint pos = ccp(181 - xianXinJu * sin(radius) - (xian + offset) * cos(radius),
-                          96 - xianXinJu * cos(radius) + (xian + offset) * sin(radius));
+        CGPoint pos = ccp(181 - xianXinJu * sin(radius) - (xian + offset) * cos(radius), 96 - xianXinJu * cos(radius) + (xian + offset) * sin(radius));
 
         
         
-        CGPoint clearLeftBottom = ccp(pos.x + textureHeight * sin(radius), pos.y + textureHeight * cos(radius));
-        CGPoint clearRightBottom = ccp(clearLeftBottom.x + textureWidth * 2 * cos(radius), clearLeftBottom.y - textureWidth * 2 * sin(radius));
-        float clearHeight = 408;
-        CGPoint clearLeftTop = ccp(clearLeftBottom.x + clearHeight * sin(radius), clearLeftBottom.y + clearHeight * cos(radius));
-        CGPoint clearRightTop = ccp(clearRightBottom.x + clearHeight * sin(radius), clearRightBottom.y + clearHeight * cos(radius));
-        CGPoint clearPoints[4] = {clearLeftBottom, clearLeftTop, clearRightTop, clearRightBottom};
+//        CGPoint clearLeftBottom = ccp(pos.x + textureHeight * sin(radius), pos.y + textureHeight * cos(radius));
+//        CGPoint clearRightBottom = ccp(clearLeftBottom.x + textureWidth * 2 * cos(radius), clearLeftBottom.y - textureWidth * 2 * sin(radius));
+//        float clearHeight = 408;
+//        CGPoint clearLeftTop = ccp(clearLeftBottom.x + clearHeight * sin(radius), clearLeftBottom.y + clearHeight * cos(radius));
+//        CGPoint clearRightTop = ccp(clearRightBottom.x + clearHeight * sin(radius), clearRightBottom.y + clearHeight * cos(radius));
+//        CGPoint clearPoints[4] = {clearLeftBottom, clearLeftTop, clearRightTop, clearRightBottom};
         
         
         float fillHeight = BAN_JIN - xianXinJu;
-        CGPoint fillLeftTop = pos;
+        CGPoint fillLeftTop = ccp(pos.x - textureWidth * cos(radius), pos.y + textureWidth * sin(radius));
 //        fillLeftTop.y += 20;
-        CGPoint fillRightTop = ccp(fillLeftTop.x + textureWidth * 2 * cos(radius), fillLeftTop.y - textureWidth * 2 * sin(radius));
+        CGPoint fillRightTop = ccp(fillLeftTop.x + textureWidth * 3 * cos(radius), fillLeftTop.y - textureWidth * 3 * sin(radius));
         
         
         CGPoint fillLeftBottom = ccp(fillLeftTop.x - fillHeight * sin(radius), fillLeftTop.y - fillHeight * cos(radius));
         
-        CGPoint fillRightBottom = ccp(fillLeftBottom.x + textureWidth * 2 * cos(radius), fillLeftBottom.y - textureWidth * 2 * sin(radius));
+        CGPoint fillRightBottom = ccp(fillLeftBottom.x + textureWidth * 3 * cos(radius), fillLeftBottom.y - textureWidth * 3 * sin(radius));
         
         CGPoint fillPoints[4] = {fillLeftBottom, fillLeftTop, fillRightTop, fillRightBottom};
         
@@ -342,10 +341,10 @@
         textureSprite.position = ccp(textureSprite.position.x + textureWidth * cos(radius), textureSprite.position.y - textureWidth * sin(radius));
         
         
-        if (i == 0)
-        {
-            ccDrawSolidPoly(clearPoints, 4, ccc4f(0, 0, 0, 0));
-        }
+//        if (i == 0)
+//        {
+//            ccDrawSolidPoly(clearPoints, 4, ccc4f(0, 0, 0, 0));
+//        }
 
 
         [textureSprite visit];
@@ -421,12 +420,15 @@
         
         float fillHeight = BAN_JIN - xianXinJu;
         CGPoint fillLeftTop = pos;
-        CGPoint fillRightTop = ccp(fillLeftTop.x + textureWidth * 2 * cos(radius), fillLeftTop.y - textureWidth * 2 * sin(radius));
+
+        fillLeftTop = ccp(fillLeftTop.x - textureWidth  * cos(radius), fillLeftTop.y + textureWidth  * sin(radius));
+        CGPoint fillRightTop = ccp(fillLeftTop.x + textureWidth * 3 * cos(radius), fillLeftTop.y - textureWidth * 3 * sin(radius));
+
         
         
         CGPoint fillLeftBottom = ccp(fillLeftTop.x - fillHeight * sin(radius), fillLeftTop.y - fillHeight * cos(radius));
         
-        CGPoint fillRightBottom = ccp(fillLeftBottom.x + textureWidth * 2 * cos(radius), fillLeftBottom.y - textureWidth * 2 * sin(radius));
+        CGPoint fillRightBottom = ccp(fillLeftBottom.x + textureWidth * 3 * cos(radius), fillLeftBottom.y - textureWidth * 3 * sin(radius));
         
         
 
