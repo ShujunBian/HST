@@ -14,6 +14,7 @@
 #import "HelloWorldLayer.h"
 #import "NSNotificationCenter+Addition.h"
 #import "CircleTransition.h"
+#import "VolumnHelper.h"
 
 @interface P1_GameScene()
 {
@@ -89,9 +90,17 @@ static NSMutableArray *bubbleScales = nil;
 - (void)onEnter
 {
     [super onEnter];
-    [CDAudioManager configure:kAMM_PlayAndRecord];
-    [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
+//    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
+//    [CDAudioManager configure:kAMM_PlayAndRecord];
+//    [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
 }
+
+- (void)onExitTransitionDidStart
+{
+    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
+}
+
 - (void)onExit
 {
     [super onExit];

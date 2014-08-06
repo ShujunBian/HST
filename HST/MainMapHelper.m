@@ -7,6 +7,7 @@
 //
 
 #import "MainMapHelper.h"
+#import "SimpleAudioEngine.h"
 
 @implementation MainMapHelper
 
@@ -71,4 +72,5 @@
 
 
 }
+
 @end
