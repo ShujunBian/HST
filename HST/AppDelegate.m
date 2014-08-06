@@ -10,6 +10,7 @@
 
 #import "AppDelegate.h"
 #import "IntroLayer.h"
+#import "P1_BlowDetecter.h"
 
 @implementation MyNavigationController
 

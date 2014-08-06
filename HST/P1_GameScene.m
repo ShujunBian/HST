@@ -79,7 +79,7 @@ static NSMutableArray *bubbleScales = nil;
         [self loadBubbleAttributes];
     }
     
-    [P1_BlowDetecter instance].delegate = self;
+
     
     self.currentOnScreenBubbles = [NSMutableArray array];
     self.bubblesReadyToRelease = [NSMutableArray array];
@@ -90,10 +90,18 @@ static NSMutableArray *bubbleScales = nil;
 - (void)onEnter
 {
     [super onEnter];
-    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
-//    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
-//    [CDAudioManager configure:kAMM_PlayAndRecord];
-//    [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
+//    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
+////    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
+////    [CDAudioManager configure:kAMM_PlayAndRecord];
+////    [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P1_bg.mp3"];
+    [P1_BlowDetecter instance].delegate = self;
+
+
+}
+- (void)onEnterTransitionDidFinish
+{
+    [super onEnterTransitionDidFinish];
 }
 
 - (void)onExitTransitionDidStart
