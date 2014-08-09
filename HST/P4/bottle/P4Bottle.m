@@ -15,10 +15,13 @@
 
 #import "P4GameLayer.h"
 
+
 #define FOOT_SCALE_DURATION 0.3f
 
 @interface P4Bottle ()
 @property (strong, nonatomic) CCBAnimationManager* animationManager;
+
+@property (strong, nonatomic) NSMutableArray* soundObjArray;
 
 - (void)leftEarPressed;
 - (void)rightEarPressed;
@@ -83,7 +86,7 @@
     self.waterOut1.scaleX = -1;
     
 //    self.waterInOriginLife = self.waterInLeft.life;
-    
+    self.soundObjArray = [NSMutableArray array];
 }
 - (void)onExit
 {
@@ -102,7 +105,7 @@
     self.waterOut1 = nil;
     self.waterOut2 = nil;
     self.animationManager = nil;
-    
+    self.soundObjArray = nil;
 //    [self.leftFoot stopAllActions];
 //    [self.rightFoot stopAllActions];
 
@@ -236,6 +239,12 @@
 #pragma mark - Add Water
 - (void)beginAddWater:(P4Monster*)monster
 {
+//    [self beginBottleSound];
+    P4MonsterSoundObj* obj = [[[P4MonsterSoundObj alloc] initWithMonster:monster] autorelease];
+    obj.delegate = self;
+//    [obj beginSound];
+    [self.soundObjArray addObject:obj];
+    
     ++_addCount;
     
     BOOL fIsRight = YES;
@@ -332,6 +341,8 @@
 
 - (void)bottleMoveWithDeltaX:(float)deltaX deltaY:(float)deltaY
 {
+    [self beginBottleSound];
+    
     [self.waterLayer mergeWater];
     [self.waterLayer waterMoveWithDeltaX:deltaX deltaY:deltaY];
     [self startEarAnimation];
@@ -339,6 +350,8 @@
 - (void)bottleMoveBack:(float)delay
 {
     [self performSelector:@selector(stopEarAnimation) withObject:nil afterDelay:delay];
+//    [self performSelector:@selector(endBottleSound) withObject:nil afterDelay:delay];
+
 //    [self stopEarAnimation];
 }
 
@@ -372,6 +385,9 @@
 }
 - (void)endWaterOut
 {
+    [self endBottleSound];
+    [self.soundObjArray removeAllObjects];
+    
     [self.waterOut1 stopSystem];
     [self.waterOut2 stopSystem];
     [self.leftFoot stopAllActions];
@@ -398,5 +414,30 @@
 - (void)worldSceneConfigure
 {
     [self.waterLayer worldSceneConfigure];
+}
+
+#pragma mark - Sound
+- (void)beginBottleSound
+{
+    for (P4MonsterSoundObj* obj in self.soundObjArray)
+    {
+        [obj performSelector:@selector(beginSound) withObject:nil afterDelay:CCRANDOM_0_1() * 1.f];
+//        [obj beginSound];
+    }
+}
+- (void)endBottleSound
+{
+    for (P4MonsterSoundObj* obj in self.soundObjArray)
+    {
+        [obj endSound];
+    }
+}
+
+#pragma mark - P4MonsterSoundObjDelegate
+- (float)getMaxDelayTime
+{
+    float scale = self.waterLayer.averageWaterScale;   //0.2~1.f
+    
+    return 2 / scale;
 }
 @end

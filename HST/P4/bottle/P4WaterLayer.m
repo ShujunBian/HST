@@ -52,10 +52,11 @@
 //Merge Water
 @property (assign, nonatomic) BOOL isMergingWater;
 
-
 //Rotate
 @property (assign, nonatomic) float rotate;
 @property (assign, nonatomic) float rotateTo;
+
+
 //@property (assign, nonatomic) BOOL fToRotate;
 
 
@@ -74,7 +75,27 @@
 @end
 
 @implementation P4WaterLayer
+@dynamic averageWaterScale;
 @synthesize waterRecordArray = _waterRecordArray;
+
+- (float)averageWaterScale
+{
+    if (self.waterRecordArray.count == 0)
+    {
+        return 0.f;
+    }
+    else
+    {
+        float s = 0.f;
+        for (P4WaterRecord* r in self.waterRecordArray)
+        {
+            s += r.waveScale;
+        }
+        s /= self.waterRecordArray.count;
+        return s;
+    }
+}
+
 - (NSMutableArray*)waterRecordArray
 {
     

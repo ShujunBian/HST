@@ -64,6 +64,8 @@
 @property (assign, nonatomic) float bottleOffsetX;
 @property (assign, nonatomic) float bottleOffsetY;
 
+@property (assign, nonatomic) CGPoint tablePrePosition;
+
 
 //////////Shake
 @property (strong, nonatomic) P4Monster* shakeMonster;
@@ -78,7 +80,7 @@
 
 //Sound Effect Name
 
-@property (strong, nonatomic) NSArray* monsterShakeEffectNames;
+//@property (strong, nonatomic) NSArray* monsterShakeEffectNames;
 @property (assign, nonatomic) ALuint currentSHakeEffectId;
 
 @end
@@ -174,7 +176,8 @@
     self.backgroundSprite = nil;
     self.shakeSpray = nil;
     self.shakeMonster = nil;
-    self.monsterShakeEffectNames = nil;
+//    self.monsterShakeEffectNames = nil;
+    self.table = nil;
 }
 
 - (void)onExitTransitionDidStart
@@ -194,6 +197,7 @@
     [self.purpleMonster retain];
     [self.blueMonster retain];
     [self.redMonster retain];
+    [self.table retain];
     
     
     
@@ -230,7 +234,7 @@
     self.redMonster.waterColor = ccc3(254.f, 70.f, 100.f);
     self.redMonster.selectedSoundEffectName = @"p4_monster5.mp3";
 
-    self.monsterShakeEffectNames = @[@"p4_monster_shake.mp3",@"p4_monster_shake2.mp3"];
+//    self.monsterShakeEffectNames = @[@"p4_monster_shake.mp3",@"p4_monster_shake2.mp3"];
     self.currentSHakeEffectId = 0;
     
     self.isMonsterAnimated = NO;
@@ -254,7 +258,7 @@
     self.bottleTouchPoint = CGPointZero;
     self.bottleTouchPointNow = CGPointZero;
  
-    
+    self.tablePrePosition = self.table.position;
 //    [self schedule:@selector(scaleUpdate)];
 //    [self schedule:@selector(scaleUpdateHelper) interval:0.018f];
     
@@ -358,6 +362,8 @@
 #pragma mark - Action
 - (void)hideMonstersExcept:(P4Monster*)monster
 {
+    
+    
     for (P4Monster* m in self.monstersArray)
     {
         if (m != monster)
@@ -372,6 +378,11 @@
             [m runAction:[CCSequence actionWithArray:@[callBlock, easeTo]]];
         }
     }
+    CGPoint toPosition = ccp(self.tablePrePosition.x, self.tablePrePosition.y - 150);
+    CCActionInterval* moveTo = [CCMoveTo actionWithDuration:1.f position:toPosition];
+    CCActionInterval* easeTo = [CCEaseExponentialOut actionWithAction:moveTo];
+    [self.table runAction:easeTo];
+    
 }
 - (void)showMonstersExcept:(P4Monster*)monster totalDuration:(float)duration
 {
@@ -400,6 +411,20 @@
 //                                                       easeTo, callBlock]]];
         }
     }
+    float moveDuration = 1.f;
+    
+    float delayDuration = duration > moveDuration? (duration - moveDuration) : 0;
+    moveDuration = duration - delayDuration;
+    
+    
+    //            CCDelayTime* delay = [CCDelayTime actionWithDuration:delayDuration];
+    CCActionInterval* moveTo = [CCMoveTo actionWithDuration:moveDuration position:self.tablePrePosition];
+    CCActionInterval* easeTo = [CCEaseExponentialOut actionWithAction:moveTo];
+    [self.table runAction:easeTo];
+    
+    
+    
+    
     CCCallBlock* callBlock = [CCCallBlock actionWithBlock:^{
         self.isMonsterAnimated = NO;
     }];
@@ -509,9 +534,9 @@
     
     CCFiniteTimeAction* beginAddWater = [[[CCCallBlock alloc] initWithBlock:^{
 
-        int effectIndex = (int)(CCRANDOM_0_1() * 2);
-        effectIndex = effectIndex != 2? effectIndex : 1;
-        self.currentSHakeEffectId = [[SimpleAudioEngine sharedEngine] playEffect:self.monsterShakeEffectNames[effectIndex]];
+//        int effectIndex = (int)(CCRANDOM_0_1() * 2);
+//        effectIndex = effectIndex != 2? effectIndex : 1;
+//        self.currentSHakeEffectId = [[SimpleAudioEngine sharedEngine] playEffect:self.monsterShakeEffectNames[effectIndex]];
         
         [self.bottle startWaterIn:monster];
     }] autorelease];
@@ -626,7 +651,7 @@
 
     }] autorelease];
     
-    CCActionInterval* easeOutBack = [CCEaseSineOut actionWithAction:spawnBack ];
+    CCActionInterval* easeOutBack = [CCEaseSineOut actionWithAction:spawnBack];
 //    CCActionInterval* easeOutBack = [CCEaseOut actionWithAction:spawnBack rate:1.05f];
     
     CCFiniteTimeAction* finish = [[[CCCallBlock alloc] initWithBlock:^{
