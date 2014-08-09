@@ -12,6 +12,7 @@
 #import "P4WaterRecord.h"
 #import "P4Extension.h"
 #import "CCSprite+getRect.h"
+#import "SimpleAudioEngine.h"
 
 #define WATER_Z_ORDER_START 10
 #define BUBBLE_Z_ORDER 100
@@ -46,6 +47,8 @@
 @property (assign, nonatomic) BOOL addWaterIsRight;
 
 @property (assign, nonatomic) float waterFlowTextureWidth;
+@property (assign, nonatomic) ALuint waterReleaseSoundId;
+@property (assign, nonatomic) BOOL fWaterReleaseStopSchedule;
 
 - (void)addWaterWithColor:(ccColor3B)waterColor;
 
@@ -124,6 +127,7 @@
     [self.bottleMask retain];
     [self.sprayLeft retain];
     [self.sprayRight retain];
+    self.fWaterReleaseStopSchedule = NO;
     
     
     [self.bottleMask removeFromParent];
@@ -554,8 +558,60 @@
     waterRecord.flowSpeedMin = 2.f;
     [self.waterRecordArray addObject:waterRecord];
 }
+
+- (void)waterReleaseSoundUpdate
+{
+    if (self.fReleaseWater)
+    {
+        [[SimpleAudioEngine sharedEngine] stopEffect:self.waterReleaseSoundId];
+        self.waterReleaseSoundId = 0;
+        self.waterReleaseSoundId = [[SimpleAudioEngine sharedEngine] playEffect:@"p4_monster_shake.mp3"];
+        [self performSelector:@selector(waterReleaseSoundUpdate) withObject:nil afterDelay:11.f];
+    }
+}
+
+
+- (void)waterReleaseSoundStop
+{
+    if (!self.fWaterReleaseStopSchedule)
+    {
+        [[CCDirector sharedDirector].scheduler scheduleSelector:@selector(waterReleaseSoundStopUpdate) forTarget:self interval:0.045f paused:NO];
+        self.fWaterReleaseStopSchedule = YES;
+    }
+
+}
+- (void)resumeEffectVolume
+{
+    [SimpleAudioEngine sharedEngine].effectsVolume = 1.f;
+}
+- (void)waterReleaseSoundStopUpdate
+{
+    float volume = [SimpleAudioEngine sharedEngine].effectsVolume;
+    volume -= 0.03f;
+    if (volume < 0.f)
+    {
+        [[SimpleAudioEngine sharedEngine] stopEffect:self.waterReleaseSoundId];
+        [self performSelector:@selector(resumeEffectVolume) withObject:nil afterDelay:0.05f];
+
+        self.waterReleaseSoundId = 0;
+        [[CCDirector sharedDirector].scheduler unscheduleSelector:@selector(waterReleaseSoundStopUpdate) forTarget:self];
+        self.fWaterReleaseStopSchedule = NO;
+    }
+    else
+    {
+        [SimpleAudioEngine sharedEngine].effectsVolume = volume;
+    }
+}
+
 - (void)beginReleaseWater
 {
+    if (self.waterRecordArray.count)
+    {
+        self.waterReleaseSoundId = [[SimpleAudioEngine sharedEngine] playEffect:@"p4_monster_shake.mp3"];
+    }
+    [self performSelector:@selector(waterReleaseSoundUpdate) withObject:nil afterDelay:11.f];
+    
+    
     if (self.waterRecordArray.count)
     {
         self.fReleaseWater = YES;
@@ -579,6 +635,11 @@
     {
         if (self.waterRecordArray.count)
         {
+            if (self.waterRecordArray.count == 1)
+            {
+                //End Release Water
+                [self waterReleaseSoundStop];
+            }
             P4WaterRecord* record = self.waterRecordArray[0];
             record.height -= 2;
             if (record.height < 0)
@@ -594,6 +655,7 @@
         }
         else
         {
+            
             self.fReleaseWater = NO;
             [self.delegate endWaterOut];
         }
@@ -922,7 +984,10 @@
     
     if (startPoint.y - yuanXin.y + BAN_JIN > waterHeight)
     {
-        return;
+        float height = waterHeight * CCRANDOM_0_1() * 0.5;
+        startPoint.y = height + yuanXin.y - BAN_JIN;
+        
+//        return;
     }
 
     float boHeight = sqrt(BAN_JIN * BAN_JIN - (yuanXin.x - startPoint.x) * (yuanXin.x - startPoint.x)) + BAN_JIN;

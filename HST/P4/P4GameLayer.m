@@ -940,8 +940,8 @@
 - (void)returnToMainMap
 {
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-        [[CCDirector sharedDirector] replaceScene:scene];
-    return;
+//        [[CCDirector sharedDirector] replaceScene:scene];
+//    return;
     [self changeToScene:scene];
     
 //    [[CCDirector sharedDirector] replaceScene:

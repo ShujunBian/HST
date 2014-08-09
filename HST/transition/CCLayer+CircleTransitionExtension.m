@@ -14,24 +14,25 @@
 @implementation CCLayer (CircleTransitionExtension)
 - (void)showScene
 {
-    return;
+//    return;
+#warning 这里加背景音乐变大
     CircleTransitionLayer* layer = [CircleTransitionLayer layer];
     [[CCDirector sharedDirector].runningScene addChild:layer];
 //    [self addChild:layer];
-    [layer showSceneWithDuration:1.f onCompletion:^{
+    [layer showSceneWithDuration:0.7f onCompletion:^{
         [layer removeFromParentAndCleanup:YES];
     }];
 }
 
 - (void)changeToScene:(CCScene*)scene
 {
-    
-        [[CCDirector sharedDirector] replaceScene:scene];
-    return;
+#warning 这里加背景音乐变小
+//        [[CCDirector sharedDirector] replaceScene:scene];
+//    return;
     CircleTransitionLayer* layer = [CircleTransitionLayer layer];
     [[CCDirector sharedDirector].runningScene addChild:layer];
 //    [self addChild:layer];
-    [layer hideSceneWithDuration:1.f onCompletion:^{
+    [layer hideSceneWithDuration:0.7f onCompletion:^{
         [layer removeFromParentAndCleanup:YES];
         [[CCDirector sharedDirector] replaceScene:scene];
     }];

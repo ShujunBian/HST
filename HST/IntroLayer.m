@@ -79,10 +79,10 @@
 -(void) onEnter
 {
 	[super onEnter];
-    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+//    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
 //    self.processBar.percentage = 1.f;
-    [self changeToScene:scene];
-    return;
+//    [self changeToScene:scene];
+//    return;
     self.loadingCount = 0;
     self.loadingImageNameArray =
     @[

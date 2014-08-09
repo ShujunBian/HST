@@ -112,6 +112,7 @@
     self.radiusSpeed = self.circleMaxRadius / duration;
     
     CCCallBlock* call = [CCCallBlock actionWithBlock:^{
+//        self.leftSprite.scaleX = winSize.width;
         if (block) {
             block();
         }
@@ -119,7 +120,7 @@
     
     //circle
     self.circleSprite.scale = 1;
-    [self.circleSprite runAction:[CCSequence actionOne:[CCScaleTo actionWithDuration:duration scale:0] two:call]];
+    [self.circleSprite runAction:[CCSequence actions:[CCScaleTo actionWithDuration:duration scale:0],[CCDelayTime actionWithDuration:0.05],call, nil]];
     
     //left
     self.leftSprite.scaleX = 0.f;
@@ -127,7 +128,8 @@
     [self.leftSprite runAction:
      [CCSequence actionWithArray:
       @[[CCDelayTime actionWithDuration:delayTime],
-        [CCScaleTo actionWithDuration:winSize.width / 2 / self.radiusSpeed scaleX:winSize.width / 2 scaleY:winSize.height]]]];
+        [CCScaleTo actionWithDuration:winSize.width / 2 / self.radiusSpeed scaleX:winSize.width / 2 scaleY:winSize.height],
+        [CCScaleTo actionWithDuration:0 scale:winSize.width]]]];
     
     
     //right
