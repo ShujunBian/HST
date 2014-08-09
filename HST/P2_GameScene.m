@@ -21,6 +21,7 @@
 #import "HelloWorldLayer.h"
 #import "CircleTransition.h"
 #import "VolumnHelper.h"
+#import "CCLayer+CircleTransitionExtension.h"
 
 #define EVERYDELTATIME 0.016667
 
@@ -104,6 +105,7 @@
 //    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
     [CDAudioManager configure:kAMM_PlayAndRecord];
     [[CDAudioManager sharedManager] playBackgroundMusic:@"P2_rhythm.mp3" loop:NO];
+    [self showScene];
 }
 
 - (void)onExit
@@ -274,9 +276,10 @@
     [self releaseMusicAndEffect];
     
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-    [[CCDirector sharedDirector] replaceScene:
-     [CircleTransition transitionWithDuration:1.0
-                                        scene:scene]];
+    [self changeToScene:scene];
+//    [[CCDirector sharedDirector] replaceScene:
+//     [CircleTransition transitionWithDuration:1.0
+//                                        scene:scene]];
 }
 
 #pragma mark - 退出时释放内存

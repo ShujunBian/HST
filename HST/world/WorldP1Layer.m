@@ -105,5 +105,6 @@ static ccColor3B bubbleColors[] = {
     CCRepeatForever* moveRepeat = [CCRepeatForever actionWithAction:moveSequence];
     [self.dialogIcon runAction:moveRepeat];
 }
+
 @end
 

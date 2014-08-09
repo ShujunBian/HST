@@ -21,6 +21,7 @@
 #import "SimpleAudioEngine.h"
 #import "CCBReader.h"
 #import "CircleTransition.h"
+#import "CCLayer+CircleTransitionExtension.h"
 
 //#define BOTTLE_MOVE_DELAY 0.2f
 #define BOTTLE_SCALE_X_MAX 1.2f
@@ -156,7 +157,9 @@
 //    [te end];
 //    CCSprite* s = [CCSprite spriteWithTexture:te.sprite.texture];
 //    [self addChild:s];
+    [self showScene];
 }
+
 - (void)onExit
 {
 //    [self removeAllChildrenWithCleanup:YES];
@@ -936,16 +939,14 @@
 
 - (void)returnToMainMap
 {
-    [self unscheduleAllSelectors];
-    for (CCNode * child in [self children]) {
-        [child stopAllActions];
-        [child unscheduleAllSelectors];
-    }
-    
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-    [[CCDirector sharedDirector] replaceScene:
-     [CircleTransition transitionWithDuration:1.0
-                                        scene:scene]];
+        [[CCDirector sharedDirector] replaceScene:scene];
+    return;
+    [self changeToScene:scene];
+    
+//    [[CCDirector sharedDirector] replaceScene:
+//     [CircleTransition transitionWithDuration:1.0
+//                                        scene:scene]];
 }
 
 

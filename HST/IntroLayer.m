@@ -14,6 +14,7 @@
 #import "GameLoadingProcessBar.h"
 #import "CircleTransition.h"
 #import "SimpleAudioEngine.h"
+#import "CCLayer+CircleTransitionExtension.h"
 
 #pragma mark - IntroLayer
 
@@ -78,7 +79,10 @@
 -(void) onEnter
 {
 	[super onEnter];
-    
+    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+//    self.processBar.percentage = 1.f;
+    [self changeToScene:scene];
+    return;
     self.loadingCount = 0;
     self.loadingImageNameArray =
     @[
@@ -162,7 +166,8 @@
     {
         CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
         self.processBar.percentage = 1.f;
-        [[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:scene ]];
+        [self changeToScene:scene];
+//        [[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:scene ]];
     }
     
     

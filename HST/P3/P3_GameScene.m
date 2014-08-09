@@ -19,6 +19,7 @@
 #import "P3_RedMonster.h"
 #import "P3_CeruleanMonster.h"
 #import "CircleTransition.h"
+#import "CCLayer+CircleTransitionExtension.h"
 
 @interface P3_GameScene ()
 
@@ -96,6 +97,12 @@
     [_monsterArray addObject:ceruleanMonster];
 }
 
+- (void)onEnter
+{
+    [super onEnter];
+    [self showScene];
+}
+
 - (void)onEnterTransitionDidFinish
 {
     [super onEnterTransitionDidFinish];
@@ -103,6 +110,7 @@
         P3_Monster * monster = (P3_Monster *)[_monsterArray objectAtIndex:i];
         [monster beginningAnimationInDelayTime:0.4 + 0.2 * i];
     }
+    
 }
 
 #pragma mark - 恢复触摸
@@ -353,9 +361,10 @@
     }
     
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-    [[CCDirector sharedDirector] replaceScene:
-     [CircleTransition transitionWithDuration:1.0
-                                        scene:scene]];
+    [self changeToScene:scene];
+//    [[CCDirector sharedDirector] replaceScene:
+//     [CircleTransition transitionWithDuration:1.0
+//                                        scene:scene]];
 }
 
 @end

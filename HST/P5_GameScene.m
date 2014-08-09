@@ -15,6 +15,7 @@
 #import "NSNotificationCenter+Addition.h"
 #import "CCBReader.h"
 #import "CircleTransition.h"
+#import "CCLayer+CircleTransitionExtension.h"
 
 #define kHoleCoverTag 1
 
@@ -77,6 +78,12 @@
     [self setPosition:CGPointMake(-winSize.width / 2 + 60.0, winSize.height /2)];
 
 //    [self performSelector:@selector(moveToUnderground) withObject:self afterDelay:1.3];
+}
+
+- (void)onEnter
+{
+    [super onEnter];
+    [self showScene];
 }
 
 - (void)onEnterTransitionDidFinish
@@ -154,9 +161,10 @@
     [NSNotificationCenter unregister:undergrounScene];
 
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-    [[CCDirector sharedDirector] replaceScene:
-     [CircleTransition transitionWithDuration:1.0
-                                        scene:scene]];
+    [self changeToScene:scene];
+//    [[CCDirector sharedDirector] replaceScene:
+//     [CircleTransition transitionWithDuration:1.0
+//                                        scene:scene]];
 }
 
 #pragma mark - 退出时释放内存

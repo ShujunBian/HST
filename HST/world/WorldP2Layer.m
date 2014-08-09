@@ -69,11 +69,12 @@ static ccColor3B littleFlyColors[] = {
     firanimationManager.delegate = nil;
     CCBAnimationManager* secanimationManager = organeLittleMonster.userObject;
     secanimationManager.delegate = nil;
+    self.dialogIcon = nil;
 }
 
 - (void)dealloc
 {
-    self.dialogIcon = nil;
+
     
     [super dealloc];
 }
@@ -123,4 +124,5 @@ static ccColor3B littleFlyColors[] = {
     CCRepeatForever* moveRepeat = [CCRepeatForever actionWithAction:moveSequence];
     [self.dialogIcon runAction:moveRepeat];
 }
+
 @end

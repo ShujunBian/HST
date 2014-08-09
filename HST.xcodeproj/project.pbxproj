@@ -766,6 +766,8 @@
 		EF2231171995F1B700BCB28E /* p4_table-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF2231151995F1B700BCB28E /* p4_table-hd.png */; };
 		EF2231181995F1B700BCB28E /* p4_table.png in Resources */ = {isa = PBXBuildFile; fileRef = EF2231161995F1B700BCB28E /* p4_table.png */; };
 		EF22311B1995FC7400BCB28E /* P4MonsterSoundObj.m in Sources */ = {isa = PBXBuildFile; fileRef = EF22311A1995FC7400BCB28E /* P4MonsterSoundObj.m */; };
+		EF22311E1996191F00BCB28E /* CircleTransitionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EF22311D1996191F00BCB28E /* CircleTransitionLayer.m */; };
+		EF223121199628A600BCB28E /* CCLayer+CircleTransitionExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EF223120199628A600BCB28E /* CCLayer+CircleTransitionExtension.m */; };
 		EF31302B197E0B5800B61C2A /* CircleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = EF31302A197E0B5800B61C2A /* CircleTransition.m */; };
 		EF403F82197A1D1700C6C8E1 /* p4_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */; };
 		EF403F83197A1D1700C6C8E1 /* p4_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED5197A1D1700C6C8E1 /* p4_background.png */; };
@@ -2015,6 +2017,10 @@
 		EF2231161995F1B700BCB28E /* p4_table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4_table.png; sourceTree = "<group>"; };
 		EF2231191995FC7400BCB28E /* P4MonsterSoundObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P4MonsterSoundObj.h; sourceTree = "<group>"; };
 		EF22311A1995FC7400BCB28E /* P4MonsterSoundObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P4MonsterSoundObj.m; sourceTree = "<group>"; };
+		EF22311C1996191F00BCB28E /* CircleTransitionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTransitionLayer.h; sourceTree = "<group>"; };
+		EF22311D1996191F00BCB28E /* CircleTransitionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTransitionLayer.m; sourceTree = "<group>"; };
+		EF22311F199628A600BCB28E /* CCLayer+CircleTransitionExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCLayer+CircleTransitionExtension.h"; sourceTree = "<group>"; };
+		EF223120199628A600BCB28E /* CCLayer+CircleTransitionExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCLayer+CircleTransitionExtension.m"; sourceTree = "<group>"; };
 		EF313029197E0B5800B61C2A /* CircleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTransition.h; sourceTree = "<group>"; };
 		EF31302A197E0B5800B61C2A /* CircleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTransition.m; sourceTree = "<group>"; };
 		EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_background-hd.png"; sourceTree = "<group>"; };
@@ -3770,6 +3776,10 @@
 			children = (
 				EF313029197E0B5800B61C2A /* CircleTransition.h */,
 				EF31302A197E0B5800B61C2A /* CircleTransition.m */,
+				EF22311C1996191F00BCB28E /* CircleTransitionLayer.h */,
+				EF22311D1996191F00BCB28E /* CircleTransitionLayer.m */,
+				EF22311F199628A600BCB28E /* CCLayer+CircleTransitionExtension.h */,
+				EF223120199628A600BCB28E /* CCLayer+CircleTransitionExtension.m */,
 			);
 			path = transition;
 			sourceTree = "<group>";
@@ -5211,6 +5221,7 @@
 				EF58EB161990C36300B13232 /* GameLoadingProcessBar.m in Sources */,
 				5169CD7518CDE5EE00426E6C /* AppDelegate.m in Sources */,
 				5169CCE518CDE5EE00426E6C /* CCES2Renderer.m in Sources */,
+				EF22311E1996191F00BCB28E /* CircleTransitionLayer.m in Sources */,
 				5169CC5718CDE5ED00426E6C /* CCLabelAtlas.m in Sources */,
 				EF40403B197A572D00C6C8E1 /* WorldP1Layer.m in Sources */,
 				5169CDBB18CDE6B200426E6C /* P2_GameObjects.m in Sources */,
@@ -5226,6 +5237,7 @@
 				EF404038197A56D100C6C8E1 /* WorldLayer.m in Sources */,
 				5169CCB018CDE5ED00426E6C /* CCSpriteFrame.m in Sources */,
 				1801E74918E594FC004E0856 /* P4Bottle.m in Sources */,
+				EF223121199628A600BCB28E /* CCLayer+CircleTransitionExtension.m in Sources */,
 				EF404034197A1D8500C6C8E1 /* WXYSampleMonster.m in Sources */,
 				5169CDBC18CDE6B200426E6C /* P2_GameScene.m in Sources */,
 				5169CC1D18CDE5ED00426E6C /* CCActionProgressTimer.m in Sources */,
