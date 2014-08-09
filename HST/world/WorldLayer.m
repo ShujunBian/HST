@@ -11,7 +11,7 @@
 #import "AppDelegate.h"
 #import "CCBReader.h"
 #import "MonsterEyeTestLayer.h"
-
+#import "VolumnHelper.h"
 #import "SimpleAudioEngine.h"
 
 
@@ -67,8 +67,12 @@
 - (void)onExitTransitionDidStart
 {
     [super onExitTransitionDidStart];
+    
+//    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
+    
     [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 }
+
 - (void)onExit
 {
     [super onExit];

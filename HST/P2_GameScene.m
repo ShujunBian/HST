@@ -20,6 +20,7 @@
 #import "MainMapHelper.h"
 #import "HelloWorldLayer.h"
 #import "CircleTransition.h"
+#import "VolumnHelper.h"
 
 #define EVERYDELTATIME 0.016667
 
@@ -52,19 +53,6 @@
     }
     return  self;
 }
-
-- (void)onExit
-{
-    [super onExit];
-    
-    [frameToShowCurrentFrame release];
-    frameToShowCurrentFrame = nil;
-    [musicTypeInFrame release];
-    musicTypeInFrame = nil;
-    
-    self.mainMapHelper = nil;
-}
-
 
 - (void) didLoadFromCCB
 {
@@ -113,9 +101,27 @@
 - (void)onEnter
 {
     [super onEnter];
+//    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
     [CDAudioManager configure:kAMM_PlayAndRecord];
     [[CDAudioManager sharedManager] playBackgroundMusic:@"P2_rhythm.mp3" loop:NO];
 }
+
+- (void)onExit
+{
+    [super onExit];
+    
+    [frameToShowCurrentFrame release];
+    frameToShowCurrentFrame = nil;
+    [musicTypeInFrame release];
+    musicTypeInFrame = nil;
+    
+    self.mainMapHelper = nil;
+}
+
+//- (void)onExitTransitionDidStart
+//{
+//    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
+//}
 
 - (void)letFirstLittleMonsterJump
 {
@@ -161,7 +167,8 @@
     NSString * currentFrame = [NSString stringWithFormat:@"%d",_frameCounter];
     
     if (_frameCounter == 41) {
-        [[CDAudioManager sharedManager] rewindBackgroundMusic];
+        [[SimpleAudioEngine sharedEngine] rewindBackgroundMusic];
+//        [[CDAudioManager sharedManager] rewindBackgroundMusic];
         _frameCounter = 1;
     }
     else if ([frameToShowCurrentFrame containsObject:currentFrame] && !isFrameCounterShowed){
@@ -305,6 +312,6 @@
         NSString * boomMusicFilename = [NSString stringWithFormat:@"P2_%d.mp3",i + 1];
         [[SimpleAudioEngine sharedEngine]unloadEffect:boomMusicFilename];
     }
-    [[CDAudioManager sharedManager]stopBackgroundMusic];
+//    [[CDAudioManager sharedManager]stopBackgroundMusic];
 }
 @end

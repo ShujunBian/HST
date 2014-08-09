@@ -208,6 +208,7 @@
 		516F24401981DE9E004E6443 /* world_p5_mask-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 516F243E1981DE9E004E6443 /* world_p5_mask-hd.png */; };
 		516F24411981DE9E004E6443 /* world_p5_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 516F243F1981DE9E004E6443 /* world_p5_mask.png */; };
 		51780D5F196F8A25008D2688 /* P3_MonsterEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 51780D5E196F8A25008D2688 /* P3_MonsterEye.m */; };
+		5187A8A11990E56D00C52767 /* VolumnHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5187A8A01990E56D00C52767 /* VolumnHelper.m */; };
 		5190B43318ED0574009078E4 /* P3_GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5190B41618ED0574009078E4 /* P3_GameScene.m */; };
 		5199790F18CFF9A6006A1FD8 /* mainMapButton-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 5199790B18CFF9A6006A1FD8 /* mainMapButton-hd.png */; };
 		5199791018CFF9A6006A1FD8 /* mainMapButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 5199790C18CFF9A6006A1FD8 /* mainMapButton.png */; };
@@ -1440,6 +1441,8 @@
 		516F243F1981DE9E004E6443 /* world_p5_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p5_mask.png; sourceTree = "<group>"; };
 		51780D5D196F8A25008D2688 /* P3_MonsterEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_MonsterEye.h; sourceTree = "<group>"; };
 		51780D5E196F8A25008D2688 /* P3_MonsterEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_MonsterEye.m; sourceTree = "<group>"; };
+		5187A89F1990E56D00C52767 /* VolumnHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VolumnHelper.h; sourceTree = "<group>"; };
+		5187A8A01990E56D00C52767 /* VolumnHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VolumnHelper.m; sourceTree = "<group>"; };
 		5190B41518ED0574009078E4 /* P3_GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_GameScene.h; sourceTree = "<group>"; };
 		5190B41618ED0574009078E4 /* P3_GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_GameScene.m; sourceTree = "<group>"; };
 		5199790B18CFF9A6006A1FD8 /* mainMapButton-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mainMapButton-hd.png"; sourceTree = "<group>"; };
@@ -2955,6 +2958,8 @@
 				5169CD7418CDE5EE00426E6C /* AppDelegate.m */,
 				5199791318D000DF006A1FD8 /* MainMapHelper.h */,
 				5199791418D000DF006A1FD8 /* MainMapHelper.m */,
+				5187A89F1990E56D00C52767 /* VolumnHelper.h */,
+				5187A8A01990E56D00C52767 /* VolumnHelper.m */,
 				5169CD7618CDE5EE00426E6C /* HelloWorldLayer.h */,
 				5169CD7718CDE5EE00426E6C /* HelloWorldLayer.m */,
 				5169CD7918CDE5EE00426E6C /* IntroLayer.h */,
@@ -5224,6 +5229,7 @@
 				5169CCB318CDE5ED00426E6C /* CCSpriteFrameCache.m in Sources */,
 				5169CC3C18CDE5ED00426E6C /* CCDirector.m in Sources */,
 				5169CC2C18CDE5ED00426E6C /* CCAtlasNode.m in Sources */,
+				5187A8A11990E56D00C52767 /* VolumnHelper.m in Sources */,
 				5169CD7218CDE5EE00426E6C /* main.m in Sources */,
 				5169D0C218CDEC1300426E6C /* CCBKeyframe.m in Sources */,
 				5169CDE318CDE6D900426E6C /* P5_Flower.m in Sources */,
