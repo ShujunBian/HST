@@ -53,7 +53,6 @@
         [self playEffect];
     }
 //    [self performSelector:@selector(playEffect) withObject:nil afterDelay:[self genDelayTime]];
-    
 }
 - (void)endSound
 {
@@ -68,9 +67,14 @@
         float maxDelayTime = self.maxDelay;
         if (maxDelayTime < 8.f)
         {
-            float delayTime = [self genDelayTime:maxDelayTime];
+            float delayTime = [self genDelayTime:maxDelayTime] / 2;
             [[SimpleAudioEngine sharedEngine] playEffect:self.monster.selectedSoundEffectName];
-            [self performSelector:@selector(playEffect) withObject:nil afterDelay:delayTime/2];
+            if ([self.delegate respondsToSelector:@selector(soundWillPlay:delay:)])
+            {
+                [self.delegate soundWillPlay:self delay:delayTime];
+            }
+
+            [self performSelector:@selector(playEffect) withObject:nil afterDelay:delayTime];
         }
         else
         {

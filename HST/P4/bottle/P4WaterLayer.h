@@ -55,4 +55,6 @@
 - (void)waterHeightChange:(float)height;
 
 - (void)worldSceneConfigure;
+
+- (void)makeNewBubbleScaleRate:(float)scaleRate speedRate:(float)speedRate;
 @end

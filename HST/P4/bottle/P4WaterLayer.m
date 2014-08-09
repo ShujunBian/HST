@@ -901,10 +901,10 @@
 //    CCSprite* sprite = [[CCSprite alloc] initWithFile:@"P4water_particle.png"];
 //    sprite.position = yuanXin;
 //    [self addChild:sprite z:BUBBLE_Z_ORDER];
-    [self makeNewBubble];
+    [self makeNewBubbleScaleRate:1.f speedRate:1.f];
 }
 
-- (void)makeNewBubble
+- (void)makeNewBubbleScaleRate:(float)scaleRate speedRate:(float)speedRate
 {
     //Start Point
     float banjin = BAN_JIN * CCRANDOM_0_1();
@@ -945,15 +945,14 @@
         sprite = [[[CCSprite alloc] initWithFile:@"P4water_particle.png"] autorelease];
     }
     
-    sprite.scale = CCRANDOM_0_1();
+    sprite.scale = CCRANDOM_0_1() * scaleRate;
     sprite.position = startPoint;
     __unsafe_unretained P4WaterLayer* weakSelf = self;
-    CCMoveTo* moveTo = [[[CCMoveTo alloc] initWithDuration:((endPoint.y - startPoint.y) / (BUBBLE_SPEED + 20 * CCRANDOM_0_1())) position:endPoint] autorelease];
+    CCMoveTo* moveTo = [[[CCMoveTo alloc] initWithDuration:((endPoint.y - startPoint.y) / ((BUBBLE_SPEED + 20 * CCRANDOM_0_1()) * speedRate)) position:endPoint] autorelease];
     CCCallBlock* call = [[[CCCallBlock alloc] initWithBlock:^{
         [sprite removeFromParent];
         [weakSelf.offScreenBubbles addObject:sprite];
         [weakSelf.onScreenBubbles removeObject:sprite];
-
     }] autorelease];
     [self addChild:sprite z:BUBBLE_Z_ORDER];
     [self.onScreenBubbles addObject:sprite];

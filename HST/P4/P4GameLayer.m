@@ -294,13 +294,13 @@
 }
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    CCDirector* director = [CCDirector sharedDirector];
+    UITouch* touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInView:director.view];
+    CGPoint locationGL = [director convertToGL:touchLocation];
+    CGPoint locationInNodeSpace = [self convertToNodeSpace: locationGL];
     if (self.isTouchBottle)
     {
-        CCDirector* director = [CCDirector sharedDirector];
-        UITouch* touch = [touches anyObject];
-        CGPoint touchLocation = [touch locationInView:director.view];
-        CGPoint locationGL = [director convertToGL:touchLocation];
-        CGPoint locationInNodeSpace = [self convertToNodeSpace: locationGL];
         P4BottleOffset* offset = [self getOffsetByTouchPoint:locationInNodeSpace];
         /*
         //Move
@@ -340,6 +340,17 @@
         self.bottleTouchPreviousPoint = self.bottleTouchPoint;
         self.bottleTouchPoint = self.bottleTouchPointNow;
         self.bottleTouchPointNow = locationInNodeSpace;
+    }
+    else
+    {
+        if (CGRectContainsPoint([self.bottle getRect], locationInNodeSpace) && !self.someMonsterAnimated)
+        {
+            
+            self.isTouchBottle = YES;
+            self.bottleTouchPoint = locationInNodeSpace;
+            self.bottleTouchOriginPoint = locationInNodeSpace;
+            self.bottleTouchPointNow = locationInNodeSpace;
+        }
     }
 }
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event

@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @class P4Monster;
-
+@class P4MonsterSoundObj;
 @protocol P4MonsterSoundObjDelegate  <NSObject>
 
 - (float)getMaxDelayTime;
+- (void)soundWillPlay:(P4MonsterSoundObj*)obj delay:(float)delay;
 
 @end
 

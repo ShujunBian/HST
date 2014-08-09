@@ -440,4 +440,9 @@
     
     return 2 / scale;
 }
+- (void)soundWillPlay:(P4MonsterSoundObj*)obj delay:(float)delay
+{
+    float rate = (4 - delay) / 3 + 1;
+    [self.waterLayer makeNewBubbleScaleRate:rate speedRate:rate * 1.2];
+}
 @end
