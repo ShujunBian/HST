@@ -21,6 +21,7 @@
 #import "SimpleAudioEngine.h"
 #import "CCBReader.h"
 #import "CircleTransition.h"
+#import "CCLayer+CircleTransitionExtension.h"
 
 //#define BOTTLE_MOVE_DELAY 0.2f
 #define BOTTLE_SCALE_X_MAX 1.2f
@@ -64,6 +65,8 @@
 @property (assign, nonatomic) float bottleOffsetX;
 @property (assign, nonatomic) float bottleOffsetY;
 
+@property (assign, nonatomic) CGPoint tablePrePosition;
+
 
 //////////Shake
 @property (strong, nonatomic) P4Monster* shakeMonster;
@@ -78,7 +81,7 @@
 
 //Sound Effect Name
 
-@property (strong, nonatomic) NSArray* monsterShakeEffectNames;
+//@property (strong, nonatomic) NSArray* monsterShakeEffectNames;
 @property (assign, nonatomic) ALuint currentSHakeEffectId;
 
 @end
@@ -154,7 +157,9 @@
 //    [te end];
 //    CCSprite* s = [CCSprite spriteWithTexture:te.sprite.texture];
 //    [self addChild:s];
+    [self showScene];
 }
+
 - (void)onExit
 {
 //    [self removeAllChildrenWithCleanup:YES];
@@ -174,7 +179,8 @@
     self.backgroundSprite = nil;
     self.shakeSpray = nil;
     self.shakeMonster = nil;
-    self.monsterShakeEffectNames = nil;
+//    self.monsterShakeEffectNames = nil;
+    self.table = nil;
 }
 
 - (void)onExitTransitionDidStart
@@ -194,6 +200,7 @@
     [self.purpleMonster retain];
     [self.blueMonster retain];
     [self.redMonster retain];
+    [self.table retain];
     
     
     
@@ -230,7 +237,7 @@
     self.redMonster.waterColor = ccc3(254.f, 70.f, 100.f);
     self.redMonster.selectedSoundEffectName = @"p4_monster5.mp3";
 
-    self.monsterShakeEffectNames = @[@"p4_monster_shake.mp3",@"p4_monster_shake2.mp3"];
+//    self.monsterShakeEffectNames = @[@"p4_monster_shake.mp3",@"p4_monster_shake2.mp3"];
     self.currentSHakeEffectId = 0;
     
     self.isMonsterAnimated = NO;
@@ -254,7 +261,7 @@
     self.bottleTouchPoint = CGPointZero;
     self.bottleTouchPointNow = CGPointZero;
  
-    
+    self.tablePrePosition = self.table.position;
 //    [self schedule:@selector(scaleUpdate)];
 //    [self schedule:@selector(scaleUpdateHelper) interval:0.018f];
     
@@ -290,13 +297,13 @@
 }
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    CCDirector* director = [CCDirector sharedDirector];
+    UITouch* touch = [touches anyObject];
+    CGPoint touchLocation = [touch locationInView:director.view];
+    CGPoint locationGL = [director convertToGL:touchLocation];
+    CGPoint locationInNodeSpace = [self convertToNodeSpace: locationGL];
     if (self.isTouchBottle)
     {
-        CCDirector* director = [CCDirector sharedDirector];
-        UITouch* touch = [touches anyObject];
-        CGPoint touchLocation = [touch locationInView:director.view];
-        CGPoint locationGL = [director convertToGL:touchLocation];
-        CGPoint locationInNodeSpace = [self convertToNodeSpace: locationGL];
         P4BottleOffset* offset = [self getOffsetByTouchPoint:locationInNodeSpace];
         /*
         //Move
@@ -337,6 +344,17 @@
         self.bottleTouchPoint = self.bottleTouchPointNow;
         self.bottleTouchPointNow = locationInNodeSpace;
     }
+    else
+    {
+        if (CGRectContainsPoint([self.bottle getRect], locationInNodeSpace) && !self.someMonsterAnimated)
+        {
+            
+            self.isTouchBottle = YES;
+            self.bottleTouchPoint = locationInNodeSpace;
+            self.bottleTouchOriginPoint = locationInNodeSpace;
+            self.bottleTouchPointNow = locationInNodeSpace;
+        }
+    }
 }
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -358,6 +376,8 @@
 #pragma mark - Action
 - (void)hideMonstersExcept:(P4Monster*)monster
 {
+    
+    
     for (P4Monster* m in self.monstersArray)
     {
         if (m != monster)
@@ -372,6 +392,11 @@
             [m runAction:[CCSequence actionWithArray:@[callBlock, easeTo]]];
         }
     }
+    CGPoint toPosition = ccp(self.tablePrePosition.x, self.tablePrePosition.y - 150);
+    CCActionInterval* moveTo = [CCMoveTo actionWithDuration:1.f position:toPosition];
+    CCActionInterval* easeTo = [CCEaseExponentialOut actionWithAction:moveTo];
+    [self.table runAction:easeTo];
+    
 }
 - (void)showMonstersExcept:(P4Monster*)monster totalDuration:(float)duration
 {
@@ -400,6 +425,20 @@
 //                                                       easeTo, callBlock]]];
         }
     }
+    float moveDuration = 1.f;
+    
+    float delayDuration = duration > moveDuration? (duration - moveDuration) : 0;
+    moveDuration = duration - delayDuration;
+    
+    
+    //            CCDelayTime* delay = [CCDelayTime actionWithDuration:delayDuration];
+    CCActionInterval* moveTo = [CCMoveTo actionWithDuration:moveDuration position:self.tablePrePosition];
+    CCActionInterval* easeTo = [CCEaseExponentialOut actionWithAction:moveTo];
+    [self.table runAction:easeTo];
+    
+    
+    
+    
     CCCallBlock* callBlock = [CCCallBlock actionWithBlock:^{
         self.isMonsterAnimated = NO;
     }];
@@ -509,9 +548,9 @@
     
     CCFiniteTimeAction* beginAddWater = [[[CCCallBlock alloc] initWithBlock:^{
 
-        int effectIndex = (int)(CCRANDOM_0_1() * 2);
-        effectIndex = effectIndex != 2? effectIndex : 1;
-        self.currentSHakeEffectId = [[SimpleAudioEngine sharedEngine] playEffect:self.monsterShakeEffectNames[effectIndex]];
+//        int effectIndex = (int)(CCRANDOM_0_1() * 2);
+//        effectIndex = effectIndex != 2? effectIndex : 1;
+//        self.currentSHakeEffectId = [[SimpleAudioEngine sharedEngine] playEffect:self.monsterShakeEffectNames[effectIndex]];
         
         [self.bottle startWaterIn:monster];
     }] autorelease];
@@ -626,7 +665,7 @@
 
     }] autorelease];
     
-    CCActionInterval* easeOutBack = [CCEaseSineOut actionWithAction:spawnBack ];
+    CCActionInterval* easeOutBack = [CCEaseSineOut actionWithAction:spawnBack];
 //    CCActionInterval* easeOutBack = [CCEaseOut actionWithAction:spawnBack rate:1.05f];
     
     CCFiniteTimeAction* finish = [[[CCCallBlock alloc] initWithBlock:^{
@@ -900,16 +939,14 @@
 
 - (void)returnToMainMap
 {
-    [self unscheduleAllSelectors];
-    for (CCNode * child in [self children]) {
-        [child stopAllActions];
-        [child unscheduleAllSelectors];
-    }
-    
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-    [[CCDirector sharedDirector] replaceScene:
-     [CircleTransition transitionWithDuration:1.0
-                                        scene:scene]];
+//        [[CCDirector sharedDirector] replaceScene:scene];
+//    return;
+    [self changeToScene:scene];
+    
+//    [[CCDirector sharedDirector] replaceScene:
+//     [CircleTransition transitionWithDuration:1.0
+//                                        scene:scene]];
 }
 
 

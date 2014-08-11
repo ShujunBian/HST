@@ -22,6 +22,9 @@
 #import "WorldP4Layer.h"
 #import "WorldP5Layer.h"
 
+#import "CircleTransitionLayer.h"
+#import "CCLayer+CircleTransitionExtension.h"
+
 #define WORLD_P1_RECT CGRectMake(123, 455, 385, 280)
 #define WORLD_P2_RECT_1 CGRectMake(25, 25, 230, 260)
 #define WORLD_P2_RECT_2 CGRectMake(25, 25, 500, 95)
@@ -41,6 +44,7 @@
 - (void)onEnter
 {
     [super onEnter];
+    [self showScene];
     self.fIsChangingScene = NO;
     
     [self.p1Layer retain];
@@ -49,6 +53,8 @@
     [self.p4Layer retain];
     [self.p5Layer retain];
 
+    
+    
 //    [self.p1Layer removeFromParentAndCleanup:YES];
 //    [self.p2Layer removeFromParentAndCleanup:YES];
 //    [self.p3Layer removeFromParentAndCleanup:YES];
@@ -62,14 +68,15 @@
     if (![SimpleAudioEngine sharedEngine].isBackgroundMusicPlaying)
     {
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
-    }
-    
-//    [NSTimer scheduledTimerWithTimeInterval:0.01 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
+    }    
 }
-
 - (void)onExitTransitionDidStart
 {
     [super onExitTransitionDidStart];
+    
+//    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
+    
+    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 }
 
 - (void)onExit
@@ -81,12 +88,6 @@
     self.p4Layer = nil;
     self.p5Layer = nil;
 
-}
-
-- (void)changeTransitionandMusicOnExit
-{
-#warning 调用CCLayer category
-//    [NSTimer scheduledTimerWithTimeInterval:0.01 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -107,8 +108,7 @@
         {
             //P1
             CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
-            [self changeTransitionandMusicOnExit];
-			[[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:p1Scene]];
+            [self changeToScene:p1Scene];
         }
         else if (CGRectContainsPoint(WORLD_P2_RECT_1, locationInNodeSpace) ||
                  CGRectContainsPoint(WORLD_P2_RECT_2, locationInNodeSpace))
@@ -116,29 +116,25 @@
             //P2
             CCScene* p2Scene = [CCBReader sceneWithNodeGraphFromFile:@"P2_GameScene.ccbi"];
             [self preloadMusicAndEffect];
-            [self changeTransitionandMusicOnExit];
-			[[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:p2Scene]];
+            [self changeToScene:p2Scene];
         }
         else if (CGRectContainsPoint(WORLD_P3_RECT, locationInNodeSpace))
         {
             //P3
             CCScene * p3Scene = [CCBReader sceneWithNodeGraphFromFile:@"P3_GameScene.ccbi"];
-            [self changeTransitionandMusicOnExit];
-            [[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:p3Scene]];
+            [self changeToScene:p3Scene];
         }
         else if (CGRectContainsPoint(WORLD_P4_RECT, locationInNodeSpace))
         {
             //P4
             CCScene * p4Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];
-            [self changeTransitionandMusicOnExit];
-            [[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:p4Scene]];
+            [self changeToScene:p4Scene];
         }
         else if (CGRectContainsPoint(WORLD_P5_RECT, locationInNodeSpace))
         {
             //P5
             CCScene* p5Scene = [CCBReader sceneWithNodeGraphFromFile:@"P5_GameScene.ccbi"];
-            [self changeTransitionandMusicOnExit];
-			[[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:p5Scene]];
+            [self changeToScene:p5Scene];
         }
         else
         {
@@ -149,6 +145,10 @@
 }
 
 
+- (void)dealloc
+{
+    [super dealloc];
+}
 #pragma mark - 预加载音效
 - (void)preloadMusicAndEffect
 {

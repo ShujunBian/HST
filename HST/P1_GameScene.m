@@ -15,6 +15,7 @@
 #import "NSNotificationCenter+Addition.h"
 #import "CircleTransition.h"
 #import "VolumnHelper.h"
+#import "CCLayer+CircleTransitionExtension.h"
 
 @interface P1_GameScene()
 {
@@ -99,7 +100,7 @@ static NSMutableArray *bubbleScales = nil;
 //    [NSTimer scheduledTimerWithTimeInterval:0.01 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
     [P1_BlowDetecter instance].delegate = self;
 
-
+    [self showScene];
 }
 - (void)onEnterTransitionDidFinish
 {
@@ -111,6 +112,9 @@ static NSMutableArray *bubbleScales = nil;
     [super onExit];
     self.currentOnScreenBubbles = nil;
     self.bubblesReadyToRelease = nil;
+    
+    [P1_BlowDetecter purge];
+    self.mainMapHelper = nil;
 }
 
 -(void)hideToolColorLayer
@@ -291,9 +295,10 @@ static NSMutableArray *bubbleScales = nil;
 
 #warning 添加转场动画
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-    [[CCDirector sharedDirector] replaceScene:
-     [CircleTransition transitionWithDuration:1.0
-                                        scene:scene]];
+    [self changeToScene:scene];
+//    [[CCDirector sharedDirector] replaceScene:
+//     [CircleTransition transitionWithDuration:1.0
+//                                        scene:scene]];
 }
 
 #pragma mark - 退出时释放内存
@@ -302,7 +307,6 @@ static NSMutableArray *bubbleScales = nil;
     [super dealloc];
     
 //    [[CCTextureCache sharedTextureCache]removeAllTextures];
-    [P1_BlowDetecter purge];
 }
 
 - (void)releaseCurrentOnScreenBubbles

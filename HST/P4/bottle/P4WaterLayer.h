@@ -40,6 +40,9 @@
 
 @property (unsafe_unretained, nonatomic) NSObject<P4WaterLayerDelegate>* delegate;
 
+@property (readonly, assign, nonatomic) float averageWaterScale;
+
+
 - (void)beginAddWater:(ccColor3B)waterColor isRight:(BOOL)fIsRight;
 - (void)endAddWater;
 - (void)beginReleaseWater;
@@ -52,4 +55,6 @@
 - (void)waterHeightChange:(float)height;
 
 - (void)worldSceneConfigure;
+
+- (void)makeNewBubbleScaleRate:(float)scaleRate speedRate:(float)speedRate;
 @end

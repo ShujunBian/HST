@@ -29,6 +29,7 @@
 @property (strong, nonatomic) P4Monster* blueMonster;
 @property (strong, nonatomic) P4Monster* redMonster;
 @property (strong, nonatomic) P4Bottle* bottle;
+@property (strong, nonatomic) CCSprite* table;
 
 @property (assign, nonatomic) BOOL isMonsterAnimated;
 @property (readonly, nonatomic) BOOL someMonsterAnimated;

@@ -773,6 +773,11 @@
 		51F48ADF197E959A00371C45 /* MainMap_GreenFlowerHead.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48ADD197E959A00371C45 /* MainMap_GreenFlowerHead.png */; };
 		51F48AE2197E968E00371C45 /* world_p5_mushroom_shadow-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AE0197E968E00371C45 /* world_p5_mushroom_shadow-hd.png */; };
 		51F48AE3197E968E00371C45 /* world_p5_mushroom_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 51F48AE1197E968E00371C45 /* world_p5_mushroom_shadow.png */; };
+		EF2231171995F1B700BCB28E /* p4_table-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF2231151995F1B700BCB28E /* p4_table-hd.png */; };
+		EF2231181995F1B700BCB28E /* p4_table.png in Resources */ = {isa = PBXBuildFile; fileRef = EF2231161995F1B700BCB28E /* p4_table.png */; };
+		EF22311B1995FC7400BCB28E /* P4MonsterSoundObj.m in Sources */ = {isa = PBXBuildFile; fileRef = EF22311A1995FC7400BCB28E /* P4MonsterSoundObj.m */; };
+		EF22311E1996191F00BCB28E /* CircleTransitionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EF22311D1996191F00BCB28E /* CircleTransitionLayer.m */; };
+		EF223121199628A600BCB28E /* CCLayer+CircleTransitionExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EF223120199628A600BCB28E /* CCLayer+CircleTransitionExtension.m */; };
 		EF31302B197E0B5800B61C2A /* CircleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = EF31302A197E0B5800B61C2A /* CircleTransition.m */; };
 		EF403F82197A1D1700C6C8E1 /* p4_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */; };
 		EF403F83197A1D1700C6C8E1 /* p4_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED5197A1D1700C6C8E1 /* p4_background.png */; };
@@ -2028,6 +2033,14 @@
 		51F48ADD197E959A00371C45 /* MainMap_GreenFlowerHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMap_GreenFlowerHead.png; sourceTree = "<group>"; };
 		51F48AE0197E968E00371C45 /* world_p5_mushroom_shadow-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "world_p5_mushroom_shadow-hd.png"; sourceTree = "<group>"; };
 		51F48AE1197E968E00371C45 /* world_p5_mushroom_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p5_mushroom_shadow.png; sourceTree = "<group>"; };
+		EF2231151995F1B700BCB28E /* p4_table-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_table-hd.png"; sourceTree = "<group>"; };
+		EF2231161995F1B700BCB28E /* p4_table.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4_table.png; sourceTree = "<group>"; };
+		EF2231191995FC7400BCB28E /* P4MonsterSoundObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P4MonsterSoundObj.h; sourceTree = "<group>"; };
+		EF22311A1995FC7400BCB28E /* P4MonsterSoundObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P4MonsterSoundObj.m; sourceTree = "<group>"; };
+		EF22311C1996191F00BCB28E /* CircleTransitionLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTransitionLayer.h; sourceTree = "<group>"; };
+		EF22311D1996191F00BCB28E /* CircleTransitionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTransitionLayer.m; sourceTree = "<group>"; };
+		EF22311F199628A600BCB28E /* CCLayer+CircleTransitionExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCLayer+CircleTransitionExtension.h"; sourceTree = "<group>"; };
+		EF223120199628A600BCB28E /* CCLayer+CircleTransitionExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCLayer+CircleTransitionExtension.m"; sourceTree = "<group>"; };
 		EF313029197E0B5800B61C2A /* CircleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTransition.h; sourceTree = "<group>"; };
 		EF31302A197E0B5800B61C2A /* CircleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTransition.m; sourceTree = "<group>"; };
 		EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_background-hd.png"; sourceTree = "<group>"; };
@@ -2429,6 +2442,8 @@
 			children = (
 				1801E74218E594FC004E0856 /* P4Monster.h */,
 				1801E74318E594FC004E0856 /* P4Monster.m */,
+				EF2231191995FC7400BCB28E /* P4MonsterSoundObj.h */,
+				EF22311A1995FC7400BCB28E /* P4MonsterSoundObj.m */,
 			);
 			path = monster;
 			sourceTree = "<group>";
@@ -3799,6 +3814,10 @@
 			children = (
 				EF313029197E0B5800B61C2A /* CircleTransition.h */,
 				EF31302A197E0B5800B61C2A /* CircleTransition.m */,
+				EF22311C1996191F00BCB28E /* CircleTransitionLayer.h */,
+				EF22311D1996191F00BCB28E /* CircleTransitionLayer.m */,
+				EF22311F199628A600BCB28E /* CCLayer+CircleTransitionExtension.h */,
+				EF223120199628A600BCB28E /* CCLayer+CircleTransitionExtension.m */,
 			);
 			path = transition;
 			sourceTree = "<group>";
@@ -3860,6 +3879,8 @@
 		EF403ED3197A1D1700C6C8E1 /* background */ = {
 			isa = PBXGroup;
 			children = (
+				EF2231151995F1B700BCB28E /* p4_table-hd.png */,
+				EF2231161995F1B700BCB28E /* p4_table.png */,
 				EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */,
 				EF403ED5197A1D1700C6C8E1 /* p4_background.png */,
 				EF403ED6197A1D1700C6C8E1 /* p4_ground-hd.png */,
@@ -4327,6 +4348,7 @@
 				EF403FE4197A1D1700C6C8E1 /* P4_brown_monster.png in Resources */,
 				EF403FAB197A1D1700C6C8E1 /* p4_cloud_3.png in Resources */,
 				51A941AC197A128700920318 /* P5_mountain1.png in Resources */,
+				EF2231171995F1B700BCB28E /* p4_table-hd.png in Resources */,
 				EF403FEF197A1D1700C6C8E1 /* P4_yellow_monster-hd.png in Resources */,
 				51556DE518CF21B8005C8D46 /* P1_b7.wav in Resources */,
 				EF403FF7197A1D1700C6C8E1 /* P4BrownMonster.ccb in Resources */,
@@ -4467,6 +4489,7 @@
 				EF708B0119879B9D00068D61 /* world_p5_dialog.png in Resources */,
 				51A942E8197A130A00920318 /* P2_FlyGrasses.ccbi in Resources */,
 				51A94021197A121300920318 /* P3_flower_body.png in Resources */,
+				EF2231181995F1B700BCB28E /* p4_table.png in Resources */,
 				EF403FEC197A1D1700C6C8E1 /* P4_purple_monster.png in Resources */,
 				5169CBE718CDE5ED00426E6C /* Default@2x.png in Resources */,
 				51A94170197A128700920318 /* P5_clouds.png in Resources */,
@@ -5202,6 +5225,7 @@
 				5169CC5A18CDE5ED00426E6C /* CCLabelBMFont.m in Sources */,
 				5169CD0718CDE5EE00426E6C /* ccCArray.m in Sources */,
 				5169CD3118CDE5EE00426E6C /* CDXMacOSXSupport.m in Sources */,
+				EF22311B1995FC7400BCB28E /* P4MonsterSoundObj.m in Sources */,
 				5169CDC518CDE6B200426E6C /* P2_SkyLayer.m in Sources */,
 				5169CD2518CDE5EE00426E6C /* ZipUtils.m in Sources */,
 				5169CDE918CDE6D900426E6C /* P5_SoilCloud.m in Sources */,
@@ -5245,6 +5269,7 @@
 				EF58EB161990C36300B13232 /* GameLoadingProcessBar.m in Sources */,
 				5169CD7518CDE5EE00426E6C /* AppDelegate.m in Sources */,
 				5169CCE518CDE5EE00426E6C /* CCES2Renderer.m in Sources */,
+				EF22311E1996191F00BCB28E /* CircleTransitionLayer.m in Sources */,
 				5169CC5718CDE5ED00426E6C /* CCLabelAtlas.m in Sources */,
 				EF40403B197A572D00C6C8E1 /* WorldP1Layer.m in Sources */,
 				5169CDBB18CDE6B200426E6C /* P2_GameObjects.m in Sources */,
@@ -5260,6 +5285,7 @@
 				EF404038197A56D100C6C8E1 /* WorldLayer.m in Sources */,
 				5169CCB018CDE5ED00426E6C /* CCSpriteFrame.m in Sources */,
 				1801E74918E594FC004E0856 /* P4Bottle.m in Sources */,
+				EF223121199628A600BCB28E /* CCLayer+CircleTransitionExtension.m in Sources */,
 				EF404034197A1D8500C6C8E1 /* WXYSampleMonster.m in Sources */,
 				5169CDBC18CDE6B200426E6C /* P2_GameScene.m in Sources */,
 				5169CC1D18CDE5ED00426E6C /* CCActionProgressTimer.m in Sources */,

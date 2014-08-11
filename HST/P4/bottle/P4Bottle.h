@@ -8,6 +8,7 @@
 
 #import "CCLayer.h"
 #import "P4WaterLayer.h"
+#import "P4MonsterSoundObj.h"
 @class CCSprite;
 @class P4BottleEar;
 @class P4WaterLayer;
@@ -18,7 +19,7 @@
 
 
 
-@interface P4Bottle : CCLayer<P4WaterLayerDelegate>
+@interface P4Bottle : CCLayer<P4WaterLayerDelegate, P4MonsterSoundObjDelegate>
 
 
 @property (strong, nonatomic) CCSprite* bottleMain;
