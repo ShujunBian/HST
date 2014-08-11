@@ -76,7 +76,7 @@ static ccColor3B littleFlyColors[] = {
 
 - (void)handleCollision
 {
-    NSString * boomMusicFilename = [NSString stringWithFormat:@"P2_%d.mp3",musicType];
+    NSString * boomMusicFilename = [NSString stringWithFormat:@"P2_%d_%d.mp3",_currentSongType,musicType];
     [[SimpleAudioEngine sharedEngine] playEffect:boomMusicFilename];
     
     P2_LittleFlyBoom * littleFlyBoom = (P2_LittleFlyBoom *)[CCBReader nodeGraphFromFile:@"P2_LittleFlyOut.ccbi"];

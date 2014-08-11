@@ -94,7 +94,9 @@ static NSMutableArray *bubbleScales = nil;
 ////    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
 ////    [CDAudioManager configure:kAMM_PlayAndRecord];
 ////    [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
+    
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P1_bg.mp3"];
+//    [NSTimer scheduledTimerWithTimeInterval:0.01 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
     [P1_BlowDetecter instance].delegate = self;
 
 
@@ -102,11 +104,6 @@ static NSMutableArray *bubbleScales = nil;
 - (void)onEnterTransitionDidFinish
 {
     [super onEnterTransitionDidFinish];
-}
-
-- (void)onExitTransitionDidStart
-{
-    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
 }
 
 - (void)onExit
@@ -237,9 +234,9 @@ static NSMutableArray *bubbleScales = nil;
 -(void)monsterMouthStartBlow:(P1_Monster*)monster
 {
     shouldBlowBubble = YES;
-//    [[SimpleAudioEngine sharedEngine] playEffect:@"P1_bubble_out.mp3"];
-//    [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:)
-//                                           withObject:@"P1_bubble_out.mp3" afterDelay:1.0];
+    [[SimpleAudioEngine sharedEngine] playEffect:@"P1_bubble_out.mp3"];
+    [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:)
+                                           withObject:@"P1_bubble_out.mp3" afterDelay:1.0];
     
     for (P1_Bubble * bubble in self.currentOnScreenBubbles)
     {
@@ -285,12 +282,14 @@ static NSMutableArray *bubbleScales = nil;
     }
     
     [NSNotificationCenter unregister:self];
-//    [mainMapHelper release];
     self.mainMapHelper = nil;
     [self releaseCurrentOnScreenBubbles];
     
     [[CDAudioManager sharedManager] stopBackgroundMusic];
     
+//    [NSTimer scheduledTimerWithTimeInterval:0.01 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
+
+#warning 添加转场动画
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
     [[CCDirector sharedDirector] replaceScene:
      [CircleTransition transitionWithDuration:1.0

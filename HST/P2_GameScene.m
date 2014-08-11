@@ -25,7 +25,9 @@
 #define EVERYDELTATIME 0.016667
 
 @interface P2_GameScene ()
+
 @property (strong, nonatomic) MainMapHelper* mainMapHelper;
+@property (nonatomic) NSInteger currentSongType;
 
 @end
 
@@ -39,17 +41,18 @@
 - (id)init
 {
     if ((self = [super init])) {
-        if (frameToShowCurrentFrame == nil) {
-            frameToShowCurrentFrame = [[NSArray alloc]initWithObjects:@"5",@"6",@"7",@"8",@"9",@"10",@"11",
-                                       @"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",
-                                       @"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",
-                                       @"31",@"32",@"33",@"34",@"35",@"36",@"37", nil];
-        }
-        
-        if (musicTypeInFrame == nil) {
-            musicTypeInFrame = [[NSArray alloc]initWithObjects:@"3",@"2",@"1",@"7",@"6",@"5",@"6",@"7",@"3",@"2",@"1",@"7",
-                                @"6",@"5",@"6",@"7",@"3",@"2",@"1",@"7",@"6",@"5",@"6",@"7",@"3",@"2",@"1",@"7",@"6",@"5",@"6",@"7",@"1", nil];
-        }
+//        if (frameToShowCurrentFrame == nil) {
+//            frameToShowCurrentFrame = [[NSArray alloc]initWithObjects:@"5",@"6",@"7",@"8",@"9",@"10",@"11",
+//                                       @"12",@"13",@"14",@"15",@"16",@"17",@"18",@"19",
+//                                       @"20",@"21",@"22",@"23",@"24",@"25",@"26",@"27",@"28",@"29",@"30",
+//                                       @"31",@"32",@"33",@"34",@"35",@"36",@"37", nil];
+//        }
+//        
+//        if (musicTypeInFrame == nil) {
+//            musicTypeInFrame = [[NSArray alloc]initWithObjects:@"3",@"2",@"1",@"7",@"6",@"5",@"6",@"7",@"3",@"2",@"1",@"7",
+//                                @"6",@"5",@"6",@"7",@"3",@"2",@"1",@"7",@"6",@"5",@"6",@"7",@"3",@"2",@"1",@"7",@"6",@"5",@"6",@"7",@"1", nil];
+//        }
+        [self initBackgroundMusicAndEffect];
     }
     return  self;
 }
@@ -84,8 +87,8 @@
 - (void)onEnterTransitionDidFinish
 {
     [super onEnterTransitionDidFinish];
-    CCBAnimationManager* animationManager = monster.userObject;
-    [animationManager runAnimationsForSequenceNamed:@"LittleJump"];
+    
+    [monster littleJump];
     [self performSelector:@selector(letFirstLittleMonsterJump) withObject:self afterDelay:0.2];
     [self performSelector:@selector(letSecondLittleMonsterJump) withObject:self afterDelay:0.4];
     
@@ -93,17 +96,21 @@
     self.frameCounter = 1;
     isMusicToShow = YES;
     deltaCounter = 0;
+    _currentSongType = 2;
     
-    [self schedule:@selector(updateEveryDeltaTime:) interval:0.104325 - 0.016667];
+    [self schedule:@selector(updateEveryDeltaTime:) interval:0.1];
     [self scheduleUpdate];
+    
+    [[SimpleAudioEngine sharedEngine]stopBackgroundMusic];
+    NSString * backgroundMusic = [NSString stringWithFormat:@"P2_%d_background.mp3",_currentSongType];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:backgroundMusic loop:NO];
+
 }
 
 - (void)onEnter
 {
     [super onEnter];
 //    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
-    [CDAudioManager configure:kAMM_PlayAndRecord];
-    [[CDAudioManager sharedManager] playBackgroundMusic:@"P2_rhythm.mp3" loop:NO];
 }
 
 - (void)onExit
@@ -116,6 +123,14 @@
     musicTypeInFrame = nil;
     
     self.mainMapHelper = nil;
+}
+
+- (void)initBackgroundMusicAndEffect
+{
+    NSString *fileName = [[NSBundle mainBundle] pathForResource:@"P2_MusicSetting" ofType:@"plist"];
+    NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:fileName];
+    frameToShowCurrentFrame = [[NSArray alloc]initWithArray:[(NSArray *)[dictionary objectForKey: @"MusicEffectPosition"] objectAtIndex:0]];
+    musicTypeInFrame = [[NSArray alloc]initWithArray:[(NSArray *)[dictionary objectForKey: @"MusicEffect"] objectAtIndex:0]];
 }
 
 //- (void)onExitTransitionDidStart
@@ -164,24 +179,24 @@
         isFrameCounterShowed = NO;
     }
     
-    NSString * currentFrame = [NSString stringWithFormat:@"%d",_frameCounter];
+    NSString * currentFrame = [NSString stringWithFormat:@"%ld",(long)_frameCounter];
     
-    if (_frameCounter == 41) {
+    if (_frameCounter == 68) {
         [[SimpleAudioEngine sharedEngine] rewindBackgroundMusic];
 //        [[CDAudioManager sharedManager] rewindBackgroundMusic];
         _frameCounter = 1;
     }
-    else if ([frameToShowCurrentFrame containsObject:currentFrame] && !isFrameCounterShowed){
+    else if ([frameToShowCurrentFrame containsObject:[NSNumber numberWithInteger:_frameCounter]] && !isFrameCounterShowed){
         isFrameCounterShowed = YES;
-        NSInteger musicType = [[musicTypeInFrame objectAtIndex:[frameToShowCurrentFrame indexOfObject:currentFrame]] integerValue];
-        
-        if (isMusicToShow) {
+        NSInteger musicType = [[musicTypeInFrame objectAtIndex:[frameToShowCurrentFrame indexOfObject:[NSNumber numberWithInteger:_frameCounter]]] integerValue];
+        NSLog(@"The music Type is %d",musicType);
+//        if (isMusicToShow) {
             [self updateForAddingLittleFly:musicType];
-            isMusicToShow = NO;
-        }
-        else {
-            isMusicToShow = YES;
-        }
+//            isMusicToShow = NO;
+//        }
+//        else {
+//            isMusicToShow = YES;
+//        }
     }
 }
 
@@ -189,9 +204,10 @@
 {
     P2_LittleFlyObjects * littleFly = (P2_LittleFlyObjects *)[CCBReader nodeGraphFromFile:@"P2_LittleFly.ccbi"];
     littleFly.delegate = self;
+    littleFly.currentSongType = _currentSongType;
     [littleFly setObjectFirstPosition];
     [self addChild:littleFly z:0];
-    littleFly.musicType = musicType;
+    littleFly.musicType = (int)musicType;
     
     ccColor3B color = [littleFly colorAtIndex:musicType];
     [littleFly setBodyColor:color];
@@ -221,9 +237,11 @@
 //    {
         if (monster.isFinishJump) {
             monster.isFinishJump = NO;
-            CCBAnimationManager* animationManager = monster.userObject;
-            [animationManager runAnimationsForSequenceNamed:@"ReadyToJump"];
-            [monster monsterCloseEyesWhenReadyToJump];
+            
+            [monster monsterReadyToJump];
+//            CCBAnimationManager* animationManager = monster.userObject;
+//            [animationManager runAnimationsForSequenceNamed:@"ReadyToJump"];
+//            [monster monsterCloseEyesWhenReadyToJump];
             
             [self performSelector:@selector(firstLittleMonsterJump) withObject:nil afterDelay:0.2];
             [self performSelector:@selector(secondLittleMonsterJump) withObject:nil afterDelay:0.4];

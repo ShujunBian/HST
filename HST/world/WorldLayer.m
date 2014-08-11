@@ -62,15 +62,14 @@
     if (![SimpleAudioEngine sharedEngine].isBackgroundMusicPlaying)
     {
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
-    }    
+    }
+    
+//    [NSTimer scheduledTimerWithTimeInterval:0.01 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
 }
+
 - (void)onExitTransitionDidStart
 {
     [super onExitTransitionDidStart];
-    
-//    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
-    
-    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 }
 
 - (void)onExit
@@ -82,6 +81,12 @@
     self.p4Layer = nil;
     self.p5Layer = nil;
 
+}
+
+- (void)changeTransitionandMusicOnExit
+{
+#warning 调用CCLayer category
+//    [NSTimer scheduledTimerWithTimeInterval:0.01 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -102,6 +107,7 @@
         {
             //P1
             CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
+            [self changeTransitionandMusicOnExit];
 			[[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:p1Scene]];
         }
         else if (CGRectContainsPoint(WORLD_P2_RECT_1, locationInNodeSpace) ||
@@ -110,24 +116,28 @@
             //P2
             CCScene* p2Scene = [CCBReader sceneWithNodeGraphFromFile:@"P2_GameScene.ccbi"];
             [self preloadMusicAndEffect];
+            [self changeTransitionandMusicOnExit];
 			[[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:p2Scene]];
         }
         else if (CGRectContainsPoint(WORLD_P3_RECT, locationInNodeSpace))
         {
             //P3
             CCScene * p3Scene = [CCBReader sceneWithNodeGraphFromFile:@"P3_GameScene.ccbi"];
+            [self changeTransitionandMusicOnExit];
             [[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:p3Scene]];
         }
         else if (CGRectContainsPoint(WORLD_P4_RECT, locationInNodeSpace))
         {
             //P4
             CCScene * p4Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];
+            [self changeTransitionandMusicOnExit];
             [[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:p4Scene]];
         }
         else if (CGRectContainsPoint(WORLD_P5_RECT, locationInNodeSpace))
         {
             //P5
             CCScene* p5Scene = [CCBReader sceneWithNodeGraphFromFile:@"P5_GameScene.ccbi"];
+            [self changeTransitionandMusicOnExit];
 			[[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:p5Scene]];
         }
         else

@@ -14,7 +14,7 @@
 {
 	if( (self=[super init]))
     {
-        [self scheduleUpdate];
+//        [self scheduleUpdate];
 	}
 	return self;
 }

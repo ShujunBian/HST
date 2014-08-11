@@ -26,6 +26,8 @@
 @property (nonatomic, assign) CCSprite * wing;
 @property (nonatomic) int musicType;
 
+@property (nonatomic) NSInteger currentSongType;
+
 - (ccColor3B)colorAtIndex:(NSUInteger)index;
 - (void)setBodyColor:(ccColor3B)color;
 - (int)countOfColor;

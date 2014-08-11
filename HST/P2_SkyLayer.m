@@ -31,8 +31,8 @@
 -(void) update:(ccTime)delta
 {
     //self.shit.position = ccp(self.shit.position.x - 5 * delta, self.shit.position.y);
-    self.upperCloud.position = ccp(self.upperCloud.position.x - 5 * delta, self.upperCloud.position.y);
-    self.upperCloud2.position = ccp(self.upperCloud2.position.x - 5 * delta, self.upperCloud2.position.y);
+    self.upperCloud.position = ccp(self.upperCloud.position.x - 100 * delta, self.upperCloud.position.y);
+    self.upperCloud2.position = ccp(self.upperCloud2.position.x - 100 * delta, self.upperCloud2.position.y);
     if(self.upperCloud.position.x + self.upperCloud.boundingBox.size.width < 0)
     {
         self.upperCloud.position = ccp(self.upperCloud2.position.x + self.upperCloud2.boundingBox.size.width, self.upperCloud.position.y);

@@ -13,7 +13,6 @@ static VolumnHelper * sharedVolumnHelper;
 
 @implementation VolumnHelper
 
-
 + (VolumnHelper *)sharedVolumnHelper
 {
     if (!sharedVolumnHelper) {
@@ -22,21 +21,30 @@ static VolumnHelper * sharedVolumnHelper;
     return sharedVolumnHelper;
 }
 
+
+
 - (void)downBackgroundVolumn:(NSTimer *)timer
 {
     [SimpleAudioEngine sharedEngine].backgroundMusicVolume -= 0.01;
+    [SimpleAudioEngine sharedEngine].effectsVolume -= 0.01;
     if (fabsf([SimpleAudioEngine sharedEngine].backgroundMusicVolume - 0.0) < 0.05) {
-        [timer invalidate];
         [SimpleAudioEngine sharedEngine].backgroundMusicVolume = 0.0;
+        [SimpleAudioEngine sharedEngine].effectsVolume = 0.0;
         [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+        
+        [timer invalidate];
     }
 }
 
 - (void)upBackgroundVolumn:(NSTimer *)timer
 {
     [SimpleAudioEngine sharedEngine].backgroundMusicVolume += 0.01;
+    [SimpleAudioEngine sharedEngine].effectsVolume += 0.01;
+    
     if (fabsf([SimpleAudioEngine sharedEngine].backgroundMusicVolume - 1.0) < 0.05) {
         [SimpleAudioEngine sharedEngine].backgroundMusicVolume = 1.0;
+        [SimpleAudioEngine sharedEngine].effectsVolume = 1.0;
+
         [timer invalidate];
     }
 }

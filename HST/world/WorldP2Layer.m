@@ -52,8 +52,7 @@ static ccColor3B littleFlyColors[] = {
     rightTwoMushroom.isInMainMap = YES;
     monster.isInMainMap = YES;
     
-    CCBAnimationManager* animationManager = monster.userObject;
-    [animationManager runAnimationsForSequenceNamed:@"LittleJump"];
+    [monster littleJump];
     
     [self letFirstLittleMonsterJump];
     [self letSecondLittleMonsterJump];

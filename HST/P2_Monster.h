@@ -35,6 +35,9 @@
 @property (strong, nonatomic) CCBAnimationManager* eyesAnimationManager;
 @property (strong, nonatomic) CCBAnimationManager* selfAnimationManager;
 
+- (void)littleJump;
+
+- (void)monsterReadyToJump;
 -(void)monsterCloseEyesWhenReadyToJump;
 -(void)handleCollision;
 - (void)releaseAnimationDelegate;

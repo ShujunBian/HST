@@ -66,42 +66,45 @@
 -(void)update:(ccTime)delta
 {
     if (isReadyToJump == YES) {
-        jumpTime += EVERYDELTATIME;
-        currentJumpTime += EVERYDELTATIME;
-        if (jumpTime < 15 * EVERYDELTATIME || (fabsf(jumpTime - 15 * EVERYDELTATIME) < 0.01)) {
-            self.position = CGPointMake(self.position.x, EVERYDELTATIME * 781.1 + self.position.y);
+        jumpTime += 1;
+        currentJumpTime += 1;
+        
+        if (jumpTime < 5) {
+            self.position = CGPointMake(self.position.x, EVERYDELTATIME * 781.1 * 3 + self.position.y);
         }
-        else if (jumpTime > 15 * EVERYDELTATIME && ((jumpTime < 30 * EVERYDELTATIME) || (fabsf(jumpTime - 30 * EVERYDELTATIME) < 0.01)))
+        else if (jumpTime >= 5 && jumpTime < 10)
         {
-            self.position = CGPointMake(self.position.x, EVERYDELTATIME * 641.1 + self.position.y);
+            self.position = CGPointMake(self.position.x, EVERYDELTATIME * 641.1 * 3 + self.position.y);
         }
-        else if (jumpTime > 30 * EVERYDELTATIME && ((jumpTime < 40 * EVERYDELTATIME) || (fabsf(jumpTime - 40 * EVERYDELTATIME) < 0.01)))
+        else if (jumpTime >= 10 && jumpTime < 20)
         {
             self.position = CGPointMake(self.position.x, EVERYDELTATIME * 266.66 + self.position.y);
         }
-        else if (jumpTime > 40 * EVERYDELTATIME) {
+        else if (jumpTime >= 20) {
+            NSLog(@"The monster y point is %f",self.position.y);
             [self letMonsterDown];
         }
     }
     
     if (isReadyToDown == YES) {
         [self.selfAnimationManager runAnimationsForSequenceNamed:@"Down"];
-        jumpTime += EVERYDELTATIME;
-        if (fabsf((jumpTime - EVERYDELTATIME)) < 0.01) {
+        
+        if (jumpTime == 0) {
             downSpeed = [self getMonsterDownSpeed:self.position.y];
         }
-        if (jumpTime < 10 * EVERYDELTATIME || (fabsf(jumpTime - 10 * EVERYDELTATIME) < 0.01)) {
+        
+        if (jumpTime < 10) {
             self.position = CGPointMake(self.position.x, -EVERYDELTATIME * downSpeed + self.position.y);
         }
-        else if (jumpTime > 10 * EVERYDELTATIME && ((jumpTime < 20 * EVERYDELTATIME) || (fabsf(jumpTime - 20 * EVERYDELTATIME) < 0.01)))
-        {
-            self.position = CGPointMake(self.position.x, -EVERYDELTATIME * downSpeed * 2 + self.position.y);
-        }
-        else if (jumpTime > 20 * EVERYDELTATIME && ((jumpTime < 30 * EVERYDELTATIME) || (fabsf(jumpTime - 30 * EVERYDELTATIME) < 0.01)))
+        else if (jumpTime >= 10 && jumpTime < 15)
         {
             self.position = CGPointMake(self.position.x, -EVERYDELTATIME * downSpeed * 3 + self.position.y);
         }
-        else if (jumpTime > 30 * EVERYDELTATIME) {
+        else if (jumpTime >= 15 && jumpTime < 20)
+        {
+            self.position = CGPointMake(self.position.x, -EVERYDELTATIME * downSpeed * 4 + self.position.y);
+        }
+        else if (jumpTime >= 20) {
             currentJumpTime = 0.0;
             jumpTime = 0.0;
             isReadyToDown = NO;
@@ -114,126 +117,78 @@
             NSString * flyGrassFilename = [NSString stringWithFormat:@"GrassDown%d",flyGrassType];
             [flyGrassAnimationManager runAnimationsForSequenceNamed:flyGrassFilename];
             
-            [self.selfAnimationManager runAnimationsForSequenceNamed:@"OverDown"];
+            [self overDown];
         }
+        jumpTime += 1;
+
     }
     
-    if (isToBuffer == YES) {
-        jumpTime += EVERYDELTATIME;
-        if (jumpTime < bufferTime || fabsf(jumpTime - bufferTime) < 0.01) {
-            self.position = CGPointMake(self.position.x, 10 + self.position.y);
-        }
-        else
-        {
-            isToBuffer = NO;
-            [self letMonsterDown];
-        }
-    }
+//    if (isToBuffer == YES) {
+//        jumpTime += 1;
+//        if (jumpTime <= bufferTime) {
+//            self.position = CGPointMake(self.position.x, 10 + self.position.y);
+//        }
+//        else
+//        {
+//            isToBuffer = NO;
+//            [self letMonsterDown];
+//        }
+//    }
 }
 
 -(float)getMonsterDownSpeed:(float)height
 {
-    return ((height / EVERYDELTATIME) / 60);
+    return ((height / EVERYDELTATIME) / 45);
 }
 
--(void)isReadyToJump
+- (void)monsterReadyToJump
 {
-    
+    CCScaleTo * bodyScale1 = [CCScaleTo actionWithDuration:(10 * EVERYDELTATIME) scaleX:1.30 scaleY:0.75];
+    CCCallFunc * jumpCallBack = [CCCallFunc actionWithTarget:self selector:@selector(jump)];
+    CCSequence * seq = [CCSequence actions:bodyScale1,jumpCallBack, nil];
+    [self runAction:seq];
 }
 
 -(void)jump
 {
+    isReadyToJump = YES;
     [self resetScale];
-    [self monsterEyeActionWhenJump];
-    [self monsterHeadActionWhenJump];
-    [self monsterBodyActionWhenJump];
 }
 
 - (void)resetScale
 {
     [self setScale:1.0];
-}
-
--(void)monsterEyeActionWhenJump
-{
-    CCScaleTo * eyeScale1 = [CCScaleTo actionWithDuration:(24 * EVERYDELTATIME) scaleX:0.98 scaleY:1.05];
-    CCMoveBy * eyeMove1 = [CCMoveBy actionWithDuration:(18 * EVERYDELTATIME) position:CGPointMake(0.0, 0.0)];
-    CCMoveBy * eyeMove2 = [CCMoveBy actionWithDuration:(6 * EVERYDELTATIME) position:CGPointMake(0.0, 13.0)];
-    CCSequence * eyeMoveSeq = [CCSequence actions:eyeMove1,eyeMove2, nil];
-    CCSpawn * eyeScaleAndMove1 = [CCSpawn actions:eyeScale1,eyeMoveSeq, nil];
-    
-    
-    CCScaleTo * eyeScale2 = [CCScaleTo actionWithDuration:(16 * EVERYDELTATIME) scaleX:1.0 scaleY:1.0];
-    CCMoveBy * eyeMove3 = [CCMoveBy actionWithDuration:(16 * EVERYDELTATIME) position:CGPointMake(0.0, -13.0)];
-    CCSpawn * eyeScaleAndMove2 = [CCSpawn actions:eyeScale2,eyeMove3, nil];
-    
-    CCSequence * eyeSeq = [CCSequence actions:eyeScaleAndMove1,eyeScaleAndMove2, nil];
-    [monsterEye runAction:eyeSeq];
-}
-
--(void)monsterHeadActionWhenJump
-{
-    CCScaleTo * headScale1 = [CCScaleTo actionWithDuration:(24 * EVERYDELTATIME) scaleX:1.0 scaleY:1.04];
-    CCMoveBy * headMove1 = [CCMoveBy actionWithDuration:(24 * EVERYDELTATIME) position:CGPointMake(0, 79.0)];
-    CCSpawn * headScaleAndMove1 = [CCSpawn actions:headScale1,headMove1, nil];
-    
-    CCScaleTo * headScale2 = [CCScaleTo actionWithDuration:(16 * EVERYDELTATIME) scaleX:1.0 scaleY:1.0];
-    CCMoveBy * headMove2 = [CCMoveBy actionWithDuration:(16 * EVERYDELTATIME) position:CGPointMake(0, -20.0)];
-    CCSpawn * headScaleAndMove2 = [CCSpawn actions:headScale2,headMove2, nil];
-    
-    CCSequence * headSeq = [CCSequence actions:headScaleAndMove1,headScaleAndMove2, nil];
-    
-    [monsterHead runAction:headSeq];
-}
-
-
--(void)monsterBodyActionWhenJump
-{
-    CCScaleTo * bodyScale1 = [CCScaleTo actionWithDuration:(24 * EVERYDELTATIME) scaleX:0.9 scaleY:1.08];
-    CCScaleTo * bodyScale2 = [CCScaleTo actionWithDuration:(16 * EVERYDELTATIME) scaleX:1.0 scaleY:1.0];
+    CCScaleTo * bodyScale1 = [CCScaleTo actionWithDuration:(12 * EVERYDELTATIME) scaleX:0.9 scaleY:1.08];
+    CCScaleTo * bodyScale2 = [CCScaleTo actionWithDuration:(8 * EVERYDELTATIME) scaleX:1.0 scaleY:1.0];
     CCSequence * bodySeq = [CCSequence actions:bodyScale1,bodyScale2, nil];
-    [monsterBody runAction:bodySeq];
+    [self runAction:bodySeq];
 }
 
--(void)monsterCloseEyesWhenReadyToJump
+- (void)overDown
 {
-    [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeJumpClose"];
+    isFinishJump = YES;
+    [self littleJump];
+//    CCScaleTo * bodyScale1 = [CCScaleTo actionWithDuration:(4 * EVERYDELTATIME) scaleX:1.1 scaleY:0.95];
+//    CCScaleTo * bodyScale2 = [CCScaleTo actionWithDuration:(3 * EVERYDELTATIME) scaleX:0.95 scaleY:1.04];
+//    CCScaleTo * bodyScale3 = [CCScaleTo actionWithDuration:(1 * EVERYDELTATIME) scaleX:1.0 scaleY:1.0];
+//    CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
+//        isFinishJump = YES;
+//        [self littleJump];
+//    }];
+//    CCSequence * bodySeq = [CCSequence actions:bodyScale1,bodyScale2,bodyScale3,callBack, nil];
+//    [self runAction:bodySeq];
 }
 
 - (void) handleCollision
 {
     if (isReadyToDown == NO)
     {
-        isToBuffer = YES;
-        isReadyToJump = NO;
-        jumpTime = 0.0;
-        bufferTime = [P2_CalculateHelper getTheRestFrameForMonsterMoveWith:self.position.y] * EVERYDELTATIME;
-        
-        //        [self monsterBodyActionWhenCollisidein:bufferTime];
-        //        [self monsterHeadActionWhenCollisidein:bufferTime];
-        //        [self monsterEyeActionWhenCollisidein:bufferTime];
+        [self letMonsterDown];
+//        isToBuffer = YES;
+//        isReadyToJump = NO;
+//        jumpTime = 0.0;
+//        bufferTime = [P2_CalculateHelper getTheRestFrameForMonsterMoveWith:self.position.y];
     }
-}
-
--(void)monsterBodyActionWhenCollisidein:(ccTime)time
-{
-    [monsterBody stopAllActions];
-    CCScaleTo * bodyScale = [CCScaleTo actionWithDuration:time scaleX:2 scaleY:0.5];
-    [monsterBody runAction:bodyScale];
-}
-
--(void)monsterHeadActionWhenCollisidein:(ccTime)time
-{
-    [monsterHead stopAllActions];
-    CCScaleTo * headScale = [CCScaleTo actionWithDuration:time scaleX:1.02 scaleY:0.98];
-    [monsterHead runAction:headScale];
-}
-
--(void)monsterEyeActionWhenCollisidein:(ccTime)time
-{
-    [monsterEye stopAllActions];
-    CCScaleTo * eyeScale = [CCScaleTo actionWithDuration:time scaleX:1.05 scaleY:0.95];
-    [monsterEye runAction:eyeScale];
 }
 
 -(void)letMonsterDown
@@ -242,112 +197,62 @@
     jumpTime = 0.0;
     isReadyToJump = NO;
     isReadyToDown = YES;
+    
+    [self stopAllActions];
+    
+    [self setScale:1.0];
 }
 
 #pragma mark - AnimationManagerDelegate
 
 - (void) completedAnimationSequenceNamed:(NSString *)name
 {
-//    NSLog(@"name is %@",name);
-    //    if ([name isEqualToString:@"Idle"]) {
-    //        float isLittleJump = (float)arc4random() / ARC4RANDOM_MAX;
-    //        if (isLittleJump > 0.1) {
-    //
-    //
-    //
-    //        }
-    //        else {
-    //            ++ theIdleTimes;
-    //            float isRunNewMoving = (float)arc4random() / ARC4RANDOM_MAX;
-    //            float isRunClosingEyes = (float)arc4random() / ARC4RANDOM_MAX;
-    //            if (isRunNewMoving > RATIOTORUNNEWEYEMOVING || theIdleTimes == 4) {
-    //                [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
-    //                theIdleTimes = 0;
-    //            }
-    //            else if (isRunClosingEyes > RATIOTOCLOSEEYES)
-    //            {
-    //                [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeClose"];
-    //                [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeOpen"];
-    //            }
-    //        }
-    //    }
-    //    else
     if ([name isEqualToString:@"ReadyToJump"])
     {
         isReadyToJump = YES;
-        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeJumpOpen"];
+//        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeNormal"];
+//        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeJumpOpen"];
         [self jump];
         //[selfAnimationManager runAnimationsForSequenceNamed:@"Jump"];
     }
-    else if ([name isEqualToString:@"OverDown"])
-    {
-        isFinishJump = YES;
-        [self.selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
+}
+
+#pragma mark - monster Little jump
+- (void)littleJump
+{
+    float rate = 1.0;
+    float jumpRate = 1.0;
+    float changeScaleRate = 0.1;
+    if (self.isInMainMap) {
+        rate = 0.45;
+        jumpRate = 0.3;
+        changeScaleRate = 0.01;
     }
-    else if ([name isEqualToString:@"LittleJump"])
-    {
-        float rate = 1.0;
-        float jumpRate = 1.0;
-        float changeScaleRate = 0.1;
-        if (self.isInMainMap) {
-            rate = 0.45;
-            jumpRate = 0.3;
-            changeScaleRate = 0.01;
-        }
-        theIdleTimes ++ ;
-        CCScaleTo * monsterScale = [CCScaleTo actionWithDuration:0.20 scaleX:1.0 * rate + changeScaleRate scaleY:1.0 * rate - changeScaleRate];
-        CCEaseOut * easeOutLittleJumpUp = [CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:0.3 position:ccp(0.0, 20.0 * jumpRate)] rate:1.5];
-        CCScaleTo * monsterScaleBack = [CCScaleTo actionWithDuration:0.25 scaleX:1.0 * rate scaleY:1.0 * rate];
-        CCSpawn * littleJump = [CCSpawn actions:easeOutLittleJumpUp,monsterScaleBack, nil];
-        CCMoveBy * moveBy = [CCMoveBy actionWithDuration:0.2 position:ccp(0.0, - 20.0 * jumpRate)];
-        CCCallFunc * callFunc = [CCCallFunc actionWithTarget:self selector:@selector(monsterOverLittleJump:)];
-        
-        CCSequence * monseterLittleJump = [CCSequence actions:monsterScale,
-                                           //                                           monsterScaleTest,
-                                           littleJump,
-                                           moveBy,
-                                           callFunc,
-                                           nil];
-        [self runAction:monseterLittleJump];
-        
-        if (CCRANDOM_0_1() > RATIOTORUNNEWEYEMOVING && theIdleTimes > 12) {
-            [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
-            theIdleTimes = 0;
-        }
-        else if (CCRANDOM_0_1() > RATIOTOCLOSEEYES )
-        {
-            [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeClose"];
-            [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeOpen"];
-        }
-        
-        
-    }
-    else if ([name isEqualToString:@"OverLittleJump"])
-    {
-        isFinishJump = YES;
-        [self.selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
-    }
+    theIdleTimes ++ ;
+    CCScaleTo * monsterScale = [CCScaleTo actionWithDuration:0.20 scaleX:1.0 * rate + changeScaleRate scaleY:1.0 * rate - changeScaleRate];
+    CCEaseOut * easeOutLittleJumpUp = [CCEaseOut actionWithAction:[CCMoveBy actionWithDuration:0.3 position:ccp(0.0, 20.0 * jumpRate)] rate:1.5];
+    CCScaleTo * monsterScaleBack = [CCScaleTo actionWithDuration:0.25 scaleX:1.0 * rate scaleY:1.0 * rate];
+    CCSpawn * littleJump = [CCSpawn actions:easeOutLittleJumpUp,monsterScaleBack, nil];
+    CCMoveBy * moveBy = [CCMoveBy actionWithDuration:0.2 position:ccp(0.0, - 20.0 * jumpRate)];
+    CCCallFunc * callFunc = [CCCallFunc actionWithTarget:self selector:@selector(littleJump)];
     
+    CCSequence * monseterLittleJump = [CCSequence actions:monsterScale,
+                                       //                                           monsterScaleTest,
+                                       littleJump,
+                                       moveBy,
+                                       callFunc,
+                                       nil];
+    [self runAction:monseterLittleJump];
     
-}
-
-#pragma mark - MonseterOverLittleJump
-- (void)monsterReadyToLittleJump:(id)sender
-{
-    [self.selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
-}
-
-- (void)monsterOverLittleJump:(id)sender
-{
-    [self.selfAnimationManager runAnimationsForSequenceNamed:@"LittleJump"];
-}
-
-- (void)runningEyeMoving
-{
-    //    if (!isMovingEyes) {
-    //        [eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
-    //        isMovingEyes = YES;
-    //    }
+    if (CCRANDOM_0_1() > RATIOTORUNNEWEYEMOVING && theIdleTimes > 12) {
+        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
+        theIdleTimes = 0;
+    }
+    else if (CCRANDOM_0_1() > RATIOTOCLOSEEYES )
+    {
+        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeClose"];
+        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeOpen"];
+    }
 }
 
 #pragma mark - 退出场景是释放

@@ -43,7 +43,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>P2_Resource/pictures/headFrame/8.png</string>
+										<string>pictures/headFrame/8.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -76,7 +76,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-13</real>
+							<real>20.5</real>
 							<real>0.0</real>
 							<integer>0</integer>
 						</array>
@@ -126,12 +126,10 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/headFrame/8.png</string>
+							<string>pictures/headFrame/8.png</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -158,7 +156,7 @@
 									<integer>3</integer>
 									<key>value</key>
 									<array>
-										<real>7</real>
+										<real>33.5</real>
 										<real>51</real>
 									</array>
 								</dict>
@@ -196,7 +194,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>7</real>
+							<real>33.5</real>
 							<real>51</real>
 							<integer>0</integer>
 						</array>
@@ -241,7 +239,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_monster_head_ball.png</string>
+							<string>pictures/p2_monster_head_ball.png</string>
 						</array>
 					</dict>
 				</array>
@@ -261,12 +259,24 @@
 		<array>
 			<dict>
 				<key>name</key>
+				<string>contentSize</string>
+				<key>type</key>
+				<string>Size</string>
+				<key>value</key>
+				<array>
+					<real>54</real>
+					<real>67</real>
+					<integer>0</integer>
+				</array>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>anchorPoint</string>
 				<key>type</key>
 				<string>Point</string>
 				<key>value</key>
 				<array>
-					<real>0.0</real>
+					<real>0.5</real>
 					<real>0.0</real>
 				</array>
 			</dict>
@@ -292,6 +302,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -326,7 +338,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.5</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
