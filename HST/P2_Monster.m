@@ -8,20 +8,28 @@
 
 #import "P2_Monster.h"
 #import "P2_MonsterEye.h"
+#import "MonsterEye.h"
 #import "CCBReader.h"
 #import "CCBAnimationManager.h"
 #import "P2_LittleFlyObjects.h"
 #import "P2_FlyGrass.h"
 #import "P2_CalculateHelper.h"
+#import "MonsterEyeUpdateObject.h"
 
 #define EVERYDELTATIME 0.016667
 #define RATIOTORUNNEWEYEMOVING 0.7
 #define RATIOTOCLOSEEYES 0.85
 
+@interface P2_Monster()
+
+@property (strong, nonatomic) MonsterEyeUpdateObject* updateObj;
+
+@end
+
 @implementation P2_Monster
+
 @synthesize monsterHead;
 @synthesize monsterBody;
-@synthesize monsterEye;
 @synthesize isFinishJump;
 @synthesize currentJumpTime;
 
@@ -37,30 +45,23 @@
         isReadyToDown = NO;
         isFinishJump = YES;
         self.isInMainMap = NO;
+        
+        self.monsterEye = [[MonsterEye alloc]initWithEyeWhiteName:@"p2_monster_eyewhite.png" eyeballName:@"p2_monster_eyeblack.png" eyelidColor:ccc3(255.0, 198.0, 0.0)];
+        self.monsterEye.position = CGPointMake(78.0, 185.0);
+        [self addChild:self.monsterEye z:1];
+        
+        self.updateObj = [[MonsterEyeUpdateObject alloc] init];
+        [self.updateObj addMonsterEye:self.monsterEye];
+        [self.updateObj beginUpdate];
+        
         [self scheduleUpdate];
 	}
 	return self;
 }
 
-
-- (void)didLoadFromCCB
-{
-    
-//    self.userObject = nil;
-    
-    self.eyesAnimationManager = monsterEye.userObject;
-    self.eyesAnimationManager.delegate = self;
-    
-    self.selfAnimationManager = self.userObject;
-    self.selfAnimationManager.delegate = self;
-    
-}
-
 - (void)onExit
 {
     [super onExit];
-    self.eyesAnimationManager = nil;
-    self.selfAnimationManager = nil;
 }
 
 -(void)update:(ccTime)delta
@@ -87,14 +88,13 @@
     }
     
     if (isReadyToDown == YES) {
-        [self.selfAnimationManager runAnimationsForSequenceNamed:@"Down"];
         
         if (jumpTime == 0) {
             downSpeed = [self getMonsterDownSpeed:self.position.y];
         }
         
         if (jumpTime < 10) {
-            self.position = CGPointMake(self.position.x, -EVERYDELTATIME * downSpeed + self.position.y);
+            self.position = CGPointMake(self.position.x, - EVERYDELTATIME * downSpeed + self.position.y);
         }
         else if (jumpTime >= 10 && jumpTime < 15)
         {
@@ -120,20 +120,7 @@
             [self overDown];
         }
         jumpTime += 1;
-
     }
-    
-//    if (isToBuffer == YES) {
-//        jumpTime += 1;
-//        if (jumpTime <= bufferTime) {
-//            self.position = CGPointMake(self.position.x, 10 + self.position.y);
-//        }
-//        else
-//        {
-//            isToBuffer = NO;
-//            [self letMonsterDown];
-//        }
-//    }
 }
 
 -(float)getMonsterDownSpeed:(float)height
@@ -141,14 +128,20 @@
     return ((height / EVERYDELTATIME) / 45);
 }
 
+#pragma mark - monster准备起跳
 - (void)monsterReadyToJump
 {
+    [self.monsterEye blink];
+    
     CCScaleTo * bodyScale1 = [CCScaleTo actionWithDuration:(10 * EVERYDELTATIME) scaleX:1.30 scaleY:0.75];
     CCCallFunc * jumpCallBack = [CCCallFunc actionWithTarget:self selector:@selector(jump)];
     CCSequence * seq = [CCSequence actions:bodyScale1,jumpCallBack, nil];
     [self runAction:seq];
+    
+    
 }
 
+#pragma mark - monster跳起后
 -(void)jump
 {
     isReadyToJump = YES;
@@ -164,6 +157,7 @@
     [self runAction:bodySeq];
 }
 
+#pragma mark - monster下落后
 - (void)overDown
 {
     isFinishJump = YES;
@@ -184,10 +178,6 @@
     if (isReadyToDown == NO)
     {
         [self letMonsterDown];
-//        isToBuffer = YES;
-//        isReadyToJump = NO;
-//        jumpTime = 0.0;
-//        bufferTime = [P2_CalculateHelper getTheRestFrameForMonsterMoveWith:self.position.y];
     }
 }
 
@@ -199,22 +189,7 @@
     isReadyToDown = YES;
     
     [self stopAllActions];
-    
     [self setScale:1.0];
-}
-
-#pragma mark - AnimationManagerDelegate
-
-- (void) completedAnimationSequenceNamed:(NSString *)name
-{
-    if ([name isEqualToString:@"ReadyToJump"])
-    {
-        isReadyToJump = YES;
-//        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeNormal"];
-//        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeJumpOpen"];
-        [self jump];
-        //[selfAnimationManager runAnimationsForSequenceNamed:@"Jump"];
-    }
 }
 
 #pragma mark - monster Little jump
@@ -244,25 +219,22 @@
                                        nil];
     [self runAction:monseterLittleJump];
     
-    if (CCRANDOM_0_1() > RATIOTORUNNEWEYEMOVING && theIdleTimes > 12) {
-        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
-        theIdleTimes = 0;
-    }
-    else if (CCRANDOM_0_1() > RATIOTOCLOSEEYES )
-    {
-        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeClose"];
-        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeOpen"];
-    }
+//    if (CCRANDOM_0_1() > RATIOTORUNNEWEYEMOVING && theIdleTimes > 12) {
+//        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
+//        theIdleTimes = 0;
+//    }
+//    else if (CCRANDOM_0_1() > RATIOTOCLOSEEYES )
+//    {
+//        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeClose"];
+//        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeOpen"];
+//    }
 }
 
-#pragma mark - 退出场景是释放
-- (void)releaseAnimationDelegate
+- (void)dealloc
 {
-    self.eyesAnimationManager.delegate = nil;
-    self.eyesAnimationManager = nil;
+    [super dealloc];
     
-    self.selfAnimationManager.delegate = nil;
-    self.selfAnimationManager = nil;
+    self.monsterEye = nil;
+    self.updateObj = nil;
 }
-
 @end

@@ -95,7 +95,6 @@
     
     isFrameCounterShowed = NO;
     self.frameCounter = 1;
-    isMusicToShow = YES;
     deltaCounter = 0;
     _currentSongType = 2;
     
@@ -182,24 +181,14 @@
         isFrameCounterShowed = NO;
     }
     
-    NSString * currentFrame = [NSString stringWithFormat:@"%ld",(long)_frameCounter];
-    
     if (_frameCounter == 68) {
         [[SimpleAudioEngine sharedEngine] rewindBackgroundMusic];
-//        [[CDAudioManager sharedManager] rewindBackgroundMusic];
         _frameCounter = 1;
     }
     else if ([frameToShowCurrentFrame containsObject:[NSNumber numberWithInteger:_frameCounter]] && !isFrameCounterShowed){
         isFrameCounterShowed = YES;
         NSInteger musicType = [[musicTypeInFrame objectAtIndex:[frameToShowCurrentFrame indexOfObject:[NSNumber numberWithInteger:_frameCounter]]] integerValue];
-        NSLog(@"The music Type is %d",musicType);
-//        if (isMusicToShow) {
             [self updateForAddingLittleFly:musicType];
-//            isMusicToShow = NO;
-//        }
-//        else {
-//            isMusicToShow = YES;
-//        }
     }
 }
 
@@ -321,7 +310,6 @@
     }
     [_flyObjectsOnScreen release];
     
-    [monster releaseAnimationDelegate];
     [firstLittleMonster releaseAnimationDelegate];
     [secondLittleMonster releaseAnimationDelegate];
 }

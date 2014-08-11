@@ -9,6 +9,6 @@
 #import "CCNode.h"
 #import "CCBAnimationManager.h"
 
-@interface P2_MonsterEye : CCNode<CCBAnimationManagerDelegate>
+@interface P2_MonsterEye : CCNode
 
 @end

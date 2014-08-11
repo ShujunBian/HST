@@ -24,15 +24,4 @@
 {
 }
 
-
--(void)update:(ccTime)delta
-{
-    
-}
-
-- (void)completedAnimationSequenceNamed:(NSString *)name
-{
-    
-}
-
 @end
