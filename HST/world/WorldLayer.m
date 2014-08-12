@@ -111,13 +111,13 @@
             
             //p1
             
-            self.worldUILayer = [[[WorldUILayer alloc]init]autorelease];
-            [self addChild:self.worldUILayer];
+//            self.worldUILayer = [[[WorldUILayer alloc]init]autorelease];
+//            [self addChild:self.worldUILayer];
             
-//            [self changeToScene:^CCScene *{
-//                CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
-//                return p1Scene;
-//            }];
+            [self changeToScene:^CCScene *{
+                CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
+                return p1Scene;
+            }];
         }
         else if (CGRectContainsPoint(WORLD_P2_RECT_1, locationInNodeSpace) ||
                  CGRectContainsPoint(WORLD_P2_RECT_2, locationInNodeSpace))
