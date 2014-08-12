@@ -207,8 +207,6 @@
     {
         return;
     }
-
-
     [self.animationManager runAnimationsForSequenceNamed:@"renewButtonRotate"];
     [self.gameLayer monstersRenew];
     [self.waterLayer beginReleaseWater];

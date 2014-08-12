@@ -18,7 +18,7 @@
     CircleTransitionLayer* layer = [CircleTransitionLayer layer];
     [layer removeFromParentAndCleanup:YES];
     [[CCDirector sharedDirector].runningScene addChild:layer];
-    [layer showSceneWithDuration:0.7f onCompletion:^{
+    [layer showSceneWithDuration:1.f onCompletion:^{
         [layer removeFromParentAndCleanup:NO];
     }];
 }
@@ -29,7 +29,7 @@
     CircleTransitionLayer* layer = [CircleTransitionLayer layer];
     [layer removeFromParentAndCleanup:YES];
     [[CCDirector sharedDirector].runningScene addChild:layer];
-    [layer hideSceneWithDuration:0.7f onCompletion:^{
+    [layer hideSceneWithDuration:1.f onCompletion:^{
         [layer removeFromParentAndCleanup:NO];
         [[CCDirector sharedDirector] replaceScene:sceneBlock()];
     }];

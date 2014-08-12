@@ -86,7 +86,6 @@
         [self addChild:eye];
         [self.updateObj addMonsterEye:eye];
 	}
-	
 	return self;
 }
 

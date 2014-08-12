@@ -635,7 +635,7 @@
     {
         if (self.waterRecordArray.count)
         {
-            if (self.waterRecordArray.count == 1)
+            if (self.waterRecordArray.count <= 1)
             {
                 //End Release Water
                 [self waterReleaseSoundStop];
