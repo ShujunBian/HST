@@ -145,9 +145,9 @@ static ccColor3B bubbleColors[] = {
         }
     }
     
-    [[SimpleAudioEngine sharedEngine] playEffect:[NSString stringWithFormat:@"P1_b%d.wav",soundID]];
+    [[SimpleAudioEngine sharedEngine] playEffect:[NSString stringWithFormat:@"P1_b%d.mp3",soundID]];
     [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:)
-                                           withObject:[NSString stringWithFormat:@"P1_b%d.wav",soundID] afterDelay:1.0];
+                                           withObject:[NSString stringWithFormat:@"P1_b%d.mp3",soundID] afterDelay:1.0];
     
     
     CCScaleBy *scale = [CCScaleBy actionWithDuration:0.1 scale:0.5];
