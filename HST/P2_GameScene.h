@@ -17,8 +17,6 @@
 
 @interface P2_GameScene : CCLayer<P2_LittleFlyObjectsDelegate>
 {
-    BOOL isFrameCounterShowed;
-    NSInteger deltaCounter;
     NSArray * frameToShowCurrentFrame;
     NSArray * musicTypeInFrame;
 }

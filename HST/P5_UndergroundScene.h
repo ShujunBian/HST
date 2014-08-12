@@ -43,6 +43,4 @@ typedef enum {
 
 - (CGPoint)monsterCurrentPosition;
 
-- (void)releaseBellAndDrawArray;
-
 @end

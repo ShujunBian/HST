@@ -157,7 +157,6 @@
         [child unscheduleAllSelectors];
     }
     
-    [undergrounScene releaseBellAndDrawArray];
     [NSNotificationCenter unregister:undergrounScene];
 
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];

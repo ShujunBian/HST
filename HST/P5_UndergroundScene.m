@@ -599,10 +599,7 @@ static float holesRadius[] = {
 - (void)dealloc
 {
     [super dealloc];
-}
-
-- (void)releaseBellAndDrawArray
-{
+    
     if (rotatedBellTimer != nil && [rotatedBellTimer isValid]) {
         [rotatedBellTimer invalidate];
         rotatedBellTimer = nil;
@@ -622,5 +619,6 @@ static float holesRadius[] = {
     [_drawOrderArray removeAllObjects];
     [_drawOrderArray release];
 }
+
 
 @end

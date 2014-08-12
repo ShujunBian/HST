@@ -48,7 +48,7 @@
 -(void) update:(ccTime)delta
 {
     if ([mushroom isSamePositionWithFlower:flower]) {
-        NSLog(@"mushroom position is %f and flower position is %f",mushroom.position.x,flower.position.x);
+//        NSLog(@"mushroom position is %f and flower position is %f",mushroom.position.x,flower.position.x);
         [mushroom resetFlowerPosition:flower];
     }
     self.grass.position = CGPointMake(self.grass.position.x - GRASS_MOVINGSPEED * EVERYDELTATIME, self.grass.position.y);

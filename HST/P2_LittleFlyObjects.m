@@ -30,9 +30,17 @@ static ccColor3B littleFlyColors[] = {
     {213,176,255}
 };
 
+-(id)init
+{
+    if (self = [super init]) {
+//        [self schedule:@selector(littleFlyObjectFlying) interval:EVERYDELTATIME];
+    }
+    return self;
+}
+
 - (void)didLoadFromCCB
 {
-    objectMovingSpeed = 1024.0f / 140.0f;
+    objectMovingSpeed = 1024.0f / 120.0f;
 
     CCRotateBy * wingRotate = [CCRotateBy actionWithDuration:2.0 angle:360.0];
     CCRepeatForever * rotateForevr = [CCRepeatForever actionWithAction:wingRotate];
@@ -76,10 +84,14 @@ static ccColor3B littleFlyColors[] = {
 
 - (void)handleCollision
 {
-    NSString * boomMusicFilename = [NSString stringWithFormat:@"P2_%d_%d.mp3",_currentSongType,musicType];
+    NSString * boomMusicFilename = [NSString stringWithFormat:@"P2_%ld_%d.mp3",(long)_currentSongType,musicType];
     [[SimpleAudioEngine sharedEngine] playEffect:boomMusicFilename];
     
     P2_LittleFlyBoom * littleFlyBoom = (P2_LittleFlyBoom *)[CCBReader nodeGraphFromFile:@"P2_LittleFlyOut.ccbi"];
+    
+    NSLog(@"handleCollision %@",[NSDate dateWithTimeIntervalSinceNow:0]);
+
+
     littleFlyBoom.position = self.position;
     [littleFlyBoom setTintColor:self.body.color];
     [self.parent addChild:littleFlyBoom];
@@ -87,6 +99,11 @@ static ccColor3B littleFlyColors[] = {
     [self stopAllActions];
     [self flyOut];
     
+}
+
+- (void)littleFlyObjectFlying
+{
+
 }
 
 #pragma mark - update函数
@@ -127,7 +144,7 @@ static ccColor3B littleFlyColors[] = {
 
 - (void)setObjectFirstPosition
 {
-    objectPostionX = 1024.0 + 100.0;
+    objectPostionX = 1024.0;
     objectPostionY = CCRANDOM_0_1() * 120.0;
     self.position = CGPointMake(objectPostionX, self.contentSize.height / 2 + 400.0 + objectPostionY);
 }
