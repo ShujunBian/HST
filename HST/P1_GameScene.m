@@ -169,8 +169,9 @@ static NSMutableArray *bubbleScales = nil;
     colorIndex++;
     if(colorIndex == [bubble countOfColor])
     {
-        colorIndex = 0;
+        colorIndex = 1;
     }
+    bubble.currentBubbleType = (P1_BubbleType)colorIndex;
     ccColor3B color = [bubble colorAtIndex:colorIndex];
     [bubble setBodyColor:color];
     

@@ -13,24 +13,32 @@
 #import "SimpleAudioEngine.h"
 #import "NSNotificationCenter+Addition.h"
 
-@implementation P1_Bubble
+@interface P1_Bubble ()
+@property (assign, nonatomic) BOOL f1;
+@property (assign, nonatomic) BOOL f2;
+@property (assign, nonatomic) BOOL f3;
+@property (assign, nonatomic) BOOL f4;
+@end
 
+@implementation P1_Bubble
 static ccColor3B bubbleColors[] = {
-    {255,229,55},//黄色
-    {255,188,248},//紫色
-    {91,222,255},//蓝色
-    {111,255,141},//绿色
-    {131,255,245},//蓝绿
-    {135,246,203},
-    {151,255,28},
-    {255,169,175},
-    {255,200,33},
-    {213,176,255}
+    {255,255,255},  //白色 占位
+    {255,229,55},   //黄色 do
+    {255,188,248},  //粉色 ri
+    {91,222,255},   //蓝色 mi
+    {111,255,141},  //绿色 fa
+    {131,255,245},  //蓝绿 so
+    {213,176,255},  // la
+    {151,255,28}    // xi
 };
 
 - (id)init
 {
     if (self = [super init]) {
+        self.f1 = NO;
+        self.f2 = NO;
+        self.f3 = NO;
+        self.f4 = NO;
     }
     return self;
 }
@@ -134,26 +142,28 @@ static ccColor3B bubbleColors[] = {
 
 - (void)boom
 {
-    int soundID = 1 + arc4random()%11;
-    for(int i = 0 ; i < [self countOfColor]; i++)
-    {
-        ccColor3B color = self.body.color;
-        if([self isccColor3B:color theSame:[self colorAtIndex:i]])
-        {
-            soundID = i + 1;
-            break;
-        }
-    }
+    self.f1 = YES;
+//    int soundID = 1 + arc4random()%11;
+//    for(int i = 0 ; i < [self countOfColor]; i++)
+//    {
+//        ccColor3B color = self.body.color;
+//        if([self isccColor3B:color theSame:[self colorAtIndex:i]])
+//        {
+//            soundID = i + 1;
+//            break;
+//        }
+//    }
     
-    [[SimpleAudioEngine sharedEngine] playEffect:[NSString stringWithFormat:@"P1_b%d.mp3",soundID]];
-    [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:)
-                                           withObject:[NSString stringWithFormat:@"P1_b%d.mp3",soundID] afterDelay:1.0];
+    [[SimpleAudioEngine sharedEngine] playEffect:[NSString stringWithFormat:@"P1_%d.mp3",_currentBubbleType]];
+    [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:) withObject:[NSString stringWithFormat:@"P1_%d.mp3",_currentBubbleType] afterDelay:1.0];
+    self.f2 = YES;
     
     
     CCScaleBy *scale = [CCScaleBy actionWithDuration:0.1 scale:0.5];
+    self.f3 = YES;
     CCCallBlock * removeBubble = [CCCallBlock actionWithBlock:^{
-#warning 查询是否cocosbuilder引起问题
         [self removeBubbleAndBomb];
+        self.f4 = YES;
     }];
     
     CCSequence *seq = [CCSequence actions:scale,removeBubble, nil];

@@ -21,11 +21,11 @@
         [timer invalidate];
     }
     
-    if (fabsf(self.opacity - 255.0 * 0.75) < 10) {
+    if (fabsf(self.opacity - 255.0 * 0.75) < 20) {
         self.opacity = 255.0 * 0.75;
     }
     else {
-        self.opacity += 19.125 / 2.0;
+        self.opacity += 19.125;
     }
 }
 

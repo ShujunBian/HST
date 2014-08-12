@@ -736,16 +736,6 @@
 		51ACAA70199611B800A34946 /* P2_2_7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA67199611B800A34946 /* P2_2_7.mp3 */; };
 		51ACAA71199611B800A34946 /* P2_2_8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA68199611B800A34946 /* P2_2_8.mp3 */; };
 		51ACAA72199611B800A34946 /* P2_2_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA69199611B800A34946 /* P2_2_background.mp3 */; };
-		51ACAA801999F42D00A34946 /* P1_b1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA761999F42D00A34946 /* P1_b1.mp3 */; };
-		51ACAA811999F42D00A34946 /* P1_b2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA771999F42D00A34946 /* P1_b2.mp3 */; };
-		51ACAA821999F42D00A34946 /* P1_b3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA781999F42D00A34946 /* P1_b3.mp3 */; };
-		51ACAA831999F42D00A34946 /* P1_b4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA791999F42D00A34946 /* P1_b4.mp3 */; };
-		51ACAA841999F42D00A34946 /* P1_b5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA7A1999F42D00A34946 /* P1_b5.mp3 */; };
-		51ACAA851999F42D00A34946 /* P1_b6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA7B1999F42D00A34946 /* P1_b6.mp3 */; };
-		51ACAA861999F42D00A34946 /* P1_b7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA7C1999F42D00A34946 /* P1_b7.mp3 */; };
-		51ACAA871999F42D00A34946 /* P1_b8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA7D1999F42D00A34946 /* P1_b8.mp3 */; };
-		51ACAA881999F42D00A34946 /* P1_b9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA7E1999F42D00A34946 /* P1_b9.mp3 */; };
-		51ACAA891999F42D00A34946 /* P1_b10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA7F1999F42D00A34946 /* P1_b10.mp3 */; };
 		51ACAA8C1999F63600A34946 /* CCLayerColor+CCLayerColorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 51ACAA8B1999F63600A34946 /* CCLayerColor+CCLayerColorAnimation.m */; };
 		51ACAA951999F98700A34946 /* MainMap_P1_EyeBlack-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA8D1999F98700A34946 /* MainMap_P1_EyeBlack-hd.png */; };
 		51ACAA961999F98700A34946 /* MainMap_P1_EyeBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAA8E1999F98700A34946 /* MainMap_P1_EyeBlack.png */; };
@@ -760,6 +750,19 @@
 		51ACAAA91999FE4900A34946 /* MainMap_P1PlayButton-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAA71999FE4900A34946 /* MainMap_P1PlayButton-hd.png */; };
 		51ACAAAA1999FE4900A34946 /* MainMap_P1PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAA81999FE4900A34946 /* MainMap_P1PlayButton.png */; };
 		51ACAAAC199A088000A34946 /* Kankin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAAB199A088000A34946 /* Kankin.ttf */; };
+		51ACAAB9199A2F6400A34946 /* P1_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAAD199A2F6400A34946 /* P1_1.mp3 */; };
+		51ACAABA199A2F6400A34946 /* P1_2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAAE199A2F6400A34946 /* P1_2.mp3 */; };
+		51ACAABB199A2F6400A34946 /* P1_3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAAF199A2F6400A34946 /* P1_3.mp3 */; };
+		51ACAABC199A2F6400A34946 /* P1_4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB0199A2F6400A34946 /* P1_4.mp3 */; };
+		51ACAABD199A2F6400A34946 /* P1_5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB1199A2F6400A34946 /* P1_5.mp3 */; };
+		51ACAABE199A2F6400A34946 /* P1_6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB2199A2F6400A34946 /* P1_6.mp3 */; };
+		51ACAABF199A2F6400A34946 /* P1_7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB3199A2F6400A34946 /* P1_7.mp3 */; };
+		51ACAAC0199A2F6400A34946 /* P1_8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB4199A2F6400A34946 /* P1_8.mp3 */; };
+		51ACAAC1199A2F6400A34946 /* P1_9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB5199A2F6400A34946 /* P1_9.mp3 */; };
+		51ACAAC2199A2F6400A34946 /* P1_10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB6199A2F6400A34946 /* P1_10.mp3 */; };
+		51ACAAC3199A2F6400A34946 /* P1_11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB7199A2F6400A34946 /* P1_11.mp3 */; };
+		51ACAAC4199A2F6400A34946 /* P1_12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB8199A2F6400A34946 /* P1_12.mp3 */; };
+		51ACAACA199A419200A34946 /* WorldUILayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 51ACAAC9199A419200A34946 /* WorldUILayer.m */; };
 		51CFF209196E436800602568 /* P3_Mushroom.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CFF208196E436800602568 /* P3_Mushroom.m */; };
 		51CFF230196E480800602568 /* P3_Flower.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CFF22F196E480800602568 /* P3_Flower.m */; };
 		51CFF24B196E6EE500602568 /* P3_Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CFF24A196E6EE500602568 /* P3_Monster.m */; };
@@ -2016,16 +2019,6 @@
 		51ACAA67199611B800A34946 /* P2_2_7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_2_7.mp3; sourceTree = "<group>"; };
 		51ACAA68199611B800A34946 /* P2_2_8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_2_8.mp3; sourceTree = "<group>"; };
 		51ACAA69199611B800A34946 /* P2_2_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P2_2_background.mp3; sourceTree = "<group>"; };
-		51ACAA761999F42D00A34946 /* P1_b1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_b1.mp3; sourceTree = "<group>"; };
-		51ACAA771999F42D00A34946 /* P1_b2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_b2.mp3; sourceTree = "<group>"; };
-		51ACAA781999F42D00A34946 /* P1_b3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_b3.mp3; sourceTree = "<group>"; };
-		51ACAA791999F42D00A34946 /* P1_b4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_b4.mp3; sourceTree = "<group>"; };
-		51ACAA7A1999F42D00A34946 /* P1_b5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_b5.mp3; sourceTree = "<group>"; };
-		51ACAA7B1999F42D00A34946 /* P1_b6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_b6.mp3; sourceTree = "<group>"; };
-		51ACAA7C1999F42D00A34946 /* P1_b7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_b7.mp3; sourceTree = "<group>"; };
-		51ACAA7D1999F42D00A34946 /* P1_b8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_b8.mp3; sourceTree = "<group>"; };
-		51ACAA7E1999F42D00A34946 /* P1_b9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_b9.mp3; sourceTree = "<group>"; };
-		51ACAA7F1999F42D00A34946 /* P1_b10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_b10.mp3; sourceTree = "<group>"; };
 		51ACAA8A1999F63600A34946 /* CCLayerColor+CCLayerColorAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCLayerColor+CCLayerColorAnimation.h"; sourceTree = "<group>"; };
 		51ACAA8B1999F63600A34946 /* CCLayerColor+CCLayerColorAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCLayerColor+CCLayerColorAnimation.m"; sourceTree = "<group>"; };
 		51ACAA8D1999F98700A34946 /* MainMap_P1_EyeBlack-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainMap_P1_EyeBlack-hd.png"; sourceTree = "<group>"; };
@@ -2041,6 +2034,20 @@
 		51ACAAA71999FE4900A34946 /* MainMap_P1PlayButton-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainMap_P1PlayButton-hd.png"; sourceTree = "<group>"; };
 		51ACAAA81999FE4900A34946 /* MainMap_P1PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMap_P1PlayButton.png; sourceTree = "<group>"; };
 		51ACAAAB199A088000A34946 /* Kankin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Kankin.ttf; sourceTree = "<group>"; };
+		51ACAAAD199A2F6400A34946 /* P1_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_1.mp3; sourceTree = "<group>"; };
+		51ACAAAE199A2F6400A34946 /* P1_2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_2.mp3; sourceTree = "<group>"; };
+		51ACAAAF199A2F6400A34946 /* P1_3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_3.mp3; sourceTree = "<group>"; };
+		51ACAAB0199A2F6400A34946 /* P1_4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_4.mp3; sourceTree = "<group>"; };
+		51ACAAB1199A2F6400A34946 /* P1_5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_5.mp3; sourceTree = "<group>"; };
+		51ACAAB2199A2F6400A34946 /* P1_6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_6.mp3; sourceTree = "<group>"; };
+		51ACAAB3199A2F6400A34946 /* P1_7.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_7.mp3; sourceTree = "<group>"; };
+		51ACAAB4199A2F6400A34946 /* P1_8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_8.mp3; sourceTree = "<group>"; };
+		51ACAAB5199A2F6400A34946 /* P1_9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_9.mp3; sourceTree = "<group>"; };
+		51ACAAB6199A2F6400A34946 /* P1_10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_10.mp3; sourceTree = "<group>"; };
+		51ACAAB7199A2F6400A34946 /* P1_11.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_11.mp3; sourceTree = "<group>"; };
+		51ACAAB8199A2F6400A34946 /* P1_12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_12.mp3; sourceTree = "<group>"; };
+		51ACAAC8199A419200A34946 /* WorldUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldUILayer.h; sourceTree = "<group>"; };
+		51ACAAC9199A419200A34946 /* WorldUILayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldUILayer.m; sourceTree = "<group>"; };
 		51CFF207196E436800602568 /* P3_Mushroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Mushroom.h; sourceTree = "<group>"; };
 		51CFF208196E436800602568 /* P3_Mushroom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Mushroom.m; sourceTree = "<group>"; };
 		51CFF22E196E480800602568 /* P3_Flower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Flower.h; sourceTree = "<group>"; };
@@ -3226,16 +3233,18 @@
 		5169CDF918CDEA3D00426E6C /* Music */ = {
 			isa = PBXGroup;
 			children = (
-				51ACAA761999F42D00A34946 /* P1_b1.mp3 */,
-				51ACAA771999F42D00A34946 /* P1_b2.mp3 */,
-				51ACAA781999F42D00A34946 /* P1_b3.mp3 */,
-				51ACAA791999F42D00A34946 /* P1_b4.mp3 */,
-				51ACAA7A1999F42D00A34946 /* P1_b5.mp3 */,
-				51ACAA7B1999F42D00A34946 /* P1_b6.mp3 */,
-				51ACAA7C1999F42D00A34946 /* P1_b7.mp3 */,
-				51ACAA7D1999F42D00A34946 /* P1_b8.mp3 */,
-				51ACAA7E1999F42D00A34946 /* P1_b9.mp3 */,
-				51ACAA7F1999F42D00A34946 /* P1_b10.mp3 */,
+				51ACAAAD199A2F6400A34946 /* P1_1.mp3 */,
+				51ACAAAE199A2F6400A34946 /* P1_2.mp3 */,
+				51ACAAAF199A2F6400A34946 /* P1_3.mp3 */,
+				51ACAAB0199A2F6400A34946 /* P1_4.mp3 */,
+				51ACAAB1199A2F6400A34946 /* P1_5.mp3 */,
+				51ACAAB2199A2F6400A34946 /* P1_6.mp3 */,
+				51ACAAB3199A2F6400A34946 /* P1_7.mp3 */,
+				51ACAAB4199A2F6400A34946 /* P1_8.mp3 */,
+				51ACAAB5199A2F6400A34946 /* P1_9.mp3 */,
+				51ACAAB6199A2F6400A34946 /* P1_10.mp3 */,
+				51ACAAB7199A2F6400A34946 /* P1_11.mp3 */,
+				51ACAAB8199A2F6400A34946 /* P1_12.mp3 */,
 				51556DDD18CF21B8005C8D46 /* P1_bg.mp3 */,
 				51556DDE18CF21B8005C8D46 /* P1_bubble_out.mp3 */,
 			);
@@ -4161,6 +4170,8 @@
 			children = (
 				EF404036197A56D100C6C8E1 /* WorldLayer.h */,
 				EF404037197A56D100C6C8E1 /* WorldLayer.m */,
+				51ACAAC8199A419200A34946 /* WorldUILayer.h */,
+				51ACAAC9199A419200A34946 /* WorldUILayer.m */,
 				EF404039197A572D00C6C8E1 /* WorldP1Layer.h */,
 				EF40403A197A572D00C6C8E1 /* WorldP1Layer.m */,
 				EF40403C197A573700C6C8E1 /* WorldP2Layer.h */,
@@ -4457,6 +4468,7 @@
 				EF2231171995F1B700BCB28E /* p4_table-hd.png in Resources */,
 				EF403FEF197A1D1700C6C8E1 /* P4_yellow_monster-hd.png in Resources */,
 				EF403FF7197A1D1700C6C8E1 /* P4BrownMonster.ccb in Resources */,
+				51ACAABB199A2F6400A34946 /* P1_3.mp3 in Resources */,
 				EF4040CB197A592100C6C8E1 /* world_p4_car-hd.png in Resources */,
 				51A9428F197A130A00920318 /* 6-hd.png in Resources */,
 				EF40409F197A592100C6C8E1 /* world_background_mountain_left-hd.png in Resources */,
@@ -4530,11 +4542,13 @@
 				EF40401A197A1D1700C6C8E1 /* P4water_particle-hd.png in Resources */,
 				EF404018197A1D1700C6C8E1 /* P4SprayParticleRight.ccb in Resources */,
 				51A94390197A142E00920318 /* flowerhead.png in Resources */,
+				51ACAABF199A2F6400A34946 /* P1_7.mp3 in Resources */,
 				EF403FD9197A1D1700C6C8E1 /* P4_monster3_mask-hd.png in Resources */,
 				EF4040A4197A592100C6C8E1 /* world_background_tree1.png in Resources */,
 				51A94292197A130A00920318 /* 7.png in Resources */,
 				EF403FFA197A1D1700C6C8E1 /* P4Cloud1.ccbi in Resources */,
 				51A94061197A121300920318 /* P3_Monster_body_mouth.png in Resources */,
+				51ACAAC4199A2F6400A34946 /* P1_12.mp3 in Resources */,
 				51A94297197A130A00920318 /* p2_firstmonster_body-hd.png in Resources */,
 				51A94289197A130A00920318 /* 3-hd.png in Resources */,
 				5169CD5318CDE5EE00426E6C /* ChangeLog in Resources */,
@@ -4542,7 +4556,6 @@
 				EF403FB1197A1D1700C6C8E1 /* P4_blue_eyeball_1.png in Resources */,
 				EF53BC0019906A04007C8258 /* p4_background.mp3 in Resources */,
 				51A9409D197A121300920318 /* P3_BellBody.ccbi in Resources */,
-				51556DE118CF21B8005C8D46 /* P1_b3.wav in Resources */,
 				EF83082D1999FF2300EBFAF5 /* launch_eye_white.png in Resources */,
 				51A940A6197A121300920318 /* P3_ParticleEffect.ccb in Resources */,
 				51A942AD197A130A00920318 /* p2_littlefly-hd.png in Resources */,
@@ -4572,6 +4585,7 @@
 				51A9417D197A128700920318 /* P5_hole_cover-hd.png in Resources */,
 				51A94085197A121300920318 /* P3_CeruleanMonsterBody.ccbi in Resources */,
 				51A942D7197A130A00920318 /* p2_secondmonster_body-hd.png in Resources */,
+				51ACAABA199A2F6400A34946 /* P1_2.mp3 in Resources */,
 				51A94029197A121300920318 /* P3_grass.png in Resources */,
 				51F48AC5197CD86B00371C45 /* P3_GrassPSQ.plist in Resources */,
 				51A9429C197A130A00920318 /* p2_firstmonster_eyewhite.png in Resources */,
@@ -4607,6 +4621,7 @@
 				EF403FC0197A1D1700C6C8E1 /* P4_purple_eyeball_1-hd.png in Resources */,
 				EF403F8A197A1D1700C6C8E1 /* P4_bottle_left_ear-hd.png in Resources */,
 				51A94090197A121300920318 /* P3_RedMonster.ccb in Resources */,
+				51ACAABE199A2F6400A34946 /* P1_6.mp3 in Resources */,
 				EF403FA8197A1D1700C6C8E1 /* p4_cloud_2-hd.png in Resources */,
 				EF403FBA197A1D1700C6C8E1 /* P4_green_eyeball_2-hd.png in Resources */,
 				51A942AA197A130A00920318 /* p2_fly_grass3.png in Resources */,
@@ -4634,7 +4649,6 @@
 				51A94294197A130A00920318 /* 8.png in Resources */,
 				EF4040B6197A592100C6C8E1 /* world_p1_grass1.png in Resources */,
 				51F48ADA197E959200371C45 /* P5_GreenFlowerHead.ccb in Resources */,
-				51ACAA841999F42D00A34946 /* P1_b5.mp3 in Resources */,
 				51A94391197A142E00920318 /* monster_eye_lowerlid-hd.png in Resources */,
 				51A94161197A128700920318 /* P5_BellLight-hd.png in Resources */,
 				51A9436A197A142E00920318 /* bubble_01.png in Resources */,
@@ -4649,7 +4663,6 @@
 				EF83082B1999FF2300EBFAF5 /* launch_eye_ball.png in Resources */,
 				516F24411981DE9E004E6443 /* world_p5_mask.png in Resources */,
 				EF4040BD197A592100C6C8E1 /* world_p1_tree1-hd.png in Resources */,
-				51556DE218CF21B8005C8D46 /* P1_b4.wav in Resources */,
 				EF8308241999F7F700EBFAF5 /* helpButton.png in Resources */,
 				EF403FE3197A1D1700C6C8E1 /* P4_brown_monster-hd.png in Resources */,
 				EF4040BC197A592100C6C8E1 /* world_p1_mountain3.png in Resources */,
@@ -4688,6 +4701,7 @@
 				EF53BC0B19906BD8007C8258 /* world.mp3 in Resources */,
 				51A94188197A128700920318 /* P5_homePhoto.png in Resources */,
 				51556DEC18CF21B8005C8D46 /* P1_bubble_out.mp3 in Resources */,
+				51ACAAC3199A2F6400A34946 /* P1_11.mp3 in Resources */,
 				51A941BB197A128700920318 /* P5_UndergroundPassage1-hd.png in Resources */,
 				51A94182197A128700920318 /* P5_homeBed.png in Resources */,
 				EF404010197A1D1700C6C8E1 /* P4b6.wav in Resources */,
@@ -4746,6 +4760,7 @@
 				EF40401F197A1D1700C6C8E1 /* P4WaterLayer.ccbi in Resources */,
 				51A94163197A128700920318 /* P5_BellMouth-hd.png in Resources */,
 				51A94174197A128700920318 /* p5_flower_eyes_blink.png in Resources */,
+				51ACAAC1199A2F6400A34946 /* P1_9.mp3 in Resources */,
 				51A942E9197A130A00920318 /* P2_GameScene.ccb in Resources */,
 				EF403F9B197A1D1700C6C8E1 /* P4_bottleFoot.png in Resources */,
 				51A942A0197A130A00920318 /* p2_flower_eyes_blink.png in Resources */,
@@ -4763,7 +4778,6 @@
 				51A9436C197A142E00920318 /* bubble_02.png in Resources */,
 				EF403FBF197A1D1700C6C8E1 /* P4_green_eyewhite_2.png in Resources */,
 				51A942EB197A130A00920318 /* P2_Grass.ccb in Resources */,
-				51ACAA851999F42D00A34946 /* P1_b6.mp3 in Resources */,
 				51A94375197A142E00920318 /* bubble_07-hd.png in Resources */,
 				51A943BC197A142E00920318 /* P1_FlowerHead.ccbi in Resources */,
 				EF53BC0719906A04007C8258 /* p4_monster_shake.mp3 in Resources */,
@@ -4909,7 +4923,6 @@
 				51A94393197A142E00920318 /* monster_eye_upperlid-hd.png in Resources */,
 				EF404020197A1D1700C6C8E1 /* P4WaterOutParticle.ccb in Resources */,
 				51A94084197A121300920318 /* P3_CeruleanMonsterBody.ccb in Resources */,
-				51ACAA861999F42D00A34946 /* P1_b7.mp3 in Resources */,
 				EF8308231999F7F700EBFAF5 /* helpButton-hd.png in Resources */,
 				51A942BB197A130A00920318 /* p2_monster_eyeblack-hd.png in Resources */,
 				EF404025197A1D1700C6C8E1 /* water1.png in Resources */,
@@ -4934,6 +4947,7 @@
 				51A942A7197A130A00920318 /* p2_fly_grass2-hd.png in Resources */,
 				51A94033197A121300920318 /* P3_monster1_face.png in Resources */,
 				EF403FC6197A1D1700C6C8E1 /* P4_red_eyeball_2-hd.png in Resources */,
+				51ACAABD199A2F6400A34946 /* P1_5.mp3 in Resources */,
 				EF4040CE197A592100C6C8E1 /* world_p4_stone.png in Resources */,
 				EF708AFE19879B9D00068D61 /* world_p4_dialog-hd.png in Resources */,
 				51A9418B197A128700920318 /* P5_monsterBigShadow-hd.png in Resources */,
@@ -4945,7 +4959,6 @@
 				51A942F0197A130A00920318 /* P2_LittleFlyOut.ccbi in Resources */,
 				EF404026197A1D1700C6C8E1 /* water2-hd.png in Resources */,
 				51A9406A197A121300920318 /* P3_MonsterBody_SingMouth-hd.png in Resources */,
-				51ACAA891999F42D00A34946 /* P1_b10.mp3 in Resources */,
 				51A941A6197A128700920318 /* P5_monsterUnderLittleShadow.png in Resources */,
 				51A9438B197A142E00920318 /* flower_head_eye_open-hd.png in Resources */,
 				51A942B1197A130A00920318 /* p2_littlefly_eye_blink-hd.png in Resources */,
@@ -4964,7 +4977,6 @@
 				51A94065197A121300920318 /* P3_Monster_Eye.png in Resources */,
 				51A94181197A128700920318 /* P5_homeBed-hd.png in Resources */,
 				51A942DE197A130A00920318 /* p2_upper_cloud.png in Resources */,
-				51ACAA811999F42D00A34946 /* P1_b2.mp3 in Resources */,
 				51A94054197A121300920318 /* P3_monster4_mouth-hd.png in Resources */,
 				EF403FDA197A1D1700C6C8E1 /* P4_monster3_mask.png in Resources */,
 				EF403F9C197A1D1700C6C8E1 /* ccbDefaultImages-hd.plist in Resources */,
@@ -4987,7 +4999,6 @@
 				EF403F97197A1D1700C6C8E1 /* P4_bottle_right_ear.png in Resources */,
 				51A94186197A128700920318 /* P5_homeLight.png in Resources */,
 				51A94189197A128700920318 /* p5_houses-hd.png in Resources */,
-				51ACAA821999F42D00A34946 /* P1_b3.mp3 in Resources */,
 				51A941A3197A128700920318 /* P5_monsterUnderLeftLeg-hd.png in Resources */,
 				51A94088197A121300920318 /* P3_Monster_BigEye.ccb in Resources */,
 				51A94089197A121300920318 /* P3_Monster_BigEye.ccbi in Resources */,
@@ -5020,6 +5031,7 @@
 				EF403FBD197A1D1700C6C8E1 /* P4_green_eyewhite_1.png in Resources */,
 				51A9408A197A121300920318 /* P3_Monster_LittleEye.ccb in Resources */,
 				51A9415B197A128700920318 /* P5_BellEyesOpen-hd.png in Resources */,
+				51ACAAC0199A2F6400A34946 /* P1_8.mp3 in Resources */,
 				51A942F2197A130A00920318 /* P2_Monster.ccbi in Resources */,
 				EF40409B197A592100C6C8E1 /* world_background_cloud-hd.png in Resources */,
 				EF403FCE197A1D1700C6C8E1 /* P4_yellow_eyeball_2-hd.png in Resources */,
@@ -5027,7 +5039,6 @@
 				EF58EB131990C30700B13232 /* Default-hd.png in Resources */,
 				51A942E2197A130A00920318 /* P2_FirstLittlemonsterEye.ccbi in Resources */,
 				EF4040A2197A592100C6C8E1 /* world_background_mountain_right.png in Resources */,
-				51ACAA881999F42D00A34946 /* P1_b9.mp3 in Resources */,
 				51A942CF197A130A00920318 /* p2_mushroom2Body-hd.png in Resources */,
 				51A943A6197A142E00920318 /* monstereyewhite.png in Resources */,
 				51A943B4197A142E00920318 /* P1_BubblePosition3.ccbi in Resources */,
@@ -5114,6 +5125,7 @@
 				51A94285197A130A00920318 /* 1-hd.png in Resources */,
 				51A9419E197A128700920318 /* P5_monsterUnderBody.png in Resources */,
 				51A94160197A128700920318 /* P5_BellHeadJianBian.png in Resources */,
+				51ACAABC199A2F6400A34946 /* P1_4.mp3 in Resources */,
 				51A943B9197A142E00920318 /* P1_Flower.ccb in Resources */,
 				EF708AFF19879B9D00068D61 /* world_p4_dialog.png in Resources */,
 				51A9406D197A121300920318 /* P3_MonsterBodyEye.png in Resources */,
@@ -5127,7 +5139,6 @@
 				51A9429B197A130A00920318 /* p2_firstmonster_eyewhite-hd.png in Resources */,
 				EF403FF6197A1D1700C6C8E1 /* P4Bottle.ccbi in Resources */,
 				EF403F91197A1D1700C6C8E1 /* P4_bottle_mask.png in Resources */,
-				51ACAA831999F42D00A34946 /* P1_b4.mp3 in Resources */,
 				EF403FF5197A1D1700C6C8E1 /* P4Bottle.ccb in Resources */,
 				51A942F3197A130A00920318 /* P2_MonsterBody.ccb in Resources */,
 				51A943BF197A142E00920318 /* P1_Monster.ccb in Resources */,
@@ -5241,7 +5252,6 @@
 				51A94291197A130A00920318 /* 7-hd.png in Resources */,
 				EF404001197A1D1700C6C8E1 /* P4CloudTop.ccb in Resources */,
 				EF40400D197A1D1700C6C8E1 /* P4b3.wav in Resources */,
-				51ACAA871999F42D00A34946 /* P1_b8.mp3 in Resources */,
 				EF404015197A1D1700C6C8E1 /* P4PurpleMonster.ccbi in Resources */,
 				51A941D2197A128700920318 /* P5_FlowerHead.ccbi in Resources */,
 				51A94303197A130A00920318 /* P2_Sky.ccb in Resources */,
@@ -5256,6 +5266,7 @@
 				51A94372197A142E00920318 /* bubble_05.png in Resources */,
 				51A9407E197A121300920318 /* P3_BlueMonster.ccb in Resources */,
 				51A941A1197A128700920318 /* P5_monsterUnderEyeWhite-hd.png in Resources */,
+				51ACAAC2199A2F6400A34946 /* P1_10.mp3 in Resources */,
 				51A943B7197A142E00920318 /* P1_BubbleSky.ccb in Resources */,
 				EF403F92197A1D1700C6C8E1 /* P4_bottle_renew_button-hd.png in Resources */,
 				51A9419D197A128700920318 /* P5_monsterUnderBody-hd.png in Resources */,
@@ -5310,6 +5321,7 @@
 				51A94298197A130A00920318 /* p2_firstmonster_body.png in Resources */,
 				51A942AE197A130A00920318 /* p2_littlefly.png in Resources */,
 				51A941D7197A128700920318 /* P5_HomeLight.ccb in Resources */,
+				51ACAAB9199A2F6400A34946 /* P1_1.mp3 in Resources */,
 				51A9436B197A142E00920318 /* bubble_02-hd.png in Resources */,
 				EF83081D1999F1CF00EBFAF5 /* p5_resource.plist in Resources */,
 				51A94374197A142E00920318 /* bubble_06.png in Resources */,
@@ -5317,7 +5329,6 @@
 				51A942DC197A130A00920318 /* p2_secondmonster_eyewhite.png in Resources */,
 				51A94062197A121300920318 /* P3_monster_body_sing-hd.png in Resources */,
 				EF708B0019879B9D00068D61 /* world_p5_dialog-hd.png in Resources */,
-				51ACAA801999F42D00A34946 /* P1_b1.mp3 in Resources */,
 				51A94190197A128700920318 /* P5_monsterEye.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -5480,6 +5491,7 @@
 				51F16355196E7F4600A5BE6A /* P3_RedMonster.m in Sources */,
 				EF404032197A1D8500C6C8E1 /* MonsterEyeTestLayer.m in Sources */,
 				5169CC8518CDE5ED00426E6C /* CCPhysicsSprite.mm in Sources */,
+				51ACAACA199A419200A34946 /* WorldUILayer.m in Sources */,
 				5169CD6918CDE5EE00426E6C /* vec2.c in Sources */,
 				5169CDBF18CDE6B200426E6C /* P2_LittleFlyObjects.m in Sources */,
 				5169CD5918CDE5EE00426E6C /* matrix.c in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "WorldLayer.h"
+#import "WorldUILayer.h"
 #import "SimpleAudioEngine.h"
 #import "AppDelegate.h"
 #import "CCBReader.h"
@@ -37,6 +38,7 @@
 //@property (strong, nonatomic) CCRenderTexture* renderTexture;
 @property (assign, nonatomic) CGSize winSize;
 @property (assign, nonatomic) BOOL fIsChangingScene;
+@property (strong, nonatomic)  WorldUILayer * worldUILayer;
 @end
 
 @implementation WorldLayer
@@ -108,11 +110,9 @@
         {
             
             //p1
-            CCLayerColor * shadowLayer = [CCLayerColor layerWithColor:ccc4(0.0, 0.0,0.0, 0.0 * 255.0)];
-            [self addChild:shadowLayer z:1];
-            [shadowLayer fadeIn];
             
-            [self addMainMapUIByType:MainMapP1 onLayer:shadowLayer];
+            self.worldUILayer = [[[WorldUILayer alloc]init]autorelease];
+            [self addChild:self.worldUILayer];
             
 //            [self changeToScene:^CCScene *{
 //                CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
@@ -203,10 +203,30 @@
     [layer addChild:uiImage];
     [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:uiImage afterDelay:0.4];
     
-    CCLabelTTF * uilabel1 = [CCLabelTTF labelWithString:@"For Moms & Dads" fontName:@"Kankin" fontSize:64.0];
+    CCLabelTTF * uilabel1 = [CCLabelTTF labelWithString:@"To Moms & Dads:" fontName:@"Kankin" fontSize:32.0];
     [uilabel1 setPosition:CGPointMake(510.0, 498.0)];
+    [uilabel1 setColor:ccc3(255.0, 130.0, 130.0)];
     [layer addChild:uilabel1];
-
+    
+    CCLabelTTF * uilabel2 = [CCLabelTTF labelWithString:@"Alex is designed for building basic" fontName:@"Kankin" fontSize:24.0];
+    [uilabel2 setPosition:CGPointMake(569.0, 458.0)];
+    [uilabel2 setColor:ccc3(150.0, 150.0, 150.0)];
+    [layer addChild:uilabel2];
+    
+    CCLabelTTF * uilabel3 = [CCLabelTTF labelWithString:@"sense of tone and color for kids." fontName:@"Kankin" fontSize:24.0];
+    [uilabel3 setPosition:CGPointMake(560.0, 429.0)];
+    [uilabel3 setColor:ccc3(150.0, 150.0, 150.0)];
+    [layer addChild:uilabel3];
+    
+    CCLabelTTF * uilabel4c = [CCLabelTTF labelWithString:@"Level:" fontName:@"Kankin" fontSize:24.0];
+    [uilabel4c setPosition:CGPointMake(432.0, 372.0)];
+    [uilabel4c setColor:ccc3(150.0, 150.0, 150.0)];
+    [layer addChild:uilabel4c];
+    
+    CCLabelTTF * uilabel5 = [CCLabelTTF labelWithString:@"Basic" fontName:@"Kankin" fontSize:24.0];
+    [uilabel5 setPosition:CGPointMake(491.0, 372.0)];
+    [uilabel5 setColor:ccc3(89.0, 227.0, 0.0)];
+    [layer addChild:uilabel5];
     
 }
 

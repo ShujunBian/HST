@@ -13,14 +13,6 @@
 @class WorldP4Layer;
 @class WorldP5Layer;
 
-typedef enum {
-    MainMapP1 = 0,
-    MainMapP2,
-    MainMapP3,
-    MainMapP4,
-    MainMapP5
-} MainMapType;
-
 @interface WorldLayer : CCLayer
 
 @property (strong, nonatomic) WorldP1Layer* p1Layer;
