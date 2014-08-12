@@ -301,6 +301,10 @@ static NSMutableArray *bubbleScales = nil;
 //     [CircleTransition transitionWithDuration:1.0
 //                                        scene:scene]];
 }
+- (void)helpButtonPressed
+{
+#warning 未完成
+}
 
 #pragma mark - 退出时释放内存
 - (void)dealloc

@@ -936,7 +936,7 @@
 #pragma mark - 菜单键调用函数 mainMapDelegate
 - (void)restartGameScene
 {
-    
+    [self.bottle renewButtonPressed];
 }
 
 - (void)returnToMainMap
@@ -947,5 +947,9 @@
     }];
 }
 
+- (void)helpButtonPressed
+{
+#warning 未完成
+}
 
 @end

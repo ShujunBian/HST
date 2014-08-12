@@ -10,7 +10,6 @@
 #import "P5_GrassLayer.h"
 #import "P5_Monster.h"
 #import "P5_SkyLayer.h"
-#import "MainMapHelper.h"
 #import "HelloWorldLayer.h"
 #import "NSNotificationCenter+Addition.h"
 #import "CCBReader.h"
@@ -163,9 +162,10 @@
     [self changeToScene:^CCScene *{
         return [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
     }];
-//    [[CCDirector sharedDirector] replaceScene:
-//     [CircleTransition transitionWithDuration:1.0
-//                                        scene:scene]];
+}
+- (void)helpButtonPressed
+{
+#warning 未完成
 }
 
 #pragma mark - 退出时释放内存

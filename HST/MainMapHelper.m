@@ -44,6 +44,13 @@
     self.mainMapMenu = [CCMenu menuWithItems:_mainMapItem, nil];
     [_mainMapMenu setPosition:point];
     [prototype addChild:_mainMapMenu z:15];
+    
+    self.helpItem = [CCMenuItemImage itemWithNormalImage:@"helpButton.png" selectedImage:nil target:self selector:@selector(helpBtnPressed)];
+    self.helpMenu = [CCMenu menuWithItems:self.helpItem, nil];
+    
+    self.helpMenu.position = ccp([CCDirector sharedDirector].winSize.width - 50.f, point.y);
+    [prototype addChild:self.helpMenu];
+    
 }
 
 - (void)restartGameScene
@@ -54,7 +61,11 @@
     CCSequence * seq = [CCSequence actions:scale1,scale2,scale3, nil];
     [_restartItem runAction:seq];
     
-    [self.delegate restartGameScene];
+    if ([self.delegate respondsToSelector:@selector(restartGameScene)])
+    {
+        [self.delegate restartGameScene];
+    }
+
 }
 
 - (void)returnToMainMap
@@ -63,14 +74,26 @@
     CCScaleBy * scale1 = [CCScaleBy actionWithDuration:0.1 scale:1.4];
     CCScaleBy * scale2 = [CCScaleBy actionWithDuration:0.1 scale:0.7];
     CCScaleTo * scale3 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
-    CCCallBlock* callBlock = [CCCallBlock actionWithBlock:^{
-
-    }];
-    CCSequence * seq = [CCSequence actions:scale1,scale2,scale3, callBlock, nil];
+    CCSequence * seq = [CCSequence actions:scale1,scale2,scale3, nil];
     [_mainMapItem runAction:seq];
-    [self.delegate returnToMainMap];
+    if ([self.delegate respondsToSelector:@selector(returnToMainMap)])
+    {
+        [self.delegate returnToMainMap];
+    }
+}
 
-
+- (void)helpBtnPressed
+{
+    CCScaleBy * scale1 = [CCScaleBy actionWithDuration:0.1 scale:1.4];
+    CCScaleBy * scale2 = [CCScaleBy actionWithDuration:0.1 scale:0.7];
+    CCScaleTo * scale3 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
+    CCSequence * seq = [CCSequence actions:scale1,scale2,scale3, nil];
+    [self.helpItem runAction:seq];
+    
+    if ([self.delegate respondsToSelector:@selector(helpButtonPressed)])
+    {
+        [self.delegate helpButtonPressed];
+    }
 }
 
 @end

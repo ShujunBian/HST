@@ -1061,6 +1061,8 @@
 		EF83081B1999F1BE00EBFAF5 /* p4_resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF83081A1999F1BE00EBFAF5 /* p4_resource.plist */; };
 		EF83081D1999F1CF00EBFAF5 /* p5_resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF83081C1999F1CF00EBFAF5 /* p5_resource.plist */; };
 		EF8308201999F40600EBFAF5 /* WXYUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = EF83081F1999F40600EBFAF5 /* WXYUtility.m */; };
+		EF8308231999F7F700EBFAF5 /* helpButton-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF8308211999F7F700EBFAF5 /* helpButton-hd.png */; };
+		EF8308241999F7F700EBFAF5 /* helpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EF8308221999F7F700EBFAF5 /* helpButton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2345,6 +2347,8 @@
 		EF83081C1999F1CF00EBFAF5 /* p5_resource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = p5_resource.plist; sourceTree = "<group>"; };
 		EF83081E1999F40600EBFAF5 /* WXYUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYUtility.h; sourceTree = "<group>"; };
 		EF83081F1999F40600EBFAF5 /* WXYUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUtility.m; sourceTree = "<group>"; };
+		EF8308211999F7F700EBFAF5 /* helpButton-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "helpButton-hd.png"; sourceTree = "<group>"; };
+		EF8308221999F7F700EBFAF5 /* helpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpButton.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3053,6 +3057,8 @@
 		5169CDF618CDEA3D00426E6C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				EF8308211999F7F700EBFAF5 /* helpButton-hd.png */,
+				EF8308221999F7F700EBFAF5 /* helpButton.png */,
 				5199790B18CFF9A6006A1FD8 /* mainMapButton-hd.png */,
 				5199790C18CFF9A6006A1FD8 /* mainMapButton.png */,
 				5199790D18CFF9A6006A1FD8 /* restartButton-hd.png */,
@@ -4573,6 +4579,7 @@
 				516F24411981DE9E004E6443 /* world_p5_mask.png in Resources */,
 				EF4040BD197A592100C6C8E1 /* world_p1_tree1-hd.png in Resources */,
 				51556DE218CF21B8005C8D46 /* P1_b4.wav in Resources */,
+				EF8308241999F7F700EBFAF5 /* helpButton.png in Resources */,
 				EF403FE3197A1D1700C6C8E1 /* P4_brown_monster-hd.png in Resources */,
 				EF4040BC197A592100C6C8E1 /* world_p1_mountain3.png in Resources */,
 				5169CBF118CDE5ED00426E6C /* Icon-Small.png in Resources */,
@@ -4826,6 +4833,7 @@
 				51A94393197A142E00920318 /* monster_eye_upperlid-hd.png in Resources */,
 				EF404020197A1D1700C6C8E1 /* P4WaterOutParticle.ccb in Resources */,
 				51A94084197A121300920318 /* P3_CeruleanMonsterBody.ccb in Resources */,
+				EF8308231999F7F700EBFAF5 /* helpButton-hd.png in Resources */,
 				51A942BB197A130A00920318 /* p2_monster_eyeblack-hd.png in Resources */,
 				EF404025197A1D1700C6C8E1 /* water1.png in Resources */,
 				51A9402F197A121300920318 /* P3_Monster1_Eye_background.png in Resources */,
