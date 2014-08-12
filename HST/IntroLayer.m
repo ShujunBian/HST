@@ -164,9 +164,11 @@
     
     if (self.loadingCount == self.loadingImageNameArray.count)
     {
-        CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
         self.processBar.percentage = 1.f;
-        [self changeToScene:scene];
+        [self changeToScene:^CCScene *{
+            CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+            return scene;
+        }];
 //        [[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:scene ]];
     }
     
