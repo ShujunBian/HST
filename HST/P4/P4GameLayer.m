@@ -83,7 +83,7 @@
 //Sound Effect Name
 
 //@property (strong, nonatomic) NSArray* monsterShakeEffectNames;
-@property (assign, nonatomic) ALuint currentSHakeEffectId;
+@property (assign, nonatomic) ALuint currentShakeEffectId;
 
 @end
 
@@ -240,7 +240,7 @@
     self.redMonster.selectedSoundEffectName = @"p4_monster5.mp3";
 
 //    self.monsterShakeEffectNames = @[@"p4_monster_shake.mp3",@"p4_monster_shake2.mp3"];
-    self.currentSHakeEffectId = 0;
+    self.currentShakeEffectId = 0;
     
     self.isMonsterAnimated = NO;
     self.isTouchBottle = NO;
@@ -576,8 +576,8 @@
     
     
     CCFiniteTimeAction* endAddWater = [[[CCCallBlock alloc] initWithBlock:^{
-        [[SimpleAudioEngine sharedEngine] stopEffect:self.currentSHakeEffectId];
-        self.currentSHakeEffectId = 0;
+        [[SimpleAudioEngine sharedEngine] stopEffect:self.currentShakeEffectId];
+        self.currentShakeEffectId = 0;
         
         [self.bottle stopWaterIn];
     }] autorelease];
