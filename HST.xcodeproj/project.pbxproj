@@ -1054,6 +1054,13 @@
 		EF708B0119879B9D00068D61 /* world_p5_dialog.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708AF719879B9D00068D61 /* world_p5_dialog.png */; };
 		EF708B0419879C5400068D61 /* MainMapP3_mask-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708B0219879C5400068D61 /* MainMapP3_mask-hd.png */; };
 		EF708B0519879C5400068D61 /* MainMapP3_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = EF708B0319879C5400068D61 /* MainMapP3_mask.png */; };
+		EF8308131999F19C00EBFAF5 /* world_resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF8308121999F19C00EBFAF5 /* world_resource.plist */; };
+		EF8308151999F1A600EBFAF5 /* p1_resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF8308141999F1A600EBFAF5 /* p1_resource.plist */; };
+		EF8308171999F1AE00EBFAF5 /* p2_resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF8308161999F1AE00EBFAF5 /* p2_resource.plist */; };
+		EF8308191999F1B600EBFAF5 /* p3_resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF8308181999F1B600EBFAF5 /* p3_resource.plist */; };
+		EF83081B1999F1BE00EBFAF5 /* p4_resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF83081A1999F1BE00EBFAF5 /* p4_resource.plist */; };
+		EF83081D1999F1CF00EBFAF5 /* p5_resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = EF83081C1999F1CF00EBFAF5 /* p5_resource.plist */; };
+		EF8308201999F40600EBFAF5 /* WXYUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = EF83081F1999F40600EBFAF5 /* WXYUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2330,6 +2337,14 @@
 		EF708AF719879B9D00068D61 /* world_p5_dialog.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_p5_dialog.png; sourceTree = "<group>"; };
 		EF708B0219879C5400068D61 /* MainMapP3_mask-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MainMapP3_mask-hd.png"; sourceTree = "<group>"; };
 		EF708B0319879C5400068D61 /* MainMapP3_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMapP3_mask.png; sourceTree = "<group>"; };
+		EF8308121999F19C00EBFAF5 /* world_resource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = world_resource.plist; sourceTree = "<group>"; };
+		EF8308141999F1A600EBFAF5 /* p1_resource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = p1_resource.plist; sourceTree = "<group>"; };
+		EF8308161999F1AE00EBFAF5 /* p2_resource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = p2_resource.plist; sourceTree = "<group>"; };
+		EF8308181999F1B600EBFAF5 /* p3_resource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = p3_resource.plist; sourceTree = "<group>"; };
+		EF83081A1999F1BE00EBFAF5 /* p4_resource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = p4_resource.plist; sourceTree = "<group>"; };
+		EF83081C1999F1CF00EBFAF5 /* p5_resource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = p5_resource.plist; sourceTree = "<group>"; };
+		EF83081E1999F40600EBFAF5 /* WXYUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYUtility.h; sourceTree = "<group>"; };
+		EF83081F1999F40600EBFAF5 /* WXYUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUtility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2515,6 +2530,7 @@
 		5169CBE318CDE5ED00426E6C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EF8308111999F18600EBFAF5 /* plist */,
 				EF58EB121990C30700B13232 /* Default-hd.png */,
 				EF404049197A592100C6C8E1 /* world */,
 				EF404098197A592100C6C8E1 /* world.ccbproj */,
@@ -3010,6 +3026,8 @@
 			children = (
 				5169CDC618CDE6D900426E6C /* NSNotificationCenter+Addition.h */,
 				5169CDC718CDE6D900426E6C /* NSNotificationCenter+Addition.m */,
+				EF83081E1999F40600EBFAF5 /* WXYUtility.h */,
+				EF83081F1999F40600EBFAF5 /* WXYUtility.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -4287,6 +4305,20 @@
 			path = dialog;
 			sourceTree = "<group>";
 		};
+		EF8308111999F18600EBFAF5 /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				EF8308121999F19C00EBFAF5 /* world_resource.plist */,
+				EF8308141999F1A600EBFAF5 /* p1_resource.plist */,
+				EF8308161999F1AE00EBFAF5 /* p2_resource.plist */,
+				EF8308181999F1B600EBFAF5 /* p3_resource.plist */,
+				EF83081A1999F1BE00EBFAF5 /* p4_resource.plist */,
+				EF83081C1999F1CF00EBFAF5 /* p5_resource.plist */,
+			);
+			name = plist;
+			path = Resources/plist;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -4390,6 +4422,7 @@
 				51A94368197A142E00920318 /* bubble_00.png in Resources */,
 				51A9439C197A142E00920318 /* monster_mouth_mask.png in Resources */,
 				51A94198197A128700920318 /* P5_monsterLittleShadow.png in Resources */,
+				EF83081B1999F1BE00EBFAF5 /* p4_resource.plist in Resources */,
 				51F48ACF197CE45600371C45 /* P3_Bubble-normal.png in Resources */,
 				EF4040C0197A592100C6C8E1 /* world_p2_grass.png in Resources */,
 				EF403FE6197A1D1700C6C8E1 /* P4_brown_monster_light.png in Resources */,
@@ -4418,6 +4451,7 @@
 				51A94073197A121300920318 /* P3_staticScenery.png in Resources */,
 				51A9437D197A142E00920318 /* bubble-mouth-hd.png in Resources */,
 				EF53BC0219906A04007C8258 /* p4_monster2.mp3 in Resources */,
+				EF8308191999F1B600EBFAF5 /* p3_resource.plist in Resources */,
 				EF404006197A1D1700C6C8E1 /* P4GreenMonster.ccbi in Resources */,
 				EF40401A197A1D1700C6C8E1 /* P4water_particle-hd.png in Resources */,
 				EF404018197A1D1700C6C8E1 /* P4SprayParticleRight.ccb in Resources */,
@@ -4431,6 +4465,7 @@
 				51A94297197A130A00920318 /* p2_firstmonster_body-hd.png in Resources */,
 				51A94289197A130A00920318 /* 3-hd.png in Resources */,
 				5169CD5318CDE5EE00426E6C /* ChangeLog in Resources */,
+				EF8308131999F19C00EBFAF5 /* world_resource.plist in Resources */,
 				EF403FB1197A1D1700C6C8E1 /* P4_blue_eyeball_1.png in Resources */,
 				EF53BC0019906A04007C8258 /* p4_background.mp3 in Resources */,
 				51A9409D197A121300920318 /* P3_BellBody.ccbi in Resources */,
@@ -4503,6 +4538,7 @@
 				EF403FA7197A1D1700C6C8E1 /* p4_cloud_1.png in Resources */,
 				51A943B6197A142E00920318 /* P1_BubblePosition4.ccbi in Resources */,
 				EF404023197A1D1700C6C8E1 /* P4YellowMonster.ccbi in Resources */,
+				EF8308151999F1A600EBFAF5 /* p1_resource.plist in Resources */,
 				EF403FE1197A1D1700C6C8E1 /* P4_blue_monster_light-hd.png in Resources */,
 				51A94093197A121300920318 /* P3_RedMonsterBody.ccbi in Resources */,
 				51A94187197A128700920318 /* P5_homePhoto-hd.png in Resources */,
@@ -5062,6 +5098,7 @@
 				EF403FAA197A1D1700C6C8E1 /* p4_cloud_3-hd.png in Resources */,
 				EF4040DB197A592100C6C8E1 /* world_p3.ccb in Resources */,
 				51A942C5197A130A00920318 /* p2_mountain2-hd.png in Resources */,
+				EF8308171999F1AE00EBFAF5 /* p2_resource.plist in Resources */,
 				EF40400F197A1D1700C6C8E1 /* P4b5.wav in Resources */,
 				51A94028197A121300920318 /* P3_grass-hd.png in Resources */,
 				51A943B3197A142E00920318 /* P1_BubblePosition3.ccb in Resources */,
@@ -5179,6 +5216,7 @@
 				51A942AE197A130A00920318 /* p2_littlefly.png in Resources */,
 				51A941D7197A128700920318 /* P5_HomeLight.ccb in Resources */,
 				51A9436B197A142E00920318 /* bubble_02-hd.png in Resources */,
+				EF83081D1999F1CF00EBFAF5 /* p5_resource.plist in Resources */,
 				51A94374197A142E00920318 /* bubble_06.png in Resources */,
 				51A9415F197A128700920318 /* P5_BellHeadJianBian-hd.png in Resources */,
 				51A942DC197A130A00920318 /* p2_secondmonster_eyewhite.png in Resources */,
@@ -5350,6 +5388,7 @@
 				5169CDBF18CDE6B200426E6C /* P2_LittleFlyObjects.m in Sources */,
 				5169CD5918CDE5EE00426E6C /* matrix.c in Sources */,
 				5169D0C318CDEC1300426E6C /* CCBReader.m in Sources */,
+				EF8308201999F40600EBFAF5 /* WXYUtility.m in Sources */,
 				5169CC3F18CDE5ED00426E6C /* CCDrawingPrimitives.m in Sources */,
 				5169CCA718CDE5ED00426E6C /* ccShaders.m in Sources */,
 				51CFF209196E436800602568 /* P3_Mushroom.m in Sources */,

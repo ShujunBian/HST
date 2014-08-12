@@ -16,9 +16,10 @@
 {
 #warning 这里加背景音乐变大
     CircleTransitionLayer* layer = [CircleTransitionLayer layer];
+    [layer removeFromParentAndCleanup:YES];
     [[CCDirector sharedDirector].runningScene addChild:layer];
     [layer showSceneWithDuration:0.7f onCompletion:^{
-        [layer removeFromParentAndCleanup:YES];
+        [layer removeFromParentAndCleanup:NO];
     }];
 }
 
@@ -26,9 +27,10 @@
 {
 #warning 这里加背景音乐变小
     CircleTransitionLayer* layer = [CircleTransitionLayer layer];
+    [layer removeFromParentAndCleanup:YES];
     [[CCDirector sharedDirector].runningScene addChild:layer];
     [layer hideSceneWithDuration:0.7f onCompletion:^{
-        [layer removeFromParentAndCleanup:YES];
+        [layer removeFromParentAndCleanup:NO];
         [[CCDirector sharedDirector] replaceScene:sceneBlock()];
     }];
 }

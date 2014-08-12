@@ -84,63 +84,7 @@
 //    [self changeToScene:scene];
 //    return;
     self.loadingCount = 0;
-    self.loadingImageNameArray =
-    @[
-      @"cloud.png",
-      @"upper_cloud.png",
-      @"p2_cloud.png",
-      @"p2_ground.png",
-      @"p2_monster_body.png",
-      @"p2_mountain1.png",
-      @"p2_mountain2.png",
-      @"p2_upper_cloud.png",
-      @"P3_cloud.png",
-      @"P3_grass.png",
-      @"P3_grassBehind.png",
-      @"P3_staticScenery.png",
-      @"p4_background.png",
-      @"p4_ground.png",
-      @"P4_bottle_glass.png",
-      @"P4_bottle_light.png",
-      @"P4_bottle_renew_button.png",
-      @"p4_cloud_1.png",
-      @"p4_cloud_2.png",
-      @"p4_cloud_3.png",
-      @"p4_cloud_top.png",
-      @"P4_brown_monster.png",
-      @"P4_purple_monster.png",
-      @"water1.png",
-      @"water2.png",
-      @"p5_grass.png",
-      @"p5_hole.png",
-      @"p5_houses.png",
-      @"P5_mountain1.png",
-      @"P5_mountain2.png",
-      @"P5_underground.png",
-      @"world_background.png",
-      @"world_background_cloud.png",
-      @"world_background_floor.png",
-      @"world_background_mountain_right.png",
-      @"world_background_tree4.png",
-      @"world_cloud_background.png",
-      @"world_full.png",
-      @"world_p1_dialog.png",
-      @"world_p2_dialog.png",
-      @"world_p3_dialog.png",
-      @"world_p4_dialog.png",
-      @"world_p5_dialog.png",
-      @"world_p1_grass1.png",
-      @"world_p1_mountain1.png",
-      @"world_p1_mountain2.png",
-      @"world_p1_mountain3.png",
-      @"world_p2_grass.png",
-      @"world_p3_back_house.png",
-      @"world_p3_house.png",
-      @"world_p4_car.png",
-      @"world_p5_holl.png",
-      @"world_p5_mask.png"
-      //      @"",
-      ];
+    self.loadingImageNameArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"world_resource" ofType:@"plist"]];
 
     [self performSelector:@selector(playBgMusic) withObject:nil afterDelay:1.f];
     
@@ -159,7 +103,7 @@
 - (void)loadCallBack
 {
     ++self.loadingCount;
-    float percentage = (float)self.loadingCount / (self.loadingImageNameArray.count + 1);
+    float percentage = (float)self.loadingCount / (self.loadingImageNameArray.count + 4);
     self.processBar.percentage = percentage;
     
     if (self.loadingCount == self.loadingImageNameArray.count)

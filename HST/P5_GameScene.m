@@ -16,6 +16,7 @@
 #import "CCBReader.h"
 #import "CircleTransition.h"
 #import "CCLayer+CircleTransitionExtension.h"
+#import "WXYUtility.h"
 
 #define kHoleCoverTag 1
 
@@ -172,6 +173,7 @@
 {
     [super dealloc];
 //    [[CCTextureCache sharedTextureCache]removeAllTextures];
+    [WXYUtility clearImageCachedOfPlist:@"p5_resource"];
 }
 
 @end

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <string>P3_bell.png</string>
+    <string>P3_bubble.png</string>
+    <string>P3_Bubble-normal.png</string>
+    <string>P3_cloud.png</string>
+    <string>P3_eye_Skin_down.png</string>
+    <string>P3_eye_Skin_up.png</string>
+    <string>P3_flower_body.png</string>
+    <string>P3_flower_eyes_blink.png</string>
+    <string>P3_flower_head.png</string>
+    <string>P3_flower_head_eye_open.png</string>
+    <string>P3_grass.png</string>
+    <string>P3_grassBehind.png</string>
+    <string>P3_GrassPSQ.png</string>
+    <string>P3_Monster1_Body.png</string>
+    <string>P3_Monster1_Eye_background.png</string>
+    <string>P3_Monster1_Eye_point.png</string>
+    <string>P3_monster1_face.png</string>
+    <string>P3_monster1_mouth.png</string>
+    <string>P3_monster1_tail.png</string>
+    <string>P3_monster1_tail_flower.png</string>
+    <string>P3_Monster2_Body.png</string>
+    <string>P3_Monster2_Eye_background.png</string>
+    <string>P3_Monster2_Eye_point.png</string>
+    <string>P3_monster2_face.png</string>
+    <string>P3_monster2_mouth.png</string>
+    <string>P3_Monster3_Eye_background.png</string>
+    <string>P3_Monster3_Eye_point.png</string>
+    <string>P3_monster3_face.png</string>
+    <string>P3_monster3_mouth.png</string>
+    <string>P3_Monster4_Body.png</string>
+    <string>P3_Monster4_Eye_background.png</string>
+    <string>P3_Monster4_Eye_point.png</string>
+    <string>P3_monster4_face.png</string>
+    <string>P3_monster4_mouth.png</string>
+    <string>P3_Monster5_Body.png</string>
+    <string>P3_Monster5_Eye_background.png</string>
+    <string>P3_Monster5_Eye_point.png</string>
+    <string>P3_monster5_face.png</string>
+    <string>P3_monster5_mouth.png</string>
+    <string>P3_Monster_body_mouth.png</string>
+    <string>P3_monster_body_sing.png</string>
+    <string>P3_Monster_Eye.png</string>
+    <string>P3_Monster_Mouth.png</string>
+    <string>P3_monster_sing.png</string>
+    <string>P3_MonsterBody_SingMouth.png</string>
+    <string>P3_MonsterBodyEye.png</string>
+    <string>P3_MonsterBodyEye_Blink.png</string>
+    <string>P3_mushroom.png</string>
+    <string>P3_staticScenery.png</string>
+    <string>P3_windChime.png</string>
+</array>
+</plist>

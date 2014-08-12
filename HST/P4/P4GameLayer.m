@@ -22,6 +22,7 @@
 #import "CCBReader.h"
 #import "CircleTransition.h"
 #import "CCLayer+CircleTransitionExtension.h"
+#import "WXYUtility.h"
 
 //#define BOTTLE_MOVE_DELAY 0.2f
 #define BOTTLE_SCALE_X_MAX 1.2f
@@ -142,6 +143,7 @@
 	
 	// don't forget to call "super dealloc"
 	[super dealloc];
+    [WXYUtility clearImageCachedOfPlist:@"p4_resource"];
 
 }
 

@@ -22,6 +22,7 @@
 #import "CircleTransition.h"
 #import "VolumnHelper.h"
 #import "CCLayer+CircleTransitionExtension.h"
+#import "WXYUtility.h"
 
 #define EVERYDELTATIME 0.016667
 
@@ -275,7 +276,9 @@
 {
     [self.monster removeFromParentAndCleanup:YES];
     self.monster = nil;
+    [WXYUtility clearImageCachedOfPlist:@"p2_resource"];
     [super dealloc];
+    
 //    [[CCTextureCache sharedTextureCache]removeAllTextures];
 }
 

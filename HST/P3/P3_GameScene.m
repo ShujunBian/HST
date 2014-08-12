@@ -20,7 +20,7 @@
 #import "P3_CeruleanMonster.h"
 #import "CircleTransition.h"
 #import "CCLayer+CircleTransitionExtension.h"
-
+#import "WXYUtility.h"
 @interface P3_GameScene ()
 
 @property (nonatomic, strong) MainMapHelper * mainMapHelper;
@@ -56,6 +56,11 @@
     self.mainMapHelper = nil;
     
     [super onExit];
+}
+- (void)dealloc
+{
+    [super dealloc];
+    [WXYUtility clearImageCachedOfPlist:@"p3_resource"];
 }
 
 #pragma mark - 初始化Monsters

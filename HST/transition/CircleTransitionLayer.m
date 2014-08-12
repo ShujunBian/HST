@@ -25,9 +25,13 @@
 
 
 @implementation CircleTransitionLayer
+
+//static CircleTransitionLayer* s_circleTransitionLayer;
+
 + (CircleTransitionLayer*)layer
 {
-    return [[[CircleTransitionLayer alloc] init] autorelease];
+    CircleTransitionLayer* s_circleTransitionLayer = [[[CircleTransitionLayer alloc] init] autorelease];
+    return  s_circleTransitionLayer;
 }
 - (void)onExit
 {

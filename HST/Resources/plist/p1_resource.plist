@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <string>bubble-eye-blink.png</string>
+    <string>bubble-eye.png</string>
+    <string>bubble-mouth.png</string>
+    <string>bubble-normal.png</string>
+    <string>bubble-normal2.png</string>
+    <string>bubble_00.png</string>
+    <string>bubble_01.png</string>
+    <string>bubble_02.png</string>
+    <string>bubble_03.png</string>
+    <string>bubble_04.png</string>
+    <string>bubble_05.png</string>
+    <string>bubble_06.png</string>
+    <string>bubble_07.png</string>
+    <string>bubble_glow.png</string>
+    <string>cloud.png</string>
+    <string>flower_eyes_blink.png</string>
+    <string>flower_head_eye_open.png</string>
+    <string>flowerbody.png</string>
+    <string>flowerhead.png</string>
+    <string>monster_eye_lowerlid.png</string>
+    <string>monster_eye_upperlid.png</string>
+    <string>monster_eyelid_mask.png</string>
+    <string>monster_hand.png</string>
+    <string>monster_lefthand.png</string>
+    <string>monster_mouth_mask.png</string>
+    <string>monster_small_mouth_mask.png</string>
+    <string>monster_teeth.png</string>
+    <string>monsterbody.png</string>
+    <string>monstereyeblack.png</string>
+    <string>monstereyewhite.png</string>
+    <string>monstershadow.png</string>
+    <string>mountion.png</string>
+    <string>upper_cloud.png</string>
+</array>
+</plist>

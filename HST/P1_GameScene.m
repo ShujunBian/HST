@@ -16,6 +16,7 @@
 #import "CircleTransition.h"
 #import "VolumnHelper.h"
 #import "CCLayer+CircleTransitionExtension.h"
+#import "WXYUtility.h"
 
 @interface P1_GameScene()
 {
@@ -305,7 +306,7 @@ static NSMutableArray *bubbleScales = nil;
 - (void)dealloc
 {
     [super dealloc];
-    
+    [WXYUtility clearImageCachedOfPlist:@"p1_resource"];
 //    [[CCTextureCache sharedTextureCache]removeAllTextures];
 }
 
