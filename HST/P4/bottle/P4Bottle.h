@@ -57,7 +57,7 @@
 
 
 - (void)worldSceneConfigure;
-
+- (void)renewButtonPressed;
 
 @property (readonly, nonatomic) int addCount;
 @end

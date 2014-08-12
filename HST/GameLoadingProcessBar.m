@@ -8,12 +8,12 @@
 
 #import "GameLoadingProcessBar.h"
 
-#define BAR_BACKGROUND_COLOR ccc3(224, 224, 224)
-#define BAR_COLOR ccc3(255, 62, 61)
+#define BAR_BACKGROUND_COLOR ccc3(127, 219, 67)
+#define BAR_COLOR ccc3(219, 255, 195)
 
 
-#define BAR_HEIGHT 23
-#define BAR_WIDTH 140
+#define BAR_HEIGHT 25
+#define BAR_WIDTH 163
 #define BAR_BASE_X (-(BAR_WIDTH - BAR_HEIGHT) / 2)
 #define BAR_RECT_WIDTH (BAR_WIDTH - BAR_HEIGHT)
 @interface GameLoadingProcessBar ()

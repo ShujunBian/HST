@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>MainMap_GreenFlowerHead.png</string>
+	<string>P5_bellBody.png</string>
+	<string>P5_BellEyesClose.png</string>
+	<string>P5_BellEyesOpen.png</string>
+	<string>P5_BellHead.png</string>
+	<string>P5_BellHeadJianBian.png</string>
+	<string>P5_BellLight.png</string>
+	<string>P5_BellMouth.png</string>
+	<string>P5_BigCircleUI.png</string>
+	<string>P5_BigCircleUI_Choosen.png</string>
+	<string>P5_blueFlowerBody.png</string>
+	<string>P5_blueFlowerHead.png</string>
+	<string>P5_cave_cover.png</string>
+	<string>P5_clouds.png</string>
+	<string>p5_flower_body.png</string>
+	<string>p5_flower_eyes_blink.png</string>
+	<string>p5_flower_head.png</string>
+	<string>p5_flower_head_eye_open.png</string>
+	<string>p5_grass.png</string>
+	<string>p5_hole.png</string>
+	<string>P5_hole_cover.png</string>
+	<string>P5_homeBackground.png</string>
+	<string>P5_homeBed.png</string>
+	<string>P5_homeChair.png</string>
+	<string>P5_homeLight.png</string>
+	<string>P5_homePhoto.png</string>
+	<string>p5_houses.png</string>
+	<string>P5_monsterBigShadow.png</string>
+	<string>P5_monsterBody.png</string>
+	<string>P5_monsterEye.png</string>
+	<string>P5_monsterEyeBlack.png</string>
+	<string>P5_monsterEyeWhite.png</string>
+	<string>P5_monsterLeg.png</string>
+	<string>P5_monsterLittleShadow.png</string>
+	<string>P5_monsterMouth.png</string>
+	<string>P5_monsterUnderBigShadow.png</string>
+	<string>P5_monsterUnderBody.png</string>
+	<string>P5_monsterUnderEyeBlack.png</string>
+	<string>P5_monsterUnderEyeWhite.png</string>
+	<string>P5_monsterUnderLeftLeg.png</string>
+	<string>P5_monsterUnderLittleShadow.png</string>
+	<string>P5_monsterUnderMouth.png</string>
+	<string>P5_MonsterUnderRightLeg.png</string>
+	<string>P5_mountain1.png</string>
+	<string>P5_mountain2.png</string>
+	<string>P5_SmallCircleUI.png</string>
+	<string>P5_Soil.png</string>
+	<string>P5_SoilCloud.png</string>
+	<string>P5_underground.png</string>
+	<string>P5_undergroundHole.png</string>
+	<string>P5_undergroundHoleBell.png</string>
+	<string>P5_UndergroundPassage1.png</string>
+	<string>P5_UndergroundPassage2.png</string>
+</array>
+</plist>

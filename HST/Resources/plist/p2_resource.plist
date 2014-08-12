@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <string>ccbDefaultImages.png</string>
+    <string>p2_cloud.png</string>
+    <string>p2_firstmonster_body.png</string>
+    <string>p2_firstmonster_eyeblack.png</string>
+    <string>p2_firstmonster_eyewhite.png</string>
+    <string>p2_flower_body.png</string>
+    <string>p2_flower_eyes_blink.png</string>
+    <string>p2_flower_head.png</string>
+    <string>p2_flower_head_eye_open.png</string>
+    <string>p2_fly_grass1.png</string>
+    <string>p2_fly_grass2.png</string>
+    <string>p2_fly_grass3.png</string>
+    <string>p2_ground.png</string>
+    <string>p2_littlefly.png</string>
+    <string>p2_littlefly_eye.png</string>
+    <string>p2_littlefly_eye_blink.png</string>
+    <string>p2_littlefly_mouth.png</string>
+    <string>p2_littlefly_wing.png</string>
+    <string>p2_monster_body.png</string>
+    <string>p2_monster_eye_closed.png</string>
+    <string>p2_monster_eyeblack.png</string>
+    <string>p2_monster_eyewhite.png</string>
+    <string>p2_monster_head.png</string>
+    <string>p2_monster_head_ball.png</string>
+    <string>p2_mountain1.png</string>
+    <string>p2_mountain2.png</string>
+    <string>p2_mushroom1Body.png</string>
+    <string>p2_mushroom1Eyes.png</string>
+    <string>p2_mushroom1EyesBlink.png</string>
+    <string>p2_mushroom1Head.png</string>
+    <string>p2_mushroom2Body.png</string>
+    <string>p2_mushroom2Eyes.png</string>
+    <string>p2_mushroom2EyesBlink.png</string>
+    <string>p2_mushroom2Head.png</string>
+    <string>p2_secondmonster_body.png</string>
+    <string>p2_secondmonster_eyeblack.png</string>
+    <string>p2_secondmonster_eyewhite.png</string>
+    <string>p2_upper_cloud.png</string>
+    <string>1.png</string>
+    <string>2.png</string>
+    <string>3.png</string>
+    <string>4.png</string>
+    <string>5.png</string>
+    <string>6.png</string>
+    <string>7.png</string>
+    <string>8.png</string>
+</array>
+</plist>

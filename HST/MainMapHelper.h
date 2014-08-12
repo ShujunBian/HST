@@ -15,6 +15,7 @@
 - (void)restartGameScene;
 
 - (void)returnToMainMap;
+- (void)helpButtonPressed;
 
 @end
 
@@ -28,6 +29,8 @@
 @property (nonatomic, assign) CCMenu * restartMenu;
 @property (nonatomic, assign) CCMenuItem * mainMapItem;
 @property (nonatomic, assign) CCMenu * mainMapMenu;
+@property (nonatomic, assign) CCMenuItem * helpItem;
+@property (nonatomic, assign) CCMenu * helpMenu;
 
 @property (nonatomic, assign) id<MainMapDelegate> delegate;
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+    <string>MainMapP3_mask.png</string>
+    <string>world_background.png</string>
+    <string>world_background_cloud.png</string>
+    <string>world_background_floor.png</string>
+    <string>world_background_mountain_left.png</string>
+    <string>world_background_mountain_right.png</string>
+    <string>world_background_tree1.png</string>
+    <string>world_background_tree2.png</string>
+    <string>world_background_tree3.png</string>
+    <string>world_background_tree4.png</string>
+    <string>world_background_tree5.png</string>
+    <string>world_cloud_background.png</string>
+    <string>world_full.png</string>
+    <string>world_p1_dialog.png</string>
+    <string>world_p2_dialog.png</string>
+    <string>world_p3_dialog.png</string>
+    <string>world_p4_dialog.png</string>
+    <string>world_p5_dialog.png</string>
+    <string>world_p1_cloud1.png</string>
+    <string>world_p1_cloud2.png</string>
+    <string>world_p1_grass1.png</string>
+    <string>world_p1_mountain1.png</string>
+    <string>world_p1_mountain2.png</string>
+    <string>world_p1_mountain3.png</string>
+    <string>world_p1_tree1.png</string>
+    <string>world_p2_grass.png</string>
+    <string>world_p2_tree.png</string>
+    <string>world_p3_back_house.png</string>
+    <string>world_p3_grass.png</string>
+    <string>world_p3_house.png</string>
+    <string>world_p3_tree.png</string>
+    <string>world_p4_car.png</string>
+    <string>world_p4_shadow.png</string>
+    <string>world_p4_stone.png</string>
+    <string>world_p5_grass.png</string>
+    <string>world_p5_holl.png</string>
+    <string>world_p5_mask.png</string>
+    <string>world_p5_mushroom_shadow.png</string>
+    <string>world_p5_stone.png</string>
+</array>
+</plist>

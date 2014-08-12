@@ -10,6 +10,7 @@
 #import "CCBReader.h"
 #import "P5_UndergroundScene.h"
 #import "CCBAnimationManager.h"
+#import "MainMapHelper.h"
 
 
 @class P5_Monster;
@@ -17,7 +18,7 @@
 @class P5_GrassLayer;
 @class P5_SkyLayer;
 
-@interface P5_GameScene : CCLayer<P5_UndergroundSceneDelegate>
+@interface P5_GameScene : CCLayer<P5_UndergroundSceneDelegate, MainMapDelegate>
 
 @property (nonatomic, assign) P5_Monster * monsterUpground;
 @property (nonatomic, assign) P5_Monster * monsterUnderground;

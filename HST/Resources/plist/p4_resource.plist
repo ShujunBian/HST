@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>P4water_particle.png</string>
+	<string>p4_background.png</string>
+	<string>p4_ground.png</string>
+	<string>p4_table.png</string>
+	<string>P4_bottle_glass.png</string>
+	<string>P4_bottle_left_cap.png</string>
+	<string>P4_bottle_left_ear.png</string>
+	<string>P4_bottle_left_foot.png</string>
+	<string>P4_bottle_light.png</string>
+	<string>P4_bottle_main.png</string>
+	<string>P4_bottle_mask.png</string>
+	<string>P4_bottle_renew_button.png</string>
+	<string>P4_bottle_right_cap.png</string>
+	<string>P4_bottle_right_ear.png</string>
+	<string>P4_bottle_right_foot.png</string>
+	<string>P4_bottleFoot.png</string>
+	<string>ccbDefaultImages.png</string>
+	<string>p4_cloud_1.png</string>
+	<string>p4_cloud_2.png</string>
+	<string>p4_cloud_3.png</string>
+	<string>p4_cloud_top.png</string>
+	<string>P4_blue_monster.png</string>
+	<string>P4_blue_monster_light.png</string>
+	<string>P4_brown_monster.png</string>
+	<string>P4_brown_monster_light.png</string>
+	<string>P4_green_monster.png</string>
+	<string>P4_green_monster_light.png</string>
+	<string>P4_purple_monster.png</string>
+	<string>P4_purple_monster_light.png</string>
+	<string>P4_yellow_monster.png</string>
+	<string>P4_yellow_monster_light.png</string>
+	<string>P4_blue_eyeball_1.png</string>
+	<string>P4_blue_eyeball_2.png</string>
+	<string>P4_blue_eyewhite_1.png</string>
+	<string>P4_blue_eyewhite_2.png</string>
+	<string>P4_green_eyeball_1.png</string>
+	<string>P4_green_eyeball_2.png</string>
+	<string>P4_green_eyewhite_1.png</string>
+	<string>P4_green_eyewhite_2.png</string>
+	<string>P4_purple_eyeball_1.png</string>
+	<string>P4_purple_eyewhite_1.png</string>
+	<string>P4_red_eyeball_1.png</string>
+	<string>P4_red_eyeball_2.png</string>
+	<string>P4_red_eyewhite_1.png</string>
+	<string>P4_red_eyewhite_2.png</string>
+	<string>P4_yellow_eyeball_1.png</string>
+	<string>P4_yellow_eyeball_2.png</string>
+	<string>P4_yellow_eyewhite_1.png</string>
+	<string>P4_yellow_eyewhite_2.png</string>
+	<string>P4_monster1_mask.png</string>
+	<string>P4_monster2_mask.png</string>
+	<string>P4_monster3_mask.png</string>
+	<string>P4_monster4_mask.png</string>
+	<string>P4_monster5_mask.png</string>
+	<string>water1.png</string>
+	<string>water2.png</string>
+</array>
+</plist>

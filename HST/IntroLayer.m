@@ -15,6 +15,8 @@
 #import "CircleTransition.h"
 #import "SimpleAudioEngine.h"
 #import "CCLayer+CircleTransitionExtension.h"
+#import "MonsterEye.h"
+#import "MonsterEyeUpdateObject.h"
 
 #pragma mark - IntroLayer
 
@@ -24,6 +26,9 @@
 @property (strong, nonatomic) NSArray* loadingImageNameArray;
 
 @property (strong, nonatomic) GameLoadingProcessBar* processBar;
+@property (strong, nonatomic) MonsterEyeUpdateObject* updateObj;
+
+@property (strong, nonatomic) NSDate* startDate;
 
 @end
 
@@ -71,6 +76,15 @@
         [self addChild:bar];
         self.processBar = bar;
         
+        
+        self.updateObj = [[[MonsterEyeUpdateObject alloc] init] autorelease];
+        self.updateObj.mode = MonsterEyeUpdateObjectModeLaunchImage;
+        self.updateObj.firstDelay = 0.7f;
+        MonsterEye* eye = [[[MonsterEye alloc] initWithEyeWhiteName:@"launch_eye_white.png" eyeballName:@"launch_eye_ball.png" eyelidColor:ccc3(221, 161, 255)] autorelease];
+        eye.position = ccp(433, 428);
+        eye.eyeBallBasePosition = ccp(-5 ,1);
+        [self addChild:eye];
+        [self.updateObj addMonsterEye:eye];
 	}
 	
 	return self;
@@ -79,68 +93,13 @@
 -(void) onEnter
 {
 	[super onEnter];
-//    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-//    self.processBar.percentage = 1.f;
-//    [self changeToScene:scene];
-//    return;
+    self.startDate = [NSDate date];
+    
+    
+    [self.updateObj beginUpdate];
+    
     self.loadingCount = 0;
-    self.loadingImageNameArray =
-    @[
-      @"cloud.png",
-      @"upper_cloud.png",
-      @"p2_cloud.png",
-      @"p2_ground.png",
-      @"p2_monster_body.png",
-      @"p2_mountain1.png",
-      @"p2_mountain2.png",
-      @"p2_upper_cloud.png",
-      @"P3_cloud.png",
-      @"P3_grass.png",
-      @"P3_grassBehind.png",
-      @"P3_staticScenery.png",
-      @"p4_background.png",
-      @"p4_ground.png",
-      @"P4_bottle_glass.png",
-      @"P4_bottle_light.png",
-      @"P4_bottle_renew_button.png",
-      @"p4_cloud_1.png",
-      @"p4_cloud_2.png",
-      @"p4_cloud_3.png",
-      @"p4_cloud_top.png",
-      @"P4_brown_monster.png",
-      @"P4_purple_monster.png",
-      @"water1.png",
-      @"water2.png",
-      @"p5_grass.png",
-      @"p5_hole.png",
-      @"p5_houses.png",
-      @"P5_mountain1.png",
-      @"P5_mountain2.png",
-      @"P5_underground.png",
-      @"world_background.png",
-      @"world_background_cloud.png",
-      @"world_background_floor.png",
-      @"world_background_mountain_right.png",
-      @"world_background_tree4.png",
-      @"world_cloud_background.png",
-      @"world_full.png",
-      @"world_p1_dialog.png",
-      @"world_p2_dialog.png",
-      @"world_p3_dialog.png",
-      @"world_p4_dialog.png",
-      @"world_p5_dialog.png",
-      @"world_p1_grass1.png",
-      @"world_p1_mountain1.png",
-      @"world_p1_mountain2.png",
-      @"world_p1_mountain3.png",
-      @"world_p2_grass.png",
-      @"world_p3_back_house.png",
-      @"world_p3_house.png",
-      @"world_p4_car.png",
-      @"world_p5_holl.png",
-      @"world_p5_mask.png"
-      //      @"",
-      ];
+    self.loadingImageNameArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"world_resource" ofType:@"plist"]];
 
     [self performSelector:@selector(playBgMusic) withObject:nil afterDelay:1.f];
     
@@ -150,7 +109,13 @@
     {
         [textureCache addImageAsync:imageName target:self selector:@selector(loadCallBack)];
     }
-    
+}
+- (void)onExit
+{
+    [super onExit];
+    [self.updateObj endUpdate];
+    self.updateObj = nil;
+    self.startDate = nil;
 }
 - (void)playBgMusic
 {
@@ -159,19 +124,23 @@
 - (void)loadCallBack
 {
     ++self.loadingCount;
-    float percentage = (float)self.loadingCount / (self.loadingImageNameArray.count + 1);
+    float percentage = (float)self.loadingCount / (self.loadingImageNameArray.count + 4);
     self.processBar.percentage = percentage;
     
     if (self.loadingCount == self.loadingImageNameArray.count)
     {
-        self.processBar.percentage = 1.f;
-        [self changeToScene:^CCScene *{
-            CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-            return scene;
-        }];
-//        [[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:scene ]];
+        NSDate* date = [NSDate date];
+
+        NSTimeInterval interval = [date timeIntervalSinceDate:self.startDate];
+        [self performSelector:@selector(introEnd) withObject:nil afterDelay:2 - interval];
     }
-    
-    
+}
+- (void)introEnd
+{
+    self.processBar.percentage = 1.f;
+    [self changeToScene:^CCScene *{
+        CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+        return scene;
+    }];
 }
 @end

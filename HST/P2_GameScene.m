@@ -22,6 +22,7 @@
 #import "CircleTransition.h"
 #import "VolumnHelper.h"
 #import "CCLayer+CircleTransitionExtension.h"
+#import "WXYUtility.h"
 
 #define EVERYDELTATIME 0.016667
 
@@ -271,13 +272,19 @@
 //     [CircleTransition transitionWithDuration:1.0
 //                                        scene:scene]];
 }
+- (void)helpButtonPressed
+{
+#warning 未完成
+}
 
 #pragma mark - 退出时释放内存
 - (void)dealloc
 {
     [self.monster removeFromParentAndCleanup:YES];
     self.monster = nil;
+    [WXYUtility clearImageCachedOfPlist:@"p2_resource"];
     [super dealloc];
+    
 //    [[CCTextureCache sharedTextureCache]removeAllTextures];
 }
 

@@ -12,8 +12,17 @@
 //MonsterEyeUpdateObject
 //定时处理MonsterEye的随机眨眼，移动等等
 
+typedef NS_ENUM(NSInteger, MonsterEyeUpdateObjectMode) {
+    MonsterEyeUpdateObjectModeNormal,
+    MonsterEyeUpdateObjectModeLaunchImage
+};
+
+
 @interface MonsterEyeUpdateObject : NSObject
 
+@property (assign, nonatomic) MonsterEyeUpdateObjectMode mode;
+@property (assign, nonatomic) float firstDelay;
+//@property (assign, nonatomic) float duration;
 - (id)init;
 
 - (void)addMonsterEye:(MonsterEye*)eye;

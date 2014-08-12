@@ -26,10 +26,16 @@
 @property (assign, nonatomic) CGSize eyeWhiteSize;
 @property (assign, nonatomic) float eyeBallRadius;
 
+
 @end
 
 
 @implementation MonsterEye
+- (void)setEyeBallBasePosition:(CGPoint)eyeBallBasePosition
+{
+    _eyeBallBasePosition = eyeBallBasePosition;
+    self.eyeBall.position = eyeBallBasePosition;
+}
 - (id)initWithEyeWhiteName:(NSString *)eyeWhiteName eyeballName:(NSString *)eyeballName eyelidColor:(ccColor3B)eyelidColor
 {
     self = [super init];
@@ -89,6 +95,7 @@
         [self addChild:self.bottomEyelid];
         self.topEyelid.visible = NO;
         self.bottomEyelid.visible = NO;
+        self.eyeBallBasePosition = ccp(0, 0);
     }
     return self;
 }
@@ -156,7 +163,7 @@
     
     CCMoveTo* moveTo = [CCMoveTo actionWithDuration:MOVE_DURATION position:ccp(moveX, moveY)];
     CCDelayTime* moveDelay = [CCDelayTime actionWithDuration:MOVE_DELAY_DURATION];
-    CCMoveTo* moveBack = [CCMoveTo actionWithDuration:MOVE_DURATION position:ccp(0,0)];
+    CCMoveTo* moveBack = [CCMoveTo actionWithDuration:MOVE_DURATION position:self.eyeBallBasePosition];
 
     [self.eyeBall runAction:[CCSequence actions:moveTo, moveDelay, moveBack, nil]];
 }
