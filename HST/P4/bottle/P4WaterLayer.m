@@ -607,9 +607,13 @@
 {
     if (self.waterRecordArray.count)
     {
-        self.waterReleaseSoundId = [[SimpleAudioEngine sharedEngine] playEffect:@"p4_monster_shake.mp3"];
+        if (!self.waterReleaseSoundId)
+        {
+            self.waterReleaseSoundId = [[SimpleAudioEngine sharedEngine] playEffect:@"p4_monster_shake.mp3"];
+            [self performSelector:@selector(waterReleaseSoundUpdate) withObject:nil afterDelay:11.f];
+        }
+
     }
-    [self performSelector:@selector(waterReleaseSoundUpdate) withObject:nil afterDelay:11.f];
     
     
     if (self.waterRecordArray.count)
