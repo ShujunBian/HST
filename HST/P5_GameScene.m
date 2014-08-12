@@ -159,8 +159,9 @@
     
     [NSNotificationCenter unregister:undergrounScene];
 
-    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-    [self changeToScene:scene];
+    [self changeToScene:^CCScene *{
+        return [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+    }];
 //    [[CCDirector sharedDirector] replaceScene:
 //     [CircleTransition transitionWithDuration:1.0
 //                                        scene:scene]];

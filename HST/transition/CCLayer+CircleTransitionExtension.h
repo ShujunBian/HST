@@ -8,7 +8,9 @@
 
 #import "CCLayer.h"
 
+typedef CCScene* (^SceneBlock)();
+
 @interface CCLayer (CircleTransitionExtension)
 - (void)showScene;
-- (void)changeToScene:(CCScene*)scene;
+- (void)changeToScene:(SceneBlock)sceneBlock;
 @end

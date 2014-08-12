@@ -360,8 +360,11 @@
         [child unscheduleAllSelectors];
     }
     
-    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-    [self changeToScene:scene];
+
+    [self changeToScene:^CCScene *{
+        CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+        return scene;
+    }];
 //    [[CCDirector sharedDirector] replaceScene:
 //     [CircleTransition transitionWithDuration:1.0
 //                                        scene:scene]];

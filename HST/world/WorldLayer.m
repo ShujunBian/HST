@@ -106,35 +106,45 @@
         
         if (CGRectContainsPoint(WORLD_P1_RECT, locationInNodeSpace))
         {
-            //P1
-            CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
-            [self changeToScene:p1Scene];
+            [self changeToScene:^CCScene *{
+                CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
+                return p1Scene;
+            }];
         }
         else if (CGRectContainsPoint(WORLD_P2_RECT_1, locationInNodeSpace) ||
                  CGRectContainsPoint(WORLD_P2_RECT_2, locationInNodeSpace))
         {
             //P2
-            CCScene* p2Scene = [CCBReader sceneWithNodeGraphFromFile:@"P2_GameScene.ccbi"];
             [self preloadMusicAndEffect];
-            [self changeToScene:p2Scene];
+            [self changeToScene:^CCScene *{
+                CCScene* p2Scene = [CCBReader sceneWithNodeGraphFromFile:@"P2_GameScene.ccbi"];
+                return p2Scene;
+            }];
         }
         else if (CGRectContainsPoint(WORLD_P3_RECT, locationInNodeSpace))
         {
             //P3
-            CCScene * p3Scene = [CCBReader sceneWithNodeGraphFromFile:@"P3_GameScene.ccbi"];
-            [self changeToScene:p3Scene];
+
+            [self changeToScene:^CCScene *{
+                CCScene * p3Scene = [CCBReader sceneWithNodeGraphFromFile:@"P3_GameScene.ccbi"];
+                return p3Scene;
+            }];
         }
         else if (CGRectContainsPoint(WORLD_P4_RECT, locationInNodeSpace))
         {
             //P4
-            CCScene * p4Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];
-            [self changeToScene:p4Scene];
+            [self changeToScene:^CCScene *{
+                CCScene * p4Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];
+                return p4Scene;
+            }];
         }
         else if (CGRectContainsPoint(WORLD_P5_RECT, locationInNodeSpace))
         {
             //P5
-            CCScene* p5Scene = [CCBReader sceneWithNodeGraphFromFile:@"P5_GameScene.ccbi"];
-            [self changeToScene:p5Scene];
+            [self changeToScene:^CCScene *{
+                CCScene* p5Scene = [CCBReader sceneWithNodeGraphFromFile:@"P5_GameScene.ccbi"];
+                return p5Scene;
+            }];
         }
         else
         {

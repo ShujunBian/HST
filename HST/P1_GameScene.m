@@ -292,10 +292,10 @@ static NSMutableArray *bubbleScales = nil;
     [[CDAudioManager sharedManager] stopBackgroundMusic];
     
 //    [NSTimer scheduledTimerWithTimeInterval:0.01 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
-
-#warning 添加转场动画
-    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-    [self changeToScene:scene];
+    [self changeToScene:^CCScene *{
+        CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+        return scene;
+    }];
 //    [[CCDirector sharedDirector] replaceScene:
 //     [CircleTransition transitionWithDuration:1.0
 //                                        scene:scene]];
