@@ -28,6 +28,7 @@
 @interface P2_GameScene ()
 
 @property (strong, nonatomic) MainMapHelper* mainMapHelper;
+@property (nonatomic) NSInteger maxMusicSeconds;
 @property (nonatomic) NSInteger currentSongType;
 
 @end
@@ -119,6 +120,7 @@
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:fileName];
     frameToShowCurrentFrame = [[NSArray alloc]initWithArray:[(NSArray *)[dictionary objectForKey: @"MusicEffectPosition"] objectAtIndex:0]];
     musicTypeInFrame = [[NSArray alloc]initWithArray:[(NSArray *)[dictionary objectForKey: @"MusicEffect"] objectAtIndex:0]];
+    self.maxMusicSeconds = [(NSNumber *)[(NSArray *)[dictionary objectForKey:@"maxMusicSeconds"] objectAtIndex:0] integerValue];
 }
 
 //- (void)onExitTransitionDidStart
@@ -162,7 +164,7 @@
 {
     _frameCounter ++;
     
-    if (_frameCounter == 72) {
+    if (_frameCounter == _maxMusicSeconds) {
         [[SimpleAudioEngine sharedEngine] rewindBackgroundMusic];
         _frameCounter = 0;
     }

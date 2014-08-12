@@ -4,9 +4,8 @@
 <dict>
 	<key>MusicEffectCounter</key>
 	<array>
-        <key>Item 0</key>
-        <integer>68</integer>
-    </array>
+		<integer>68</integer>
+	</array>
 	<key>MusicEffectPosition</key>
 	<array>
 		<array>
@@ -93,7 +92,9 @@
 			<integer>5</integer>
 		</array>
 	</array>
-	<key>New item</key>
-	<string></string>
+	<key>maxMusicSeconds</key>
+	<array>
+		<integer>72</integer>
+	</array>
 </dict>
 </plist>
