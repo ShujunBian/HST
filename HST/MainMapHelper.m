@@ -8,6 +8,7 @@
 
 #import "MainMapHelper.h"
 #import "SimpleAudioEngine.h"
+#import "WXYMenuItemImage.h"
 
 @implementation MainMapHelper
 
@@ -29,7 +30,7 @@
 
 - (void)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point
 {
-    self.restartItem = [CCMenuItemImage itemWithNormalImage:@"restartButton.png"
+    self.restartItem = [WXYMenuItemImage itemWithNormalImage:@"restartButton.png"
                                                       selectedImage:nil
                                                              target:self
                                                            selector:@selector(restartGameScene)];
@@ -37,7 +38,7 @@
     [_restartMenu setPosition:CGPointMake(point.x + 92.0, point.y)];
     [prototype addChild:_restartMenu z:15];
     
-    self.mainMapItem = [CCMenuItemImage itemWithNormalImage:@"mainMapButton.png"
+    self.mainMapItem = [WXYMenuItemImage itemWithNormalImage:@"mainMapButton.png"
                                                       selectedImage:nil
                                                              target:self
                                                            selector:@selector(returnToMainMap)];
@@ -45,7 +46,7 @@
     [_mainMapMenu setPosition:point];
     [prototype addChild:_mainMapMenu z:15];
     
-    self.helpItem = [CCMenuItemImage itemWithNormalImage:@"helpButton.png" selectedImage:nil target:self selector:@selector(helpBtnPressed)];
+    self.helpItem = [WXYMenuItemImage itemWithNormalImage:@"helpButton.png" selectedImage:nil target:self selector:@selector(helpBtnPressed)];
     self.helpMenu = [CCMenu menuWithItems:self.helpItem, nil];
     
     self.helpMenu.position = ccp([CCDirector sharedDirector].winSize.width - 50.f, point.y);
@@ -55,11 +56,7 @@
 
 - (void)restartGameScene
 {
-    CCScaleBy * scale1 = [CCScaleBy actionWithDuration:0.1 scale:1.4];
-    CCScaleBy * scale2 = [CCScaleBy actionWithDuration:0.1 scale:0.7];
-    CCScaleTo * scale3 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
-    CCSequence * seq = [CCSequence actions:scale1,scale2,scale3, nil];
-    [_restartItem runAction:seq];
+
     
     if ([self.delegate respondsToSelector:@selector(restartGameScene)])
     {
@@ -71,11 +68,6 @@
 - (void)returnToMainMap
 {
     _mainMapItem.isEnabled = NO;
-    CCScaleBy * scale1 = [CCScaleBy actionWithDuration:0.1 scale:1.4];
-    CCScaleBy * scale2 = [CCScaleBy actionWithDuration:0.1 scale:0.7];
-    CCScaleTo * scale3 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
-    CCSequence * seq = [CCSequence actions:scale1,scale2,scale3, nil];
-    [_mainMapItem runAction:seq];
     if ([self.delegate respondsToSelector:@selector(returnToMainMap)])
     {
         [self.delegate returnToMainMap];
@@ -84,11 +76,7 @@
 
 - (void)helpBtnPressed
 {
-    CCScaleBy * scale1 = [CCScaleBy actionWithDuration:0.1 scale:1.4];
-    CCScaleBy * scale2 = [CCScaleBy actionWithDuration:0.1 scale:0.7];
-    CCScaleTo * scale3 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
-    CCSequence * seq = [CCSequence actions:scale1,scale2,scale3, nil];
-    [self.helpItem runAction:seq];
+
     
     if ([self.delegate respondsToSelector:@selector(helpButtonPressed)])
     {

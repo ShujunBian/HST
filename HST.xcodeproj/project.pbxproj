@@ -1082,6 +1082,7 @@
 		EF830837199A082400EBFAF5 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = EF830831199A082400EBFAF5 /* Icon-76.png */; };
 		EF830838199A082400EBFAF5 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF830832199A082400EBFAF5 /* Icon-76@2x.png */; };
 		EF830839199A082400EBFAF5 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF830833199A082400EBFAF5 /* Icon-Small-50@2x.png */; };
+		EF83083C199A3B6F00EBFAF5 /* WXYMenuItemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EF83083B199A3B6F00EBFAF5 /* WXYMenuItemImage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2388,6 +2389,8 @@
 		EF830831199A082400EBFAF5 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "Resources/Icon-76.png"; sourceTree = "<group>"; };
 		EF830832199A082400EBFAF5 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Resources/Icon-76@2x.png"; sourceTree = "<group>"; };
 		EF830833199A082400EBFAF5 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50@2x.png"; path = "Resources/Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		EF83083A199A3B6F00EBFAF5 /* WXYMenuItemImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYMenuItemImage.h; sourceTree = "<group>"; };
+		EF83083B199A3B6F00EBFAF5 /* WXYMenuItemImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYMenuItemImage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3065,6 +3068,8 @@
 				5169CD7A18CDE5EE00426E6C /* IntroLayer.m */,
 				EF58EB141990C36300B13232 /* GameLoadingProcessBar.h */,
 				EF58EB151990C36300B13232 /* GameLoadingProcessBar.m */,
+				EF83083A199A3B6F00EBFAF5 /* WXYMenuItemImage.h */,
+				EF83083B199A3B6F00EBFAF5 /* WXYMenuItemImage.m */,
 			);
 			name = Mainmap;
 			sourceTree = "<group>";
@@ -4542,7 +4547,6 @@
 				EF403FB1197A1D1700C6C8E1 /* P4_blue_eyeball_1.png in Resources */,
 				EF53BC0019906A04007C8258 /* p4_background.mp3 in Resources */,
 				51A9409D197A121300920318 /* P3_BellBody.ccbi in Resources */,
-				51556DE118CF21B8005C8D46 /* P1_b3.wav in Resources */,
 				EF83082D1999FF2300EBFAF5 /* launch_eye_white.png in Resources */,
 				51A940A6197A121300920318 /* P3_ParticleEffect.ccb in Resources */,
 				51A942AD197A130A00920318 /* p2_littlefly-hd.png in Resources */,
@@ -4649,7 +4653,6 @@
 				EF83082B1999FF2300EBFAF5 /* launch_eye_ball.png in Resources */,
 				516F24411981DE9E004E6443 /* world_p5_mask.png in Resources */,
 				EF4040BD197A592100C6C8E1 /* world_p1_tree1-hd.png in Resources */,
-				51556DE218CF21B8005C8D46 /* P1_b4.wav in Resources */,
 				EF8308241999F7F700EBFAF5 /* helpButton.png in Resources */,
 				EF403FE3197A1D1700C6C8E1 /* P4_brown_monster-hd.png in Resources */,
 				EF4040BC197A592100C6C8E1 /* world_p1_mountain3.png in Resources */,
@@ -5435,6 +5438,7 @@
 				EF31302B197E0B5800B61C2A /* CircleTransition.m in Sources */,
 				1801E75118E594FC004E0856 /* P4BottleOffset.m in Sources */,
 				5169CCB318CDE5ED00426E6C /* CCSpriteFrameCache.m in Sources */,
+				EF83083C199A3B6F00EBFAF5 /* WXYMenuItemImage.m in Sources */,
 				5169CC3C18CDE5ED00426E6C /* CCDirector.m in Sources */,
 				5169CC2C18CDE5ED00426E6C /* CCAtlasNode.m in Sources */,
 				5187A8A11990E56D00C52767 /* VolumnHelper.m in Sources */,
