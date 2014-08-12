@@ -17,4 +17,6 @@
 - (void)eyeMoveAngle:(float)angle;
 - (void)eyeMoveRandom;
 
+@property (assign, nonatomic) CGPoint eyeBallBasePosition;
+
 @end

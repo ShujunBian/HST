@@ -15,6 +15,8 @@
 #import "CircleTransition.h"
 #import "SimpleAudioEngine.h"
 #import "CCLayer+CircleTransitionExtension.h"
+#import "MonsterEye.h"
+#import "MonsterEyeUpdateObject.h"
 
 #pragma mark - IntroLayer
 
@@ -24,6 +26,9 @@
 @property (strong, nonatomic) NSArray* loadingImageNameArray;
 
 @property (strong, nonatomic) GameLoadingProcessBar* processBar;
+@property (strong, nonatomic) MonsterEyeUpdateObject* updateObj;
+
+@property (strong, nonatomic) NSDate* startDate;
 
 @end
 
@@ -71,6 +76,15 @@
         [self addChild:bar];
         self.processBar = bar;
         
+        
+        self.updateObj = [[[MonsterEyeUpdateObject alloc] init] autorelease];
+        self.updateObj.mode = MonsterEyeUpdateObjectModeLaunchImage;
+        self.updateObj.firstDelay = 0.7f;
+        MonsterEye* eye = [[[MonsterEye alloc] initWithEyeWhiteName:@"launch_eye_white.png" eyeballName:@"launch_eye_ball.png" eyelidColor:ccc3(221, 161, 255)] autorelease];
+        eye.position = ccp(433, 428);
+        eye.eyeBallBasePosition = ccp(-5 ,1);
+        [self addChild:eye];
+        [self.updateObj addMonsterEye:eye];
 	}
 	
 	return self;
@@ -79,10 +93,11 @@
 -(void) onEnter
 {
 	[super onEnter];
-//    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-//    self.processBar.percentage = 1.f;
-//    [self changeToScene:scene];
-//    return;
+    self.startDate = [NSDate date];
+    
+    
+    [self.updateObj beginUpdate];
+    
     self.loadingCount = 0;
     self.loadingImageNameArray = [NSArray arrayWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"world_resource" ofType:@"plist"]];
 
@@ -94,7 +109,13 @@
     {
         [textureCache addImageAsync:imageName target:self selector:@selector(loadCallBack)];
     }
-    
+}
+- (void)onExit
+{
+    [super onExit];
+    [self.updateObj endUpdate];
+    self.updateObj = nil;
+    self.startDate = nil;
 }
 - (void)playBgMusic
 {
@@ -108,14 +129,18 @@
     
     if (self.loadingCount == self.loadingImageNameArray.count)
     {
-        self.processBar.percentage = 1.f;
-        [self changeToScene:^CCScene *{
-            CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-            return scene;
-        }];
-//        [[CCDirector sharedDirector] replaceScene:[CircleTransition transitionWithDuration:1.0 scene:scene ]];
+        NSDate* date = [NSDate date];
+
+        NSTimeInterval interval = [date timeIntervalSinceDate:self.startDate];
+        [self performSelector:@selector(introEnd) withObject:nil afterDelay:2 - interval];
     }
-    
-    
+}
+- (void)introEnd
+{
+    self.processBar.percentage = 1.f;
+    [self changeToScene:^CCScene *{
+        CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+        return scene;
+    }];
 }
 @end

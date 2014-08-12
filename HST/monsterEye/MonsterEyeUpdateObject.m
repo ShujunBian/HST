@@ -33,6 +33,8 @@
     {
         self.eyesArray = [[@[] mutableCopy] autorelease];
         self.lock = [[[NSLock alloc] init] autorelease];
+        self.mode = MonsterEyeUpdateObjectModeNormal;
+        self.firstDelay = 0.f;
     }
     return self;
 }
@@ -61,7 +63,10 @@
     [self.lock lock];
     self.isUpdate = YES;
     [self.lock unlock];
-    [self eyeUpdate];
+    
+//    float delayTime = CCRANDOM_0_1() * UPDATE_DURATION_FIRST_MAX;
+    [self performSelector:@selector(eyeUpdate) withObject:nil afterDelay:0.2f];
+//    [self eyeUpdate];
 }
 - (void)endUpdate
 {
@@ -78,14 +83,10 @@
     {
         return;
     }
-    
-    float randomNum = CCRANDOM_0_1();
-    if (randomNum < 0.5)
+    if (self.mode == MonsterEyeUpdateObjectModeLaunchImage)
     {
         //Move
-        
         float angle = 360.f * CCRANDOM_0_1();
-        
         for (MonsterEye* e in self.eyesArray)
         {
             [e eyeMoveAngle:angle];
@@ -93,12 +94,26 @@
     }
     else
     {
-        //Blink
-        for (MonsterEye* e in self.eyesArray)
+        float randomNum = CCRANDOM_0_1();
+        if (randomNum < 0.5)
         {
-            [e blink];
+            //Move
+            float angle = 360.f * CCRANDOM_0_1();
+            for (MonsterEye* e in self.eyesArray)
+            {
+                [e eyeMoveAngle:angle];
+            }
+        }
+        else
+        {
+            //Blink
+            for (MonsterEye* e in self.eyesArray)
+            {
+                [e blink];
+            }
         }
     }
+    
     
     float delayTime = 0.f;
     if (self.fIsFirstTime)

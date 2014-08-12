@@ -46,9 +46,6 @@
 		5169CBE718CDE5ED00426E6C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5169CBE618CDE5ED00426E6C /* Default@2x.png */; };
 		5169CBED18CDE5ED00426E6C /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 5169CBEC18CDE5ED00426E6C /* Icon-72.png */; };
 		5169CBEF18CDE5ED00426E6C /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 5169CBEE18CDE5ED00426E6C /* Icon-Small-50.png */; };
-		5169CBF118CDE5ED00426E6C /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = 5169CBF018CDE5ED00426E6C /* Icon-Small.png */; };
-		5169CBF318CDE5ED00426E6C /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5169CBF218CDE5ED00426E6C /* Icon-Small@2x.png */; };
-		5169CBF518CDE5ED00426E6C /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 5169CBF418CDE5ED00426E6C /* Icon.png */; };
 		5169CBFA18CDE5ED00426E6C /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = 5169CBF918CDE5ED00426E6C /* iTunesArtwork */; };
 		5169CBFF18CDE5ED00426E6C /* CCAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169CBFE18CDE5ED00426E6C /* CCAction.m */; };
 		5169CC0218CDE5ED00426E6C /* CCActionCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169CC0118CDE5ED00426E6C /* CCActionCamera.m */; };
@@ -1063,6 +1060,16 @@
 		EF8308201999F40600EBFAF5 /* WXYUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = EF83081F1999F40600EBFAF5 /* WXYUtility.m */; };
 		EF8308231999F7F700EBFAF5 /* helpButton-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF8308211999F7F700EBFAF5 /* helpButton-hd.png */; };
 		EF8308241999F7F700EBFAF5 /* helpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = EF8308221999F7F700EBFAF5 /* helpButton.png */; };
+		EF83082A1999FF2300EBFAF5 /* launch_eye_ball-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF8308261999FF2300EBFAF5 /* launch_eye_ball-hd.png */; };
+		EF83082B1999FF2300EBFAF5 /* launch_eye_ball.png in Resources */ = {isa = PBXBuildFile; fileRef = EF8308271999FF2300EBFAF5 /* launch_eye_ball.png */; };
+		EF83082C1999FF2300EBFAF5 /* launch_eye_white-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF8308281999FF2300EBFAF5 /* launch_eye_white-hd.png */; };
+		EF83082D1999FF2300EBFAF5 /* launch_eye_white.png in Resources */ = {isa = PBXBuildFile; fileRef = EF8308291999FF2300EBFAF5 /* launch_eye_white.png */; };
+		EF830834199A082400EBFAF5 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = EF83082E199A082400EBFAF5 /* Icon-40.png */; };
+		EF830835199A082400EBFAF5 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF83082F199A082400EBFAF5 /* Icon-40@2x.png */; };
+		EF830836199A082400EBFAF5 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF830830199A082400EBFAF5 /* Icon-72@2x.png */; };
+		EF830837199A082400EBFAF5 /* Icon-76.png in Resources */ = {isa = PBXBuildFile; fileRef = EF830831199A082400EBFAF5 /* Icon-76.png */; };
+		EF830838199A082400EBFAF5 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF830832199A082400EBFAF5 /* Icon-76@2x.png */; };
+		EF830839199A082400EBFAF5 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF830833199A082400EBFAF5 /* Icon-Small-50@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1116,9 +1123,6 @@
 		5169CBE618CDE5ED00426E6C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "Resources/Default@2x.png"; sourceTree = "<group>"; };
 		5169CBEC18CDE5ED00426E6C /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "Resources/Icon-72.png"; sourceTree = "<group>"; };
 		5169CBEE18CDE5ED00426E6C /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "Resources/Icon-Small-50.png"; sourceTree = "<group>"; };
-		5169CBF018CDE5ED00426E6C /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "Resources/Icon-Small.png"; sourceTree = "<group>"; };
-		5169CBF218CDE5ED00426E6C /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "Resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
-		5169CBF418CDE5ED00426E6C /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
 		5169CBF818CDE5ED00426E6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		5169CBF918CDE5ED00426E6C /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = Resources/iTunesArtwork; sourceTree = "<group>"; };
 		5169CBFD18CDE5ED00426E6C /* CCAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CCAction.h; path = libs/cocos2d/CCAction.h; sourceTree = "<group>"; };
@@ -2349,6 +2353,16 @@
 		EF83081F1999F40600EBFAF5 /* WXYUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYUtility.m; sourceTree = "<group>"; };
 		EF8308211999F7F700EBFAF5 /* helpButton-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "helpButton-hd.png"; sourceTree = "<group>"; };
 		EF8308221999F7F700EBFAF5 /* helpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = helpButton.png; sourceTree = "<group>"; };
+		EF8308261999FF2300EBFAF5 /* launch_eye_ball-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_eye_ball-hd.png"; sourceTree = "<group>"; };
+		EF8308271999FF2300EBFAF5 /* launch_eye_ball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_eye_ball.png; sourceTree = "<group>"; };
+		EF8308281999FF2300EBFAF5 /* launch_eye_white-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_eye_white-hd.png"; sourceTree = "<group>"; };
+		EF8308291999FF2300EBFAF5 /* launch_eye_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = launch_eye_white.png; sourceTree = "<group>"; };
+		EF83082E199A082400EBFAF5 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40.png"; path = "Resources/Icon-40.png"; sourceTree = "<group>"; };
+		EF83082F199A082400EBFAF5 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "Resources/Icon-40@2x.png"; sourceTree = "<group>"; };
+		EF830830199A082400EBFAF5 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72@2x.png"; path = "Resources/Icon-72@2x.png"; sourceTree = "<group>"; };
+		EF830831199A082400EBFAF5 /* Icon-76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76.png"; path = "Resources/Icon-76.png"; sourceTree = "<group>"; };
+		EF830832199A082400EBFAF5 /* Icon-76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-76@2x.png"; path = "Resources/Icon-76@2x.png"; sourceTree = "<group>"; };
+		EF830833199A082400EBFAF5 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50@2x.png"; path = "Resources/Icon-Small-50@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2534,6 +2548,13 @@
 		5169CBE318CDE5ED00426E6C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EF83082E199A082400EBFAF5 /* Icon-40.png */,
+				EF83082F199A082400EBFAF5 /* Icon-40@2x.png */,
+				EF830830199A082400EBFAF5 /* Icon-72@2x.png */,
+				EF830831199A082400EBFAF5 /* Icon-76.png */,
+				EF830832199A082400EBFAF5 /* Icon-76@2x.png */,
+				EF830833199A082400EBFAF5 /* Icon-Small-50@2x.png */,
+				EF8308251999FF2300EBFAF5 /* launch */,
 				EF8308111999F18600EBFAF5 /* plist */,
 				EF58EB121990C30700B13232 /* Default-hd.png */,
 				EF404049197A592100C6C8E1 /* world */,
@@ -2548,9 +2569,6 @@
 				5169CBE618CDE5ED00426E6C /* Default@2x.png */,
 				5169CBEC18CDE5ED00426E6C /* Icon-72.png */,
 				5169CBEE18CDE5ED00426E6C /* Icon-Small-50.png */,
-				5169CBF018CDE5ED00426E6C /* Icon-Small.png */,
-				5169CBF218CDE5ED00426E6C /* Icon-Small@2x.png */,
-				5169CBF418CDE5ED00426E6C /* Icon.png */,
 				5169CBF818CDE5ED00426E6C /* Info.plist */,
 				5169CBF918CDE5ED00426E6C /* iTunesArtwork */,
 			);
@@ -4325,6 +4343,18 @@
 			path = Resources/plist;
 			sourceTree = "<group>";
 		};
+		EF8308251999FF2300EBFAF5 /* launch */ = {
+			isa = PBXGroup;
+			children = (
+				EF8308261999FF2300EBFAF5 /* launch_eye_ball-hd.png */,
+				EF8308271999FF2300EBFAF5 /* launch_eye_ball.png */,
+				EF8308281999FF2300EBFAF5 /* launch_eye_white-hd.png */,
+				EF8308291999FF2300EBFAF5 /* launch_eye_white.png */,
+			);
+			name = launch;
+			path = Resources/launch;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -4467,7 +4497,6 @@
 				51A94292197A130A00920318 /* 7.png in Resources */,
 				EF403FFA197A1D1700C6C8E1 /* P4Cloud1.ccbi in Resources */,
 				51A94061197A121300920318 /* P3_Monster_body_mouth.png in Resources */,
-				5169CBF518CDE5ED00426E6C /* Icon.png in Resources */,
 				51A94297197A130A00920318 /* p2_firstmonster_body-hd.png in Resources */,
 				51A94289197A130A00920318 /* 3-hd.png in Resources */,
 				5169CD5318CDE5EE00426E6C /* ChangeLog in Resources */,
@@ -4476,6 +4505,7 @@
 				EF53BC0019906A04007C8258 /* p4_background.mp3 in Resources */,
 				51A9409D197A121300920318 /* P3_BellBody.ccbi in Resources */,
 				51556DE118CF21B8005C8D46 /* P1_b3.wav in Resources */,
+				EF83082D1999FF2300EBFAF5 /* launch_eye_white.png in Resources */,
 				51A940A6197A121300920318 /* P3_ParticleEffect.ccb in Resources */,
 				51A942AD197A130A00920318 /* p2_littlefly-hd.png in Resources */,
 				51A94049197A121300920318 /* P3_monster3_face.png in Resources */,
@@ -4493,6 +4523,7 @@
 				EF4040D0197A592100C6C8E1 /* world_p5_grass.png in Resources */,
 				51A942EF197A130A00920318 /* P2_LittleFlyOut.ccb in Resources */,
 				51F48ADF197E959A00371C45 /* MainMap_GreenFlowerHead.png in Resources */,
+				EF830836199A082400EBFAF5 /* Icon-72@2x.png in Resources */,
 				51A9428B197A130A00920318 /* 4-hd.png in Resources */,
 				51A942C4197A130A00920318 /* p2_mountain1.png in Resources */,
 				51A941BA197A128700920318 /* P5_undergroundHoleBell.png in Resources */,
@@ -4576,13 +4607,13 @@
 				51A94086197A121300920318 /* P3_GreenMonster.ccb in Resources */,
 				EF53BC0E1990B06C007C8258 /* P4_bottle_light-hd.png in Resources */,
 				51A941E2197A128700920318 /* P5_SkyLayer.ccbi in Resources */,
+				EF83082B1999FF2300EBFAF5 /* launch_eye_ball.png in Resources */,
 				516F24411981DE9E004E6443 /* world_p5_mask.png in Resources */,
 				EF4040BD197A592100C6C8E1 /* world_p1_tree1-hd.png in Resources */,
 				51556DE218CF21B8005C8D46 /* P1_b4.wav in Resources */,
 				EF8308241999F7F700EBFAF5 /* helpButton.png in Resources */,
 				EF403FE3197A1D1700C6C8E1 /* P4_brown_monster-hd.png in Resources */,
 				EF4040BC197A592100C6C8E1 /* world_p1_mountain3.png in Resources */,
-				5169CBF118CDE5ED00426E6C /* Icon-Small.png in Resources */,
 				51A9408C197A121300920318 /* P3_PurpMonster.ccb in Resources */,
 				51A942D8197A130A00920318 /* p2_secondmonster_body.png in Resources */,
 				51A941B7197A128700920318 /* P5_undergroundHole-hd.png in Resources */,
@@ -4652,6 +4683,7 @@
 				EF4040C8197A592100C6C8E1 /* world_p3_house.png in Resources */,
 				5199791018CFF9A6006A1FD8 /* mainMapButton.png in Resources */,
 				EF404021197A1D1700C6C8E1 /* P4WaterOutParticle.ccbi in Resources */,
+				EF830838199A082400EBFAF5 /* Icon-76@2x.png in Resources */,
 				EF4040B3197A592100C6C8E1 /* world_p1_cloud2-hd.png in Resources */,
 				EF403FD2197A1D1700C6C8E1 /* P4_yellow_eyewhite_2-hd.png in Resources */,
 				51A9406B197A121300920318 /* P3_MonsterBody_SingMouth.png in Resources */,
@@ -4792,6 +4824,7 @@
 				51A942DB197A130A00920318 /* p2_secondmonster_eyewhite-hd.png in Resources */,
 				EF403FA4197A1D1700C6C8E1 /* ccbParticleSnow.png in Resources */,
 				51A94184197A128700920318 /* P5_homeChair.png in Resources */,
+				EF830839199A082400EBFAF5 /* Icon-Small-50@2x.png in Resources */,
 				EF40401B197A1D1700C6C8E1 /* P4water_particle.png in Resources */,
 				EF403FD5197A1D1700C6C8E1 /* P4_monster1_mask-hd.png in Resources */,
 				51A9404F197A121300920318 /* P3_Monster4_Eye_background.png in Resources */,
@@ -4852,7 +4885,9 @@
 				51A9401E197A121300920318 /* P3_eye_Skin_up-hd.png in Resources */,
 				EF708AFC19879B9D00068D61 /* world_p3_dialog-hd.png in Resources */,
 				51A943A1197A142E00920318 /* monsterbody-hd.png in Resources */,
+				EF830837199A082400EBFAF5 /* Icon-76.png in Resources */,
 				51A942C2197A130A00920318 /* p2_monster_head_ball.png in Resources */,
+				EF830835199A082400EBFAF5 /* Icon-40@2x.png in Resources */,
 				51A942A7197A130A00920318 /* p2_fly_grass2-hd.png in Resources */,
 				51A94033197A121300920318 /* P3_monster1_face.png in Resources */,
 				EF403FC6197A1D1700C6C8E1 /* P4_red_eyeball_2-hd.png in Resources */,
@@ -4869,6 +4904,7 @@
 				51A941A6197A128700920318 /* P5_monsterUnderLittleShadow.png in Resources */,
 				51A9438B197A142E00920318 /* flower_head_eye_open-hd.png in Resources */,
 				51A942B1197A130A00920318 /* p2_littlefly_eye_blink-hd.png in Resources */,
+				EF830834199A082400EBFAF5 /* Icon-40.png in Resources */,
 				51A941E7197A128700920318 /* P5_UndergroundScene.ccb in Resources */,
 				51A94194197A128700920318 /* P5_monsterEyeWhite.png in Resources */,
 				51ACAA6C199611B800A34946 /* P2_2_3.mp3 in Resources */,
@@ -4899,6 +4935,7 @@
 				51A942AF197A130A00920318 /* p2_littlefly_eye-hd.png in Resources */,
 				5199792618D02CEB006A1FD8 /* P2_all.mp3 in Resources */,
 				51A942A9197A130A00920318 /* p2_fly_grass3-hd.png in Resources */,
+				EF83082C1999FF2300EBFAF5 /* launch_eye_white-hd.png in Resources */,
 				5199792418D02CEB006A1FD8 /* P2_6.mp3 in Resources */,
 				51A943A0197A142E00920318 /* monster_teeth.png in Resources */,
 				EF403F97197A1D1700C6C8E1 /* P4_bottle_right_ear.png in Resources */,
@@ -4929,6 +4966,7 @@
 				51A941AB197A128700920318 /* P5_mountain1-hd.png in Resources */,
 				51A942D3197A130A00920318 /* p2_mushroom2EyesBlink-hd.png in Resources */,
 				51A9401B197A121300920318 /* P3_cloud.png in Resources */,
+				EF83082A1999FF2300EBFAF5 /* launch_eye_ball-hd.png in Resources */,
 				51A943BB197A142E00920318 /* P1_FlowerHead.ccb in Resources */,
 				51A9429D197A130A00920318 /* p2_flower_body-hd.png in Resources */,
 				51A94052197A121300920318 /* P3_monster4_face-hd.png in Resources */,
@@ -5046,7 +5084,6 @@
 				EF403F91197A1D1700C6C8E1 /* P4_bottle_mask.png in Resources */,
 				EF403FF5197A1D1700C6C8E1 /* P4Bottle.ccb in Resources */,
 				51A942F3197A130A00920318 /* P2_MonsterBody.ccb in Resources */,
-				5169CBF318CDE5ED00426E6C /* Icon-Small@2x.png in Resources */,
 				51A943BF197A142E00920318 /* P1_Monster.ccb in Resources */,
 				51A942B2197A130A00920318 /* p2_littlefly_eye_blink.png in Resources */,
 				51F48ACB197CE44D00371C45 /* P3_BubblePSQ.plist in Resources */,
