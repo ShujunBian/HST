@@ -203,6 +203,10 @@
     [layer addChild:uiImage];
     [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:uiImage afterDelay:0.4];
     
+    CCLabelTTF * uilabel1 = [CCLabelTTF labelWithString:@"For Moms & Dads" fontName:@"Kankin" fontSize:64.0];
+    [uilabel1 setPosition:CGPointMake(510.0, 498.0)];
+    [layer addChild:uilabel1];
+
     
 }
 
