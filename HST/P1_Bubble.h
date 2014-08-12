@@ -10,6 +10,17 @@
 #import "CCBAnimationManager.h"
 #import "P1_BubbleBomb.h"
 
+typedef enum {
+    P1_BubbleNone = 0,
+    P1_BubbleDo,
+    P1_BubbleRi,
+    P1_BubbleMi,
+    P1_BubbleFa,
+    P1_BubbleSol,
+    P1_BubbleLa,
+    P1_BubbleXi
+} P1_BubbleType;
+
 @interface P1_Bubble : CCNode <CCBAnimationManagerDelegate,P1_BubbleBoomDelegate>
 {
     double movingTime;
@@ -24,6 +35,7 @@
 @property (nonatomic) CGPoint targetPosition;
 @property (nonatomic) bool isReadyForboom;
 @property (nonatomic) BOOL isReadyRelease;
+@property (nonatomic) P1_BubbleType currentBubbleType;
 
 - (int)countOfColor;
 - (ccColor3B)colorAtIndex:(NSUInteger)index;
