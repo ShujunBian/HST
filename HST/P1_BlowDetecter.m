@@ -38,6 +38,7 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
 + (void)purge
 {
     [[P1_BlowDetecter instance] removeDelegateAndTimer];
+    [blowDetecterInstance release];
     blowDetecterInstance = nil;
 }
 

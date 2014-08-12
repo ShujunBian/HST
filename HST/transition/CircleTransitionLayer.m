@@ -139,42 +139,43 @@ ccColor3B s_color;
         }
     }];
     
+    float rate = 0.9f;
     //circle
     self.circleSprite.scale = 1;
-    [self.circleSprite runAction:[CCEaseSineOut actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:duration scale:0],[CCDelayTime actionWithDuration:0.01],call, nil]]];
+    [self.circleSprite runAction:[CCEaseOut actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:duration scale:0],[CCDelayTime actionWithDuration:0.01],call, nil] rate:rate]];
     
     //left
     self.leftSprite.scaleX = 0.f;
     float delayTime = ((self.circleMaxRadius - winSize.width / 2) / self.radiusSpeed);
-    [self.leftSprite runAction:[CCEaseSineOut actionWithAction:
+    [self.leftSprite runAction:[CCEaseOut actionWithAction:
      [CCSequence actionWithArray:
       @[[CCDelayTime actionWithDuration:delayTime],
-        [CCScaleTo actionWithDuration:(winSize.width / 2)/ self.radiusSpeed scaleX:(winSize.width / 2 + 4) scaleY:winSize.height],
-        [CCScaleTo actionWithDuration:0 scale:winSize.width]]]]];
+        [CCScaleTo actionWithDuration:(winSize.width / 2)/ self.radiusSpeed scaleX:(winSize.width / 2 + 1) scaleY:winSize.height],
+        [CCScaleTo actionWithDuration:0 scale:winSize.width]]] rate:rate]];
     
     
     //right
     self.rightSprite.scaleX = 0.f;
-    [self.rightSprite runAction:[CCEaseSineOut actionWithAction:
+    [self.rightSprite runAction:[CCEaseOut actionWithAction:
      [CCSequence actionWithArray:
       @[[CCDelayTime actionWithDuration:((self.circleMaxRadius - winSize.width / 2) / self.radiusSpeed)],
-        [CCScaleTo actionWithDuration:(winSize.width / 2) / self.radiusSpeed scaleX:(winSize.width / 2 + 4) scaleY:winSize.height]]]]];
+        [CCScaleTo actionWithDuration:(winSize.width / 2) / self.radiusSpeed scaleX:(winSize.width / 2 + 1) scaleY:winSize.height]]] rate:rate]];
     
     //top
     self.topSprite.scaleY = 0;
-    [self.topSprite runAction:[CCEaseSineOut actionWithAction:
+    [self.topSprite runAction:[CCEaseOut actionWithAction:
      [CCSequence actionWithArray:
       @[[CCDelayTime actionWithDuration:((self.circleMaxRadius - winSize.height / 2) / self.radiusSpeed)],
-        [CCScaleTo actionWithDuration:winSize.height / 2 / self.radiusSpeed scaleX:winSize.width scaleY:(winSize.height / 2 + 4)],
-        ]]]];
+        [CCScaleTo actionWithDuration:winSize.height / 2 / self.radiusSpeed scaleX:winSize.width scaleY:(winSize.height / 2 + 1)],
+        ]] rate:rate]];
     
     //bottom
     self.bottomSprite.scaleY = 0;
-    [self.bottomSprite runAction:[CCEaseSineOut actionWithAction:
+    [self.bottomSprite runAction:[CCEaseOut actionWithAction:
      [CCSequence actionWithArray:
       @[[CCDelayTime actionWithDuration:((self.circleMaxRadius - winSize.height / 2) / self.radiusSpeed)],
-        [CCScaleTo actionWithDuration:winSize.height / 2 / self.radiusSpeed scaleX:winSize.width scaleY:(winSize.height / 2 + 4)],
-        ]]]];
+        [CCScaleTo actionWithDuration:winSize.height / 2 / self.radiusSpeed scaleX:winSize.width scaleY:(winSize.height / 2 + 1)],
+        ]] rate:rate]];
 }
 
 - (void)showSceneWithDuration:(float)duration onCompletion:(VoidBlock)block
@@ -195,47 +196,49 @@ ccColor3B s_color;
             block();
         }
     }];
+    
+    float rate = .9f;
     //circle
     self.circleSprite.scale = 0;
-    [self.circleSprite runAction:[CCEaseSineOut actionWithAction:[CCSequence actionOne:[CCScaleTo actionWithDuration:duration scale:1] two:call]]];
+    [self.circleSprite runAction:[CCEaseOut actionWithAction:[CCSequence actionOne:[CCScaleTo actionWithDuration:duration scale:1] two:call] rate:rate]];
     
     
     //left
     self.leftSprite.scaleX = winSize.width / 2;
     float delayTime = ((self.circleMaxRadius - winSize.width / 2) / self.radiusSpeed);
     [self.leftSprite runAction:
-     [CCEaseSineOut actionWithAction:
+     [CCEaseOut actionWithAction:
       [CCSequence actions:
        [CCScaleTo actionWithDuration:winSize.width / 2 / self.radiusSpeed scaleX:0 scaleY:winSize.height],
        [CCDelayTime actionWithDuration:delayTime],
        nil]
-      ]];
+       rate:rate]];
     
     //right
     self.rightSprite.scaleX = winSize.width / 2;
     [self.rightSprite runAction:
-     [CCEaseSineOut actionWithAction:
+     [CCEaseOut actionWithAction:
       [CCSequence actions:
        [CCScaleTo actionWithDuration:winSize.width / 2 / self.radiusSpeed scaleX:0 scaleY:winSize.height],
        [CCDelayTime actionWithDuration:delayTime],
        nil]
-      ]];
+       rate:rate]];
     
     //top
     self.topSprite.scaleY = winSize.height / 2;
     [self.topSprite runAction:
-     [CCEaseSineOut actionWithAction:
+     [CCEaseOut actionWithAction:
       [CCSequence actions:
        [CCScaleTo actionWithDuration:winSize.height / 2 / self.radiusSpeed scaleX:winSize.width scaleY:0],
-       [CCDelayTime actionWithDuration:((self.circleMaxRadius - winSize.height / 2) / self.radiusSpeed)], nil]]];
+       [CCDelayTime actionWithDuration:((self.circleMaxRadius - winSize.height / 2) / self.radiusSpeed)], nil] rate:rate]];
     
     //bottom
     self.bottomSprite.scaleY = winSize.height / 2;
     [self.bottomSprite runAction:
-     [CCEaseSineOut actionWithAction:
+     [CCEaseOut actionWithAction:
       [CCSequence actions:
        [CCScaleTo actionWithDuration:winSize.height / 2 / self.radiusSpeed scaleX:winSize.width scaleY:0],
-       [CCDelayTime actionWithDuration:((self.circleMaxRadius - winSize.height / 2) / self.radiusSpeed)], nil]]];
+       [CCDelayTime actionWithDuration:((self.circleMaxRadius - winSize.height / 2) / self.radiusSpeed)], nil] rate:rate]];
 
 }
 @end

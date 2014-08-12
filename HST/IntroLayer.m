@@ -128,6 +128,8 @@
     
     if (self.loadingCount == self.loadingImageNameArray.count)
     {
+
+//        self.processBar.percentage = (float)(self.loadingCount + 2) / (self.loadingImageNameArray.count + 4);
         NSDate* date = [NSDate date];
 
         NSTimeInterval interval = [date timeIntervalSinceDate:self.startDate];
@@ -136,10 +138,8 @@
 }
 - (void)introEnd
 {
+    CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
     self.processBar.percentage = 1.f;
-    [self changeToScene:^CCScene *{
-        CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
-        return scene;
-    }];
+    [self changeToLoadedScene:scene];
 }
 @end
