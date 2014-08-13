@@ -8,12 +8,26 @@
 
 #import "WorldUILayer.h"
 #import "CCLayerColor+CCLayerColorAnimation.h"
+#import "MonsterEye.h"
+#import "MonsterEyeUpdateObject.h"
+
+static CGPoint mainMapUIMonsterEyesPosition[] = {
+    {30.0, 37.0},
+    {29.0,46.0},
+    {166.0,30.0},
+    {31.0,37.0},
+    {29.0,60.0}
+};
+
 
 @interface WorldUILayer ()
 
 @property (nonatomic, strong) CCNode * uiNode;
 @property (nonatomic, strong) CCLayerColor * shadowLayer;
 @property (nonatomic) BOOL isShowing;
+@property (nonatomic) BOOL isAnimationFinished;
+@property (nonatomic, strong) MonsterEyeUpdateObject * updateObj;
+
 
 @end
 
@@ -23,10 +37,12 @@
 {
     if (self = [super init]) {
         self.currentMainMapType = currentMainMapType;
+        
         [self setTouchEnabled:YES];
         [[[CCDirector sharedDirector]touchDispatcher] addTargetedDelegate:self priority:-10 swallowsTouches:YES];
         self.isShowing = YES;
-
+        self.isAnimationFinished = NO;
+        
         self.shadowLayer = [CCLayerColor layerWithColor:ccc4(0.0, 0.0,0.0, 0.0 * 255.0)];
         [self addChild:_shadowLayer z:-1];
         [_shadowLayer fadeIn];
@@ -56,7 +72,7 @@
         case MainMapP2:{
             firstLine = @"Bart helps kids building their rhythm";
             secondLine = @"sensation and reaction.";
-            levelString = @"Normal";
+            levelString = @"Medium";
             break;
         }
         case MainMapP3:{
@@ -68,7 +84,7 @@
         case MainMapP4:{
             firstLine = @"Mixer helps kids knowing about color";
             secondLine = @"and sound toning and mixing.";
-            levelString = @"Medium";
+            levelString = @"Normal";
             break;
         }
         case MainMapP5:{
@@ -81,6 +97,7 @@
             break;
     }
     
+    [self performSelector:@selector(openTouch) withObject:nil afterDelay:0.5];
     
     self.uiNode = [[CCNode alloc]init];
     [self.uiNode setPosition:CGPointMake(512.0, 384.0)];
@@ -103,6 +120,16 @@
     [_uiNode addChild:uiName];
     [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:uiName afterDelay:0.2];
     
+    self.updateObj = [[[MonsterEyeUpdateObject alloc] init] autorelease];
+    self.updateObj.mode = MonsterEyeUpdateObjectModeLaunchImage;
+//    self.updateObj.firstDelay = 0.7f;
+    MonsterEye* eye = [[[MonsterEye alloc] initWithEyeWhiteName:@"MainMapUIEyeWhite.png" eyeballName:@"MainMapUIEyeBlack.png" eyelidColor:ccc3(221, 161, 255)] autorelease];
+    eye.position = mainMapUIMonsterEyesPosition[_currentMainMapType - 1];
+    //    eye.eyeBallBasePosition = ccp(-5 ,1);
+    [uiName addChild:eye];
+    [self.updateObj addMonsterEye:eye];
+    [self.updateObj beginUpdate];
+    
     CCSprite * uiButton = [CCSprite spriteWithFile:@"MainMapPlayButton.png"];
     [uiButton setPosition:CGPointMake(512.0 - 512.0, 234.0 - 384.0)];
     [uiButton setAnchorPoint:CGPointMake(0.5, 0.5)];
@@ -121,32 +148,42 @@
     CCLabelTTF * uilabel1 = [CCLabelTTF labelWithString:@"To Moms & Dads:" fontName:@"Kankin" fontSize:32.0];
     [uilabel1 setPosition:CGPointMake(510.0 - 512.0, 498.0 - 384.0)];
     [uilabel1 setColor:ccc3(255.0, 130.0, 130.0)];
+    [uilabel1 setOpacity:0];
     [_uiNode addChild:uilabel1];
+    [self performSelector:@selector(mainmapUILabelFadeInAnimation:) withObject:uilabel1 afterDelay:0.2];
     
     CCLabelTTF * uilabel2 = [CCLabelTTF labelWithString:firstLine fontName:@"Kankin" fontSize:24.0];
     [uilabel2 setAnchorPoint:CGPointMake(0.0, 0.0)];
     [uilabel2 setPosition:CGPointMake(403.0 - 512.0, 444.0 - 384.0)];
     [uilabel2 setColor:ccc3(150.0, 150.0, 150.0)];
+    [uilabel2 setOpacity:0];
     [_uiNode addChild:uilabel2];
-    
+    [self performSelector:@selector(mainmapUILabelFadeInAnimation:) withObject:uilabel2 afterDelay:0.2];
+
     CCLabelTTF * uilabel3 = [CCLabelTTF labelWithString:secondLine fontName:@"Kankin" fontSize:24.0];
     [uilabel3 setAnchorPoint:CGPointMake(0.0, 0.0)];
     [uilabel3 setPosition:CGPointMake(403.0 - 512.0, 415.0 - 384.0)];
     [uilabel3 setColor:ccc3(150.0, 150.0, 150.0)];
+    [uilabel3 setOpacity:0];
     [_uiNode addChild:uilabel3];
-    
+    [self performSelector:@selector(mainmapUILabelFadeInAnimation:) withObject:uilabel3 afterDelay:0.2];
+
     CCLabelTTF * uilabel4 = [CCLabelTTF labelWithString:@"Level:" fontName:@"Kankin" fontSize:24.0];
     [uilabel4 setAnchorPoint:CGPointMake(0.0, 0.0)];
     [uilabel4 setPosition:CGPointMake(403.0 - 512.0, 358.0 - 384.0)];
     [uilabel4 setColor:ccc3(150.0, 150.0, 150.0)];
+    [uilabel4 setOpacity:0];
     [_uiNode addChild:uilabel4];
-    
+    [self performSelector:@selector(mainmapUILabelFadeInAnimation:) withObject:uilabel4 afterDelay:0.2];
+
     CCLabelTTF * uilabel5 = [CCLabelTTF labelWithString:levelString fontName:@"Kankin" fontSize:24.0];
     [uilabel5 setAnchorPoint:CGPointMake(0.0, 0.0)];
     [uilabel5 setPosition:CGPointMake(466.0 - 512.0, 358.0 - 384.0)];
     [uilabel5 setColor:ccc3(89.0, 227.0, 0.0)];
+    [uilabel5 setOpacity:0];
     [_uiNode addChild:uilabel5];
-    
+    [self performSelector:@selector(mainmapUILabelFadeInAnimation:) withObject:uilabel5 afterDelay:0.2];
+
     [self addChild:_uiNode];
 }
 
@@ -159,6 +196,12 @@
     CCScaleTo * uibgScaleTo5 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
     CCSequence * uibgSeq = [CCSequence actions:uibgScaleTo1,uibgScaleTo2,uibgScaleTo3,uibgScaleTo4,uibgScaleTo5, nil];
     [node runAction:uibgSeq];
+}
+
+- (void)mainmapUILabelFadeInAnimation:(CCLabelTTF *)label
+{
+    CCFadeIn * fadeIn = [CCFadeIn actionWithDuration:0.5];
+    [label runAction:fadeIn];
 }
 
 - (void)shakeDialogIcon:(CCNode *)node
@@ -179,14 +222,19 @@
     [node runAction:moveRepeat];
 }
 
+#pragma mark 开启触摸
+- (void)openTouch
+{
+    _isAnimationFinished = YES;
+}
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    if (_isShowing) {
+    if (_isShowing && _isAnimationFinished) {
         _isShowing = NO;
         [_shadowLayer fadeOut];
         
-        CCScaleTo * scaleTo = [CCScaleTo actionWithDuration:0.2 scale:1.2];
-        CCScaleTo * scaleDisappera = [CCScaleTo actionWithDuration:0.3 scale:0.0];
+        CCScaleTo * scaleTo = [CCScaleTo actionWithDuration:0.1 scale:1.2];
+        CCScaleTo * scaleDisappera = [CCScaleTo actionWithDuration:0.2 scale:0.0];
         CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
             //            self.shadowLayer = nil;
             //            self.uiNode = nil;
@@ -204,6 +252,8 @@
 {
     [super dealloc];
 
+    [self.updateObj endUpdate];
+    self.updateObj = nil;
     self.shadowLayer = nil;
     self.uiNode = nil;
 }

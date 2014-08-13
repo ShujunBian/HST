@@ -47,7 +47,6 @@
         }
     }
     else {
-        NSLog(@"%d",self.opacity);
         self.opacity -= 15;
     }
 }

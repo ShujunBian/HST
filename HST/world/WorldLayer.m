@@ -55,7 +55,6 @@
     [self.p5Layer retain];
 
     
-    
 //    [self.p1Layer removeFromParentAndCleanup:YES];
 //    [self.p2Layer removeFromParentAndCleanup:YES];
 //    [self.p3Layer removeFromParentAndCleanup:YES];
@@ -97,80 +96,89 @@
 //    {
 //        return;
 //    }
-    CCDirector* director = [CCDirector sharedDirector];
-    for (UITouch* touch in touches)
-    {
-        self.fIsChangingScene = YES;
-        CGPoint touchLocation = [touch locationInView:director.view];
-        CGPoint locationGL = [director convertToGL:touchLocation];
-        CGPoint locationInNodeSpace = [self convertToNodeSpace:locationGL];
-        
-        if (CGRectContainsPoint(WORLD_P1_RECT, locationInNodeSpace))
+    if ([touches count] <= 1) {
+        CCDirector* director = [CCDirector sharedDirector];
+        for (UITouch* touch in touches)
         {
+            self.fIsChangingScene = YES;
+            CGPoint touchLocation = [touch locationInView:director.view];
+            CGPoint locationGL = [director convertToGL:touchLocation];
+            CGPoint locationInNodeSpace = [self convertToNodeSpace:locationGL];
             
-            //p1
-            
-            self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP1]autorelease];
-            self.worldUILayer.delegate = self;
-            [self addChild:self.worldUILayer z:1];
-            
-//            [self changeToScene:^CCScene *{
-//                CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
-//                return p1Scene;
-//            }];
+            if (CGRectContainsPoint(WORLD_P1_RECT, locationInNodeSpace))
+            {
+                
+                //p1
+                
+                self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP1]autorelease];
+                self.worldUILayer.delegate = self;
+                [self addChild:self.worldUILayer z:1];
+                [[SimpleAudioEngine sharedEngine] playEffect:@"UIButton.mp3"];
+                //            [self changeToScene:^CCScene *{
+                //                CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_GameScene.ccbi"];
+                //                return p1Scene;
+                //            }];
+            }
+            else if (CGRectContainsPoint(WORLD_P2_RECT_1, locationInNodeSpace) ||
+                     CGRectContainsPoint(WORLD_P2_RECT_2, locationInNodeSpace))
+            {
+                //P2
+                
+                self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP2]autorelease];
+                self.worldUILayer.delegate = self;
+                [self addChild:self.worldUILayer z:1];
+                [[SimpleAudioEngine sharedEngine] playEffect:@"UIButton.mp3"];
+                
+                //            [self preloadMusicAndEffect];
+                //            [self changeToScene:^CCScene *{
+                //                CCScene* p2Scene = [CCBReader sceneWithNodeGraphFromFile:@"P2_GameScene.ccbi"];
+                //                return p2Scene;
+                //            }];
+            }
+            else if (CGRectContainsPoint(WORLD_P3_RECT, locationInNodeSpace))
+            {
+                //P3
+                self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP3]autorelease];
+                self.worldUILayer.delegate = self;
+                [self addChild:self.worldUILayer z:1];
+                [[SimpleAudioEngine sharedEngine] playEffect:@"UIButton.mp3"];
+                
+                //            [self changeToScene:^CCScene *{
+                //                CCScene * p3Scene = [CCBReader sceneWithNodeGraphFromFile:@"P3_GameScene.ccbi"];
+                //                return p3Scene;
+                //            }];
+            }
+            else if (CGRectContainsPoint(WORLD_P4_RECT, locationInNodeSpace))
+            {
+                //P4
+                self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP4]autorelease];
+                self.worldUILayer.delegate = self;
+                [self addChild:self.worldUILayer z:1];
+                [[SimpleAudioEngine sharedEngine] playEffect:@"UIButton.mp3"];
+                
+                //            [self changeToScene:^CCScene *{
+                //                CCScene * p4Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];
+                //                return p4Scene;
+                //            }];
+            }
+            else if (CGRectContainsPoint(WORLD_P5_RECT, locationInNodeSpace))
+            {
+                //P5
+                self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP5]autorelease];
+                self.worldUILayer.delegate = self;
+                [self addChild:self.worldUILayer z:1];
+                [[SimpleAudioEngine sharedEngine] playEffect:@"UIButton.mp3"];
+                
+                //            [self changeToScene:^CCScene *{
+                //                CCScene* p5Scene = [CCBReader sceneWithNodeGraphFromFile:@"P5_GameScene.ccbi"];
+                //                return p5Scene;
+                //            }];
+            }
+            //        else
+            //        {
+            //            self.fIsChangingScene = NO;
+            //        }
         }
-        else if (CGRectContainsPoint(WORLD_P2_RECT_1, locationInNodeSpace) ||
-                 CGRectContainsPoint(WORLD_P2_RECT_2, locationInNodeSpace))
-        {
-            //P2
-            
-            self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP2]autorelease];
-            self.worldUILayer.delegate = self;
-            [self addChild:self.worldUILayer z:1];
-            
-//            [self preloadMusicAndEffect];
-//            [self changeToScene:^CCScene *{
-//                CCScene* p2Scene = [CCBReader sceneWithNodeGraphFromFile:@"P2_GameScene.ccbi"];
-//                return p2Scene;
-//            }];
-        }
-        else if (CGRectContainsPoint(WORLD_P3_RECT, locationInNodeSpace))
-        {
-            //P3
-            self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP3]autorelease];
-            self.worldUILayer.delegate = self;
-            [self addChild:self.worldUILayer z:1];
-//            [self changeToScene:^CCScene *{
-//                CCScene * p3Scene = [CCBReader sceneWithNodeGraphFromFile:@"P3_GameScene.ccbi"];
-//                return p3Scene;
-//            }];
-        }
-        else if (CGRectContainsPoint(WORLD_P4_RECT, locationInNodeSpace))
-        {
-            //P4
-            self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP4]autorelease];
-            self.worldUILayer.delegate = self;
-            [self addChild:self.worldUILayer z:1];
-//            [self changeToScene:^CCScene *{
-//                CCScene * p4Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];
-//                return p4Scene;
-//            }];
-        }
-        else if (CGRectContainsPoint(WORLD_P5_RECT, locationInNodeSpace))
-        {
-            //P5
-            self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP5]autorelease];
-            self.worldUILayer.delegate = self;
-            [self addChild:self.worldUILayer z:1];
-//            [self changeToScene:^CCScene *{
-//                CCScene* p5Scene = [CCBReader sceneWithNodeGraphFromFile:@"P5_GameScene.ccbi"];
-//                return p5Scene;
-//            }];
-        }
-//        else
-//        {
-//            self.fIsChangingScene = NO;
-//        }
     }
 
 }

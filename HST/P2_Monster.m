@@ -46,11 +46,11 @@
         isFinishJump = YES;
         self.isInMainMap = NO;
         
-        self.monsterEye = [[MonsterEye alloc]initWithEyeWhiteName:@"p2_monster_eyewhite.png" eyeballName:@"p2_monster_eyeblack.png" eyelidColor:ccc3(255.0, 198.0, 0.0)];
+        self.monsterEye = [[[MonsterEye alloc]initWithEyeWhiteName:@"p2_monster_eyewhite.png" eyeballName:@"p2_monster_eyeblack.png" eyelidColor:ccc3(255.0, 198.0, 0.0)]autorelease];
         self.monsterEye.position = CGPointMake(78.0, 185.0);
         [self addChild:self.monsterEye z:1];
         
-        self.updateObj = [[MonsterEyeUpdateObject alloc] init];
+        self.updateObj = [[[MonsterEyeUpdateObject alloc] init]autorelease];
         [self.updateObj addMonsterEye:self.monsterEye];
         [self.updateObj beginUpdate];
         

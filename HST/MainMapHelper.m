@@ -56,8 +56,7 @@
 
 - (void)restartGameScene
 {
-
-    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"UILittleButton.mp3"];
     if ([self.delegate respondsToSelector:@selector(restartGameScene)])
     {
         [self.delegate restartGameScene];
@@ -67,6 +66,7 @@
 
 - (void)returnToMainMap
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"UILittleButton.mp3"];
     _mainMapItem.isEnabled = NO;
     if ([self.delegate respondsToSelector:@selector(returnToMainMap)])
     {
@@ -76,8 +76,7 @@
 
 - (void)helpBtnPressed
 {
-
-    
+    [[SimpleAudioEngine sharedEngine] playEffect:@"UILittleButton.mp3"];
     if ([self.delegate respondsToSelector:@selector(helpButtonPressed)])
     {
         [self.delegate helpButtonPressed];
