@@ -33,15 +33,13 @@ static ccColor3B littleFlyColors[] = {
 -(id)init
 {
     if (self = [super init]) {
-//        [self schedule:@selector(littleFlyObjectFlying) interval:EVERYDELTATIME];
+        objectMovingSpeed = 1024.0f / 120.0f;
     }
     return self;
 }
 
 - (void)didLoadFromCCB
 {
-    objectMovingSpeed = 1024.0f / 120.0f;
-
     CCRotateBy * wingRotate = [CCRotateBy actionWithDuration:2.0 angle:360.0];
     CCRepeatForever * rotateForevr = [CCRepeatForever actionWithAction:wingRotate];
     [wing runAction:rotateForevr];
@@ -99,11 +97,6 @@ static ccColor3B littleFlyColors[] = {
     [self stopAllActions];
     [self flyOut];
     
-}
-
-- (void)littleFlyObjectFlying
-{
-
 }
 
 #pragma mark - update函数

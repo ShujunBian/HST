@@ -218,16 +218,6 @@
                                        callFunc,
                                        nil];
     [self runAction:monseterLittleJump];
-    
-//    if (CCRANDOM_0_1() > RATIOTORUNNEWEYEMOVING && theIdleTimes > 12) {
-//        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeMoving"];
-//        theIdleTimes = 0;
-//    }
-//    else if (CCRANDOM_0_1() > RATIOTOCLOSEEYES )
-//    {
-//        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeClose"];
-//        [self.eyesAnimationManager runAnimationsForSequenceNamed:@"EyeOpen"];
-//    }
 }
 
 - (void)dealloc

@@ -8,8 +8,16 @@
 
 #import "CCLayer.h"
 
+@class WorldLayer;
+
+@protocol WorldUILayerDelegate <NSObject>
+
+- (void)removeFromWorldLayer;
+
+@end
+
 typedef enum {
-    MainMapP1 = 0,
+    MainMapP1 = 1,
     MainMapP2,
     MainMapP3,
     MainMapP4,
@@ -17,5 +25,10 @@ typedef enum {
 } MainMapType;
 
 @interface WorldUILayer : CCLayer
+
+@property (nonatomic) MainMapType currentMainMapType;
+@property (nonatomic, assign) id<WorldUILayerDelegate> delegate;
+
+- (id)initWithMainMapType:(MainMapType)currentMainMapType;
 
 @end

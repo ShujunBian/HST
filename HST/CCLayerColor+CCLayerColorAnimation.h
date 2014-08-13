@@ -10,7 +10,7 @@
 
 @interface CCLayerColor (CCLayerColorAnimation)
 
-
 - (void)fadeIn;
+- (void)fadeOut;
 
 @end

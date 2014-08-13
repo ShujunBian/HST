@@ -7,13 +7,14 @@
 //
 
 #import "CCLayer.h"
+#import "WorldUILayer.h"
 @class WorldP1Layer;
 @class WorldP2Layer;
 @class WorldP3Layer;
 @class WorldP4Layer;
 @class WorldP5Layer;
 
-@interface WorldLayer : CCLayer
+@interface WorldLayer : CCLayer<WorldUILayerDelegate>
 
 @property (strong, nonatomic) WorldP1Layer* p1Layer;
 @property (strong, nonatomic) WorldP2Layer* p2Layer;
