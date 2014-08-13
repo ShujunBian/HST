@@ -4437,6 +4437,11 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Emerson;
+				TargetAttributes = {
+					5169CBCA18CDE5ED00426E6C = {
+						DevelopmentTeam = QYBQ942P7G;
+					};
+				};
 			};
 			buildConfigurationList = 5169CBC618CDE5ED00426E6C /* Build configuration list for PBXProject "HST" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -5608,6 +5613,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -5628,6 +5634,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HST/Prefix.pch;
