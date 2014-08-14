@@ -11,6 +11,14 @@
 
 static VolumnHelper * sharedVolumnHelper;
 
+@interface VolumnHelper()
+
+@property (nonatomic) BOOL isFinishedDown;
+@property (nonatomic) BOOL isFinishedUp;
+
+
+@end
+
 @implementation VolumnHelper
 
 + (VolumnHelper *)sharedVolumnHelper
@@ -21,32 +29,52 @@ static VolumnHelper * sharedVolumnHelper;
     return sharedVolumnHelper;
 }
 
+- (id)init
+{
+    if (self = [super init]) {
+        self.isFinishedDown = YES;
+        self.isFinishedUp = YES;
+    }
+    return self;
+}
 
 
 - (void)downBackgroundVolumn:(NSTimer *)timer
 {
-    [SimpleAudioEngine sharedEngine].backgroundMusicVolume -= 0.01;
-    [SimpleAudioEngine sharedEngine].effectsVolume -= 0.01;
-    if (fabsf([SimpleAudioEngine sharedEngine].backgroundMusicVolume - 0.0) < 0.05) {
-        [SimpleAudioEngine sharedEngine].backgroundMusicVolume = 0.0;
-        [SimpleAudioEngine sharedEngine].effectsVolume = 0.0;
-        [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
-        
-        [timer invalidate];
+    if (_isFinishedUp) {
+        _isFinishedDown = NO;
+        NSLog(@"The !!! volumn is %f",[SimpleAudioEngine sharedEngine].backgroundMusicVolume);
+        [SimpleAudioEngine sharedEngine].backgroundMusicVolume -= 0.1;
+        [SimpleAudioEngine sharedEngine].effectsVolume -= 0.1;
+        if (fabsf([SimpleAudioEngine sharedEngine].backgroundMusicVolume - 0.0) <= 0.15) {
+            [SimpleAudioEngine sharedEngine].backgroundMusicVolume = 0.0;
+            [SimpleAudioEngine sharedEngine].effectsVolume = 0.0;
+//            [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+            
+            [timer invalidate];
+            _isFinishedDown = YES;
+        }
     }
+
 }
 
 - (void)upBackgroundVolumn:(NSTimer *)timer
 {
-    [SimpleAudioEngine sharedEngine].backgroundMusicVolume += 0.01;
-    [SimpleAudioEngine sharedEngine].effectsVolume += 0.01;
-    
-    if (fabsf([SimpleAudioEngine sharedEngine].backgroundMusicVolume - 1.0) < 0.05) {
-        [SimpleAudioEngine sharedEngine].backgroundMusicVolume = 1.0;
-        [SimpleAudioEngine sharedEngine].effectsVolume = 1.0;
-
-        [timer invalidate];
+    if (_isFinishedDown) {
+        _isFinishedUp = NO;
+        NSLog(@"The current volumn is %f",[SimpleAudioEngine sharedEngine].backgroundMusicVolume);
+        [SimpleAudioEngine sharedEngine].backgroundMusicVolume += 0.1;
+        [SimpleAudioEngine sharedEngine].effectsVolume += 0.1;
+        
+        if (fabsf([SimpleAudioEngine sharedEngine].backgroundMusicVolume - 1.0) <= 0.15) {
+            [SimpleAudioEngine sharedEngine].backgroundMusicVolume = 1.0;
+            [SimpleAudioEngine sharedEngine].effectsVolume = 1.0;
+            
+            [timer invalidate];
+            _isFinishedUp = YES;
+        }
     }
+
 }
 
 @end

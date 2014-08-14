@@ -74,9 +74,7 @@
 {
     [super onExitTransitionDidStart];
     
-//    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
-    
-    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+//    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 }
 
 - (void)onExit

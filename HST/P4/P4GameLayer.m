@@ -188,7 +188,7 @@
 - (void)onExitTransitionDidStart
 {
     [super onExitTransitionDidStart];
-    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+//    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
 }
 
 - (void) didLoadFromCCB

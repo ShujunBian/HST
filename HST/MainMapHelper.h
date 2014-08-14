@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "WXYMenuItemImage.h"
 
 @protocol MainMapDelegate <NSObject>
 
@@ -25,11 +26,11 @@
 
 - (void)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point;
 
-@property (nonatomic, assign) CCMenuItem * restartItem;
+@property (nonatomic, assign) WXYMenuItemImage * restartItem;
 @property (nonatomic, assign) CCMenu * restartMenu;
-@property (nonatomic, assign) CCMenuItem * mainMapItem;
+@property (nonatomic, assign) WXYMenuItemImage * mainMapItem;
 @property (nonatomic, assign) CCMenu * mainMapMenu;
-@property (nonatomic, assign) CCMenuItem * helpItem;
+@property (nonatomic, assign) WXYMenuItemImage * helpItem;
 @property (nonatomic, assign) CCMenu * helpMenu;
 
 @property (nonatomic, assign) id<MainMapDelegate> delegate;

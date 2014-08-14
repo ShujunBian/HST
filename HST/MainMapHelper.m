@@ -8,8 +8,7 @@
 
 #import "MainMapHelper.h"
 #import "SimpleAudioEngine.h"
-#import "WXYMenuItemImage.h"
-
+#import "P1_GameScene.h"
 @implementation MainMapHelper
 
 + (MainMapHelper *)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point
@@ -30,18 +29,29 @@
 
 - (void)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point
 {
-    self.restartItem = [WXYMenuItemImage itemWithNormalImage:@"restartButton.png"
-                                                      selectedImage:nil
-                                                             target:self
-                                                           selector:@selector(restartGameScene)];
-    self.restartMenu = [CCMenu menuWithItems:_restartItem, nil];
-    [_restartMenu setPosition:CGPointMake(point.x + 92.0, point.y)];
-    [prototype addChild:_restartMenu z:15];
+    if([prototype class] != [P1_GameScene class]) {
+        self.restartItem = [WXYMenuItemImage itemWithNormalImage:@"restartButton.png"
+                                                   selectedImage:nil
+                                                          target:self
+                                                        selector:@selector(restartGameScene)];
+        self.restartMenu = [CCMenu menuWithItems:_restartItem, nil];
+        [_restartMenu setPosition:CGPointMake(point.x + 92.0, point.y)];
+        [prototype addChild:_restartMenu z:15];
+    }
+    else {
+        self.restartItem = [WXYMenuItemImage itemWithNormalImage:@"P1_AutoButton.png"
+                                                   selectedImage:nil
+                                                          target:self
+                                                        selector:@selector(restartGameScene)];
+        self.restartMenu = [CCMenu menuWithItems:_restartItem, nil];
+        [_restartMenu setPosition:CGPointMake(point.x + 115.0, point.y)];
+        [prototype addChild:_restartMenu z:15];
+    }
     
     self.mainMapItem = [WXYMenuItemImage itemWithNormalImage:@"mainMapButton.png"
-                                                      selectedImage:nil
-                                                             target:self
-                                                           selector:@selector(returnToMainMap)];
+                                               selectedImage:nil
+                                                      target:self
+                                                    selector:@selector(returnToMainMap)];
     self.mainMapMenu = [CCMenu menuWithItems:_mainMapItem, nil];
     [_mainMapMenu setPosition:point];
     [prototype addChild:_mainMapMenu z:15];
@@ -61,7 +71,7 @@
     {
         [self.delegate restartGameScene];
     }
-
+    
 }
 
 - (void)returnToMainMap

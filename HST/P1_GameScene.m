@@ -31,6 +31,7 @@
 @property (strong, nonatomic) MainMapHelper* mainMapHelper;
 @property (strong, nonatomic) NSMutableArray* bubblesReadyToRelease;
 @property (strong, nonatomic) NSMutableArray* currentOnScreenBubbles;
+@property (nonatomic) BOOL isAutoBubble;
 @end
 
 
@@ -81,7 +82,7 @@ static NSMutableArray *bubbleScales = nil;
         [self loadBubbleAttributes];
     }
     
-
+    self.isAutoBubble = NO;
     
     self.currentOnScreenBubbles = [NSMutableArray array];
     self.bubblesReadyToRelease = [NSMutableArray array];
@@ -218,17 +219,35 @@ static NSMutableArray *bubbleScales = nil;
             {
                 [self.currentOnScreenBubbles removeObject:bubble];
                 [bubble boom];
+                
+                if (_isAutoBubble) {
+                    if ([self.currentOnScreenBubbles count] == 0) {
+                        [self blowOutTheBubble];
+                    }
+                }
                 break;
             }
         }
     }
 }
 
+- (void)openTouch
+{
+    [self setTouchEnabled:YES];
+}
+
+- (void)blowOutTheBubble
+{
+    if(!shouldBlowBubble) {
+        [_monster smallMouth];
+        [self setTouchEnabled:NO];
+        [self performSelector:@selector(openTouch) withObject:nil afterDelay:1.0];
+    }
+}
 #pragma mark - Blow Detecter Delegate
 - (void)blowDetecterDidStartBlow
 {
-    if(!shouldBlowBubble)
-        [_monster smallMouth];
+    [self blowOutTheBubble];
 }
 
 - (void)blowDetecterDidEndBlow
@@ -264,7 +283,23 @@ static NSMutableArray *bubbleScales = nil;
 #pragma mark - 菜单键调用函数 mainMapDelegate
 - (void)restartGameScene
 {
-    if ([self.currentOnScreenBubbles count] != 0 && couldRestart) {
+    if (!_isAutoBubble) {
+        [P1_BlowDetecter purge];
+        _isAutoBubble = YES;
+        CCNode<CCRGBAProtocol> *normalImage = [CCSprite spriteWithFile:@"P1_AutoButtonSelected.png"];
+        [self.mainMapHelper.restartItem setNormalImage:normalImage];
+        if ([self.currentOnScreenBubbles count] == 0) {
+            [self blowOutTheBubble];
+        }
+    }
+    else {
+        [P1_BlowDetecter instance].delegate = self;
+        _isAutoBubble = NO;
+        CCNode<CCRGBAProtocol> *normalImage = [CCSprite spriteWithFile:@"P1_AutoButton.png"];
+        [self.mainMapHelper.restartItem setNormalImage:normalImage];
+    }
+
+/*    if ([self.currentOnScreenBubbles count] != 0 && couldRestart) {
         couldRestart = NO;
         for (P1_Bubble *bubble in self.currentOnScreenBubbles)
         {
@@ -277,6 +312,7 @@ static NSMutableArray *bubbleScales = nil;
             currentBubblePositionIndex = 0;
         bubbleCountInCurrentBlow = 0;
     }
+ */
 }
 
 - (void)returnToMainMap
@@ -291,9 +327,8 @@ static NSMutableArray *bubbleScales = nil;
     self.mainMapHelper = nil;
     [self releaseCurrentOnScreenBubbles];
     
-    [[CDAudioManager sharedManager] stopBackgroundMusic];
+//    [[CDAudioManager sharedManager] stopBackgroundMusic];
     
-//    [NSTimer scheduledTimerWithTimeInterval:0.01 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
     [self changeToScene:^CCScene *{
         CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
         return scene;

@@ -98,7 +98,7 @@
     [self schedule:@selector(addLittleFlyObjectEverySecond) interval:1.0];
     [self scheduleUpdate];
     
-    [[SimpleAudioEngine sharedEngine]stopBackgroundMusic];
+//    [[SimpleAudioEngine sharedEngine]stopBackgroundMusic];
     [self playBackgroundMusic];
 
 }

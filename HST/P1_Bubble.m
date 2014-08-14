@@ -29,7 +29,7 @@ static ccColor3B bubbleColors[] = {
     {111,255,141},  //绿色 fa
     {255,169,175},  // so
     {213,176,255},  // la
-    {151,255,28}    // xi
+    {255,192,111}    // xi
 };
 
 static NSString * bubbleMusicalScale[] = {
@@ -170,11 +170,11 @@ static NSString * bubbleMusicalScale[] = {
     self.f2 = YES;
     
     CCLabelTTF * musicalScale = [CCLabelTTF labelWithString:bubbleMusicalScale[_currentBubbleType] fontName:@"Kankin" fontSize:30.0];
-    musicalScale.position = CGPointMake(self.position.x, self.position.y + 100);
+    musicalScale.position = CGPointMake(self.position.x, self.position.y + 80);
     [musicalScale setColor:bubbleColors[_currentBubbleType]];
     [self.parent addChild:musicalScale];
     
-    CCMoveBy * musicalScaleMoveBy = [CCMoveBy actionWithDuration:0.8 position:CGPointMake(0.0, 30.0)];
+    CCMoveBy * musicalScaleMoveBy = [CCMoveBy actionWithDuration:0.8 position:CGPointMake(0.0, 100.0)];
     CCFadeOut * musicalScaleFadeOut = [CCFadeOut actionWithDuration:0.8];
     CCSpawn * musicalScaleSpawn = [CCSpawn actions:musicalScaleMoveBy,musicalScaleFadeOut, nil];
     CCCallBlock * musicalScaleCallBlock = [CCCallBlock actionWithBlock:^{
