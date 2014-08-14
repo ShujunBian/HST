@@ -9,8 +9,13 @@
 #import "WorldUILayer.h"
 #import "CCLayerColor+CCLayerColorAnimation.h"
 #import "MonsterEye.h"
+#import "CCBReader.h"
 #import "MonsterEyeUpdateObject.h"
+#import "WXYMenuItemImage.h"
+#import "SimpleAudioEngine.h"
 
+#import "CircleTransitionLayer.h"
+#import "CCLayer+CircleTransitionExtension.h"
 static CGPoint mainMapUIMonsterEyesPosition[] = {
     {30.0, 37.0},
     {29.0,46.0},
@@ -53,7 +58,7 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
 -(id)init
 {
     if (self = [super init]) {
-
+        
     }
     return self;
 }
@@ -122,7 +127,7 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
     
     self.updateObj = [[[MonsterEyeUpdateObject alloc] init] autorelease];
     self.updateObj.mode = MonsterEyeUpdateObjectModeLaunchImage;
-//    self.updateObj.firstDelay = 0.7f;
+    //    self.updateObj.firstDelay = 0.7f;
     MonsterEye* eye = [[[MonsterEye alloc] initWithEyeWhiteName:@"MainMapUIEyeWhite.png" eyeballName:@"MainMapUIEyeBlack.png" eyelidColor:ccc3(221, 161, 255)] autorelease];
     eye.position = mainMapUIMonsterEyesPosition[_currentMainMapType - 1];
     //    eye.eyeBallBasePosition = ccp(-5 ,1);
@@ -130,13 +135,21 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
     [self.updateObj addMonsterEye:eye];
     [self.updateObj beginUpdate];
     
-    CCSprite * uiButton = [CCSprite spriteWithFile:@"MainMapPlayButton.png"];
+    
+    //    CCSprite * uiButton = [CCSprite spriteWithFile:@"MainMapPlayButton.png"];
+    CCMenuItem * uiButtonItem = [WXYMenuItemImage itemWithNormalImage:@"MainMapPlayButton.png"
+                                                        selectedImage:nil
+                                                               target:self
+                                                             selector:@selector(clickUIPlayButton)];
+    CCMenu * uiButton = [CCMenu menuWithItems:uiButtonItem, nil];
     [uiButton setPosition:CGPointMake(512.0 - 512.0, 234.0 - 384.0)];
     [uiButton setAnchorPoint:CGPointMake(0.5, 0.5)];
-    [uiButton setScale:0.0];
+    [uiButtonItem setScale:0.0];
     [_uiNode addChild:uiButton];
-    [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:uiButton afterDelay:0.4];
-    [self performSelector:@selector(shakeDialogIcon:) withObject:uiButton afterDelay:1.25];
+    [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:uiButtonItem afterDelay:0.4];
+    [self performSelector:@selector(shakeDialogIcon:) withObject:uiButtonItem afterDelay:1.25];
+    
+    
     
     CCSprite * uiImage = [CCSprite spriteWithFile:[NSString stringWithFormat:@"MainMap_P%dImage.png",_currentMainMapType]];
     [uiImage setPosition:CGPointMake(300.0 - 512.0, 478.0 - 384.0)];
@@ -159,7 +172,7 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
     [uilabel2 setOpacity:0];
     [_uiNode addChild:uilabel2];
     [self performSelector:@selector(mainmapUILabelFadeInAnimation:) withObject:uilabel2 afterDelay:0.2];
-
+    
     CCLabelTTF * uilabel3 = [CCLabelTTF labelWithString:secondLine fontName:@"Kankin" fontSize:24.0];
     [uilabel3 setAnchorPoint:CGPointMake(0.0, 0.0)];
     [uilabel3 setPosition:CGPointMake(403.0 - 512.0, 415.0 - 384.0)];
@@ -167,7 +180,7 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
     [uilabel3 setOpacity:0];
     [_uiNode addChild:uilabel3];
     [self performSelector:@selector(mainmapUILabelFadeInAnimation:) withObject:uilabel3 afterDelay:0.2];
-
+    
     CCLabelTTF * uilabel4 = [CCLabelTTF labelWithString:@"Level:" fontName:@"Kankin" fontSize:24.0];
     [uilabel4 setAnchorPoint:CGPointMake(0.0, 0.0)];
     [uilabel4 setPosition:CGPointMake(403.0 - 512.0, 358.0 - 384.0)];
@@ -175,7 +188,7 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
     [uilabel4 setOpacity:0];
     [_uiNode addChild:uilabel4];
     [self performSelector:@selector(mainmapUILabelFadeInAnimation:) withObject:uilabel4 afterDelay:0.2];
-
+    
     CCLabelTTF * uilabel5 = [CCLabelTTF labelWithString:levelString fontName:@"Kankin" fontSize:24.0];
     [uilabel5 setAnchorPoint:CGPointMake(0.0, 0.0)];
     [uilabel5 setPosition:CGPointMake(466.0 - 512.0, 358.0 - 384.0)];
@@ -183,8 +196,28 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
     [uilabel5 setOpacity:0];
     [_uiNode addChild:uilabel5];
     [self performSelector:@selector(mainmapUILabelFadeInAnimation:) withObject:uilabel5 afterDelay:0.2];
-
+    
     [self addChild:_uiNode];
+}
+
+- (void)clickUIPlayButton
+{
+    [[SimpleAudioEngine sharedEngine] playEffect:@"UILittleButton.mp3"];
+    
+    if (_currentMainMapType == MainMapP4) {
+        [self changeToScene:^CCScene *{
+            CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];
+            return p1Scene;
+        }];
+    }
+    else {
+        NSString * ccbiFileName = [NSString stringWithFormat:@"P%d_GameScene.ccbi",_currentMainMapType];
+        [self changeToScene:^CCScene *{
+            CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:ccbiFileName];
+            return p1Scene;
+        }];
+    }
+    
 }
 
 - (void)mainmapUIScaleAnimation:(CCNode *)node
@@ -251,7 +284,7 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
 - (void)dealloc
 {
     [super dealloc];
-
+    
     [self.updateObj endUpdate];
     self.updateObj = nil;
     self.shadowLayer = nil;
