@@ -24,12 +24,23 @@
 static ccColor3B bubbleColors[] = {
     {255,255,255},  //白色 占位
     {255,229,55},   //黄色 do
-    {255,188,248},  //粉色 ri
+    {255,188,248},  //粉色 re
     {91,222,255},   //蓝色 mi
     {111,255,141},  //绿色 fa
-    {131,255,245},  //蓝绿 so
+    {255,169,175},  // so
     {213,176,255},  // la
     {151,255,28}    // xi
+};
+
+static NSString * bubbleMusicalScale[] = {
+    @"NONE",
+    @"do",
+    @"re",
+    @"mi",
+    @"fa",
+    @"sol",
+    @"la",
+    @"xi"
 };
 
 - (id)init
@@ -158,6 +169,19 @@ static ccColor3B bubbleColors[] = {
     [[SimpleAudioEngine sharedEngine] performSelector:@selector(unloadEffect:) withObject:[NSString stringWithFormat:@"P1_%d.mp3",_currentBubbleType] afterDelay:1.0];
     self.f2 = YES;
     
+    CCLabelTTF * musicalScale = [CCLabelTTF labelWithString:bubbleMusicalScale[_currentBubbleType] fontName:@"Kankin" fontSize:30.0];
+    musicalScale.position = CGPointMake(self.position.x, self.position.y + 100);
+    [musicalScale setColor:bubbleColors[_currentBubbleType]];
+    [self.parent addChild:musicalScale];
+    
+    CCMoveBy * musicalScaleMoveBy = [CCMoveBy actionWithDuration:0.8 position:CGPointMake(0.0, 30.0)];
+    CCFadeOut * musicalScaleFadeOut = [CCFadeOut actionWithDuration:0.8];
+    CCSpawn * musicalScaleSpawn = [CCSpawn actions:musicalScaleMoveBy,musicalScaleFadeOut, nil];
+    CCCallBlock * musicalScaleCallBlock = [CCCallBlock actionWithBlock:^{
+        [musicalScale removeFromParentAndCleanup:YES];
+    }];
+    CCSequence * musicalScaleSeq = [CCSequence actions:musicalScaleSpawn,musicalScaleCallBlock, nil];
+    [musicalScale runAction:musicalScaleSeq];
     
     CCScaleBy *scale = [CCScaleBy actionWithDuration:0.1 scale:0.5];
     self.f3 = YES;

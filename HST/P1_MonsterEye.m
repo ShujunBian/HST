@@ -117,7 +117,6 @@
 
 -(void) update:(ccTime)delta
 {
-#warning 解决性能问题
 //    static ccTime t = 0;
 //    t += delta;
 //    if(t > 5 + arc4random() % 2)

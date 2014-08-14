@@ -114,8 +114,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>378</real>
-							<real>608</real>
+							<real>374</real>
+							<real>581</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -476,6 +476,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
