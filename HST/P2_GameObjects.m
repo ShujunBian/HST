@@ -15,6 +15,7 @@
 	if( (self=[super init]))
     {
         self.isInMainMap = NO;
+        self.isWaitingForSelect = YES;
         [self scheduleUpdate];
         objectMovingSpeed = 1024.0 / 8.0 * EVERYDELTATIME;
 	}
@@ -30,10 +31,12 @@
 - (void)update:(ccTime)delta
 {
     if (!self.isInMainMap) {
-        if (self.position.x < - 100) {
-            [self actionWhenOutOfScreen];
+        if (!_isWaitingForSelect) {
+            if (self.position.x < - 100) {
+                [self actionWhenOutOfScreen];
+            }
+            self.position = CGPointMake(self.position.x - objectMovingSpeed, self.position.y);
         }
-        self.position = CGPointMake(self.position.x - objectMovingSpeed, self.position.y);
     }
 }
 

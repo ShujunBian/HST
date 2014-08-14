@@ -264,6 +264,7 @@
     self.bottleTouchPointNow = CGPointZero;
  
     self.tablePrePosition = self.table.position;
+    
 //    [self schedule:@selector(scaleUpdate)];
 //    [self schedule:@selector(scaleUpdateHelper) interval:0.018f];
     

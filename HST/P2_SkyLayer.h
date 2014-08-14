@@ -17,5 +17,6 @@
 
 @property (nonatomic, assign) CCSprite *upperCloud;
 @property (nonatomic, assign) CCSprite *upperCloud2;
+@property (nonatomic) BOOL isWaitingForSelect;
 
 @end

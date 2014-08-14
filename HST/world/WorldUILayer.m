@@ -263,22 +263,29 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    if (_isShowing && _isAnimationFinished) {
-        _isShowing = NO;
-        [_shadowLayer fadeOut];
-        
-        CCScaleTo * scaleTo = [CCScaleTo actionWithDuration:0.1 scale:1.2];
-        CCScaleTo * scaleDisappera = [CCScaleTo actionWithDuration:0.2 scale:0.0];
-        CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
-            //            self.shadowLayer = nil;
-            //            self.uiNode = nil;
-            [self.parent removeChild:self cleanup:YES];
-            [self.delegate removeFromWorldLayer];
-        }];
-        CCSequence * seq = [CCSequence actions:scaleTo,scaleDisappera,callBack, nil];
-        
-        [_uiNode runAction:seq];
+    CCDirector* director = [CCDirector sharedDirector];
+    CGPoint touchLocation = [touch locationInView:director.view];
+    CGPoint locationGL = [director convertToGL:touchLocation];
+    CGPoint locationInNodeSpace = [self convertToNodeSpace:locationGL];
+    if (!CGRectContainsPoint(CGRectMake(512.0 - 301.0, 384.0 - 225.0, 603.0, 450.0), locationInNodeSpace)) {
+        if (_isShowing && _isAnimationFinished) {
+            _isShowing = NO;
+            [_shadowLayer fadeOut];
+            
+            CCScaleTo * scaleTo = [CCScaleTo actionWithDuration:0.1 scale:1.2];
+            CCScaleTo * scaleDisappera = [CCScaleTo actionWithDuration:0.2 scale:0.0];
+            CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
+                //            self.shadowLayer = nil;
+                //            self.uiNode = nil;
+                [self.parent removeChild:self cleanup:YES];
+                [self.delegate removeFromWorldLayer];
+            }];
+            CCSequence * seq = [CCSequence actions:scaleTo,scaleDisappera,callBack, nil];
+            
+            [_uiNode runAction:seq];
+        }
     }
+
     return YES;
 }
 

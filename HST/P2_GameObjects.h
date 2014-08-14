@@ -20,6 +20,7 @@
 
 @property (nonatomic) BOOL isInMainMap;
 @property (nonatomic) BOOL isFlyingOut;
+@property (nonatomic) BOOL isWaitingForSelect;
 
 - (id)init;
 - (void)didLoadFromCCB;
