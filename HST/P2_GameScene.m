@@ -83,6 +83,8 @@
     NSLog(@"current start Data is %@",[NSDate dateWithTimeIntervalSinceNow:0]);
     NSString * backgroundMusic = [NSString stringWithFormat:@"P2_%d_background.mp3",_currentSongType];
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:backgroundMusic loop:NO];
+    [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
+
 }
 
 - (void)onEnter

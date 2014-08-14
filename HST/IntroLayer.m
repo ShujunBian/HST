@@ -17,7 +17,7 @@
 #import "CCLayer+CircleTransitionExtension.h"
 #import "MonsterEye.h"
 #import "MonsterEyeUpdateObject.h"
-
+#import "VolumnHelper.h"
 #pragma mark - IntroLayer
 
 // HelloWorldLayer implementation
@@ -119,6 +119,7 @@
 - (void)playBgMusic
 {
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
+    [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = YES;
 }
 - (void)loadCallBack
 {

@@ -93,13 +93,10 @@ static NSMutableArray *bubbleScales = nil;
 - (void)onEnter
 {
     [super onEnter];
-//    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
-////    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
-////    [CDAudioManager configure:kAMM_PlayAndRecord];
-////    [[CDAudioManager sharedManager] playBackgroundMusic:@"P1_bg.mp3" loop:YES];
     
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P1_bg.mp3"];
-//    [NSTimer scheduledTimerWithTimeInterval:0.01 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
+    [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
+    
     [P1_BlowDetecter instance].delegate = self;
 
     [self showScene];
@@ -327,16 +324,12 @@ static NSMutableArray *bubbleScales = nil;
     self.mainMapHelper = nil;
     [self releaseCurrentOnScreenBubbles];
     
-//    [[CDAudioManager sharedManager] stopBackgroundMusic];
-    
     [self changeToScene:^CCScene *{
         CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
         return scene;
     }];
-//    [[CCDirector sharedDirector] replaceScene:
-//     [CircleTransition transitionWithDuration:1.0
-//                                        scene:scene]];
 }
+
 - (void)helpButtonPressed
 {
 #warning 未完成

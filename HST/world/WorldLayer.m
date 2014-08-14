@@ -65,9 +65,10 @@
 //    self.p3Layer = nil;
 //    self.p4Layer = nil;
 //    self.p5Layer = nil;
-    if (![SimpleAudioEngine sharedEngine].isBackgroundMusicPlaying)
+    if (![VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic)
     {
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
+        [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = YES;
     }    
 }
 - (void)onExitTransitionDidStart

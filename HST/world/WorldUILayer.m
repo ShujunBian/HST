@@ -260,6 +260,7 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
 {
     _isAnimationFinished = YES;
 }
+
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
     if (_isShowing && _isAnimationFinished) {

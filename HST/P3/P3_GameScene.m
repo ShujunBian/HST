@@ -106,6 +106,7 @@
 {
     [super onEnter];
     [self showScene];
+    
 }
 
 - (void)onEnterTransitionDidFinish
