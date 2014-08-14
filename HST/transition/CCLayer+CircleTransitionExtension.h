@@ -13,4 +13,5 @@ typedef CCScene* (^SceneBlock)();
 @interface CCLayer (CircleTransitionExtension)
 - (void)showScene;
 - (void)changeToScene:(SceneBlock)sceneBlock;
+- (void)changeToLoadedScene:(CCScene*)scene;
 @end
