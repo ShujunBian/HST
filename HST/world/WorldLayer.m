@@ -45,9 +45,9 @@
 - (void)onEnter
 {
     [super onEnter];
-    self.touchEnabled = NO;
+//    self.touchEnabled = NO;
     [self showSceneOnCompletion:^{
-        self.touchEnabled = YES;
+//        self.touchEnabled = YES;
     }];
     self.fIsChangingScene = NO;
     

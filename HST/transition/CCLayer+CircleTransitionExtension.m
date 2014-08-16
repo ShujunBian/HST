@@ -28,7 +28,7 @@
         [layer removeFromParentAndCleanup:NO];
         if (completion)
         {
-            completion();
+//            completion();
         }
         
     }];
@@ -49,7 +49,7 @@
         [[CCDirector sharedDirector] replaceScene:scene];
         if (completion)
         {
-            completion();
+//            completion();
         }
     }];
 }
@@ -70,7 +70,7 @@
         [[CCDirector sharedDirector] replaceScene:sceneBlock()];
         if (completion)
         {
-            completion();
+//            completion();
         }
     }];
 }
