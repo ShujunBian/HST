@@ -141,6 +141,8 @@
 {
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
     self.processBar.percentage = 1.f;
-    [self changeToLoadedScene:scene];
+    [self changeToLoadedScene:scene onCompletion:^{
+        
+    }];
 }
 @end

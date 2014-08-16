@@ -60,7 +60,7 @@
     self.helpMenu = [CCMenu menuWithItems:self.helpItem, nil];
     
     self.helpMenu.position = ccp([CCDirector sharedDirector].winSize.width - 50.f, point.y);
-    [prototype addChild:self.helpMenu];
+    [prototype addChild:self.helpMenu z:15];
     
 }
 

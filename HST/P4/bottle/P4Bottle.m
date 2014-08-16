@@ -411,6 +411,7 @@
 
 - (void)worldSceneConfigure
 {
+    self.renewButton.visible = NO;
     [self.waterLayer worldSceneConfigure];
 }
 

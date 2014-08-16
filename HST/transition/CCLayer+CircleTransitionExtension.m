@@ -12,6 +12,7 @@
 #import "VolumnHelper.h"
 
 @implementation CCLayer (CircleTransitionExtension)
+
 - (void)showScene
 {
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
@@ -26,6 +27,10 @@
 
 - (void)changeToLoadedScene:(CCScene*)scene
 {
+    [self changeToLoadedScene:scene onCompletion:nil];
+}
+- (void)changeToLoadedScene:(CCScene*)scene onCompletion:(VoidBlock)completion
+{
 #warning 这里加背景音乐变小
     CircleTransitionLayer* layer = [CircleTransitionLayer layer];
     [layer removeFromParentAndCleanup:YES];
@@ -38,6 +43,10 @@
 
 - (void)changeToScene:(SceneBlock)sceneBlock
 {
+    [self changeToLoadedScene:sceneBlock onCompletion:nil];
+}
+- (void)changeToScene:(SceneBlock)sceneBlock onCompletion:(VoidBlock)completion
+{
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];
 #warning 这里加背景音乐变小
     CircleTransitionLayer* layer = [CircleTransitionLayer layer];
@@ -48,5 +57,6 @@
         [[CCDirector sharedDirector] replaceScene:sceneBlock()];
     }];
 }
+
 
 @end
