@@ -15,6 +15,10 @@
 
 - (void)showScene
 {
+    [self showSceneOnCompletion:nil];
+}
+- (void)showSceneOnCompletion:(VoidBlock)completion
+{
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
 #warning 这里加背景音乐变大
     CircleTransitionLayer* layer = [CircleTransitionLayer layer];
@@ -22,6 +26,11 @@
     [[CCDirector sharedDirector].runningScene addChild:layer];
     [layer showSceneWithDuration:.3f onCompletion:^{
         [layer removeFromParentAndCleanup:NO];
+        if (completion)
+        {
+            completion();
+        }
+        
     }];
 }
 
@@ -38,6 +47,10 @@
     [layer hideSceneWithDuration:.5f onCompletion:^{
         [layer removeFromParentAndCleanup:NO];
         [[CCDirector sharedDirector] replaceScene:scene];
+        if (completion)
+        {
+            completion();
+        }
     }];
 }
 
@@ -55,6 +68,10 @@
     [layer hideSceneWithDuration:.5f onCompletion:^{
         [layer removeFromParentAndCleanup:NO];
         [[CCDirector sharedDirector] replaceScene:sceneBlock()];
+        if (completion)
+        {
+            completion();
+        }
     }];
 }
 

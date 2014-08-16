@@ -45,7 +45,10 @@
 - (void)onEnter
 {
     [super onEnter];
-    [self showScene];
+    self.touchEnabled = NO;
+    [self showSceneOnCompletion:^{
+        self.touchEnabled = YES;
+    }];
     self.fIsChangingScene = NO;
     
     [self.p1Layer retain];

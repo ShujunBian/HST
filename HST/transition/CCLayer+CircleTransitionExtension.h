@@ -13,6 +13,7 @@ typedef void (^VoidBlock)();
 
 @interface CCLayer (CircleTransitionExtension)
 - (void)showScene;
+- (void)showSceneOnCompletion:(VoidBlock)completion;
 
 - (void)changeToScene:(SceneBlock)sceneBlock;
 - (void)changeToScene:(SceneBlock)sceneBlock onCompletion:(VoidBlock)completion;
