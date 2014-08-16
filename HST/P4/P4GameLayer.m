@@ -547,7 +547,7 @@
     CCActionInterval* spawn = [CCSpawn actionWithArray:@[bezierTo, [CCSequence actionOne:rotateDelay two:rotate]]];
     
     CCCallBlock* outToPlaySound = [CCCallBlock actionWithBlock:^{
-        [[SimpleAudioEngine sharedEngine] playEffect:@"p4_monster_fly.mp3"];
+//        [[SimpleAudioEngine sharedEngine] playEffect:@"p4_monster_fly.mp3"];
     }];
     
     CCActionInterval* outTo = [CCEaseSineOut actionWithAction:spawn];

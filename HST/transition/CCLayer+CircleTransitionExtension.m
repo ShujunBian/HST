@@ -28,7 +28,7 @@
         [layer removeFromParentAndCleanup:NO];
         if (completion)
         {
-//            completion();
+            completion();
         }
         
     }];
@@ -49,14 +49,14 @@
         [[CCDirector sharedDirector] replaceScene:scene];
         if (completion)
         {
-//            completion();
+            completion();
         }
     }];
 }
 
 - (void)changeToScene:(SceneBlock)sceneBlock
 {
-    [self changeToLoadedScene:sceneBlock onCompletion:nil];
+    [self changeToScene:sceneBlock onCompletion:nil];
 }
 - (void)changeToScene:(SceneBlock)sceneBlock onCompletion:(VoidBlock)completion
 {
@@ -70,7 +70,7 @@
         [[CCDirector sharedDirector] replaceScene:sceneBlock()];
         if (completion)
         {
-//            completion();
+            completion();
         }
     }];
 }

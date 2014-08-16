@@ -150,7 +150,7 @@
             break;
         }
     }
-//    worldLayer.touchEnabled = NO;
+    worldLayer.touchEnabled = NO;
     self.processBar.percentage = 1.f;
     [self changeToLoadedScene:scene onCompletion:nil];
 }

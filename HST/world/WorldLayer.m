@@ -45,9 +45,9 @@
 - (void)onEnter
 {
     [super onEnter];
-//    self.touchEnabled = NO;
+    self.touchEnabled = NO;
     [self showSceneOnCompletion:^{
-//        self.touchEnabled = YES;
+        self.touchEnabled = YES;
     }];
     self.fIsChangingScene = NO;
     
@@ -109,9 +109,7 @@
             
             if (CGRectContainsPoint(WORLD_P1_RECT, locationInNodeSpace))
             {
-                
                 //p1
-                
                 self.worldUILayer = [[[WorldUILayer alloc]initWithMainMapType:MainMapP1]autorelease];
                 self.worldUILayer.delegate = self;
                 [self addChild:self.worldUILayer z:1];

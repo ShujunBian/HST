@@ -51,7 +51,7 @@
         texture = [CCRenderTexture renderTextureWithWidth:BAR_HEIGHT / 2 height:BAR_HEIGHT];
         texture.anchorPoint = ccp(0,0);
         [texture beginWithClear:1 g:1 b:1 a:0.f];
-        ccDrawSolidCircle(ccp(BAR_HEIGHT / 2, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 720);
+        ccDrawSolidCircle(ccp(BAR_HEIGHT / 2, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 7200);
         [texture end];
         self.barLeftCircle = [CCSprite spriteWithTexture:texture.sprite.texture];
         self.barLeftCircle.color = BAR_COLOR;
@@ -60,7 +60,7 @@
         texture = [CCRenderTexture renderTextureWithWidth:BAR_HEIGHT / 2 height:BAR_HEIGHT];
         texture.anchorPoint = ccp(0,0);
         [texture beginWithClear:1 g:1 b:1 a:0.f];
-        ccDrawSolidCircle(ccp(0, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 720);
+        ccDrawSolidCircle(ccp(0, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 7200);
         [texture end];
         self.barRightCircle = [CCSprite spriteWithTexture:texture.sprite.texture];
         self.barRightCircle.color = BAR_COLOR;
