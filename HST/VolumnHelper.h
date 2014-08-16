@@ -14,4 +14,6 @@
 - (void)downBackgroundVolumn:(NSTimer *)timer;
 - (void)upBackgroundVolumn:(NSTimer *)timer;
 
+@property (nonatomic) BOOL isPlayingWordBgMusic;
+
 @end

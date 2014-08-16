@@ -12,6 +12,7 @@
 #import "SimpleAudioEngine.h"
 #import "P2_GrassLayer.h"
 #import "P2_Monster.h"
+#import "P2_GameObjects.h"
 #import "P2_LittleMonster.h"
 #import "P2_LittleFlyObjects.h"
 #import "P2_CalculateHelper.h"
@@ -23,6 +24,7 @@
 #import "VolumnHelper.h"
 #import "CCLayer+CircleTransitionExtension.h"
 #import "WXYUtility.h"
+#import "P2_SkyLayer.h"
 
 #define EVERYDELTATIME 0.016667
 
@@ -83,6 +85,8 @@
     NSLog(@"current start Data is %@",[NSDate dateWithTimeIntervalSinceNow:0]);
     NSString * backgroundMusic = [NSString stringWithFormat:@"P2_%d_background.mp3",_currentSongType];
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:backgroundMusic loop:NO];
+    [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
+
 }
 
 - (void)onEnter
@@ -95,11 +99,10 @@
     [self performSelector:@selector(letFirstLittleMonsterJump) withObject:self afterDelay:0.2];
     [self performSelector:@selector(letSecondLittleMonsterJump) withObject:self afterDelay:0.4];
     
-    [self schedule:@selector(addLittleFlyObjectEverySecond) interval:1.0];
-    [self scheduleUpdate];
-    
-//    [[SimpleAudioEngine sharedEngine]stopBackgroundMusic];
+#warning 之后改为播放当前选择的音乐
     [self playBackgroundMusic];
+    
+    [self startMusic];
 
 }
 
@@ -113,6 +116,28 @@
     musicTypeInFrame = nil;
     
     self.mainMapHelper = nil;
+}
+
+#pragma mark - 正式开始音乐播放
+- (void)startMusic
+{
+    [self schedule:@selector(addLittleFlyObjectEverySecond) interval:1.0];
+    [self scheduleUpdate];
+    
+    for (CCNode * node in [self children]) {
+        
+        if ([[node class] isSubclassOfClass:[P2_GrassLayer class]]) {
+            ((P2_GrassLayer *)node).isWaitingForSelect = NO;
+            for (CCNode * grassNode in [(P2_GrassLayer *)node children]) {
+                if ([[grassNode class] isSubclassOfClass:[P2_GameObjects class]]) {
+                    ((P2_GameObjects *)grassNode).isWaitingForSelect = NO;
+                }
+            }
+        }
+        else if ([[node class] isSubclassOfClass:[P2_SkyLayer class]]) {
+            ((P2_SkyLayer *)node).isWaitingForSelect = NO;
+        }
+    }
 }
 
 - (void)initBackgroundMusicAndEffect
@@ -170,8 +195,8 @@
         _frameCounter = 0;
     }
     else if ([frameToShowCurrentFrame containsObject:[NSNumber numberWithInteger:_frameCounter + 1]]){
-        NSLog(@"%d",_frameCounter + 1);
-        NSLog(@"Add subject is %@",[NSDate dateWithTimeIntervalSinceNow:0]);
+//        NSLog(@"%d",_frameCounter + 1);
+//        NSLog(@"Add subject is %@",[NSDate dateWithTimeIntervalSinceNow:0]);
         NSInteger musicType = [[musicTypeInFrame objectAtIndex:[frameToShowCurrentFrame indexOfObject:[NSNumber numberWithInteger:_frameCounter + 1]]] integerValue];
         [self updateForAddingLittleFly:musicType];
     }

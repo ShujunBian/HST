@@ -17,7 +17,8 @@
 #import "CCLayer+CircleTransitionExtension.h"
 #import "MonsterEye.h"
 #import "MonsterEyeUpdateObject.h"
-
+#import "VolumnHelper.h"
+#import "WorldLayer.h"
 #pragma mark - IntroLayer
 
 // HelloWorldLayer implementation
@@ -119,6 +120,7 @@
 - (void)playBgMusic
 {
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
+    [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = YES;
 }
 - (void)loadCallBack
 {
@@ -139,7 +141,17 @@
 - (void)introEnd
 {
     CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
+    WorldLayer* worldLayer = nil;
+    for (CCLayer* layer in scene.children)
+    {
+        if ([layer isKindOfClass:[WorldLayer class]])
+        {
+            worldLayer = (WorldLayer*)layer;
+            break;
+        }
+    }
+    worldLayer.touchEnabled = NO;
     self.processBar.percentage = 1.f;
-    [self changeToLoadedScene:scene];
+    [self changeToLoadedScene:scene onCompletion:nil];
 }
 @end

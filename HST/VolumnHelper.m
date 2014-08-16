@@ -34,6 +34,7 @@ static VolumnHelper * sharedVolumnHelper;
     if (self = [super init]) {
         self.isFinishedDown = YES;
         self.isFinishedUp = YES;
+        self.isPlayingWordBgMusic = YES;
     }
     return self;
 }
@@ -43,13 +44,11 @@ static VolumnHelper * sharedVolumnHelper;
 {
     if (_isFinishedUp) {
         _isFinishedDown = NO;
-        NSLog(@"The !!! volumn is %f",[SimpleAudioEngine sharedEngine].backgroundMusicVolume);
         [SimpleAudioEngine sharedEngine].backgroundMusicVolume -= 0.1;
         [SimpleAudioEngine sharedEngine].effectsVolume -= 0.1;
         if (fabsf([SimpleAudioEngine sharedEngine].backgroundMusicVolume - 0.0) <= 0.15) {
             [SimpleAudioEngine sharedEngine].backgroundMusicVolume = 0.0;
             [SimpleAudioEngine sharedEngine].effectsVolume = 0.0;
-//            [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
             
             [timer invalidate];
             _isFinishedDown = YES;
@@ -62,7 +61,6 @@ static VolumnHelper * sharedVolumnHelper;
 {
     if (_isFinishedDown) {
         _isFinishedUp = NO;
-        NSLog(@"The current volumn is %f",[SimpleAudioEngine sharedEngine].backgroundMusicVolume);
         [SimpleAudioEngine sharedEngine].backgroundMusicVolume += 0.1;
         [SimpleAudioEngine sharedEngine].effectsVolume += 0.1;
         

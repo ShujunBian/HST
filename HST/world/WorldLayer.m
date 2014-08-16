@@ -45,7 +45,10 @@
 - (void)onEnter
 {
     [super onEnter];
-    [self showScene];
+    self.touchEnabled = NO;
+    [self showSceneOnCompletion:^{
+        self.touchEnabled = YES;
+    }];
     self.fIsChangingScene = NO;
     
     [self.p1Layer retain];
@@ -65,9 +68,10 @@
 //    self.p3Layer = nil;
 //    self.p4Layer = nil;
 //    self.p5Layer = nil;
-    if (![SimpleAudioEngine sharedEngine].isBackgroundMusicPlaying)
+    if (![VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic)
     {
         [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
+        [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = YES;
     }    
 }
 - (void)onExitTransitionDidStart

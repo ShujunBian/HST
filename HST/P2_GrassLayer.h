@@ -20,4 +20,6 @@
 @property (nonatomic, strong) CCSprite * grass;
 @property (nonatomic, strong) CCSprite * grass2;
 
+@property (nonatomic) BOOL isWaitingForSelect;
+
 @end

@@ -24,6 +24,7 @@
 {
 	if( (self=[super init]))
     {
+        self.isWaitingForSelect = YES;
         flower = (P2_Flower *)[CCBReader nodeGraphFromFile:@"P2_Flower.ccbi"];
         [flower setObjectFirstPosition];
         mushroom = (P2_Mushroom *)[CCBReader nodeGraphFromFile:@"P2_Mushrooms.ccbi"];
@@ -47,21 +48,22 @@
 
 -(void) update:(ccTime)delta
 {
-    if ([mushroom isSamePositionWithFlower:flower]) {
-//        NSLog(@"mushroom position is %f and flower position is %f",mushroom.position.x,flower.position.x);
-        [mushroom resetFlowerPosition:flower];
+    if (!_isWaitingForSelect) {
+        if ([mushroom isSamePositionWithFlower:flower]) {
+            //        NSLog(@"mushroom position is %f and flower position is %f",mushroom.position.x,flower.position.x);
+            [mushroom resetFlowerPosition:flower];
+        }
+        self.grass.position = CGPointMake(self.grass.position.x - GRASS_MOVINGSPEED * EVERYDELTATIME, self.grass.position.y);
+        self.grass2.position = CGPointMake(self.grass2.position.x - GRASS_MOVINGSPEED * EVERYDELTATIME, self.grass2.position.y);
+        if(self.grass.position.x + self.grass.boundingBox.size.width < 512)
+        {
+            self.grass.position = CGPointMake(self.grass2.position.x + self.grass2.boundingBox.size.width, self.grass.position.y);
+        }
+        else if(self.grass2.position.x + self.grass2.boundingBox.size.width < 512)
+        {
+            self.grass2.position = CGPointMake(self.grass.position.x + self.grass.boundingBox.size.width, self.grass2.position.y);
+        }
     }
-    self.grass.position = CGPointMake(self.grass.position.x - GRASS_MOVINGSPEED * EVERYDELTATIME, self.grass.position.y);
-    self.grass2.position = CGPointMake(self.grass2.position.x - GRASS_MOVINGSPEED * EVERYDELTATIME, self.grass2.position.y);
-    if(self.grass.position.x + self.grass.boundingBox.size.width < 512)
-    {
-        self.grass.position = CGPointMake(self.grass2.position.x + self.grass2.boundingBox.size.width, self.grass.position.y);
-    }
-    else if(self.grass2.position.x + self.grass2.boundingBox.size.width < 512)
-    {
-        self.grass2.position = CGPointMake(self.grass.position.x + self.grass.boundingBox.size.width, self.grass2.position.y);
-    }
-    
 }
 
 @end
