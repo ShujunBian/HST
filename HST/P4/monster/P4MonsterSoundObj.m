@@ -63,7 +63,6 @@
 {
     if (self.fIsPlay)
     {
-
         float maxDelayTime = self.maxDelay;
         if (maxDelayTime < 8.f)
         {
