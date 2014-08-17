@@ -105,6 +105,11 @@
     self.waterOut1 = nil;
     self.waterOut2 = nil;
     self.animationManager = nil;
+    
+    for (P4MonsterSoundObj* obj in self.soundObjArray) {
+        obj.delegate = nil;
+    }
+    
     self.soundObjArray = nil;
 //    [self.leftFoot stopAllActions];
 //    [self.rightFoot stopAllActions];
