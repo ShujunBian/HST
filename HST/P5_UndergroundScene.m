@@ -599,16 +599,14 @@ static float holesRadius[] = {
     return _drawOrderArray;
 }
 
-#pragma mark - 退出时释放内存
-- (void)dealloc
+- (void)onExit
 {
-    [super dealloc];
+    [super onExit];
     
     if (rotatedBellTimer != nil && [rotatedBellTimer isValid]) {
         [rotatedBellTimer invalidate];
         rotatedBellTimer = nil;
     }
-    
     NSInteger passageNumber = [_undergroundPassagesArray count];
     for (int i = 0; i < passageNumber; ++ i) {
         P5_UndergroundPassage * passage = [_undergroundPassagesArray objectAtIndex:0];
@@ -622,6 +620,12 @@ static float holesRadius[] = {
     
     [_drawOrderArray removeAllObjects];
     [_drawOrderArray release];
+}
+
+#pragma mark - 退出时释放内存
+- (void)dealloc
+{
+    [super dealloc];
 }
 
 
