@@ -119,6 +119,15 @@ static int zOrder[]= {
     0
 };
 
+@protocol P3_MonsterDelegate <NSObject>
+
+@optional
+
+- (void)monsterWithMonsterType:(MonsterType) monsterType
+           DragginChangedLevel:(int)draggingLevel;
+
+@end
+
 @interface P3_Monster : CCNode
 
 @property (nonatomic) MonsterType monsterType;
@@ -137,6 +146,7 @@ static int zOrder[]= {
 @property (nonatomic, strong) P3_MonsterEye * monsterEye;
 @property (nonatomic, strong) NSMutableArray * monsterBodyArray;
 
+@property (nonatomic, assign) id<P3_MonsterDelegate> delegate;
 //大地图中所用参数
 @property (nonatomic) BOOL isInMainMap;
 @property (nonatomic) BOOL isUp;
