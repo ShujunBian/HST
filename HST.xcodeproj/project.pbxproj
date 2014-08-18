@@ -4581,11 +4581,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Emerson;
-				TargetAttributes = {
-					5169CBCA18CDE5ED00426E6C = {
-						DevelopmentTeam = QYBQ942P7G;
-					};
-				};
 			};
 			buildConfigurationList = 5169CBC618CDE5ED00426E6C /* Build configuration list for PBXProject "HST" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -5812,7 +5807,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "40A23946-638C-4A96-BC09-7B97DE041FF7";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -5833,7 +5828,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "40A23946-638C-4A96-BC09-7B97DE041FF7";
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
