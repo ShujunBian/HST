@@ -13,6 +13,9 @@
 #import "SimpleAudioEngine.h"
 #import "NSNotificationCenter+Addition.h"
 
+
+#define REMOVE_ACTION_TAG 288
+
 @interface P1_Bubble ()
 @property (assign, nonatomic) BOOL f1;
 @property (assign, nonatomic) BOOL f2;
@@ -21,6 +24,12 @@
 @end
 
 @implementation P1_Bubble
+@dynamic canTouch;
+- (BOOL)canTouch
+{
+    return [self.actionManager getActionByTag:REMOVE_ACTION_TAG target:self] == nil;
+}
+
 static ccColor3B bubbleColors[] = {
     {255,255,255},  //白色 占位
     {255,229,55},   //黄色 do
@@ -191,6 +200,8 @@ static NSString * bubbleMusicalScale[] = {
     }];
     
     CCSequence *seq = [CCSequence actions:scale,removeBubble, nil];
+    seq.tag = REMOVE_ACTION_TAG;
+
     [self runAction:seq];
 }
 

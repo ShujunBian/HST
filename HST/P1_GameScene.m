@@ -211,6 +211,11 @@ static NSMutableArray *bubbleScales = nil;
         
         for (P1_Bubble * bubble in self.currentOnScreenBubbles)
         {
+#warning hahaha
+            if (!bubble.canTouch)
+            {
+                continue;
+            }
             CGPoint bubblePosition = bubble.position;
             if((bubblePosition.x - locationInNodeSpace.x) * (bubblePosition.x - locationInNodeSpace.x) + (bubblePosition.y - locationInNodeSpace.y) * (bubblePosition.y - locationInNodeSpace.y) < 4500 && (bubble.isReadyForboom == YES))
             {
