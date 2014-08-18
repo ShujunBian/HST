@@ -36,7 +36,6 @@ typedef enum {
 @property (nonatomic) bool isReadyForboom;
 @property (nonatomic) BOOL isReadyRelease;
 @property (nonatomic) P1_BubbleType currentBubbleType;
-@property (retain, nonatomic) BOOL canTouch;
 
 - (int)countOfColor;
 - (ccColor3B)colorAtIndex:(NSUInteger)index;

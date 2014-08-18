@@ -7,7 +7,7 @@
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>3</integer>
+	<integer>4</integer>
 	<key>fileType</key>
 	<string>CocosBuilder</string>
 	<key>fileVersion</key>
@@ -586,7 +586,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-39.158443450927734</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -613,8 +613,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1.0076931715011597</real>
-							<real>0.97692060470581055</real>
+							<real>1</real>
+							<real>1</real>
 							<true/>
 							<integer>0</integer>
 						</array>
@@ -1036,7 +1036,7 @@
 						<key>value</key>
 						<array>
 							<real>76</real>
-							<real>-42.897426605224609</real>
+							<real>-7</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1447,7 +1447,7 @@
 						<key>value</key>
 						<array>
 							<real>-3</real>
-							<real>-95</real>
+							<real>-55</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2125,7 +2125,7 @@
 						<key>value</key>
 						<array>
 							<real>-4</real>
-							<real>-72</real>
+							<real>-32</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2193,8 +2193,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -2413,7 +2411,7 @@
 						<key>value</key>
 						<array>
 							<real>-53</real>
-							<real>5.102574348449707</real>
+							<real>41</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -2559,7 +2557,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2.5</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -2619,13 +2617,33 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4.8666667938232422</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
 			<real>64</real>
 			<key>sequenceId</key>
 			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>autoPlay</key>
+			<false/>
+			<key>chainedSequenceId</key>
+			<integer>-1</integer>
+			<key>length</key>
+			<real>0.3333333432674408</real>
+			<key>name</key>
+			<string>stop</string>
+			<key>offset</key>
+			<real>0.0</real>
+			<key>position</key>
+			<real>0.0</real>
+			<key>resolution</key>
+			<real>30</real>
+			<key>scale</key>
+			<real>128</real>
+			<key>sequenceId</key>
+			<integer>4</integer>
 		</dict>
 	</array>
 	<key>stageBorder</key>
