@@ -142,7 +142,8 @@ ccColor3B s_color;
     float rate = 0.9f;
     //circle
     self.circleSprite.scale = 1;
-    [self.circleSprite runAction:[CCEaseOut actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:duration scale:0],[CCDelayTime actionWithDuration:0.01],call, nil] rate:rate]];
+    [self.circleSprite runAction:[CCSequence actions:[CCEaseOut actionWithAction:[CCSequence actions:[CCScaleTo actionWithDuration:duration scale:0],[CCDelayTime actionWithDuration:0.01], nil] rate:rate],[CCDelayTime actionWithDuration:0.1], call, nil]];
+    
     
     //left
     self.leftSprite.scaleX = 0.f;
