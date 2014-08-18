@@ -136,11 +136,11 @@ static ccColor3B littleFlyColors[] = {
     [self runAction:littleFlyReadyToFlyOutSeq];
 }
 
-- (void)setObjectFirstPosition
+- (void)setObjectFirstPosition:(float)offsetX
 {
     objectPostionX = 1024.0;
     objectPostionY = CCRANDOM_0_1() * 120.0;
-    self.position = CGPointMake(objectPostionX, self.contentSize.height / 2 + 400.0 + objectPostionY);
+    self.position = CGPointMake(objectPostionX + offsetX, self.contentSize.height / 2 + 400.0 + objectPostionY);
 }
 
 #pragma mark - 正常移动离开屏幕时

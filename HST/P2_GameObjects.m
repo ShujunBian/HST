@@ -42,10 +42,13 @@
 
 - (void)setObjectFirstPosition
 {
-    objectPostionX = CCRANDOM_0_1() * 1024.0;
-    self.position = CGPointMake(objectPostionX, self.contentSize.height / 2);
+    [self setObjectFirstPosition:0.f];
 }
-
+- (void)setObjectFirstPosition:(float)offsetX
+{
+    objectPostionX = CCRANDOM_0_1() * 1024.0;
+    self.position = CGPointMake(objectPostionX + offsetX , self.contentSize.height / 2);
+}
 - (void)actionWhenOutOfScreen
 {
     objectPostionX = 1024.0 + CCRANDOM_0_1() * 1024.0;
