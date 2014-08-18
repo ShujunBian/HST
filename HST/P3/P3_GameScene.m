@@ -21,11 +21,16 @@
 #import "CircleTransition.h"
 #import "CCLayer+CircleTransitionExtension.h"
 #import "WXYUtility.h"
+
+#import "CDAudioManager.h"
+#import "SimpleAudioEngine.h"
+
 @interface P3_GameScene ()
 
 @property (nonatomic, strong) MainMapHelper * mainMapHelper;
 @property (nonatomic, strong) NSMutableArray * monsterArray;
 
+@property (nonatomic) ALuint effectType;
 @end
 
 @implementation P3_GameScene
@@ -49,14 +54,7 @@
     [self performSelector:@selector(resetTouchEnable) withObject:self
                afterDelay:1.2];
 }
-- (void)onExit
-{
-    [self.monsterArray removeAllObjects];
-    self.monsterArray = nil;
-    self.mainMapHelper = nil;
-    
-    [super onExit];
-}
+
 - (void)dealloc
 {
     [super dealloc];
@@ -71,6 +69,7 @@
     [purpMonster setPosition:monsterFirstPositions[0]];
     [purpMonster createMonsterWithType:PurpMonster];
     [purpMonster initMonsterEyes];
+    purpMonster.delegate = self;
     [_monsterArray addObject:purpMonster];
     
     P3_BlueMonster * blueMonster = (P3_BlueMonster *)[CCBReader nodeGraphFromFile:@"P3_BlueMonster.ccbi"];
@@ -78,6 +77,7 @@
     [blueMonster setPosition:monsterFirstPositions[1]];
     [blueMonster createMonsterWithType:BlueMonster];
     [blueMonster initMonsterEyes];
+    blueMonster.delegate = self;
     [_monsterArray addObject:blueMonster];
     
     P3_GreenMonster * greenMonster = (P3_GreenMonster *)[CCBReader nodeGraphFromFile:@"P3_GreenMonster.ccbi"];
@@ -92,6 +92,7 @@
     [redMonster setPosition:monsterFirstPositions[3]];
     [redMonster createMonsterWithType:RedMonster];
     [redMonster initMonsterEyes];
+    redMonster.delegate = self;
     [_monsterArray addObject:redMonster];
     
     P3_CeruleanMonster * ceruleanMonster = (P3_CeruleanMonster *)[CCBReader nodeGraphFromFile:@"P3_CeruleanMonster.ccbi"];
@@ -99,6 +100,7 @@
     [ceruleanMonster setPosition:monsterFirstPositions[4]];
     [ceruleanMonster createMonsterWithType:CeruleanMonster];
     [ceruleanMonster initMonsterEyes];
+    ceruleanMonster.delegate = self;
     [_monsterArray addObject:ceruleanMonster];
 }
 
@@ -106,7 +108,30 @@
 {
     [super onEnter];
     [self showScene];
+    [[SimpleAudioEngine sharedEngine]stopBackgroundMusic];
     
+    NSArray *sourceGroups = [NSArray arrayWithObjects:[NSNumber numberWithInt:1], [NSNumber numberWithInt:31], nil];
+    [[CDAudioManager sharedManager].soundEngine defineSourceGroups:sourceGroups];
+    [CDAudioManager initAsynchronously:kAMM_FxPlusMusicIfNoOtherAudio];
+
+#warning 预加载音乐
+    [[CDAudioManager sharedManager].soundEngine loadBuffer:1 filePath:@"P3_BgMusic.mp3"];
+    [[CDAudioManager sharedManager].soundEngine loadBuffer:2 filePath:@"P3_1.mp3"];
+    _effectType = [[CDAudioManager sharedManager].soundEngine loadBuffer:3 filePath:@"P3_2.mp3"];
+    [[CDAudioManager sharedManager].soundEngine loadBuffer:4 filePath:@"P3_3.mp3"];
+    [[CDAudioManager sharedManager].soundEngine loadBuffer:5 filePath:@"P3_4.mp3"];
+    [[CDAudioManager sharedManager].soundEngine loadBuffer:6 filePath:@"P3_5.mp3"];
+
+    [[CDAudioManager sharedManager].soundEngine playSound:1 sourceGroupId:kASC_Left pitch:1.0 pan:0.0 gain:1.0 loop:YES];
+    for (int i = 2; i <= 6; ++ i) {
+        if (i == 5) {
+            [[CDAudioManager sharedManager].soundEngine playSound:i sourceGroupId:kASC_Right pitch:1.0 pan:0.0 gain:1.0 loop:YES];
+        }
+        else {
+            [[CDAudioManager sharedManager].soundEngine playSound:i sourceGroupId:kASC_Right pitch:1.0 pan:0.0 gain:0.0 loop:YES];
+        }
+    }
+
 }
 
 - (void)onEnterTransitionDidFinish
@@ -119,6 +144,17 @@
     
 }
 
+- (void)onExit
+{
+    [self.monsterArray removeAllObjects];
+    self.monsterArray = nil;
+    self.mainMapHelper = nil;
+    
+    [[CDAudioManager sharedManager].soundEngine stopAllSounds];
+
+    [super onExit];
+}
+
 #pragma mark - 恢复触摸
 - (void)resetTouchEnable
 {
@@ -129,6 +165,10 @@
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    CDSoundSource * source = [[CDAudioManager sharedManager].soundEngine soundSourceForSound:5 sourceGroupId:kASC_Right];
+    CDSoundSourceFader * fader = [[CDSoundSourceFader alloc]init:source interpolationType:kIT_Linear startVal:1.0 endVal:0.0];
+    [fader setStopTargetWhenComplete:YES];
+    
     for(UITouch* touch in touches)
     {
         CGPoint touchPosition = [self locationFromTouch:touch];
@@ -352,6 +392,42 @@
     return NO;
 }
 
+#pragma mark - P3_Monster Delegate
+- (void)monsterWithMonsterType:(MonsterType)monsterType DragginChangedLevel:(int)draggingLevel
+{
+    CDSoundSource * source = [[CDAudioManager sharedManager].soundEngine soundSourceForSound:monsterType + 2 sourceGroupId:kASC_Right];
+    
+    switch (draggingLevel) {
+        case 1: {
+            [source setGain:0.0];
+            [source setPitch:1.0];
+            break;
+        }
+        case 2: {
+            [source setGain:0.5];
+            [source setPitch:1.0];
+            break;
+        }
+        case 3: {
+            [source setGain:1.0];
+            [source setPitch:1.0];
+            break;
+        }
+        case 4: {
+            [source setGain:1.0];
+            [source setPitch:1.0];
+            break;
+        }
+        case 5: {
+            [source setGain:1.0];
+            [source setPitch:1.0];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
 #pragma mark - 菜单键调用函数
 - (void)restartGameScene
 {
@@ -372,6 +448,7 @@
         return scene;
     }];
 }
+
 - (void)helpButtonPressed
 {
 #warning 未完成

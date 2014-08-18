@@ -33,7 +33,8 @@
 @property (strong, nonatomic) MainMapHelper* mainMapHelper;
 @property (nonatomic) NSInteger maxMusicSeconds;
 @property (nonatomic) NSInteger currentSongType;
-
+@property (strong, nonatomic) NSDate* initialDate;
+@property (assign, nonatomic) int iCountHaha;
 @end
 
 @implementation P2_GameScene
@@ -50,6 +51,8 @@
         self.currentSongType = 2;
         
         [self initBackgroundMusicAndEffect];
+//        self.initialDate = [NSDate date];
+        self.iCountHaha = 0;
     }
     return  self;
 }
@@ -83,10 +86,10 @@
 - (void)playBackgroundMusic
 {
     NSLog(@"current start Data is %@",[NSDate dateWithTimeIntervalSinceNow:0]);
+    self.initialDate = [NSDate date];
     NSString * backgroundMusic = [NSString stringWithFormat:@"P2_%d_background.mp3",_currentSongType];
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:backgroundMusic loop:NO];
     [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
-
 }
 
 - (void)onEnter
@@ -170,6 +173,7 @@
 
 - (void)update:(ccTime)delta
 {
+
     int currentJumpFrame = [P2_CalculateHelper getMonsterCurrentJumpFrameBy:monster.currentJumpTime];
     float collisionHeight = [P2_CalculateHelper getTheMonsterCollisionHeightFrom:currentJumpFrame];
     for (P2_LittleFlyObjects * tempObjects in _flyObjectsOnScreen) {
@@ -188,6 +192,9 @@
 
 - (void)addLittleFlyObjectEverySecond
 {
+    
+#warning hahah
+    
     _frameCounter ++;
     
     if (_frameCounter == _maxMusicSeconds) {
@@ -204,6 +211,12 @@
 
 -(void)updateForAddingLittleFly:(NSInteger)musicType
 {
+#warning aaa
+    NSDate* d = [NSDate date];
+    self.iCountHaha++;
+    NSLog(@"---%d---%f",self.iCountHaha,[d timeIntervalSinceDate:self.initialDate]);
+    
+    
     P2_LittleFlyObjects * littleFly = (P2_LittleFlyObjects *)[CCBReader nodeGraphFromFile:@"P2_LittleFly.ccbi"];
     littleFly.delegate = self;
     littleFly.currentSongType = _currentSongType;

@@ -139,7 +139,9 @@
         CCSequence * seq = [CCSequence actions:scaleBack,scaleBack2,scaleBack3, nil];
         [newBody runAction:seq];
     }
-
+    
+    [self.delegate monsterWithMonsterType:self.monsterType DragginChangedLevel:[self.monsterBodyArray count] + 1];
+    
     [self addGrassParticle];
 }
 
@@ -433,6 +435,8 @@
                     [self addBubbleBoomParticleInPosition:CGPointMake(body.position.x, kMonsterBaselineYPosition + 1 / 2.0 * body.contentSize.height) andColor:body.body.color];
                     [body removeFromParentAndCleanup:YES];
                     [self.monsterBodyArray removeObjectAtIndex:self.monsterBodyCounter - 1];
+                    
+                    [self.delegate monsterWithMonsterType:self.monsterType DragginChangedLevel:[self.monsterBodyArray count] + 1];
                 }
                 
                 for (int i = 0; i < [self.monsterBodyArray count]; ++ i) {

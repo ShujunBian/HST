@@ -10,8 +10,9 @@
 #import "cocos2d.h"
 #import "CCBReader.h"
 #import "CCBAnimationManager.h"
+#import "P3_Monster.h"
 
-@interface P3_GameScene : CCLayer {
+@interface P3_GameScene : CCLayer<P3_MonsterDelegate> {
     
 }
 
