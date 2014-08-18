@@ -33,7 +33,7 @@ static ccColor3B littleFlyColors[] = {
 -(id)init
 {
     if (self = [super init]) {
-        objectMovingSpeed = 1024.0f / 120.0f;
+        objectMovingSpeed = 1024.0f / 2.0f;
     }
     return self;
 }
@@ -102,12 +102,13 @@ static ccColor3B littleFlyColors[] = {
 #pragma mark - update函数
 - (void)update:(ccTime)delta
 {
+//    NSLog(@"%f",delta);
 #pragma mark 是否在主屏幕判断
     if (!self.isInMainMap) {
         if (self.position.x < - 50 || self.position.y > 800) {
             [self actionWhenOutOfScreen];
         }
-        self.position = CGPointMake(self.position.x - objectMovingSpeed, self.position.y);
+        self.position = CGPointMake(self.position.x - objectMovingSpeed * delta, self.position.y);
     }
 }
 

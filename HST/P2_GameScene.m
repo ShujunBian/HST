@@ -33,6 +33,8 @@
 @property (strong, nonatomic) MainMapHelper* mainMapHelper;
 @property (nonatomic) NSInteger maxMusicSeconds;
 @property (nonatomic) NSInteger currentSongType;
+@property (strong, nonatomic) NSDate* initialDate;
+@property (assign, nonatomic) int iCountHaha;
 
 @end
 
@@ -50,6 +52,8 @@
         self.currentSongType = 2;
         
         [self initBackgroundMusicAndEffect];
+//        self.initialDate = [NSDate date];
+        self.iCountHaha = 0;
     }
     return  self;
 }
@@ -86,7 +90,7 @@
     NSString * backgroundMusic = [NSString stringWithFormat:@"P2_%d_background.mp3",_currentSongType];
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:backgroundMusic loop:NO];
     [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
-
+    self.initialDate = [NSDate date];
 }
 
 - (void)onEnter
@@ -121,7 +125,7 @@
 #pragma mark - 正式开始音乐播放
 - (void)startMusic
 {
-    [self schedule:@selector(addLittleFlyObjectEverySecond) interval:1.0];
+    [self schedule:@selector(addLittleFlyObjectEverySecond) interval:.3f];
     [self scheduleUpdate];
     
     for (CCNode * node in [self children]) {
@@ -186,7 +190,7 @@
     }
 }
 
-- (void)addLittleFlyObjectEverySecond
+- (void)addLittleFlyObjectEverySecond:(float)delta
 {
     _frameCounter ++;
     
@@ -204,6 +208,9 @@
 
 -(void)updateForAddingLittleFly:(NSInteger)musicType
 {
+    NSDate* d = [NSDate date];
+    self.iCountHaha++;
+    NSLog(@"---%d----%f",self.iCountHaha,[d timeIntervalSinceDate:self.initialDate]);
     P2_LittleFlyObjects * littleFly = (P2_LittleFlyObjects *)[CCBReader nodeGraphFromFile:@"P2_LittleFly.ccbi"];
     littleFly.delegate = self;
     littleFly.currentSongType = _currentSongType;

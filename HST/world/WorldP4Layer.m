@@ -70,9 +70,14 @@
      nil];
     CCRepeatForever* moveRepeat = [CCRepeatForever actionWithAction:moveSequence];
     [self.bottle runAction:moveRepeat];
-    [self.bottle worldSceneConfigure];
+
     
     [self shakeDialogIcon];
+}
+- (void)onEnter
+{
+    [super onEnter];
+    [self.bottle worldSceneConfigure];
 }
 
 - (void)shakeDialogIcon

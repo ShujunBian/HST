@@ -19,7 +19,7 @@
 
 
 
-@interface P4Bottle : CCLayer<P4WaterLayerDelegate, P4MonsterSoundObjDelegate>
+@interface P4Bottle : CCLayer<P4WaterLayerDelegate, P4MonsterSoundObjDelegate, UIAccelerometerDelegate>
 
 
 @property (strong, nonatomic) CCSprite* bottleMain;
