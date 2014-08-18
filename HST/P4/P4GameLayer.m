@@ -546,11 +546,15 @@
     
     CCActionInterval* spawn = [CCSpawn actionWithArray:@[bezierTo, [CCSequence actionOne:rotateDelay two:rotate]]];
     
+    CCCallBlock* outToPlaySound = [CCCallBlock actionWithBlock:^{
+//        [[SimpleAudioEngine sharedEngine] playEffect:@"p4_monster_fly.mp3"];
+    }];
+    
     CCActionInterval* outTo = [CCEaseSineOut actionWithAction:spawn];
     
     
     CCFiniteTimeAction* beginAddWater = [[[CCCallBlock alloc] initWithBlock:^{
-
+        [[SimpleAudioEngine sharedEngine] playEffect:@"p4_water_flow.mp3"];
 //        int effectIndex = (int)(CCRANDOM_0_1() * 2);
 //        effectIndex = effectIndex != 2? effectIndex : 1;
 //        self.currentSHakeEffectId = [[SimpleAudioEngine sharedEngine] playEffect:self.monsterShakeEffectNames[effectIndex]];
@@ -565,7 +569,6 @@
     }];
     
     CCFiniteTimeAction* delay2 = [[[CCDelayTime alloc] initWithDuration:0.7f] autorelease];
-    
     
     
     CCFiniteTimeAction* delay2_ = [[[CCDelayTime alloc] initWithDuration:0.3f] autorelease];
@@ -678,7 +681,7 @@
         [self.bottle updateRenewButton];
     }] autorelease];
     
-    CCSequence* sequence = [CCSequence actions:callOpen, callHideMonsters, outTo, beginAddWater, beginShake, delay2, callShowMonsters, delay2_, endShake, endAddWater, callClose,  easeOutBack, finish, nil];
+    CCSequence* sequence = [CCSequence actions:callOpen, callHideMonsters, outToPlaySound, outTo, beginAddWater, beginShake, delay2, callShowMonsters, delay2_, endShake, endAddWater, callClose,  easeOutBack, finish, nil];
     
     [monster runAction:sequence];
 }

@@ -35,44 +35,48 @@
         texture.anchorPoint = ccp(0,0);
 
         //Background
-        [texture beginWithClear:1 g:1 b:1 a:0.f];
-        ccDrawSolidCircle(ccp(BAR_HEIGHT / 2, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 720);
-        
-        ccDrawSolidCircle(ccp(BAR_WIDTH - BAR_HEIGHT / 2, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 720);
-        ccDrawSolidRect(ccp(BAR_HEIGHT / 2, 0), ccp(BAR_WIDTH - BAR_HEIGHT / 2, BAR_HEIGHT - 1), ccc4f(1, 1, 1, 1));
-        [texture end];
-        CCSprite* backgroundSprite = [CCSprite spriteWithTexture:texture.sprite.texture];
+//        [texture beginWithClear:1 g:1 b:1 a:0.f];
+//        ccDrawSolidCircle(ccp(BAR_HEIGHT / 2, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 720);
+//        
+//        ccDrawSolidCircle(ccp(BAR_WIDTH - BAR_HEIGHT / 2, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 720);
+//        ccDrawSolidRect(ccp(BAR_HEIGHT / 2, 0), ccp(BAR_WIDTH - BAR_HEIGHT / 2, BAR_HEIGHT - 1), ccc4f(1, 1, 1, 1));
+//        [texture end];
+//        CCSprite* backgroundSprite = [CCSprite spriteWithTexture:texture.sprite.texture];
+        CCSprite* backgroundSprite = [CCSprite spriteWithFile:@"process_background.png"];
         backgroundSprite.position = ccp(0, 0);
         backgroundSprite.anchorPoint = ccp(0.5,0.5);
-        backgroundSprite.color = BAR_BACKGROUND_COLOR;
+//        backgroundSprite.color = BAR_BACKGROUND_COLOR;
         [self addChild:backgroundSprite];
         
         
-        texture = [CCRenderTexture renderTextureWithWidth:BAR_HEIGHT / 2 height:BAR_HEIGHT];
-        texture.anchorPoint = ccp(0,0);
-        [texture beginWithClear:1 g:1 b:1 a:0.f];
-        ccDrawSolidCircle(ccp(BAR_HEIGHT / 2, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 720);
-        [texture end];
-        self.barLeftCircle = [CCSprite spriteWithTexture:texture.sprite.texture];
-        self.barLeftCircle.color = BAR_COLOR;
+//        texture = [CCRenderTexture renderTextureWithWidth:BAR_HEIGHT / 2 height:BAR_HEIGHT];
+//        texture.anchorPoint = ccp(0,0);
+//        [texture beginWithClear:1 g:1 b:1 a:0.f];
+//        ccDrawSolidCircle(ccp(BAR_HEIGHT / 2, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 7200);
+//        [texture end];
+//        self.barLeftCircle = [CCSprite spriteWithTexture:texture.sprite.texture];
+        self.barLeftCircle = [CCSprite spriteWithFile:@"progress_left.png"];
+//        self.barLeftCircle.color = BAR_COLOR;
         self.barLeftCircle.anchorPoint = ccp(1, 0.5);
         
-        texture = [CCRenderTexture renderTextureWithWidth:BAR_HEIGHT / 2 height:BAR_HEIGHT];
-        texture.anchorPoint = ccp(0,0);
-        [texture beginWithClear:1 g:1 b:1 a:0.f];
-        ccDrawSolidCircle(ccp(0, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 720);
-        [texture end];
-        self.barRightCircle = [CCSprite spriteWithTexture:texture.sprite.texture];
-        self.barRightCircle.color = BAR_COLOR;
+//        texture = [CCRenderTexture renderTextureWithWidth:BAR_HEIGHT / 2 height:BAR_HEIGHT];
+//        texture.anchorPoint = ccp(0,0);
+//        [texture beginWithClear:1 g:1 b:1 a:0.f];
+//        ccDrawSolidCircle(ccp(0, BAR_HEIGHT / 2), BAR_HEIGHT / 2, 7200);
+//        [texture end];
+//        self.barRightCircle = [CCSprite spriteWithTexture:texture.sprite.texture];
+        self.barRightCircle = [CCSprite spriteWithFile:@"progress_right.png"];
+//        self.barRightCircle.color = BAR_COLOR;
         self.barRightCircle.anchorPoint = ccp(0, 0.5);
         
-        texture = [CCRenderTexture renderTextureWithWidth:1 height:BAR_HEIGHT];
-        texture.anchorPoint = ccp(0,0);
-        [texture beginWithClear:1 g:1 b:1 a:0.f];
-        ccDrawSolidRect(ccp(0, 0), ccp(1, BAR_HEIGHT - 1), ccc4f(1, 1, 1, 1));
-        [texture end];
-        self.barRect = [CCSprite spriteWithTexture:texture.sprite.texture];
-        self.barRect.color = BAR_COLOR;
+//        texture = [CCRenderTexture renderTextureWithWidth:1 height:BAR_HEIGHT];
+//        texture.anchorPoint = ccp(0,0);
+//        [texture beginWithClear:1 g:1 b:1 a:0.f];
+//        ccDrawSolidRect(ccp(0, 0), ccp(1, BAR_HEIGHT - 1), ccc4f(1, 1, 1, 1));
+//        [texture end];
+//        self.barRect = [CCSprite spriteWithTexture:texture.sprite.texture];
+//        self.barRect.color = BAR_COLOR;
+        self.barRect = [CCSprite spriteWithFile:@"progress_unit.png"];
         self.barRect.anchorPoint = ccp(0, 0.5);
         
         self.barLeftCircle.position = ccp(BAR_BASE_X,0);

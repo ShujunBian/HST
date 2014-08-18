@@ -43,7 +43,7 @@
 }
 - (float)genDelayTime:(float)maxDelay
 {
-    return maxDelay * ( 0.5 + 0.5 * CCRANDOM_0_1());
+    return maxDelay * ( 0.2 + 0.8 * CCRANDOM_0_1());
 }
 - (void)beginSound
 {
@@ -63,11 +63,10 @@
 {
     if (self.fIsPlay)
     {
-
         float maxDelayTime = self.maxDelay;
         if (maxDelayTime < 8.f)
         {
-            float delayTime = [self genDelayTime:maxDelayTime] / 2;
+            float delayTime = [self genDelayTime:maxDelayTime] / 2 * 0.7;
             [[SimpleAudioEngine sharedEngine] playEffect:self.monster.selectedSoundEffectName];
             if ([self.delegate respondsToSelector:@selector(soundWillPlay:delay:)])
             {
@@ -82,6 +81,7 @@
         }
     }
 }
+
 
 - (void)dealloc
 {
