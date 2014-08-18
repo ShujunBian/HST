@@ -16,6 +16,8 @@
 #import "CircleTransition.h"
 #import "CCLayer+CircleTransitionExtension.h"
 #import "WXYUtility.h"
+#import "SimpleAudioEngine.h"
+#import "VolumnHelper.h"
 
 #define kHoleCoverTag 1
 
@@ -83,6 +85,10 @@
 - (void)onEnter
 {
     [super onEnter];
+    
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P5_BackgroundMusic.mp3"];
+    [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
+    
     [self showScene];
 }
 

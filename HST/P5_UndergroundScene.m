@@ -13,7 +13,7 @@
 #import "P5_UndergroundPassage.h"
 #import "NSNotificationCenter+Addition.h"
 #import "P5_SoilCloud.h"
-
+#import "SimpleAudioEngine.h"
 //划分为六个区域，一号区域坐标 115 ~ 335 515 ~ 630
 //2     465 ~ 735 515 ~ 630
 //3     115 ~ 235 315 ~ 385
@@ -27,7 +27,7 @@
 #define kMaxYpoint 630.0
 #define kMinDistance 200.0
 
-#define kMaxHoleNumber 7
+#define kMaxHoleNumber 8
 #define kstartHoleWidth 191.0
 #define kstartHoleHeight 184.0
 
@@ -69,7 +69,8 @@ static CGPoint bellPositions[] = {
     {616,570},//Hole1
     {233,608},//Hole2
     {113,370},//Hole3
-    {387,307},//Hole4
+    {405.0,419.0},//Hole4
+    {460,226},//Hole7
     {648,115},//Hole5
     {824,292},//Hole6
     {161,100} //home
@@ -209,8 +210,8 @@ static float holesRadius[] = {
         }
     }
     
-    if (_monsterUnderground.position.x < bellPositions[7].x + kMonsterHomeWidth &&
-        _monsterUnderground.position.y < bellPositions[7].y + kMonsterHomeHeight &&
+    if (_monsterUnderground.position.x < bellPositions[kMaxHoleNumber].x + kMonsterHomeWidth &&
+        _monsterUnderground.position.y < bellPositions[kMaxHoleNumber].y + kMonsterHomeHeight &&
         !_monsterUnderground.isArriveHome) {
         _monsterUnderground.isArriveHome = YES;
         _monsterUnderground.isReadyStart = NO;
@@ -231,6 +232,7 @@ static float holesRadius[] = {
         bell.position = CGPointMake(bellPositions[i].x, bellPositions[i].y + 33.0) ;//因为Bell的锚点设置为(0.5,1)所以加上Bell本身高度66.0的一半33.0
         bell.scale = newHole.scaleRate;
         ccColor3B color = [bell colorAtIndex:i];
+        bell.currentMusicType = i;
         [bell setBodyColor:color];
         [self addChild:bell z:0];
         newHole.bell = bell;
@@ -403,7 +405,9 @@ static float holesRadius[] = {
                     if ([P5_CalculateHelper isLineWithFirstPoint:bellPositions[currentDrawingNumber]
                                                      SecondPoint:currentEndPosition
                                                   InCircleCenter:hole.centerPoint
-                                                          Radius:kHoleRadius]) {
+                                                        Radius:kHoleRadius]) {
+                        [[SimpleAudioEngine sharedEngine]playEffect:[NSString stringWithFormat:@"P5_1_%d.mp3",[_undergroundHolesArray indexOfObject:hole] + 1]];
+
                         hole.isChoosen = YES;
                         isCreateNewDrawing = YES;
                         
@@ -420,8 +424,8 @@ static float holesRadius[] = {
                 [self addLineUIFrom:bellPositions[currentDrawingNumber] End:currentEndPosition withUIMode:UINormal];
             }
             
-            if (currentEndPosition.x < bellPositions[7].x + kMonsterHomeWidth &&
-                currentEndPosition.y < bellPositions[7].y + kMonsterHomeHeight &&
+            if (currentEndPosition.x < bellPositions[kMaxHoleNumber].x + kMonsterHomeWidth &&
+                currentEndPosition.y < bellPositions[kMaxHoleNumber].y + kMonsterHomeHeight &&
                 isStartDrawing &&
                 [_drawOrderArray count] > 1)
             {
@@ -438,8 +442,8 @@ static float holesRadius[] = {
                 }
                 isTouchInHome = YES;
             }
-            else if (currentEndPosition.x < bellPositions[7].x + kMonsterHomeWidth &&
-                     currentEndPosition.y < bellPositions[7].y + kMonsterHomeHeight &&
+            else if (currentEndPosition.x < bellPositions[kMaxHoleNumber].x + kMonsterHomeWidth &&
+                     currentEndPosition.y < bellPositions[kMaxHoleNumber].y + kMonsterHomeHeight &&
                      [_drawOrderArray count] <= 1)
             {
                 for (CCSprite * smallCircle1 in [smallCircleUI children]) {
@@ -451,8 +455,8 @@ static float holesRadius[] = {
                 isTouchInHome = YES;
             }
             else if (isTouchInHome &&
-                     (currentEndPosition.x > bellPositions[7].x + kMonsterHomeWidth ||
-                      currentEndPosition.y > bellPositions[7].y + kMonsterHomeHeight) )
+                     (currentEndPosition.x > bellPositions[kMaxHoleNumber].x + kMonsterHomeWidth ||
+                      currentEndPosition.y > bellPositions[kMaxHoleNumber].y + kMonsterHomeHeight) )
             {
                 
                 CCTexture2D * newTexture = [[CCTextureCache sharedTextureCache]textureForKey:kBigCircleUINameInTexture];
@@ -481,13 +485,13 @@ static float holesRadius[] = {
         [smallCircleUI removeAllChildrenWithCleanup:YES];
         [smallCircleUIBetweenHoles removeAllChildrenWithCleanup:YES];
         
-        if (currentEndPosition.x < bellPositions[7].x + kMonsterHomeWidth &&
-            currentEndPosition.y < bellPositions[7].y + kMonsterHomeHeight &&
+        if (currentEndPosition.x < bellPositions[kMaxHoleNumber].x + kMonsterHomeWidth &&
+            currentEndPosition.y < bellPositions[kMaxHoleNumber].y + kMonsterHomeHeight &&
             isStartDrawing &&
             [_drawOrderArray count] > 1)
         {
             [_drawOrderArray addObject:[[[NSNumber alloc]initWithInteger:currentDrawingNumber]autorelease]];
-            [_drawOrderArray addObject:[[[NSNumber alloc]initWithInteger:7]autorelease]];
+            [_drawOrderArray addObject:[[[NSNumber alloc]initWithInteger:kMaxHoleNumber]autorelease]];
             [self createUndergroundPassage];
             isStartDrawing = NO;
             isEndDrawing = YES;
@@ -574,7 +578,7 @@ static float holesRadius[] = {
 - (NSMutableArray *)undergroundHolesArray
 {
     if (!_undergroundHolesArray) {
-        _undergroundHolesArray = [[NSMutableArray alloc]initWithCapacity:7];
+        _undergroundHolesArray = [[NSMutableArray alloc]initWithCapacity:kMaxHoleNumber];
     }
     return _undergroundHolesArray;
 }
@@ -582,7 +586,7 @@ static float holesRadius[] = {
 - (CCArray *)undergroundPassagesArray
 {
     if (!_undergroundPassagesArray) {
-        _undergroundPassagesArray = [[CCArray alloc]initWithCapacity:7];
+        _undergroundPassagesArray = [[CCArray alloc]initWithCapacity:kMaxHoleNumber];
     }
     return _undergroundPassagesArray;
 }
@@ -590,21 +594,19 @@ static float holesRadius[] = {
 - (NSMutableArray *)drawOrderArray
 {
     if (!_drawOrderArray) {
-        _drawOrderArray = [[NSMutableArray alloc]initWithCapacity:8];
+        _drawOrderArray = [[NSMutableArray alloc]initWithCapacity:kMaxHoleNumber + 1];
     }
     return _drawOrderArray;
 }
 
-#pragma mark - 退出时释放内存
-- (void)dealloc
+- (void)onExit
 {
-    [super dealloc];
+    [super onExit];
     
     if (rotatedBellTimer != nil && [rotatedBellTimer isValid]) {
         [rotatedBellTimer invalidate];
         rotatedBellTimer = nil;
     }
-    
     NSInteger passageNumber = [_undergroundPassagesArray count];
     for (int i = 0; i < passageNumber; ++ i) {
         P5_UndergroundPassage * passage = [_undergroundPassagesArray objectAtIndex:0];
@@ -618,6 +620,12 @@ static float holesRadius[] = {
     
     [_drawOrderArray removeAllObjects];
     [_drawOrderArray release];
+}
+
+#pragma mark - 退出时释放内存
+- (void)dealloc
+{
+    [super dealloc];
 }
 
 

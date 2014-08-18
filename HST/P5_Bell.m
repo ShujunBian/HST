@@ -8,6 +8,7 @@
 
 #import "P5_Bell.h"
 #import "P5_UndergroundScene.h"
+#import "SimpleAudioEngine.h"
 
 #define kBellNormalModePerTime   0.5
 #define kBellQuickModePerTime    0.1
@@ -35,6 +36,7 @@ static ccColor3B bellColors[] = {
     {15,252,255},       //天蓝色
     {253,122,255},      //紫色
     {246,196,20},       //黄色
+    {255,192,111},      //橙色
     {255,255,255}
 };
 
@@ -225,12 +227,17 @@ static float bellRotateAngleQuick[] = {
         [self performSelector:@selector(bellNormalAction) withObject:nil afterDelay:maxDuration];
     }
     else {
+        [self performSelector:@selector(playBellMusicEffect) withObject:nil afterDelay:maxDuration];
         [self performSelector:@selector(bellQuickAction) withObject:nil afterDelay:maxDuration];
         [self performSelector:@selector(addBellLightAfterCollision) withObject:nil afterDelay:maxDuration];
         [self performSelector:@selector(addBellBoomAfterCollision) withObject:nil afterDelay:maxDuration];
     }
 }
 
+- (void)playBellMusicEffect
+{
+    [[SimpleAudioEngine sharedEngine]playEffect:[NSString stringWithFormat:@"P5_1_%d.mp3",self.currentMusicType]];
+}
 
 /*! 重置铃铛某部分
  * \param bellPart 哪一部分身体

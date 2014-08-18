@@ -8,6 +8,8 @@ ccbParticleFire.png
 ccbParticleSmoke.png
 ccbParticleSnow.png
 ccbParticleStars.png
+MainMap_GreenFlowerHead-hd.png
+MainMap_GreenFlowerHead.png
 P5_bellBody-hd.png
 P5_bellBody.png
 P5_BellEyesClose-hd.png
@@ -98,6 +100,8 @@ P5_mountain2-hd.png
 P5_mountain2.png
 P5_SmallCircleUI-hd.png
 P5_SmallCircleUI.png
+P5_Smoke-hd.png
+P5_Smoke.png
 P5_Soil-hd.png
 P5_Soil.png
 P5_SoilCloud-hd.png
@@ -112,7 +116,6 @@ P5_UndergroundPassage1-hd.png
 P5_UndergroundPassage1.png
 P5_UndergroundPassage2-hd.png
 P5_UndergroundPassage2.png
-whole.png
 P5_BellBoom.plist
 P5_SoilPS1.plist
 P5_SoilPS2.plist
@@ -126,6 +129,8 @@ P5_Flower.ccbi
 P5_FlowerHead.ccbi
 P5_GameScene.ccbi
 P5_GrassLayer.ccbi
+P5_GreenFlower.ccbi
+P5_GreenFlowerHead.ccbi
 P5_HomeLight.ccbi
 P5_Monster.ccbi
 P5_MonsterEye.ccbi
