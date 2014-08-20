@@ -27,6 +27,7 @@
 #import "P2_SkyLayer.h"
 
 #define EVERYDELTATIME 0.016667
+#define ADD_MONSTER_UPDATE_DELTA 0.3f
 
 @interface P2_GameScene ()
 
@@ -35,6 +36,9 @@
 @property (nonatomic) NSInteger currentSongType;
 @property (strong, nonatomic) NSDate* initialDate;
 @property (assign, nonatomic) int iCountHaha;
+
+@property (assign, nonatomic) int nextMusicFrameIndex;
+
 @end
 
 @implementation P2_GameScene
@@ -48,6 +52,7 @@
 {
     if ((self = [super init])) {
         self.frameCounter = 0;
+        self.nextMusicFrameIndex = 0;
         self.currentSongType = 2;
         
         [self initBackgroundMusicAndEffect];
@@ -86,10 +91,10 @@
 - (void)playBackgroundMusic
 {
     NSLog(@"current start Data is %@",[NSDate dateWithTimeIntervalSinceNow:0]);
-    self.initialDate = [NSDate date];
     NSString * backgroundMusic = [NSString stringWithFormat:@"P2_%d_background.mp3",_currentSongType];
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:backgroundMusic loop:NO];
     [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
+    self.initialDate = [NSDate date];
 }
 
 - (void)onEnter
@@ -124,7 +129,7 @@
 #pragma mark - 正式开始音乐播放
 - (void)startMusic
 {
-    [self schedule:@selector(addLittleFlyObjectEverySecond) interval:1.0];
+    [self schedule:@selector(addLittleFlyObjectEverySecond:) interval:ADD_MONSTER_UPDATE_DELTA];
     [self scheduleUpdate];
     
     for (CCNode * node in [self children]) {
@@ -173,7 +178,6 @@
 
 - (void)update:(ccTime)delta
 {
-
     int currentJumpFrame = [P2_CalculateHelper getMonsterCurrentJumpFrameBy:monster.currentJumpTime];
     float collisionHeight = [P2_CalculateHelper getTheMonsterCollisionHeightFrom:currentJumpFrame];
     for (P2_LittleFlyObjects * tempObjects in _flyObjectsOnScreen) {
@@ -190,37 +194,49 @@
     }
 }
 
-- (void)addLittleFlyObjectEverySecond
+- (void)addLittleFlyObjectEverySecond:(float)delta
 {
-    
-#warning hahah
-    
-    _frameCounter ++;
+//    _frameCounter ++;
     
     if (_frameCounter == _maxMusicSeconds) {
         [[SimpleAudioEngine sharedEngine] rewindBackgroundMusic];
         _frameCounter = 0;
+        self.nextMusicFrameIndex = 0;
     }
-    else if ([frameToShowCurrentFrame containsObject:[NSNumber numberWithInteger:_frameCounter + 1]]){
-//        NSLog(@"%d",_frameCounter + 1);
-//        NSLog(@"Add subject is %@",[NSDate dateWithTimeIntervalSinceNow:0]);
-        NSInteger musicType = [[musicTypeInFrame objectAtIndex:[frameToShowCurrentFrame indexOfObject:[NSNumber numberWithInteger:_frameCounter + 1]]] integerValue];
-        [self updateForAddingLittleFly:musicType];
+    else
+    {
+        NSNumber* timeNum = frameToShowCurrentFrame[self.nextMusicFrameIndex];
+        int expectedTime = [timeNum intValue];
+        NSDate* d = [NSDate date];
+        NSTimeInterval interval = [d timeIntervalSinceDate:self.initialDate];
+        _frameCounter = (int)interval;
+        if (expectedTime - 1.f - interval < ADD_MONSTER_UPDATE_DELTA * 1.1f)
+        {
+            NSNumber* musicTypeNumber = musicTypeInFrame[self.nextMusicFrameIndex];
+            NSInteger musicType = musicTypeNumber.integerValue;
+            [self updateForAddingLittleFly:musicType];
+            self.nextMusicFrameIndex++;
+            if (self.nextMusicFrameIndex >= frameToShowCurrentFrame.count)
+            {
+                self.nextMusicFrameIndex = 0;
+            }
+        }
     }
 }
 
 -(void)updateForAddingLittleFly:(NSInteger)musicType
 {
-#warning aaa
-    NSDate* d = [NSDate date];
-    self.iCountHaha++;
-    NSLog(@"---%d---%f",self.iCountHaha,[d timeIntervalSinceDate:self.initialDate]);
+    NSNumber* timeNum = frameToShowCurrentFrame[self.nextMusicFrameIndex];
+    int expectedTime = [timeNum intValue];
     
+    NSDate* d = [NSDate date];
+    NSTimeInterval interval = [d timeIntervalSinceDate:self.initialDate];
     
     P2_LittleFlyObjects * littleFly = (P2_LittleFlyObjects *)[CCBReader nodeGraphFromFile:@"P2_LittleFly.ccbi"];
     littleFly.delegate = self;
     littleFly.currentSongType = _currentSongType;
-    [littleFly setObjectFirstPosition];
+    
+    [littleFly setObjectFirstPosition:(expectedTime - 1.f - interval) * 1024.f / 2];
     [self addChild:littleFly z:0];
     littleFly.musicType = (int)musicType;
     

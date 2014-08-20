@@ -13,6 +13,9 @@
 #import "SimpleAudioEngine.h"
 #import "NSNotificationCenter+Addition.h"
 
+
+#define REMOVE_ACTION_TAG 288
+
 @interface P1_Bubble ()
 @property (assign, nonatomic) BOOL f1;
 @property (assign, nonatomic) BOOL f2;
@@ -21,6 +24,8 @@
 @end
 
 @implementation P1_Bubble
+
+
 static ccColor3B bubbleColors[] = {
     {255,255,255},  //白色 占位
     {255,229,55},   //黄色 do
@@ -134,6 +139,7 @@ static NSString * bubbleMusicalScale[] = {
     {
         _body.texture = [[CCSprite spriteWithFile:@"bubble-normal2.png"] texture];
     }
+
 }
 
 
@@ -153,6 +159,9 @@ static NSString * bubbleMusicalScale[] = {
 
 - (void)boom
 {
+
+//    [self stopAllActions];
+//    return;
     self.f1 = YES;
 //    int soundID = 1 + arc4random()%11;
 //    for(int i = 0 ; i < [self countOfColor]; i++)
@@ -183,7 +192,7 @@ static NSString * bubbleMusicalScale[] = {
     CCSequence * musicalScaleSeq = [CCSequence actions:musicalScaleSpawn,musicalScaleCallBlock, nil];
     [musicalScale runAction:musicalScaleSeq];
     
-    CCScaleBy *scale = [CCScaleBy actionWithDuration:0.1 scale:0.5];
+    CCScaleBy *scale = [CCScaleBy actionWithDuration:0.1f scale:0.5f];
     self.f3 = YES;
     CCCallBlock * removeBubble = [CCCallBlock actionWithBlock:^{
         [self removeBubbleAndBomb];
@@ -191,8 +200,13 @@ static NSString * bubbleMusicalScale[] = {
     }];
     
     CCSequence *seq = [CCSequence actions:scale,removeBubble, nil];
+//    seq.tag = REMOVE_ACTION_TAG;
+    CCBAnimationManager * animationManager = self.userObject;
+    [animationManager runAnimationsForSequenceNamed:@"stop"];   //Stop CCBAnimation Manager Animation
     [self runAction:seq];
 }
+
+
 
 - (void) completedAnimationSequenceNamed:(NSString *)name
 {

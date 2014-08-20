@@ -26,6 +26,7 @@
 - (void)didLoadFromCCB;
 - (void)update:(ccTime)delta;
 - (void)setObjectFirstPosition;
+- (void)setObjectFirstPosition:(float)offset;
 - (void)actionWhenOutOfScreen;
 
 @end

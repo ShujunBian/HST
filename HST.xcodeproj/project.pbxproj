@@ -842,6 +842,7 @@
 		EF22311E1996191F00BCB28E /* CircleTransitionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EF22311D1996191F00BCB28E /* CircleTransitionLayer.m */; };
 		EF223121199628A600BCB28E /* CCLayer+CircleTransitionExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EF223120199628A600BCB28E /* CCLayer+CircleTransitionExtension.m */; };
 		EF31302B197E0B5800B61C2A /* CircleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = EF31302A197E0B5800B61C2A /* CircleTransition.m */; };
+		EF3AEC2A19A1973000E2256B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF3AEC2919A1973000E2256B /* CoreMotion.framework */; };
 		EF403F82197A1D1700C6C8E1 /* p4_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */; };
 		EF403F83197A1D1700C6C8E1 /* p4_background.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED5197A1D1700C6C8E1 /* p4_background.png */; };
 		EF403F84197A1D1700C6C8E1 /* p4_ground-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED6197A1D1700C6C8E1 /* p4_ground-hd.png */; };
@@ -2208,6 +2209,7 @@
 		EF223120199628A600BCB28E /* CCLayer+CircleTransitionExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCLayer+CircleTransitionExtension.m"; sourceTree = "<group>"; };
 		EF313029197E0B5800B61C2A /* CircleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTransition.h; sourceTree = "<group>"; };
 		EF31302A197E0B5800B61C2A /* CircleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTransition.m; sourceTree = "<group>"; };
+		EF3AEC2919A1973000E2256B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_background-hd.png"; sourceTree = "<group>"; };
 		EF403ED5197A1D1700C6C8E1 /* p4_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4_background.png; sourceTree = "<group>"; };
 		EF403ED6197A1D1700C6C8E1 /* p4_ground-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p4_ground-hd.png"; sourceTree = "<group>"; };
@@ -2537,6 +2539,7 @@
 				51E5F20A19A3D61F008C86F3 /* Accelerate.framework in Frameworks */,
 				51E5F1E019A3D20E008C86F3 /* MediaPlayer.framework in Frameworks */,
 				51E5F20619A3D221008C86F3 /* libDIRAC_iOS-fat.a in Frameworks */,
+				EF3AEC2A19A1973000E2256B /* CoreMotion.framework in Frameworks */,
 				5169CBD318CDE5ED00426E6C /* OpenAL.framework in Frameworks */,
 				5169CBD918CDE5ED00426E6C /* UIKit.framework in Frameworks */,
 				5169CBCF18CDE5ED00426E6C /* QuartzCore.framework in Frameworks */,
@@ -2705,6 +2708,7 @@
 				51E5F20B19A3D639008C86F3 /* CoreMedia.framework */,
 				51E5F20919A3D61F008C86F3 /* Accelerate.framework */,
 				51E5F1DF19A3D20E008C86F3 /* MediaPlayer.framework */,
+				EF3AEC2919A1973000E2256B /* CoreMotion.framework */,
 				5169CBCE18CDE5ED00426E6C /* QuartzCore.framework */,
 				5169CBD018CDE5ED00426E6C /* OpenGLES.framework */,
 				5169CBD218CDE5ED00426E6C /* OpenAL.framework */,
