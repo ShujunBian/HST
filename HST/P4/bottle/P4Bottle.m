@@ -98,7 +98,7 @@
 
             if (ABS(motion.userAcceleration.x) > 0.1f || ABS(motion.userAcceleration.y) > 0.1f || ABS(motion.userAcceleration.z) > 0.1f)
             {
-//                NSLog(@"%.1f\t%.1f\t%.1f",motion.userAcceleration.x,motion.userAcceleration.y, motion.userAcceleration.z);
+                NSLog(@"%.1f\t%.1f\t%.1f",motion.userAcceleration.x,motion.userAcceleration.y, motion.userAcceleration.z);
     
                 //左摇 - 右摇+
                 //home键对面+
