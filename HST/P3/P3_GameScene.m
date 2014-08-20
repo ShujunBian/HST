@@ -22,18 +22,22 @@
 #import "CCLayer+CircleTransitionExtension.h"
 #import "WXYUtility.h"
 
-#import "CDAudioManager.h"
+#import "DiracAudioPlayer.h"
+#import <MediaPlayer/MediaPlayer.h>
 #import "SimpleAudioEngine.h"
+#import "VolumnHelper.h"
 
 @interface P3_GameScene ()
 
 @property (nonatomic, strong) MainMapHelper * mainMapHelper;
 @property (nonatomic, strong) NSMutableArray * monsterArray;
 
-@property (nonatomic) ALuint effectType;
+@property (nonatomic, strong) NSMutableArray * mDiracAudioPlayerArray;
 @end
 
 @implementation P3_GameScene
+{
+}
 
 @synthesize monsterLayer;
 
@@ -49,6 +53,8 @@
     self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
     
     self.monsterArray = [NSMutableArray arrayWithCapacity:5];
+    self.mDiracAudioPlayerArray = [NSMutableArray arrayWithCapacity:6];
+    
     [self initMonsters];
     [self setTouchEnabled:NO];
     [self performSelector:@selector(resetTouchEnable) withObject:self
@@ -109,30 +115,39 @@
     [super onEnter];
     [self showScene];
     [[SimpleAudioEngine sharedEngine]stopBackgroundMusic];
+    [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
+
     
-    NSArray *sourceGroups = [NSArray arrayWithObjects:[NSNumber numberWithInt:1], [NSNumber numberWithInt:31], nil];
-    [[CDAudioManager sharedManager].soundEngine defineSourceGroups:sourceGroups];
-    [CDAudioManager initAsynchronously:kAMM_FxPlusMusicIfNoOtherAudio];
+    for (int i = 1; i < 6; ++ i) {
 
-#warning 预加载音乐
-    [[CDAudioManager sharedManager].soundEngine loadBuffer:1 filePath:@"P3_BgMusic.mp3"];
-    [[CDAudioManager sharedManager].soundEngine loadBuffer:2 filePath:@"P3_1.mp3"];
-    _effectType = [[CDAudioManager sharedManager].soundEngine loadBuffer:3 filePath:@"P3_2.mp3"];
-    [[CDAudioManager sharedManager].soundEngine loadBuffer:4 filePath:@"P3_3.mp3"];
-    [[CDAudioManager sharedManager].soundEngine loadBuffer:5 filePath:@"P3_4.mp3"];
-    [[CDAudioManager sharedManager].soundEngine loadBuffer:6 filePath:@"P3_5.mp3"];
-
-    [[CDAudioManager sharedManager].soundEngine playSound:1 sourceGroupId:kASC_Left pitch:1.0 pan:0.0 gain:1.0 loop:YES];
-    for (int i = 2; i <= 6; ++ i) {
-        if (i == 5) {
-            [[CDAudioManager sharedManager].soundEngine playSound:i sourceGroupId:kASC_Right pitch:1.0 pan:0.0 gain:1.0 loop:YES];
+        NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"P3_%d",i] ofType:@"mp3"];
+        NSError *error = nil;
+        NSURL *inUrl = [NSURL fileURLWithPath:path];
+        DiracAudioPlayer * mDiracAudioPlay = [[[DiracAudioPlayer alloc]initWithContentsOfURL:inUrl channels:1 error:&error]autorelease];
+        [_mDiracAudioPlayerArray addObject:mDiracAudioPlay];
+        [mDiracAudioPlay setNumberOfLoops:-1];
+        [mDiracAudioPlay play];
+        
+        if (i == 3) {
+            [mDiracAudioPlay setVolume:1.0];
         }
         else {
-            [[CDAudioManager sharedManager].soundEngine playSound:i sourceGroupId:kASC_Right pitch:1.0 pan:0.0 gain:0.0 loop:YES];
+            [mDiracAudioPlay setVolume:0.0];
         }
     }
-
+    
+    NSString * bgMusicPath = [[NSBundle mainBundle] pathForResource:@"P3_BgMusic" ofType:@"mp3"];
+    NSError *error = nil;
+    NSURL *inUrl = [NSURL fileURLWithPath:bgMusicPath];
+    DiracAudioPlayer * mDiracAudioPlay = [[[DiracAudioPlayer alloc]initWithContentsOfURL:inUrl channels:1 error:&error]autorelease];
+    [_mDiracAudioPlayerArray addObject:mDiracAudioPlay];
+    [mDiracAudioPlay setNumberOfLoops:-1];
+    [mDiracAudioPlay play];
+    [mDiracAudioPlay setVolume:1.0];
+    
 }
+
+
 
 - (void)onEnterTransitionDidFinish
 {
@@ -141,18 +156,21 @@
         P3_Monster * monster = (P3_Monster *)[_monsterArray objectAtIndex:i];
         [monster beginningAnimationInDelayTime:0.4 + 0.2 * i];
     }
-    
 }
 
 - (void)onExit
 {
+    [super onExit];
+
     [self.monsterArray removeAllObjects];
     self.monsterArray = nil;
     self.mainMapHelper = nil;
     
-    [[CDAudioManager sharedManager].soundEngine stopAllSounds];
-
-    [super onExit];
+    for (DiracAudioPlayer * player in self.mDiracAudioPlayerArray) {
+        [player stop];
+    }
+    [self.mDiracAudioPlayerArray removeAllObjects];
+    self.mDiracAudioPlayerArray = nil;
 }
 
 #pragma mark - 恢复触摸
@@ -165,10 +183,6 @@
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    CDSoundSource * source = [[CDAudioManager sharedManager].soundEngine soundSourceForSound:5 sourceGroupId:kASC_Right];
-    CDSoundSourceFader * fader = [[CDSoundSourceFader alloc]init:source interpolationType:kIT_Linear startVal:1.0 endVal:0.0];
-    [fader setStopTargetWhenComplete:YES];
-    
     for(UITouch* touch in touches)
     {
         CGPoint touchPosition = [self locationFromTouch:touch];
@@ -395,32 +409,32 @@
 #pragma mark - P3_Monster Delegate
 - (void)monsterWithMonsterType:(MonsterType)monsterType DragginChangedLevel:(int)draggingLevel
 {
-    CDSoundSource * source = [[CDAudioManager sharedManager].soundEngine soundSourceForSound:monsterType + 2 sourceGroupId:kASC_Right];
+    DiracAudioPlayer * audioPlayer = [self.mDiracAudioPlayerArray objectAtIndex:monsterType];
     
     switch (draggingLevel) {
         case 1: {
-            [source setGain:0.0];
-            [source setPitch:1.0];
+            [audioPlayer setVolume:0.0];
+            [audioPlayer changePitch:1.0];
             break;
         }
         case 2: {
-            [source setGain:0.5];
-            [source setPitch:1.0];
+            [audioPlayer setVolume:0.5];
+            [audioPlayer changePitch:1.0];
             break;
         }
         case 3: {
-            [source setGain:1.0];
-            [source setPitch:1.0];
+            [audioPlayer setVolume:1.0];
+            [audioPlayer changePitch:1.0];
             break;
         }
         case 4: {
-            [source setGain:1.0];
-            [source setPitch:1.0];
+            [audioPlayer setVolume:1.0];
+            [audioPlayer changePitch:1.2];
             break;
         }
         case 5: {
-            [source setGain:1.0];
-            [source setPitch:1.0];
+            [audioPlayer setVolume:1.0];
+            [audioPlayer changePitch:1.4];
             break;
         }
         default:
@@ -442,7 +456,7 @@
         [child unscheduleAllSelectors];
     }
     
-
+    
     [self changeToScene:^CCScene *{
         CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
         return scene;

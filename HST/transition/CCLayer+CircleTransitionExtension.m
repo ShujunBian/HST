@@ -58,6 +58,7 @@
 {
     [self changeToScene:sceneBlock onCompletion:nil];
 }
+
 - (void)changeToScene:(SceneBlock)sceneBlock onCompletion:(VoidBlock)completion
 {
     [NSTimer scheduledTimerWithTimeInterval:0.1 target:[VolumnHelper sharedVolumnHelper] selector:@selector(downBackgroundVolumn:) userInfo:nil repeats:YES];

@@ -799,6 +799,18 @@
 		51CFF209196E436800602568 /* P3_Mushroom.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CFF208196E436800602568 /* P3_Mushroom.m */; };
 		51CFF230196E480800602568 /* P3_Flower.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CFF22F196E480800602568 /* P3_Flower.m */; };
 		51CFF24B196E6EE500602568 /* P3_Monster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CFF24A196E6EE500602568 /* P3_Monster.m */; };
+		51E5F1E019A3D20E008C86F3 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E5F1DF19A3D20E008C86F3 /* MediaPlayer.framework */; };
+		51E5F1FB19A3D221008C86F3 /*  DiracAudioPlayer ReadMe.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F1E219A3D221008C86F3 /*  DiracAudioPlayer ReadMe.rtf */; };
+		51E5F1FC19A3D221008C86F3 /* DiracAudioPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F1E419A3D221008C86F3 /* DiracAudioPlayer.mm */; };
+		51E5F1FD19A3D221008C86F3 /* DiracAudioPlayerBase.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F1E619A3D221008C86F3 /* DiracAudioPlayerBase.mm */; };
+		51E5F1FE19A3D221008C86F3 /* DiracFxAudioPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F1E819A3D221008C86F3 /* DiracFxAudioPlayer.mm */; };
+		51E5F1FF19A3D221008C86F3 /* EAFRead.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F1EB19A3D221008C86F3 /* EAFRead.mm */; };
+		51E5F20019A3D221008C86F3 /* EAFWrite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F1ED19A3D221008C86F3 /* EAFWrite.mm */; };
+		51E5F20619A3D221008C86F3 /* libDIRAC_iOS-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E5F1F619A3D221008C86F3 /* libDIRAC_iOS-fat.a */; };
+		51E5F20719A3D221008C86F3 /* libDIRAC_iOS4-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E5F1F719A3D221008C86F3 /* libDIRAC_iOS4-fat.a */; };
+		51E5F20819A3D221008C86F3 /* Utilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F1FA19A3D221008C86F3 /* Utilities.mm */; };
+		51E5F20A19A3D61F008C86F3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E5F20919A3D61F008C86F3 /* Accelerate.framework */; };
+		51E5F20C19A3D639008C86F3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E5F20B19A3D639008C86F3 /* CoreMedia.framework */; };
 		51F1634C196E7EFB00A5BE6A /* P3_PurpMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F1634B196E7EFB00A5BE6A /* P3_PurpMonster.m */; };
 		51F1634F196E7F1D00A5BE6A /* P3_BlueMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F1634E196E7F1D00A5BE6A /* P3_BlueMonster.m */; };
 		51F16352196E7F3C00A5BE6A /* P3_GreenMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F16351196E7F3C00A5BE6A /* P3_GreenMonster.m */; };
@@ -2137,6 +2149,25 @@
 		51CFF22F196E480800602568 /* P3_Flower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Flower.m; sourceTree = "<group>"; };
 		51CFF249196E6EE500602568 /* P3_Monster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Monster.h; sourceTree = "<group>"; };
 		51CFF24A196E6EE500602568 /* P3_Monster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Monster.m; sourceTree = "<group>"; };
+		51E5F1DF19A3D20E008C86F3 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		51E5F1E219A3D221008C86F3 /*  DiracAudioPlayer ReadMe.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = " DiracAudioPlayer ReadMe.rtf"; sourceTree = "<group>"; };
+		51E5F1E319A3D221008C86F3 /* DiracAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiracAudioPlayer.h; sourceTree = "<group>"; };
+		51E5F1E419A3D221008C86F3 /* DiracAudioPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DiracAudioPlayer.mm; sourceTree = "<group>"; };
+		51E5F1E519A3D221008C86F3 /* DiracAudioPlayerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiracAudioPlayerBase.h; sourceTree = "<group>"; };
+		51E5F1E619A3D221008C86F3 /* DiracAudioPlayerBase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DiracAudioPlayerBase.mm; sourceTree = "<group>"; };
+		51E5F1E719A3D221008C86F3 /* DiracFxAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiracFxAudioPlayer.h; sourceTree = "<group>"; };
+		51E5F1E819A3D221008C86F3 /* DiracFxAudioPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DiracFxAudioPlayer.mm; sourceTree = "<group>"; };
+		51E5F1EA19A3D221008C86F3 /* EAFRead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAFRead.h; sourceTree = "<group>"; };
+		51E5F1EB19A3D221008C86F3 /* EAFRead.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAFRead.mm; sourceTree = "<group>"; };
+		51E5F1EC19A3D221008C86F3 /* EAFWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAFWrite.h; sourceTree = "<group>"; };
+		51E5F1ED19A3D221008C86F3 /* EAFWrite.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EAFWrite.mm; sourceTree = "<group>"; };
+		51E5F1F519A3D221008C86F3 /* Dirac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dirac.h; sourceTree = "<group>"; };
+		51E5F1F619A3D221008C86F3 /* libDIRAC_iOS-fat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libDIRAC_iOS-fat.a"; sourceTree = "<group>"; };
+		51E5F1F719A3D221008C86F3 /* libDIRAC_iOS4-fat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libDIRAC_iOS4-fat.a"; sourceTree = "<group>"; };
+		51E5F1F919A3D221008C86F3 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		51E5F1FA19A3D221008C86F3 /* Utilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Utilities.mm; sourceTree = "<group>"; };
+		51E5F20919A3D61F008C86F3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		51E5F20B19A3D639008C86F3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		51F1634A196E7EFB00A5BE6A /* P3_PurpMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_PurpMonster.h; sourceTree = "<group>"; };
 		51F1634B196E7EFB00A5BE6A /* P3_PurpMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_PurpMonster.m; sourceTree = "<group>"; };
 		51F1634D196E7F1D00A5BE6A /* P3_BlueMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_BlueMonster.h; sourceTree = "<group>"; };
@@ -2502,6 +2533,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51E5F20C19A3D639008C86F3 /* CoreMedia.framework in Frameworks */,
+				51E5F20A19A3D61F008C86F3 /* Accelerate.framework in Frameworks */,
+				51E5F1E019A3D20E008C86F3 /* MediaPlayer.framework in Frameworks */,
+				51E5F20619A3D221008C86F3 /* libDIRAC_iOS-fat.a in Frameworks */,
 				5169CBD318CDE5ED00426E6C /* OpenAL.framework in Frameworks */,
 				5169CBD918CDE5ED00426E6C /* UIKit.framework in Frameworks */,
 				5169CBCF18CDE5ED00426E6C /* QuartzCore.framework in Frameworks */,
@@ -2512,6 +2547,7 @@
 				5169CBDB18CDE5ED00426E6C /* Foundation.framework in Frameworks */,
 				5169CBD518CDE5ED00426E6C /* AudioToolbox.framework in Frameworks */,
 				5169CBE118CDE5ED00426E6C /* GameKit.framework in Frameworks */,
+				51E5F20719A3D221008C86F3 /* libDIRAC_iOS4-fat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2521,6 +2557,10 @@
 		1801E4FF18E58F15004E0856 /* P3 */ = {
 			isa = PBXGroup;
 			children = (
+				51E5F1E119A3D221008C86F3 /* DiracAudioPlayer */,
+				51E5F1E919A3D221008C86F3 /* ExtAudioFile */,
+				51E5F1F419A3D221008C86F3 /* src */,
+				51E5F1F819A3D221008C86F3 /* util */,
 				51F16349196E7ED000A5BE6A /* Monster */,
 				5190B41518ED0574009078E4 /* P3_GameScene.h */,
 				5190B41618ED0574009078E4 /* P3_GameScene.m */,
@@ -2662,6 +2702,9 @@
 		5169CBCD18CDE5ED00426E6C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				51E5F20B19A3D639008C86F3 /* CoreMedia.framework */,
+				51E5F20919A3D61F008C86F3 /* Accelerate.framework */,
+				51E5F1DF19A3D20E008C86F3 /* MediaPlayer.framework */,
 				5169CBCE18CDE5ED00426E6C /* QuartzCore.framework */,
 				5169CBD018CDE5ED00426E6C /* OpenGLES.framework */,
 				5169CBD218CDE5ED00426E6C /* OpenAL.framework */,
@@ -3986,6 +4029,50 @@
 			path = P3;
 			sourceTree = "<group>";
 		};
+		51E5F1E119A3D221008C86F3 /* DiracAudioPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F1E219A3D221008C86F3 /*  DiracAudioPlayer ReadMe.rtf */,
+				51E5F1E319A3D221008C86F3 /* DiracAudioPlayer.h */,
+				51E5F1E419A3D221008C86F3 /* DiracAudioPlayer.mm */,
+				51E5F1E519A3D221008C86F3 /* DiracAudioPlayerBase.h */,
+				51E5F1E619A3D221008C86F3 /* DiracAudioPlayerBase.mm */,
+				51E5F1E719A3D221008C86F3 /* DiracFxAudioPlayer.h */,
+				51E5F1E819A3D221008C86F3 /* DiracFxAudioPlayer.mm */,
+			);
+			path = DiracAudioPlayer;
+			sourceTree = "<group>";
+		};
+		51E5F1E919A3D221008C86F3 /* ExtAudioFile */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F1EA19A3D221008C86F3 /* EAFRead.h */,
+				51E5F1EB19A3D221008C86F3 /* EAFRead.mm */,
+				51E5F1EC19A3D221008C86F3 /* EAFWrite.h */,
+				51E5F1ED19A3D221008C86F3 /* EAFWrite.mm */,
+			);
+			path = ExtAudioFile;
+			sourceTree = "<group>";
+		};
+		51E5F1F419A3D221008C86F3 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F1F519A3D221008C86F3 /* Dirac.h */,
+				51E5F1F619A3D221008C86F3 /* libDIRAC_iOS-fat.a */,
+				51E5F1F719A3D221008C86F3 /* libDIRAC_iOS4-fat.a */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		51E5F1F819A3D221008C86F3 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F1F919A3D221008C86F3 /* Utilities.h */,
+				51E5F1FA19A3D221008C86F3 /* Utilities.mm */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
 		51F16349196E7ED000A5BE6A /* Monster */ = {
 			isa = PBXGroup;
 			children = (
@@ -5003,6 +5090,7 @@
 				5185FCD1199B64CA0070D25C /* MainMap_P3Image.png in Resources */,
 				EF4040C2197A592100C6C8E1 /* world_p2_tree.png in Resources */,
 				51A942AB197A130A00920318 /* p2_ground-hd.png in Resources */,
+				51E5F1FB19A3D221008C86F3 /*  DiracAudioPlayer ReadMe.rtf in Resources */,
 				51A943C1197A142E00920318 /* P1_MonsterEye.ccb in Resources */,
 				EF4040B8197A592100C6C8E1 /* world_p1_mountain1.png in Resources */,
 				EF403FBB197A1D1700C6C8E1 /* P4_green_eyeball_2.png in Resources */,
@@ -5599,6 +5687,7 @@
 				5169CC7918CDE5ED00426E6C /* CCParticleExamples.m in Sources */,
 				5169CDE518CDE6D900426E6C /* P5_GrassLayer.m in Sources */,
 				5169CC7618CDE5ED00426E6C /* CCParticleBatchNode.m in Sources */,
+				51E5F1FE19A3D221008C86F3 /* DiracFxAudioPlayer.mm in Sources */,
 				5169CDE818CDE6D900426E6C /* P5_SkyLayer.m in Sources */,
 				5169CD9918CDE67C00426E6C /* P1_GameScene.m in Sources */,
 				5169CCB918CDE5EE00426E6C /* CCTextureAtlas.m in Sources */,
@@ -5625,6 +5714,7 @@
 				1801E74E18E594FC004E0856 /* CCSprite+getRect.m in Sources */,
 				5169CC5118CDE5ED00426E6C /* CCGrabber.m in Sources */,
 				5169CD5B18CDE5EE00426E6C /* mat3.c in Sources */,
+				51E5F1FF19A3D221008C86F3 /* EAFRead.mm in Sources */,
 				EF58EB161990C36300B13232 /* GameLoadingProcessBar.m in Sources */,
 				5169CD7518CDE5EE00426E6C /* AppDelegate.m in Sources */,
 				5169CCE518CDE5EE00426E6C /* CCES2Renderer.m in Sources */,
@@ -5666,6 +5756,7 @@
 				5169CC2C18CDE5ED00426E6C /* CCAtlasNode.m in Sources */,
 				5187A8A11990E56D00C52767 /* VolumnHelper.m in Sources */,
 				5169CD7218CDE5EE00426E6C /* main.m in Sources */,
+				51E5F20019A3D221008C86F3 /* EAFWrite.mm in Sources */,
 				5169D0C218CDEC1300426E6C /* CCBKeyframe.m in Sources */,
 				5169CDE318CDE6D900426E6C /* P5_Flower.m in Sources */,
 				5169CCF018CDE5EE00426E6C /* CCTouchHandler.m in Sources */,
@@ -5679,6 +5770,7 @@
 				5169CD6B18CDE5EE00426E6C /* vec3.c in Sources */,
 				5169D0C618CDEC1300426E6C /* CCNode+CCBRelativePositioning.m in Sources */,
 				5169CD1D18CDE5EE00426E6C /* TGAlib.m in Sources */,
+				51E5F1FC19A3D221008C86F3 /* DiracAudioPlayer.mm in Sources */,
 				5169CD9818CDE67C00426E6C /* P1_BubbleSkyLayer.m in Sources */,
 				51F1634F196E7F1D00A5BE6A /* P3_BlueMonster.m in Sources */,
 				5169CC2618CDE5ED00426E6C /* CCAnimation.m in Sources */,
@@ -5687,6 +5779,7 @@
 				5169CD9A18CDE67C00426E6C /* P1_Monster.m in Sources */,
 				5169CD2A18CDE5EE00426E6C /* CDAudioManager.m in Sources */,
 				5169CCD718CDE5EE00426E6C /* CCTransitionProgress.m in Sources */,
+				51E5F1FD19A3D221008C86F3 /* DiracAudioPlayerBase.mm in Sources */,
 				5169CCFA18CDE5EE00426E6C /* CCGLView.m in Sources */,
 				5169CD2E18CDE5EE00426E6C /* CDOpenALSupport.m in Sources */,
 				5169CC1118CDE5ED00426E6C /* CCActionInstant.m in Sources */,
@@ -5740,6 +5833,7 @@
 				5169CD6D18CDE5EE00426E6C /* vec4.c in Sources */,
 				5169CC2F18CDE5ED00426E6C /* CCCamera.m in Sources */,
 				5169CC2918CDE5ED00426E6C /* CCAnimationCache.m in Sources */,
+				51E5F20819A3D221008C86F3 /* Utilities.mm in Sources */,
 				5169CC4B18CDE5ED00426E6C /* CCGLProgram.m in Sources */,
 				5169CDC118CDE6B200426E6C /* P2_Monster.m in Sources */,
 				5169CD3B18CDE5EE00426E6C /* SimpleAudioEngine.m in Sources */,
@@ -5809,6 +5903,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
@@ -5820,11 +5915,19 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HST",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HST/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"HST/libs/kazmath/include\"";
 				INFOPLIST_FILE = HST/Resources/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HST/P3/src",
+				);
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
@@ -5842,10 +5945,19 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HST",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HST/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"HST/libs/kazmath/include\"";
 				INFOPLIST_FILE = HST/Resources/Info.plist;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HST/P3/src",
+				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",

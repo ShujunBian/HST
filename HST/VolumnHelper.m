@@ -39,7 +39,6 @@ static VolumnHelper * sharedVolumnHelper;
     return self;
 }
 
-
 - (void)downBackgroundVolumn:(NSTimer *)timer
 {
     if (_isFinishedUp) {
