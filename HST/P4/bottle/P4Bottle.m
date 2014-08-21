@@ -34,7 +34,7 @@
 @property (strong, nonatomic) CCRepeatForever* leftEarRepeat;
 @property (strong, nonatomic) CCRepeatForever* rightEarRepeat;
 
-@property (strong, nonatomic) CMMotionManager* motionManager;
+
 
 
 //@property (assign, nonatomic) float waterInOriginLife;
@@ -91,20 +91,6 @@
 //    self.waterInOriginLife = self.waterInLeft.life;
     self.soundObjArray = [NSMutableArray array];
     
-    self.motionManager = [[[CMMotionManager alloc] init] autorelease];
-    if (self.motionManager.deviceMotionAvailable) {
-        self.motionManager.deviceMotionUpdateInterval = 0.1f;
-        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
-
-            if (ABS(motion.userAcceleration.x) > 0.1f || ABS(motion.userAcceleration.y) > 0.1f || ABS(motion.userAcceleration.z) > 0.1f)
-            {
-//                NSLog(@"%.1f\t%.1f\t%.1f",motion.userAcceleration.x,motion.userAcceleration.y, motion.userAcceleration.z);
-    
-                //左摇 - 右摇+
-                //home键对面+
-            }
-        }];
-    }
 }
 - (void)onExit
 {
@@ -129,10 +115,6 @@
     }
     
     self.soundObjArray = nil;
-//    [self.leftFoot stopAllActions];
-//    [self.rightFoot stopAllActions];
-    [self.motionManager stopDeviceMotionUpdates];
-    self.motionManager = nil;
 }
 
 #pragma mark - Gesture
@@ -436,7 +418,6 @@
 {
     self.renewButton.visible = NO;
     [self.waterLayer worldSceneConfigure];
-    [self.motionManager stopDeviceMotionUpdates];
 }
 
 #pragma mark - Sound
