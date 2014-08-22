@@ -24,6 +24,9 @@
 #import "CCLayer+CircleTransitionExtension.h"
 #import "WXYUtility.h"
 
+#import <CoreMotion/CoreMotion.h>
+
+
 //#define BOTTLE_MOVE_DELAY 0.2f
 #define BOTTLE_SCALE_X_MAX 1.2f
 #define BOTTLE_SCALE_X_MIN 0.8f
@@ -36,6 +39,9 @@
 #define BOTTLE_SHAKE_MAX_X 10.f
 #define BOTTLE_SHAKE_MAX_Y 10.f
 #define BOTTLE_SHAKE_UPDATE_RATE 1.f / 30.f
+
+#define SHAKE_BASE_RATE_X 30.f
+#define SHAKE_BASE_RATE_Y 10.f
 
 @interface P4GameLayer ()
 - (void)monsterPressed:(P4Monster*)monster;
@@ -85,6 +91,9 @@
 //@property (strong, nonatomic) NSArray* monsterShakeEffectNames;
 @property (assign, nonatomic) ALuint currentShakeEffectId;
 
+//Motion
+@property (strong, nonatomic) CMMotionManager* motionManager;
+@property (assign, nonatomic) BOOL isShakeDevice;
 @end
 
 @implementation P4GameLayer
@@ -160,6 +169,50 @@
 //    CCSprite* s = [CCSprite spriteWithTexture:te.sprite.texture];
 //    [self addChild:s];
     [self showScene];
+    
+    
+    self.motionManager = [[[CMMotionManager alloc] init] autorelease];
+    if (self.motionManager.deviceMotionAvailable) {
+        self.motionManager.deviceMotionUpdateInterval = 0.1f;
+        [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
+            [self handleMotion:motion error:error];
+        }];
+    }
+}
+
+- (void)handleMotion:(CMDeviceMotion*)motion error:(NSError*)error
+{
+    int orientFactor = 1;
+    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft)
+    {
+        orientFactor = 1;
+    }
+    else
+    {
+        orientFactor = -1;
+    }
+
+    if ((ABS(motion.userAcceleration.x) > 0.1f || ABS(motion.userAcceleration.y) > 0.1f) && !self.isTouchBottle )
+    {
+        self.isShakeDevice = YES;
+        NSLog(@"%.1f\t%.1f\t%.1f",motion.userAcceleration.x,motion.userAcceleration.y, motion.userAcceleration.z);
+        
+        //home键在左边时
+        //x 上+ 下-
+        //y 左摇- 右摇+
+        P4BottleOffset* offset = [[[P4BottleOffset alloc] init] autorelease];
+        offset.deltaX = orientFactor * SHAKE_BASE_RATE_X * motion.userAcceleration.y;
+        offset.deltaY = orientFactor * SHAKE_BASE_RATE_Y * motion.userAcceleration.x;
+        [self bottleMoveDelta:offset];
+    }
+    else
+    {
+        if (!self.isTouchBottle && self.isShakeDevice)
+        {
+            [self bottleMoveBack];
+        }
+        self.isShakeDevice = NO;
+    }
 }
 
 - (void)onExit
@@ -183,6 +236,8 @@
     self.shakeMonster = nil;
 //    self.monsterShakeEffectNames = nil;
     self.table = nil;
+    [self.motionManager stopDeviceMotionUpdates];
+    self.motionManager = nil;
 }
 
 - (void)onExitTransitionDidStart
