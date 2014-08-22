@@ -55,6 +55,7 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
     }
     return self;
 }
+
 -(id)init
 {
     if (self = [super init]) {
@@ -140,7 +141,7 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
     CCMenuItem * uiButtonItem = [WXYMenuItemImage itemWithNormalImage:@"MainMapPlayButton.png"
                                                         selectedImage:nil
                                                                target:self
-                                                             selector:@selector(clickUIPlayButton)];
+                                                             selector:@selector(clickUIPlayButton:)];
     CCMenu * uiButton = [CCMenu menuWithItems:uiButtonItem, nil];
     [uiButton setPosition:CGPointMake(512.0 - 512.0, 234.0 - 384.0)];
     [uiButton setAnchorPoint:CGPointMake(0.5, 0.5)];
@@ -200,10 +201,12 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
     [self addChild:_uiNode];
 }
 
-- (void)clickUIPlayButton
+- (void)clickUIPlayButton:(id)sender
 {
     [[SimpleAudioEngine sharedEngine] playEffect:@"UILittleButton.mp3"];
     
+    ((CCMenuItem *)sender).isEnabled = NO;
+
     if (_currentMainMapType == MainMapP4) {
         [self changeToScene:^CCScene *{
             CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];

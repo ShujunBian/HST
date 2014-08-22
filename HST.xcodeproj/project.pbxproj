@@ -806,11 +806,21 @@
 		51E5F1FE19A3D221008C86F3 /* DiracFxAudioPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F1E819A3D221008C86F3 /* DiracFxAudioPlayer.mm */; };
 		51E5F1FF19A3D221008C86F3 /* EAFRead.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F1EB19A3D221008C86F3 /* EAFRead.mm */; };
 		51E5F20019A3D221008C86F3 /* EAFWrite.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F1ED19A3D221008C86F3 /* EAFWrite.mm */; };
-		51E5F20619A3D221008C86F3 /* libDIRAC_iOS-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E5F1F619A3D221008C86F3 /* libDIRAC_iOS-fat.a */; };
-		51E5F20719A3D221008C86F3 /* libDIRAC_iOS4-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E5F1F719A3D221008C86F3 /* libDIRAC_iOS4-fat.a */; };
+		51E5F20619A3D221008C86F3 /* libDIRAC_iOS-fat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E5F1F619A3D221008C86F3 /* libDIRAC_iOS-fat.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		51E5F20819A3D221008C86F3 /* Utilities.mm in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F1FA19A3D221008C86F3 /* Utilities.mm */; };
 		51E5F20A19A3D61F008C86F3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E5F20919A3D61F008C86F3 /* Accelerate.framework */; };
 		51E5F20C19A3D639008C86F3 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E5F20B19A3D639008C86F3 /* CoreMedia.framework */; };
+		51E5F20F19A480BB008C86F3 /* P2_UINode.m in Sources */ = {isa = PBXBuildFile; fileRef = 51E5F20E19A480BB008C86F3 /* P2_UINode.m */; };
+		51E5F22419A48395008C86F3 /* P2_MusicSelectBg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F21E19A48395008C86F3 /* P2_MusicSelectBg-hd.png */; };
+		51E5F22519A48395008C86F3 /* P2_MusicSelectBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F21F19A48395008C86F3 /* P2_MusicSelectBg.png */; };
+		51E5F22619A48395008C86F3 /* P2_MusicSelectImage0-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F22019A48395008C86F3 /* P2_MusicSelectImage0-hd.png */; };
+		51E5F22719A48395008C86F3 /* P2_MusicSelectImage0.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F22119A48395008C86F3 /* P2_MusicSelectImage0.png */; };
+		51E5F22819A48395008C86F3 /* P2_MusicSelectImage1-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F22219A48395008C86F3 /* P2_MusicSelectImage1-hd.png */; };
+		51E5F22919A48395008C86F3 /* P2_MusicSelectImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F22319A48395008C86F3 /* P2_MusicSelectImage1.png */; };
+		51E5F23219A4AD6D008C86F3 /* P2_UIbgShadow-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F22E19A4AD6D008C86F3 /* P2_UIbgShadow-hd.png */; };
+		51E5F23319A4AD6D008C86F3 /* P2_UIbgShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F22F19A4AD6D008C86F3 /* P2_UIbgShadow.png */; };
+		51E5F23419A4AD6D008C86F3 /* P2_UIButtonShadow-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F23019A4AD6D008C86F3 /* P2_UIButtonShadow-hd.png */; };
+		51E5F23519A4AD6D008C86F3 /* P2_UIButtonShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 51E5F23119A4AD6D008C86F3 /* P2_UIButtonShadow.png */; };
 		51F1634C196E7EFB00A5BE6A /* P3_PurpMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F1634B196E7EFB00A5BE6A /* P3_PurpMonster.m */; };
 		51F1634F196E7F1D00A5BE6A /* P3_BlueMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F1634E196E7F1D00A5BE6A /* P3_BlueMonster.m */; };
 		51F16352196E7F3C00A5BE6A /* P3_GreenMonster.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F16351196E7F3C00A5BE6A /* P3_GreenMonster.m */; };
@@ -2169,6 +2179,18 @@
 		51E5F1FA19A3D221008C86F3 /* Utilities.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Utilities.mm; sourceTree = "<group>"; };
 		51E5F20919A3D61F008C86F3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		51E5F20B19A3D639008C86F3 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		51E5F20D19A480BB008C86F3 /* P2_UINode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P2_UINode.h; sourceTree = "<group>"; };
+		51E5F20E19A480BB008C86F3 /* P2_UINode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P2_UINode.m; sourceTree = "<group>"; };
+		51E5F21E19A48395008C86F3 /* P2_MusicSelectBg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P2_MusicSelectBg-hd.png"; sourceTree = "<group>"; };
+		51E5F21F19A48395008C86F3 /* P2_MusicSelectBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P2_MusicSelectBg.png; sourceTree = "<group>"; };
+		51E5F22019A48395008C86F3 /* P2_MusicSelectImage0-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P2_MusicSelectImage0-hd.png"; sourceTree = "<group>"; };
+		51E5F22119A48395008C86F3 /* P2_MusicSelectImage0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P2_MusicSelectImage0.png; sourceTree = "<group>"; };
+		51E5F22219A48395008C86F3 /* P2_MusicSelectImage1-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P2_MusicSelectImage1-hd.png"; sourceTree = "<group>"; };
+		51E5F22319A48395008C86F3 /* P2_MusicSelectImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P2_MusicSelectImage1.png; sourceTree = "<group>"; };
+		51E5F22E19A4AD6D008C86F3 /* P2_UIbgShadow-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P2_UIbgShadow-hd.png"; sourceTree = "<group>"; };
+		51E5F22F19A4AD6D008C86F3 /* P2_UIbgShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P2_UIbgShadow.png; sourceTree = "<group>"; };
+		51E5F23019A4AD6D008C86F3 /* P2_UIButtonShadow-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P2_UIButtonShadow-hd.png"; sourceTree = "<group>"; };
+		51E5F23119A4AD6D008C86F3 /* P2_UIButtonShadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P2_UIButtonShadow.png; sourceTree = "<group>"; };
 		51F1634A196E7EFB00A5BE6A /* P3_PurpMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_PurpMonster.h; sourceTree = "<group>"; };
 		51F1634B196E7EFB00A5BE6A /* P3_PurpMonster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_PurpMonster.m; sourceTree = "<group>"; };
 		51F1634D196E7F1D00A5BE6A /* P3_BlueMonster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_BlueMonster.h; sourceTree = "<group>"; };
@@ -2550,7 +2572,6 @@
 				5169CBDB18CDE5ED00426E6C /* Foundation.framework in Frameworks */,
 				5169CBD518CDE5ED00426E6C /* AudioToolbox.framework in Frameworks */,
 				5169CBE118CDE5ED00426E6C /* GameKit.framework in Frameworks */,
-				51E5F20719A3D221008C86F3 /* libDIRAC_iOS4-fat.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3191,6 +3212,8 @@
 				5169CDB718CDE6B200426E6C /* P2_SkyLayer.m */,
 				5185FCFC199CBC270070D25C /* P2_MusicSelectLayer.h */,
 				5185FCFD199CBC270070D25C /* P2_MusicSelectLayer.m */,
+				51E5F20D19A480BB008C86F3 /* P2_UINode.h */,
+				51E5F20E19A480BB008C86F3 /* P2_UINode.m */,
 			);
 			name = P2;
 			sourceTree = "<group>";
@@ -3870,6 +3893,7 @@
 		51A941F6197A130A00920318 /* pictures */ = {
 			isa = PBXGroup;
 			children = (
+				51E5F21D19A48395008C86F3 /* UI */,
 				51A941F7197A130A00920318 /* headFrame */,
 				51A94208197A130A00920318 /* p2_cloud-hd.png */,
 				51A94209197A130A00920318 /* p2_cloud.png */,
@@ -4075,6 +4099,23 @@
 				51E5F1FA19A3D221008C86F3 /* Utilities.mm */,
 			);
 			path = util;
+			sourceTree = "<group>";
+		};
+		51E5F21D19A48395008C86F3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				51E5F22E19A4AD6D008C86F3 /* P2_UIbgShadow-hd.png */,
+				51E5F22F19A4AD6D008C86F3 /* P2_UIbgShadow.png */,
+				51E5F23019A4AD6D008C86F3 /* P2_UIButtonShadow-hd.png */,
+				51E5F23119A4AD6D008C86F3 /* P2_UIButtonShadow.png */,
+				51E5F21E19A48395008C86F3 /* P2_MusicSelectBg-hd.png */,
+				51E5F21F19A48395008C86F3 /* P2_MusicSelectBg.png */,
+				51E5F22019A48395008C86F3 /* P2_MusicSelectImage0-hd.png */,
+				51E5F22119A48395008C86F3 /* P2_MusicSelectImage0.png */,
+				51E5F22219A48395008C86F3 /* P2_MusicSelectImage1-hd.png */,
+				51E5F22319A48395008C86F3 /* P2_MusicSelectImage1.png */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		51F16349196E7ED000A5BE6A /* Monster */ = {
@@ -4778,6 +4819,7 @@
 				EF403FD7197A1D1700C6C8E1 /* P4_monster2_mask-hd.png in Resources */,
 				51A941C6197A128700920318 /* P5_Bell2.ccbi in Resources */,
 				EF4040DE197A592100C6C8E1 /* world_p4.ccbi in Resources */,
+				51E5F23319A4AD6D008C86F3 /* P2_UIbgShadow.png in Resources */,
 				51A943AF197A142E00920318 /* P1_BubblePosition1.ccb in Resources */,
 				EF403FD4197A1D1700C6C8E1 /* imageRename.py in Resources */,
 				51A94083197A121300920318 /* P3_CeruleanMonster.ccbi in Resources */,
@@ -4801,6 +4843,7 @@
 				EF8308191999F1B600EBFAF5 /* p3_resource.plist in Resources */,
 				EF69E17919A11461006F86FE /* process_background-hd.png in Resources */,
 				EF404006197A1D1700C6C8E1 /* P4GreenMonster.ccbi in Resources */,
+				51E5F22519A48395008C86F3 /* P2_MusicSelectBg.png in Resources */,
 				EF40401A197A1D1700C6C8E1 /* P4water_particle-hd.png in Resources */,
 				EF404018197A1D1700C6C8E1 /* P4SprayParticleRight.ccb in Resources */,
 				51A94390197A142E00920318 /* flowerhead.png in Resources */,
@@ -4998,6 +5041,7 @@
 				51A94092197A121300920318 /* P3_RedMonsterBody.ccb in Resources */,
 				EF403F83197A1D1700C6C8E1 /* p4_background.png in Resources */,
 				51A941D1197A128700920318 /* P5_FlowerHead.ccb in Resources */,
+				51E5F22619A48395008C86F3 /* P2_MusicSelectImage0-hd.png in Resources */,
 				51A942B7197A130A00920318 /* p2_monster_body-hd.png in Resources */,
 				51A94059197A121300920318 /* P3_Monster5_Eye_background.png in Resources */,
 				EF403F96197A1D1700C6C8E1 /* P4_bottle_right_ear-hd.png in Resources */,
@@ -5028,6 +5072,7 @@
 				5185FCF1199B947C0070D25C /* MainMapUIEyeBlack.png in Resources */,
 				51A94193197A128700920318 /* P5_monsterEyeWhite-hd.png in Resources */,
 				EF4040B7197A592100C6C8E1 /* world_p1_mountain1-hd.png in Resources */,
+				51E5F22919A48395008C86F3 /* P2_MusicSelectImage1.png in Resources */,
 				51A9415A197A128700920318 /* P5_BellEyesClose.png in Resources */,
 				EF53BC0619906A04007C8258 /* p4_monster_reserve.mp3 in Resources */,
 				51A942CB197A130A00920318 /* p2_mushroom1EyesBlink-hd.png in Resources */,
@@ -5096,6 +5141,7 @@
 				51A942AB197A130A00920318 /* p2_ground-hd.png in Resources */,
 				51E5F1FB19A3D221008C86F3 /*  DiracAudioPlayer ReadMe.rtf in Resources */,
 				51A943C1197A142E00920318 /* P1_MonsterEye.ccb in Resources */,
+				51E5F23219A4AD6D008C86F3 /* P2_UIbgShadow-hd.png in Resources */,
 				EF4040B8197A592100C6C8E1 /* world_p1_mountain1.png in Resources */,
 				EF403FBB197A1D1700C6C8E1 /* P4_green_eyeball_2.png in Resources */,
 				51A9402D197A121300920318 /* P3_Monster1_Body.png in Resources */,
@@ -5117,6 +5163,7 @@
 				51A941DE197A128700920318 /* P5_MonsterEyeUnderground.ccbi in Resources */,
 				51A94173197A128700920318 /* p5_flower_eyes_blink-hd.png in Resources */,
 				51A94095197A121300920318 /* P3_Mushroom_body_left.ccbi in Resources */,
+				51E5F23419A4AD6D008C86F3 /* P2_UIButtonShadow-hd.png in Resources */,
 				51A94019197A121300920318 /* P3_bubble.png in Resources */,
 				EF403FFB197A1D1700C6C8E1 /* P4Cloud2.ccb in Resources */,
 				51A943A9197A142E00920318 /* mountion-hd.png in Resources */,
@@ -5167,6 +5214,7 @@
 				EF403FA4197A1D1700C6C8E1 /* ccbParticleSnow.png in Resources */,
 				51A94184197A128700920318 /* P5_homeChair.png in Resources */,
 				EF830839199A082400EBFAF5 /* Icon-Small-50@2x.png in Resources */,
+				51E5F22419A48395008C86F3 /* P2_MusicSelectBg-hd.png in Resources */,
 				EF40401B197A1D1700C6C8E1 /* P4water_particle.png in Resources */,
 				EF403FD5197A1D1700C6C8E1 /* P4_monster1_mask-hd.png in Resources */,
 				51A9404F197A121300920318 /* P3_Monster4_Eye_background.png in Resources */,
@@ -5227,6 +5275,7 @@
 				51A941D3197A128700920318 /* P5_GameScene.ccb in Resources */,
 				EF4040D4197A592100C6C8E1 /* world_p5_stone.png in Resources */,
 				51A9401E197A121300920318 /* P3_eye_Skin_up-hd.png in Resources */,
+				51E5F22719A48395008C86F3 /* P2_MusicSelectImage0.png in Resources */,
 				EF708AFC19879B9D00068D61 /* world_p3_dialog-hd.png in Resources */,
 				51A943A1197A142E00920318 /* monsterbody-hd.png in Resources */,
 				EF830837199A082400EBFAF5 /* Icon-76.png in Resources */,
@@ -5237,6 +5286,7 @@
 				51A94033197A121300920318 /* P3_monster1_face.png in Resources */,
 				EF403FC6197A1D1700C6C8E1 /* P4_red_eyeball_2-hd.png in Resources */,
 				51ACAABD199A2F6400A34946 /* P1_5.mp3 in Resources */,
+				51E5F23519A4AD6D008C86F3 /* P2_UIButtonShadow.png in Resources */,
 				EF4040CE197A592100C6C8E1 /* world_p4_stone.png in Resources */,
 				EF708AFE19879B9D00068D61 /* world_p4_dialog-hd.png in Resources */,
 				51A9418B197A128700920318 /* P5_monsterBigShadow-hd.png in Resources */,
@@ -5346,6 +5396,7 @@
 				51A942E3197A130A00920318 /* P2_Flower.ccb in Resources */,
 				51A9418E197A128700920318 /* P5_monsterBody.png in Resources */,
 				EF404003197A1D1700C6C8E1 /* P4GameLayer.ccb in Resources */,
+				51E5F22819A48395008C86F3 /* P2_MusicSelectImage1-hd.png in Resources */,
 				51ACAAA01999F98E00A34946 /* MainMapUIBg-hd.png in Resources */,
 				51A941C1197A128700920318 /* P5_SoilPS1.plist in Resources */,
 				51A94082197A121300920318 /* P3_CeruleanMonster.ccb in Resources */,
@@ -5697,6 +5748,7 @@
 				5169CCB918CDE5EE00426E6C /* CCTextureAtlas.m in Sources */,
 				5169CD6718CDE5EE00426E6C /* utility.c in Sources */,
 				5169CDE118CDE6D900426E6C /* P5_Bell.m in Sources */,
+				51E5F20F19A480BB008C86F3 /* P2_UINode.m in Sources */,
 				5169CDE418CDE6D900426E6C /* P5_GameScene.m in Sources */,
 				5169CD1318CDE5EE00426E6C /* CCVertex.m in Sources */,
 				5169CDEB18CDE6D900426E6C /* P5_UndergroundPassage.m in Sources */,

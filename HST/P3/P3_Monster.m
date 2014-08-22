@@ -313,6 +313,7 @@
                     }
                 }
             }
+            
             self.isStartMoving = YES;
             self.movingType = MovingStay;
             self.monsterBodyCounter = [self.monsterBodyArray count];

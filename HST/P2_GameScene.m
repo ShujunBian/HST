@@ -25,6 +25,7 @@
 #import "CCLayer+CircleTransitionExtension.h"
 #import "WXYUtility.h"
 #import "P2_SkyLayer.h"
+#import "P2_MusicSelectLayer.h"
 
 #define EVERYDELTATIME 0.016667
 #define ADD_MONSTER_UPDATE_DELTA 0.3f
@@ -36,8 +37,8 @@
 @property (nonatomic) NSInteger currentSongType;
 @property (strong, nonatomic) NSDate* initialDate;
 @property (assign, nonatomic) int iCountHaha;
-
 @property (assign, nonatomic) int nextMusicFrameIndex;
+@property (nonatomic, strong) P2_MusicSelectLayer * musicSelectLayer;
 
 @end
 
@@ -56,7 +57,7 @@
         self.currentSongType = 2;
         
         [self initBackgroundMusicAndEffect];
-//        self.initialDate = [NSDate date];
+        
         self.iCountHaha = 0;
     }
     return  self;
@@ -81,17 +82,19 @@
     [self addChild:firstLittleMonster z:0];
     firstLittleMonster.position = CGPointMake(370, 0);
 
-    
     secondLittleMonster = (P2_LittleMonster *)[CCBReader nodeGraphFromFile:@"P2_SecondLittlemonster.ccbi"];
     [self addChild:secondLittleMonster z:0];
     secondLittleMonster.position = CGPointMake(260, 0);
     
+    self.musicSelectLayer = [[[P2_MusicSelectLayer alloc]init]autorelease];
+    [self.musicSelectLayer addP2SelectSongUI];
+    [self addChild:self.musicSelectLayer z:50];
 }
 
 - (void)playBackgroundMusic
 {
     NSLog(@"current start Data is %@",[NSDate dateWithTimeIntervalSinceNow:0]);
-    NSString * backgroundMusic = [NSString stringWithFormat:@"P2_%d_background.mp3",_currentSongType];
+    NSString * backgroundMusic = [NSString stringWithFormat:@"P2_%ld_background.mp3",(long)_currentSongType];
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:backgroundMusic loop:NO];
     [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
     self.initialDate = [NSDate date];
@@ -109,9 +112,6 @@
     
 #warning 之后改为播放当前选择的音乐
     [self playBackgroundMusic];
-    
-    [self startMusic];
-
 }
 
 - (void)onExit

@@ -28,5 +28,4 @@
 @property (nonatomic, assign) P2_LittleMonster * firstLittleMonster;
 @property (nonatomic, assign) P2_LittleMonster * secondLittleMonster;
 
-
 @end
