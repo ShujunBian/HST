@@ -37,6 +37,10 @@
         self.restartMenu = [CCMenu menuWithItems:_restartItem, nil];
         [_restartMenu setPosition:CGPointMake(point.x + 92.0, point.y)];
         [prototype addChild:_restartMenu z:15];
+        
+        [_restartMenu setOpacity:0.0];
+        CCFadeIn * fadeIn = [CCFadeIn actionWithDuration:0.2];
+        [_restartMenu runAction:fadeIn];
     }
     else {
         self.restartItem = [WXYMenuItemImage itemWithNormalImage:@"P1_AutoButton.png"
@@ -46,6 +50,10 @@
         self.restartMenu = [CCMenu menuWithItems:_restartItem, nil];
         [_restartMenu setPosition:CGPointMake(point.x + 115.0, point.y)];
         [prototype addChild:_restartMenu z:15];
+        
+        [_restartMenu setOpacity:0.0];
+        CCFadeIn * fadeIn = [CCFadeIn actionWithDuration:0.2];
+        [_restartMenu runAction:fadeIn];
     }
     
     self.mainMapItem = [WXYMenuItemImage itemWithNormalImage:@"mainMapButton.png"
@@ -55,12 +63,17 @@
     self.mainMapMenu = [CCMenu menuWithItems:_mainMapItem, nil];
     [_mainMapMenu setPosition:point];
     [prototype addChild:_mainMapMenu z:15];
+    [_mainMapMenu setOpacity:0.0];
+    CCFadeIn * fadeIn = [CCFadeIn actionWithDuration:0.2];
+    [_mainMapMenu runAction:fadeIn];
     
     self.helpItem = [WXYMenuItemImage itemWithNormalImage:@"helpButton.png" selectedImage:nil target:self selector:@selector(helpBtnPressed)];
     self.helpMenu = [CCMenu menuWithItems:self.helpItem, nil];
-    
     self.helpMenu.position = ccp([CCDirector sharedDirector].winSize.width - 50.f, point.y);
     [prototype addChild:self.helpMenu z:15];
+    [self.helpItem setOpacity:0.0];
+    CCFadeIn * fadeIn2 = [CCFadeIn actionWithDuration:0.2];
+    [self.helpItem runAction:fadeIn2];
     
 }
 

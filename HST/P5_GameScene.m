@@ -41,8 +41,6 @@
 
 - (void) didLoadFromCCB
 {
-    self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 7.0)];
-
     CGSize winSize = [[CCDirector sharedDirector]winSize];
     CCLayerColor * background = [CCLayerColor layerWithColor:ccc4(183,255,226,255)];
     [self addChild:background z:-10];
@@ -89,6 +87,8 @@
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P5_BackgroundMusic.mp3"];
     [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
     
+    [[[CCDirector sharedDirector] view]setMultipleTouchEnabled:NO];
+    
     [self showScene];
 }
 
@@ -124,6 +124,8 @@
 {
     [monsterUnderground setVisible:YES];
     [monsterUnderground moveToUnderground];
+    
+    self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 7.0)];
 }
 
 //- (void)completedAnimationSequenceNamed:(NSString *)name

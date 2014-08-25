@@ -10,7 +10,7 @@
 #import "CCLayerColor+CCLayerColorAnimation.h"
 #import "P2_UINode.h"
 
-#define kMaxSongNumber          2
+#define kMaxSongNumber          3
 //
 //static CGPoint musicPlayButtonPoint[] = {
 //    {531.0,168.0},

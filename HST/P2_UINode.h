@@ -24,10 +24,12 @@ static CGPoint musicSelectPoint[] =
 static CGPoint musicShadowPoint[] =
 {
     {0.0,-36.5},
+    {0.0,-36.5},
     {0.0,-36.5}
 };
 
 static CGPoint musicPlayButtonPoint[] = {
+    {3.0,-235.0},
     {3.0,-235.0},
     {3.0,-235.0}
 };

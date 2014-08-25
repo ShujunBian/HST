@@ -72,7 +72,10 @@
 //            [self.uiButtonShadow setScale:0.0];
 //            [self addChild:self.uiButtonShadow z:2];
 //            [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:self.uiButtonShadow afterDelay:0.4];
-
+        if(uiNumber == 2){
+            uiNumber = 1;
+        }
+        
         self.uiImage = [CCSprite spriteWithFile:[NSString stringWithFormat:@"P2_MusicSelectImage%d.png",uiNumber]];
         [self.uiImage setAnchorPoint:CGPointMake(0.5, 0.5)];
         [self.uiImage setPosition:musicImagePoint[uiNumber]];
@@ -84,12 +87,17 @@
         switch (uiNumber) {
             case 0:{
                 songName = @"Honey Mushroom";
-                timeString = @"1:05";
+                timeString = @"1:10";
                 break;
             }
             case 1:{
-                songName = @"Honey Mushroom";
-                timeString = @"1:05";
+                songName = @"Sunflower";
+                timeString = @"1:12";
+                break;
+            }
+            case 2:{
+                songName = @"Shining";
+                timeString = @"1:09";
                 break;
             }
             default: {

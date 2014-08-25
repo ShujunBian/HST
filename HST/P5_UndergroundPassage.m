@@ -36,6 +36,7 @@
 - (void)onExit
 {
     [super onExit];
+    
     [passageFileNameArray release];
     passageFileNameArray = nil;
 }

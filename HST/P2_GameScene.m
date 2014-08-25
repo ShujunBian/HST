@@ -27,7 +27,6 @@
 #import "P2_SkyLayer.h"
 #import "P2_MusicFinishLayer.h"
 
-#define EVERYDELTATIME 0.016667
 #define ADD_MONSTER_UPDATE_DELTA 0.3f
 
 @interface P2_GameScene ()
