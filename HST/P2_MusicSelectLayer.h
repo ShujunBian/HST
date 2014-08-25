@@ -8,13 +8,9 @@
 
 #import "CCLayer.h"
 #import "CCLayerColor+CCLayerColorAnimation.h"
+#import "P2_UINode.h"
 
-static CGPoint musicSelectPoint[] =
-{
-    {527.0,403.0},
-    {1048.0,403.0}
-};
-
+#define kMaxSongNumber          2
 //
 //static CGPoint musicPlayButtonPoint[] = {
 //    {531.0,168.0},
@@ -26,8 +22,19 @@ static CGPoint musicSelectPoint[] =
 //    {1042.0,527.0}
 //};
 
-@interface P2_MusicSelectLayer : CCLayer
+@protocol P2_MusicSelectLayerDelegate <NSObject>
+
+- (void)changeCurrentSongByNumber:(int)number;
+- (void)selectLayerRemoveFromeGameScene;
+
+@end
+
+@interface P2_MusicSelectLayer : CCLayer<UIGestureRecognizerDelegate,P2_UINodeDelegate>
+
+@property (nonatomic) int currentSongNumber;
+@property (nonatomic, assign) id<P2_MusicSelectLayerDelegate> delegate;
 
 - (void)addP2SelectSongUI;
+- (void)resetUINodeByCurrentSongNumber:(int)number;
 
 @end

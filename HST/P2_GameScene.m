@@ -25,7 +25,7 @@
 #import "CCLayer+CircleTransitionExtension.h"
 #import "WXYUtility.h"
 #import "P2_SkyLayer.h"
-#import "P2_MusicSelectLayer.h"
+#import "P2_MusicFinishLayer.h"
 
 #define EVERYDELTATIME 0.016667
 #define ADD_MONSTER_UPDATE_DELTA 0.3f
@@ -39,6 +39,7 @@
 @property (assign, nonatomic) int iCountHaha;
 @property (assign, nonatomic) int nextMusicFrameIndex;
 @property (nonatomic, strong) P2_MusicSelectLayer * musicSelectLayer;
+@property (nonatomic, strong) P2_MusicFinishLayer * musicFinishLayer;
 
 @end
 
@@ -54,7 +55,7 @@
     if ((self = [super init])) {
         self.frameCounter = 0;
         self.nextMusicFrameIndex = 0;
-        self.currentSongType = 2;
+        self.currentSongType = 1;
         
         [self initBackgroundMusicAndEffect];
         
@@ -75,7 +76,6 @@
     
     self.monster = (P2_Monster *)[CCBReader nodeGraphFromFile:@"P2_Monster.ccbi"];
     [self addChild:monster z:0];
-    
     monster.position = CGPointMake(512, -5);
     
     firstLittleMonster = (P2_LittleMonster *)[CCBReader nodeGraphFromFile:@"P2_FirstLittlemonster.ccbi"];
@@ -87,6 +87,7 @@
     secondLittleMonster.position = CGPointMake(260, 0);
     
     self.musicSelectLayer = [[[P2_MusicSelectLayer alloc]init]autorelease];
+    self.musicSelectLayer.delegate = self;
     [self.musicSelectLayer addP2SelectSongUI];
     [self addChild:self.musicSelectLayer z:50];
 }
@@ -148,19 +149,35 @@
     }
 }
 
+- (void)stopMusic
+{
+    [self unschedule:@selector(addLittleFlyObjectEverySecond:)];
+    [self unscheduleUpdate];
+
+    for (CCNode * node in [self children]) {
+        
+        if ([[node class] isSubclassOfClass:[P2_GrassLayer class]]) {
+            ((P2_GrassLayer *)node).isWaitingForSelect = YES;
+            for (CCNode * grassNode in [(P2_GrassLayer *)node children]) {
+                if ([[grassNode class] isSubclassOfClass:[P2_GameObjects class]]) {
+                    ((P2_GameObjects *)grassNode).isWaitingForSelect = YES;
+                }
+            }
+        }
+        else if ([[node class] isSubclassOfClass:[P2_SkyLayer class]]) {
+            ((P2_SkyLayer *)node).isWaitingForSelect = YES;
+        }
+    }
+}
+
 - (void)initBackgroundMusicAndEffect
 {
     NSString *fileName = [[NSBundle mainBundle] pathForResource:@"P2_MusicSetting" ofType:@"plist"];
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:fileName];
-    frameToShowCurrentFrame = [[NSArray alloc]initWithArray:[(NSArray *)[dictionary objectForKey: @"MusicEffectPosition"] objectAtIndex:0]];
-    musicTypeInFrame = [[NSArray alloc]initWithArray:[(NSArray *)[dictionary objectForKey: @"MusicEffect"] objectAtIndex:0]];
-    self.maxMusicSeconds = [(NSNumber *)[(NSArray *)[dictionary objectForKey:@"maxMusicSeconds"] objectAtIndex:0] integerValue];
+    frameToShowCurrentFrame = [[NSArray alloc]initWithArray:[(NSArray *)[dictionary objectForKey: @"MusicEffectPosition"] objectAtIndex:self.currentSongType - 1]];
+    musicTypeInFrame = [[NSArray alloc]initWithArray:[(NSArray *)[dictionary objectForKey: @"MusicEffect"] objectAtIndex:self.currentSongType - 1]];
+    self.maxMusicSeconds = [(NSNumber *)[(NSArray *)[dictionary objectForKey:@"maxMusicSeconds"] objectAtIndex:self.currentSongType - 1] integerValue];
 }
-
-//- (void)onExitTransitionDidStart
-//{
-//    [NSTimer scheduledTimerWithTimeInterval:0.015 target:[VolumnHelper sharedVolumnHelper] selector:@selector(upBackgroundVolumn:) userInfo:nil repeats:YES];
-//}
 
 - (void)letFirstLittleMonsterJump
 {
@@ -202,6 +219,12 @@
         [[SimpleAudioEngine sharedEngine] rewindBackgroundMusic];
         _frameCounter = 0;
         self.nextMusicFrameIndex = 0;
+        [self stopMusic];
+        
+        self.musicFinishLayer = [[[P2_MusicFinishLayer alloc]init]autorelease];
+        [self.musicFinishLayer addFinishedUI];
+        self.musicFinishLayer.delegate = self;
+        [self addChild:self.musicFinishLayer z:50];
     }
     else
     {
@@ -264,17 +287,19 @@
 
 -(void) ccTouchesBegan:(NSSet*)touches withEvent:(id)event
 {
-//    for(UITouch* touch in touches)
-//    {
-        if (monster.isFinishJump) {
-            monster.isFinishJump = NO;
-            
-            [monster monsterReadyToJump];
-            [self performSelector:@selector(firstLittleMonsterJump) withObject:nil afterDelay:0.2];
-            [self performSelector:@selector(secondLittleMonsterJump) withObject:nil afterDelay:0.4];
-        }
+    if (monster.isFinishJump) {
+        monster.isFinishJump = NO;
         
-//    }
+        [monster monsterReadyToJump];
+        [self performSelector:@selector(firstLittleMonsterJump) withObject:nil afterDelay:0.1];
+        [self performSelector:@selector(secondLittleMonsterJump) withObject:nil afterDelay:0.2];
+    }
+    
+}
+
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
 }
 
 -(void) ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
@@ -300,9 +325,40 @@
     }
 }
 
+#pragma mark - P2_MusicSelectLayerDelegate
+- (void)changeCurrentSongByNumber:(int)number
+{
+    self.currentSongType = number;
+    [self playBackgroundMusic];
+}
+
+- (void)selectLayerRemoveFromeGameScene
+{
+    self.musicSelectLayer = nil;
+    
+    [self initBackgroundMusicAndEffect];
+    [self playBackgroundMusic];
+    [self startMusic];
+}
+
+- (void)finishLayerRemoveFromeGameScene
+{
+    self.musicFinishLayer = nil;
+    
+    self.musicSelectLayer = [[[P2_MusicSelectLayer alloc]init]autorelease];
+    self.musicSelectLayer.delegate = self;
+    [self.musicSelectLayer addP2SelectSongUI];
+    [self addChild:self.musicSelectLayer z:50];
+    [self.musicSelectLayer resetUINodeByCurrentSongNumber:(self.currentSongType - 1)];
+    
+    [self initBackgroundMusicAndEffect];
+    [self playBackgroundMusic];
+}
+
 #pragma mark - 菜单键调用函数 mainMapDelegate
 - (void)restartGameScene
 {
+    
 }
 
 - (void)returnToMainMap
@@ -361,10 +417,5 @@
 - (void)releaseMusicAndEffect
 {
 #warning 之后卸载音乐根据配置文件
-    for (int i = 0; i < 7; ++ i) {
-        NSString * boomMusicFilename = [NSString stringWithFormat:@"P2_%d.mp3",i + 1];
-        [[SimpleAudioEngine sharedEngine]unloadEffect:boomMusicFilename];
-    }
-//    [[CDAudioManager sharedManager]stopBackgroundMusic];
 }
 @end

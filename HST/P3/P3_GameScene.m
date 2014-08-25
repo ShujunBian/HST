@@ -71,8 +71,8 @@ static float pitchRate[] = {
 
 - (void)dealloc
 {
-    [super dealloc];
     [WXYUtility clearImageCachedOfPlist:@"p3_resource"];
+    [super dealloc];
 }
 
 #pragma mark - 初始化Monsters

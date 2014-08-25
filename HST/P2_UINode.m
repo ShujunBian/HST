@@ -8,13 +8,16 @@
 
 #import "P2_UINode.h"
 #import "CCLayerColor+CCLayerColorAnimation.h"
-
+#import "WXYMenuItemImage.h"
 @interface P2_UINode()
 
+@property (nonatomic) int uiNumber;
 @property (nonatomic, strong) CCSprite * uiBg;
-@property (nonatomic, strong) CCSprite * uiPlayButton;
+@property (nonatomic, strong) CCMenuItem * uiPlayButtonItem;
+@property (nonatomic, strong) CCMenu * uiPlayButton;
 @property (nonatomic, strong) CCSprite * uiImage;
 @property (nonatomic, strong) CCSprite * uiShadow;
+@property (nonatomic, strong) CCSprite * uiButtonShadow;
 
 @end
 
@@ -23,37 +26,59 @@
 - (id)initWithUINumber:(int)uiNumber
 {
     if (self = [super init]) {
+        self.isAnimationFinished = YES;
+        self.uiNumber = uiNumber;
         
         self.uiBg = [CCSprite spriteWithFile:@"P2_MusicSelectBg.png"];
         [self.uiBg setAnchorPoint:CGPointMake(0.5, 0.5)];
         [self.uiBg setPosition:CGPointMake(0.0, 0.0)];
         [self addChild:self.uiBg];
+        
+        self.uiPlayButtonItem = [WXYMenuItemImage itemWithNormalImage:@"MainMapPlayButton.png"
+                                                         selectedImage:nil
+                                                                target:self
+                                                              selector:@selector(clickUIPlayButton:)];
+        self.uiPlayButton = [CCMenu menuWithItems:self.uiPlayButtonItem, nil];
+        [self.uiPlayButton setPosition:musicPlayButtonPoint[uiNumber]];
+        [self.uiPlayButton setAnchorPoint:CGPointMake(0.5, 0.5)];
+//        [self.uiPlayButtonItem setScale:0.0];
+        [self addChild:self.uiPlayButton z:0];
+//        [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:self.uiPlayButtonItem afterDelay:0.4];
+
+        self.uiShadow = [CCSprite spriteWithFile:@"P2_UIShadow.png"];
+        [self.uiShadow setAnchorPoint:CGPointMake(0.5, 0.5)];
+        [self.uiShadow setPosition:musicShadowPoint[uiNumber]];
+        [self.uiShadow setOpacity:0.0];
+        [self addChild:self.uiShadow z:1];
+        
         CCScaleTo * uibgScaleTo1 = [CCScaleTo actionWithDuration:0.2 scale:1.2];
         CCScaleTo * uibgScaleTo2 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
         CCSequence * bgSeq = [CCSequence actions:uibgScaleTo1,uibgScaleTo2, nil];
-        [self.uiBg runAction:bgSeq];
-
-        self.uiPlayButton = [CCSprite spriteWithFile:@"MainMapUIPlayButton.png"];
-        [self.uiPlayButton setAnchorPoint:CGPointMake(0.5, 0.5)];
-        [self.uiPlayButton setPosition:musicPlayButtonPoint[uiNumber]];
-        [self addChild:self.uiPlayButton];
-        [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:self.uiImage afterDelay:0.4];
+        [self runAction:bgSeq];
+        
+//            self.uiShadow = [CCSprite spriteWithFile:@"P2_UIbgShadow.png"];
+//            [self.uiShadow setAnchorPoint:CGPointMake(0.5, 0.5)];
+//            [self.uiShadow setPosition:CGPointMake(0.0, 0.0)];
+//            [self.uiShadow setScale:0.0];
+//            [self addChild:self.uiShadow z:1];
+//            CCScaleTo * uiShadowScaleTo1 = [CCScaleTo actionWithDuration:0.2 scale:1.20];
+//            CCScaleTo * uiShadowScaleTo2 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
+//            CCSequence * ShadowSeq = [CCSequence actions:uiShadowScaleTo1,uiShadowScaleTo2, nil];
+//            [self.uiShadow runAction:ShadowSeq];
+//            
+//            self.uiButtonShadow = [CCSprite spriteWithFile:@"P2_UIButtonShadow.png"];
+//            [self.uiButtonShadow setAnchorPoint:CGPointMake(0.5, 0.5)];
+//            [self.uiButtonShadow setPosition:CGPointMake(musicPlayButtonPoint[uiNumber].x, musicPlayButtonPoint[uiNumber].y)];
+//            [self.uiButtonShadow setScale:0.0];
+//            [self addChild:self.uiButtonShadow z:2];
+//            [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:self.uiButtonShadow afterDelay:0.4];
 
         self.uiImage = [CCSprite spriteWithFile:[NSString stringWithFormat:@"P2_MusicSelectImage%d.png",uiNumber]];
         [self.uiImage setAnchorPoint:CGPointMake(0.5, 0.5)];
         [self.uiImage setPosition:musicImagePoint[uiNumber]];
+        [self.uiImage setScale:0.0];
         [self addChild:self.uiImage];
         [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:self.uiImage afterDelay:0.4];
-//        [self performSelector:@selector(shakeDialogIcon:) withObject:uiButtonItem afterDelay:1.25];
-        
-        self.uiShadow = [CCSprite spriteWithFile:@"P2_UIShadow.png"];
-        [self.uiShadow setAnchorPoint:CGPointMake(0.5, 0.5)];
-        [self.uiShadow setPosition:musicShadowPoint[uiNumber]];
-        [self addChild:self.uiShadow z:1];
-        CCScaleTo * uiShadowScaleTo1 = [CCScaleTo actionWithDuration:0.2 scale:1.21];
-        CCScaleTo * uiShadowScaleTo2 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
-        CCSequence * ShadowSeq = [CCSequence actions:uiShadowScaleTo1,uiShadowScaleTo2, nil];
-        [self.uiShadow runAction:ShadowSeq];
         
         NSString * songName,*timeString;
         switch (uiNumber) {
@@ -112,8 +137,23 @@
         [uilabel5 setOpacity:0];
         [self addChild:uilabel5];
         [self performSelector:@selector(p2UILabelFadeInAnimation:) withObject:uilabel5 afterDelay:0.2];
+        
+        [self scheduleUpdate];
     }
     return self;
+}
+
+- (void)update:(ccTime)delta
+{
+    if (self.position.x < musicSelectPoint[0].x + kXDistanceBetweenSongs &&
+        self.position.x > musicSelectPoint[0].x - kXDistanceBetweenSongs) {
+        
+        [self.uiShadow setOpacity:fabsf(self.position.x - musicSelectPoint[0].x) / kXDistanceBetweenSongs * 255.0];
+    }
+    else {
+        [self.uiShadow setOpacity:255.0];
+
+    }
 }
 
 - (void)mainmapUIScaleAnimation:(CCNode *)node
@@ -127,6 +167,36 @@
     [node runAction:uibgSeq];
 }
 
+- (void)setToFinalPosition:(CGPoint)finalPosition
+              andIsToRight:(BOOL)isToRight
+{
+    self.isAnimationFinished = NO;
+    int rate = isToRight ? 1 : -1;
+    CCMoveTo * moveTo1 = [CCMoveTo actionWithDuration:0.12 position:CGPointMake(finalPosition.x + rate * 30, finalPosition.y)];
+//    CCEaseOut * easeOut1 = [CCEaseOut actionWithAction:moveTo1 rate:1.5];
+    CCMoveTo * moveTo2 = [CCMoveTo actionWithDuration:0.07 position:CGPointMake(finalPosition.x - rate * 15, finalPosition.y)];
+//    CCEaseBackOut * easeOut2 = [CCEaseBackOut actionWithAction:moveTo2];
+    CCMoveTo * moveTo3 = [CCMoveTo actionWithDuration:0.03 position:CGPointMake(finalPosition.x + rate * 5.0, finalPosition.y)];
+
+    CCMoveTo * moveTo4 = [CCMoveTo actionWithDuration:0.03 position:CGPointMake(finalPosition.x - rate * 2.5, finalPosition.y)];
+
+    CCMoveTo * moveTo5 = [CCMoveTo actionWithDuration:0.03 position:CGPointMake(finalPosition.x, finalPosition.y)];
+//    CCEaseBackOut * easeOut3 = [CCEaseBackOut actionWithAction:moveTo3];
+    CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
+        self.isAnimationFinished = YES;
+    }];
+    CCSequence * seq = [CCSequence actions:
+                        moveTo1,
+                        moveTo2,
+                        moveTo3,
+                        moveTo4,
+                        moveTo5,
+                        callBack,
+                        nil];
+    
+    [self runAction:seq];
+}
+
 - (void)shakeDialogIcon:(CCNode *)node
 {
     float moveLength = 2.f;
@@ -136,7 +206,7 @@
     CCMoveBy* moveBy3 = [CCMoveBy actionWithDuration:moveDuration position:ccp(0, -moveLength)];
     CCSequence* moveSequence =
     [CCSequence actions:
-     [CCDelayTime actionWithDuration:CCRANDOM_0_1() * 0.5],
+     [CCDelayTime actionWithDuration:0.5 * 0.5],
      [CCEaseSineOut actionWithAction:moveBy1],
      [CCEaseSineInOut actionWithAction:moveBy2],
      [CCEaseSineIn actionWithAction:moveBy3],
@@ -151,5 +221,9 @@
     [label runAction:fadeIn];
 }
 
+- (void)clickUIPlayButton:(id)sender
+{
+    [self.delegate clickUIPlayButtonByMusicNumber:self.uiNumber];
+}
 
 @end
