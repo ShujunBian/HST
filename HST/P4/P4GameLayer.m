@@ -42,6 +42,7 @@
 
 #define SHAKE_BASE_RATE_X 30.f
 #define SHAKE_BASE_RATE_Y 10.f
+#define SHAKE_MOVE_BACK_COUNT_INIT 3
 
 @interface P4GameLayer ()
 - (void)monsterPressed:(P4Monster*)monster;
@@ -94,6 +95,7 @@
 //Motion
 @property (strong, nonatomic) CMMotionManager* motionManager;
 @property (assign, nonatomic) BOOL isShakeDevice;
+@property (assign, nonatomic) int shakeMoveBackCount;
 @end
 
 @implementation P4GameLayer
@@ -173,7 +175,7 @@
     
     self.motionManager = [[[CMMotionManager alloc] init] autorelease];
     if (self.motionManager.deviceMotionAvailable) {
-        self.motionManager.deviceMotionUpdateInterval = 0.1f;
+        self.motionManager.deviceMotionUpdateInterval = 0.04f;
         [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
             [self handleMotion:motion error:error];
         }];
@@ -192,8 +194,9 @@
         orientFactor = -1;
     }
 
-    if ((ABS(motion.userAcceleration.x) > 0.1f || ABS(motion.userAcceleration.y) > 0.1f) && !self.isTouchBottle )
+    if ((ABS(motion.userAcceleration.x) > 0.03f || ABS(motion.userAcceleration.y) > 0.03f) && !self.isTouchBottle )
     {
+        self.shakeMoveBackCount = SHAKE_MOVE_BACK_COUNT_INIT;
         self.isShakeDevice = YES;
         NSLog(@"%.1f\t%.1f\t%.1f",motion.userAcceleration.x,motion.userAcceleration.y, motion.userAcceleration.z);
         
@@ -207,11 +210,13 @@
     }
     else
     {
-        if (!self.isTouchBottle && self.isShakeDevice)
+        --self.shakeMoveBackCount;
+        if (!self.isTouchBottle && self.isShakeDevice && self.shakeMoveBackCount <= 0 )
         {
             [self bottleMoveBack];
+            self.isShakeDevice = NO;
         }
-        self.isShakeDevice = NO;
+
     }
 }
 
