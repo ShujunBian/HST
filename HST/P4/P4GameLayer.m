@@ -194,7 +194,7 @@
         orientFactor = -1;
     }
 
-    if ((ABS(motion.userAcceleration.x) > 0.03f || ABS(motion.userAcceleration.y) > 0.03f) && !self.isTouchBottle )
+    if ((ABS(motion.userAcceleration.x) > 0.03f || ABS(motion.userAcceleration.y) > 0.03f) && !self.isTouchBottle && !self.someMonsterAnimated )
     {
         self.shakeMoveBackCount = SHAKE_MOVE_BACK_COUNT_INIT;
         self.isShakeDevice = YES;
@@ -216,7 +216,6 @@
             [self bottleMoveBack];
             self.isShakeDevice = NO;
         }
-
     }
 }
 
@@ -263,8 +262,6 @@
     [self.blueMonster retain];
     [self.redMonster retain];
     [self.table retain];
-    
-    
     
     self.helper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
 
