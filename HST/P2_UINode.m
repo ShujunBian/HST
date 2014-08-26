@@ -180,15 +180,15 @@
 {
     self.isAnimationFinished = NO;
     int rate = isToRight ? 1 : -1;
-    CCMoveTo * moveTo1 = [CCMoveTo actionWithDuration:0.12 position:CGPointMake(finalPosition.x + rate * 30, finalPosition.y)];
+    CCMoveTo * moveTo1 = [CCMoveTo actionWithDuration:0.2 position:CGPointMake(finalPosition.x + rate * 30, finalPosition.y)];
 //    CCEaseOut * easeOut1 = [CCEaseOut actionWithAction:moveTo1 rate:1.5];
-    CCMoveTo * moveTo2 = [CCMoveTo actionWithDuration:0.07 position:CGPointMake(finalPosition.x - rate * 15, finalPosition.y)];
+    CCMoveTo * moveTo2 = [CCMoveTo actionWithDuration:0.1 position:CGPointMake(finalPosition.x - rate * 15, finalPosition.y)];
 //    CCEaseBackOut * easeOut2 = [CCEaseBackOut actionWithAction:moveTo2];
-    CCMoveTo * moveTo3 = [CCMoveTo actionWithDuration:0.03 position:CGPointMake(finalPosition.x + rate * 5.0, finalPosition.y)];
+//    CCMoveTo * moveTo3 = [CCMoveTo actionWithDuration:0.05 position:CGPointMake(finalPosition.x + rate * 5.0, finalPosition.y)];
 
-    CCMoveTo * moveTo4 = [CCMoveTo actionWithDuration:0.03 position:CGPointMake(finalPosition.x - rate * 2.5, finalPosition.y)];
+//    CCMoveTo * moveTo4 = [CCMoveTo actionWithDuration:0.05 position:CGPointMake(finalPosition.x - rate * 2.5, finalPosition.y)];
 
-    CCMoveTo * moveTo5 = [CCMoveTo actionWithDuration:0.03 position:CGPointMake(finalPosition.x, finalPosition.y)];
+    CCMoveTo * moveTo5 = [CCMoveTo actionWithDuration:0.05 position:CGPointMake(finalPosition.x, finalPosition.y)];
 //    CCEaseBackOut * easeOut3 = [CCEaseBackOut actionWithAction:moveTo3];
     CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
         self.isAnimationFinished = YES;
@@ -196,8 +196,8 @@
     CCSequence * seq = [CCSequence actions:
                         moveTo1,
                         moveTo2,
-                        moveTo3,
-                        moveTo4,
+//                        moveTo3,
+//                        moveTo4,
                         moveTo5,
                         callBack,
                         nil];

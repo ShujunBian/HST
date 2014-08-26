@@ -14,7 +14,6 @@
 @required
 
 - (void)restartGameScene;
-
 - (void)returnToMainMap;
 - (void)helpButtonPressed;
 
@@ -34,5 +33,12 @@
 @property (nonatomic, assign) CCMenu * helpMenu;
 
 @property (nonatomic, assign) id<MainMapDelegate> delegate;
+
+- (void)disableMainMapButton;
+- (void)disableHelpButton;
+- (void)disableRestartButton;
+- (void)enableMainMapButton;
+- (void)enableHelpButton;
+- (void)enableRestartButton;
 
 @end

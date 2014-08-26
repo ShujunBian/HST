@@ -87,10 +87,23 @@
     [self addChild:secondLittleMonster z:0];
     secondLittleMonster.position = CGPointMake(260, 0);
     
+//    [self performSelector:@selector(addFinishLayer) withObject:nil afterDelay:2.0];
+    
     self.musicSelectLayer = [[[P2_MusicSelectLayer alloc]init]autorelease];
     self.musicSelectLayer.delegate = self;
     [self.musicSelectLayer addP2SelectSongUI];
-    [self addChild:self.musicSelectLayer z:50];
+    [self addChild:self.musicSelectLayer z:20];
+    [self.mainMapHelper disableRestartButton];
+    [self.mainMapHelper disableHelpButton];
+}
+
+- (void)addFinishLayer
+{
+    self.musicFinishLayer = [[[P2_MusicFinishLayer alloc]init]autorelease];
+    self.musicFinishLayer.matchString = @"test";
+    [self.musicFinishLayer addFinishedUI];
+    self.musicFinishLayer.delegate = self;
+    [self addChild:self.musicFinishLayer z:20];
 }
 
 - (void)playBackgroundMusic
@@ -131,6 +144,8 @@
 #pragma mark - 正式开始音乐播放
 - (void)startMusic
 {
+    [self.mainMapHelper enableHelpButton];
+    [self.mainMapHelper enableRestartButton];
     [self schedule:@selector(addLittleFlyObjectEverySecond:) interval:ADD_MONSTER_UPDATE_DELTA];
     [self scheduleUpdate];
     
@@ -229,11 +244,12 @@
                              self.matchCounter,
                              (long)maxCounter
                              ];
+        self.matchCounter = 0;
         self.musicFinishLayer = [[[P2_MusicFinishLayer alloc]init]autorelease];
         self.musicFinishLayer.matchString = string;
         [self.musicFinishLayer addFinishedUI];
         self.musicFinishLayer.delegate = self;
-        [self addChild:self.musicFinishLayer z:50];
+        [self addChild:self.musicFinishLayer z:20];
     }
     else
     {
@@ -357,8 +373,10 @@
     self.musicSelectLayer = [[[P2_MusicSelectLayer alloc]init]autorelease];
     self.musicSelectLayer.delegate = self;
     [self.musicSelectLayer addP2SelectSongUI];
-    [self addChild:self.musicSelectLayer z:50];
+    [self addChild:self.musicSelectLayer z:20];
     [self.musicSelectLayer resetUINodeByCurrentSongNumber:(self.currentSongType - 1)];
+    [self.mainMapHelper disableRestartButton];
+    [self.mainMapHelper disableHelpButton];
     
     [self initBackgroundMusicAndEffect];
     [self playBackgroundMusic];
