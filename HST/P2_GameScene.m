@@ -39,6 +39,7 @@
 @property (assign, nonatomic) int nextMusicFrameIndex;
 @property (nonatomic, strong) P2_MusicSelectLayer * musicSelectLayer;
 @property (nonatomic, strong) P2_MusicFinishLayer * musicFinishLayer;
+@property (nonatomic) int matchCounter;
 
 @end
 
@@ -55,6 +56,7 @@
         self.frameCounter = 0;
         self.nextMusicFrameIndex = 0;
         self.currentSongType = 1;
+        self.matchCounter = 0;
         
         [self initBackgroundMusicAndEffect];
         
@@ -201,7 +203,7 @@
               fabsf(monster.position.y - tempObjects.position.y) < collisionHeight + 50) ||
             (fabsf((monster.position.x - tempObjects.position.x)) < 125 &&
              fabsf(monster.position.y - tempObjects.position.y) < collisionHeight)) {
-                
+                ++ self.matchCounter;
                 [_flyObjectsOnScreen removeObject:tempObjects];
                 [tempObjects handleCollision];
                 [monster handleCollision];
@@ -220,7 +222,15 @@
         self.nextMusicFrameIndex = 0;
         [self stopMusic];
         
+        NSString *fileName = [[NSBundle mainBundle] pathForResource:@"P2_MusicSetting" ofType:@"plist"];
+        NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:fileName];
+        NSInteger maxCounter = [[(NSArray *)[dictionary objectForKey: @"MusicEffect"] objectAtIndex:self.currentSongType - 1] count];
+        NSString * string = [NSString stringWithFormat:@"%d/%ld",
+                             self.matchCounter,
+                             (long)maxCounter
+                             ];
         self.musicFinishLayer = [[[P2_MusicFinishLayer alloc]init]autorelease];
+        self.musicFinishLayer.matchString = string;
         [self.musicFinishLayer addFinishedUI];
         self.musicFinishLayer.delegate = self;
         [self addChild:self.musicFinishLayer z:50];
