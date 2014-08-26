@@ -2600,11 +2600,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF3AEC2A19A1973000E2256B /* CoreMotion.framework in Frameworks */,
 				51E5F20C19A3D639008C86F3 /* CoreMedia.framework in Frameworks */,
 				51E5F20A19A3D61F008C86F3 /* Accelerate.framework in Frameworks */,
 				51E5F1E019A3D20E008C86F3 /* MediaPlayer.framework in Frameworks */,
 				51E5F20619A3D221008C86F3 /* libDIRAC_iOS-fat.a in Frameworks */,
-				EF3AEC2A19A1973000E2256B /* CoreMotion.framework in Frameworks */,
 				5169CBD318CDE5ED00426E6C /* OpenAL.framework in Frameworks */,
 				5169CBD918CDE5ED00426E6C /* UIKit.framework in Frameworks */,
 				5169CBCF18CDE5ED00426E6C /* QuartzCore.framework in Frameworks */,
@@ -6082,6 +6082,7 @@
 				GCC_PREFIX_HEADER = HST/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"HST/libs/kazmath/include\"";
 				INFOPLIST_FILE = HST/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HST/P3/src",
@@ -6092,7 +6093,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "40A23946-638C-4A96-BC09-7B97DE041FF7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6111,6 +6112,7 @@
 				GCC_PREFIX_HEADER = HST/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"HST/libs/kazmath/include\"";
 				INFOPLIST_FILE = HST/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HST/P3/src",
@@ -6122,7 +6124,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "40A23946-638C-4A96-BC09-7B97DE041FF7";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
