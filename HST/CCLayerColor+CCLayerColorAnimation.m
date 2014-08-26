@@ -17,15 +17,15 @@
 
 - (void)fadeInAnimation:(NSTimer *)timer
 {
-    if (self.opacity == 191) {
-        [timer invalidate];
-    }
-    
     if (fabsf(self.opacity - 191) < 20) {
         self.opacity = 191;
     }
     else {
         self.opacity += 19;
+    }
+    
+    if (self.opacity == 191) {
+        [timer invalidate];
     }
 }
 
@@ -36,10 +36,6 @@
 
 - (void)fadeOutAnimation:(NSTimer *)timer
 {
-    if (self.opacity == 0) {
-        [timer invalidate];
-    }
-    
     if (fabsf(self.opacity - 0) < 16) {
         self.opacity -= 1;
         if (fabsf(self.opacity - 0) < 2) {
@@ -48,6 +44,10 @@
     }
     else {
         self.opacity -= 15;
+    }
+    
+    if (self.opacity == 0) {
+        [timer invalidate];
     }
 }
 

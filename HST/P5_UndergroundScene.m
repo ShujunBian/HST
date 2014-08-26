@@ -620,6 +620,8 @@ static float holesRadius[] = {
     
     [_drawOrderArray removeAllObjects];
     [_drawOrderArray release];
+    
+    [[[CCDirector sharedDirector] view]setMultipleTouchEnabled:YES];
 }
 
 #pragma mark - 退出时释放内存

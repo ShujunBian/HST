@@ -27,6 +27,14 @@
 #import "SimpleAudioEngine.h"
 #import "VolumnHelper.h"
 
+static float pitchRate[] = {
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+};
+
 @interface P3_GameScene ()
 
 @property (nonatomic, strong) MainMapHelper * mainMapHelper;
@@ -63,8 +71,8 @@
 
 - (void)dealloc
 {
-    [super dealloc];
     [WXYUtility clearImageCachedOfPlist:@"p3_resource"];
+    [super dealloc];
 }
 
 #pragma mark - 初始化Monsters
@@ -119,7 +127,7 @@
 
     
     for (int i = 1; i < 6; ++ i) {
-
+        
         NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"P3_%d",i] ofType:@"mp3"];
         NSError *error = nil;
         NSURL *inUrl = [NSURL fileURLWithPath:path];
@@ -134,6 +142,9 @@
         else {
             [mDiracAudioPlay setVolume:0.0];
         }
+        [mDiracAudioPlay changePitch:pitchRate[i - 1]];
+        [mDiracAudioPlay changeDuration:1.1];
+        
     }
     
     NSString * bgMusicPath = [[NSBundle mainBundle] pathForResource:@"P3_BgMusic" ofType:@"mp3"];
@@ -144,7 +155,8 @@
     [mDiracAudioPlay setNumberOfLoops:-1];
     [mDiracAudioPlay play];
     [mDiracAudioPlay setVolume:1.0];
-    
+    [mDiracAudioPlay changeDuration:1.1];
+
 }
 
 
@@ -414,27 +426,27 @@
     switch (draggingLevel) {
         case 1: {
             [audioPlayer setVolume:0.0];
-            [audioPlayer changePitch:1.0];
+            [audioPlayer changePitch:1.0 * pitchRate[monsterType]];
             break;
         }
         case 2: {
-            [audioPlayer setVolume:0.5];
-            [audioPlayer changePitch:1.0];
+            [audioPlayer setVolume:1.0];
+            [audioPlayer changePitch:0.1 + pitchRate[monsterType]];
             break;
         }
         case 3: {
             [audioPlayer setVolume:1.0];
-            [audioPlayer changePitch:1.0];
+            [audioPlayer changePitch:0.2 + pitchRate[monsterType]];
             break;
         }
         case 4: {
             [audioPlayer setVolume:1.0];
-            [audioPlayer changePitch:1.2];
+            [audioPlayer changePitch:0.3 + pitchRate[monsterType]];
             break;
         }
         case 5: {
             [audioPlayer setVolume:1.0];
-            [audioPlayer changePitch:1.4];
+            [audioPlayer changePitch:0.4 + pitchRate[monsterType]];
             break;
         }
         default:
