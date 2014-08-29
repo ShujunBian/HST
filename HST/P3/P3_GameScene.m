@@ -430,18 +430,18 @@ static float pitchRate[] = {
             break;
         }
         case 2: {
-            [audioPlayer setVolume:1.0];
-            [audioPlayer changePitch:0.1 + pitchRate[monsterType]];
+            [audioPlayer setVolume:0.2];
+            [audioPlayer changePitch:pitchRate[monsterType]];
             break;
         }
         case 3: {
-            [audioPlayer setVolume:1.0];
-            [audioPlayer changePitch:0.2 + pitchRate[monsterType]];
+            [audioPlayer setVolume:0.5];
+            [audioPlayer changePitch:pitchRate[monsterType]];
             break;
         }
         case 4: {
             [audioPlayer setVolume:1.0];
-            [audioPlayer changePitch:0.3 + pitchRate[monsterType]];
+            [audioPlayer changePitch:pitchRate[monsterType]];
             break;
         }
         case 5: {
