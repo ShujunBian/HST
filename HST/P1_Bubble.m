@@ -114,7 +114,13 @@ static NSString * bubbleMusicalScale[] = {
             [NSNotificationCenter postShouldReleseRestBubbleNotification];
         }
         else
+        {
             [self unschedule:@selector(updatePosition:)];
+            if ([self.delegate respondsToSelector:@selector(bubbleDidArrivePosition:)])
+            {
+                [self.delegate bubbleDidArrivePosition:self];
+            }
+        }
     }
 }
 

@@ -114,7 +114,9 @@
         obj.delegate = nil;
     }
     
+    [self endBottleSound];
     self.soundObjArray = nil;
+
 }
 
 #pragma mark - Gesture

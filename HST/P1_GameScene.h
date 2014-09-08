@@ -12,12 +12,16 @@
 #import "P1_Monster.h"
 #import "CocosDenshion.h"
 #import "MainMapHelper.h"
+#import "P1_Bubble.h"
 
-@interface P1_GameScene : CCLayer<P1_BlowDetecterDelegate,P1_MonsterDelegate,MainMapDelegate>
+@class P1_GameUI;
+
+@interface P1_GameScene : CCLayer<P1_BlowDetecterDelegate,P1_MonsterDelegate,MainMapDelegate, P1_BubbleDelegate>
 
 @property (nonatomic, assign) P1_Monster *monster;
 @property (nonatomic, assign) CCSprite *monsterInitPositionReferenceSprite;
 
 @property (nonatomic, assign) CCSprite *toolColorLayer;
+@property (strong, nonatomic) P1_GameUI* gameUI;
 
 @end

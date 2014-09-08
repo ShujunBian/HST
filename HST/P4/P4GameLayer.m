@@ -29,7 +29,7 @@
 
 //#define BOTTLE_MOVE_DELAY 0.2f
 #define BOTTLE_SCALE_X_MAX 1.2f
-#define BOTTLE_SCALE_X_MIN 0.8f
+#define BOTTLE_SCALE_X_MIN 0.5f
 
 #define BOTTLE_SCALE_X_ADD_RATE 1.03f
 #define BOTTLE_SCALE_X_DECREASE_RATE 0.995f
@@ -194,7 +194,7 @@
         orientFactor = -1;
     }
 
-    if ((ABS(motion.userAcceleration.x) > 0.03f || ABS(motion.userAcceleration.y) > 0.03f) && !self.isTouchBottle && !self.someMonsterAnimated )
+    if ((ABS(motion.userAcceleration.x) > 0.05f || ABS(motion.userAcceleration.y) > 0.05f) && !self.isTouchBottle && !self.someMonsterAnimated )
     {
         self.shakeMoveBackCount = SHAKE_MOVE_BACK_COUNT_INIT;
         self.isShakeDevice = YES;
@@ -204,8 +204,13 @@
         //x 上+ 下-
         //y 左摇- 右摇+
         P4BottleOffset* offset = [[[P4BottleOffset alloc] init] autorelease];
-        offset.deltaX = orientFactor * SHAKE_BASE_RATE_X * motion.userAcceleration.y;
-        offset.deltaY = orientFactor * SHAKE_BASE_RATE_Y * motion.userAcceleration.x;
+        float limitMotion = 0.15;
+        float deltaX = motion.userAcceleration.x > limitMotion? limitMotion : motion.userAcceleration.x;
+        deltaX = deltaX < -limitMotion ? -limitMotion : deltaX;
+        float deltaY = motion.userAcceleration.y > limitMotion? limitMotion : motion.userAcceleration.y;
+        deltaY = deltaY < -limitMotion ? -limitMotion : deltaY;
+        offset.deltaX = orientFactor * SHAKE_BASE_RATE_X * deltaY;
+        offset.deltaY = orientFactor * SHAKE_BASE_RATE_Y * deltaX;
         [self bottleMoveDelta:offset];
     }
     else
@@ -242,6 +247,7 @@
     self.table = nil;
     [self.motionManager stopDeviceMotionUpdates];
     self.motionManager = nil;
+    
 }
 
 - (void)onExitTransitionDidStart

@@ -21,6 +21,14 @@ typedef enum {
     P1_BubbleXi
 } P1_BubbleType;
 
+@class P1_Bubble;
+
+@protocol P1_BubbleDelegate <NSObject>
+
+- (void)bubbleDidArrivePosition:(P1_Bubble*)bubble;
+
+@end
+
 @interface P1_Bubble : CCNode <CCBAnimationManagerDelegate,P1_BubbleBoomDelegate>
 {
     double movingTime;
@@ -36,6 +44,7 @@ typedef enum {
 @property (nonatomic) bool isReadyForboom;
 @property (nonatomic) BOOL isReadyRelease;
 @property (nonatomic) P1_BubbleType currentBubbleType;
+@property (unsafe_unretained, nonatomic) NSObject<P1_BubbleDelegate>* delegate;
 
 - (int)countOfColor;
 - (ccColor3B)colorAtIndex:(NSUInteger)index;

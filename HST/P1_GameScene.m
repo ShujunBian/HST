@@ -8,7 +8,6 @@
 
 #import "P1_GameScene.h"
 #import "cocos2d.h"
-#import "P1_Bubble.h"
 #import "CCBAnimationManager.h"
 #import "SimpleAudioEngine.h"
 #import "HelloWorldLayer.h"
@@ -17,6 +16,14 @@
 #import "VolumnHelper.h"
 #import "CCLayer+CircleTransitionExtension.h"
 #import "WXYUtility.h"
+#import "P1_GameUI.h"
+#import "P1_TapUI.h"
+
+#define kP1FirstOpenKey @"kP1FirstOpenKey"
+
+#define kBubbleZorder 10
+#define kP1Zorder 21
+
 
 @interface P1_GameScene()
 {
@@ -32,15 +39,37 @@
 @property (strong, nonatomic) NSMutableArray* bubblesReadyToRelease;
 @property (strong, nonatomic) NSMutableArray* currentOnScreenBubbles;
 @property (nonatomic) BOOL isAutoBubble;
+@property (strong, nonatomic) CCSprite* blowUi;
+
+@property (strong, nonatomic) P1_TapUI* tapUI;
+@property (assign, nonatomic) BOOL fToShowTapIndicator;
 @end
 
 
 @implementation P1_GameScene
-
 #define MAX_BUBBLE_POSITION_COUNT 4
 
 static NSMutableArray *bubblePositions = nil;
 static NSMutableArray *bubbleScales = nil;
+- (P1_TapUI*)tapUI
+{
+    if (!_tapUI)
+    {
+        _tapUI = (P1_TapUI*)[CCBReader nodeGraphFromFile:@"P1_TapUI.ccbi"];
+        [_tapUI retain];
+    }
+    return _tapUI;
+}
+
+- (CCSprite*)blowUi
+{
+    if (!_blowUi)
+    {
+        _blowUi = [CCSprite spriteWithFile:@"p1_blow.png"];
+        [_blowUi retain];
+    }
+    return _blowUi;
+}
 
 - (void)loadBubbleAttributes
 {
@@ -68,7 +97,7 @@ static NSMutableArray *bubbleScales = nil;
 - (void) didLoadFromCCB
 {
     self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
-    
+    [self reorderChild:self.gameUI z:18];
 
     
     [NSNotificationCenter registerShouldReleseRestBubbleNotificationWithSelector:@selector(releaseBubbleReadyToRelease) target:self];
@@ -89,7 +118,42 @@ static NSMutableArray *bubbleScales = nil;
     
     self.toolColorLayer.visible = NO;
     [self schedule:@selector(updateBlow:)];
+    [self.gameUI retain];
+    [self.gameUI updateOrientation:[UIApplication sharedApplication].statusBarOrientation];
+
+    //FirstOpen
+    if ([self checkIsFirstOpen] )
+    {
+        [self setIsFirstOpen:NO];
+        //first open
+        [self.gameUI setIsFirstOpen:YES];
+        self.fToShowTapIndicator = YES;
+        self.mainMapHelper.mainMapMenu.enabled = NO;
+        self.mainMapHelper.helpMenu.enabled = NO;
+    }
+    else
+    {
+        [self.gameUI setIsFirstOpen:NO];
+        self.fToShowTapIndicator = NO;
+        self.mainMapHelper.mainMapMenu.enabled = YES;
+        self.mainMapHelper.helpMenu.enabled = YES;
+    }
 }
+#pragma mark - UI
+- (BOOL)checkIsFirstOpen
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber* fFirst = [userDefaults objectForKey:kP1FirstOpenKey];
+    return !fFirst || [fFirst isEqual:[NSNull null]] || fFirst.boolValue;
+}
+- (BOOL)setIsFirstOpen:(BOOL)fFirst
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:@NO forKey:kP1FirstOpenKey];
+    return [userDefaults synchronize];
+}
+
+#pragma mark - Life Cycle
 - (void)onEnter
 {
     [super onEnter];
@@ -100,6 +164,7 @@ static NSMutableArray *bubbleScales = nil;
     [P1_BlowDetecter instance].delegate = self;
 
     [self showScene];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeviceOrientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 - (void)onEnterTransitionDidFinish
 {
@@ -114,6 +179,8 @@ static NSMutableArray *bubbleScales = nil;
     
     [P1_BlowDetecter purge];
     self.mainMapHelper = nil;
+    self.gameUI = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
 -(void)hideToolColorLayer
@@ -159,6 +226,7 @@ static NSMutableArray *bubbleScales = nil;
 - (void)blowOutABubbleToPosition:(CGPoint)position andScale:(float)scale
 {
     P1_Bubble *bubble = (P1_Bubble *)[CCBReader nodeGraphFromFile:@"P1_Bubble.ccbi"];
+    bubble.delegate = self;
     bubble.position = self.monsterInitPositionReferenceSprite.position;
     bubble.targetPosition = position;
     [bubble randomASize:scale];
@@ -222,6 +290,12 @@ static NSMutableArray *bubbleScales = nil;
                         [self blowOutTheBubble];
                     }
                 }
+
+                if (self.tapUI)
+                {
+                    [self hideTapUI];
+                }
+                
                 break;
             }
         }
@@ -236,6 +310,13 @@ static NSMutableArray *bubbleScales = nil;
 - (void)blowOutTheBubble
 {
     if(!shouldBlowBubble) {
+        [self.gameUI handleBlow];
+        if (self.tapUI.fIsShow) {
+            [self hideTapUI];
+            self.fToShowTapIndicator = YES;
+        }
+        self.mainMapHelper.mainMapMenu.enabled = YES;
+        self.mainMapHelper.helpMenu.enabled = YES;
         [_monster smallMouth];
         [self setTouchEnabled:NO];
         [self performSelector:@selector(openTouch) withObject:nil afterDelay:1.0];
@@ -332,7 +413,35 @@ static NSMutableArray *bubbleScales = nil;
 
 - (void)helpButtonPressed
 {
-#warning 未完成
+    if (self.gameUI.fIsShowShadow) {
+        return;
+    }
+    self.gameUI.fIsFirst = NO;
+    [self reorderUiForHelpButtonPressed];
+    if (self.tapUI.fIsShow)
+    {
+        [self hideTapUI];
+    }
+    [self.gameUI restart];
+    self.fToShowTapIndicator = YES;
+//    self.mainMapHelper.mainMapMenu.enabled = NO;
+//    self.mainMapHelper.helpMenu.enabled = NO;
+}
+- (void)reorderUiForHelpButtonPressed
+{
+    [self reorderChild:self.mainMapHelper.mainMapMenu z:25];
+}
+- (void)hideTapUI
+{
+    [self.tapUI stopAllActions];
+    for (CCNodeRGBA* node in self.tapUI.children)
+    {
+        [node stopAllActions];
+        if ([node respondsToSelector:@selector(setOpacity:)]) {
+            [node runAction:[CCFadeTo actionWithDuration:0.3f opacity:0]];
+        }
+    }
+    self.tapUI.fIsShow = NO;
 }
 
 #pragma mark - 退出时释放内存
@@ -354,6 +463,7 @@ static NSMutableArray *bubbleScales = nil;
     }
     self.currentOnScreenBubbles = nil;
 //    [self.currentOnScreenBubbles release];
+
     
     NSInteger bubbleLeaveCount = [self.bubblesReadyToRelease count];
     for (int i = 0; i < bubbleLeaveCount;  ++ i) {
@@ -364,7 +474,38 @@ static NSMutableArray *bubbleScales = nil;
     }
     self.currentOnScreenBubbles = nil;
 //    [bubblesReadyToRelease release];
+    
+}
+- (void)handleDeviceOrientationChange
+{
+    [self.gameUI updateOrientation:[UIApplication sharedApplication].statusBarOrientation];
 }
 
-
+#pragma mark - P1_BubbleDelegate
+- (void)showTapIndicatorForBubblePosition:(CGPoint)pos
+{
+    if (self.fToShowTapIndicator && !self.gameUI.fIsShowShadow)
+    {
+        self.fToShowTapIndicator = NO;
+        [self.tapUI removeFromParentAndCleanup:YES];
+        [self addChild:self.tapUI z:kBubbleZorder + 1];
+        [self.tapUI stopAllActions];
+        for (CCNodeRGBA* node in self.tapUI.children)
+        {
+            [node stopAllActions];
+            if ([node respondsToSelector:@selector(setOpacity:)]) {
+                node.opacity = 0;
+                [node runAction:[CCSequence actions:[CCFadeTo actionWithDuration:0.3f opacity:255], nil]];
+            }
+        }
+        
+        pos.y -= 150.f;
+        self.tapUI.position = pos;
+        self.tapUI.fIsShow = YES;
+    }
+}
+- (void)bubbleDidArrivePosition:(P1_Bubble *)bubble
+{
+    [self showTapIndicatorForBubblePosition:bubble.position];
+}
 @end

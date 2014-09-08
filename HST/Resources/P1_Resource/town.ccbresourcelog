@@ -36,6 +36,7 @@ ccbParticleFire.png
 ccbParticleSmoke.png
 ccbParticleSnow.png
 ccbParticleStars.png
+Kankin.ttf
 cloud-hd.png
 cloud.png
 flower_eyes_blink-hd.png
@@ -46,6 +47,7 @@ flowerbody-hd.png
 flowerbody.png
 flowerhead-hd.png
 flowerhead.png
+Kankin.ttf
 monster_eye_lowerlid-hd.png
 monster_eye_lowerlid.png
 monster_eye_upperlid-hd.png
@@ -76,6 +78,7 @@ P1_AutoButton-hd.png
 P1_AutoButton.png
 P1_AutoButtonSelected-hd.png
 P1_AutoButtonSelected.png
+P1_BlowUI.ccbi
 P1_Bubble.ccbi
 P1_BubbleBoom.ccbi
 P1_BubblePosition1.ccbi
@@ -86,8 +89,16 @@ P1_BubbleSky.ccbi
 P1_Flower.ccbi
 P1_FlowerHead.ccbi
 P1_GameScene.ccbi
+P1_GameUI.ccbi
 P1_Monster.ccbi
 P1_MonsterEye.ccbi
+P1_TapUI.ccbi
 P1_TT.ccbi
+p1_auto_arrow_ui-hd.png
+p1_auto_arrow_ui.png
+p1_blow_ui-hd.png
+p1_blow_ui.png
+p1_tapbg_ui-hd.png
+p1_tapbg_ui.png
 upper_cloud-hd.png
 upper_cloud.png
