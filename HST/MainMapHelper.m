@@ -49,7 +49,7 @@
                                                         selector:@selector(restartGameScene)];
         self.restartMenu = [CCMenu menuWithItems:_restartItem, nil];
         [_restartMenu setPosition:CGPointMake(point.x + 115.0, point.y)];
-        [prototype addChild:_restartMenu z:15];
+        [prototype addChild:_restartMenu z:25];
         
         [_restartMenu setOpacity:0.0];
         CCFadeIn * fadeIn = [CCFadeIn actionWithDuration:0.2];
