@@ -12,6 +12,8 @@
 @interface P1_GameUI ()
 
 @property (assign, nonatomic) UIInterfaceOrientation currentOrientation;
+
+@property (assign, nonatomic) BOOL fIsToShowBlowUi;
 @end
 
 @implementation P1_GameUI
@@ -101,6 +103,8 @@
         self.label1.opacity = 0;
         self.label2.opacity = 0;
         self.arrow.opacity = 0;
+        self.blowUI.opacity = 0;
+        [self scheduleToCheckBlowUi];
     }
 
 }
@@ -108,6 +112,7 @@
 - (void)handleBlow
 {
     _fIsShowShadow = NO;
+    self.fIsToShowBlowUi = NO;
     for (CCNode* node in self.children)
     {
         [node runAction:[CCFadeTo actionWithDuration:0.3f opacity:0]];
@@ -134,5 +139,17 @@
         [self handleBlow];
     }
 }
-
+- (void)scheduleToCheckBlowUi
+{
+    self.fIsToShowBlowUi = YES;
+    [self performSelector:@selector(checkToShowBlowUi) withObject:nil afterDelay:10.f];
+}
+- (void)checkToShowBlowUi
+{
+    if (self.fIsToShowBlowUi)
+    {
+        self.fIsToShowBlowUi = NO;
+        [self.blowUI runAction:[CCFadeTo actionWithDuration:0.3f opacity:255]];
+    }
+}
 @end

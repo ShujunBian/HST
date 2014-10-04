@@ -26,6 +26,6 @@
 - (void)handleBlow;
 - (void)restart;
 
-
+- (void)scheduleToCheckBlowUi;
 
 @end
