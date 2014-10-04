@@ -41,6 +41,7 @@
 
 @property (unsafe_unretained, nonatomic) P4GameLayer* gameLayer;
 @property (readonly, nonatomic) BOOL isFull;
+@property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, nonatomic) BOOL isAboutToFull;
 
 - (void)capOpen;

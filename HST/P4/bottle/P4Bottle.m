@@ -53,6 +53,10 @@
 {
     return self.addCount >= 5;
 }
+- (BOOL)isEmpty
+{
+    return self.addCount == 0;
+}
 
 #pragma mark - Life Cycle
 - (void) didLoadFromCCB
@@ -72,11 +76,9 @@
     [self.waterOut2 retain];
     [self.renewButton retain];
     
-    
     self.animationManager = self.userObject;
 //    [self.userObject release];
 //    self.userObject = nil;
-    
     
     [self.waterInLeft stopSystem];
     [self.waterInRight stopSystem];
@@ -132,15 +134,6 @@
         CGPoint locationGL = [director convertToGL:touchLocation];
         CGPoint locationInNodeSpace = [self convertToNodeSpace:locationGL];
 
-//        if (CGRectContainsPoint(leftEarRect, locationInNodeSpace))
-//        {
-//            [self leftEarPressed];
-//        }
-//        else if (CGRectContainsPoint(rightEarRect, locationInNodeSpace))
-//        {
-//            [self rightEarPressed];
-//        }
-//        else
         if (CGRectContainsPoint(renewButtonRect, locationInNodeSpace))
         {
             [self renewButtonPressed];

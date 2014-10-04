@@ -25,8 +25,12 @@
 #import "WXYUtility.h"
 #import "VolumnHelper.h"
 
+#import "P4SwipeIndicator.h"
+#import "P4HelpUi.h"
+
 #import <CoreMotion/CoreMotion.h>
 
+#define kP4FirstOpenKey @"kP4FirstOpenKey"
 
 //#define BOTTLE_MOVE_DELAY 0.2f
 #define BOTTLE_SCALE_X_MAX 1.2f
@@ -44,6 +48,19 @@
 #define SHAKE_BASE_RATE_X 45.f
 #define SHAKE_BASE_RATE_Y 5.f
 #define SHAKE_MOVE_BACK_COUNT_INIT 3
+
+
+enum {
+    P4NormalIndexBottle = 1,
+    P4NormalIndexGround,
+    P4NormalIndexTable,
+    P4NormalIndexMonster
+}P4NormalIndex;
+enum {
+    P4HelpShowedIndexUi = 7,
+    P4HelpShowedIndexFocus = 8,
+    P4HelpShowedIndexSwipe = 9
+}P4HelpShowedIndex;
 
 @interface P4GameLayer ()
 - (void)monsterPressed:(P4Monster*)monster;
@@ -98,7 +115,17 @@
 @property (assign, nonatomic) BOOL isShakeDevice;
 @property (assign, nonatomic) BOOL disableShakeForMoveBack;
 @property (assign, nonatomic) int shakeMoveBackCount;
+
+//UI
+@property (strong, nonatomic) P4HelpUi* helpUi;
+@property (strong, nonatomic) P4SwipeIndicator* swipeIndicator;
+@property (assign, nonatomic) int iUiState;
+
+//Other
+@property (strong, nonatomic) CCSprite* groundSprite;
+
 @end
+
 
 @implementation P4GameLayer
 
@@ -155,6 +182,9 @@
 	// cocos2d will automatically release all the children (Label)
 	
 	// don't forget to call "super dealloc"
+    self.helpUi = nil;
+    self.swipeIndicator = nil;
+    self.groundSprite = nil;
 	[super dealloc];
     [WXYUtility clearImageCachedOfPlist:@"p4_resource"];
 
@@ -175,15 +205,17 @@
 //    [self addChild:s];
     [self showScene];
     
-
     self.motionManager = [[[CMMotionManager alloc] init] autorelease];
+    /*
     if (self.motionManager.deviceMotionAvailable) {
         self.motionManager.deviceMotionUpdateInterval = 0.02f;
         [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
             [self handleMotion:motion error:error];
         }];
     }
+     */
     self.disableShakeForMoveBack = NO;
+     
 }
 
 - (void)handleMotion:(CMDeviceMotion*)motion error:(NSError*)error
@@ -275,6 +307,9 @@
     [self.blueMonster retain];
     [self.redMonster retain];
     [self.table retain];
+    [self.helpUi retain];
+    [self.swipeIndicator retain];
+    [self.groundSprite retain];
     
     self.helper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
 
@@ -338,6 +373,25 @@
 //    [self schedule:@selector(scaleUpdate)];
 //    [self schedule:@selector(scaleUpdateHelper) interval:0.018f];
     
+    //Reorder
+    [self reorderNormalIndex];
+    
+    //Help Ui
+    //FirstOpen
+    if ([self checkIsFirstOpen] )
+    {
+        [self setIsFirstOpen:NO];
+        //first open
+        self.iUiState = 1;
+        [self handleShowUi:self.iUiState withAnimation:NO];
+    }
+    else
+    {
+        self.iUiState = 0;
+        [self.helpUi hideAllUiWithAnimation:NO];
+    }
+    [self.swipeIndicator hideWithAnimation:NO];
+    [self reorderChild:self.helper.restartMenu z:P4HelpShowedIndexUi - 1];
 }
 
 #pragma mark - Gesture
@@ -357,19 +411,22 @@
             {
                 [self monsterPressed:monster];
             }
-            else if (CGRectContainsPoint([self.bottle getRect], locationInNodeSpace) && !self.someMonsterAnimated)
-            {
-                
-                self.isTouchBottle = YES;
-                self.bottleTouchPoint = locationInNodeSpace;
-                self.bottleTouchOriginPoint = locationInNodeSpace;
-                self.bottleTouchPointNow = locationInNodeSpace;
-            }
+        }
+        if (CGRectContainsPoint([self.bottle getRect], locationInNodeSpace) && !self.someMonsterAnimated && (self.iUiState != 1) && (self.iUiState != 2))
+        {
+            self.isTouchBottle = YES;
+            self.bottleTouchPoint = locationInNodeSpace;
+            self.bottleTouchOriginPoint = locationInNodeSpace;
+            self.bottleTouchPointNow = locationInNodeSpace;
         }
     }
 }
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if ((self.iUiState == 1) || (self.iUiState == 2))
+    {
+        return;
+    }
     CCDirector* director = [CCDirector sharedDirector];
     UITouch* touch = [touches anyObject];
     CGPoint touchLocation = [touch locationInView:director.view];
@@ -377,6 +434,13 @@
     CGPoint locationInNodeSpace = [self convertToNodeSpace: locationGL];
     if (self.isTouchBottle)
     {
+        if (self.iUiState == 3)
+        {
+            self.iUiState = 0;
+            [self.swipeIndicator hideWithAnimation:YES];
+            [self.helpUi showShadow:NO withAnimation:YES];
+        }
+        
         P4BottleOffset* offset = [self getOffsetByTouchPoint:locationInNodeSpace];
         /*
         //Move
@@ -434,6 +498,7 @@
 
     if (self.isTouchBottle)
     {
+        self.isTouchBottle = NO;
         [self bottleMoveBack];
 
 //        [self performSelector:@selector(bottleMoveBack) withObject:nil afterDelay:BOTTLE_MOVE_DELAY];
@@ -526,9 +591,15 @@
 
 - (void)monsterPressed:(P4Monster*)monster
 {
-    if (self.isMonsterAnimated || monster.isEmpty || monster.isAnimated || self.bottle.isFull || self.isTouchBottle)
+    if (self.isMonsterAnimated || monster.isEmpty || monster.isAnimated || self.bottle.isFull || self.isTouchBottle || self.iUiState == 3)
     {
         return;
+    }
+    
+    if (self.iUiState == 1 || self.iUiState == 2)
+    {
+        [self.helpUi hideAllUiWithAnimation:YES];
+        ++self.iUiState;
     }
     
     [monster playSelectSoundEffect];
@@ -749,6 +820,11 @@
         [monster endUpdateWater];
         monster.isAnimated = NO;
         [self.bottle updateRenewButton];
+        
+        if (!self.someMonsterAnimated)
+        {
+            [self handleShowUi:self.iUiState withAnimation:YES];
+        }
     }] autorelease];
     
     CCSequence* sequence = [CCSequence actions:callOpen, callHideMonsters, outToPlaySound, outTo, beginAddWater, beginShake, delay2, callShowMonsters, delay2_, endShake, endAddWater, callClose,  easeOutBack, finish, nil];
@@ -1029,7 +1105,111 @@
 
 - (void)helpButtonPressed
 {
-#warning 未完成
+    if (self.isMonsterAnimated || self.isTouchBottle || [self someMonsterAnimated])
+    {
+        return;
+    }
+    
+    if (!self.bottle.isEmpty)
+    {
+        [self.bottle renewButtonPressed];
+    }
+    
+    if (self.iUiState)
+    {
+        self.iUiState = 0;
+        [self hideAllUiWithAnimation:YES];
+    }
+    else
+    {
+        self.iUiState = 1;
+        [self handleShowUi:self.iUiState withAnimation:YES];
+
+    }
 }
 
+#pragma mark - UI
+- (void)hideAllUiWithAnimation:(BOOL)fAnimated
+{
+    [self.helpUi hideAllUiWithAnimation:fAnimated];
+    [self.swipeIndicator hideWithAnimation:fAnimated];
+}
+- (void)handleShowUi:(int)state withAnimation:(BOOL)fAnimation
+{
+    [self reorderIndexForHelpUi:state];
+    switch (state)
+    {
+        case 1:
+        {
+            [self.helpUi showHelpLabel:YES helpLabelIndex:1 withAnimation:NO];
+//            [self.swipeIndicator hideWithAnimation:NO];
+            [self.helpUi showShadow:YES withAnimation:YES];
+            break;
+        }
+        case 2:
+        {
+            [self.helpUi showHelpLabel:YES helpLabelIndex:2 withAnimation:NO];
+            [self.swipeIndicator hideWithAnimation:NO];
+            [self.helpUi showShadow:YES withAnimation:YES];
+            break;
+        }
+        case 3:
+        {
+            [self.helpUi hideAllUiWithAnimation:NO];
+            [self.swipeIndicator showWithAnimation:YES];
+            [self.helpUi showShadow:YES withAnimation:YES];
+            break;
+        }
+        default:
+        {
+            break;
+        }
+    }
+}
+- (BOOL)checkIsFirstOpen
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber* fFirst = [userDefaults objectForKey:kP4FirstOpenKey];
+    return !fFirst || [fFirst isEqual:[NSNull null]] || fFirst.boolValue;
+}
+- (BOOL)setIsFirstOpen:(BOOL)fFirst
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:@NO forKey:kP4FirstOpenKey];
+    return [userDefaults synchronize];
+}
+
+#pragma mark - Order
+- (void)reorderNormalIndex
+{
+    [self reorderChild:self.bottle z:P4NormalIndexBottle];
+    [self reorderChild:self.groundSprite z:P4NormalIndexGround];
+    [self reorderChild:self.table z:P4NormalIndexTable];
+    for (P4Monster* monster in self.monstersArray) {
+        [self reorderChild:monster z:P4NormalIndexMonster];
+    }
+}
+- (void)reorderIndexForHelpUi:(int)state
+{
+    [self reorderChild:self.helpUi z:P4HelpShowedIndexUi];
+    [self reorderChild:self.swipeIndicator z:P4HelpShowedIndexSwipe];
+    [self reorderNormalIndex];
+    switch (state) {
+        case 1:
+        case 2:
+        {
+            for (P4Monster* monster in self.monstersArray) {
+                [self reorderChild:monster z:P4HelpShowedIndexFocus];
+            }
+            break;
+        }
+        case 3:
+        {
+            [self reorderChild:self.bottle z:P4HelpShowedIndexFocus];
+            break;
+        }
+        default:
+            break;
+    }
+}
 @end
