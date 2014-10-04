@@ -40,8 +40,8 @@
 #define BOTTLE_SHAKE_MAX_Y 10.f
 #define BOTTLE_SHAKE_UPDATE_RATE 1.f / 30.f
 
-#define SHAKE_BASE_RATE_X 30.f
-#define SHAKE_BASE_RATE_Y 10.f
+#define SHAKE_BASE_RATE_X 45.f
+#define SHAKE_BASE_RATE_Y 5.f
 #define SHAKE_MOVE_BACK_COUNT_INIT 3
 
 @interface P4GameLayer ()
@@ -95,6 +95,7 @@
 //Motion
 @property (strong, nonatomic) CMMotionManager* motionManager;
 @property (assign, nonatomic) BOOL isShakeDevice;
+@property (assign, nonatomic) BOOL disableShakeForMoveBack;
 @property (assign, nonatomic) int shakeMoveBackCount;
 @end
 
@@ -172,18 +173,22 @@
 //    [self addChild:s];
     [self showScene];
     
-    
+
     self.motionManager = [[[CMMotionManager alloc] init] autorelease];
     if (self.motionManager.deviceMotionAvailable) {
-        self.motionManager.deviceMotionUpdateInterval = 0.04f;
+        self.motionManager.deviceMotionUpdateInterval = 0.02f;
         [self.motionManager startDeviceMotionUpdatesToQueue:[NSOperationQueue currentQueue] withHandler:^(CMDeviceMotion *motion, NSError *error) {
             [self handleMotion:motion error:error];
         }];
     }
+    self.disableShakeForMoveBack = NO;
 }
 
 - (void)handleMotion:(CMDeviceMotion*)motion error:(NSError*)error
 {
+    if (self.disableShakeForMoveBack) {
+        return;
+    }
     int orientFactor = 1;
     if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft)
     {
@@ -194,11 +199,11 @@
         orientFactor = -1;
     }
 
-    if ((ABS(motion.userAcceleration.x) > 0.05f || ABS(motion.userAcceleration.y) > 0.05f) && !self.isTouchBottle && !self.someMonsterAnimated )
+    if ((ABS(motion.userAcceleration.x) > 0.14f || ABS(motion.userAcceleration.y) > 0.14f) && !self.isTouchBottle && !self.someMonsterAnimated )
     {
         self.shakeMoveBackCount = SHAKE_MOVE_BACK_COUNT_INIT;
         self.isShakeDevice = YES;
-        NSLog(@"%.1f\t%.1f\t%.1f",motion.userAcceleration.x,motion.userAcceleration.y, motion.userAcceleration.z);
+        NSLog(@"%.2f\t%.2f\t%.2f",motion.userAcceleration.x,motion.userAcceleration.y, motion.userAcceleration.z);
         
         //home键在左边时
         //x 上+ 下-
@@ -834,6 +839,7 @@
 }
 - (void)bottleMoveBack
 {
+    self.disableShakeForMoveBack = YES;
     float newX = 2 * self.bottleTouchPointNow.x - self.bottleTouchPoint.x;
     float newY = 2 * self.bottleTouchPointNow.y - self.bottleTouchPoint.y;
     P4BottleOffset* newOffset = [self getOffsetByTouchPoint:ccp(newX,newY)];
@@ -857,6 +863,11 @@
     
 //    [self updateBottlePositionWithAnimation:YES];
     [self.bottle bottleMoveBack:delay];
+    [self performSelector:@selector(resumeDisableShakeForMoveBack) withObject:nil afterDelay:delay];
+}
+- (void)resumeDisableShakeForMoveBack
+{
+    self.disableShakeForMoveBack = NO;
 }
 
 - (void)updateBottlePositionWithAnimation:(BOOL)fAnimate
