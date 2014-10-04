@@ -361,6 +361,11 @@ static NSMutableArray *bubbleScales = nil;
 #pragma mark - 菜单键调用函数 mainMapDelegate
 - (void)restartGameScene
 {
+    
+    if (!self.gameUI.fIsFirst)
+    {
+        [self.gameUI handleBlow];
+    }
     if (!_isAutoBubble) {
         [P1_BlowDetecter purge];
         _isAutoBubble = YES;
