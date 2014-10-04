@@ -8,6 +8,7 @@ ccbParticleFire.png
 ccbParticleSmoke.png
 ccbParticleSnow.png
 ccbParticleStars.png
+Kankin.ttf
 P2_MusicSetting.plist
 1-hd.png
 1.png
@@ -99,6 +100,22 @@ p2_secondmonster_eyewhite-hd.png
 p2_secondmonster_eyewhite.png
 p2_upper_cloud-hd.png
 p2_upper_cloud.png
+P2_MusicFinishShadow-hd.png
+P2_MusicFinishShadow.png
+P2_MusicSelectBg-hd.png
+P2_MusicSelectBg.png
+P2_MusicSelectImage0-hd.png
+P2_MusicSelectImage0.png
+P2_MusicSelectImage1-hd.png
+P2_MusicSelectImage1.png
+P2_tap_indicator-hd.png
+P2_tap_indicator.png
+P2_UIbgShadow-hd.png
+P2_UIbgShadow.png
+P2_UIButtonShadow-hd.png
+P2_UIButtonShadow.png
+P2_UIShadow-hd.png
+P2_UIShadow.png
 P2_FirstLittlemonster.ccbi
 P2_FirstLittlemonsterEye.ccbi
 P2_Flower.ccbi
@@ -118,3 +135,4 @@ P2_Mushrooms.ccbi
 P2_SecondLittlemonster.ccbi
 P2_SecondLittlemonsterEye.ccbi
 P2_Sky.ccbi
+P2_Tap_Indicator.ccbi

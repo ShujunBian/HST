@@ -26,6 +26,9 @@
 #import "WXYUtility.h"
 #import "P2_SkyLayer.h"
 #import "P2_MusicFinishLayer.h"
+#import "P2_TapIndicator.h"
+
+#define kP2FirstOpenKey @"kP2FirstOpenKey"
 
 #define ADD_MONSTER_UPDATE_DELTA 0.3f
 
@@ -39,6 +42,8 @@
 @property (assign, nonatomic) int nextMusicFrameIndex;
 @property (nonatomic, strong) P2_MusicSelectLayer * musicSelectLayer;
 @property (nonatomic, strong) P2_MusicFinishLayer * musicFinishLayer;
+@property (nonatomic, strong) P2_TapIndicator* tapIndicator;
+
 @property (nonatomic) int matchCounter;
 
 @end
@@ -67,6 +72,10 @@
 
 - (void) didLoadFromCCB
 {
+    [self.tapIndicator retain];
+    [self.tapIndicator hideWithAnimation:NO];
+    [self reorderChild:self.tapIndicator z:19];
+    
     self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
     
     CCLayerColor * background = [CCLayerColor layerWithColor:ccc4(183,255,225,255)];
@@ -246,9 +255,9 @@
                              ];
         self.matchCounter = 0;
         self.musicFinishLayer = [[[P2_MusicFinishLayer alloc]init]autorelease];
+        self.musicFinishLayer.delegate = self;
         self.musicFinishLayer.matchString = string;
         [self.musicFinishLayer addFinishedUI];
-        self.musicFinishLayer.delegate = self;
         [self addChild:self.musicFinishLayer z:20];
     }
     else
@@ -313,6 +322,10 @@
 -(void) ccTouchesBegan:(NSSet*)touches withEvent:(id)event
 {
     if (monster.isFinishJump) {
+        if (self.tapIndicator.isShowed) {
+            [self.tapIndicator hideWithAnimation:YES];
+        }
+        
         monster.isFinishJump = NO;
         
         [monster monsterReadyToJump];
@@ -364,8 +377,20 @@
     [self initBackgroundMusicAndEffect];
     [self playBackgroundMusic];
     [self startMusic];
+    
+    //FirstOpen
+    if ([self checkIsFirstOpen] )
+    {
+        [self setIsFirstOpen:NO];
+        [self.tapIndicator showWithAnimation:YES];
+    }
 }
-
+- (void)willAddFinishLayer
+{
+    if (self.tapIndicator.isShowed) {
+        [self.tapIndicator hideWithAnimation:YES];
+    }
+}
 - (void)finishLayerRemoveFromeGameScene
 {
     self.musicFinishLayer = nil;
@@ -411,12 +436,16 @@
 }
 - (void)helpButtonPressed
 {
-#warning 未完成
+    if (!self.tapIndicator.isShowed)
+    {
+        [self.tapIndicator showWithAnimation:YES];
+    }
 }
 
 #pragma mark - 退出时释放内存
 - (void)dealloc
 {
+    self.tapIndicator = nil;
     [self.monster removeFromParentAndCleanup:YES];
     self.monster = nil;
     [WXYUtility clearImageCachedOfPlist:@"p2_resource"];
@@ -444,5 +473,19 @@
 - (void)releaseMusicAndEffect
 {
 #warning 之后卸载音乐根据配置文件
+}
+
+#pragma mark - UI
+- (BOOL)checkIsFirstOpen
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber* fFirst = [userDefaults objectForKey:kP2FirstOpenKey];
+    return !fFirst || [fFirst isEqual:[NSNull null]] || fFirst.boolValue;
+}
+- (BOOL)setIsFirstOpen:(BOOL)fFirst
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:@NO forKey:kP2FirstOpenKey];
+    return [userDefaults synchronize];
 }
 @end

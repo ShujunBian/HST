@@ -9,7 +9,7 @@
 #import "CCLayer.h"
 
 @protocol P2_MusicFinishLayerDelegate <NSObject>
-
+- (void)willAddFinishLayer;
 - (void)finishLayerRemoveFromeGameScene;
 
 @end

@@ -31,6 +31,11 @@
 
 - (void)addFinishedUI
 {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(willAddFinishLayer)])
+    {
+        [self.delegate willAddFinishLayer];
+    }
+    
     [self setTouchEnabled:YES];
     [[[CCDirector sharedDirector]touchDispatcher] addTargetedDelegate:self priority:-10 swallowsTouches:YES];
     
