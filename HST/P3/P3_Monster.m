@@ -316,10 +316,9 @@
             
             self.isStartMoving = YES;
             self.movingType = MovingStay;
-            self.monsterBodyCounter = [self.monsterBodyArray count];
+            self.monsterBodyCounter = (int)[self.monsterBodyArray count];
         }
-        
-        if (self.isChoosen ) {
+        else {
             if (self.position.y == kMonsterBaselineYPosition &&
                 self.movingType == MovingUp) {
                 if (self.monsterType == GreenMonster) {
@@ -437,7 +436,7 @@
                     [body removeFromParentAndCleanup:YES];
                     [self.monsterBodyArray removeObjectAtIndex:self.monsterBodyCounter - 1];
                     
-                    [self.delegate monsterWithMonsterType:self.monsterType DragginChangedLevel:[self.monsterBodyArray count] + 1];
+                    [self.delegate monsterWithMonsterType:self.monsterType DragginChangedLevel:(int)[self.monsterBodyArray count] + 1];
                 }
                 
                 for (int i = 0; i < [self.monsterBodyArray count]; ++ i) {

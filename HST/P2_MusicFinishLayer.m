@@ -60,8 +60,8 @@
     self.monster = (P2_Monster *)[CCBReader nodeGraphFromFile:@"P2_Monster.ccbi"];
     [_uiNode addChild:self.monster z:1];
     self.monster.position = CGPointMake(521.0 - 527.0, 437.0 - 403.0);
-    [self.monster littleJump];
-    
+    [self.monster setScale:0.0];
+    [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:self.monster afterDelay:0.2];
     /*
     CCSprite * uiImage = [CCSprite spriteWithFile:[NSString stringWithFormat:@"MainMap_P%dImage.png",_currentMainMapType]];
     [uiImage setPosition:CGPointMake(300.0 - 512.0, 478.0 - 384.0)];
@@ -111,6 +111,18 @@
     [self performSelector:@selector(removeFromGameScene) withObject:self afterDelay:4.0];
 }
 
+- (void)mainmapUIScaleAnimation:(CCNode *)node
+{
+    CCScaleTo * uibgScaleTo1 = [CCScaleTo actionWithDuration:0.2 scale:1.1];
+    CCScaleTo * uibgScaleTo2 = [CCScaleTo actionWithDuration:0.15 scale:0.95];
+    CCScaleTo * uibgScaleTo5 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
+    CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
+        [self.monster littleJump];
+    }];
+    CCSequence * uibgSeq = [CCSequence actions:uibgScaleTo1,uibgScaleTo2,uibgScaleTo5,callBack, nil];
+    [node runAction:uibgSeq];
+}
+
 - (void)mainmapUILabelFadeInAnimation:(CCLabelTTF *)label
 {
     CCFadeIn * fadeIn = [CCFadeIn actionWithDuration:0.5];
@@ -121,16 +133,21 @@
 {
     [_shadowLayer fadeOut];
     
-    CCScaleTo * scaleTo = [CCScaleTo actionWithDuration:0.05 scale:1.2];
-    CCScaleTo * scaleDisappera = [CCScaleTo actionWithDuration:0.1 scale:0.0];
+    CCScaleTo * scaleTo = [CCScaleTo actionWithDuration:0.1 scale:1.2];
+    CCScaleTo * scaleDisappera = [CCScaleTo actionWithDuration:0.2 scale:0.0];
     CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
-        [self removeFromParentAndCleanup:YES];
-        [self.delegate finishLayerRemoveFromeGameScene];
+//        [self removeFromParentAndCleanup:YES];
+//        [self.delegate finishLayerRemoveFromeGameScene];
+        [self performSelector:@selector(removeFinishLayer) withObject:nil afterDelay:0.1];
     }];
     CCSequence * seq = [CCSequence actions:scaleTo,scaleDisappera,callBack, nil];
     [self.uiNode runAction:seq];
-    
+}
 
+- (void)removeFinishLayer
+{
+    [self removeFromParentAndCleanup:YES];
+    [self.delegate finishLayerRemoveFromeGameScene];
 }
 
 - (BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
@@ -143,7 +160,7 @@
     self.shadowLayer = nil;
     self.uiNode = nil;
     self.monster = nil;
-    
+
     [super dealloc];
 }
 @end

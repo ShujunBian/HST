@@ -62,7 +62,7 @@
                                                     selector:@selector(returnToMainMap)];
     self.mainMapMenu = [CCMenu menuWithItems:_mainMapItem, nil];
     [_mainMapMenu setPosition:point];
-    [prototype addChild:_mainMapMenu z:15];
+    [prototype addChild:_mainMapMenu z:30];
     [_mainMapMenu setOpacity:0.0];
     CCFadeIn * fadeIn = [CCFadeIn actionWithDuration:0.2];
     [_mainMapMenu runAction:fadeIn];
@@ -106,4 +106,33 @@
     }
 }
 
+- (void)disableMainMapButton
+{
+    [self.mainMapMenu setEnabled:NO];
+}
+
+- (void)disableHelpButton
+{
+    [self.helpMenu setEnabled:NO];
+}
+
+- (void)disableRestartButton
+{
+    [self.restartMenu setEnabled:NO];
+}
+
+- (void)enableMainMapButton
+{
+    [self.mainMapMenu setEnabled:YES];
+}
+
+- (void)enableHelpButton
+{
+    [self.helpMenu setEnabled:YES];
+}
+
+- (void)enableRestartButton
+{
+    [self.restartMenu setEnabled:YES];
+}
 @end
