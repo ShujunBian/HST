@@ -23,6 +23,7 @@
 #import "CircleTransition.h"
 #import "CCLayer+CircleTransitionExtension.h"
 #import "WXYUtility.h"
+#import "VolumnHelper.h"
 
 #import <CoreMotion/CoreMotion.h>
 
@@ -165,6 +166,7 @@
 
     [self.cloudLayer startAnimation];
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"p4_background.mp3" loop:YES];
+    [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
     
 //    CCRenderTexture* te = [[CCRenderTexture alloc] initWithWidth:300 height:300 pixelFormat:kCCTexture2DPixelFormat_Default];
 //    [te beginWithClear:255.f g:0 b:0 a:255.f];
