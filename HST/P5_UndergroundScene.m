@@ -131,7 +131,7 @@ static float holesRadius[] = {
     [NSNotificationCenter registShouldRotateNextBellNotificationWithSelector:@selector(startRotateAllPassedBell) target:self];
     
     [self preloadTexture];
-    
+
     [self scheduleUpdate];
     [self setTouchEnabled:NO];
     
@@ -140,9 +140,9 @@ static float holesRadius[] = {
 #pragma mark - 预加载贴图降低消耗
 - (void) preloadTexture
 {
-    UIImage * image = [[UIImage imageNamed:@"P5_BigCircleUI.png"]autorelease];
+    UIImage * image = [UIImage imageNamed:@"P5_BigCircleUI.png"];
     [[CCTextureCache sharedTextureCache]addCGImage:image.CGImage forKey:kBigCircleUINameInTexture];
-    UIImage * imageChoosen = [[UIImage imageNamed:@"P5_BigCircleUI_Choosen.png"]autorelease];
+    UIImage * imageChoosen = [UIImage imageNamed:@"P5_BigCircleUI_Choosen.png"];
     [[CCTextureCache sharedTextureCache]addCGImage:imageChoosen.CGImage forKey:kBigCircleUIChoosenInTexture];
     
     [[CCTextureCache sharedTextureCache]addImage:@"P5_Soil.png"];
@@ -558,6 +558,7 @@ static float holesRadius[] = {
 #pragma mark - Monster Delegate
 - (void)monsterArriveTheStartHole
 {
+#warning 开场动画之后小怪物跳入洞穴完成
     P5_SoilCloud * soilCloud = [[[P5_SoilCloud alloc]init]autorelease];
     [self addChild:soilCloud z:6];
     soilCloud.position = CGPointMake(900.0, 410.0);

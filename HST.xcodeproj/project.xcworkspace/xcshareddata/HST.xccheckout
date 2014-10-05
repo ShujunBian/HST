@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>91DEE6E7-9AFC-4D49-A9D8-0D7BF8669917</string>
+	<string>48698280-16DD-4CA1-B1B9-4ACB11882DE2</string>
 	<key>IDESourceControlProjectName</key>
 	<string>HST</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>5C955731-A8A6-400B-AE2E-607BD22C59E1</key>
+		<key>896234AB7CE4261AEB0938A447C92031BB65425A</key>
 		<string>https://github.com/Emersonwade/HST.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>HST.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>5C955731-A8A6-400B-AE2E-607BD22C59E1</key>
+		<key>896234AB7CE4261AEB0938A447C92031BB65425A</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/Emersonwade/HST.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>5C955731-A8A6-400B-AE2E-607BD22C59E1</string>
+	<string>896234AB7CE4261AEB0938A447C92031BB65425A</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>5C955731-A8A6-400B-AE2E-607BD22C59E1</string>
+			<string>896234AB7CE4261AEB0938A447C92031BB65425A</string>
 			<key>IDESourceControlWCCName</key>
 			<string>HST</string>
 		</dict>

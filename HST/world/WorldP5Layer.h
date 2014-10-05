@@ -12,8 +12,7 @@
 @class P5_Monster;
 @interface WorldP5Layer : CCLayer<WorldSubLayer>
 
-@property (nonatomic, assign) P5_Monster * monster;
-
+@property (nonatomic, strong) P5_Monster * monster;
 @property (nonatomic, strong) CCSprite* dialogIcon;
 
 @end

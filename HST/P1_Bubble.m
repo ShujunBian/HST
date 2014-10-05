@@ -34,7 +34,7 @@ static ccColor3B bubbleColors[] = {
     {111,255,141},  //绿色 fa
     {255,169,175},  // so
     {213,176,255},  // la
-    {255,192,111}    // xi
+    {255,192,111}   // xi
 };
 
 static NSString * bubbleMusicalScale[] = {
