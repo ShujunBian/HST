@@ -8,14 +8,23 @@
 
 #import "WorldP5Layer.h"
 #import "P5_Monster.h"
+#import "CCBReader.h"
 
 @implementation WorldP5Layer
-
-@synthesize monster;
 
 - (id)init
 {
     if (self = [super init]) {
+        self.monster = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_Monster.ccbi"];
+        [self.monster setPosition:CGPointMake(817.0, 504.0)];
+        [self.monster setScale:0.8];
+        self.monster.isUpground = YES;
+        self.monster.isInMainMap = YES;
+        [self addChild:self.monster z:-1];
+        
+        CCSprite * holl = [CCSprite spriteWithFile:@"world_p5_holl.png"];
+        [holl setPosition:CGPointMake(904.0, 515.0)];
+        [self addChild:holl z:-2];
         [self schedule:@selector(monsterJump) interval:3.0];
     }
     return self;
@@ -23,36 +32,35 @@
 
 - (void)didLoadFromCCB
 {
-    monster.isUpground = YES;
-    monster.isInMainMap = YES;
+
     [self.dialogIcon retain];
     [self shakeDialogIcon];
 }
 
 - (void)dealloc
 {
+    self.monster = nil;
     self.dialogIcon = nil;
     [super dealloc];
 }
 
 - (void)monsterJump
 {
+    
     if (CCRANDOM_0_1() > 0.5) {
-        [monster jumpInMainMap];
-//        [self performSelector:@selector(addGrassParticle) withObject:nil afterDelay:5.0 / 6.0 + 0.5];
+//        [self removeChild:self.monster];
+//        self.monster = nil;
+//        
+//        self.monster = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_Monster.ccbi"];
+//        [self.monster setPosition:CGPointMake(817.0, 504.0)];
+//        [self.monster setScale:0.8];
+//        self.monster.isUpground = YES;
+//        self.monster.isInMainMap = YES;
+//        [self addChild:self.monster z:-1];
+        
+        [self.monster jumpInMainMap];
     }
 }
-
-- (void)addGrassParticle
-{
-    CCParticleSystem * grassOut = [CCParticleSystemQuad particleWithFile:@"P3_GrassPSQ.plist"];
-    grassOut.position = CGPointMake(819.0, 448.0);
-    grassOut.autoRemoveOnFinish = YES;
-    [grassOut setScale:0.35];
-    [self addChild:grassOut z:-1];
-}
-
-
 
 - (void)shakeDialogIcon
 {

@@ -36,6 +36,8 @@ static CGPoint musicPlayButtonPoint[] = {
 
 static CGPoint musicImagePoint[] = {
     {1.0,124.0},
+    {-6.0,124.0},
+#warning P2歌曲选择图片替换之后 位置这里可以做微调
     {-6.0,124.0}
 };
 

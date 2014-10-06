@@ -72,9 +72,6 @@
 //            [self.uiButtonShadow setScale:0.0];
 //            [self addChild:self.uiButtonShadow z:2];
 //            [self performSelector:@selector(mainmapUIScaleAnimation:) withObject:self.uiButtonShadow afterDelay:0.4];
-        if(uiNumber == 2){
-            uiNumber = 1;
-        }
         
         self.uiImage = [CCSprite spriteWithFile:[NSString stringWithFormat:@"P2_MusicSelectImage%d.png",uiNumber]];
         [self.uiImage setAnchorPoint:CGPointMake(0.5, 0.5)];
@@ -107,8 +104,7 @@
             }
         }
         CCLabelTTF * uilabel1 = [CCLabelTTF labelWithString:songName fontName:@"Kankin" fontSize:36.0];
-        [uilabel1 setPosition:CGPointMake(401.0 - 527.0, 368.0 - 403.0)];
-        [uilabel1 setAnchorPoint:CGPointMake(0.0, 0.0)];
+        [uilabel1 setPosition:CGPointMake(527.0 - 527.0, 386.0 - 403.0)];
         [uilabel1 setColor:ccc3(255.0, 130.0, 130.0)];
         [uilabel1 setOpacity:0];
         [self addChild:uilabel1];

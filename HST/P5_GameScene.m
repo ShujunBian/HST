@@ -24,6 +24,8 @@
 @interface P5_GameScene ()
 
 @property (strong, nonatomic) MainMapHelper* mainMapHelper;
+@property (strong, nonatomic) CCLayer * chooseLayer;
+
 @end
 
 @implementation P5_GameScene
@@ -53,6 +55,10 @@
     [self addChild:undergrounScene z:3];
     [undergrounScene createUndergroundWorld];
     undergrounScene.delegate = self;
+    
+#warning 添加的空白的Layer
+    self.chooseLayer = [[[CCLayer alloc]init]autorelease];
+    [self addChild:self.chooseLayer z:4];
     
     monsterUpground = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_Monster.ccbi"];
     [self addChild:monsterUpground z:0];
@@ -171,6 +177,7 @@
         return [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
     }];
 }
+
 - (void)helpButtonPressed
 {
 #warning 未完成
