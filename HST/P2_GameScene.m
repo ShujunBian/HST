@@ -269,6 +269,13 @@
         _frameCounter = (int)interval;
         if (expectedTime - 1.f - interval < ADD_MONSTER_UPDATE_DELTA * 1.1f)
         {
+            //FirstOpen
+            if ([self checkIsFirstOpen] )
+            {
+                [self setIsFirstOpen:NO];
+                [self.tapIndicator showWithAnimation:YES];
+            }
+            
             NSNumber* musicTypeNumber = musicTypeInFrame[self.nextMusicFrameIndex];
             NSInteger musicType = musicTypeNumber.integerValue;
             [self updateForAddingLittleFly:musicType];
@@ -377,13 +384,6 @@
     [self initBackgroundMusicAndEffect];
     [self playBackgroundMusic];
     [self startMusic];
-    
-    //FirstOpen
-    if ([self checkIsFirstOpen] )
-    {
-        [self setIsFirstOpen:NO];
-        [self.tapIndicator showWithAnimation:YES];
-    }
 }
 - (void)willAddFinishLayer
 {

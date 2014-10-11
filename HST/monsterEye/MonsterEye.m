@@ -12,7 +12,7 @@
 #define BLINK_DURATION 0.15f
 #define MOVE_DURATION 0.1f
 #define MOVE_DELAY_DURATION 0.2f
-#define MOVE_RATE 0.4f
+#define MOVE_RATE 0.3f
 
 @interface MonsterEye ()
 
