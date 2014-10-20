@@ -16,6 +16,7 @@
 - (void)restartGameScene;
 - (void)returnToMainMap;
 - (void)helpButtonPressed;
+- (void)musicButtonPressed;
 
 @end
 
@@ -31,6 +32,9 @@
 @property (nonatomic, assign) CCMenu * mainMapMenu;
 @property (nonatomic, assign) WXYMenuItemImage * helpItem;
 @property (nonatomic, assign) CCMenu * helpMenu;
+
+@property (nonatomic, assign) CCMenu * musicMenu;
+@property (nonatomic, assign) WXYMenuItemImage * musicItem;
 
 @property (nonatomic, assign) id<MainMapDelegate> delegate;
 

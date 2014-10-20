@@ -9,6 +9,7 @@
 #import "MainMapHelper.h"
 #import "SimpleAudioEngine.h"
 #import "P1_GameScene.h"
+#import "P5_GameScene.h"
 @implementation MainMapHelper
 
 + (MainMapHelper *)addMenuToCurrentPrototype:(id)prototype atMainMapButtonPoint:(CGPoint)point
@@ -75,6 +76,16 @@
     CCFadeIn * fadeIn2 = [CCFadeIn actionWithDuration:0.2];
     [self.helpItem runAction:fadeIn2];
     
+    if ([prototype isKindOfClass:[P5_GameScene class]])
+    {
+        self.musicItem = [WXYMenuItemImage itemWithNormalImage:@"music_icon.png" selectedImage:nil target:self selector:@selector(helpBtnPressed)];
+        self.musicMenu = [CCMenu menuWithItems:self.musicItem, nil];
+        self.musicMenu.position = ccp([CCDirector sharedDirector].winSize.width - 10.f, point.y);
+        [prototype addChild:self.musicMenu z:15];
+        [self.musicItem setOpacity:0.0];
+        CCFadeIn * fadeIn2 = [CCFadeIn actionWithDuration:0.2];
+        [self.musicItem runAction:fadeIn2];
+    }
 }
 
 - (void)restartGameScene

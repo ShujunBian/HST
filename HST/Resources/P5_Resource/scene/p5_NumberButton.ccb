@@ -28,27 +28,15 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Body</string>
+				<string>normalBg</string>
 				<key>memberVarAssignmentName</key>
-				<string>monsterBody</string>
+				<string>_normalBg</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
 						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>102</real>
-							<real>86.75</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>anchorPoint</string>
 						<key>type</key>
 						<string>Point</string>
@@ -87,10 +75,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_monster2_face.png</string>
+							<string>picture/ui/p5_ui_number_button_normal.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -100,27 +90,15 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Mouth</string>
+				<string>hoverBg</string>
 				<key>memberVarAssignmentName</key>
-				<string>monsterMouth</string>
+				<string>_hoverBg</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
 						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>101</real>
-							<real>33</real>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>anchorPoint</string>
 						<key>type</key>
 						<string>Point</string>
@@ -159,38 +137,26 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_monster2_mouth.png</string>
+							<string>picture/ui/p5_ui_number_button_hover.png</string>
 						</array>
 					</dict>
 				</array>
 			</dict>
 			<dict>
 				<key>baseClass</key>
-				<string>CCSprite</string>
+				<string>CCLabelTTF</string>
 				<key>children</key>
 				<array/>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>mouthUp</string>
+				<string>numberLabel</string>
 				<key>memberVarAssignmentName</key>
-				<string>_monsterMouthUp</string>
+				<string>_numberLabel</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>100.5</real>
-							<real>53</real>
-							<integer>0</integer>
-						</array>
-					</dict>
 					<dict>
 						<key>name</key>
 						<string>anchorPoint</string>
@@ -225,104 +191,64 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>displayFrame</string>
+						<string>fontName</string>
 						<key>type</key>
-						<string>SpriteFrame</string>
+						<string>FontTTF</string>
 						<key>value</key>
-						<array>
-							<string></string>
-							<string>images/mouth/p3_blueMonster_mouth_up.png</string>
-						</array>
+						<string>Kankin.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>color</string>
+						<string>fontSize</string>
 						<key>type</key>
-						<string>Color3</string>
+						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<integer>254</integer>
-							<integer>255</integer>
-							<integer>255</integer>
-						</array>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>baseClass</key>
-				<string>CCSprite</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>mouthDown</string>
-				<key>memberVarAssignmentName</key>
-				<string>_monsterMouthDown</string>
-				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>101.75</real>
-							<real>24</real>
+							<real>32</real>
 							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>anchorPoint</string>
+						<string>dimensions</string>
 						<key>type</key>
-						<string>Point</string>
+						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.5</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
+							<real>0.0</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
+						<string>horizontalAlignment</string>
 						<key>type</key>
-						<string>Check</string>
+						<string>IntegerLabeled</string>
 						<key>value</key>
-						<false/>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>displayFrame</string>
+						<string>verticalAlignment</string>
 						<key>type</key>
-						<string>SpriteFrame</string>
+						<string>IntegerLabeled</string>
 						<key>value</key>
-						<array>
-							<string></string>
-							<string>images/mouth/p3_blueMonster_mouth_down.png</string>
-						</array>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>string</string>
+						<key>type</key>
+						<string>Text</string>
+						<key>value</key>
+						<string>1</string>
 					</dict>
 				</array>
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string>P3_BlueMonster</string>
+		<string>P5_NumberButton</string>
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>memberVarAssignmentName</key>
@@ -333,24 +259,12 @@
 		<array>
 			<dict>
 				<key>name</key>
-				<string>contentSize</string>
-				<key>type</key>
-				<string>Size</string>
-				<key>value</key>
-				<array>
-					<real>204</real>
-					<real>173</real>
-					<integer>0</integer>
-				</array>
-			</dict>
-			<dict>
-				<key>name</key>
 				<string>anchorPoint</string>
 				<key>type</key>
 				<string>Point</string>
 				<key>value</key>
 				<array>
-					<real>0.5</real>
+					<real>0.0</real>
 					<real>0.0</real>
 				</array>
 			</dict>
@@ -389,7 +303,7 @@
 			<key>height</key>
 			<integer>0</integer>
 			<key>name</key>
-			<string>iPhone</string>
+			<string>iPad</string>
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>

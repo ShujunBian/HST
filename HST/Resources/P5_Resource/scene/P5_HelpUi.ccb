@@ -22,15 +22,15 @@
 		<array>
 			<dict>
 				<key>baseClass</key>
-				<string>CCSprite</string>
+				<string>CCLayerColor</string>
 				<key>children</key>
 				<array/>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Body</string>
+				<string>shadow</string>
 				<key>memberVarAssignmentName</key>
-				<string>monsterBody</string>
+				<string>_shadowLayer</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -42,8 +42,20 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>102</real>
-							<real>86.75</real>
+							<real>0.0</real>
+							<real>1</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>1024</real>
+							<real>768</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -77,17 +89,85 @@
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>visible</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
 						<false/>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>displayFrame</string>
+						<string>isTouchEnabled</string>
+						<key>platform</key>
+						<string>iOS</string>
 						<key>type</key>
-						<string>SpriteFrame</string>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>isAccelerometerEnabled</string>
+						<key>platform</key>
+						<string>iOS</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>mouseEnabled</string>
+						<key>platform</key>
+						<string>Mac</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>isKeyboardEnabled</string>
+						<key>platform</key>
+						<string>Mac</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<string>images/P3_monster2_face.png</string>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>opacity</string>
+						<key>type</key>
+						<string>Byte</string>
+						<key>value</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>blendFunc</string>
+						<key>type</key>
+						<string>Blendmode</string>
+						<key>value</key>
+						<array>
+							<integer>770</integer>
+							<integer>771</integer>
 						</array>
 					</dict>
 				</array>
@@ -100,9 +180,9 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>Mouth</string>
+				<string>arrow</string>
 				<key>memberVarAssignmentName</key>
-				<string>monsterMouth</string>
+				<string>_arrow</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -114,8 +194,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>101</real>
-							<real>33</real>
+							<real>225</real>
+							<real>663</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -159,24 +239,24 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_monster2_mouth.png</string>
+							<string>picture/ui/p5_help_arrow.png</string>
 						</array>
 					</dict>
 				</array>
 			</dict>
 			<dict>
 				<key>baseClass</key>
-				<string>CCSprite</string>
+				<string>CCLabelTTF</string>
 				<key>children</key>
 				<array/>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>mouthUp</string>
+				<string>label1</string>
 				<key>memberVarAssignmentName</key>
-				<string>_monsterMouthUp</string>
+				<string>_label1</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -186,8 +266,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>100.5</real>
-							<real>53</real>
+							<real>454</real>
+							<real>642</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -225,13 +305,255 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>displayFrame</string>
+						<string>fontName</string>
 						<key>type</key>
-						<string>SpriteFrame</string>
+						<string>FontTTF</string>
+						<key>value</key>
+						<string>Kankin.ttf</string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>fontSize</string>
+						<key>type</key>
+						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<string></string>
-							<string>images/mouth/p3_blueMonster_mouth_up.png</string>
+							<real>30</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>dimensions</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>horizontalAlignment</string>
+						<key>type</key>
+						<string>IntegerLabeled</string>
+						<key>value</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>verticalAlignment</string>
+						<key>type</key>
+						<string>IntegerLabeled</string>
+						<key>value</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>string</string>
+						<key>type</key>
+						<string>Text</string>
+						<key>value</key>
+						<string>Tap to change the sound of bells</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCLabelTTF</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>label2_1</string>
+				<key>memberVarAssignmentName</key>
+				<string>_label2_1</string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>415</real>
+							<real>627</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>fontName</string>
+						<key>type</key>
+						<string>FontTTF</string>
+						<key>value</key>
+						<string>Kankin.ttf</string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>fontSize</string>
+						<key>type</key>
+						<string>FloatScale</string>
+						<key>value</key>
+						<array>
+							<real>30</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>dimensions</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>horizontalAlignment</string>
+						<key>type</key>
+						<string>IntegerLabeled</string>
+						<key>value</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>verticalAlignment</string>
+						<key>type</key>
+						<string>IntegerLabeled</string>
+						<key>value</key>
+						<integer>0</integer>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>string</string>
+						<key>type</key>
+						<string>Text</string>
+						<key>value</key>
+						<string>Help Evan find a</string>
+					</dict>
+				</array>
+				<key>selected</key>
+				<true/>
+			</dict>
+			<dict>
+				<key>baseClass</key>
+				<string>CCLabelTTF</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>label2_2</string>
+				<key>memberVarAssignmentName</key>
+				<string>_label2_2</string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>582</real>
+							<real>627</real>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.5</real>
+							<real>0.5</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ignoreAnchorPointForPosition</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>fontName</string>
+						<key>type</key>
+						<string>FontTTF</string>
+						<key>value</key>
+						<string>Kankin.ttf</string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>fontSize</string>
+						<key>type</key>
+						<string>FloatScale</string>
+						<key>value</key>
+						<array>
+							<real>30</real>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -241,88 +563,52 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<integer>254</integer>
-							<integer>255</integer>
+							<integer>49</integer>
+							<integer>180</integer>
 							<integer>255</integer>
 						</array>
 					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>baseClass</key>
-				<string>CCSprite</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>mouthDown</string>
-				<key>memberVarAssignmentName</key>
-				<string>_monsterMouthDown</string>
-				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
-				<key>properties</key>
-				<array>
 					<dict>
 						<key>name</key>
-						<string>position</string>
+						<string>dimensions</string>
 						<key>type</key>
-						<string>Position</string>
+						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>101.75</real>
-							<real>24</real>
+							<real>0.0</real>
+							<real>0.0</real>
 							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>anchorPoint</string>
+						<string>horizontalAlignment</string>
 						<key>type</key>
-						<string>Point</string>
+						<string>IntegerLabeled</string>
 						<key>value</key>
-						<array>
-							<real>0.5</real>
-							<real>0.5</real>
-						</array>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>scale</string>
+						<string>verticalAlignment</string>
 						<key>type</key>
-						<string>ScaleLock</string>
+						<string>IntegerLabeled</string>
 						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<false/>
-							<integer>0</integer>
-						</array>
+						<integer>0</integer>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>ignoreAnchorPointForPosition</string>
+						<string>string</string>
 						<key>type</key>
-						<string>Check</string>
+						<string>Text</string>
 						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>displayFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string></string>
-							<string>images/mouth/p3_blueMonster_mouth_down.png</string>
-						</array>
+						<string>way home</string>
 					</dict>
 				</array>
 			</dict>
 		</array>
 		<key>customClass</key>
-		<string>P3_BlueMonster</string>
+		<string>P5_HelpUi</string>
 		<key>displayName</key>
 		<string>CCNode</string>
 		<key>memberVarAssignmentName</key>
@@ -338,9 +624,9 @@
 				<string>Size</string>
 				<key>value</key>
 				<array>
-					<real>204</real>
-					<real>173</real>
-					<integer>0</integer>
+					<real>100</real>
+					<real>100</real>
+					<integer>1</integer>
 				</array>
 			</dict>
 			<dict>
@@ -350,7 +636,7 @@
 				<string>Point</string>
 				<key>value</key>
 				<array>
-					<real>0.5</real>
+					<real>0.0</real>
 					<real>0.0</real>
 				</array>
 			</dict>
@@ -387,13 +673,13 @@
 			<key>ext</key>
 			<string> </string>
 			<key>height</key>
-			<integer>0</integer>
+			<integer>768</integer>
 			<key>name</key>
-			<string>iPhone</string>
+			<string>iPad Landscape</string>
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>
-			<integer>0</integer>
+			<integer>1024</integer>
 		</dict>
 	</array>
 	<key>sequences</key>

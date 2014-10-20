@@ -1168,6 +1168,10 @@
 		EF5B1A0819AC69F200DA3A79 /* P1_TapUI.m in Sources */ = {isa = PBXBuildFile; fileRef = EF5B1A0719AC69F200DA3A79 /* P1_TapUI.m */; };
 		EF5B1A0B19AC6A1F00DA3A79 /* P1_TapUI.ccb in Resources */ = {isa = PBXBuildFile; fileRef = EF5B1A0919AC6A1F00DA3A79 /* P1_TapUI.ccb */; };
 		EF5B1A0C19AC6A1F00DA3A79 /* P1_TapUI.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = EF5B1A0A19AC6A1F00DA3A79 /* P1_TapUI.ccbi */; };
+		EF68A73119E95F3700087A78 /* p3_blueMonster_mouth_down-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF68A72D19E95F3700087A78 /* p3_blueMonster_mouth_down-hd.png */; };
+		EF68A73219E95F3700087A78 /* p3_blueMonster_mouth_down.png in Resources */ = {isa = PBXBuildFile; fileRef = EF68A72E19E95F3700087A78 /* p3_blueMonster_mouth_down.png */; };
+		EF68A73319E95F3700087A78 /* p3_blueMonster_mouth_up-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF68A72F19E95F3700087A78 /* p3_blueMonster_mouth_up-hd.png */; };
+		EF68A73419E95F3700087A78 /* p3_blueMonster_mouth_up.png in Resources */ = {isa = PBXBuildFile; fileRef = EF68A73019E95F3700087A78 /* p3_blueMonster_mouth_up.png */; };
 		EF69E171199F5559006F86FE /* progress_left.png in Resources */ = {isa = PBXBuildFile; fileRef = EF69E16B199F5559006F86FE /* progress_left.png */; };
 		EF69E172199F5559006F86FE /* progress_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF69E16C199F5559006F86FE /* progress_left@2x.png */; };
 		EF69E173199F5559006F86FE /* progress_right.png in Resources */ = {isa = PBXBuildFile; fileRef = EF69E16D199F5559006F86FE /* progress_right.png */; };
@@ -1210,6 +1214,25 @@
 		EF830838199A082400EBFAF5 /* Icon-76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF830832199A082400EBFAF5 /* Icon-76@2x.png */; };
 		EF830839199A082400EBFAF5 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF830833199A082400EBFAF5 /* Icon-Small-50@2x.png */; };
 		EF83083C199A3B6F00EBFAF5 /* WXYMenuItemImage.m in Sources */ = {isa = PBXBuildFile; fileRef = EF83083B199A3B6F00EBFAF5 /* WXYMenuItemImage.m */; };
+		EF98840E19F3829F00F47CF0 /* p5_NumberButton.ccb in Resources */ = {isa = PBXBuildFile; fileRef = EF98840A19F3829F00F47CF0 /* p5_NumberButton.ccb */; };
+		EF98840F19F3829F00F47CF0 /* p5_NumberButton.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = EF98840B19F3829F00F47CF0 /* p5_NumberButton.ccbi */; };
+		EF98841019F3829F00F47CF0 /* P5_UiLayer.ccb in Resources */ = {isa = PBXBuildFile; fileRef = EF98840C19F3829F00F47CF0 /* P5_UiLayer.ccb */; };
+		EF98841119F3829F00F47CF0 /* P5_UiLayer.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = EF98840D19F3829F00F47CF0 /* P5_UiLayer.ccbi */; };
+		EF98841419F3929C00F47CF0 /* music_icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF98841219F3929C00F47CF0 /* music_icon-hd.png */; };
+		EF98841519F3929C00F47CF0 /* music_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF98841319F3929C00F47CF0 /* music_icon.png */; };
+		EFC35B8519F2DD5500C43EE5 /* p5_ui_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B7B19F2DD5500C43EE5 /* p5_ui_bg-hd.png */; };
+		EFC35B8619F2DD5500C43EE5 /* p5_ui_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B7C19F2DD5500C43EE5 /* p5_ui_bg.png */; };
+		EFC35B8719F2DD5500C43EE5 /* p5_ui_music_icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B7D19F2DD5500C43EE5 /* p5_ui_music_icon-hd.png */; };
+		EFC35B8819F2DD5500C43EE5 /* p5_ui_music_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B7E19F2DD5500C43EE5 /* p5_ui_music_icon.png */; };
+		EFC35B8919F2DD5500C43EE5 /* p5_ui_number_button_hover-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B7F19F2DD5500C43EE5 /* p5_ui_number_button_hover-hd.png */; };
+		EFC35B8A19F2DD5500C43EE5 /* p5_ui_number_button_hover.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B8019F2DD5500C43EE5 /* p5_ui_number_button_hover.png */; };
+		EFC35B8B19F2DD5500C43EE5 /* p5_ui_number_button_normal-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B8119F2DD5500C43EE5 /* p5_ui_number_button_normal-hd.png */; };
+		EFC35B8C19F2DD5500C43EE5 /* p5_ui_number_button_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B8219F2DD5500C43EE5 /* p5_ui_number_button_normal.png */; };
+		EFC35B8D19F2DD5500C43EE5 /* p5_ui_ok_icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B8319F2DD5500C43EE5 /* p5_ui_ok_icon-hd.png */; };
+		EFC35B8E19F2DD5500C43EE5 /* p5_ui_ok_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B8419F2DD5500C43EE5 /* p5_ui_ok_icon.png */; };
+		EFC35B9219F2E59A00C43EE5 /* P5_NumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC35B9119F2E59A00C43EE5 /* P5_NumberButton.m */; };
+		EFC35B9519F2E6D900C43EE5 /* P5_UiLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC35B9419F2E6D900C43EE5 /* P5_UiLayer.m */; };
+		EFEB042719F5742B00A06E32 /* P5_HelpUi.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEB042619F5742B00A06E32 /* P5_HelpUi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2619,6 +2642,10 @@
 		EF5B1A0719AC69F200DA3A79 /* P1_TapUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P1_TapUI.m; sourceTree = "<group>"; };
 		EF5B1A0919AC6A1F00DA3A79 /* P1_TapUI.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = P1_TapUI.ccb; sourceTree = "<group>"; };
 		EF5B1A0A19AC6A1F00DA3A79 /* P1_TapUI.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P1_TapUI.ccbi; sourceTree = "<group>"; };
+		EF68A72D19E95F3700087A78 /* p3_blueMonster_mouth_down-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p3_blueMonster_mouth_down-hd.png"; sourceTree = "<group>"; };
+		EF68A72E19E95F3700087A78 /* p3_blueMonster_mouth_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p3_blueMonster_mouth_down.png; sourceTree = "<group>"; };
+		EF68A72F19E95F3700087A78 /* p3_blueMonster_mouth_up-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p3_blueMonster_mouth_up-hd.png"; sourceTree = "<group>"; };
+		EF68A73019E95F3700087A78 /* p3_blueMonster_mouth_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p3_blueMonster_mouth_up.png; sourceTree = "<group>"; };
 		EF69E16B199F5559006F86FE /* progress_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_left.png; sourceTree = "<group>"; };
 		EF69E16C199F5559006F86FE /* progress_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progress_left@2x.png"; sourceTree = "<group>"; };
 		EF69E16D199F5559006F86FE /* progress_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress_right.png; sourceTree = "<group>"; };
@@ -2663,6 +2690,28 @@
 		EF830833199A082400EBFAF5 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50@2x.png"; path = "Resources/Icon-Small-50@2x.png"; sourceTree = "<group>"; };
 		EF83083A199A3B6F00EBFAF5 /* WXYMenuItemImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXYMenuItemImage.h; sourceTree = "<group>"; };
 		EF83083B199A3B6F00EBFAF5 /* WXYMenuItemImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXYMenuItemImage.m; sourceTree = "<group>"; };
+		EF98840A19F3829F00F47CF0 /* p5_NumberButton.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = p5_NumberButton.ccb; sourceTree = "<group>"; };
+		EF98840B19F3829F00F47CF0 /* p5_NumberButton.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = p5_NumberButton.ccbi; sourceTree = "<group>"; };
+		EF98840C19F3829F00F47CF0 /* P5_UiLayer.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = P5_UiLayer.ccb; sourceTree = "<group>"; };
+		EF98840D19F3829F00F47CF0 /* P5_UiLayer.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P5_UiLayer.ccbi; sourceTree = "<group>"; };
+		EF98841219F3929C00F47CF0 /* music_icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music_icon-hd.png"; sourceTree = "<group>"; };
+		EF98841319F3929C00F47CF0 /* music_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_icon.png; sourceTree = "<group>"; };
+		EFC35B7B19F2DD5500C43EE5 /* p5_ui_bg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p5_ui_bg-hd.png"; sourceTree = "<group>"; };
+		EFC35B7C19F2DD5500C43EE5 /* p5_ui_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5_ui_bg.png; sourceTree = "<group>"; };
+		EFC35B7D19F2DD5500C43EE5 /* p5_ui_music_icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p5_ui_music_icon-hd.png"; sourceTree = "<group>"; };
+		EFC35B7E19F2DD5500C43EE5 /* p5_ui_music_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5_ui_music_icon.png; sourceTree = "<group>"; };
+		EFC35B7F19F2DD5500C43EE5 /* p5_ui_number_button_hover-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p5_ui_number_button_hover-hd.png"; sourceTree = "<group>"; };
+		EFC35B8019F2DD5500C43EE5 /* p5_ui_number_button_hover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5_ui_number_button_hover.png; sourceTree = "<group>"; };
+		EFC35B8119F2DD5500C43EE5 /* p5_ui_number_button_normal-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p5_ui_number_button_normal-hd.png"; sourceTree = "<group>"; };
+		EFC35B8219F2DD5500C43EE5 /* p5_ui_number_button_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5_ui_number_button_normal.png; sourceTree = "<group>"; };
+		EFC35B8319F2DD5500C43EE5 /* p5_ui_ok_icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p5_ui_ok_icon-hd.png"; sourceTree = "<group>"; };
+		EFC35B8419F2DD5500C43EE5 /* p5_ui_ok_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5_ui_ok_icon.png; sourceTree = "<group>"; };
+		EFC35B9019F2E59A00C43EE5 /* P5_NumberButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P5_NumberButton.h; sourceTree = "<group>"; };
+		EFC35B9119F2E59A00C43EE5 /* P5_NumberButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P5_NumberButton.m; sourceTree = "<group>"; };
+		EFC35B9319F2E6D900C43EE5 /* P5_UiLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P5_UiLayer.h; sourceTree = "<group>"; };
+		EFC35B9419F2E6D900C43EE5 /* P5_UiLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P5_UiLayer.m; sourceTree = "<group>"; };
+		EFEB042519F5742B00A06E32 /* P5_HelpUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P5_HelpUi.h; sourceTree = "<group>"; };
+		EFEB042619F5742B00A06E32 /* P5_HelpUi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P5_HelpUi.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -3400,6 +3449,7 @@
 		5169CD8518CDE63400426E6C /* P5 */ = {
 			isa = PBXGroup;
 			children = (
+				EFC35B8F19F2E56A00C43EE5 /* ui */,
 				5169CDC818CDE6D900426E6C /* P5_Bell.h */,
 				5169CDC918CDE6D900426E6C /* P5_Bell.m */,
 				5169CDCA18CDE6D900426E6C /* P5_CalculateHelper.h */,
@@ -3483,6 +3533,8 @@
 		5169CDF618CDEA3D00426E6C /* Pictures */ = {
 			isa = PBXGroup;
 			children = (
+				EF98841219F3929C00F47CF0 /* music_icon-hd.png */,
+				EF98841319F3929C00F47CF0 /* music_icon.png */,
 				EF8308211999F7F700EBFAF5 /* helpButton-hd.png */,
 				EF8308221999F7F700EBFAF5 /* helpButton.png */,
 				5199790B18CFF9A6006A1FD8 /* mainMapButton-hd.png */,
@@ -3703,6 +3755,7 @@
 		51A93F6E197A121300920318 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				EF68A72C19E95F3700087A78 /* mouth */,
 				51F48ACC197CE45600371C45 /* P3_Bubble-normal-hd.png */,
 				51F48ACD197CE45600371C45 /* P3_Bubble-normal.png */,
 				51F48AC6197CD87900371C45 /* P3_GrassPSQ-hd.png */,
@@ -3898,6 +3951,7 @@
 		51A940B6197A128700920318 /* picture */ = {
 			isa = PBXGroup;
 			children = (
+				EFC35B7A19F2DD5500C43EE5 /* ui */,
 				5185FCBC199B37F70070D25C /* P5_Smoke-hd.png */,
 				5185FCBD199B37F70070D25C /* P5_Smoke.png */,
 				51F48ADC197E959A00371C45 /* MainMap_GreenFlowerHead-hd.png */,
@@ -4023,6 +4077,10 @@
 		51A94124197A128700920318 /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				EF98840A19F3829F00F47CF0 /* p5_NumberButton.ccb */,
+				EF98840B19F3829F00F47CF0 /* p5_NumberButton.ccbi */,
+				EF98840C19F3829F00F47CF0 /* P5_UiLayer.ccb */,
+				EF98840D19F3829F00F47CF0 /* P5_UiLayer.ccbi */,
 				51F48AD4197E959200371C45 /* P5_GreenFlower.ccb */,
 				51F48AD5197E959200371C45 /* P5_GreenFlower.ccbi */,
 				51F48AD6197E959200371C45 /* P5_GreenFlowerHead.ccb */,
@@ -4858,6 +4916,17 @@
 			path = ui;
 			sourceTree = "<group>";
 		};
+		EF68A72C19E95F3700087A78 /* mouth */ = {
+			isa = PBXGroup;
+			children = (
+				EF68A72D19E95F3700087A78 /* p3_blueMonster_mouth_down-hd.png */,
+				EF68A72E19E95F3700087A78 /* p3_blueMonster_mouth_down.png */,
+				EF68A72F19E95F3700087A78 /* p3_blueMonster_mouth_up-hd.png */,
+				EF68A73019E95F3700087A78 /* p3_blueMonster_mouth_up.png */,
+			);
+			path = mouth;
+			sourceTree = "<group>";
+		};
 		EF69E16A199F5559006F86FE /* progress */ = {
 			isa = PBXGroup;
 			children = (
@@ -4914,6 +4983,36 @@
 			);
 			name = launch;
 			path = Resources/launch;
+			sourceTree = "<group>";
+		};
+		EFC35B7A19F2DD5500C43EE5 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				EFC35B7B19F2DD5500C43EE5 /* p5_ui_bg-hd.png */,
+				EFC35B7C19F2DD5500C43EE5 /* p5_ui_bg.png */,
+				EFC35B7D19F2DD5500C43EE5 /* p5_ui_music_icon-hd.png */,
+				EFC35B7E19F2DD5500C43EE5 /* p5_ui_music_icon.png */,
+				EFC35B7F19F2DD5500C43EE5 /* p5_ui_number_button_hover-hd.png */,
+				EFC35B8019F2DD5500C43EE5 /* p5_ui_number_button_hover.png */,
+				EFC35B8119F2DD5500C43EE5 /* p5_ui_number_button_normal-hd.png */,
+				EFC35B8219F2DD5500C43EE5 /* p5_ui_number_button_normal.png */,
+				EFC35B8319F2DD5500C43EE5 /* p5_ui_ok_icon-hd.png */,
+				EFC35B8419F2DD5500C43EE5 /* p5_ui_ok_icon.png */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		EFC35B8F19F2E56A00C43EE5 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				EFC35B9019F2E59A00C43EE5 /* P5_NumberButton.h */,
+				EFC35B9119F2E59A00C43EE5 /* P5_NumberButton.m */,
+				EFC35B9319F2E6D900C43EE5 /* P5_UiLayer.h */,
+				EFC35B9419F2E6D900C43EE5 /* P5_UiLayer.m */,
+				EFEB042519F5742B00A06E32 /* P5_HelpUi.h */,
+				EFEB042619F5742B00A06E32 /* P5_HelpUi.m */,
+			);
+			name = ui;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -5112,13 +5211,16 @@
 				51A94085197A121300920318 /* P3_CeruleanMonsterBody.ccbi in Resources */,
 				EF5B1A0219AC684300DA3A79 /* P1_GameUI.ccbi in Resources */,
 				51A942D7197A130A00920318 /* p2_secondmonster_body-hd.png in Resources */,
+				EFC35B8819F2DD5500C43EE5 /* p5_ui_music_icon.png in Resources */,
 				51ACAABA199A2F6400A34946 /* P1_2.mp3 in Resources */,
 				51A94029197A121300920318 /* P3_grass.png in Resources */,
 				51F48AC5197CD86B00371C45 /* P3_GrassPSQ.plist in Resources */,
 				51A9429C197A130A00920318 /* p2_firstmonster_eyewhite.png in Resources */,
 				51A943A7197A142E00920318 /* monstershadow-hd.png in Resources */,
 				5160F88419AAE28300917C34 /* P2_2_8.mp3 in Resources */,
+				EFC35B8919F2DD5500C43EE5 /* p5_ui_number_button_hover-hd.png in Resources */,
 				EF4040DF197A592100C6C8E1 /* world_p5.ccb in Resources */,
+				EFC35B8A19F2DD5500C43EE5 /* p5_ui_number_button_hover.png in Resources */,
 				51A941A2197A128700920318 /* P5_monsterUnderEyeWhite.png in Resources */,
 				51A9415C197A128700920318 /* P5_BellEyesOpen.png in Resources */,
 				51A9408B197A121300920318 /* P3_Monster_LittleEye.ccbi in Resources */,
@@ -5136,7 +5238,9 @@
 				51A94180197A128700920318 /* P5_homeBackground.png in Resources */,
 				51A942C0197A130A00920318 /* p2_monster_head.png in Resources */,
 				EF403FFE197A1D1700C6C8E1 /* P4Cloud3.ccbi in Resources */,
+				EFC35B8B19F2DD5500C43EE5 /* p5_ui_number_button_normal-hd.png in Resources */,
 				EF4040AB197A592100C6C8E1 /* world_background_tree5-hd.png in Resources */,
+				EFC35B8619F2DD5500C43EE5 /* p5_ui_bg.png in Resources */,
 				EF4040CF197A592100C6C8E1 /* world_p5_grass-hd.png in Resources */,
 				EF403FF1197A1D1700C6C8E1 /* P4_yellow_monster_light-hd.png in Resources */,
 				51A9438D197A142E00920318 /* flowerbody-hd.png in Resources */,
@@ -5181,6 +5285,7 @@
 				51A940A2197A121300920318 /* P3_Cloud.ccb in Resources */,
 				EF403F8F197A1D1700C6C8E1 /* P4_bottle_main.png in Resources */,
 				5185FCD0199B64CA0070D25C /* MainMap_P3Image-hd.png in Resources */,
+				EF98841019F3829F00F47CF0 /* P5_UiLayer.ccb in Resources */,
 				51A94294197A130A00920318 /* 8.png in Resources */,
 				EF4040B6197A592100C6C8E1 /* world_p1_grass1.png in Resources */,
 				51F48ADA197E959200371C45 /* P5_GreenFlowerHead.ccb in Resources */,
@@ -5215,6 +5320,7 @@
 				51A94055197A121300920318 /* P3_monster4_mouth.png in Resources */,
 				51A94162197A128700920318 /* P5_BellLight.png in Resources */,
 				5185FCE0199B64DB0070D25C /* MainMap_P5Image-hd.png in Resources */,
+				EF68A73419E95F3700087A78 /* p3_blueMonster_mouth_up.png in Resources */,
 				516F243C1981DB77004E6443 /* world_p4_shadow-hd.png in Resources */,
 				EF4040AF197A592100C6C8E1 /* world_full-hd.png in Resources */,
 				51A94058197A121300920318 /* P3_Monster5_Eye_background-hd.png in Resources */,
@@ -5376,6 +5482,7 @@
 				EF403F85197A1D1700C6C8E1 /* p4_ground.png in Resources */,
 				51A942C3197A130A00920318 /* p2_mountain1-hd.png in Resources */,
 				51A9428A197A130A00920318 /* 3.png in Resources */,
+				EFC35B8C19F2DD5500C43EE5 /* p5_ui_number_button_normal.png in Resources */,
 				51A942F6197A130A00920318 /* P2_MonsterEye.ccbi in Resources */,
 				EF403FFD197A1D1700C6C8E1 /* P4Cloud3.ccb in Resources */,
 				51A9405C197A121300920318 /* P3_monster5_face-hd.png in Resources */,
@@ -5433,6 +5540,7 @@
 				51A941B5197A128700920318 /* P5_underground-hd.png in Resources */,
 				51A942B8197A130A00920318 /* p2_monster_body.png in Resources */,
 				EF4040A6197A592100C6C8E1 /* world_background_tree2.png in Resources */,
+				EF98841519F3929C00F47CF0 /* music_icon.png in Resources */,
 				51A9436E197A142E00920318 /* bubble_03.png in Resources */,
 				EF403FEB197A1D1700C6C8E1 /* P4_purple_monster-hd.png in Resources */,
 				EF403FC3197A1D1700C6C8E1 /* P4_purple_eyewhite_1.png in Resources */,
@@ -5475,6 +5583,7 @@
 				5185FCF9199C780D0070D25C /* P1_AutoButton.png in Resources */,
 				EF403FB4197A1D1700C6C8E1 /* P4_blue_eyewhite_1-hd.png in Resources */,
 				51A941B8197A128700920318 /* P5_undergroundHole.png in Resources */,
+				EFC35B8D19F2DD5500C43EE5 /* p5_ui_ok_icon-hd.png in Resources */,
 				EF403FCC197A1D1700C6C8E1 /* P4_yellow_eyeball_1-hd.png in Resources */,
 				51A94047197A121300920318 /* P3_Monster3_Eye_point.png in Resources */,
 				51A94177197A128700920318 /* p5_flower_head_eye_open-hd.png in Resources */,
@@ -5517,6 +5626,7 @@
 				5160F8A719AB24FC00917C34 /* P2_3_8.mp3 in Resources */,
 				EF708AFC19879B9D00068D61 /* world_p3_dialog-hd.png in Resources */,
 				51A943A1197A142E00920318 /* monsterbody-hd.png in Resources */,
+				EF68A73319E95F3700087A78 /* p3_blueMonster_mouth_up-hd.png in Resources */,
 				EF830837199A082400EBFAF5 /* Icon-76.png in Resources */,
 				51A942C2197A130A00920318 /* p2_monster_head_ball.png in Resources */,
 				EF830835199A082400EBFAF5 /* Icon-40@2x.png in Resources */,
@@ -5527,6 +5637,7 @@
 				51E5F23519A4AD6D008C86F3 /* P2_UIButtonShadow.png in Resources */,
 				EF4040CE197A592100C6C8E1 /* world_p4_stone.png in Resources */,
 				EF708AFE19879B9D00068D61 /* world_p4_dialog-hd.png in Resources */,
+				EF68A73219E95F3700087A78 /* p3_blueMonster_mouth_down.png in Resources */,
 				51A9418B197A128700920318 /* P5_monsterBigShadow-hd.png in Resources */,
 				EF403FC1197A1D1700C6C8E1 /* P4_purple_eyeball_1.png in Resources */,
 				51A9416B197A128700920318 /* P5_blueFlowerHead-hd.png in Resources */,
@@ -5630,6 +5741,7 @@
 				51A94395197A142E00920318 /* monster_eyelid_mask-hd.png in Resources */,
 				EF69E176199F5559006F86FE /* progress_unit@2x.png in Resources */,
 				EF403FC5197A1D1700C6C8E1 /* P4_red_eyeball_1.png in Resources */,
+				EFC35B8E19F2DD5500C43EE5 /* p5_ui_ok_icon.png in Resources */,
 				5169CBEF18CDE5ED00426E6C /* Icon-Small-50.png in Resources */,
 				51A942E3197A130A00920318 /* P2_Flower.ccb in Resources */,
 				51A9418E197A128700920318 /* P5_monsterBody.png in Resources */,
@@ -5661,6 +5773,7 @@
 				EF404024197A1D1700C6C8E1 /* water1-hd.png in Resources */,
 				51A9416E197A128700920318 /* P5_cave_cover.png in Resources */,
 				51A94034197A121300920318 /* P3_monster1_mouth-hd.png in Resources */,
+				EF98840F19F3829F00F47CF0 /* p5_NumberButton.ccbi in Resources */,
 				51A942FE197A130A00920318 /* P2_Mushrooms.ccbi in Resources */,
 				51A942A8197A130A00920318 /* p2_fly_grass2.png in Resources */,
 				EF69E174199F5559006F86FE /* progress_right@2x.png in Resources */,
@@ -5682,6 +5795,7 @@
 				EF4040D9197A592100C6C8E1 /* world_p2.ccb in Resources */,
 				51A9408E197A121300920318 /* P3_PurpMonsterBody.ccb in Resources */,
 				EF69E17A19A11461006F86FE /* process_background.png in Resources */,
+				EFC35B8719F2DD5500C43EE5 /* p5_ui_music_icon-hd.png in Resources */,
 				EF404011197A1D1700C6C8E1 /* P4b7.wav in Resources */,
 				51A942A3197A130A00920318 /* p2_flower_head_eye_open-hd.png in Resources */,
 				5185FCDA199B64D40070D25C /* MainMap_P4Name-hd.png in Resources */,
@@ -5690,6 +5804,7 @@
 				51A9437A197A142E00920318 /* bubble-eye-blink.png in Resources */,
 				51A941A8197A128700920318 /* P5_monsterUnderMouth.png in Resources */,
 				51A9406C197A121300920318 /* P3_MonsterBodyEye-hd.png in Resources */,
+				EF98841119F3829F00F47CF0 /* P5_UiLayer.ccbi in Resources */,
 				51A941B0197A128700920318 /* P5_SmallCircleUI.png in Resources */,
 				5185FCE6199B65840070D25C /* MainMap_P2Image-hd.png in Resources */,
 				EF403FF2197A1D1700C6C8E1 /* P4_yellow_monster_light.png in Resources */,
@@ -5697,6 +5812,7 @@
 				51F48AD8197E959200371C45 /* P5_GreenFlower.ccb in Resources */,
 				51A941B1197A128700920318 /* P5_Soil-hd.png in Resources */,
 				EF485E7519DFDC0900483841 /* p1_help_swipe_finger-hd.png in Resources */,
+				EFC35B8519F2DD5500C43EE5 /* p5_ui_bg-hd.png in Resources */,
 				EF40409D197A592100C6C8E1 /* world_background_floor-hd.png in Resources */,
 				51A943B1197A142E00920318 /* P1_BubblePosition2.ccb in Resources */,
 				51A9428D197A130A00920318 /* 5-hd.png in Resources */,
@@ -5741,6 +5857,7 @@
 				51A94396197A142E00920318 /* monster_eyelid_mask.png in Resources */,
 				51F48AE2197E968E00371C45 /* world_p5_mushroom_shadow-hd.png in Resources */,
 				51A94053197A121300920318 /* P3_monster4_face.png in Resources */,
+				EF98841419F3929C00F47CF0 /* music_icon-hd.png in Resources */,
 				51A9438E197A142E00920318 /* flowerbody.png in Resources */,
 				51A94384197A142E00920318 /* cloud.png in Resources */,
 				51A94038197A121300920318 /* P3_monster1_tail_flower-hd.png in Resources */,
@@ -5846,6 +5963,7 @@
 				51A941D8197A128700920318 /* P5_HomeLight.ccbi in Resources */,
 				51A94063197A121300920318 /* P3_monster_body_sing.png in Resources */,
 				EF403F82197A1D1700C6C8E1 /* p4_background-hd.png in Resources */,
+				EF98840E19F3829F00F47CF0 /* p5_NumberButton.ccb in Resources */,
 				EF4040C1197A592100C6C8E1 /* world_p2_tree-hd.png in Resources */,
 				51A94037197A121300920318 /* P3_monster1_tail.png in Resources */,
 				EF4040AE197A592100C6C8E1 /* world_cloud_background.png in Resources */,
@@ -5869,6 +5987,7 @@
 				51A941BC197A128700920318 /* P5_UndergroundPassage1.png in Resources */,
 				51A94081197A121300920318 /* P3_BlueMonsterBody.ccbi in Resources */,
 				51A94372197A142E00920318 /* bubble_05.png in Resources */,
+				EF68A73119E95F3700087A78 /* p3_blueMonster_mouth_down-hd.png in Resources */,
 				51A9407E197A121300920318 /* P3_BlueMonster.ccb in Resources */,
 				51A941A1197A128700920318 /* P5_monsterUnderEyeWhite-hd.png in Resources */,
 				51ACAAC2199A2F6400A34946 /* P1_10.mp3 in Resources */,
@@ -5975,6 +6094,7 @@
 				EF404041197A574000C6C8E1 /* WorldP3Layer.m in Sources */,
 				5169CC6D18CDE5ED00426E6C /* CCNode+Debug.m in Sources */,
 				5169CC4818CDE5ED00426E6C /* ccFPSImages.m in Sources */,
+				EFC35B9519F2E6D900C43EE5 /* P5_UiLayer.m in Sources */,
 				5169CDE018CDE6D900426E6C /* NSNotificationCenter+Addition.m in Sources */,
 				5169CCCE18CDE5EE00426E6C /* CCTMXXMLParser.m in Sources */,
 				5169D0C518CDEC1300426E6C /* CCBSequenceProperty.m in Sources */,
@@ -5985,6 +6105,7 @@
 				5169CC2318CDE5ED00426E6C /* CCActionTween.m in Sources */,
 				5169CC5A18CDE5ED00426E6C /* CCLabelBMFont.m in Sources */,
 				5169CD0718CDE5EE00426E6C /* ccCArray.m in Sources */,
+				EFC35B9219F2E59A00C43EE5 /* P5_NumberButton.m in Sources */,
 				5169CD3118CDE5EE00426E6C /* CDXMacOSXSupport.m in Sources */,
 				EF22311B1995FC7400BCB28E /* P4MonsterSoundObj.m in Sources */,
 				5169CDC518CDE6B200426E6C /* P2_SkyLayer.m in Sources */,
@@ -6063,6 +6184,7 @@
 				5169CC8F18CDE5ED00426E6C /* CCScene.m in Sources */,
 				5169CC0E18CDE5ED00426E6C /* CCActionGrid3D.m in Sources */,
 				1801E74A18E594FC004E0856 /* P4WaterLayer.m in Sources */,
+				EFEB042719F5742B00A06E32 /* P5_HelpUi.m in Sources */,
 				5169CD5718CDE5EE00426E6C /* mat4stack.c in Sources */,
 				EF31302B197E0B5800B61C2A /* CircleTransition.m in Sources */,
 				1801E75118E594FC004E0856 /* P4BottleOffset.m in Sources */,

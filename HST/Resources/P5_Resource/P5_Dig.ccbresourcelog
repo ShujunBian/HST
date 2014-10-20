@@ -8,6 +8,7 @@ ccbParticleFire.png
 ccbParticleSmoke.png
 ccbParticleSnow.png
 ccbParticleStars.png
+Kankin.ttf
 MainMap_GreenFlowerHead-hd.png
 MainMap_GreenFlowerHead.png
 P5_bellBody-hd.png
@@ -116,6 +117,16 @@ P5_UndergroundPassage1-hd.png
 P5_UndergroundPassage1.png
 P5_UndergroundPassage2-hd.png
 P5_UndergroundPassage2.png
+p5_ui_bg-hd.png
+p5_ui_bg.png
+p5_ui_music_icon-hd.png
+p5_ui_music_icon.png
+p5_ui_number_button_hover-hd.png
+p5_ui_number_button_hover.png
+p5_ui_number_button_normal-hd.png
+p5_ui_number_button_normal.png
+p5_ui_ok_icon-hd.png
+p5_ui_ok_icon.png
 P5_BellBoom.plist
 P5_SoilPS1.plist
 P5_SoilPS2.plist
@@ -136,7 +147,9 @@ P5_Monster.ccbi
 P5_MonsterEye.ccbi
 P5_MonsterEyeUnderground.ccbi
 P5_MonsterUnderground.ccbi
+p5_NumberButton.ccbi
 P5_SkyLayer.ccbi
+P5_UiLayer.ccbi
 P5_UndergroundBackground.ccbi
 P5_UndergroundHoles.ccbi
 P5_UndergroundScene.ccbi

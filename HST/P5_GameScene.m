@@ -18,6 +18,7 @@
 #import "WXYUtility.h"
 #import "SimpleAudioEngine.h"
 #import "VolumnHelper.h"
+#import "P5_UiLayer.h"
 
 #define kHoleCoverTag 1
 
@@ -59,6 +60,7 @@
 #warning 添加的空白的Layer
     self.chooseLayer = [[[CCLayer alloc]init]autorelease];
     [self addChild:self.chooseLayer z:4];
+    self.chooseLayer.visible = NO;
     
     monsterUpground = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_Monster.ccbi"];
     [self addChild:monsterUpground z:0];
@@ -85,6 +87,12 @@
 
 //    [self performSelector:@selector(moveToUnderground) withObject:self afterDelay:1.3];
 }
+- (void)showUi
+{
+    P5_UiLayer* uiLayer = (P5_UiLayer*)[CCBReader nodeGraphFromFile:@"P5_UiLayer.ccbi"];
+    [self.chooseLayer addChild:uiLayer];
+    uiLayer.position = ccp(512, -384 + 50);
+}
 
 - (void)onEnter
 {
@@ -96,6 +104,7 @@
     [[[CCDirector sharedDirector] view]setMultipleTouchEnabled:NO];
     
     [self showScene];
+    [self performSelector:@selector(showUi) withObject:nil afterDelay:1.8];
 }
 
 - (void)onEnterTransitionDidFinish
