@@ -151,6 +151,9 @@ static int zOrder[]= {
 @property (nonatomic) BOOL isInMainMap;
 @property (nonatomic) BOOL isUp;
 
+@property (nonatomic, assign) CCSprite* monsterMouthUp;
+@property (nonatomic, assign) CCSprite* monsterMouthDown;
+
 - (void)createMonsterWithType:(MonsterType)monsterType;
 - (void)initMonsterEyes;
 - (void)createMonsterBodyInPosition:(CGPoint)position

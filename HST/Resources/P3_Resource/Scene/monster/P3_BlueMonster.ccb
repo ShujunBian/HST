@@ -91,6 +91,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -231,7 +233,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/mouth/p3_blueMonster_mouth_up.png</string>
+							<string>images/mouth/P3_Blue_Mouth_up.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -315,7 +317,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/mouth/p3_blueMonster_mouth_down.png</string>
+							<string>images/mouth/P3_Blue_Mouth_down.png</string>
 						</array>
 					</dict>
 				</array>
