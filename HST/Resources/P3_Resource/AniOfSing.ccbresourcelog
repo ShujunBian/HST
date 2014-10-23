@@ -126,6 +126,7 @@ P3_windChime-hd.png
 P3_windChime.png
 p3_help_finger-hd.png
 p3_help_finger.png
+Kankin.ttf
 P3_BubblePSQ.plist
 P3_GrassPSQ.plist
 P3_Flower.ccbi
@@ -151,4 +152,5 @@ P3_BellHead.ccbi
 P3_BellSprite.ccbi
 P3_Cloud.ccbi
 P3_GameScene.ccbi
+P3_HelpUi.ccbi
 P3_ParticleEffect.ccbi

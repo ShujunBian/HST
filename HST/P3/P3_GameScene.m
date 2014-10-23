@@ -26,6 +26,14 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "SimpleAudioEngine.h"
 #import "VolumnHelper.h"
+#import "P3_HelpUi.h"
+
+enum P3zOrder{
+    P3zOrderMonsterLayer = 10,
+    P3zOrderShadowLayer = 31,
+    P3zOrderPurpleLayer = 32,
+    P3zOrderHelpUi = 33,
+};
 
 static float pitchRate[] = {
     1.0,
@@ -41,11 +49,12 @@ static float pitchRate[] = {
 @property (nonatomic, strong) NSMutableArray * monsterArray;
 
 @property (nonatomic, strong) NSMutableArray * mDiracAudioPlayerArray;
+
+@property (nonatomic, strong) P3_HelpUi* helpUi;
+@property (nonatomic, strong) CCLayerColor* shadowLayer;
 @end
 
 @implementation P3_GameScene
-{
-}
 
 @synthesize monsterLayer;
 
@@ -67,25 +76,21 @@ static float pitchRate[] = {
     [self setTouchEnabled:NO];
     [self performSelector:@selector(resetTouchEnable) withObject:self
                afterDelay:1.2];
+    [self.helpUi retain];
+
 }
 
 - (void)dealloc
 {
     [WXYUtility clearImageCachedOfPlist:@"p3_resource"];
+    self.helpUi = nil;
+    self.shadowLayer = nil;
     [super dealloc];
 }
 
 #pragma mark - 初始化Monsters
 - (void)initMonsters
 {
-    P3_PurpMonster * purpMonster = (P3_PurpMonster *)[CCBReader nodeGraphFromFile:@"P3_PurpMonster.ccbi"];
-    [monsterLayer addChild:purpMonster z:0];
-    [purpMonster setPosition:monsterFirstPositions[0]];
-    [purpMonster createMonsterWithType:PurpMonster];
-    [purpMonster initMonsterEyes];
-    purpMonster.delegate = self;
-    [_monsterArray addObject:purpMonster];
-    
     P3_BlueMonster * blueMonster = (P3_BlueMonster *)[CCBReader nodeGraphFromFile:@"P3_BlueMonster.ccbi"];
     [monsterLayer addChild:blueMonster z:-1];
     [blueMonster setPosition:monsterFirstPositions[1]];
@@ -116,6 +121,21 @@ static float pitchRate[] = {
     [ceruleanMonster initMonsterEyes];
     ceruleanMonster.delegate = self;
     [_monsterArray addObject:ceruleanMonster];
+    
+    //Shadow Layer
+    self.shadowLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 204)];
+    [self addChild:self.shadowLayer z:P3zOrderShadowLayer];
+    
+    P3_PurpMonster * purpMonster = (P3_PurpMonster *)[CCBReader nodeGraphFromFile:@"P3_PurpMonster.ccbi"];
+    [self addChild:purpMonster z:P3zOrderPurpleLayer];
+    [purpMonster setPosition:monsterFirstPositions[0]];
+    [purpMonster createMonsterWithType:PurpMonster];
+    [purpMonster initMonsterEyes];
+    purpMonster.delegate = self;
+    [_monsterArray addObject:purpMonster];
+    [self reorderChild:self.helpUi z:P3zOrderHelpUi];
+    [self reorderChild:self.monsterLayer z:P3zOrderMonsterLayer];
+    
 }
 
 - (void)onEnter
@@ -480,4 +500,13 @@ static float pitchRate[] = {
 #warning 未完成
 }
 
+#pragma mark - Help Ui
+- (void)showHelpUiWithAnimation:(BOOL)fAnimate
+{
+
+}
+- (void)hideHelpUiWithANimation:(BOOL)fAnimate
+{
+
+}
 @end
