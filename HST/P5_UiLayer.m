@@ -21,8 +21,10 @@
 @end
 
 @implementation P5_UiLayer
+@synthesize isShow = _isShow;
 - (void)didLoadFromCCB
 {
+    _isShow = NO;
 //    self.containerNode.scale = 0.5;
     [self.containerNode retain];
     [self.shadowLayer retain];
@@ -36,6 +38,9 @@
     self.number2.selected = NO;
     self.number3.numberLabel.string = @"3";
     self.number3.selected = NO;
+    
+    self.containerNode.scale = 0;
+    self.shadowLayer.opacity = 0;
 }
 
 - (void)dealloc
@@ -61,20 +66,31 @@
         if (CGRectContainsPoint([self.number1 getRect], locationInNodeSpace))
         {
             [self selectButton:self.number1];
+            if ([self.delegate respondsToSelector:@selector(p5Ui:selectIndex:)]) {
+                [self.delegate p5Ui:self selectIndex:0];
+            }
         }
         else if (CGRectContainsPoint([self.number2 getRect], locationInNodeSpace))
         {
             [self selectButton:self.number2];
+            if ([self.delegate respondsToSelector:@selector(p5Ui:selectIndex:)]) {
+                [self.delegate p5Ui:self selectIndex:1];
+            }
         }
         else if (CGRectContainsPoint([self.number3 getRect], locationInNodeSpace))
         {
             [self selectButton:self.number3];
+            if ([self.delegate respondsToSelector:@selector(p5Ui:selectIndex:)]) {
+                [self.delegate p5Ui:self selectIndex:2];
+            }
         }
         else if (CGRectContainsPoint([self.okButton getRect], locationInNodeSpace))
         {
-            NSLog(@"ok");
+            [self mainMapUIScaleHelper:self.okButton];
+            if ([self.delegate respondsToSelector:@selector(p5UiOkButtonPressed:)]) {
+                [self.delegate p5UiOkButtonPressed:self];
+            }
         }
-        
     }
 }
 
@@ -85,7 +101,13 @@
     self.number3.selected = self.number3 == btn;
 }
 
-- (void)mainmapUIScaleAnimation:(CCNode *)node
+- (void)mainmapUIScaleAnimation:(CCNode *)node delay:(float)delay
+{
+    node.scale = 0;
+    [self performSelector:@selector(mainMapUIScaleHelper:) withObject:node afterDelay:delay];
+
+}
+- (void)mainMapUIScaleHelper:(CCNode*)node
 {
     CCScaleTo * uibgScaleTo1 = [CCScaleTo actionWithDuration:0.2 scale:1.2];
     CCScaleTo * uibgScaleTo2 = [CCScaleTo actionWithDuration:0.2 scale:0.85];
@@ -96,4 +118,34 @@
     [node runAction:uibgSeq];
 }
 
+
+- (void)showAnimate
+{
+    if (_isShow) {
+        return;
+    }
+    _isShow = YES;
+    [self.shadowLayer runAction:[CCFadeTo actionWithDuration:0.3f opacity:191]];
+    [self.containerNode setScale:0.0];
+    CCScaleTo * uibgScaleTo1 = [CCScaleTo actionWithDuration:0.2 scale:1.2];
+    CCScaleTo * uibgScaleTo2 = [CCScaleTo actionWithDuration:0.1 scale:1.0];
+    CCSequence * bgSeq = [CCSequence actions:uibgScaleTo1,uibgScaleTo2, nil];
+    [self.containerNode runAction:bgSeq];
+    
+    [self mainmapUIScaleAnimation:self.number1 delay:0.2];
+    [self mainmapUIScaleAnimation:self.number2 delay:0.2];
+    [self mainmapUIScaleAnimation:self.number3 delay:0.2];
+    [self mainmapUIScaleAnimation:self.okButton delay:0.4];
+}
+- (void)hideAnimate
+{
+    if (!_isShow) {
+        return;
+    }
+    _isShow = NO;
+    [self.shadowLayer runAction:[CCFadeTo actionWithDuration:0.3f opacity:0]];
+    CCScaleTo * scaleTo = [CCScaleTo actionWithDuration:0.1 scale:1.2];
+    CCScaleTo * scaleDisappera = [CCScaleTo actionWithDuration:0.2 scale:0.0];
+    [self.containerNode runAction:[CCSequence actionOne:scaleTo two:scaleDisappera]];
+}
 @end

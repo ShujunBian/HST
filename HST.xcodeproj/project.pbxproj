@@ -1141,6 +1141,10 @@
 		EF485E8319DFE6E000483841 /* P4HelpUi.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = EF485E7F19DFE6E000483841 /* P4HelpUi.ccbi */; };
 		EF485E8419DFE6E000483841 /* P4SwipeIndicator.ccb in Resources */ = {isa = PBXBuildFile; fileRef = EF485E8019DFE6E000483841 /* P4SwipeIndicator.ccb */; };
 		EF485E8519DFE6E000483841 /* P4SwipeIndicator.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = EF485E8119DFE6E000483841 /* P4SwipeIndicator.ccbi */; };
+		EF4FB12619FBE04E00D9EB73 /* P5_HelpUi.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = EF4FB12419FBE04E00D9EB73 /* P5_HelpUi.ccbi */; };
+		EF4FB12719FBE04E00D9EB73 /* P5_HelpUi.ccb in Resources */ = {isa = PBXBuildFile; fileRef = EF4FB12519FBE04E00D9EB73 /* P5_HelpUi.ccb */; };
+		EF4FB12A19FBE06A00D9EB73 /* p5_help_arrow-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF4FB12819FBE06A00D9EB73 /* p5_help_arrow-hd.png */; };
+		EF4FB12B19FBE06A00D9EB73 /* p5_help_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = EF4FB12919FBE06A00D9EB73 /* p5_help_arrow.png */; };
 		EF53BC0019906A04007C8258 /* p4_background.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EF53BBF719906A04007C8258 /* p4_background.mp3 */; };
 		EF53BC0119906A04007C8258 /* p4_monster1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EF53BBF819906A04007C8258 /* p4_monster1.mp3 */; };
 		EF53BC0219906A04007C8258 /* p4_monster2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EF53BBF919906A04007C8258 /* p4_monster2.mp3 */; };
@@ -1237,6 +1241,11 @@
 		EF98841119F3829F00F47CF0 /* P5_UiLayer.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = EF98840D19F3829F00F47CF0 /* P5_UiLayer.ccbi */; };
 		EF98841419F3929C00F47CF0 /* music_icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF98841219F3929C00F47CF0 /* music_icon-hd.png */; };
 		EF98841519F3929C00F47CF0 /* music_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF98841319F3929C00F47CF0 /* music_icon.png */; };
+		EFB03B9C19FCDBF800225CDF /* p5_HelpFinger-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EFB03B9A19FCDBF800225CDF /* p5_HelpFinger-hd.png */; };
+		EFB03B9D19FCDBF800225CDF /* p5_HelpFinger.png in Resources */ = {isa = PBXBuildFile; fileRef = EFB03B9B19FCDBF800225CDF /* p5_HelpFinger.png */; };
+		EFB03BA019FCDDB100225CDF /* P5_HelpUi2.m in Sources */ = {isa = PBXBuildFile; fileRef = EFB03B9F19FCDDB100225CDF /* P5_HelpUi2.m */; };
+		EFB03BA319FCDE6700225CDF /* P5_HelpUi2.ccb in Resources */ = {isa = PBXBuildFile; fileRef = EFB03BA119FCDE6700225CDF /* P5_HelpUi2.ccb */; };
+		EFB03BA419FCDE6700225CDF /* P5_HelpUi2.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = EFB03BA219FCDE6700225CDF /* P5_HelpUi2.ccbi */; };
 		EFC35B8519F2DD5500C43EE5 /* p5_ui_bg-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B7B19F2DD5500C43EE5 /* p5_ui_bg-hd.png */; };
 		EFC35B8619F2DD5500C43EE5 /* p5_ui_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B7C19F2DD5500C43EE5 /* p5_ui_bg.png */; };
 		EFC35B8719F2DD5500C43EE5 /* p5_ui_music_icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B7D19F2DD5500C43EE5 /* p5_ui_music_icon-hd.png */; };
@@ -2629,6 +2638,10 @@
 		EF485E7F19DFE6E000483841 /* P4HelpUi.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P4HelpUi.ccbi; sourceTree = "<group>"; };
 		EF485E8019DFE6E000483841 /* P4SwipeIndicator.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = P4SwipeIndicator.ccb; sourceTree = "<group>"; };
 		EF485E8119DFE6E000483841 /* P4SwipeIndicator.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P4SwipeIndicator.ccbi; sourceTree = "<group>"; };
+		EF4FB12419FBE04E00D9EB73 /* P5_HelpUi.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P5_HelpUi.ccbi; sourceTree = "<group>"; };
+		EF4FB12519FBE04E00D9EB73 /* P5_HelpUi.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = P5_HelpUi.ccb; sourceTree = "<group>"; };
+		EF4FB12819FBE06A00D9EB73 /* p5_help_arrow-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p5_help_arrow-hd.png"; sourceTree = "<group>"; };
+		EF4FB12919FBE06A00D9EB73 /* p5_help_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5_help_arrow.png; sourceTree = "<group>"; };
 		EF53BBF719906A04007C8258 /* p4_background.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = p4_background.mp3; sourceTree = "<group>"; };
 		EF53BBF819906A04007C8258 /* p4_monster1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = p4_monster1.mp3; sourceTree = "<group>"; };
 		EF53BBF919906A04007C8258 /* p4_monster2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = p4_monster2.mp3; sourceTree = "<group>"; };
@@ -2731,6 +2744,12 @@
 		EF98840D19F3829F00F47CF0 /* P5_UiLayer.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P5_UiLayer.ccbi; sourceTree = "<group>"; };
 		EF98841219F3929C00F47CF0 /* music_icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music_icon-hd.png"; sourceTree = "<group>"; };
 		EF98841319F3929C00F47CF0 /* music_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_icon.png; sourceTree = "<group>"; };
+		EFB03B9A19FCDBF800225CDF /* p5_HelpFinger-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p5_HelpFinger-hd.png"; sourceTree = "<group>"; };
+		EFB03B9B19FCDBF800225CDF /* p5_HelpFinger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5_HelpFinger.png; sourceTree = "<group>"; };
+		EFB03B9E19FCDDB100225CDF /* P5_HelpUi2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P5_HelpUi2.h; sourceTree = "<group>"; };
+		EFB03B9F19FCDDB100225CDF /* P5_HelpUi2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P5_HelpUi2.m; sourceTree = "<group>"; };
+		EFB03BA119FCDE6700225CDF /* P5_HelpUi2.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = P5_HelpUi2.ccb; sourceTree = "<group>"; };
+		EFB03BA219FCDE6700225CDF /* P5_HelpUi2.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P5_HelpUi2.ccbi; sourceTree = "<group>"; };
 		EFC35B7B19F2DD5500C43EE5 /* p5_ui_bg-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p5_ui_bg-hd.png"; sourceTree = "<group>"; };
 		EFC35B7C19F2DD5500C43EE5 /* p5_ui_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5_ui_bg.png; sourceTree = "<group>"; };
 		EFC35B7D19F2DD5500C43EE5 /* p5_ui_music_icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p5_ui_music_icon-hd.png"; sourceTree = "<group>"; };
@@ -4116,6 +4135,10 @@
 		51A94124197A128700920318 /* scene */ = {
 			isa = PBXGroup;
 			children = (
+				EFB03BA119FCDE6700225CDF /* P5_HelpUi2.ccb */,
+				EFB03BA219FCDE6700225CDF /* P5_HelpUi2.ccbi */,
+				EF4FB12419FBE04E00D9EB73 /* P5_HelpUi.ccbi */,
+				EF4FB12519FBE04E00D9EB73 /* P5_HelpUi.ccb */,
 				EF98840A19F3829F00F47CF0 /* p5_NumberButton.ccb */,
 				EF98840B19F3829F00F47CF0 /* p5_NumberButton.ccbi */,
 				EF98840C19F3829F00F47CF0 /* P5_UiLayer.ccb */,
@@ -5057,6 +5080,10 @@
 		EFC35B7A19F2DD5500C43EE5 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				EFB03B9A19FCDBF800225CDF /* p5_HelpFinger-hd.png */,
+				EFB03B9B19FCDBF800225CDF /* p5_HelpFinger.png */,
+				EF4FB12819FBE06A00D9EB73 /* p5_help_arrow-hd.png */,
+				EF4FB12919FBE06A00D9EB73 /* p5_help_arrow.png */,
 				EFC35B7B19F2DD5500C43EE5 /* p5_ui_bg-hd.png */,
 				EFC35B7C19F2DD5500C43EE5 /* p5_ui_bg.png */,
 				EFC35B7D19F2DD5500C43EE5 /* p5_ui_music_icon-hd.png */,
@@ -5080,6 +5107,8 @@
 				EFC35B9419F2E6D900C43EE5 /* P5_UiLayer.m */,
 				EFEB042519F5742B00A06E32 /* P5_HelpUi.h */,
 				EFEB042619F5742B00A06E32 /* P5_HelpUi.m */,
+				EFB03B9E19FCDDB100225CDF /* P5_HelpUi2.h */,
+				EFB03B9F19FCDDB100225CDF /* P5_HelpUi2.m */,
 			);
 			name = ui;
 			sourceTree = "<group>";
@@ -5204,6 +5233,7 @@
 				EF4040DE197A592100C6C8E1 /* world_p4.ccbi in Resources */,
 				51E5F23319A4AD6D008C86F3 /* P2_UIbgShadow.png in Resources */,
 				51A943AF197A142E00920318 /* P1_BubblePosition1.ccb in Resources */,
+				EFB03BA319FCDE6700225CDF /* P5_HelpUi2.ccb in Resources */,
 				EF403FD4197A1D1700C6C8E1 /* imageRename.py in Resources */,
 				51A94083197A121300920318 /* P3_CeruleanMonster.ccbi in Resources */,
 				51A942E1197A130A00920318 /* P2_FirstLittlemonsterEye.ccb in Resources */,
@@ -5275,6 +5305,7 @@
 				51A941BA197A128700920318 /* P5_undergroundHoleBell.png in Resources */,
 				5160F87D19AAE28300917C34 /* P2_2_1.mp3 in Resources */,
 				51A9405E197A121300920318 /* P3_monster5_mouth-hd.png in Resources */,
+				EFB03B9C19FCDBF800225CDF /* p5_HelpFinger-hd.png in Resources */,
 				51A94025197A121300920318 /* P3_flower_head.png in Resources */,
 				EF403F9F197A1D1700C6C8E1 /* ccbDefaultImages-ipadhd.plist in Resources */,
 				51A942BA197A130A00920318 /* p2_monster_eye_closed.png in Resources */,
@@ -5470,6 +5501,7 @@
 				51A94398197A142E00920318 /* monster_hand.png in Resources */,
 				51A943AE197A142E00920318 /* P1_BubbleBoom.ccbi in Resources */,
 				5185FCC2199B5C8A0070D25C /* MainMapPlayButton-hd.png in Resources */,
+				EF4FB12719FBE04E00D9EB73 /* P5_HelpUi.ccb in Resources */,
 				51A941BE197A128700920318 /* P5_UndergroundPassage2.png in Resources */,
 				51A9409C197A121300920318 /* P3_BellBody.ccb in Resources */,
 				5152612819A08BDB00F48268 /* P5_1_2.mp3 in Resources */,
@@ -5537,6 +5569,7 @@
 				51A94035197A121300920318 /* P3_monster1_mouth.png in Resources */,
 				51A94016197A121300920318 /* P3_bell-hd.png in Resources */,
 				5152612919A08BDB00F48268 /* P5_1_3.mp3 in Resources */,
+				EF4FB12A19FBE06A00D9EB73 /* p5_help_arrow-hd.png in Resources */,
 				51A94371197A142E00920318 /* bubble_05-hd.png in Resources */,
 				EF403FF8197A1D1700C6C8E1 /* P4BrownMonster.ccbi in Resources */,
 				51A942D1197A130A00920318 /* p2_mushroom2Eyes-hd.png in Resources */,
@@ -5584,6 +5617,7 @@
 				51A9415E197A128700920318 /* P5_BellHead.png in Resources */,
 				51A943AD197A142E00920318 /* P1_BubbleBoom.ccb in Resources */,
 				EF404000197A1D1700C6C8E1 /* P4CloudLayer.ccbi in Resources */,
+				EF4FB12B19FBE06A00D9EB73 /* p5_help_arrow.png in Resources */,
 				EF403FDE197A1D1700C6C8E1 /* P4_monster5_mask.png in Resources */,
 				EF403FAF197A1D1700C6C8E1 /* hst_p4.ccbresourcelog in Resources */,
 				51A94168197A128700920318 /* P5_BigCircleUI_Choosen.png in Resources */,
@@ -5836,6 +5870,7 @@
 				EF7960F519F94C9600D49AF0 /* P3_Cerulean_Mouth_down.png in Resources */,
 				EF403FC8197A1D1700C6C8E1 /* P4_red_eyewhite_1-hd.png in Resources */,
 				5160F89D19AB24FC00917C34 /* P2_3_10.mp3 in Resources */,
+				EFB03B9D19FCDBF800225CDF /* p5_HelpFinger.png in Resources */,
 				51A9439E197A142E00920318 /* monster_small_mouth_mask.png in Resources */,
 				5160F87B19AAE28300917C34 /* P2_1_9.mp3 in Resources */,
 				EF403FB6197A1D1700C6C8E1 /* P4_blue_eyewhite_2-hd.png in Resources */,
@@ -5850,6 +5885,7 @@
 				EF403FCA197A1D1700C6C8E1 /* P4_red_eyewhite_2-hd.png in Resources */,
 				51A941E5197A128700920318 /* P5_UndergroundHoles.ccb in Resources */,
 				51A9439D197A142E00920318 /* monster_small_mouth_mask-hd.png in Resources */,
+				EFB03BA419FCDE6700225CDF /* P5_HelpUi2.ccbi in Resources */,
 				EF404024197A1D1700C6C8E1 /* water1-hd.png in Resources */,
 				EF7960F119F94C9600D49AF0 /* P3_Blue_Mouth_down.png in Resources */,
 				51A9416E197A128700920318 /* P5_cave_cover.png in Resources */,
@@ -6135,6 +6171,7 @@
 				5160F8A419AB24FC00917C34 /* P2_3_5.mp3 in Resources */,
 				51A94298197A130A00920318 /* p2_firstmonster_body.png in Resources */,
 				5185FCE3199B64DB0070D25C /* MainMap_P5Name.png in Resources */,
+				EF4FB12619FBE04E00D9EB73 /* P5_HelpUi.ccbi in Resources */,
 				51A942AE197A130A00920318 /* p2_littlefly.png in Resources */,
 				51A941D7197A128700920318 /* P5_HomeLight.ccb in Resources */,
 				EF485E6A19DFC72200483841 /* P2_Tap_Indicator.ccbi in Resources */,
@@ -6226,6 +6263,7 @@
 				5169CC6718CDE5ED00426E6C /* CCMenuItem.m in Sources */,
 				5169CC0218CDE5ED00426E6C /* CCActionCamera.m in Sources */,
 				5169CDC418CDE6B200426E6C /* P2_Mushroom.m in Sources */,
+				EFB03BA019FCDDB100225CDF /* P5_HelpUi2.m in Sources */,
 				5169CD3418CDE5EE00426E6C /* CDXPropertyModifierAction.m in Sources */,
 				5169CD0418CDE5EE00426E6C /* CCArray.m in Sources */,
 				5169CD6118CDE5EE00426E6C /* plane.c in Sources */,

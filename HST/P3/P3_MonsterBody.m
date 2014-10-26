@@ -46,7 +46,7 @@
     _leftEye = [CCSprite spriteWithFile:@"P3_MonsterBodyEye.png"];
     _rightEye = [CCSprite spriteWithFile:@"P3_MonsterBodyEye.png"];
     _mouth = [CCSprite spriteWithFile:@"P3_Monster_body_mouth.png"];
-    
+
 //    [_leftEye setTexture:blinkTexture];
     
     CGPoint centerPosition = CGPointMake(self.contentSize.width / 2.0, self.contentSize.height / 2.0);
@@ -69,6 +69,7 @@
     [self addChild:_leftEye];
     [self addChild:_rightEye];
     [self addChild:_mouth];
+    [self startMouthAnimation];
 }
 
 - (void)update:(ccTime)delta
@@ -168,5 +169,15 @@
     
 //    [_leftEye setTexture:normaltexture];
 //    [_rightEye setTexture:normaltexture];
+}
+
+- (void)startMouthAnimation
+{
+    CCRepeatForever* mouthAction = [CCRepeatForever actionWithAction:[CCSequence actionWithArray:@[[CCScaleTo actionWithDuration:0.2 scaleX:1 scaleY:0], [CCScaleTo actionWithDuration:0.2 scaleX:1 scaleY:1], [CCDelayTime actionWithDuration:0.4]]]];
+    [self.mouth runAction:mouthAction];
+}
+- (void)stopMouthAnimation
+{
+    [self.mouth stopAllActions];
 }
 @end

@@ -11,17 +11,19 @@
 #import "P5_UndergroundScene.h"
 #import "CCBAnimationManager.h"
 #import "MainMapHelper.h"
-
+#import "P5_UiLayer.h"
+#import "P5_HelpUi.h"
+#import "P5_HelpUi2.h"
 
 @class P5_Monster;
 @class P5_UndergroundScene;
 @class P5_GrassLayer;
 @class P5_SkyLayer;
 
-@interface P5_GameScene : CCLayer<P5_UndergroundSceneDelegate, MainMapDelegate>
+@interface P5_GameScene : CCLayer<P5_UndergroundSceneDelegate, MainMapDelegate, P5_UILayerDelegate>
 
 @property (nonatomic, assign) P5_Monster * monsterUpground;
-@property (nonatomic, assign) P5_Monster * monsterUnderground;
+@property (nonatomic, strong) P5_Monster * monsterUnderground;
 @property (nonatomic, assign) P5_GrassLayer * grassLayer;
 @property (nonatomic, assign) P5_UndergroundScene * undergrounScene;
 

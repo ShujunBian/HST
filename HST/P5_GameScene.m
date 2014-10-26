@@ -20,12 +20,16 @@
 #import "VolumnHelper.h"
 #import "P5_UiLayer.h"
 
+
 #define kHoleCoverTag 1
 
 @interface P5_GameScene ()
 
 @property (strong, nonatomic) MainMapHelper* mainMapHelper;
 @property (strong, nonatomic) CCLayer * chooseLayer;
+@property (strong, nonatomic) P5_UiLayer* uiLayer;
+@property (strong, nonatomic) P5_HelpUi* helpUi;
+@property (strong, nonatomic) P5_HelpUi2* helpUi2;
 
 @end
 
@@ -44,6 +48,7 @@
 
 - (void) didLoadFromCCB
 {
+    [self.monsterUnderground retain];
     CGSize winSize = [[CCDirector sharedDirector]winSize];
     CCLayerColor * background = [CCLayerColor layerWithColor:ccc4(183,255,226,255)];
     [self addChild:background z:-10];
@@ -57,10 +62,21 @@
     [undergrounScene createUndergroundWorld];
     undergrounScene.delegate = self;
     
-#warning 添加的空白的Layer
     self.chooseLayer = [[[CCLayer alloc]init]autorelease];
     [self addChild:self.chooseLayer z:4];
-    self.chooseLayer.visible = NO;
+    self.chooseLayer.visible = YES;
+    
+    self.uiLayer = (P5_UiLayer*)[CCBReader nodeGraphFromFile:@"P5_UiLayer.ccbi"];
+    [self.chooseLayer addChild:self.uiLayer];
+    self.uiLayer.position = ccp(512, -384 + 50);
+    self.uiLayer.delegate = self;
+    
+    self.helpUi = (P5_HelpUi*)[CCBReader nodeGraphFromFile:@"P5_HelpUi.ccbi"];
+    [self.chooseLayer addChild:self.helpUi];
+    self.helpUi.position = ccp(0, -768 + 50);
+    self.helpUi2 = (P5_HelpUi2*)[CCBReader nodeGraphFromFile:@"P5_HelpUi2.ccbi"];
+    [self addChild:self.helpUi2 z:6];
+    self.helpUi2.position = ccp(0, -768 + 50);
     
     monsterUpground = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_Monster.ccbi"];
     [self addChild:monsterUpground z:0];
@@ -89,9 +105,7 @@
 }
 - (void)showUi
 {
-    P5_UiLayer* uiLayer = (P5_UiLayer*)[CCBReader nodeGraphFromFile:@"P5_UiLayer.ccbi"];
-    [self.chooseLayer addChild:uiLayer];
-    uiLayer.position = ccp(512, -384 + 50);
+    [self.uiLayer showAnimate];
 }
 
 - (void)onEnter
@@ -104,7 +118,7 @@
     [[[CCDirector sharedDirector] view]setMultipleTouchEnabled:NO];
     
     [self showScene];
-    [self performSelector:@selector(showUi) withObject:nil afterDelay:1.8];
+//    [self performSelector:@selector(showUi) withObject:nil afterDelay:1.8];
 }
 
 - (void)onEnterTransitionDidFinish
@@ -189,15 +203,74 @@
 
 - (void)helpButtonPressed
 {
-#warning 未完成
+    [self showHelp2:YES];
+}
+
+- (void)showHelp1:(BOOL)fShow
+{
+    if (fShow)
+    {
+        [self.helpUi showShadowLayer];
+        [self.helpUi showUi1];
+    }
+    else
+    {
+        [self.helpUi hideShadowLayer];
+        [self.helpUi hideUi1];
+    }
+}
+
+- (void)showHelp2:(BOOL)fShow
+{
+    if (fShow)
+    {
+        [self.helpUi showShadowLayer];
+        [self.helpUi showUi2];
+        [self.helpUi2 showUi2];
+    }
+    else
+    {
+        [self.helpUi hideShadowLayer];
+        [self.helpUi hideUi2];
+        [self.helpUi2 hideUi2];
+    }
+}
+- (void)showHelp3:(BOOL)fShow
+{
+    if (fShow)
+    {
+        [self.helpUi showUi3];
+    }
+    else
+    {
+        [self.helpUi hideUi3];
+    }
+}
+
+- (void)musicButtonPressed
+{
+    [self showUi];
 }
 
 #pragma mark - 退出时释放内存
 - (void)dealloc
 {
+    self.monsterUnderground = nil;
+    self.uiLayer = nil;
     [super dealloc];
 //    [[CCTextureCache sharedTextureCache]removeAllTextures];
     [WXYUtility clearImageCachedOfPlist:@"p5_resource"];
+}
+
+#pragma mark - 
+- (void)p5Ui:(P5_UiLayer*)uiLayer selectIndex:(int)index
+{
+    
+}
+
+- (void)p5UiOkButtonPressed:(P5_UiLayer*)uiLayer
+{
+    [self.uiLayer hideAnimate];
 }
 
 @end

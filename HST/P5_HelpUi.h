@@ -10,4 +10,12 @@
 
 @interface P5_HelpUi : CCNode
 
+- (void)showShadowLayer;
+- (void)hideShadowLayer;
+- (void)showUi1;
+- (void)hideUi1;
+- (void)showUi2;
+- (void)hideUi2;
+- (void)showUi3;
+- (void)hideUi3;
 @end

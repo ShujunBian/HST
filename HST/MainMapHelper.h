@@ -41,8 +41,9 @@
 - (void)disableMainMapButton;
 - (void)disableHelpButton;
 - (void)disableRestartButton;
+- (void)disableMusicButton;
 - (void)enableMainMapButton;
 - (void)enableHelpButton;
 - (void)enableRestartButton;
-
+- (void)enableMusicButton;
 @end
