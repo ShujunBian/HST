@@ -100,8 +100,16 @@ static float holesRadius[] = {
 
 - (void) didLoadFromCCB
 {
+    self.currentMusicIndex = 1;
 }
-
+- (void)setCurrentMusicIndex:(int)currentMusicIndex
+{
+    _currentMusicIndex = currentMusicIndex;
+    
+    for (P5_UndergroundHole * hole in _undergroundHolesArray) {
+        hole.bell.currentMusicIndex = currentMusicIndex;
+    }
+}
 - (void)createUndergroundWorld
 {
     currentDrawingNumber = 0;
@@ -372,6 +380,9 @@ static float holesRadius[] = {
 
 -(void) ccTouchesBegan:(NSSet*)touches withEvent:(id)event
 {
+    if ([self.delegate respondsToSelector:@selector(touchesBegin)]) {
+        [self.delegate touchesBegin];
+    }
     
     //CCDirector* director = [CCDirector sharedDirector];
     if (!isEndDrawing) {
@@ -406,7 +417,7 @@ static float holesRadius[] = {
                                                      SecondPoint:currentEndPosition
                                                   InCircleCenter:hole.centerPoint
                                                         Radius:kHoleRadius]) {
-                        [[SimpleAudioEngine sharedEngine]playEffect:[NSString stringWithFormat:@"P5_1_%d.mp3",[_undergroundHolesArray indexOfObject:hole] + 1]];
+                        [[SimpleAudioEngine sharedEngine]playEffect:[NSString stringWithFormat:@"P5_%d_%d.mp3", self.currentMusicIndex,[_undergroundHolesArray indexOfObject:hole] + 1]];
 
                         hole.isChoosen = YES;
                         isCreateNewDrawing = YES;
@@ -573,6 +584,9 @@ static float holesRadius[] = {
     [self addChild:soilCloud z:6];
     soilCloud.position = CGPointMake(161, 3.0);
     [soilCloud createRandomSoilCloudByName:@"P5_SoilCloud.png" andType:kSoilCloudType];
+    if ([self.delegate respondsToSelector:@selector(monsterDidArrayFinal)]) {
+        [self.delegate monsterDidArrayFinal];
+    }
 }
 
 #pragma mark - property

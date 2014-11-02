@@ -19,6 +19,7 @@
 @interface P5_UiLayer : CCLayer
 @property (readonly) BOOL isShow;
 @property (unsafe_unretained, nonatomic) NSObject<P5_UILayerDelegate>* delegate;
+@property (assign, nonatomic) int currentMusicIndex;
 - (void)showAnimate;
 - (void)hideAnimate;
 @end

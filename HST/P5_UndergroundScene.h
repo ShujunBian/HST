@@ -20,6 +20,8 @@
 @optional
 
 - (void)releaseTheCacheInTexture;
+- (void)monsterDidArrayFinal;
+- (void)touchesBegin;
 
 @end
 
@@ -34,6 +36,7 @@ typedef enum {
 @property (nonatomic, strong) NSMutableArray * drawOrderArray;
 @property (nonatomic, strong) NSMutableArray * undergroundHolesArray;
 @property (nonatomic, strong) CCArray * undergroundPassagesArray;
+@property (assign, nonatomic) int currentMusicIndex;
 
 @property (nonatomic, assign) id<P5_UndergroundSceneDelegate> delegate;
 

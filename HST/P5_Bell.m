@@ -61,6 +61,7 @@ static float bellRotateAngleQuick[] = {
 - (id)init
 {
     if (self = [super init]) {
+        self.currentMusicIndex = 1;
         self.isChoosen = NO;
         [self scheduleUpdate];
         [self schedule:@selector(randomEyeMove:) interval:5.0 repeat:YES delay:0.0];
@@ -236,7 +237,7 @@ static float bellRotateAngleQuick[] = {
 
 - (void)playBellMusicEffect
 {
-    [[SimpleAudioEngine sharedEngine]playEffect:[NSString stringWithFormat:@"P5_1_%d.mp3",self.currentMusicType]];
+    [[SimpleAudioEngine sharedEngine]playEffect:[NSString stringWithFormat:@"P5_%d_%d.mp3", self.currentMusicIndex, self.currentMusicType]];
 }
 
 /*! 重置铃铛某部分

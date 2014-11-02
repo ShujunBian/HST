@@ -10,6 +10,7 @@
 #import "P5_UiLayer.h"
 #import "P5_NumberButton.h"
 #import "CCSprite+getRect.h"
+#import "SimpleAudioEngine.h"
 @interface P5_UiLayer ()
 
 @property (strong, nonatomic) CCLayerColor* shadowLayer;
@@ -24,6 +25,7 @@
 @synthesize isShow = _isShow;
 - (void)didLoadFromCCB
 {
+    self.currentMusicIndex = 1;
     _isShow = NO;
 //    self.containerNode.scale = 0.5;
     [self.containerNode retain];
@@ -56,6 +58,9 @@
 }
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (!_isShow) {
+        return;
+    }
     CCDirector* director = [CCDirector sharedDirector];
 
     for(UITouch* touch in touches)
@@ -66,6 +71,7 @@
         if (CGRectContainsPoint([self.number1 getRect], locationInNodeSpace))
         {
             [self selectButton:self.number1];
+            self.currentMusicIndex = 1;
             if ([self.delegate respondsToSelector:@selector(p5Ui:selectIndex:)]) {
                 [self.delegate p5Ui:self selectIndex:0];
             }
@@ -73,6 +79,7 @@
         else if (CGRectContainsPoint([self.number2 getRect], locationInNodeSpace))
         {
             [self selectButton:self.number2];
+            self.currentMusicIndex = 2;
             if ([self.delegate respondsToSelector:@selector(p5Ui:selectIndex:)]) {
                 [self.delegate p5Ui:self selectIndex:1];
             }
@@ -80,6 +87,7 @@
         else if (CGRectContainsPoint([self.number3 getRect], locationInNodeSpace))
         {
             [self selectButton:self.number3];
+            self.currentMusicIndex = 3;
             if ([self.delegate respondsToSelector:@selector(p5Ui:selectIndex:)]) {
                 [self.delegate p5Ui:self selectIndex:2];
             }
@@ -88,6 +96,7 @@
         {
             [self mainMapUIScaleHelper:self.okButton];
             if ([self.delegate respondsToSelector:@selector(p5UiOkButtonPressed:)]) {
+                [[SimpleAudioEngine sharedEngine] playEffect:@"UIButton.mp3"];
                 [self.delegate p5UiOkButtonPressed:self];
             }
         }
