@@ -11,6 +11,8 @@
 #import "P3_MonsterBody.h"
 #import "MonsterEye.h"
 #import "MonsterEyeUpdateObject.h"
+#import "NSNotificationCenter+Addition.h"
+#define kP3zOrderPurpleLayer    32
 
 @implementation P3_Monster
 
@@ -119,15 +121,26 @@
             break;
         }
     }
-    
+
     if ([self.monsterBodyArray count] < 4) {
         P3_MonsterBody * newBody = (P3_MonsterBody *)[CCBReader nodeGraphFromFile:fileName];
         [newBody setAnchorPoint:CGPointMake(0.5, 0.0)];
         [newBody setPosition:position];
         [newBody setScale:0.0];
-        [self.parent addChild:newBody z:zOrder[self.monsterType]];
-        [self.monsterBodyArray addObject:newBody];
         
+        if (self.monsterType == PurpMonster &&
+            [self.parent isKindOfClass:[P3_GameScene class]] &&
+            ((P3_GameScene *)self.parent).isInHelpUI) {
+            [self.parent addChild:newBody z:kP3zOrderPurpleLayer];
+            [self.monsterBodyArray addObject:newBody];
+            
+            [self.delegate hideHelpUI];
+//            [NSNotificationCenter postShouldHideHelpUINotification];
+        }
+        else {
+            [self.parent addChild:newBody z:zOrder[self.monsterType]];
+            [self.monsterBodyArray addObject:newBody];
+        }
         newBody.body.color = monsterFaceColor[self.monsterType][[self.monsterBodyArray count]];
         newBody.monsterType = self.monsterType;
         [newBody initMonsterBodyEyesAndMouth];
@@ -185,6 +198,9 @@
     CCScaleTo *action2 = [CCScaleTo actionWithDuration:0.1f scale:1];
     CCCallBlock * callBack = [CCCallBlock actionWithBlock:^{
         self.isBeginAnimationFinished = YES;
+        if (self.monsterType == CeruleanMonster) {
+            [self.delegate afterBeginAnimationFinished];
+        }
     }];
     CCSequence *seq = [CCSequence actions:easeIn,action1,action2,callBack, nil];
     
@@ -339,7 +355,7 @@
             else if (self.position.y >= (self.monsterBodyCounter + 0.5) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition &&
                      self.position.y < (self.monsterBodyCounter + 1) * monsterBodyHeight[self.monsterType] + kMonsterBaselineYPosition &&
                      self.movingType == MovingUp) {
-                
+
                 if (self.isNeedAutoMoving) {
                     
                     [self createMonsterBodyInPosition:CGPointMake(self.position.x,kMonsterBaselineYPosition)
@@ -431,6 +447,7 @@
 #pragma mark 压缩到一定程度 删除monster body
                 if ([self.monsterBodyArray count] >= self.monsterBodyCounter &&
                     [self.monsterBodyArray count] > 0) {
+                    [self.delegate hideHelpUI];
                     P3_MonsterBody * body = (P3_MonsterBody *)[self.monsterBodyArray objectAtIndex:self.monsterBodyCounter - 1];
                     [self addBubbleBoomParticleInPosition:CGPointMake(body.position.x, kMonsterBaselineYPosition + 1 / 2.0 * body.contentSize.height) andColor:body.body.color];
                     [body removeFromParentAndCleanup:YES];

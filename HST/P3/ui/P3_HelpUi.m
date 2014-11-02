@@ -15,7 +15,7 @@
 
 @interface P3_HelpUi ()
 
-@property (assign, nonatomic) CGPoint fingerPrePosition;
+//@property (assign, nonatomic) CGPoint fingerPrePosition;
 
 @end
 
@@ -26,7 +26,7 @@
 //    [self.shadowLayer retain];
     [self.label1 retain];
     [self.label2 retain];
-    self.fingerPrePosition = self.fingerIcon.position;
+//    self.fingerPrePosition = self.fingerIcon.position;
 }
 
 - (void)startAnimation
@@ -44,10 +44,33 @@
 - (void)endAnimation
 {
     [self.fingerIcon stopAllActions];
-    if (ABS(self.fingerPrePosition.x) > 0.001 || ABS(self.fingerPrePosition.y) > 0.001 )
-    {
-        self.fingerIcon.position = self.fingerPrePosition;
-    }
+//    if (ABS(self.fingerPrePosition.x) > 0.001 || ABS(self.fingerPrePosition.y) > 0.001 )
+//    {
+//        self.fingerIcon.position = self.fingerPrePosition;
+//    }
+}
+
+- (void)resetHelpUIPosition:(int)monsterBodyCount
+{
+    [self.fingerIcon setPosition:helpUIIconPosition[monsterBodyCount]];
+    [self.label1 setPosition:helpUILabel1Position[monsterBodyCount]];
+    [self.label2 setPosition:helpUILabel2Position[monsterBodyCount]];
+}
+
+- (void)fadeIn:(BOOL)fAnimate
+{
+    float duration = fAnimate? 0.3f : 0.f;
+    [self.fingerIcon runAction:[CCFadeIn actionWithDuration:duration]];
+    [self.label1 runAction:[CCFadeIn actionWithDuration:duration]];
+    [self.label2 runAction:[CCFadeIn actionWithDuration:duration]];
+}
+
+- (void)fadeOut:(BOOL)fAnimate
+{
+    float duration = fAnimate? 0.3f : 0.f;
+    [self.fingerIcon runAction:[CCFadeOut actionWithDuration:duration]];
+    [self.label1 runAction:[CCFadeOut actionWithDuration:duration]];
+    [self.label2 runAction:[CCFadeOut actionWithDuration:duration]];
 }
 
 - (void)dealloc

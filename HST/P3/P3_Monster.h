@@ -125,6 +125,8 @@ static int zOrder[]= {
 
 - (void)monsterWithMonsterType:(MonsterType) monsterType
            DragginChangedLevel:(int)draggingLevel;
+- (void)hideHelpUI;
+- (void)afterBeginAnimationFinished;
 
 @end
 
