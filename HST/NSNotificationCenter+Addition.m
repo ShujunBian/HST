@@ -9,6 +9,8 @@
 #import "NSNotificationCenter+Addition.h"
 
 #define kShouldReleaseRestBubble   @"ShouldReleaseRestBubble"
+#define kBeginAnimationFinished    @"BeginAnimationFinished"
+#define kShouldHideHelpUI          @"ShouldHideHelpUI"
 #define kShouldShowNextPassage     @"ShowNextPassage"
 #define kShouldRollToNextHole      @"ShouldRollToNextHole"
 #define kShouldRotateNextBell      @"ShouldRotateNextBell"

@@ -17,5 +17,8 @@
 }
 
 @property (nonatomic, assign) CCLayer * monsterLayer;
+@property (nonatomic) BOOL isInHelpUI;
 
+- (void)showHelpUiWithAnimation:(BOOL)fAnimate;
+- (void)hideHelpUiWithANimation:(BOOL)fAnimate;
 @end

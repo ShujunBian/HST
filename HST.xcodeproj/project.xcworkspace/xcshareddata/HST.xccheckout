@@ -5,7 +5,7 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>B6583E7A-C591-4465-AC32-B6119CA76FD1</string>
+	<string>48698280-16DD-4CA1-B1B9-4ACB11882DE2</string>
 	<key>IDESourceControlProjectName</key>
 	<string>HST</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
@@ -14,7 +14,7 @@
 		<string>https://github.com/Emersonwade/HST.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>HST.xcodeproj/project.xcworkspace</string>
+	<string>HST.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>896234AB7CE4261AEB0938A447C92031BB65425A</key>

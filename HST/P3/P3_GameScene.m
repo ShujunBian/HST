@@ -20,6 +20,8 @@
 #import "P3_CeruleanMonster.h"
 #import "CircleTransition.h"
 #import "CCLayer+CircleTransitionExtension.h"
+#import "CCLayerColor+CCLayerColorAnimation.h"
+#import "NSNotificationCenter+Addition.h"
 #import "WXYUtility.h"
 
 #import "DiracAudioPlayer.h"
@@ -27,6 +29,8 @@
 #import "SimpleAudioEngine.h"
 #import "VolumnHelper.h"
 #import "P3_HelpUi.h"
+
+#define kP3FirstOpenKey @"kP3FirstOpenKey"
 
 enum P3zOrder{
     P3zOrderMonsterLayer = 10,
@@ -52,6 +56,7 @@ static float pitchRate[] = {
 
 @property (nonatomic, strong) P3_HelpUi* helpUi;
 @property (nonatomic, strong) CCLayerColor* shadowLayer;
+
 @end
 
 @implementation P3_GameScene
@@ -74,8 +79,6 @@ static float pitchRate[] = {
     
     [self initMonsters];
     [self setTouchEnabled:NO];
-    [self performSelector:@selector(resetTouchEnable) withObject:self
-               afterDelay:1.2];
     [self.helpUi retain];
 
 }
@@ -91,6 +94,14 @@ static float pitchRate[] = {
 #pragma mark - 初始化Monsters
 - (void)initMonsters
 {
+    P3_PurpMonster * purpMonster = (P3_PurpMonster *)[CCBReader nodeGraphFromFile:@"P3_PurpMonster.ccbi"];
+    [monsterLayer addChild:purpMonster z:0];
+    [purpMonster setPosition:monsterFirstPositions[0]];
+    [purpMonster createMonsterWithType:PurpMonster];
+    [purpMonster initMonsterEyes];
+    purpMonster.delegate = self;
+    [_monsterArray addObject:purpMonster];
+    
     P3_BlueMonster * blueMonster = (P3_BlueMonster *)[CCBReader nodeGraphFromFile:@"P3_BlueMonster.ccbi"];
     [monsterLayer addChild:blueMonster z:-1];
     [blueMonster setPosition:monsterFirstPositions[1]];
@@ -122,19 +133,11 @@ static float pitchRate[] = {
     ceruleanMonster.delegate = self;
     [_monsterArray addObject:ceruleanMonster];
     
-    //Shadow Layer
     self.shadowLayer = [CCLayerColor layerWithColor:ccc4(0, 0, 0, 204)];
     [self addChild:self.shadowLayer z:P3zOrderShadowLayer];
-    
-    P3_PurpMonster * purpMonster = (P3_PurpMonster *)[CCBReader nodeGraphFromFile:@"P3_PurpMonster.ccbi"];
-    [self addChild:purpMonster z:P3zOrderPurpleLayer];
-    [purpMonster setPosition:monsterFirstPositions[0]];
-    [purpMonster createMonsterWithType:PurpMonster];
-    [purpMonster initMonsterEyes];
-    purpMonster.delegate = self;
-    [_monsterArray addObject:purpMonster];
+    self.isInHelpUI = YES;
     [self reorderChild:self.helpUi z:P3zOrderHelpUi];
-    [self reorderChild:self.monsterLayer z:P3zOrderMonsterLayer];
+    [self hideHelpUiWithANimation:NO];
     
 }
 
@@ -205,12 +208,6 @@ static float pitchRate[] = {
     self.mDiracAudioPlayerArray = nil;
 }
 
-#pragma mark - 恢复触摸
-- (void)resetTouchEnable
-{
-    [self setTouchEnabled:YES];
-}
-
 #pragma mark - 触摸事件
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -222,7 +219,9 @@ static float pitchRate[] = {
             if ([self isInAreaByPoint:touchPosition
                       areaCenterPoint:monster.position
                              andWidth:monster.contentSize.width
-                            andHeight:monster.contentSize.height]) {
+                            andHeight:monster.contentSize.height] &&
+                (!self.isInHelpUI ||
+                 (self.isInHelpUI && monster.monsterType == PurpMonster))) {
                 monster.isChoosen = YES;
                 
                 if (monster.position.y == kMonsterBaselineYPosition) {
@@ -474,6 +473,24 @@ static float pitchRate[] = {
     }
 }
 
+- (void)hideHelpUI
+{
+    if (self.isInHelpUI) {
+        [self hideHelpUiWithANimation:YES];
+    }
+}
+
+- (void)afterBeginAnimationFinished
+{
+    if ([self checkIsFirstOpen] )
+    {
+        [self setIsFirstOpen:NO];
+        [self showHelpUiWithAnimation:YES];
+    }
+    
+    [self setTouchEnabled:YES];
+}
+
 #pragma mark - 菜单键调用函数
 - (void)restartGameScene
 {
@@ -497,16 +514,87 @@ static float pitchRate[] = {
 
 - (void)helpButtonPressed
 {
-#warning 未完成
+    if (!self.isInHelpUI) {
+        [self showHelpUiWithAnimation:YES];
+    }
 }
 
 #pragma mark - Help Ui
 - (void)showHelpUiWithAnimation:(BOOL)fAnimate
 {
-
+    self.isInHelpUI = YES;
+    
+    [self.helpUi resetHelpUIPosition:[((P3_PurpMonster *)[_monsterArray objectAtIndex:0]).monsterBodyArray count]];
+    
+    [self.helpUi startAnimation];
+    if (fAnimate)
+        [self.shadowLayer fadeIn];
+    else
+        [self.shadowLayer setOpacity:191];
+    [self.helpUi fadeIn:fAnimate];
+    
+    if (_monsterArray &&
+        [_monsterArray count] > 0 &&
+        (NSNull *)[_monsterArray objectAtIndex:0] != [NSNull null] )
+    {
+        if (![((P3_PurpMonster *)[_monsterArray objectAtIndex:0]).parent
+             isKindOfClass:[P3_GameScene class]])
+        {
+            [monsterLayer removeChild:(P3_PurpMonster *)[_monsterArray objectAtIndex:0] cleanup:NO];
+            [self addChild:(P3_PurpMonster *)[_monsterArray objectAtIndex:0] z:P3zOrderPurpleLayer];
+            
+            for (P3_MonsterBody * monsterBody in
+                 ((P3_PurpMonster *)[_monsterArray objectAtIndex:0]).monsterBodyArray) {
+                [monsterLayer removeChild:monsterBody cleanup:NO];
+                [self addChild:monsterBody z:P3zOrderPurpleLayer];
+            }
+        }
+    }
 }
+
 - (void)hideHelpUiWithANimation:(BOOL)fAnimate
 {
+    self.isInHelpUI = NO;
+    
+    [self.helpUi endAnimation];
+    if (fAnimate)
+        [self.shadowLayer fadeOut];
+    else
+        [self.shadowLayer setOpacity:0];
+    [self.helpUi fadeOut:fAnimate];
+    
+    if (_monsterArray &&
+        [_monsterArray count] > 0 &&
+        (NSNull *)[_monsterArray objectAtIndex:0] != [NSNull null] )
+    {
+        if ([((P3_PurpMonster *)[_monsterArray objectAtIndex:0]).parent
+             isKindOfClass:[P3_GameScene class]])
+        {
+            [self removeChild:(P3_PurpMonster *)[_monsterArray objectAtIndex:0] cleanup:NO];
+            [monsterLayer addChild:(P3_PurpMonster *)[_monsterArray objectAtIndex:0] z:0];
+            
+            for (P3_MonsterBody * monsterBody in
+                 ((P3_PurpMonster *)[_monsterArray objectAtIndex:0]).monsterBodyArray) {
+                [self removeChild:monsterBody cleanup:NO];
+                [monsterLayer addChild:monsterBody z:0];
+            }
+        }
+    }
+    
+}
 
+#pragma mark - UI
+- (BOOL)checkIsFirstOpen
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber* fFirst = [userDefaults objectForKey:kP3FirstOpenKey];
+    return !fFirst || [fFirst isEqual:[NSNull null]] || fFirst.boolValue;
+}
+
+- (BOOL)setIsFirstOpen:(BOOL)fFirst
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:@NO forKey:kP3FirstOpenKey];
+    return [userDefaults synchronize];
 }
 @end
