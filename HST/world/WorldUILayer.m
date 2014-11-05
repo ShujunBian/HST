@@ -294,12 +294,12 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
 
 - (void)dealloc
 {
-    [super dealloc];
-    
     [self.updateObj endUpdate];
     self.updateObj = nil;
     self.shadowLayer = nil;
     self.uiNode = nil;
+    
+    [super dealloc];
 }
 
 @end
