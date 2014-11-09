@@ -222,9 +222,9 @@
 
 - (void)dealloc
 {
-    [super dealloc];
-    
     self.monsterEye = nil;
     self.updateObj = nil;
+    
+    [super dealloc];
 }
 @end

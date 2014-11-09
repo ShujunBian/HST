@@ -105,15 +105,15 @@
 
 - (void)dealloc
 {
-    [super dealloc];
-    
 #warning 添加以下代码会崩溃
     /*
-    self.mountain1 = nil;
-    self.mountain2 = nil;
-    self.mountian1Next = nil;
-    self.mountian2Next = nil;
+     self.mountain1 = nil;
+     self.mountain2 = nil;
+     self.mountian1Next = nil;
+     self.mountian2Next = nil;
      */
+    
+    [super dealloc];
 }
 
 @end

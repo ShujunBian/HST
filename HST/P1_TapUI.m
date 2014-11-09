@@ -19,9 +19,10 @@
 }
 - (void)dealloc
 {
-    [super dealloc];
     self.background = nil;
     self.label = nil;
+    
+    [super dealloc];
 }
 
 @end

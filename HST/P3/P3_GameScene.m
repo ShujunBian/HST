@@ -150,13 +150,17 @@ static float pitchRate[] = {
 
     
     for (int i = 1; i < 6; ++ i) {
-        
         NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"P3_%d",i] ofType:@"mp3"];
         NSError *error = nil;
         NSURL *inUrl = [NSURL fileURLWithPath:path];
         DiracAudioPlayer * mDiracAudioPlay = [[[DiracAudioPlayer alloc]initWithContentsOfURL:inUrl channels:1 error:&error]autorelease];
         [_mDiracAudioPlayerArray addObject:mDiracAudioPlay];
         [mDiracAudioPlay setNumberOfLoops:-1];
+        
+    }
+    
+    for (int i = 1; i < 6; ++ i) {
+        DiracAudioPlayer * mDiracAudioPlay = [_mDiracAudioPlayerArray objectAtIndex:(i - 1)];
         [mDiracAudioPlay play];
         
         if (i == 3) {
@@ -167,7 +171,6 @@ static float pitchRate[] = {
         }
         [mDiracAudioPlay changePitch:pitchRate[i - 1]];
         [mDiracAudioPlay changeDuration:1.1];
-        
     }
     
     NSString * bgMusicPath = [[NSBundle mainBundle] pathForResource:@"P3_BgMusic" ofType:@"mp3"];
