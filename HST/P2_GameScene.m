@@ -135,7 +135,8 @@
     [self performSelector:@selector(letSecondLittleMonsterJump) withObject:self afterDelay:0.4];
     
 #warning 之后改为播放当前选择的音乐
-    [self playBackgroundMusic];
+//    [[SimpleAudioEngine sharedEngine] stopBackgroundMusic];
+//    [self playBackgroundMusic];
 }
 
 - (void)onExit
@@ -374,7 +375,7 @@
 - (void)changeCurrentSongByNumber:(int)number
 {
     self.currentSongType = number;
-    [self playBackgroundMusic];
+//    [self playBackgroundMusic];
 }
 
 - (void)selectLayerRemoveFromeGameScene
@@ -405,6 +406,8 @@
     
     [self initBackgroundMusicAndEffect];
     [self playBackgroundMusic];
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
+    
 }
 
 #pragma mark - 菜单键调用函数 mainMapDelegate

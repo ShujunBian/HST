@@ -94,15 +94,36 @@
 - (void)mouthUpdate
 {
     NSDate* date = [NSDate date];
+    float totalDeltaTime = 1.58f;
     NSTimeInterval deltaTime = [date timeIntervalSinceDate:self.initDate];
-    deltaTime = deltaTime - (int)deltaTime;
-    if (deltaTime < 0.1f) {
-        self.mouthRadio = deltaTime * 10;
-    } else if (deltaTime > 0.9f) {
-        self.mouthRadio = (1 - deltaTime) * 10;
-    } else {
+
+    int d = (int) (deltaTime / totalDeltaTime);
+    float a = ((float)d) * totalDeltaTime;
+    deltaTime = deltaTime - a;
+    
+    if (deltaTime < 0.4f) {
+        self.mouthRadio = 0;
+    } else if (deltaTime  < 0.6) {
+        self.mouthRadio = (deltaTime - 0.4) * 5;
+    } else if (deltaTime <= 0.8 && deltaTime > 0.7) {  
+        self.mouthRadio = (0.8 - deltaTime) * 10;
+    } else if (deltaTime <= 0.9 && deltaTime > 0.8) {
+        self.mouthRadio = 0;
+    } else if (deltaTime <= 1.0 && deltaTime > 0.9) {
+        self.mouthRadio = (deltaTime - 0.9) * 10;
+    } else if (deltaTime <= 1.2 && deltaTime > 1.1f) {
+        self.mouthRadio = (1.2 - deltaTime) * 10;
+    } else if (deltaTime <= 1.3 && deltaTime > 1.2f) {
+        self.mouthRadio = 0;
+    } else if (deltaTime <= 1.4 && deltaTime > 1.3) {
+        self.mouthRadio = (deltaTime - 1.3f) * 10;
+    } else if (deltaTime > totalDeltaTime - 0.2f) {
+        self.mouthRadio = (totalDeltaTime - deltaTime) * 5;
+    }
+    else {
         self.mouthRadio = 1;
     }
+    self.mouthRadio = self.mouthRadio * 0.9f + 0.1;
     
     
     if (self.maskedMouth) {
@@ -110,7 +131,6 @@
         self.maskedMouth = nil;
     }
 
-    
     CCSprite* s = [self generateMaskSpriteMouth];
     s.position = self.mouthPos;
     [self addChild:s z:4];

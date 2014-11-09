@@ -205,7 +205,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>225</real>
+							<real>215</real>
 							<real>663</real>
 							<integer>0</integer>
 						</array>
@@ -393,7 +393,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>438</real>
+							<real>428</real>
 							<real>639</real>
 							<integer>0</integer>
 						</array>
@@ -425,14 +425,6 @@
 					<dict>
 						<key>name</key>
 						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>visible</string>
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
@@ -517,7 +509,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>637</real>
+							<real>627</real>
 							<real>640</real>
 							<integer>0</integer>
 						</array>
@@ -549,14 +541,6 @@
 					<dict>
 						<key>name</key>
 						<string>ignoreAnchorPointForPosition</string>
-						<key>type</key>
-						<string>Check</string>
-						<key>value</key>
-						<false/>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>visible</string>
 						<key>type</key>
 						<string>Check</string>
 						<key>value</key>
@@ -752,8 +736,6 @@
 						<string>scene/P5_MonsterUnderground.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -777,7 +759,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>175</real>
+							<real>165</real>
 							<real>663</real>
 							<integer>0</integer>
 						</array>
@@ -849,7 +831,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>284</real>
+							<real>274</real>
 							<real>639</real>
 							<integer>0</integer>
 						</array>
@@ -999,6 +981,8 @@
 				<false/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
