@@ -71,25 +71,28 @@
                   self.label2_4,
                   self.finger];
     for (CCNodeRGBA* node in nodeArray) {
-        node.opacity = 255;
+        [node runAction:[CCFadeTo actionWithDuration:0.3 opacity:255]];
     }
 }
 - (void)hideUi2
 {
-    NSArray* nodeArray = @[self.home1,
-                           self.home2,
-                           self.home3,
-                           self.home4,
-                           self.home5];
-    for (CCNodeRGBA* node in nodeArray) {
-        node.visible = NO;
-    }
+
+    [self runAction:[CCSequence actionOne:[CCDelayTime actionWithDuration:0.3] two:[CCCallBlock actionWithBlock:^{
+        NSArray* nodeArray = @[self.home1,
+                               self.home2,
+                               self.home3,
+                               self.home4,
+                               self.home5];
+        for (CCNodeRGBA* node in nodeArray) {
+            node.visible = NO;
+        }
+    }]]];
     
-    nodeArray = @[self.label2_3,
+    NSArray* nodeArray = @[self.label2_3,
                   self.label2_4,
                   self.finger];
     for (CCNodeRGBA* node in nodeArray) {
-        node.opacity = 0;
+        [node runAction:[CCFadeTo actionWithDuration:0.3 opacity:0]];
     }
 }
 @end

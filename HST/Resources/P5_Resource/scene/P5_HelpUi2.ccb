@@ -359,7 +359,7 @@
 						<key>value</key>
 						<array>
 							<real>161</real>
-							<real>119</real>
+							<real>117</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -431,7 +431,7 @@
 						<key>value</key>
 						<array>
 							<real>123</real>
-							<real>42</real>
+							<real>40</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -479,6 +479,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -503,7 +505,7 @@
 						<key>value</key>
 						<array>
 							<real>65</real>
-							<real>127</real>
+							<real>125</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -575,7 +577,7 @@
 						<key>value</key>
 						<array>
 							<real>172</real>
-							<real>208</real>
+							<real>206</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -625,7 +627,7 @@
 						<key>value</key>
 						<array>
 							<real>242</real>
-							<real>64</real>
+							<real>62</real>
 							<integer>0</integer>
 						</array>
 					</dict>

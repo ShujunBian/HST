@@ -159,12 +159,10 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>images/P3_monster1_mouth.png</string>
+							<string>images/P3_monster3_mouth.png</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

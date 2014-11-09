@@ -42,8 +42,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>102</real>
-							<real>86.75</real>
+							<real>103</real>
+							<real>88.75</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -178,7 +178,7 @@
 				<key>memberVarAssignmentName</key>
 				<string>_monsterMouthUp</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -188,8 +188,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>100.5</real>
-							<real>53</real>
+							<real>101.5</real>
+							<real>51</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -262,7 +262,7 @@
 				<key>memberVarAssignmentName</key>
 				<string>_monsterMouthDown</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>

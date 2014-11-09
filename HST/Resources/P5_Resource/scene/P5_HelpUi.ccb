@@ -654,7 +654,7 @@
 						<key>value</key>
 						<array>
 							<real>900</real>
-							<real>500</real>
+							<real>498</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -713,9 +713,9 @@
 				<key>displayName</key>
 				<string>P5_Monster</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_monster</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -725,8 +725,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>901</real>
-							<real>460</real>
+							<real>899</real>
+							<real>459</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -752,6 +752,8 @@
 						<string>scene/P5_MonsterUnderground.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>
@@ -824,8 +826,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>baseClass</key>

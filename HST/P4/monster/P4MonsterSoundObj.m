@@ -71,9 +71,11 @@
             if ([self.delegate respondsToSelector:@selector(soundWillPlay:delay:)])
             {
                 [self.delegate soundWillPlay:self delay:delayTime];
+                
             }
-
-            [self performSelector:@selector(playEffect) withObject:nil afterDelay:delayTime];
+            if (self.delegate) {
+                [self performSelector:@selector(playEffect) withObject:nil afterDelay:delayTime];
+            }
         }
         else
         {
@@ -85,6 +87,7 @@
 
 - (void)dealloc
 {
+    self.fIsPlay = NO;
     self.monster = nil;
     self.delegate = nil;
     

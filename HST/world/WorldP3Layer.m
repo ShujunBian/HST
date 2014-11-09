@@ -64,7 +64,9 @@
     P3_GreenMonster * greenMonster = (P3_GreenMonster *)[CCBReader nodeGraphFromFile:@"P3_GreenMonster.ccbi"];
     [monsterLayer addChild:greenMonster z:-2];
     [greenMonster createMonsterWithType:GreenMonster];
+
     [_monsterArray addObject:greenMonster];
+    [greenMonster mainMapInit];
     
     P3_RedMonster * redMonster = (P3_RedMonster *)[CCBReader nodeGraphFromFile:@"P3_RedMonster.ccbi"];
     [monsterLayer addChild:redMonster z:-1];

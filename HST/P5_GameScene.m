@@ -127,7 +127,7 @@
     //Help Ui
     self.iUiState = 0;
     //FirstOpen
-    if (YES )
+    if ([self checkIsFirstOpen])
     {
         [self setIsFirstOpen:NO];
         //first open
@@ -226,13 +226,17 @@
     [circleLayer hideSceneWithDuration:0.5f onCompletion:^{
         [undergrounScene restartUndergroundWorld];
         [circleLayer showSceneWithDuration:0.5f onCompletion:^{
-            self.iUiState = 0;
             [self.mainMapHelper enableRestartButton];
             [self.mainMapHelper enableHelpButton];
             [circleLayer removeFromParentAndCleanup:YES];
-            if (self.fIsToShowHelpUi) {
+            if (self.fIsToShowHelpUi && self.iUiState != 3) {
                 [self showHelp1:YES];
             }
+            else if (self.fIsToShowHelpUi && self.iUiState == 3)
+            {
+                [self showHelp2:YES];
+            }
+            self.iUiState = 0;
         }];
     }];
 }
@@ -260,6 +264,7 @@
         [self showHelp2:YES];
     } else if (self.iUiState == 1) {
         [self showHelp3:YES];
+        self.iUiState = 3;
     }
     self.fIsToShowHelpUi = YES;
 

@@ -180,4 +180,9 @@
 {
     [self.mouth stopAllActions];
 }
+
+- (void)dealloc
+{
+    [super dealloc];
+}
 @end
