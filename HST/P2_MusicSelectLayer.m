@@ -34,13 +34,19 @@
         self.panRecognizer = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePan:)]autorelease];
         self.panRecognizer.delegate = self;
         [[[CCDirector sharedDirector] view] addGestureRecognizer:self.panRecognizer];
+        self.fIsFirst = YES;
     }
     return self;
 }
 
 - (void)addP2SelectSongUI
 {
-    [[SimpleAudioEngine sharedEngine] playEffect:@"UIButton.mp3"];
+    if (self.fIsFirst) {
+        self.fIsFirst = NO;
+    }
+    else {
+        [[SimpleAudioEngine sharedEngine] playEffect:@"UIButton.mp3"];
+    }
     [self setTouchEnabled:YES];
     [[[CCDirector sharedDirector]touchDispatcher] addTargetedDelegate:self priority:-10 swallowsTouches:YES];
     

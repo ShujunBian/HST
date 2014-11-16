@@ -36,5 +36,5 @@
 
 - (void)addP2SelectSongUI;
 - (void)resetUINodeByCurrentSongNumber:(int)number;
-
+@property (assign, nonatomic) BOOL fIsFirst;
 @end

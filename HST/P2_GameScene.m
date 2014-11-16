@@ -398,6 +398,7 @@
     
     self.musicSelectLayer = [[[P2_MusicSelectLayer alloc]init]autorelease];
     self.musicSelectLayer.delegate = self;
+    self.musicSelectLayer.fIsFirst = NO;
     [self.musicSelectLayer addP2SelectSongUI];
     [self addChild:self.musicSelectLayer z:20];
     [self.musicSelectLayer resetUINodeByCurrentSongNumber:(self.currentSongType - 1)];
