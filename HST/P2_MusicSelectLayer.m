@@ -126,7 +126,10 @@
                         [self.uiNodeCounterArray setObject:[NSNumber numberWithInt:formerCounter + rate * 1] atIndexedSubscript:currentIndex];
                         
                         if ([[NSNumber numberWithInt:formerCounter + rate * 1]intValue] == 0) {
-                            [self.delegate changeCurrentSongByNumber:currentIndex + 1];
+                            if ([self.delegate respondsToSelector:@selector(changeCurrentSongByNumber:)])
+                            {
+                                [self.delegate changeCurrentSongByNumber:currentIndex + 1];
+                            }
                         }
                     }
                 }

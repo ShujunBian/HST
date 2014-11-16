@@ -430,6 +430,9 @@
         CCScene* scene = [CCBReader sceneWithNodeGraphFromFile:@"world.ccbi"];
         return scene;
     }];
+    
+    [self selectLayerRemoveFromeGameScene];
+    
 //    [[CCDirector sharedDirector] replaceScene:
 //     [CircleTransition transitionWithDuration:1.0
 //                                        scene:scene]];
