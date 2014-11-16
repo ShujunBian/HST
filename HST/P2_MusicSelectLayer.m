@@ -7,6 +7,7 @@
 //
 
 #import "P2_MusicSelectLayer.h"
+#import "SimpleAudioEngine.h"
 
 @interface P2_MusicSelectLayer()
 
@@ -39,6 +40,7 @@
 
 - (void)addP2SelectSongUI
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"UIButton.mp3"];
     [self setTouchEnabled:YES];
     [[[CCDirector sharedDirector]touchDispatcher] addTargetedDelegate:self priority:-10 swallowsTouches:YES];
     
@@ -180,6 +182,7 @@
 #pragma mark - UINode delegate
 - (void)clickUIPlayButtonByMusicNumber:(int)number
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"UILittleButton.mp3"];
     [_shadowLayer fadeOut];
 
     for (int i = 0; i < [self.uiNodeArray count]; ++ i) {
