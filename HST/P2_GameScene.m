@@ -419,6 +419,7 @@
 
 - (void)returnToMainMap
 {
+    _flyObjectsOnScreen = nil;
     [self unscheduleAllSelectors];
     for (CCNode * child in [self children]) {
         [child stopAllActions];
