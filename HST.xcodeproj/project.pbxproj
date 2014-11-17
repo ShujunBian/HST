@@ -176,20 +176,6 @@
 		5169CD3418CDE5EE00426E6C /* CDXPropertyModifierAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD3318CDE5EE00426E6C /* CDXPropertyModifierAction.m */; };
 		5169CD3718CDE5EE00426E6C /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD3618CDE5EE00426E6C /* CocosDenshion.m */; };
 		5169CD3B18CDE5EE00426E6C /* SimpleAudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD3A18CDE5EE00426E6C /* SimpleAudioEngine.m */; };
-		5169CD5118CDE5EE00426E6C /* aabb.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD5018CDE5EE00426E6C /* aabb.c */; };
-		5169CD5318CDE5EE00426E6C /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = 5169CD5218CDE5EE00426E6C /* ChangeLog */; };
-		5169CD5718CDE5EE00426E6C /* mat4stack.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD5618CDE5EE00426E6C /* mat4stack.c */; };
-		5169CD5918CDE5EE00426E6C /* matrix.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD5818CDE5EE00426E6C /* matrix.c */; };
-		5169CD5B18CDE5EE00426E6C /* mat3.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD5A18CDE5EE00426E6C /* mat3.c */; };
-		5169CD5D18CDE5EE00426E6C /* mat4.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD5C18CDE5EE00426E6C /* mat4.c */; };
-		5169CD5F18CDE5EE00426E6C /* neon_matrix_impl.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD5E18CDE5EE00426E6C /* neon_matrix_impl.c */; };
-		5169CD6118CDE5EE00426E6C /* plane.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD6018CDE5EE00426E6C /* plane.c */; };
-		5169CD6318CDE5EE00426E6C /* quaternion.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD6218CDE5EE00426E6C /* quaternion.c */; };
-		5169CD6518CDE5EE00426E6C /* ray2.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD6418CDE5EE00426E6C /* ray2.c */; };
-		5169CD6718CDE5EE00426E6C /* utility.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD6618CDE5EE00426E6C /* utility.c */; };
-		5169CD6918CDE5EE00426E6C /* vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD6818CDE5EE00426E6C /* vec2.c */; };
-		5169CD6B18CDE5EE00426E6C /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD6A18CDE5EE00426E6C /* vec3.c */; };
-		5169CD6D18CDE5EE00426E6C /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD6C18CDE5EE00426E6C /* vec4.c */; };
 		5169CD7218CDE5EE00426E6C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD7118CDE5EE00426E6C /* main.m */; };
 		5169CD7518CDE5EE00426E6C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD7418CDE5EE00426E6C /* AppDelegate.m */; };
 		5169CD7818CDE5EE00426E6C /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5169CD7718CDE5EE00426E6C /* HelloWorldLayer.m */; };
@@ -1272,6 +1258,21 @@
 		EFC35B8E19F2DD5500C43EE5 /* p5_ui_ok_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC35B8419F2DD5500C43EE5 /* p5_ui_ok_icon.png */; };
 		EFC35B9219F2E59A00C43EE5 /* P5_NumberButton.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC35B9119F2E59A00C43EE5 /* P5_NumberButton.m */; };
 		EFC35B9519F2E6D900C43EE5 /* P5_UiLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EFC35B9419F2E6D900C43EE5 /* P5_UiLayer.m */; };
+		EFD0B7DC1A1A4A8500BCDFBA /* aabb.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7CC1A1A4A8500BCDFBA /* aabb.c */; };
+		EFD0B7DD1A1A4A8500BCDFBA /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = EFD0B7CD1A1A4A8500BCDFBA /* ChangeLog */; };
+		EFD0B7DE1A1A4A8500BCDFBA /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = EFD0B7CE1A1A4A8500BCDFBA /* CMakeLists.txt */; };
+		EFD0B7DF1A1A4A8500BCDFBA /* mat4stack.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7D01A1A4A8500BCDFBA /* mat4stack.c */; };
+		EFD0B7E01A1A4A8500BCDFBA /* matrix.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7D11A1A4A8500BCDFBA /* matrix.c */; };
+		EFD0B7E11A1A4A8500BCDFBA /* mat3.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7D21A1A4A8500BCDFBA /* mat3.c */; };
+		EFD0B7E21A1A4A8500BCDFBA /* mat4.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7D31A1A4A8500BCDFBA /* mat4.c */; };
+		EFD0B7E31A1A4A8500BCDFBA /* neon_matrix_impl.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7D41A1A4A8500BCDFBA /* neon_matrix_impl.c */; };
+		EFD0B7E41A1A4A8500BCDFBA /* plane.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7D51A1A4A8500BCDFBA /* plane.c */; };
+		EFD0B7E51A1A4A8500BCDFBA /* quaternion.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7D61A1A4A8500BCDFBA /* quaternion.c */; };
+		EFD0B7E61A1A4A8500BCDFBA /* ray2.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7D71A1A4A8500BCDFBA /* ray2.c */; };
+		EFD0B7E71A1A4A8500BCDFBA /* utility.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7D81A1A4A8500BCDFBA /* utility.c */; };
+		EFD0B7E81A1A4A8500BCDFBA /* vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7D91A1A4A8500BCDFBA /* vec2.c */; };
+		EFD0B7E91A1A4A8500BCDFBA /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7DA1A1A4A8500BCDFBA /* vec3.c */; };
+		EFD0B7EA1A1A4A8500BCDFBA /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = EFD0B7DB1A1A4A8500BCDFBA /* vec4.c */; };
 		EFEB042719F5742B00A06E32 /* P5_HelpUi.m in Sources */ = {isa = PBXBuildFile; fileRef = EFEB042619F5742B00A06E32 /* P5_HelpUi.m */; };
 /* End PBXBuildFile section */
 
@@ -1583,35 +1584,6 @@
 		5169CD3918CDE5EE00426E6C /* SimpleAudioEngine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SimpleAudioEngine.h; path = libs/CocosDenshion/SimpleAudioEngine.h; sourceTree = "<group>"; };
 		5169CD3A18CDE5EE00426E6C /* SimpleAudioEngine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SimpleAudioEngine.m; path = libs/CocosDenshion/SimpleAudioEngine.m; sourceTree = "<group>"; };
 		5169CD3C18CDE5EE00426E6C /* LICENSE_CocosDenshion.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_CocosDenshion.txt; path = libs/LICENSE_CocosDenshion.txt; sourceTree = "<group>"; };
-		5169CD4018CDE5EE00426E6C /* aabb.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = aabb.h; path = libs/kazmath/include/kazmath/aabb.h; sourceTree = "<group>"; };
-		5169CD4218CDE5EE00426E6C /* mat4stack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mat4stack.h; path = libs/kazmath/include/kazmath/GL/mat4stack.h; sourceTree = "<group>"; };
-		5169CD4318CDE5EE00426E6C /* matrix.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = matrix.h; path = libs/kazmath/include/kazmath/GL/matrix.h; sourceTree = "<group>"; };
-		5169CD4418CDE5EE00426E6C /* kazmath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = kazmath.h; path = libs/kazmath/include/kazmath/kazmath.h; sourceTree = "<group>"; };
-		5169CD4518CDE5EE00426E6C /* mat3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mat3.h; path = libs/kazmath/include/kazmath/mat3.h; sourceTree = "<group>"; };
-		5169CD4618CDE5EE00426E6C /* mat4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = mat4.h; path = libs/kazmath/include/kazmath/mat4.h; sourceTree = "<group>"; };
-		5169CD4718CDE5EE00426E6C /* neon_matrix_impl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = neon_matrix_impl.h; path = libs/kazmath/include/kazmath/neon_matrix_impl.h; sourceTree = "<group>"; };
-		5169CD4818CDE5EE00426E6C /* plane.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = plane.h; path = libs/kazmath/include/kazmath/plane.h; sourceTree = "<group>"; };
-		5169CD4918CDE5EE00426E6C /* quaternion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = quaternion.h; path = libs/kazmath/include/kazmath/quaternion.h; sourceTree = "<group>"; };
-		5169CD4A18CDE5EE00426E6C /* ray2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ray2.h; path = libs/kazmath/include/kazmath/ray2.h; sourceTree = "<group>"; };
-		5169CD4B18CDE5EE00426E6C /* utility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = utility.h; path = libs/kazmath/include/kazmath/utility.h; sourceTree = "<group>"; };
-		5169CD4C18CDE5EE00426E6C /* vec2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = vec2.h; path = libs/kazmath/include/kazmath/vec2.h; sourceTree = "<group>"; };
-		5169CD4D18CDE5EE00426E6C /* vec3.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = vec3.h; path = libs/kazmath/include/kazmath/vec3.h; sourceTree = "<group>"; };
-		5169CD4E18CDE5EE00426E6C /* vec4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = vec4.h; path = libs/kazmath/include/kazmath/vec4.h; sourceTree = "<group>"; };
-		5169CD5018CDE5EE00426E6C /* aabb.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = aabb.c; path = libs/kazmath/src/aabb.c; sourceTree = "<group>"; };
-		5169CD5218CDE5EE00426E6C /* ChangeLog */ = {isa = PBXFileReference; lastKnownFileType = text; name = ChangeLog; path = libs/kazmath/src/ChangeLog; sourceTree = "<group>"; };
-		5169CD5418CDE5EE00426E6C /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = CMakeLists.txt; path = libs/kazmath/src/CMakeLists.txt; sourceTree = "<group>"; };
-		5169CD5618CDE5EE00426E6C /* mat4stack.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = mat4stack.c; path = libs/kazmath/src/GL/mat4stack.c; sourceTree = "<group>"; };
-		5169CD5818CDE5EE00426E6C /* matrix.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = matrix.c; path = libs/kazmath/src/GL/matrix.c; sourceTree = "<group>"; };
-		5169CD5A18CDE5EE00426E6C /* mat3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = mat3.c; path = libs/kazmath/src/mat3.c; sourceTree = "<group>"; };
-		5169CD5C18CDE5EE00426E6C /* mat4.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = mat4.c; path = libs/kazmath/src/mat4.c; sourceTree = "<group>"; };
-		5169CD5E18CDE5EE00426E6C /* neon_matrix_impl.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = neon_matrix_impl.c; path = libs/kazmath/src/neon_matrix_impl.c; sourceTree = "<group>"; };
-		5169CD6018CDE5EE00426E6C /* plane.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = plane.c; path = libs/kazmath/src/plane.c; sourceTree = "<group>"; };
-		5169CD6218CDE5EE00426E6C /* quaternion.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = quaternion.c; path = libs/kazmath/src/quaternion.c; sourceTree = "<group>"; };
-		5169CD6418CDE5EE00426E6C /* ray2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = ray2.c; path = libs/kazmath/src/ray2.c; sourceTree = "<group>"; };
-		5169CD6618CDE5EE00426E6C /* utility.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = utility.c; path = libs/kazmath/src/utility.c; sourceTree = "<group>"; };
-		5169CD6818CDE5EE00426E6C /* vec2.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = vec2.c; path = libs/kazmath/src/vec2.c; sourceTree = "<group>"; };
-		5169CD6A18CDE5EE00426E6C /* vec3.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = vec3.c; path = libs/kazmath/src/vec3.c; sourceTree = "<group>"; };
-		5169CD6C18CDE5EE00426E6C /* vec4.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = vec4.c; path = libs/kazmath/src/vec4.c; sourceTree = "<group>"; };
 		5169CD6E18CDE5EE00426E6C /* LICENSE_Kazmath.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = LICENSE_Kazmath.txt; path = libs/LICENSE_Kazmath.txt; sourceTree = "<group>"; };
 		5169CD7018CDE5EE00426E6C /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		5169CD7118CDE5EE00426E6C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -2792,6 +2764,35 @@
 		EFC35B9119F2E59A00C43EE5 /* P5_NumberButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P5_NumberButton.m; sourceTree = "<group>"; };
 		EFC35B9319F2E6D900C43EE5 /* P5_UiLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P5_UiLayer.h; sourceTree = "<group>"; };
 		EFC35B9419F2E6D900C43EE5 /* P5_UiLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P5_UiLayer.m; sourceTree = "<group>"; };
+		EFD0B7BC1A1A4A8500BCDFBA /* aabb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aabb.h; sourceTree = "<group>"; };
+		EFD0B7BE1A1A4A8500BCDFBA /* mat4stack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mat4stack.h; sourceTree = "<group>"; };
+		EFD0B7BF1A1A4A8500BCDFBA /* matrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = matrix.h; sourceTree = "<group>"; };
+		EFD0B7C01A1A4A8500BCDFBA /* kazmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kazmath.h; sourceTree = "<group>"; };
+		EFD0B7C11A1A4A8500BCDFBA /* mat3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mat3.h; sourceTree = "<group>"; };
+		EFD0B7C21A1A4A8500BCDFBA /* mat4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mat4.h; sourceTree = "<group>"; };
+		EFD0B7C31A1A4A8500BCDFBA /* neon_matrix_impl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = neon_matrix_impl.h; sourceTree = "<group>"; };
+		EFD0B7C41A1A4A8500BCDFBA /* plane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plane.h; sourceTree = "<group>"; };
+		EFD0B7C51A1A4A8500BCDFBA /* quaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = quaternion.h; sourceTree = "<group>"; };
+		EFD0B7C61A1A4A8500BCDFBA /* ray2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ray2.h; sourceTree = "<group>"; };
+		EFD0B7C71A1A4A8500BCDFBA /* utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = utility.h; sourceTree = "<group>"; };
+		EFD0B7C81A1A4A8500BCDFBA /* vec2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec2.h; sourceTree = "<group>"; };
+		EFD0B7C91A1A4A8500BCDFBA /* vec3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec3.h; sourceTree = "<group>"; };
+		EFD0B7CA1A1A4A8500BCDFBA /* vec4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vec4.h; sourceTree = "<group>"; };
+		EFD0B7CC1A1A4A8500BCDFBA /* aabb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = aabb.c; sourceTree = "<group>"; };
+		EFD0B7CD1A1A4A8500BCDFBA /* ChangeLog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ChangeLog; sourceTree = "<group>"; };
+		EFD0B7CE1A1A4A8500BCDFBA /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		EFD0B7D01A1A4A8500BCDFBA /* mat4stack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mat4stack.c; sourceTree = "<group>"; };
+		EFD0B7D11A1A4A8500BCDFBA /* matrix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = matrix.c; sourceTree = "<group>"; };
+		EFD0B7D21A1A4A8500BCDFBA /* mat3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mat3.c; sourceTree = "<group>"; };
+		EFD0B7D31A1A4A8500BCDFBA /* mat4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mat4.c; sourceTree = "<group>"; };
+		EFD0B7D41A1A4A8500BCDFBA /* neon_matrix_impl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = neon_matrix_impl.c; sourceTree = "<group>"; };
+		EFD0B7D51A1A4A8500BCDFBA /* plane.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = plane.c; sourceTree = "<group>"; };
+		EFD0B7D61A1A4A8500BCDFBA /* quaternion.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = quaternion.c; sourceTree = "<group>"; };
+		EFD0B7D71A1A4A8500BCDFBA /* ray2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ray2.c; sourceTree = "<group>"; };
+		EFD0B7D81A1A4A8500BCDFBA /* utility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = utility.c; sourceTree = "<group>"; };
+		EFD0B7D91A1A4A8500BCDFBA /* vec2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec2.c; sourceTree = "<group>"; };
+		EFD0B7DA1A1A4A8500BCDFBA /* vec3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec3.c; sourceTree = "<group>"; };
+		EFD0B7DB1A1A4A8500BCDFBA /* vec4.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vec4.c; sourceTree = "<group>"; };
 		EFEB042519F5742B00A06E32 /* P5_HelpUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P5_HelpUi.h; sourceTree = "<group>"; };
 		EFEB042619F5742B00A06E32 /* P5_HelpUi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P5_HelpUi.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -3100,12 +3101,12 @@
 		5169CBFB18CDE5ED00426E6C /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				EFD0B7B91A1A4A8500BCDFBA /* kazmath */,
 				5169CD2618CDE5EE00426E6C /* LICENSE_cocos2d.txt */,
 				5169CD3C18CDE5EE00426E6C /* LICENSE_CocosDenshion.txt */,
 				5169CD6E18CDE5EE00426E6C /* LICENSE_Kazmath.txt */,
 				5169CBFC18CDE5ED00426E6C /* cocos2d */,
 				5169CD2718CDE5EE00426E6C /* CocosDenshion */,
-				5169CD3D18CDE5EE00426E6C /* kazmath */,
 			);
 			name = libs;
 			sourceTree = "<group>";
@@ -3372,82 +3373,6 @@
 				5169CD3A18CDE5EE00426E6C /* SimpleAudioEngine.m */,
 			);
 			name = CocosDenshion;
-			sourceTree = "<group>";
-		};
-		5169CD3D18CDE5EE00426E6C /* kazmath */ = {
-			isa = PBXGroup;
-			children = (
-				5169CD3E18CDE5EE00426E6C /* include */,
-				5169CD4F18CDE5EE00426E6C /* src */,
-			);
-			name = kazmath;
-			sourceTree = "<group>";
-		};
-		5169CD3E18CDE5EE00426E6C /* include */ = {
-			isa = PBXGroup;
-			children = (
-				5169CD3F18CDE5EE00426E6C /* kazmath */,
-			);
-			name = include;
-			sourceTree = "<group>";
-		};
-		5169CD3F18CDE5EE00426E6C /* kazmath */ = {
-			isa = PBXGroup;
-			children = (
-				5169CD4018CDE5EE00426E6C /* aabb.h */,
-				5169CD4418CDE5EE00426E6C /* kazmath.h */,
-				5169CD4518CDE5EE00426E6C /* mat3.h */,
-				5169CD4618CDE5EE00426E6C /* mat4.h */,
-				5169CD4718CDE5EE00426E6C /* neon_matrix_impl.h */,
-				5169CD4818CDE5EE00426E6C /* plane.h */,
-				5169CD4918CDE5EE00426E6C /* quaternion.h */,
-				5169CD4A18CDE5EE00426E6C /* ray2.h */,
-				5169CD4B18CDE5EE00426E6C /* utility.h */,
-				5169CD4C18CDE5EE00426E6C /* vec2.h */,
-				5169CD4D18CDE5EE00426E6C /* vec3.h */,
-				5169CD4E18CDE5EE00426E6C /* vec4.h */,
-				5169CD4118CDE5EE00426E6C /* GL */,
-			);
-			name = kazmath;
-			sourceTree = "<group>";
-		};
-		5169CD4118CDE5EE00426E6C /* GL */ = {
-			isa = PBXGroup;
-			children = (
-				5169CD4218CDE5EE00426E6C /* mat4stack.h */,
-				5169CD4318CDE5EE00426E6C /* matrix.h */,
-			);
-			name = GL;
-			sourceTree = "<group>";
-		};
-		5169CD4F18CDE5EE00426E6C /* src */ = {
-			isa = PBXGroup;
-			children = (
-				5169CD5018CDE5EE00426E6C /* aabb.c */,
-				5169CD5218CDE5EE00426E6C /* ChangeLog */,
-				5169CD5418CDE5EE00426E6C /* CMakeLists.txt */,
-				5169CD5A18CDE5EE00426E6C /* mat3.c */,
-				5169CD5C18CDE5EE00426E6C /* mat4.c */,
-				5169CD5E18CDE5EE00426E6C /* neon_matrix_impl.c */,
-				5169CD6018CDE5EE00426E6C /* plane.c */,
-				5169CD6218CDE5EE00426E6C /* quaternion.c */,
-				5169CD6418CDE5EE00426E6C /* ray2.c */,
-				5169CD6618CDE5EE00426E6C /* utility.c */,
-				5169CD6818CDE5EE00426E6C /* vec2.c */,
-				5169CD6A18CDE5EE00426E6C /* vec3.c */,
-				5169CD6C18CDE5EE00426E6C /* vec4.c */,
-				5169CD5518CDE5EE00426E6C /* GL */,
-			);
-			name = src;
-			sourceTree = "<group>";
-		};
-		5169CD5518CDE5EE00426E6C /* GL */ = {
-			isa = PBXGroup;
-			children = (
-				5169CD5618CDE5EE00426E6C /* mat4stack.c */,
-				5169CD5818CDE5EE00426E6C /* matrix.c */,
-			);
-			name = GL;
 			sourceTree = "<group>";
 		};
 		5169CD6F18CDE5EE00426E6C /* Supporting Files */ = {
@@ -5171,6 +5096,83 @@
 			name = ui;
 			sourceTree = "<group>";
 		};
+		EFD0B7B91A1A4A8500BCDFBA /* kazmath */ = {
+			isa = PBXGroup;
+			children = (
+				EFD0B7BA1A1A4A8500BCDFBA /* include */,
+				EFD0B7CB1A1A4A8500BCDFBA /* src */,
+			);
+			name = kazmath;
+			path = libs/kazmath;
+			sourceTree = "<group>";
+		};
+		EFD0B7BA1A1A4A8500BCDFBA /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EFD0B7BB1A1A4A8500BCDFBA /* kazmath */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EFD0B7BB1A1A4A8500BCDFBA /* kazmath */ = {
+			isa = PBXGroup;
+			children = (
+				EFD0B7BC1A1A4A8500BCDFBA /* aabb.h */,
+				EFD0B7BD1A1A4A8500BCDFBA /* GL */,
+				EFD0B7C01A1A4A8500BCDFBA /* kazmath.h */,
+				EFD0B7C11A1A4A8500BCDFBA /* mat3.h */,
+				EFD0B7C21A1A4A8500BCDFBA /* mat4.h */,
+				EFD0B7C31A1A4A8500BCDFBA /* neon_matrix_impl.h */,
+				EFD0B7C41A1A4A8500BCDFBA /* plane.h */,
+				EFD0B7C51A1A4A8500BCDFBA /* quaternion.h */,
+				EFD0B7C61A1A4A8500BCDFBA /* ray2.h */,
+				EFD0B7C71A1A4A8500BCDFBA /* utility.h */,
+				EFD0B7C81A1A4A8500BCDFBA /* vec2.h */,
+				EFD0B7C91A1A4A8500BCDFBA /* vec3.h */,
+				EFD0B7CA1A1A4A8500BCDFBA /* vec4.h */,
+			);
+			path = kazmath;
+			sourceTree = "<group>";
+		};
+		EFD0B7BD1A1A4A8500BCDFBA /* GL */ = {
+			isa = PBXGroup;
+			children = (
+				EFD0B7BE1A1A4A8500BCDFBA /* mat4stack.h */,
+				EFD0B7BF1A1A4A8500BCDFBA /* matrix.h */,
+			);
+			path = GL;
+			sourceTree = "<group>";
+		};
+		EFD0B7CB1A1A4A8500BCDFBA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EFD0B7CC1A1A4A8500BCDFBA /* aabb.c */,
+				EFD0B7CD1A1A4A8500BCDFBA /* ChangeLog */,
+				EFD0B7CE1A1A4A8500BCDFBA /* CMakeLists.txt */,
+				EFD0B7CF1A1A4A8500BCDFBA /* GL */,
+				EFD0B7D21A1A4A8500BCDFBA /* mat3.c */,
+				EFD0B7D31A1A4A8500BCDFBA /* mat4.c */,
+				EFD0B7D41A1A4A8500BCDFBA /* neon_matrix_impl.c */,
+				EFD0B7D51A1A4A8500BCDFBA /* plane.c */,
+				EFD0B7D61A1A4A8500BCDFBA /* quaternion.c */,
+				EFD0B7D71A1A4A8500BCDFBA /* ray2.c */,
+				EFD0B7D81A1A4A8500BCDFBA /* utility.c */,
+				EFD0B7D91A1A4A8500BCDFBA /* vec2.c */,
+				EFD0B7DA1A1A4A8500BCDFBA /* vec3.c */,
+				EFD0B7DB1A1A4A8500BCDFBA /* vec4.c */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		EFD0B7CF1A1A4A8500BCDFBA /* GL */ = {
+			isa = PBXGroup;
+			children = (
+				EFD0B7D01A1A4A8500BCDFBA /* mat4stack.c */,
+				EFD0B7D11A1A4A8500BCDFBA /* matrix.c */,
+			);
+			path = GL;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -5333,7 +5335,6 @@
 				51A94297197A130A00920318 /* p2_firstmonster_body-hd.png in Resources */,
 				51A94289197A130A00920318 /* 3-hd.png in Resources */,
 				5160F88319AAE28300917C34 /* P2_2_7.mp3 in Resources */,
-				5169CD5318CDE5EE00426E6C /* ChangeLog in Resources */,
 				EF8308131999F19C00EBFAF5 /* world_resource.plist in Resources */,
 				EF403FB1197A1D1700C6C8E1 /* P4_blue_eyeball_1.png in Resources */,
 				EF53BC0019906A04007C8258 /* p4_background.mp3 in Resources */,
@@ -5560,6 +5561,7 @@
 				EF404099197A592100C6C8E1 /* world_background-hd.png in Resources */,
 				EF403FB2197A1D1700C6C8E1 /* P4_blue_eyeball_2-hd.png in Resources */,
 				51A941AA197A128700920318 /* P5_MonsterUnderRightLeg.png in Resources */,
+				EFD0B7DD1A1A4A8500BCDFBA /* ChangeLog in Resources */,
 				EF4040AD197A592100C6C8E1 /* world_cloud_background-hd.png in Resources */,
 				EF403FFF197A1D1700C6C8E1 /* P4CloudLayer.ccb in Resources */,
 				51A94398197A142E00920318 /* monster_hand.png in Resources */,
@@ -5716,6 +5718,7 @@
 				EF87D3011A05215C001A03DC /* P5_2_2.mp3 in Resources */,
 				51A94301197A130A00920318 /* P2_SecondLittlemonsterEye.ccb in Resources */,
 				51A941B5197A128700920318 /* P5_underground-hd.png in Resources */,
+				EFD0B7DE1A1A4A8500BCDFBA /* CMakeLists.txt in Resources */,
 				51A942B8197A130A00920318 /* p2_monster_body.png in Resources */,
 				EF4040A6197A592100C6C8E1 /* world_background_tree2.png in Resources */,
 				EF98841519F3929C00F47CF0 /* music_icon.png in Resources */,
@@ -6278,7 +6281,6 @@
 				5169CCC518CDE5EE00426E6C /* CCTMXLayer.m in Sources */,
 				5199791518D000DF006A1FD8 /* MainMapHelper.m in Sources */,
 				EF404044197A574800C6C8E1 /* WorldP4Layer.m in Sources */,
-				5169CD5D18CDE5EE00426E6C /* mat4.c in Sources */,
 				5169CC3918CDE5ED00426E6C /* ccDeprecated.m in Sources */,
 				5169CCF418CDE5EE00426E6C /* CCDirectorMac.m in Sources */,
 				5169CDEA18CDE6D900426E6C /* P5_UndergroundHole.m in Sources */,
@@ -6292,11 +6294,12 @@
 				5169CDE018CDE6D900426E6C /* NSNotificationCenter+Addition.m in Sources */,
 				5169CCCE18CDE5EE00426E6C /* CCTMXXMLParser.m in Sources */,
 				5169D0C518CDEC1300426E6C /* CCBSequenceProperty.m in Sources */,
-				5169CD6518CDE5EE00426E6C /* ray2.c in Sources */,
 				5169CD9B18CDE67C00426E6C /* P1_MonsterEye.m in Sources */,
 				5169CD0018CDE5EE00426E6C /* base64.c in Sources */,
 				5169CDE218CDE6D900426E6C /* P5_CalculateHelper.m in Sources */,
 				5169CC2318CDE5ED00426E6C /* CCActionTween.m in Sources */,
+				EFD0B7E01A1A4A8500BCDFBA /* matrix.c in Sources */,
+				EFD0B7E31A1A4A8500BCDFBA /* neon_matrix_impl.c in Sources */,
 				5169CC5A18CDE5ED00426E6C /* CCLabelBMFont.m in Sources */,
 				5169CD0718CDE5EE00426E6C /* ccCArray.m in Sources */,
 				EFC35B9219F2E59A00C43EE5 /* P5_NumberButton.m in Sources */,
@@ -6304,11 +6307,13 @@
 				EF22311B1995FC7400BCB28E /* P4MonsterSoundObj.m in Sources */,
 				5169CDC518CDE6B200426E6C /* P2_SkyLayer.m in Sources */,
 				5169CD2518CDE5EE00426E6C /* ZipUtils.m in Sources */,
+				EFD0B7E61A1A4A8500BCDFBA /* ray2.c in Sources */,
 				EF485E7D19DFE09C00483841 /* P4SwipeIndicator.m in Sources */,
 				5169CDE918CDE6D900426E6C /* P5_SoilCloud.m in Sources */,
 				5169CC1718CDE5ED00426E6C /* CCActionManager.m in Sources */,
 				5169CC7F18CDE5ED00426E6C /* CCParticleSystemQuad.m in Sources */,
 				51F16352196E7F3C00A5BE6A /* P3_GreenMonster.m in Sources */,
+				EFD0B7E41A1A4A8500BCDFBA /* plane.c in Sources */,
 				5169CC4218CDE5ED00426E6C /* CCDrawNode.m in Sources */,
 				5169CCD418CDE5EE00426E6C /* CCTransitionPageTurn.m in Sources */,
 				5169CC0518CDE5ED00426E6C /* CCActionCatmullRom.m in Sources */,
@@ -6321,7 +6326,6 @@
 				5169CDE818CDE6D900426E6C /* P5_SkyLayer.m in Sources */,
 				5169CD9918CDE67C00426E6C /* P1_GameScene.m in Sources */,
 				5169CCB918CDE5EE00426E6C /* CCTextureAtlas.m in Sources */,
-				5169CD6718CDE5EE00426E6C /* utility.c in Sources */,
 				5169CDE118CDE6D900426E6C /* P5_Bell.m in Sources */,
 				51E5F20F19A480BB008C86F3 /* P2_UINode.m in Sources */,
 				5169CDE418CDE6D900426E6C /* P5_GameScene.m in Sources */,
@@ -6334,23 +6338,24 @@
 				EF404033197A1D8500C6C8E1 /* MonsterEyeUpdateObject.m in Sources */,
 				5169CC6718CDE5ED00426E6C /* CCMenuItem.m in Sources */,
 				5169CC0218CDE5ED00426E6C /* CCActionCamera.m in Sources */,
+				EFD0B7E51A1A4A8500BCDFBA /* quaternion.c in Sources */,
 				5169CDC418CDE6B200426E6C /* P2_Mushroom.m in Sources */,
 				EFB03BA019FCDDB100225CDF /* P5_HelpUi2.m in Sources */,
+				EFD0B7DF1A1A4A8500BCDFBA /* mat4stack.c in Sources */,
 				5169CD3418CDE5EE00426E6C /* CDXPropertyModifierAction.m in Sources */,
 				5169CD0418CDE5EE00426E6C /* CCArray.m in Sources */,
-				5169CD6118CDE5EE00426E6C /* plane.c in Sources */,
 				5169CD0D18CDE5EE00426E6C /* CCProfiling.m in Sources */,
 				5169CCA418CDE5ED00426E6C /* CCShaderCache.m in Sources */,
 				1801E74C18E594FC004E0856 /* P4Cloud.m in Sources */,
 				5169CCAA18CDE5ED00426E6C /* CCSprite.m in Sources */,
 				1801E74E18E594FC004E0856 /* CCSprite+getRect.m in Sources */,
 				5169CC5118CDE5ED00426E6C /* CCGrabber.m in Sources */,
-				5169CD5B18CDE5EE00426E6C /* mat3.c in Sources */,
 				51E5F1FF19A3D221008C86F3 /* EAFRead.mm in Sources */,
 				EF58EB161990C36300B13232 /* GameLoadingProcessBar.m in Sources */,
 				5169CD7518CDE5EE00426E6C /* AppDelegate.m in Sources */,
 				5169CCE518CDE5EE00426E6C /* CCES2Renderer.m in Sources */,
 				EF22311E1996191F00BCB28E /* CircleTransitionLayer.m in Sources */,
+				EFD0B7DC1A1A4A8500BCDFBA /* aabb.c in Sources */,
 				5169CC5718CDE5ED00426E6C /* CCLabelAtlas.m in Sources */,
 				EF40403B197A572D00C6C8E1 /* WorldP1Layer.m in Sources */,
 				5169CDBB18CDE6B200426E6C /* P2_GameObjects.m in Sources */,
@@ -6358,11 +6363,12 @@
 				5169CD7B18CDE5EE00426E6C /* IntroLayer.m in Sources */,
 				5169CC0B18CDE5ED00426E6C /* CCActionGrid.m in Sources */,
 				5185FCFE199CBC270070D25C /* P2_MusicSelectLayer.m in Sources */,
+				EFD0B7EA1A1A4A8500BCDFBA /* vec4.c in Sources */,
 				5169CC5418CDE5ED00426E6C /* CCGrid.m in Sources */,
 				5169CDBD18CDE6B200426E6C /* P2_GrassLayer.m in Sources */,
+				EFD0B7E21A1A4A8500BCDFBA /* mat4.c in Sources */,
 				5169CDB818CDE6B200426E6C /* P2_CalculateHelper.m in Sources */,
 				1801E75018E594FC004E0856 /* P4Monster.m in Sources */,
-				5169CD6318CDE5EE00426E6C /* quaternion.c in Sources */,
 				5190B43318ED0574009078E4 /* P3_GameScene.m in Sources */,
 				EF404038197A56D100C6C8E1 /* WorldLayer.m in Sources */,
 				5169CCB018CDE5ED00426E6C /* CCSpriteFrame.m in Sources */,
@@ -6375,12 +6381,10 @@
 				1801E74B18E594FC004E0856 /* P4WaterRecord.m in Sources */,
 				5169CD3718CDE5EE00426E6C /* CocosDenshion.m in Sources */,
 				5169CCBC18CDE5EE00426E6C /* CCTextureCache.m in Sources */,
-				5169CD5F18CDE5EE00426E6C /* neon_matrix_impl.c in Sources */,
 				5169CC8F18CDE5ED00426E6C /* CCScene.m in Sources */,
 				5169CC0E18CDE5ED00426E6C /* CCActionGrid3D.m in Sources */,
 				1801E74A18E594FC004E0856 /* P4WaterLayer.m in Sources */,
 				EFEB042719F5742B00A06E32 /* P5_HelpUi.m in Sources */,
-				5169CD5718CDE5EE00426E6C /* mat4stack.c in Sources */,
 				EF31302B197E0B5800B61C2A /* CircleTransition.m in Sources */,
 				1801E75118E594FC004E0856 /* P4BottleOffset.m in Sources */,
 				5169CCB318CDE5ED00426E6C /* CCSpriteFrameCache.m in Sources */,
@@ -6389,11 +6393,14 @@
 				EF485E7A19DFE08000483841 /* P4HelpUi.m in Sources */,
 				5169CC3C18CDE5ED00426E6C /* CCDirector.m in Sources */,
 				5169CC2C18CDE5ED00426E6C /* CCAtlasNode.m in Sources */,
+				EFD0B7E91A1A4A8500BCDFBA /* vec3.c in Sources */,
 				5187A8A11990E56D00C52767 /* VolumnHelper.m in Sources */,
 				5169CD7218CDE5EE00426E6C /* main.m in Sources */,
+				EFD0B7E71A1A4A8500BCDFBA /* utility.c in Sources */,
 				51E5F20019A3D221008C86F3 /* EAFWrite.mm in Sources */,
 				EF5B19FA19AC651300DA3A79 /* P1_BlowUI.m in Sources */,
 				5169D0C218CDEC1300426E6C /* CCBKeyframe.m in Sources */,
+				EFD0B7E11A1A4A8500BCDFBA /* mat3.c in Sources */,
 				5169CDE318CDE6D900426E6C /* P5_Flower.m in Sources */,
 				5169CCF018CDE5EE00426E6C /* CCTouchHandler.m in Sources */,
 				5169CC6A18CDE5ED00426E6C /* CCMotionStreak.m in Sources */,
@@ -6404,14 +6411,12 @@
 				5169CD9618CDE67C00426E6C /* P1_Bubble.m in Sources */,
 				5169CDBA18CDE6B200426E6C /* P2_FlyGrass.m in Sources */,
 				5169CC1A18CDE5ED00426E6C /* CCActionPageTurn3D.m in Sources */,
-				5169CD6B18CDE5EE00426E6C /* vec3.c in Sources */,
 				5169D0C618CDEC1300426E6C /* CCNode+CCBRelativePositioning.m in Sources */,
 				5169CD1D18CDE5EE00426E6C /* TGAlib.m in Sources */,
 				51E5F1FC19A3D221008C86F3 /* DiracAudioPlayer.mm in Sources */,
 				5169CD9818CDE67C00426E6C /* P1_BubbleSkyLayer.m in Sources */,
 				51F1634F196E7F1D00A5BE6A /* P3_BlueMonster.m in Sources */,
 				5169CC2618CDE5ED00426E6C /* CCAnimation.m in Sources */,
-				5169CD5118CDE5EE00426E6C /* aabb.c in Sources */,
 				5169CCC818CDE5EE00426E6C /* CCTMXObjectGroup.m in Sources */,
 				5169CD9A18CDE67C00426E6C /* P1_Monster.m in Sources */,
 				5169CD2A18CDE5EE00426E6C /* CDAudioManager.m in Sources */,
@@ -6439,9 +6444,7 @@
 				EF404032197A1D8500C6C8E1 /* MonsterEyeTestLayer.m in Sources */,
 				5169CC8518CDE5ED00426E6C /* CCPhysicsSprite.mm in Sources */,
 				51ACAACA199A419200A34946 /* WorldUILayer.m in Sources */,
-				5169CD6918CDE5EE00426E6C /* vec2.c in Sources */,
 				5169CDBF18CDE6B200426E6C /* P2_LittleFlyObjects.m in Sources */,
-				5169CD5918CDE5EE00426E6C /* matrix.c in Sources */,
 				5169D0C318CDEC1300426E6C /* CCBReader.m in Sources */,
 				EF8308201999F40600EBFAF5 /* WXYUtility.m in Sources */,
 				5169CC3F18CDE5ED00426E6C /* CCDrawingPrimitives.m in Sources */,
@@ -6462,6 +6465,7 @@
 				5169CCAD18CDE5ED00426E6C /* CCSpriteBatchNode.m in Sources */,
 				51ACAA8C1999F63600A34946 /* CCLayerColor+CCLayerColorAnimation.m in Sources */,
 				EF485E6D19DFC89C00483841 /* P2_TapIndicator.m in Sources */,
+				EFD0B7E81A1A4A8500BCDFBA /* vec2.c in Sources */,
 				5169CC3618CDE5ED00426E6C /* CCConfiguration.m in Sources */,
 				51F16358196E7F5100A5BE6A /* P3_CeruleanMonster.m in Sources */,
 				1801E74F18E594FC004E0856 /* P4Extension.m in Sources */,
@@ -6469,7 +6473,6 @@
 				5169CC9218CDE5ED00426E6C /* CCScheduler.m in Sources */,
 				5169CCE218CDE5EE00426E6C /* CCDirectorIOS.m in Sources */,
 				5169CC6418CDE5ED00426E6C /* CCMenu.m in Sources */,
-				5169CD6D18CDE5EE00426E6C /* vec4.c in Sources */,
 				5169CC2F18CDE5ED00426E6C /* CCCamera.m in Sources */,
 				5169CC2918CDE5ED00426E6C /* CCAnimationCache.m in Sources */,
 				51E5F20819A3D221008C86F3 /* Utilities.mm in Sources */,
@@ -6580,6 +6583,7 @@
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "40A23946-638C-4A96-BC09-7B97DE041FF7";
+				VALID_ARCHS = "arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -6612,6 +6616,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "40A23946-638C-4A96-BC09-7B97DE041FF7";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
