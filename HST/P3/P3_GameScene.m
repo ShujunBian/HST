@@ -24,9 +24,10 @@
 #import "NSNotificationCenter+Addition.h"
 #import "WXYUtility.h"
 
-#import "DiracAudioPlayer.h"
+//#import "DiracAudioPlayer.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "SimpleAudioEngine.h"
+#import "CDAudioManager.h"
 #import "VolumnHelper.h"
 #import "P3_HelpUi.h"
 
@@ -40,10 +41,10 @@ enum P3zOrder{
 };
 
 static float pitchRate[] = {
-    1.0,
-    1.0,
-    1.0,
-    1.0,
+    0.0,
+    0.1,
+    0.3,
+    0.5,
     1.0
 };
 
@@ -52,7 +53,8 @@ static float pitchRate[] = {
 @property (nonatomic, strong) MainMapHelper * mainMapHelper;
 @property (nonatomic, strong) NSMutableArray * monsterArray;
 
-@property (nonatomic, strong) NSMutableArray * mDiracAudioPlayerArray;
+//@property (nonatomic, strong) NSMutableArray * mDiracAudioPlayerArray;
+@property (nonatomic, strong) NSMutableArray * cdAudioArray;
 
 @property (nonatomic, strong) P3_HelpUi* helpUi;
 @property (nonatomic, strong) CCLayerColor* shadowLayer;
@@ -75,7 +77,8 @@ static float pitchRate[] = {
     self.mainMapHelper = [MainMapHelper addMenuToCurrentPrototype:self atMainMapButtonPoint:CGPointMake(66.0, 727.0)];
     
     self.monsterArray = [NSMutableArray arrayWithCapacity:5];
-    self.mDiracAudioPlayerArray = [NSMutableArray arrayWithCapacity:6];
+//    self.mDiracAudioPlayerArray = [NSMutableArray arrayWithCapacity:6];
+    self.cdAudioArray = [NSMutableArray arrayWithCapacity:6];
     
     [self initMonsters];
     [self setTouchEnabled:NO];
@@ -148,41 +151,23 @@ static float pitchRate[] = {
     [[SimpleAudioEngine sharedEngine]stopBackgroundMusic];
     [VolumnHelper sharedVolumnHelper].isPlayingWordBgMusic = NO;
 
-    
-    for (int i = 1; i < 6; ++ i) {
-        NSString * path = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"P3_%d",i] ofType:@"mp3"];
-        NSError *error = nil;
-        NSURL *inUrl = [NSURL fileURLWithPath:path];
-        DiracAudioPlayer * mDiracAudioPlay = [[[DiracAudioPlayer alloc]initWithContentsOfURL:inUrl channels:1 error:&error]autorelease];
-        [_mDiracAudioPlayerArray addObject:mDiracAudioPlay];
-        [mDiracAudioPlay setNumberOfLoops:-1];
-        
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"P3_BgMusic.mp3"];
+
+    for (int i = 1; i <= 5; ++ i) {
+        CDSoundSource * source = [[SimpleAudioEngine sharedEngine] soundSourceForFile:[NSString stringWithFormat:@"P3_%d.mp3",i]];
+        [self.cdAudioArray addObject:source];
     }
     
-    for (int i = 1; i < 6; ++ i) {
-        DiracAudioPlayer * mDiracAudioPlay = [_mDiracAudioPlayerArray objectAtIndex:(i - 1)];
-        [mDiracAudioPlay play];
-        
-        if (i == 3) {
-            [mDiracAudioPlay setVolume:1.0];
+    for (int i = 0; i < 5; ++ i) {
+        CDSoundSource * tempSource = (CDSoundSource *)[self.cdAudioArray objectAtIndex:i];
+        if (i == 2) {
+            [tempSource setGain:1.0];
         }
         else {
-            [mDiracAudioPlay setVolume:0.0];
+            [tempSource setGain:0.0];
         }
-        [mDiracAudioPlay changePitch:pitchRate[i - 1]];
-        [mDiracAudioPlay changeDuration:1.1];
+        [tempSource play];
     }
-    
-    NSString * bgMusicPath = [[NSBundle mainBundle] pathForResource:@"P3_BgMusic" ofType:@"mp3"];
-    NSError *error = nil;
-    NSURL *inUrl = [NSURL fileURLWithPath:bgMusicPath];
-    DiracAudioPlayer * mDiracAudioPlay = [[[DiracAudioPlayer alloc]initWithContentsOfURL:inUrl channels:1 error:&error]autorelease];
-    [_mDiracAudioPlayerArray addObject:mDiracAudioPlay];
-    [mDiracAudioPlay setNumberOfLoops:-1];
-    [mDiracAudioPlay play];
-    [mDiracAudioPlay setVolume:1.0];
-    [mDiracAudioPlay changeDuration:1.1];
-
 }
 
 
@@ -204,11 +189,11 @@ static float pitchRate[] = {
     self.monsterArray = nil;
     self.mainMapHelper = nil;
     
-    for (DiracAudioPlayer * player in self.mDiracAudioPlayerArray) {
-        [player stop];
+    for (CDSoundSource * source in self.cdAudioArray) {
+        [source stop];
     }
-    [self.mDiracAudioPlayerArray removeAllObjects];
-    self.mDiracAudioPlayerArray = nil;
+    [self.cdAudioArray removeAllObjects];
+    self.cdAudioArray = nil;
 }
 
 #pragma mark - 触摸事件
@@ -443,37 +428,8 @@ static float pitchRate[] = {
 #pragma mark - P3_Monster Delegate
 - (void)monsterWithMonsterType:(MonsterType)monsterType DragginChangedLevel:(int)draggingLevel
 {
-    DiracAudioPlayer * audioPlayer = [self.mDiracAudioPlayerArray objectAtIndex:monsterType];
-    
-    switch (draggingLevel) {
-        case 1: {
-            [audioPlayer setVolume:0.0];
-            [audioPlayer changePitch:1.0 * pitchRate[monsterType]];
-            break;
-        }
-        case 2: {
-            [audioPlayer setVolume:0.2];
-            [audioPlayer changePitch:pitchRate[monsterType]];
-            break;
-        }
-        case 3: {
-            [audioPlayer setVolume:0.5];
-            [audioPlayer changePitch:pitchRate[monsterType]];
-            break;
-        }
-        case 4: {
-            [audioPlayer setVolume:1.0];
-            [audioPlayer changePitch:pitchRate[monsterType]];
-            break;
-        }
-        case 5: {
-            [audioPlayer setVolume:1.0];
-            [audioPlayer changePitch:0.4 + pitchRate[monsterType]];
-            break;
-        }
-        default:
-            break;
-    }
+    CDSoundSource * source = (CDSoundSource *)[self.cdAudioArray objectAtIndex:monsterType];
+    [source setGain:pitchRate[draggingLevel - 1]];
 }
 
 - (void)hideHelpUI
