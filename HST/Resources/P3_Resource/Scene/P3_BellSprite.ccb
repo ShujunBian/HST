@@ -30,9 +30,9 @@
 				<key>displayName</key>
 				<string>BellHead</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_bellHead</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -82,9 +82,9 @@
 				<key>displayName</key>
 				<string>CCBFile</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>_bellBody</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -121,6 +121,8 @@
 						<string>P3_Resource/Scene/P3_BellBody.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
