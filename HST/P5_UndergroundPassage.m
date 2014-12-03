@@ -60,7 +60,7 @@
                                                       pixelFormat:kCCTexture2DPixelFormat_RGBA8888]autorelease];
 
     [rt beginWithClear:77.0 / 255.0 g:60.0 / 255.0 b:55.0 / 255.0 a:0.0];
-    for (int i = 0 ; i < imageCounter; ++ i) {
+    for (int i = 0 ; i < imageCounter && passageFileNameArray; ++ i) {
         CCSprite * passage = [CCSprite spriteWithFile:(NSString *)[passageFileNameArray objectAtIndex:i]];
 
         [passage setPosition:CGPointMake((2.0 * i + 1.0)/2.0 * kPassageLength,

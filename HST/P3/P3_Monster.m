@@ -14,11 +14,22 @@
 #import "NSNotificationCenter+Addition.h"
 #define kP3zOrderPurpleLayer    32
 
+@interface P3_Monster ()
+
+@property (assign, nonatomic) CGPoint mouthUpPrePos;
+@property (assign, nonatomic) CGPoint mouthDownPrePos;
+
+@end
+
 @implementation P3_Monster
 
 @synthesize monsterMouth;
 @synthesize monsterBody;
 
+- (void)didLoadFromCCB
+{
+    [self.monsterMouth retain];
+}
 - (id)init
 {
     if (self = [super init]) {
@@ -36,6 +47,24 @@
         [self scheduleUpdate];
     }
     return self;
+}
+- (void)onEnter
+{
+    [super onEnter];
+    self.mouthUpPrePos = self.monsterMouthUp.position;
+    self.mouthDownPrePos = self.monsterMouthDown.position;
+}
+- (void)startMouthAnimate
+{
+    [self.monsterMouthUp runAction:[CCRepeatForever actionWithAction:[CCSequence actionWithArray:@[[CCMoveBy actionWithDuration:0.2f position:ccp(0,-5)],[CCMoveBy actionWithDuration:0.2f position:ccp(0, 5)], [CCDelayTime actionWithDuration:0.4f]]]]];
+    [self.monsterMouthDown runAction:[CCRepeatForever actionWithAction:[CCSequence actionWithArray:@[[CCMoveBy actionWithDuration:0.2f position:ccp(0,10)],[CCMoveBy actionWithDuration:0.2f position:ccp(0, -10)], [CCDelayTime actionWithDuration:0.4f]]]]];
+}
+- (void)endMouthAnimate
+{
+    [self.monsterMouthUp stopAllActions];
+    self.monsterMouthUp.position = self.mouthUpPrePos;
+    [self.monsterMouthDown stopAllActions];
+    self.monsterMouthDown.position = self.mouthDownPrePos;
 }
 
 - (void)dealloc
@@ -73,7 +102,7 @@
         
         MonsterEye * eye = (MonsterEye *)[self.monsterEye.monsterEyeSprites objectAtIndex:i];
         [eye setPosition:monsterEyePosition];
-        [self addChild:eye];
+        [self addChild:eye z:5];
         
         [self.monsterEye.updateObj beginUpdate];
     }
@@ -121,7 +150,10 @@
             break;
         }
     }
-
+    if (self.monsterBodyArray.count == 0) {
+        [self startMouthAnimate];
+    }
+    
     if ([self.monsterBodyArray count] < 4) {
         P3_MonsterBody * newBody = (P3_MonsterBody *)[CCBReader nodeGraphFromFile:fileName];
         [newBody setAnchorPoint:CGPointMake(0.5, 0.0)];
@@ -452,6 +484,9 @@
                     [self addBubbleBoomParticleInPosition:CGPointMake(body.position.x, kMonsterBaselineYPosition + 1 / 2.0 * body.contentSize.height) andColor:body.body.color];
                     [body removeFromParentAndCleanup:YES];
                     [self.monsterBodyArray removeObjectAtIndex:self.monsterBodyCounter - 1];
+                    if (self.monsterBodyArray.count == 0) {
+                        [self endMouthAnimate];
+                    }
                     
                     [self.delegate monsterWithMonsterType:self.monsterType DragginChangedLevel:(int)[self.monsterBodyArray count] + 1];
                 }

@@ -117,8 +117,16 @@ P5_UndergroundPassage1-hd.png
 P5_UndergroundPassage1.png
 P5_UndergroundPassage2-hd.png
 P5_UndergroundPassage2.png
+p5_help_arrow-hd.png
+p5_help_arrow.png
+p5_help_full-hd.png
+p5_help_full.png
+p5_HelpFinger-hd.png
+p5_HelpFinger.png
 p5_ui_bg-hd.png
 p5_ui_bg.png
+p5_ui_full2-hd.png
+p5_ui_full2.png
 p5_ui_music_icon-hd.png
 p5_ui_music_icon.png
 p5_ui_number_button_hover-hd.png
@@ -142,6 +150,8 @@ P5_GameScene.ccbi
 P5_GrassLayer.ccbi
 P5_GreenFlower.ccbi
 P5_GreenFlowerHead.ccbi
+P5_HelpUi.ccbi
+P5_HelpUi2.ccbi
 P5_HomeLight.ccbi
 P5_Monster.ccbi
 P5_MonsterEye.ccbi

@@ -174,7 +174,7 @@
 				<key>displayName</key>
 				<string>mouthDown</string>
 				<key>memberVarAssignmentName</key>
-				<string>_monsterMouthUp</string>
+				<string>_monsterMouthDown</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -187,7 +187,7 @@
 						<key>value</key>
 						<array>
 							<real>78</real>
-							<real>17</real>
+							<real>18</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -246,7 +246,7 @@
 				<key>displayName</key>
 				<string>mouthUp</string>
 				<key>memberVarAssignmentName</key>
-				<string>_monsterMouthDown</string>
+				<string>_monsterMouthUp</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -307,8 +307,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>

@@ -45,7 +45,7 @@ static NSString * bubbleMusicalScale[] = {
     @"fa",
     @"sol",
     @"la",
-    @"xi"
+    @"si"
 };
 
 - (id)init

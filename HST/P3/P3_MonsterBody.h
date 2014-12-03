@@ -23,5 +23,6 @@
 @property (nonatomic) MonsterType monsterType;
 
 - (void)initMonsterBodyEyesAndMouth;
-
+- (void)startMouthAnimation;
+- (void)stopMouthAnimation;
 @end

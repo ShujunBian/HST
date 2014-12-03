@@ -19,14 +19,22 @@
 #import "SimpleAudioEngine.h"
 #import "VolumnHelper.h"
 #import "P5_UiLayer.h"
+#import "CircleTransitionLayer.h"
+
 
 #define kHoleCoverTag 1
+#define kP5FirstOpenKey @"kP5FirstOpenKey"
 
 @interface P5_GameScene ()
 
 @property (strong, nonatomic) MainMapHelper* mainMapHelper;
 @property (strong, nonatomic) CCLayer * chooseLayer;
-
+@property (strong, nonatomic) P5_UiLayer* uiLayer;
+@property (strong, nonatomic) P5_HelpUi* helpUi;
+@property (strong, nonatomic) P5_HelpUi2* helpUi2;
+@property (assign, nonatomic) int iUiState;
+@property (assign, nonatomic) BOOL fIsToShowHelpUi;
+@property (assign, nonatomic) BOOL fIsShowUi2;
 @end
 
 @implementation P5_GameScene
@@ -44,6 +52,8 @@
 
 - (void) didLoadFromCCB
 {
+    self.fIsShowUi2 = NO;
+    [self.monsterUnderground retain];
     CGSize winSize = [[CCDirector sharedDirector]winSize];
     CCLayerColor * background = [CCLayerColor layerWithColor:ccc4(183,255,226,255)];
     [self addChild:background z:-10];
@@ -57,10 +67,21 @@
     [undergrounScene createUndergroundWorld];
     undergrounScene.delegate = self;
     
-#warning 添加的空白的Layer
     self.chooseLayer = [[[CCLayer alloc]init]autorelease];
     [self addChild:self.chooseLayer z:4];
-    self.chooseLayer.visible = NO;
+    self.chooseLayer.visible = YES;
+    
+    self.uiLayer = (P5_UiLayer*)[CCBReader nodeGraphFromFile:@"P5_UiLayer.ccbi"];
+    [self.chooseLayer addChild:self.uiLayer];
+    self.uiLayer.position = ccp(512, -384 + 50);
+    self.uiLayer.delegate = self;
+    
+    self.helpUi = (P5_HelpUi*)[CCBReader nodeGraphFromFile:@"P5_HelpUi.ccbi"];
+    [self.chooseLayer addChild:self.helpUi];
+    self.helpUi.position = ccp(0, -768 + 50);
+    self.helpUi2 = (P5_HelpUi2*)[CCBReader nodeGraphFromFile:@"P5_HelpUi2.ccbi"];
+    [self addChild:self.helpUi2 z:6];
+    self.helpUi2.position = ccp(0, -768 + 50);
     
     monsterUpground = (P5_Monster *)[CCBReader nodeGraphFromFile:@"P5_Monster.ccbi"];
     [self addChild:monsterUpground z:0];
@@ -89,9 +110,7 @@
 }
 - (void)showUi
 {
-    P5_UiLayer* uiLayer = (P5_UiLayer*)[CCBReader nodeGraphFromFile:@"P5_UiLayer.ccbi"];
-    [self.chooseLayer addChild:uiLayer];
-    uiLayer.position = ccp(512, -384 + 50);
+    [self.uiLayer showAnimate];
 }
 
 - (void)onEnter
@@ -104,7 +123,22 @@
     [[[CCDirector sharedDirector] view]setMultipleTouchEnabled:NO];
     
     [self showScene];
-    [self performSelector:@selector(showUi) withObject:nil afterDelay:1.8];
+    
+    //Help Ui
+    self.iUiState = 0;
+    //FirstOpen
+    if ([self checkIsFirstOpen])
+    {
+        [self setIsFirstOpen:NO];
+        //first open
+        [self performSelector:@selector(showHelp2:) withObject:@YES afterDelay:2.8];
+        self.fIsToShowHelpUi = YES;
+    }
+    else
+    {
+        self.fIsToShowHelpUi = NO;
+    }
+//    [self performSelector:@selector(showUi) withObject:nil afterDelay:1.8];
 }
 
 - (void)onEnterTransitionDidFinish
@@ -163,11 +197,48 @@
     [[CCTextureCache sharedTextureCache]removeTextureForKey:@"P5_clouds.png"];
     [[CCTextureCache sharedTextureCache]removeTextureForKey:@"P5_mountain2.png"];
 }
+- (void)monsterDidArrayFinal
+{
+    self.iUiState = 1;
+    if (self.fIsToShowHelpUi) {
+        [self showHelp3:YES];
+    }
+}
+- (void)touchesBegin
+{
+    if (self.fIsToShowHelpUi) {
+        [self showHelp2:NO];
+    }
+}
 
 #pragma mark - 菜单键调用函数
 - (void)restartGameScene
 {
-    [undergrounScene restartUndergroundWorld];
+
+    if (self.fIsToShowHelpUi) {
+        [self showHelp3:NO];
+    }
+    [self.mainMapHelper disableRestartButton];
+    [self.mainMapHelper disableHelpButton];
+    CircleTransitionLayer* circleLayer = [CircleTransitionLayer layer];
+    [circleLayer removeFromParentAndCleanup:YES];
+    [[CCDirector sharedDirector].runningScene addChild:circleLayer];
+    [circleLayer hideSceneWithDuration:0.5f onCompletion:^{
+        [undergrounScene restartUndergroundWorld];
+        [circleLayer showSceneWithDuration:0.5f onCompletion:^{
+            [self.mainMapHelper enableRestartButton];
+            [self.mainMapHelper enableHelpButton];
+            [circleLayer removeFromParentAndCleanup:YES];
+            if (self.fIsToShowHelpUi && self.iUiState != 3) {
+                [self showHelp1:YES];
+            }
+            else if (self.fIsToShowHelpUi && self.iUiState == 3)
+            {
+                [self showHelp2:YES];
+            }
+            self.iUiState = 0;
+        }];
+    }];
 }
 
 - (void)returnToMainMap
@@ -189,15 +260,107 @@
 
 - (void)helpButtonPressed
 {
-#warning 未完成
+    if (self.iUiState == 0) {
+        [self showHelp2:YES];
+    } else if (self.iUiState == 1) {
+        [self showHelp3:YES];
+        self.iUiState = 3;
+    }
+    self.fIsToShowHelpUi = YES;
+
+}
+
+- (void)showHelp1:(BOOL)fShow
+{
+    
+    if (fShow)
+    {
+        [self.helpUi showShadowLayer];
+        [self.helpUi showUi1];
+    }
+    else
+    {
+        [self.helpUi hideShadowLayer];
+        [self.helpUi hideUi1];
+    }
+}
+
+- (void)showHelp2:(BOOL)fShow
+{
+    if (fShow && !self.fIsShowUi2)
+    {
+        [self.helpUi showShadowLayer];
+        [self.helpUi showUi2];
+        [self.helpUi2 showUi2];
+        self.fIsShowUi2 = YES;
+    }
+    else if (!fShow && self.fIsShowUi2)
+    {
+        [self.helpUi hideShadowLayer];
+        [self.helpUi hideUi2];
+        [self.helpUi2 hideUi2];
+        self.fIsShowUi2 = NO;
+    }
+}
+- (void)showHelp3:(BOOL)fShow
+{
+    if (fShow)
+    {
+        [self.helpUi showShadowLayer];
+        [self.helpUi showUi3];
+    }
+    else
+    {
+        [self.helpUi hideShadowLayer];
+        [self.helpUi hideUi3];
+    }
+}
+
+- (void)musicButtonPressed
+{
+
+    if (self.fIsToShowHelpUi) {
+        self.fIsToShowHelpUi = NO;
+        self.iUiState = 0;
+        [self showHelp1:NO];
+    }
+    
+    [self showUi];
 }
 
 #pragma mark - 退出时释放内存
 - (void)dealloc
 {
+//    self.monsterUnderground = nil;
+    self.uiLayer = nil;
     [super dealloc];
 //    [[CCTextureCache sharedTextureCache]removeAllTextures];
     [WXYUtility clearImageCachedOfPlist:@"p5_resource"];
+}
+
+#pragma mark - 
+- (void)p5Ui:(P5_UiLayer*)uiLayer selectIndex:(int)index
+{
+    [[SimpleAudioEngine sharedEngine]playEffect:[NSString stringWithFormat:@"P5_%d_1.mp3", index + 1]];
+}
+
+- (void)p5UiOkButtonPressed:(P5_UiLayer*)uiLayer
+{
+    [self.uiLayer hideAnimate];
+    undergrounScene.currentMusicIndex = uiLayer.currentMusicIndex;
+}
+#pragma mark - 
+- (BOOL)checkIsFirstOpen
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber* fFirst = [userDefaults objectForKey:kP5FirstOpenKey];
+    return !fFirst || [fFirst isEqual:[NSNull null]] || fFirst.boolValue;
+}
+- (BOOL)setIsFirstOpen:(BOOL)fFirst
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:@NO forKey:kP5FirstOpenKey];
+    return [userDefaults synchronize];
 }
 
 @end

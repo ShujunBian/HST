@@ -143,7 +143,7 @@ static int zOrder[]= {
 @property (nonatomic) BOOL isNeedAutoMoving;
 
 @property (nonatomic, assign) CCSprite * monsterBody;
-@property (nonatomic, assign) CCSprite * monsterMouth;
+@property (nonatomic, strong) CCSprite * monsterMouth;
 
 @property (nonatomic, strong) P3_MonsterEye * monsterEye;
 @property (nonatomic, strong) NSMutableArray * monsterBodyArray;

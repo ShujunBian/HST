@@ -39,6 +39,7 @@ typedef enum {
 @property (nonatomic, strong) CCSprite * bellEye;
 @property (nonatomic) P5MusicType currentMusicType;
 @property (nonatomic) BOOL isChoosen;
+@property (assign, nonatomic) int currentMusicIndex;
 
 - (ccColor3B)colorAtIndex:(NSUInteger)index;
 - (void)setBodyColor:(ccColor3B)color;

@@ -78,9 +78,9 @@
     
     if ([prototype isKindOfClass:[P5_GameScene class]])
     {
-        self.musicItem = [WXYMenuItemImage itemWithNormalImage:@"music_icon.png" selectedImage:nil target:self selector:@selector(helpBtnPressed)];
+        self.musicItem = [WXYMenuItemImage itemWithNormalImage:@"music_icon.png" selectedImage:nil target:self selector:@selector(musicButtonPressed)];
         self.musicMenu = [CCMenu menuWithItems:self.musicItem, nil];
-        self.musicMenu.position = ccp([CCDirector sharedDirector].winSize.width - 10.f, point.y);
+        self.musicMenu.position = ccp(point.x + 155.0, point.y);
         [prototype addChild:self.musicMenu z:15];
         [self.musicItem setOpacity:0.0];
         CCFadeIn * fadeIn2 = [CCFadeIn actionWithDuration:0.2];
@@ -117,6 +117,15 @@
     }
 }
 
+- (void)musicButtonPressed
+{
+    [[SimpleAudioEngine sharedEngine] playEffect:@"UILittleButton.mp3"];
+    if ([self.delegate respondsToSelector:@selector(musicButtonPressed)])
+    {
+        [self.delegate musicButtonPressed];
+    }
+}
+
 - (void)disableMainMapButton
 {
     [self.mainMapMenu setEnabled:NO];
@@ -146,4 +155,13 @@
 {
     [self.restartMenu setEnabled:YES];
 }
+- (void)enableMusicButton
+{
+    [self.musicMenu setEnabled:YES];
+}
+- (void)disableMusicButton
+{
+    [self.musicMenu setEnabled:NO];
+}
+
 @end

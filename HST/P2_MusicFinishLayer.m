@@ -11,7 +11,7 @@
 #import "P2_Monster.h"
 #import "CCBReader.h"
 #import "CCLayerColor+CCLayerColorAnimation.h"
-
+#import "SimpleAudioEngine.h"
 @interface P2_MusicFinishLayer()
 
 @property (nonatomic, strong) CCLayerColor * shadowLayer;
@@ -31,6 +31,7 @@
 
 - (void)addFinishedUI
 {
+    [[SimpleAudioEngine sharedEngine] playEffect:@"UIButton.mp3"];
     if (self.delegate && [self.delegate respondsToSelector:@selector(willAddFinishLayer)])
     {
         [self.delegate willAddFinishLayer];

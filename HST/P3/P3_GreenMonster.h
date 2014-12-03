@@ -10,4 +10,6 @@
 
 @interface P3_GreenMonster : P3_Monster
 
+- (void)mainMapInit;
+
 @end

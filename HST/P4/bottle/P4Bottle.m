@@ -96,6 +96,7 @@
 }
 - (void)onExit
 {
+    [self endBottleSound];
     [super onExit];
     self.bottleMain = nil;
     self.leftCap = nil;
@@ -116,7 +117,6 @@
         obj.delegate = nil;
     }
     
-    [self endBottleSound];
     self.soundObjArray = nil;
 
 }

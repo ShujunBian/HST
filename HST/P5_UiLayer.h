@@ -8,10 +8,18 @@
 
 #import "CCLayer.h"
 
+@class P5_UiLayer;
+
+@protocol P5_UILayerDelegate <NSObject>
+- (void)p5Ui:(P5_UiLayer*)uiLayer selectIndex:(int)index;
+- (void)p5UiOkButtonPressed:(P5_UiLayer*)uiLayer;
+
+@end
+
 @interface P5_UiLayer : CCLayer
-
-
-- (void)showUi;
-- (void)hideUi;
-
+@property (readonly) BOOL isShow;
+@property (unsafe_unretained, nonatomic) NSObject<P5_UILayerDelegate>* delegate;
+@property (assign, nonatomic) int currentMusicIndex;
+- (void)showAnimate;
+- (void)hideAnimate;
 @end
