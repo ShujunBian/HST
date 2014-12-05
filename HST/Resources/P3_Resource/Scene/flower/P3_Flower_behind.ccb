@@ -24,6 +24,8 @@
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
+					<dict/>
+					<key>1</key>
 					<dict>
 						<key>rotation</key>
 						<dict>
@@ -121,9 +123,9 @@
 				<key>displayName</key>
 				<string>CCSprite</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>flowerBody</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -170,7 +172,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>4</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -199,6 +201,8 @@
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
+					<dict/>
+					<key>1</key>
 					<dict>
 						<key>position</key>
 						<dict>
@@ -396,9 +400,9 @@
 				<key>displayName</key>
 				<string>CCBFile</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>flowerHead</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -413,7 +417,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-2</real>
+							<real>0.0</real>
 							<real>0.0</real>
 							<integer>0</integer>
 						</array>
@@ -439,7 +443,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>8</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -457,6 +461,199 @@
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
+					<dict>
+						<key>displayFrame</key>
+						<dict>
+							<key>keyframes</key>
+							<array>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>0.23333333432674408</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>images/P3_flower_eyes_blink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>0.5</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>images/P3_flower_head_eye_open.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>2</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>images/P3_flower_eyes_blink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>2.2333333492279053</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>images/P3_flower_head_eye_open.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>4</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>images/P3_flower_eyes_blink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>4.2666668891906738</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>images/P3_flower_head_eye_open.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>6</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>images/P3_flower_eyes_blink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>6.2333331108093262</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>images/P3_flower_head_eye_open.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>7.5</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>images/P3_flower_eyes_blink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>7.8000001907348633</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>images/P3_flower_head_eye_open.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+							</array>
+							<key>name</key>
+							<string>displayFrame</string>
+							<key>type</key>
+							<integer>7</integer>
+						</dict>
+					</dict>
+					<key>1</key>
 					<dict>
 						<key>displayFrame</key>
 						<dict>
@@ -844,9 +1041,9 @@
 				<key>displayName</key>
 				<string>CCSprite</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>flowerEyes</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -861,8 +1058,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>5</real>
-							<real>38</real>
+							<real>1</real>
+							<real>39</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -898,7 +1095,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>20</real>
+						<real>8</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -998,11 +1195,31 @@
 			<key>autoPlay</key>
 			<true/>
 			<key>chainedSequenceId</key>
+			<integer>-1</integer>
+			<key>length</key>
+			<real>8</real>
+			<key>name</key>
+			<string>idle</string>
+			<key>offset</key>
+			<real>0.0</real>
+			<key>position</key>
+			<real>0.0</real>
+			<key>resolution</key>
+			<real>30</real>
+			<key>scale</key>
+			<real>32</real>
+			<key>sequenceId</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>autoPlay</key>
+			<false/>
+			<key>chainedSequenceId</key>
 			<integer>0</integer>
 			<key>length</key>
 			<real>8</real>
 			<key>name</key>
-			<string>Default Timeline</string>
+			<string>Default Timeline copy</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
@@ -1012,7 +1229,7 @@
 			<key>scale</key>
 			<real>32</real>
 			<key>sequenceId</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>stageBorder</key>

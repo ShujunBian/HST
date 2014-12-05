@@ -95,9 +95,9 @@
 				<key>displayName</key>
 				<string>Bell_body</string>
 				<key>memberVarAssignmentName</key>
-				<string>_bellBody</string>
+				<string></string>
 				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -162,12 +162,10 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P3_Resource/images/P3_windChime.png</string>
+							<string>images/P3_windChime.png</string>
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -251,7 +249,7 @@
 	<array>
 		<dict>
 			<key>autoPlay</key>
-			<true/>
+			<false/>
 			<key>chainedSequenceId</key>
 			<integer>0</integer>
 			<key>length</key>
@@ -261,7 +259,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>2</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

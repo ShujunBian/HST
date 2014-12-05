@@ -804,6 +804,8 @@
 		51ACAAC4199A2F6400A34946 /* P1_12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB8199A2F6400A34946 /* P1_12.mp3 */; };
 		51ACAACA199A419200A34946 /* WorldUILayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 51ACAAC9199A419200A34946 /* WorldUILayer.m */; };
 		51AF0B7A1A30B147001BED0A /* P1_Flower.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0B791A30B147001BED0A /* P1_Flower.m */; };
+		51AF0B811A321741001BED0A /* P3_Bell.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0B801A321741001BED0A /* P3_Bell.m */; };
+		51AF0B841A325879001BED0A /* P3_MushroomRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0B831A325879001BED0A /* P3_MushroomRight.m */; };
 		51BD221319E0229E003951AC /* P2_MusicSelectImage2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BD221119E0229E003951AC /* P2_MusicSelectImage2-hd.png */; };
 		51BD221419E0229E003951AC /* P2_MusicSelectImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BD221219E0229E003951AC /* P2_MusicSelectImage2.png */; };
 		51CFF209196E436800602568 /* P3_Mushroom.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CFF208196E436800602568 /* P3_Mushroom.m */; };
@@ -2259,6 +2261,10 @@
 		51ACAAC9199A419200A34946 /* WorldUILayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldUILayer.m; sourceTree = "<group>"; };
 		51AF0B781A30B147001BED0A /* P1_Flower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P1_Flower.h; sourceTree = "<group>"; };
 		51AF0B791A30B147001BED0A /* P1_Flower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P1_Flower.m; sourceTree = "<group>"; };
+		51AF0B7F1A321741001BED0A /* P3_Bell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Bell.h; sourceTree = "<group>"; };
+		51AF0B801A321741001BED0A /* P3_Bell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_Bell.m; sourceTree = "<group>"; };
+		51AF0B821A325879001BED0A /* P3_MushroomRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_MushroomRight.h; sourceTree = "<group>"; };
+		51AF0B831A325879001BED0A /* P3_MushroomRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P3_MushroomRight.m; sourceTree = "<group>"; };
 		51BD221119E0229E003951AC /* P2_MusicSelectImage2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P2_MusicSelectImage2-hd.png"; sourceTree = "<group>"; };
 		51BD221219E0229E003951AC /* P2_MusicSelectImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P2_MusicSelectImage2.png; sourceTree = "<group>"; };
 		51CFF207196E436800602568 /* P3_Mushroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Mushroom.h; sourceTree = "<group>"; };
@@ -2810,8 +2816,12 @@
 				5190B41618ED0574009078E4 /* P3_GameScene.m */,
 				51CFF207196E436800602568 /* P3_Mushroom.h */,
 				51CFF208196E436800602568 /* P3_Mushroom.m */,
+				51AF0B821A325879001BED0A /* P3_MushroomRight.h */,
+				51AF0B831A325879001BED0A /* P3_MushroomRight.m */,
 				51CFF22E196E480800602568 /* P3_Flower.h */,
 				51CFF22F196E480800602568 /* P3_Flower.m */,
+				51AF0B7F1A321741001BED0A /* P3_Bell.h */,
+				51AF0B801A321741001BED0A /* P3_Bell.m */,
 			);
 			path = P3;
 			sourceTree = "<group>";
@@ -3414,8 +3424,8 @@
 				5169CDB118CDE6B200426E6C /* P2_MonsterEye.m */,
 				5169CDB218CDE6B200426E6C /* P2_MonsterHead.h */,
 				5169CDB318CDE6B200426E6C /* P2_MonsterHead.m */,
-				5169CDB518CDE6B200426E6C /* P2_Mushroom.m */,
 				5169CDB418CDE6B200426E6C /* P2_Mushroom.h */,
+				5169CDB518CDE6B200426E6C /* P2_Mushroom.m */,
 				5169CDB618CDE6B200426E6C /* P2_SkyLayer.h */,
 				5169CDB718CDE6B200426E6C /* P2_SkyLayer.m */,
 				5185FCFC199CBC270070D25C /* P2_MusicSelectLayer.h */,
@@ -6341,6 +6351,7 @@
 				5169CDBA18CDE6B200426E6C /* P2_FlyGrass.m in Sources */,
 				5169CC1A18CDE5ED00426E6C /* CCActionPageTurn3D.m in Sources */,
 				5169D0C618CDEC1300426E6C /* CCNode+CCBRelativePositioning.m in Sources */,
+				51AF0B841A325879001BED0A /* P3_MushroomRight.m in Sources */,
 				5169CD1D18CDE5EE00426E6C /* TGAlib.m in Sources */,
 				5169CD9818CDE67C00426E6C /* P1_BubbleSkyLayer.m in Sources */,
 				51F1634F196E7F1D00A5BE6A /* P3_BlueMonster.m in Sources */,
@@ -6388,6 +6399,7 @@
 				51A93F5819778C1700920318 /* P3_MonsterBody.m in Sources */,
 				5169CC5D18CDE5ED00426E6C /* CCLabelTTF.m in Sources */,
 				5169CD0A18CDE5EE00426E6C /* CCFileUtils.m in Sources */,
+				51AF0B811A321741001BED0A /* P3_Bell.m in Sources */,
 				5169CCF718CDE5EE00426E6C /* CCEventDispatcher.m in Sources */,
 				5169CCAD18CDE5ED00426E6C /* CCSpriteBatchNode.m in Sources */,
 				51ACAA8C1999F63600A34946 /* CCLayerColor+CCLayerColorAnimation.m in Sources */,

@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "CCBAnimationManager.h"
 
-@interface P3_Flower : CCNode {
-    
-}
+@interface P3_Flower : CCNode<CCBAnimationManagerDelegate>
+
+@property (nonatomic, assign) CCSprite *flowerBody;
+@property (nonatomic, assign) CCSprite *flowerHead;
+@property (nonatomic, assign) CCSprite *flowerEyes;
 
 @end

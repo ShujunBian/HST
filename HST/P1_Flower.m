@@ -27,13 +27,25 @@
     selfAnimationManager = self.userObject;
     selfAnimationManager.delegate = self;
     
+    [self idleAnimation];
+}
+
+- (void) completedAnimationSequenceNamed:(NSString *)name
+{
+    if ([name isEqualToString:@"blink"]) {
+        [selfAnimationManager runAnimationsForSequenceNamed:@"blink"];
+        [self idleAnimation];
+    }
+}
+
+- (void)idleAnimation
+{
     CCSequence * fBSeq = [CCSequence actions:
                           [CCRotateTo actionWithDuration:kMoveDuration1 angle:-3.2],
                           [CCRotateTo actionWithDuration:kMoveDuration2 angle:0.0],
                           [CCRotateTo actionWithDuration:kMoveDuration3 angle:4.3],
                           [CCRotateTo actionWithDuration:kMoveDuration4 angle:0.0],
                           nil];
-//    CCRepeatForever * fBForever = [CCRepeatForever actionWithAction:fBSeq];
     [flowerBody runAction:fBSeq];
     
     
@@ -59,9 +71,8 @@
                                   nil];
     
     CCSpawn * fHSpawn = [CCSpawn actions:fHSeqPosition,fHSeqScale,fHSeqRotation, nil];
-//  CCRepeatForever * fHForever = [CCRepeatForever actionWithAction:fHSpawn];
     [flowerHead runAction:fHSpawn];
-
+    
     CCSequence * fEPosition = [CCSequence actions:
                                [CCMoveBy actionWithDuration:kMoveDuration1 position:CGPointMake(-2.3, 1.8)],
                                [CCMoveBy actionWithDuration:kMoveDuration2 position:CGPointMake(2.5, -1.1)],
@@ -70,86 +81,13 @@
                                nil];
     
     CCSequence * fERotation = [CCSequence actions:
-                              [CCRotateTo actionWithDuration:kMoveDuration1 angle:-5.0],
-                              [CCRotateTo actionWithDuration:kMoveDuration2 angle:0.0],
-                              [CCRotateTo actionWithDuration:kMoveDuration3 angle:8.0],
-                              [CCRotateTo actionWithDuration:kMoveDuration4 angle:0.0],
-                              nil];
+                               [CCRotateTo actionWithDuration:kMoveDuration1 angle:-5.0],
+                               [CCRotateTo actionWithDuration:kMoveDuration2 angle:0.0],
+                               [CCRotateTo actionWithDuration:kMoveDuration3 angle:8.0],
+                               [CCRotateTo actionWithDuration:kMoveDuration4 angle:0.0],
+                               nil];
     CCSpawn * fESpawn = [CCSpawn actions:fEPosition,fERotation, nil];
-//    CCRepeatForever * fEForever = [CCRepeatForever actionWithAction:fESpawn];
     [flowerEyes runAction:fESpawn];
- 
-    
-//    CCTexture2D * newTexture = [[CCTextureCache sharedTextureCache]textureForKey:kBigCircleUIChoosenInTexture];
-//    [bigCircleUI setTexture:newTexture];
-}
-
-//- (void) preloadTexture
-//{
-//    UIImage * image = [UIImage imageNamed:@"P5_BigCircleUI.png"];
-//    [[CCTextureCache sharedTextureCache]addCGImage:image.CGImage forKey:kBigCircleUINameInTexture];
-//    UIImage * imageChoosen = [UIImage imageNamed:@"P5_BigCircleUI_Choosen.png"];
-//    [[CCTextureCache sharedTextureCache]addCGImage:imageChoosen.CGImage forKey:kBigCircleUIChoosenInTexture];
-//    
-//    [[CCTextureCache sharedTextureCache]addImage:@"P5_Soil.png"];
-//}
-
-- (void) completedAnimationSequenceNamed:(NSString *)name
-{
-    if ([name isEqualToString:@"blink"]) {
-        [selfAnimationManager runAnimationsForSequenceNamed:@"blink"];
-
-        CCSequence * fBSeq = [CCSequence actions:
-                              [CCRotateTo actionWithDuration:kMoveDuration1 angle:-3.2],
-                              [CCRotateTo actionWithDuration:kMoveDuration2 angle:0.0],
-                              [CCRotateTo actionWithDuration:kMoveDuration3 angle:4.3],
-                              [CCRotateTo actionWithDuration:kMoveDuration4 angle:0.0],
-                              nil];
-        //    CCRepeatForever * fBForever = [CCRepeatForever actionWithAction:fBSeq];
-        [flowerBody runAction:fBSeq];
-        
-        CCSequence * fHSeqPosition = [CCSequence actions:
-                                      [CCMoveBy actionWithDuration:kMoveDuration1 position:CGPointMake(-2.7, 1.5)],
-                                      [CCMoveBy actionWithDuration:kMoveDuration2 position:CGPointMake(2.7, -1.5)],
-                                      [CCMoveBy actionWithDuration:kMoveDuration3 position:CGPointMake(4.2, 1.7)],
-                                      [CCMoveBy actionWithDuration:kMoveDuration4 position:CGPointMake(-4.2, -1.7)],
-                                      nil];
-        
-        CCSequence * fHSeqScale = [CCSequence actions:
-                                   [CCScaleTo actionWithDuration:kMoveDuration1 scale:1.0],
-                                   [CCScaleTo actionWithDuration:kMoveDuration2 scale:1.0],
-                                   [CCScaleTo actionWithDuration:kMoveDuration3 scaleX:1.01 scaleY:0.941],
-                                   [CCScaleTo actionWithDuration:kMoveDuration4 scale:1.0],
-                                   nil];
-        
-        CCSequence * fHSeqRotation = [CCSequence actions:
-                                      [CCRotateTo actionWithDuration:kMoveDuration1 angle:-5.0],
-                                      [CCRotateTo actionWithDuration:kMoveDuration2 angle:0.0],
-                                      [CCRotateTo actionWithDuration:kMoveDuration3 angle:8.0],
-                                      [CCRotateTo actionWithDuration:kMoveDuration4 angle:0.0],
-                                      nil];
-        
-        CCSpawn * fHSpawn = [CCSpawn actions:fHSeqPosition,fHSeqScale,fHSeqRotation, nil];
-        //  CCRepeatForever * fHForever = [CCRepeatForever actionWithAction:fHSpawn];
-        [flowerHead runAction:fHSpawn];
-        
-        CCSequence * fEPosition = [CCSequence actions:
-                                   [CCMoveBy actionWithDuration:kMoveDuration1 position:CGPointMake(-2.3, 1.8)],
-                                   [CCMoveBy actionWithDuration:kMoveDuration2 position:CGPointMake(2.5, -1.1)],
-                                   [CCMoveBy actionWithDuration:kMoveDuration3 position:CGPointMake(4.9, 2.1)],
-                                   [CCMoveBy actionWithDuration:kMoveDuration4 position:CGPointMake(-5.1, -2.8)],
-                                   nil];
-        
-        CCSequence * fERotation = [CCSequence actions:
-                                   [CCRotateTo actionWithDuration:kMoveDuration1 angle:-5.0],
-                                   [CCRotateTo actionWithDuration:kMoveDuration2 angle:0.0],
-                                   [CCRotateTo actionWithDuration:kMoveDuration3 angle:8.0],
-                                   [CCRotateTo actionWithDuration:kMoveDuration4 angle:0.0],
-                                   nil];
-        CCSpawn * fESpawn = [CCSpawn actions:fEPosition,fERotation, nil];
-        [flowerEyes runAction:fESpawn];
-        
-    }
 }
 
 - (void)dealloc

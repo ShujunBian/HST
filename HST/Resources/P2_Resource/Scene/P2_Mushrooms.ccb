@@ -24,6 +24,8 @@
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
+					<dict/>
+					<key>1</key>
 					<dict>
 						<key>rotation</key>
 						<dict>
@@ -121,9 +123,9 @@
 				<key>displayName</key>
 				<string>body1</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>mushroomBody1</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -188,15 +190,19 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_mushroom1Body.png</string>
+							<string>pictures/p2_mushroom1Body.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
+					<dict/>
+					<key>1</key>
 					<dict>
 						<key>position</key>
 						<dict>
@@ -394,9 +400,9 @@
 				<key>displayName</key>
 				<string>head1</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>mushroomHead1</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -442,7 +448,7 @@
 					</dict>
 					<dict>
 						<key>baseValue</key>
-						<real>0.0</real>
+						<real>-3</real>
 						<key>name</key>
 						<string>rotation</string>
 						<key>type</key>
@@ -466,10 +472,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_mushroom1Head.png</string>
+							<string>pictures/p2_mushroom1Head.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -494,7 +502,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
+										<string>pictures/p2_mushroom1EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -512,7 +520,7 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
-										<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
+										<string>pictures/p2_mushroom1Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -530,7 +538,200 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
+										<string>pictures/p2_mushroom1EyesBlink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>2.3666665554046631</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>4</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
 										<string>P2_Resource/pictures/p2_mushroom1EyesBlink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>4.2666668891906738</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>6</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom1EyesBlink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>6.2333331108093262</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>7.5999999046325684</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom1EyesBlink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>7.9000000953674316</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+							</array>
+							<key>name</key>
+							<string>displayFrame</string>
+							<key>type</key>
+							<integer>7</integer>
+						</dict>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>displayFrame</key>
+						<dict>
+							<key>keyframes</key>
+							<array>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>0.0</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>pictures/p2_mushroom1EyesBlink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>0.23333333432674408</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>pictures/p2_mushroom1Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>2</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>pictures/p2_mushroom1EyesBlink.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -862,9 +1063,9 @@
 				<key>displayName</key>
 				<string>eye1</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>mushroomEyes1</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -910,7 +1111,7 @@
 					</dict>
 					<dict>
 						<key>baseValue</key>
-						<real>0.0</real>
+						<real>-3</real>
 						<key>name</key>
 						<string>rotation</string>
 						<key>type</key>
@@ -939,15 +1140,19 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_mushroom1Eyes.png</string>
+							<string>pictures/p2_mushroom1EyesBlink.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
+					<dict/>
+					<key>1</key>
 					<dict>
 						<key>rotation</key>
 						<dict>
@@ -1045,9 +1250,9 @@
 				<key>displayName</key>
 				<string>body2</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>mushroomBody2</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1112,15 +1317,19 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_mushroom2Body.png</string>
+							<string>pictures/p2_mushroom2Body.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
 				<dict>
 					<key>0</key>
+					<dict/>
+					<key>1</key>
 					<dict>
 						<key>position</key>
 						<dict>
@@ -1318,9 +1527,9 @@
 				<key>displayName</key>
 				<string>head2</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>mushroomHead2</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1390,10 +1599,12 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_mushroom2Head.png</string>
+							<string>pictures/p2_mushroom2Head.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>animatedProperties</key>
@@ -1418,7 +1629,218 @@
 									<integer>7</integer>
 									<key>value</key>
 									<array>
+										<string>pictures/p2_mushroom2Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>0.53333336114883423</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>0.80000001192092896</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
 										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>2</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>2.4333333969116211</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>3.7666666507720947</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>4</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>5.3000001907348633</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>5.7666668891906738</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>7.4000000953674316</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom2EyesBlink.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>7.7333331108093262</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
+										<string>Use regular file</string>
+									</array>
+								</dict>
+							</array>
+							<key>name</key>
+							<string>displayFrame</string>
+							<key>type</key>
+							<integer>7</integer>
+						</dict>
+					</dict>
+					<key>1</key>
+					<dict>
+						<key>displayFrame</key>
+						<dict>
+							<key>keyframes</key>
+							<array>
+								<dict>
+									<key>easing</key>
+									<dict>
+										<key>type</key>
+										<integer>0</integer>
+									</dict>
+									<key>name</key>
+									<string>displayFrame</string>
+									<key>time</key>
+									<real>0.0</real>
+									<key>type</key>
+									<integer>7</integer>
+									<key>value</key>
+									<array>
+										<string>pictures/p2_mushroom2Eyes.png</string>
 										<string>Use regular file</string>
 									</array>
 								</dict>
@@ -1804,9 +2226,9 @@
 				<key>displayName</key>
 				<string>CCSprite</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>mushroomEyes2</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1881,10 +2303,14 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>P2_Resource/pictures/p2_mushroom2Eyes.png</string>
+							<string>pictures/p2_mushroom2Eyes.png</string>
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
+				<key>seqExpanded</key>
+				<true/>
 			</dict>
 		</array>
 		<key>customClass</key>
@@ -1956,21 +2382,41 @@
 			<key>autoPlay</key>
 			<true/>
 			<key>chainedSequenceId</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 			<key>length</key>
 			<real>8</real>
 			<key>name</key>
-			<string>Default Timeline</string>
+			<string>idle</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>8</real>
+			<real>0.0</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
 			<real>64</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>autoPlay</key>
+			<false/>
+			<key>chainedSequenceId</key>
+			<integer>0</integer>
+			<key>length</key>
+			<real>8</real>
+			<key>name</key>
+			<string>Default Timeline copy</string>
+			<key>offset</key>
+			<real>0.0</real>
+			<key>position</key>
+			<real>0.0</real>
+			<key>resolution</key>
+			<real>30</real>
+			<key>scale</key>
+			<real>64</real>
+			<key>sequenceId</key>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>stageBorder</key>

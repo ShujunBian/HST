@@ -8,9 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
+#import "CCBAnimationManager.h"
 
-@interface P3_Mushroom : CCNode {
-    
-}
+@interface P3_Mushroom : CCNode<CCBAnimationManagerDelegate>
+
+@property (nonatomic, assign) CCSprite *mushroomBody;
+@property (nonatomic, assign) CCSprite *mushroomEye;
 
 @end
