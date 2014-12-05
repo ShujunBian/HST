@@ -803,6 +803,7 @@
 		51ACAAC3199A2F6400A34946 /* P1_11.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB7199A2F6400A34946 /* P1_11.mp3 */; };
 		51ACAAC4199A2F6400A34946 /* P1_12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 51ACAAB8199A2F6400A34946 /* P1_12.mp3 */; };
 		51ACAACA199A419200A34946 /* WorldUILayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 51ACAAC9199A419200A34946 /* WorldUILayer.m */; };
+		51AF0B7A1A30B147001BED0A /* P1_Flower.m in Sources */ = {isa = PBXBuildFile; fileRef = 51AF0B791A30B147001BED0A /* P1_Flower.m */; };
 		51BD221319E0229E003951AC /* P2_MusicSelectImage2-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BD221119E0229E003951AC /* P2_MusicSelectImage2-hd.png */; };
 		51BD221419E0229E003951AC /* P2_MusicSelectImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 51BD221219E0229E003951AC /* P2_MusicSelectImage2.png */; };
 		51CFF209196E436800602568 /* P3_Mushroom.m in Sources */ = {isa = PBXBuildFile; fileRef = 51CFF208196E436800602568 /* P3_Mushroom.m */; };
@@ -2256,6 +2257,8 @@
 		51ACAAB8199A2F6400A34946 /* P1_12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = P1_12.mp3; sourceTree = "<group>"; };
 		51ACAAC8199A419200A34946 /* WorldUILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldUILayer.h; sourceTree = "<group>"; };
 		51ACAAC9199A419200A34946 /* WorldUILayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldUILayer.m; sourceTree = "<group>"; };
+		51AF0B781A30B147001BED0A /* P1_Flower.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P1_Flower.h; sourceTree = "<group>"; };
+		51AF0B791A30B147001BED0A /* P1_Flower.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P1_Flower.m; sourceTree = "<group>"; };
 		51BD221119E0229E003951AC /* P2_MusicSelectImage2-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "P2_MusicSelectImage2-hd.png"; sourceTree = "<group>"; };
 		51BD221219E0229E003951AC /* P2_MusicSelectImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = P2_MusicSelectImage2.png; sourceTree = "<group>"; };
 		51CFF207196E436800602568 /* P3_Mushroom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P3_Mushroom.h; sourceTree = "<group>"; };
@@ -3378,6 +3381,8 @@
 				EF5B1A0419AC692300DA3A79 /* P1_GameUI.m */,
 				EF5B1A0619AC69F200DA3A79 /* P1_TapUI.h */,
 				EF5B1A0719AC69F200DA3A79 /* P1_TapUI.m */,
+				51AF0B781A30B147001BED0A /* P1_Flower.h */,
+				51AF0B791A30B147001BED0A /* P1_Flower.m */,
 			);
 			name = P1;
 			sourceTree = "<group>";
@@ -6275,8 +6280,6 @@
 				5169CCAA18CDE5ED00426E6C /* CCSprite.m in Sources */,
 				1801E74E18E594FC004E0856 /* CCSprite+getRect.m in Sources */,
 				5169CC5118CDE5ED00426E6C /* CCGrabber.m in Sources */,
-				51E5F1FF19A3D221008C86F3 /* EAFRead.mm in Sources */,
-				5169CD5B18CDE5EE00426E6C /* mat3.c in Sources */,
 				EF58EB161990C36300B13232 /* GameLoadingProcessBar.m in Sources */,
 				5169CD7518CDE5EE00426E6C /* AppDelegate.m in Sources */,
 				5169CCE518CDE5EE00426E6C /* CCES2Renderer.m in Sources */,
@@ -6319,11 +6322,11 @@
 				EF485E7A19DFE08000483841 /* P4HelpUi.m in Sources */,
 				5169CC3C18CDE5ED00426E6C /* CCDirector.m in Sources */,
 				5169CC2C18CDE5ED00426E6C /* CCAtlasNode.m in Sources */,
+				51AF0B7A1A30B147001BED0A /* P1_Flower.m in Sources */,
 				EFD0B7E91A1A4A8500BCDFBA /* vec3.c in Sources */,
 				5187A8A11990E56D00C52767 /* VolumnHelper.m in Sources */,
 				5169CD7218CDE5EE00426E6C /* main.m in Sources */,
 				EFD0B7E71A1A4A8500BCDFBA /* utility.c in Sources */,
-				51E5F20019A3D221008C86F3 /* EAFWrite.mm in Sources */,
 				EF5B19FA19AC651300DA3A79 /* P1_BlowUI.m in Sources */,
 				5169D0C218CDEC1300426E6C /* CCBKeyframe.m in Sources */,
 				EFD0B7E11A1A4A8500BCDFBA /* mat3.c in Sources */,

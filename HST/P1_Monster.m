@@ -10,6 +10,9 @@
 #import "CCBAnimationManager.h" 
 
 @implementation P1_Monster
+{
+    CCBAnimationManager * selfAnimationManager;
+}
 
 - (void) didLoadFromCCB
 {
@@ -30,6 +33,15 @@
     [self maskedSprite];
     [self addChild:maskedMouth];
 
+
+    selfAnimationManager = self.userObject;
+    selfAnimationManager.delegate = self;
+    
+    CCSequence * rotateHands = [CCSequence actions:
+                                [CCRotateBy actionWithDuration:1.0 angle:-17.0],
+                                [CCRotateBy actionWithDuration:1.0 angle:17.0],
+                                nil];
+    [self.righthand runAction:rotateHands];
     
 //    [self schedule:@selector(updateLeftHand:)];
 }
@@ -37,6 +49,9 @@
 
 - (void)dealloc
 {
+    selfAnimationManager.delegate = nil;
+    selfAnimationManager = nil;
+    
     [super dealloc];
 }
 
@@ -162,7 +177,18 @@
 }
 
 
-
+- (void) completedAnimationSequenceNamed:(NSString *)name
+{
+    if ([name isEqualToString:@"idle"]) {
+        [selfAnimationManager runAnimationsForSequenceNamed:@"idle"];
+        
+        CCSequence * rotateHands = [CCSequence actions:
+                                    [CCRotateBy actionWithDuration:1.0 angle:-17.0],
+                                    [CCRotateBy actionWithDuration:1.0 angle:17.0],
+                                    nil];
+        [self.righthand runAction:rotateHands];
+    }
+}
 
 
 - (void)updateLeftHand:(ccTime)delta

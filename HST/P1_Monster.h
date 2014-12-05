@@ -8,6 +8,7 @@
 
 #import "CCNode.h"
 #import "P1_MonsterEye.h"
+#import "CCBAnimationManager.h"
 
 @class P1_Monster;
 @protocol P1_MonsterDelegate <NSObject>
@@ -17,7 +18,7 @@
 
 @end
 
-@interface P1_Monster : CCNode
+@interface P1_Monster : CCNode<CCBAnimationManagerDelegate>
 {
     CCSprite *maskedMouth;
     CCSprite *mouthBlack;
@@ -36,6 +37,7 @@
 @property (nonatomic, assign) CCSprite *mouthMask;
 @property (nonatomic, assign) CCSprite *body;
 @property (nonatomic, assign) CCSprite *lefthand;
+@property (nonatomic, assign) CCSprite *righthand;
 @property (nonatomic, assign) P1_MonsterEye *eye;
 
 - (void)smallMouth;
