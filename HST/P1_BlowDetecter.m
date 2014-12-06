@@ -10,7 +10,10 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreAudio/CoreAudioTypes.h>
+#import "UIDevice+Hardware.h"
 
+#define kIsFirstMicDetectKey @"kIsFirstMicDetectKey"
+#define kIsEnableMicDetectKey @"kIsEnableMicDetectKey"
 @interface P1_BlowDetecter ()
 {
     BOOL _isBlowing;
@@ -23,8 +26,61 @@
 @end
 
 @implementation P1_BlowDetecter
++ (BOOL)isFirstDetect
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber* fFirst = [userDefaults objectForKey:kIsFirstMicDetectKey];
+    return !fFirst || [fFirst isEqual:[NSNull null]] || fFirst.boolValue;
+}
++ (void)setIsFirstDetect:(BOOL)fFirst
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:@(fFirst) forKey:kIsFirstMicDetectKey];
+    [userDefaults synchronize];
+}
++ (BOOL)isEnableDetect
+{
+    if ([self checkIsAir]) {
+        return NO;
+    }
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber* fFirst = [userDefaults objectForKey:kIsEnableMicDetectKey];
+    return !fFirst || [fFirst isEqual:[NSNull null]] || fFirst.boolValue;
+}
++ (BOOL)checkIsAir
+{
+    UIDevice* device = [UIDevice currentDevice];
+    Hardware h = [device hardware];
+
+    switch (h) {
+        case IPAD_AIR_WIFI:
+        case IPAD_AIR_WIFI_GSM:
+        case IPAD_AIR_WIFI_CDMA:
+        case IPAD_AIR_2_WIFI:
+        case IPAD_AIR_2_WIFI_CELLULAR:
+            return YES;
+        default:
+            return NO;
+    }
+}
+
++ (void)setIsEnableDetect:(BOOL)fFirst
+{
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:@(fFirst) forKey:kIsEnableMicDetectKey];
+    [userDefaults synchronize];
+}
 
 static P1_BlowDetecter* blowDetecterInstance = nil;
+
+- (BOOL)isDetect
+{
+    if (![P1_BlowDetecter isEnableDetect] || !self.success){
+        return false;
+    } else {
+        return true;
+    }
+}
 
 + (P1_BlowDetecter*)instance
 {
@@ -46,11 +102,14 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
 - (id)init
 {
     self = [super init];
+    
+    if (![P1_BlowDetecter isEnableDetect]) {
+        return self;
+    }
+
     if(self)
     {
         _isBlowing = NO;
-        
-        
         
         NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
 		
@@ -66,7 +125,7 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
         recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
 		NSError *setCategoryError = nil;
         
-        BOOL success = [[AVAudioSession sharedInstance]
+        _success = [[AVAudioSession sharedInstance]
                         setCategory:
 //                        AVAudioSessionCategoryRecord
                         AVAudioSessionCategoryPlayAndRecord
@@ -79,9 +138,22 @@ static P1_BlowDetecter* blowDetecterInstance = nil;
         } else
             NSLog(@"%@",[error description]);
     }
+    
+    NSString *mediaType = AVMediaTypeAudio; // Or AVMediaTypeAudio
+    
+    _success = [self checkMicrophoneIsReady];
     return self;
 }
-
+- (BOOL)checkMicrophoneIsReady
+{
+    AVCaptureDevice *inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeAudio];
+    AVCaptureDeviceInput *captureInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:nil];
+    if (!captureInput) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
 - (void)levelTimerCallback:(NSTimer *)timer {
 	[recorder updateMeters];
     

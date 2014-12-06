@@ -43,6 +43,7 @@
 
 @property (strong, nonatomic) P1_TapUI* tapUI;
 @property (assign, nonatomic) BOOL fToShowTapIndicator;
+
 @end
 
 
@@ -165,6 +166,14 @@ static NSMutableArray *bubbleScales = nil;
 
     [self showScene];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDeviceOrientationChange) name:UIDeviceOrientationDidChangeNotification object:nil];
+
+    if (![[P1_BlowDetecter instance] isDetect]) {
+        [self restartGameScene];
+        self.mainMapHelper.restartMenu.visible = NO;
+    } else {
+        _isAutoBubble = NO;
+        self.mainMapHelper.restartMenu.visible = YES;
+    }
 }
 - (void)onEnterTransitionDidFinish
 {
@@ -418,19 +427,26 @@ static NSMutableArray *bubbleScales = nil;
 
 - (void)helpButtonPressed
 {
-    if (self.gameUI.fIsShowShadow) {
-        return;
+    if (![[P1_BlowDetecter instance] isDetect]) {
+        self.fToShowTapIndicator = YES;
+        if (self.currentOnScreenBubbles.count) {
+            P1_Bubble* bubble = [self.currentOnScreenBubbles firstObject];
+            [self showTapIndicatorForBubblePosition:bubble.position];
+        }
+    } else {
+        if (self.gameUI.fIsShowShadow) {
+            return;
+        }
+        self.gameUI.fIsFirst = NO;
+        [self reorderUiForHelpButtonPressed];
+        if (self.tapUI.fIsShow)
+        {
+            [self hideTapUI];
+        }
+        [self.gameUI restart];
+        self.fToShowTapIndicator = YES;
     }
-    self.gameUI.fIsFirst = NO;
-    [self reorderUiForHelpButtonPressed];
-    if (self.tapUI.fIsShow)
-    {
-        [self hideTapUI];
-    }
-    [self.gameUI restart];
-    self.fToShowTapIndicator = YES;
-//    self.mainMapHelper.mainMapMenu.enabled = NO;
-//    self.mainMapHelper.helpMenu.enabled = NO;
+
 }
 - (void)reorderUiForHelpButtonPressed
 {
