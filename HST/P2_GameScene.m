@@ -26,6 +26,7 @@
 #import "P2_SkyLayer.h"
 #import "P2_MusicFinishLayer.h"
 #import "P2_TapIndicator.h"
+#import "CircleTransitionLayer.h"
 
 #define kP2FirstOpenKey @"kP2FirstOpenKey"
 
@@ -407,7 +408,6 @@
     
     [self initBackgroundMusicAndEffect];
     [self playBackgroundMusic];
-#warning 这里为什么加上了播放大地图音乐？
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
     
 }
@@ -419,23 +419,30 @@
 
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
     
-#warning 这里添加restart转场代码
-    self.musicSelectLayer = [[[P2_MusicSelectLayer alloc]init]autorelease];
-    self.musicSelectLayer.delegate = self;
-    self.musicSelectLayer.fIsFirst = NO;
-    [self.musicSelectLayer addP2SelectSongUI];
-    [self addChild:self.musicSelectLayer z:20];
-    [self.musicSelectLayer resetUINodeByCurrentSongNumber:(self.currentSongType - 1)];
-    [self.mainMapHelper disableRestartButton];
-    [self.mainMapHelper disableHelpButton];
     
-    NSInteger flyObjectCount = [_flyObjectsOnScreen count];
-    for (int i = 0; i < flyObjectCount;  ++ i) {
-        P2_LittleFlyObjects * littleFly = (P2_LittleFlyObjects *)[_flyObjectsOnScreen objectAtIndex:0];
-        [_flyObjectsOnScreen removeObject:littleFly];
-        [littleFly removeFromParentAndCleanup:YES];
-    }
-    _flyObjectsOnScreen = nil;
+    CircleTransitionLayer* circleLayer = [CircleTransitionLayer layer];
+//    [circleLayer removeFromParentAndCleanup:YES];
+    [[CCDirector sharedDirector].runningScene addChild:circleLayer];
+    [circleLayer hideSceneWithDuration:0.5f onCompletion:^{
+        self.musicSelectLayer = [[[P2_MusicSelectLayer alloc]init]autorelease];
+        self.musicSelectLayer.delegate = self;
+        self.musicSelectLayer.fIsFirst = NO;
+        [self.musicSelectLayer addP2SelectSongUI];
+        [self addChild:self.musicSelectLayer z:20];
+        [self.musicSelectLayer resetUINodeByCurrentSongNumber:(self.currentSongType - 1)];
+        [self.mainMapHelper disableRestartButton];
+        [self.mainMapHelper disableHelpButton];
+        
+        NSInteger flyObjectCount = [_flyObjectsOnScreen count];
+        for (int i = 0; i < flyObjectCount;  ++ i) {
+            P2_LittleFlyObjects * littleFly = (P2_LittleFlyObjects *)[_flyObjectsOnScreen objectAtIndex:0];
+            [_flyObjectsOnScreen removeObject:littleFly];
+            [littleFly removeFromParentAndCleanup:YES];
+        }
+        _flyObjectsOnScreen = nil;
+        [circleLayer showSceneWithDuration:0.5f onCompletion:^{
+        }];
+    }];
 }
 
 - (void)returnToMainMap
