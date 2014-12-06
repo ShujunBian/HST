@@ -28,5 +28,6 @@
 - (void)setObjectFirstPosition;
 - (void)setObjectFirstPosition:(float)offset;
 - (void)actionWhenOutOfScreen;
+- (void)idleAnimation;
 
 @end

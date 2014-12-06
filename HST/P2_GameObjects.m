@@ -27,7 +27,6 @@
 {
 }
 
-
 - (void)update:(ccTime)delta
 {
     if (!self.isInMainMap) {
@@ -40,20 +39,31 @@
     }
 }
 
+- (void)idleAnimation
+{
+    
+}
+
 - (void)setObjectFirstPosition
 {
     [self setObjectFirstPosition:0.f];
 }
+
 - (void)setObjectFirstPosition:(float)offsetX
 {
     objectPostionX = CCRANDOM_0_1() * 1024.0;
     self.position = CGPointMake(objectPostionX + offsetX , self.contentSize.height / 2);
 }
+
 - (void)actionWhenOutOfScreen
 {
     objectPostionX = 1024.0 + CCRANDOM_0_1() * 1024.0;
     self.position = CGPointMake(objectPostionX, self.contentSize.height / 2);
 }
 
+- (void)dealloc
+{
+    [super dealloc];
+}
 
 @end

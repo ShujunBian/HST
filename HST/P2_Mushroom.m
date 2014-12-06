@@ -17,9 +17,6 @@
 #define kMoveDuration4  2.0
 
 @implementation P2_Mushroom
-{
-    CCBAnimationManager * selfAnimationManager;
-}
 
 @synthesize mushroomBody1;
 @synthesize mushroomBody2;
@@ -30,18 +27,7 @@
 
 - (void) didLoadFromCCB
 {
-    selfAnimationManager = self.userObject;
-    selfAnimationManager.delegate = self;
-    
-    [self idleAnimation];
-}
-
-- (void) completedAnimationSequenceNamed:(NSString *)name
-{
-    if ([name isEqualToString:@"idle"]) {
-        [selfAnimationManager runAnimationsForSequenceNamed:@"idle"];
-        [self idleAnimation];
-    }
+    [super didLoadFromCCB];
 }
 
 - (void)idleAnimation
@@ -146,9 +132,6 @@
 
 - (void)dealloc
 {
-    selfAnimationManager.delegate = nil;
-    selfAnimationManager = nil;
-    
     [super dealloc];
 }
 

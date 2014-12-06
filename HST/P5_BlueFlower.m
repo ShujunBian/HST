@@ -1,19 +1,19 @@
 //
-//  P5_Flower.m
-//  Dig
+//  P5_BlueFlower.m
+//  HST
 //
-//  Created by Emerson on 14-1-24.
+//  Created by Emerson on 14-12-5.
 //  Copyright (c) 2014年 Emerson. All rights reserved.
 //
 
-#import "P5_Flower.h"
+#import "P5_BlueFlower.h"
 
 #define kMoveDuration1  2.0
 #define kMoveDuration2  2.0
 #define kMoveDuration3  2.0
 #define kMoveDuration4  2.0
 
-@implementation P5_Flower
+@implementation P5_BlueFlower
 {
     CCBAnimationManager * selfAnimationManager;
 }
@@ -49,35 +49,26 @@
     [flowerBody runAction:fBSeq];
     
     
-    CCSequence * fHSeqPosition = [CCSequence actions:
-                                  [CCMoveBy actionWithDuration:kMoveDuration1 position:CGPointMake(2.0, -1.0)],
-                                  [CCMoveBy actionWithDuration:kMoveDuration2 position:CGPointMake(-2.0, 1.0)],
-                                  [CCMoveBy actionWithDuration:kMoveDuration3 position:CGPointMake(-2.0, 0.0)],
-                                  [CCMoveBy actionWithDuration:kMoveDuration4 position:CGPointMake(2.0, 0.0)],
-                                  nil];
-    
     CCSequence * fHSeqRotation = [CCSequence actions:
                                   [CCRotateTo actionWithDuration:kMoveDuration1 angle:-8.0],
                                   [CCRotateTo actionWithDuration:kMoveDuration2 angle:0.0],
                                   [CCRotateTo actionWithDuration:kMoveDuration3 angle:8.0],
                                   [CCRotateTo actionWithDuration:kMoveDuration4 angle:0.0],
                                   nil];
-    
-    CCSpawn * fHSpawn = [CCSpawn actions:fHSeqPosition,fHSeqRotation, nil];
-    [flowerHead runAction:fHSpawn];
+    [flowerHead runAction:fHSeqRotation];
     
     CCSequence * fEPosition = [CCSequence actions:
-                               [CCMoveBy actionWithDuration:kMoveDuration1 position:CGPointMake(-3.0, -1.0)],
-                               [CCMoveBy actionWithDuration:kMoveDuration2 position:CGPointMake(3.0, 1.0)],
-                               [CCMoveBy actionWithDuration:kMoveDuration3 position:CGPointMake(4.0, 1.0)],
-                               [CCMoveBy actionWithDuration:kMoveDuration4 position:CGPointMake(-4.0, -1.0)],
+                               [CCMoveBy actionWithDuration:kMoveDuration1 position:CGPointMake(-5.0, 0.0)],
+                               [CCMoveBy actionWithDuration:kMoveDuration2 position:CGPointMake(5.0, 0.0)],
+                               [CCMoveBy actionWithDuration:kMoveDuration3 position:CGPointMake(5.0, 0.0)],
+                               [CCMoveBy actionWithDuration:kMoveDuration4 position:CGPointMake(-5.0, 0.0)],
                                nil];
     
     CCSequence * fERotation = [CCSequence actions:
-                               [CCRotateTo actionWithDuration:kMoveDuration1 angle:0.0],
-                               [CCRotateTo actionWithDuration:kMoveDuration2 angle:8.0],
-                               [CCRotateTo actionWithDuration:kMoveDuration3 angle:16.0],
-                               [CCRotateTo actionWithDuration:kMoveDuration4 angle:8.0],
+                               [CCRotateTo actionWithDuration:kMoveDuration1 angle:-8.0],
+                               [CCRotateTo actionWithDuration:kMoveDuration2 angle:0.0],
+                               [CCRotateTo actionWithDuration:kMoveDuration3 angle:8.0],
+                               [CCRotateTo actionWithDuration:kMoveDuration4 angle:0.0],
                                nil];
     CCSpawn * fESpawn = [CCSpawn actions:fEPosition,fERotation, nil];
     [flowerEyes runAction:fESpawn];

@@ -11,4 +11,8 @@
 
 @interface P2_Flower : P2_GameObjects
 
+@property (nonatomic, assign) CCSprite *flowerBody;
+@property (nonatomic, assign) CCSprite *flowerHead;
+@property (nonatomic, assign) CCSprite *flowerEyes;
+
 @end
