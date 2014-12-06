@@ -95,23 +95,12 @@
     [self addChild:secondLittleMonster z:0];
     secondLittleMonster.position = CGPointMake(260, 0);
     
-//    [self performSelector:@selector(addFinishLayer) withObject:nil afterDelay:2.0];
-    
     self.musicSelectLayer = [[[P2_MusicSelectLayer alloc]init]autorelease];
     self.musicSelectLayer.delegate = self;
     [self.musicSelectLayer addP2SelectSongUI];
     [self addChild:self.musicSelectLayer z:20];
     [self.mainMapHelper disableRestartButton];
     [self.mainMapHelper disableHelpButton];
-}
-
-- (void)addFinishLayer
-{
-    self.musicFinishLayer = [[[P2_MusicFinishLayer alloc]init]autorelease];
-    self.musicFinishLayer.matchString = @"test";
-    [self.musicFinishLayer addFinishedUI];
-    self.musicFinishLayer.delegate = self;
-    [self addChild:self.musicFinishLayer z:20];
 }
 
 - (void)playBackgroundMusic
@@ -158,8 +147,12 @@
     [self schedule:@selector(addLittleFlyObjectEverySecond:) interval:ADD_MONSTER_UPDATE_DELTA];
     [self scheduleUpdate];
     
+    [self startTheMovingBackground];
+}
+
+- (void)startTheMovingBackground
+{
     for (CCNode * node in [self children]) {
-        
         if ([[node class] isSubclassOfClass:[P2_GrassLayer class]]) {
             ((P2_GrassLayer *)node).isWaitingForSelect = NO;
             for (CCNode * grassNode in [(P2_GrassLayer *)node children]) {
@@ -176,11 +169,18 @@
 
 - (void)stopMusic
 {
+    _frameCounter = 0;
+    self.nextMusicFrameIndex = 0;
+    
     [self unschedule:@selector(addLittleFlyObjectEverySecond:)];
     [self unscheduleUpdate];
+    
+    [self stopTheMovingBackground];
+}
 
+- (void)stopTheMovingBackground
+{
     for (CCNode * node in [self children]) {
-        
         if ([[node class] isSubclassOfClass:[P2_GrassLayer class]]) {
             ((P2_GrassLayer *)node).isWaitingForSelect = YES;
             for (CCNode * grassNode in [(P2_GrassLayer *)node children]) {
@@ -242,8 +242,7 @@
     
     if (_frameCounter == _maxMusicSeconds) {
         [[SimpleAudioEngine sharedEngine] rewindBackgroundMusic];
-        _frameCounter = 0;
-        self.nextMusicFrameIndex = 0;
+
         [self stopMusic];
         
         NSString *fileName = [[NSBundle mainBundle] pathForResource:@"P2_MusicSetting" ofType:@"plist"];
@@ -385,12 +384,14 @@
     [self playBackgroundMusic];
     [self startMusic];
 }
+
 - (void)willAddFinishLayer
 {
     if (self.tapIndicator.isShowed) {
         [self.tapIndicator hideWithAnimation:YES];
     }
 }
+
 - (void)finishLayerRemoveFromeGameScene
 {
     self.musicFinishLayer = nil;
@@ -406,6 +407,7 @@
     
     [self initBackgroundMusicAndEffect];
     [self playBackgroundMusic];
+#warning 这里为什么加上了播放大地图音乐？
     [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
     
 }
@@ -413,7 +415,27 @@
 #pragma mark - 菜单键调用函数 mainMapDelegate
 - (void)restartGameScene
 {
+    [self stopMusic];
+
+    [[SimpleAudioEngine sharedEngine] playBackgroundMusic:@"world.mp3" loop:YES];
     
+#warning 这里添加restart转场代码
+    self.musicSelectLayer = [[[P2_MusicSelectLayer alloc]init]autorelease];
+    self.musicSelectLayer.delegate = self;
+    self.musicSelectLayer.fIsFirst = NO;
+    [self.musicSelectLayer addP2SelectSongUI];
+    [self addChild:self.musicSelectLayer z:20];
+    [self.musicSelectLayer resetUINodeByCurrentSongNumber:(self.currentSongType - 1)];
+    [self.mainMapHelper disableRestartButton];
+    [self.mainMapHelper disableHelpButton];
+    
+    NSInteger flyObjectCount = [_flyObjectsOnScreen count];
+    for (int i = 0; i < flyObjectCount;  ++ i) {
+        P2_LittleFlyObjects * littleFly = (P2_LittleFlyObjects *)[_flyObjectsOnScreen objectAtIndex:0];
+        [_flyObjectsOnScreen removeObject:littleFly];
+        [littleFly removeFromParentAndCleanup:YES];
+    }
+    _flyObjectsOnScreen = nil;
 }
 
 - (void)returnToMainMap
