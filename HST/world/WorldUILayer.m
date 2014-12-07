@@ -214,7 +214,7 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
             return p1Scene;
         }];
     }
-    else if (_currentMainMapType == MainMapP1 && [P1_BlowDetecter isFirstDetect]) {
+    else if (_currentMainMapType == MainMapP1 && [P1_BlowDetecter isFirstDetect] && ![P1_BlowDetecter checkIsAir]) {
         [self changeToScene:^CCScene *{
             CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_BlowHelpUi.ccbi"];
             return p1Scene;

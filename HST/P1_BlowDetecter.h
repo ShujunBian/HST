@@ -29,5 +29,5 @@
 + (void)purge;
 - (BOOL)isDetect;
 - (BOOL)isBlowing;
-
++ (BOOL)checkIsAir;
 @end
