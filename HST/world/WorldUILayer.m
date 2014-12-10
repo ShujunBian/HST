@@ -16,6 +16,7 @@
 
 #import "CircleTransitionLayer.h"
 #import "CCLayer+CircleTransitionExtension.h"
+#import "P1_BlowDetecter.h"
 static CGPoint mainMapUIMonsterEyesPosition[] = {
     {30.0, 37.0},
     {29.0,46.0},
@@ -210,6 +211,12 @@ static CGPoint mainMapUIMonsterEyesPosition[] = {
     if (_currentMainMapType == MainMapP4) {
         [self changeToScene:^CCScene *{
             CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P4GameLayer.ccbi"];
+            return p1Scene;
+        }];
+    }
+    else if (_currentMainMapType == MainMapP1 && [P1_BlowDetecter isFirstDetect] && ![P1_BlowDetecter checkIsAir]) {
+        [self changeToScene:^CCScene *{
+            CCScene* p1Scene = [CCBReader sceneWithNodeGraphFromFile:@"P1_BlowHelpUi.ccbi"];
             return p1Scene;
         }];
     }

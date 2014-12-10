@@ -207,7 +207,9 @@
     {
         return;
     }
-    [self.animationManager runAnimationsForSequenceNamed:@"renewButtonRotate"];
+    self.renewButton.rotation = 0;
+    [self.renewButton stopAllActions];
+    [self.renewButton runAction: [CCSequence actions:[CCRotateBy actionWithDuration:0.5 angle:360], nil]];
     [self.gameLayer monstersRenew];
     [self.waterLayer beginReleaseWater];
     _addCount = 0;

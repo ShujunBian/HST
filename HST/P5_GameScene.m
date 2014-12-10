@@ -131,7 +131,7 @@
     {
         [self setIsFirstOpen:NO];
         //first open
-        [self performSelector:@selector(showHelp2:) withObject:@YES afterDelay:2.8];
+        [self performSelector:@selector(showInitHelp) withObject:nil afterDelay:2.8];
         self.fIsToShowHelpUi = YES;
     }
     else
@@ -139,6 +139,10 @@
         self.fIsToShowHelpUi = NO;
     }
 //    [self performSelector:@selector(showUi) withObject:nil afterDelay:1.8];
+}
+- (void)showInitHelp
+{
+    [self showHelp2:YES];
 }
 
 - (void)onEnterTransitionDidFinish

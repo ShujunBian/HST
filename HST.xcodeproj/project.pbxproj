@@ -853,6 +853,14 @@
 		EF22311B1995FC7400BCB28E /* P4MonsterSoundObj.m in Sources */ = {isa = PBXBuildFile; fileRef = EF22311A1995FC7400BCB28E /* P4MonsterSoundObj.m */; };
 		EF22311E1996191F00BCB28E /* CircleTransitionLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = EF22311D1996191F00BCB28E /* CircleTransitionLayer.m */; };
 		EF223121199628A600BCB28E /* CCLayer+CircleTransitionExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EF223120199628A600BCB28E /* CCLayer+CircleTransitionExtension.m */; };
+		EF2486A91A336400006C70A7 /* P1_BlowHelpUi.m in Sources */ = {isa = PBXBuildFile; fileRef = EF2486A81A336400006C70A7 /* P1_BlowHelpUi.m */; };
+		EF2486AC1A3371A6006C70A7 /* P1_BlowHelpUi.ccb in Resources */ = {isa = PBXBuildFile; fileRef = EF2486AA1A3371A6006C70A7 /* P1_BlowHelpUi.ccb */; };
+		EF2486AD1A3371A6006C70A7 /* P1_BlowHelpUi.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = EF2486AB1A3371A6006C70A7 /* P1_BlowHelpUi.ccbi */; };
+		EF2486B21A3371B2006C70A7 /* p1_blow_iconl-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF2486AE1A3371B2006C70A7 /* p1_blow_iconl-hd.png */; };
+		EF2486B31A3371B2006C70A7 /* p1_blow_iconl.png in Resources */ = {isa = PBXBuildFile; fileRef = EF2486AF1A3371B2006C70A7 /* p1_blow_iconl.png */; };
+		EF2486B41A3371B2006C70A7 /* p1_blow_ok_btn-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF2486B01A3371B2006C70A7 /* p1_blow_ok_btn-hd.png */; };
+		EF2486B51A3371B2006C70A7 /* p1_blow_ok_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = EF2486B11A3371B2006C70A7 /* p1_blow_ok_btn.png */; };
+		EF2486B81A3380CB006C70A7 /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = EF2486B71A3380CB006C70A7 /* UIDevice+Hardware.m */; };
 		EF31302B197E0B5800B61C2A /* CircleTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = EF31302A197E0B5800B61C2A /* CircleTransition.m */; };
 		EF3AEC2A19A1973000E2256B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF3AEC2919A1973000E2256B /* CoreMotion.framework */; };
 		EF403F82197A1D1700C6C8E1 /* p4_background-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = EF403ED4197A1D1700C6C8E1 /* p4_background-hd.png */; };
@@ -2331,6 +2339,16 @@
 		EF22311D1996191F00BCB28E /* CircleTransitionLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTransitionLayer.m; sourceTree = "<group>"; };
 		EF22311F199628A600BCB28E /* CCLayer+CircleTransitionExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CCLayer+CircleTransitionExtension.h"; sourceTree = "<group>"; };
 		EF223120199628A600BCB28E /* CCLayer+CircleTransitionExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CCLayer+CircleTransitionExtension.m"; sourceTree = "<group>"; };
+		EF2486A71A336400006C70A7 /* P1_BlowHelpUi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = P1_BlowHelpUi.h; sourceTree = "<group>"; };
+		EF2486A81A336400006C70A7 /* P1_BlowHelpUi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = P1_BlowHelpUi.m; sourceTree = "<group>"; };
+		EF2486AA1A3371A6006C70A7 /* P1_BlowHelpUi.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = P1_BlowHelpUi.ccb; sourceTree = "<group>"; };
+		EF2486AB1A3371A6006C70A7 /* P1_BlowHelpUi.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = P1_BlowHelpUi.ccbi; sourceTree = "<group>"; };
+		EF2486AE1A3371B2006C70A7 /* p1_blow_iconl-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p1_blow_iconl-hd.png"; sourceTree = "<group>"; };
+		EF2486AF1A3371B2006C70A7 /* p1_blow_iconl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1_blow_iconl.png; sourceTree = "<group>"; };
+		EF2486B01A3371B2006C70A7 /* p1_blow_ok_btn-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p1_blow_ok_btn-hd.png"; sourceTree = "<group>"; };
+		EF2486B11A3371B2006C70A7 /* p1_blow_ok_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p1_blow_ok_btn.png; sourceTree = "<group>"; };
+		EF2486B61A3380CB006C70A7 /* UIDevice+Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Hardware.h"; sourceTree = "<group>"; };
+		EF2486B71A3380CB006C70A7 /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Hardware.m"; sourceTree = "<group>"; };
 		EF313029197E0B5800B61C2A /* CircleTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleTransition.h; sourceTree = "<group>"; };
 		EF31302A197E0B5800B61C2A /* CircleTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleTransition.m; sourceTree = "<group>"; };
 		EF3AEC2919A1973000E2256B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -3402,6 +3420,8 @@
 				EF5B1A0719AC69F200DA3A79 /* P1_TapUI.m */,
 				51AF0B781A30B147001BED0A /* P1_Flower.h */,
 				51AF0B791A30B147001BED0A /* P1_Flower.m */,
+				EF2486A71A336400006C70A7 /* P1_BlowHelpUi.h */,
+				EF2486A81A336400006C70A7 /* P1_BlowHelpUi.m */,
 			);
 			name = P1;
 			sourceTree = "<group>";
@@ -3511,6 +3531,8 @@
 		5169CDED18CDE6DE00426E6C /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				EF2486B61A3380CB006C70A7 /* UIDevice+Hardware.h */,
+				EF2486B71A3380CB006C70A7 /* UIDevice+Hardware.m */,
 				5169CDC618CDE6D900426E6C /* NSNotificationCenter+Addition.h */,
 				5169CDC718CDE6D900426E6C /* NSNotificationCenter+Addition.m */,
 				51ACAA8A1999F63600A34946 /* CCLayerColor+CCLayerColorAnimation.h */,
@@ -3564,6 +3586,8 @@
 		5169CDF818CDEA3D00426E6C /* P1_Resource */ = {
 			isa = PBXGroup;
 			children = (
+				EF2486AA1A3371A6006C70A7 /* P1_BlowHelpUi.ccb */,
+				EF2486AB1A3371A6006C70A7 /* P1_BlowHelpUi.ccbi */,
 				EF5B1A0919AC6A1F00DA3A79 /* P1_TapUI.ccb */,
 				EF5B1A0A19AC6A1F00DA3A79 /* P1_TapUI.ccbi */,
 				EF5B19FB19AC684300DA3A79 /* P1_BlowUI.ccb */,
@@ -4889,6 +4913,10 @@
 		EF5B19E719AC3A1000DA3A79 /* ui */ = {
 			isa = PBXGroup;
 			children = (
+				EF2486AE1A3371B2006C70A7 /* p1_blow_iconl-hd.png */,
+				EF2486AF1A3371B2006C70A7 /* p1_blow_iconl.png */,
+				EF2486B01A3371B2006C70A7 /* p1_blow_ok_btn-hd.png */,
+				EF2486B11A3371B2006C70A7 /* p1_blow_ok_btn.png */,
 				EF5B19EC19AC5A2600DA3A79 /* p1_auto_arrow_ui-hd.png */,
 				EF5B19ED19AC5A2600DA3A79 /* p1_auto_arrow_ui.png */,
 				EF5B19EE19AC5A2600DA3A79 /* p1_blow_ui-hd.png */,
@@ -5497,6 +5525,7 @@
 				5160F88019AAE28300917C34 /* P2_2_4.mp3 in Resources */,
 				5160F8A819AB24FC00917C34 /* P2_3_9.mp3 in Resources */,
 				51A94092197A121300920318 /* P3_RedMonsterBody.ccb in Resources */,
+				EF2486AC1A3371A6006C70A7 /* P1_BlowHelpUi.ccb in Resources */,
 				EF403F83197A1D1700C6C8E1 /* p4_background.png in Resources */,
 				51A941D1197A128700920318 /* P5_FlowerHead.ccb in Resources */,
 				51E5F22619A48395008C86F3 /* P2_MusicSelectImage0-hd.png in Resources */,
@@ -5530,6 +5559,7 @@
 				5152612819A08BDB00F48268 /* P5_1_2.mp3 in Resources */,
 				51A94044197A121300920318 /* P3_Monster3_Eye_background-hd.png in Resources */,
 				51A942FC197A130A00920318 /* P2_Mountain2.ccbi in Resources */,
+				EF2486B51A3371B2006C70A7 /* p1_blow_ok_btn.png in Resources */,
 				5185FCF1199B947C0070D25C /* MainMapUIEyeBlack.png in Resources */,
 				51A94193197A128700920318 /* P5_monsterEyeWhite-hd.png in Resources */,
 				EF4040B7197A592100C6C8E1 /* world_p1_mountain1-hd.png in Resources */,
@@ -5601,6 +5631,7 @@
 				51A942C9197A130A00920318 /* p2_mushroom1Eyes-hd.png in Resources */,
 				5185FCD1199B64CA0070D25C /* MainMap_P3Image.png in Resources */,
 				EF4040C2197A592100C6C8E1 /* world_p2_tree.png in Resources */,
+				EF2486B41A3371B2006C70A7 /* p1_blow_ok_btn-hd.png in Resources */,
 				51A942AB197A130A00920318 /* p2_ground-hd.png in Resources */,
 				51A943C1197A142E00920318 /* P1_MonsterEye.ccb in Resources */,
 				EF5B1A0C19AC6A1F00DA3A79 /* P1_TapUI.ccbi in Resources */,
@@ -5860,6 +5891,7 @@
 				EF403FBD197A1D1700C6C8E1 /* P4_green_eyewhite_1.png in Resources */,
 				51A9408A197A121300920318 /* P3_Monster_LittleEye.ccb in Resources */,
 				51A9415B197A128700920318 /* P5_BellEyesOpen-hd.png in Resources */,
+				EF2486B21A3371B2006C70A7 /* p1_blow_iconl-hd.png in Resources */,
 				51ACAAC0199A2F6400A34946 /* P1_8.mp3 in Resources */,
 				51A942F2197A130A00920318 /* P2_Monster.ccbi in Resources */,
 				EF87D3071A05215C001A03DC /* P5_3_1.mp3 in Resources */,
@@ -6034,6 +6066,7 @@
 				51A94017197A121300920318 /* P3_bell.png in Resources */,
 				EF403FEA197A1D1700C6C8E1 /* P4_green_monster_light.png in Resources */,
 				EF403FB8197A1D1700C6C8E1 /* P4_green_eyeball_1-hd.png in Resources */,
+				EF2486AD1A3371A6006C70A7 /* P1_BlowHelpUi.ccbi in Resources */,
 				EF403FAD197A1D1700C6C8E1 /* p4_cloud_top.png in Resources */,
 				51A943A5197A142E00920318 /* monstereyewhite-hd.png in Resources */,
 				EF4040DA197A592100C6C8E1 /* world_p2.ccbi in Resources */,
@@ -6125,6 +6158,7 @@
 				EF404015197A1D1700C6C8E1 /* P4PurpleMonster.ccbi in Resources */,
 				EF485E7319DFDC0900483841 /* p1_help_swipe_background-hd.png in Resources */,
 				51A941D2197A128700920318 /* P5_FlowerHead.ccbi in Resources */,
+				EF2486B31A3371B2006C70A7 /* p1_blow_iconl.png in Resources */,
 				51A94303197A130A00920318 /* P2_Sky.ccb in Resources */,
 				51F48AE3197E968E00371C45 /* world_p5_mushroom_shadow.png in Resources */,
 				EF403FD6197A1D1700C6C8E1 /* P4_monster1_mask.png in Resources */,
@@ -6273,6 +6307,7 @@
 				51F16352196E7F3C00A5BE6A /* P3_GreenMonster.m in Sources */,
 				EFD0B7E41A1A4A8500BCDFBA /* plane.c in Sources */,
 				5169CC4218CDE5ED00426E6C /* CCDrawNode.m in Sources */,
+				EF2486B81A3380CB006C70A7 /* UIDevice+Hardware.m in Sources */,
 				5169CCD418CDE5EE00426E6C /* CCTransitionPageTurn.m in Sources */,
 				5169CC0518CDE5ED00426E6C /* CCActionCatmullRom.m in Sources */,
 				5169CC7C18CDE5ED00426E6C /* CCParticleSystem.m in Sources */,
@@ -6429,6 +6464,7 @@
 				EF404031197A1D8500C6C8E1 /* MonsterEye.m in Sources */,
 				5169CC9218CDE5ED00426E6C /* CCScheduler.m in Sources */,
 				5169CCE218CDE5EE00426E6C /* CCDirectorIOS.m in Sources */,
+				EF2486A91A336400006C70A7 /* P1_BlowHelpUi.m in Sources */,
 				5169CC6418CDE5ED00426E6C /* CCMenu.m in Sources */,
 				5169CC2F18CDE5ED00426E6C /* CCCamera.m in Sources */,
 				5169CC2918CDE5ED00426E6C /* CCAnimationCache.m in Sources */,
