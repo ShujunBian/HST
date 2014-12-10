@@ -112,10 +112,14 @@
             P2_FlyGrass * flyGrass = (P2_FlyGrass *)[CCBReader nodeGraphFromFile:@"P2_FlyGrasses.ccbi"];
             flyGrass.position = CGPointMake(self.position.x , self.position.y + 10);
             [self.parent addChild:flyGrass z:0];
-            CCBAnimationManager * flyGrassAnimationManager =flyGrass.userObject;
             int flyGrassType = (arc4random() % 2) + 1;
-            NSString * flyGrassFilename = [NSString stringWithFormat:@"GrassDown%d",flyGrassType];
-            [flyGrassAnimationManager runAnimationsForSequenceNamed:flyGrassFilename];
+            if (flyGrassType == 1) {
+                [flyGrass grassAnimationOne];
+            }
+            else {
+                [flyGrass grassAnimationTwo];
+            }
+            
             
             [self overDown];
         }
