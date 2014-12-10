@@ -7,8 +7,14 @@
 //
 
 #import "CCNode.h"
-#import "CCBAnimationManager.h"
 
-@interface P2_FlyGrass : CCNode<CCBAnimationManagerDelegate>
+@interface P2_FlyGrass : CCNode
+
+@property (nonatomic, assign) CCSprite *grassLeft;
+@property (nonatomic, assign) CCSprite *grassMiddle;
+@property (nonatomic, assign) CCSprite *grassRight;
+
+- (void)grassAnimationOne;
+- (void)grassAnimationTwo;
 
 @end

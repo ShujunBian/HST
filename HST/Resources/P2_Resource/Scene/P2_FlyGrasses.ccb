@@ -14,8 +14,6 @@
 	<integer>4</integer>
 	<key>guides</key>
 	<array/>
-	<key>jsControlled</key>
-	<false/>
 	<key>nodeGraph</key>
 	<dict>
 		<key>baseClass</key>
@@ -500,9 +498,9 @@
 				<key>displayName</key>
 				<string>CCSprite</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>grassLeft</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -517,8 +515,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>-70</real>
-							<real>-11</real>
+							<real>-67.764625549316406</real>
+							<real>18.203329086303711</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -554,7 +552,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-20</real>
+						<real>-166.6666259765625</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -666,26 +664,6 @@
 									<array>
 										<real>37</real>
 										<real>44.444442749023438</real>
-									</array>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>opt</key>
-										<real>2</real>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>position</string>
-									<key>time</key>
-									<real>3.6666667461395264</real>
-									<key>type</key>
-									<integer>3</integer>
-									<key>value</key>
-									<array>
-										<real>44.333332061767578</real>
-										<real>14.814810752868652</real>
 									</array>
 								</dict>
 								<dict>
@@ -1114,9 +1092,9 @@
 				<key>displayName</key>
 				<string>CCSprite</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>grassMiddle</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1131,8 +1109,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>45.299999237060547</real>
-							<real>0.0</real>
+							<real>42.533332824707031</real>
+							<real>14.814810752868652</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1168,7 +1146,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-113</real>
+						<real>-110</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1569,9 +1547,9 @@
 				<key>displayName</key>
 				<string>CCSprite</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>grassRight</string>
 				<key>memberVarAssignmentType</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1586,8 +1564,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>125</real>
-							<real>0.0</real>
+							<real>121.85185241699219</real>
+							<real>10.493826866149902</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -1623,7 +1601,7 @@
 						<key>type</key>
 						<string>Degrees</string>
 						<key>value</key>
-						<real>-150</real>
+						<real>-132.5</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1717,13 +1695,6 @@
 		<dict>
 			<key>autoPlay</key>
 			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
@@ -1733,31 +1704,17 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>4</real>
+			<real>3.6666667461395264</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
 			<real>128</real>
 			<key>sequenceId</key>
 			<integer>0</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
 		</dict>
 		<dict>
 			<key>autoPlay</key>
 			<false/>
-			<key>callbackChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>10</integer>
-			</dict>
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
@@ -1774,13 +1731,6 @@
 			<real>128</real>
 			<key>sequenceId</key>
 			<integer>1</integer>
-			<key>soundChannel</key>
-			<dict>
-				<key>keyframes</key>
-				<array/>
-				<key>type</key>
-				<integer>9</integer>
-			</dict>
 		</dict>
 	</array>
 	<key>stageBorder</key>
