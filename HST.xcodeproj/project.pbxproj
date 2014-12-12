@@ -5185,7 +5185,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = Emerson;
+				ORGANIZATIONNAME = "Cniss Design";
+				TargetAttributes = {
+					5169CBCA18CDE5ED00426E6C = {
+						DevelopmentTeam = MA7BQU6SLC;
+					};
+				};
 			};
 			buildConfigurationList = 5169CBC618CDE5ED00426E6C /* Build configuration list for PBXProject "HST" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -6552,7 +6557,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6574,7 +6580,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "40A23946-638C-4A96-BC09-7B97DE041FF7";
+				PROVISIONING_PROFILE = "";
 				VALID_ARCHS = "arm64 armv7";
 				WRAPPER_EXTENSION = app;
 			};
@@ -6584,7 +6590,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Hongming Zhu (H5SJ56Z88P)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -6606,7 +6613,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "40A23946-638C-4A96-BC09-7B97DE041FF7";
+				PROVISIONING_PROFILE = "";
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "arm64 armv7";
 				WRAPPER_EXTENSION = app;
