@@ -196,8 +196,8 @@
             // doing the float ptr math correctly on device.
             float * pF = (float*)(bytes+currentByte);
             float f = 0;
-            memcpy(&f, pF, sizeof(float));
-            currentByte+=4;
+            memcpy((void*) &f, (const void*) pF, sizeof(float));
+            self->currentByte += sizeof(float);
             return f;
         }
     }
